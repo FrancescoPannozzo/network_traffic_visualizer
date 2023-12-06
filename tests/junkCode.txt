@@ -1,0 +1,27 @@
+"""
+#Setting the command line option to load the network config file and the packets file
+parser = argparse.ArgumentParser()
+parser.add_argument("networkFile", help="The networkFile you want to load")
+parser.add_argument("packetsFile", help="The packetsFile you want to load")
+args = parser.parse_args()
+
+#Getting absolute path from the running software directory
+current_folder = os.getcwd()
+#Abs path plus filename
+networkFilePath = current_folder + "\\" + args.networkFile + ".json"
+packetsFilePath = current_folder + "\\" + args.packetsFile + ".json"
+
+#testing
+print(current_folder + "\\" + args.networkFile + ".json")
+print(current_folder + "\\" + args.packetsFile + ".json")
+
+#loading files
+networkFile = open(networkFilePath)
+packetsFile = open(packetsFilePath)
+netWorkData = json.load(networkFile)
+packetsDdata = json.load(packetsFile)
+
+
+SwitchesData = obj.Switch("test", "0.0.0.0", ["1","2"])
+print(SwitchesData.ipAddress)
+"""
