@@ -1,0 +1,12 @@
+- switchName: "switch1"
+  address: "123.123.123.121"
+  connectedTo: ["switch2", "switch3", "switch4"]
+- switchName: "switch2"
+  address: "123.123.123.122"
+  connectedTo: ["switch1", "switch3", "switch4"]
+- switchName: "switch3"
+  address: "123.123.123.123"
+  connectedTo: ["switch1", "switch2", "switch4"]
+- switchName: "switch4"
+  address: "123.123.123.124"
+  connectedTo: ["switch1", "switch2", "switch3"]

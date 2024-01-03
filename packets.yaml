@@ -1,0 +1,16 @@
+- source: "switch1"
+  destination: "switch2"
+  timestamp: "2023-04-16 16:32:05.100"
+  dimension: 1500
+- source: "switch1"
+  destination: "switch2"
+  timestamp: "2023-04-16 16:32:06.200"
+  dimension: 1500
+- source: "switch1"
+  destination: "switch2"
+  timestamp: "2023-04-16 16:32:06.550"
+  dimension: 1500
+- source: "switch1"
+  destination: "switch2"
+  timestamp: "2023-04-16 16:32:07.750"
+  dimension: 1500

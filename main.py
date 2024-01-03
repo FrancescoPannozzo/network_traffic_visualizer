@@ -19,3 +19,6 @@ print(networkFile[0])
 print("-----")
 print(packetsFile[0])
 
+print(type(networkFile))
+print(type(networkFile[0]))
+
