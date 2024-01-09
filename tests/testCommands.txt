@@ -1,3 +1,5 @@
 Lanciare programma con i file di config
 python main.py network packets
 --
+Lanciare il custom help
+python app.py -h

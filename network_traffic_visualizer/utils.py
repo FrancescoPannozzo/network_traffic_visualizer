@@ -1,6 +1,4 @@
-import json
 import os
-import argparse
 import yaml
 
 #load the .json configuration files

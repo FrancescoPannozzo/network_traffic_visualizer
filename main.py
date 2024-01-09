@@ -1,6 +1,5 @@
 import argparse
 import os
-import json
 from network_traffic_visualizer import classes as obj
 from network_traffic_visualizer import utils
 
@@ -19,6 +18,10 @@ print(networkFile[0])
 print("-----")
 print(packetsFile[0])
 
+
 print(type(networkFile))
 print(type(networkFile[0]))
+print("-----------")
+print(type(packetsFile))
+print(type(packetsFile[0]))
 
