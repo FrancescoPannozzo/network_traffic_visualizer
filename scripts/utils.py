@@ -1,6 +1,7 @@
 import argparse
 import logging
 import os
+import random
 import yaml
 
 #check if a link is already present in links list
@@ -19,3 +20,13 @@ def getInputParameters():
     parser.add_argument("linkCap", type=int, help="The switch-link capacity (MB) you want to load")
     args = parser.parse_args()
     return args
+
+def changeTrafficPerc(trafficPerc): 
+  newTrafficPerc = trafficPerc
+  if random.randint(1, 10) > 5:
+    if newTrafficPerc < 10:
+      newTrafficPerc += 1
+  else:
+    if newTrafficPerc > 0:
+      newTrafficPerc -= 1
+  return newTrafficPerc

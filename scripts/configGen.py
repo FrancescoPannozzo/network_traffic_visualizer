@@ -1,10 +1,10 @@
 # A yaml file config generator script. It creates two network config files
 
-import argparse
 from classes import Link
 from datetime import datetime, timedelta
 import utils
 import logging
+import random
 
 # Logger config
 logging.basicConfig(
@@ -63,6 +63,35 @@ for l in links:
 
 test =(10 * 1e6)/8
 print(test)
+
+# traffico di ciascun link
+
+
+test = 0
+for i in range(0, 20):
+  if random.randint(1, 10) > 5:
+    if test < 10:
+      test += 1
+  else:
+    if test > 0:
+      test -= 1
+
+
+
+for _ in range(0, 10):
+  for i in range(0, len(links)):
+    #setta il nuovo valore di percentuale di traffico del link a partire dal precedente valore
+    links[i].setTrafficPerc(utils.changeTrafficPerc(links[i].getTrafficPerc()))
+    print(links[i])
+  print("--------")
+
+
+
+
+
+
+
+
 
 
 

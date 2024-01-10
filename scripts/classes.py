@@ -6,15 +6,22 @@ class Link:
     def __init__(self, capacity, endpoints):
       self.capacity = capacity
       self.endpoints = endpoints
+      self.trafficPerc = 0
 
     def __str__(self):
-      return f"Link with endpoint:{self.endpoints}, capacity:{self.capacity}"
+      return f"Link with endpoint:{self.endpoints}, capacity:{self.capacity}, trafficPercentage:{self.getTrafficPerc()}"
     
     def setCap(self, newCap):
       self.capacity = newCap
     
     def checkEndpoints(self, firstEndpoint, secondEndpoint):
       return firstEndpoint in self.endpoints and secondEndpoint in self.endpoints
+    
+    def setTrafficPerc(self, trafficPerc):
+      self.trafficPerc = trafficPerc
+
+    def getTrafficPerc(self):
+      return self.trafficPerc
 
 class Switch:
   def __init__(self, name, address, connectedTo):
