@@ -21,12 +21,13 @@ def getInputParameters():
     args = parser.parse_args()
     return args
 
+# Aggiorna la percentuale di traffico
 def changeTrafficPerc(trafficPerc): 
   newTrafficPerc = trafficPerc
-  if random.randint(1, 10) > 5:
-    if newTrafficPerc < 10:
-      newTrafficPerc += 1
+  if random.randint(0, 1) == 1:
+    if newTrafficPerc < 100:
+      newTrafficPerc += 10
   else:
     if newTrafficPerc > 0:
-      newTrafficPerc -= 1
+      newTrafficPerc -= 10
   return newTrafficPerc

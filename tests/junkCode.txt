@@ -25,3 +25,9 @@ packetsDdata = json.load(packetsFile)
 SwitchesData = obj.Switch("test", "0.0.0.0", ["1","2"])
 print(SwitchesData.ipAddress)
 """
+
+delta = 50
+delta2 = time(0,0,0,50000)
+oneSec = time(0,0,1)
+print(f"timeDelta sec=1: {timedelta(seconds=1)}")
+print(f"timeDelta sec=1 / timeDelta ms=50 = {timedelta(seconds=1)/timedelta(milliseconds=delta)}")

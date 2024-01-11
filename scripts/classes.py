@@ -8,6 +8,9 @@ class Link:
       self.endpoints = endpoints
       self.trafficPerc = 0
 
+    def getEndpoints(self):
+      return self.endpoints
+
     def __str__(self):
       return f"Link with endpoint:{self.endpoints}, capacity:{self.capacity}, trafficPercentage:{self.getTrafficPerc()}"
     
