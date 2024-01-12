@@ -1,14 +1,10 @@
 import argparse
-import logging
-import os
 import random
-import yaml
 
-#check if a link is already present in links list
+# Check if a link is already present in links list
 def inLinks(links, firstEndopoint, secondEndpoint):
     for l in links:
       if l.checkEndpoints(firstEndopoint, secondEndpoint):
-        print(f"link con endpoints {firstEndopoint}, {secondEndpoint} già creato")
         return True
     return False
 
@@ -21,7 +17,7 @@ def getInputParameters():
     args = parser.parse_args()
     return args
 
-# Aggiorna la percentuale di traffico
+# Update traffic percentage
 def changeTrafficPerc(trafficPerc): 
   newTrafficPerc = trafficPerc
   if random.randint(0, 1) == 1:

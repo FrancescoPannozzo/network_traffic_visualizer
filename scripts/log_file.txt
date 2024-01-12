@@ -1,5 +1,10 @@
-2024-01-09 12:21:38,002 [INFO] This is an info message test
-2024-01-09 12:22:27,235 [INFO] This is an info message test
-2024-01-09 13:09:51,621 [INFO] This is an info message test
-2024-01-09 13:23:20,428 [INFO] This is an info message test
-2024-01-09 13:23:24,614 [INFO] This is an info message test
+2024-01-12 13:46:15,646 [INFO] The choosen switch number is 3 and link capacity is 10Mbps
+2024-01-12 13:46:15,646 [INFO] Creating links..
+2024-01-12 13:46:15,646 [INFO] Links creation done!Links created are:
+2024-01-12 13:46:15,646 [INFO] Link ID:1, endpoints:['switch1', 'switch2'], capacity:10, trafficPercentage:0
+2024-01-12 13:46:15,646 [INFO] Link ID:2, endpoints:['switch1', 'switch3'], capacity:10, trafficPercentage:0
+2024-01-12 13:46:15,646 [INFO] Link ID:3, endpoints:['switch2', 'switch3'], capacity:10, trafficPercentage:0
+2024-01-12 13:46:15,646 [INFO] Creating packets file..
+2024-01-12 13:46:27,529 [INFO] ..packet file creation done!
+2024-01-12 13:46:27,529 [INFO] Creating network.yaml file..
+2024-01-12 13:46:27,546 [INFO] ..network.yaml file creation done!

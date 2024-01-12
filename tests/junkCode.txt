@@ -31,3 +31,56 @@ delta2 = time(0,0,0,50000)
 oneSec = time(0,0,1)
 print(f"timeDelta sec=1: {timedelta(seconds=1)}")
 print(f"timeDelta sec=1 / timeDelta ms=50 = {timedelta(seconds=1)/timedelta(milliseconds=delta)}")
+
+print(startTime + timedelta(milliseconds=50))
+
+test =(10 * 1e6)/8
+print(test)
+
+""" print(open('names.yaml').read()) """
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
+----------------------
+
+class Link:
+    cap = 100
+    linkIDcounter = 0
+
+    def __init__(self, capacity, endpoints):
+      self.capacity = capacity
+      self.endpoints = endpoints
+      self.trafficPerc = 0
+      Link.linkIDcounter += 1
+      self.linkId = Link.linkIDcounter
+
+    def getEndpoints(self):
+      return self.endpoints
+
+    def __str__(self):
+      return f"Link ID:{self.linkId}, endpoints:{self.endpoints}, capacity:{self.capacity}, trafficPercentage:{self.getTrafficPerc()}"
+    
+    def setCap(self, newCap):
+      self.capacity = newCap
+    
+    def checkEndpoints(self, firstEndpoint, secondEndpoint):
+      return firstEndpoint in self.endpoints and secondEndpoint in self.endpoints
+    
+    def setTrafficPerc(self, trafficPerc):
+      self.trafficPerc = trafficPerc
+
+    def getTrafficPerc(self):
+      return self.trafficPerc
+
+switches = []
+
+for s in networkData:
+  switches.append({
+    "switchName": s["switchName"],
+    "address": s["address"],
+    "connectedTo": s["connectedTo"]
+  })
+
+for s in switches:
+  print(s)

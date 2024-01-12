@@ -1,8 +1,0 @@
-- destination: switch2
-  dimension: '1500'
-  source: switch1
-  timestamp: '2023-04-16 16:32:05.100'
-- destination: switch2
-  dimension: '1500'
-  source: switch1
-  timestamp: '2023-04-16 16:32:06.200'

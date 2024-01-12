@@ -1,4 +1,5 @@
-# A yaml file config generator script. It creates two network config files
+# A yaml file config generator script. It creates two network config files:
+# a network.yaml file with the networtk features and a packets.yaml file with all the generated traffic packets
 
 from classes import Link
 from datetime import datetime, timedelta, time
@@ -12,146 +13,109 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
-        logging.FileHandler('log_file.txt'),  # Aggiungi un gestore per registrare i messaggi su file
-        logging.StreamHandler()  # Aggiungi un gestore per visualizzare i messaggi sulla console
+        logging.FileHandler('log_file.txt', mode='w'),  # Adding one handler to manage the messages on a file
+        logging.StreamHandler()  # Adding one handler to see messages on console
     ]
 )
 
-# STARTING POINT
-
-# Getting the switch number and the link capacity by prompt
+# Getting the switch number and the link capacity from the user by prompt
 inputParameters = utils.getInputParameters()
 
-print(f"The choosen switch number is {inputParameters.switchNumber} and link capacity is {inputParameters.linkCap}MB")
+logging.info(f"The choosen switch number is {inputParameters.switchNumber} and link capacity is {inputParameters.linkCap}Mbps")
 
 switchNumber = inputParameters.switchNumber
 linkCap = inputParameters.linkCap
 
-# Defining the start time point
+# Defining the simulation start time point
 startTime = datetime(2024, 1, 1, 0, 0, 0)
-
 
 # Defining the amount of simulation time in seconds
 simTime = 60
 # Defining the pps creation rate delta time (50ms)
 ppsDelta = 50
 ppsInterval = timedelta(milliseconds=ppsDelta)
-# Defining the traffic percentage change delta time
+# Defining the traffic percentage variation, delta time
 trafficPercDelta = 1
 trafficPercInterval = timedelta(seconds=trafficPercDelta)
 
-# test
-print(startTime)
-print(startTime + timedelta(milliseconds=50))
-
-# Gli archi rappresentanti i link che collegano gli switch(i nodi)
+# The arcs representing the links that connect the switches (nodes)
 links = []
 
-print("------")
-
-# Creo i link
+logging.info("Creating links..")
 for i in range(1, switchNumber + 1):
   for p in range(1, switchNumber + 1):
     if i == p: 
       continue
-    # Controllo che il link non sia stato già creato
-    print(f"controllo che il link tra switch{i} e switch{p} non sia stato già creato:")
+    # Checking if the link is already created
     if utils.inLinks(links, f"switch{i}", f"switch{p}"):
       continue
-    print(f"creo link con endpoint: switch{i}, switch{p}...")
     links.append(Link(linkCap, [f"switch{i}", f"switch{p}"]))
-    print("...link creato!!")
-
-print("------")
+logging.info("Links creation done!Links created are:")
 for l in links:
-  print(l)
-print("------")
+  logging.info(l)
 
-test =(10 * 1e6)/8
-print(test)
-
-#setta il nuovo valore di percentuale di traffico del link a partire dal precedente valore
+# Creating the links initial traffic percentage
 for i in range(0, len(links)):
-  links[i].setTrafficPerc(utils.changeTrafficPerc(links[i].getTrafficPerc()))
+  links[i].trafficPerc = utils.changeTrafficPerc(links[i].trafficPerc)
 
-print("------")
-for l in links:
-  print(l)
-print("------")
-
-
-# Creo il traffico
-# Ogni frazione di secondo (ppsDelta) di simulazione crea un numero di pacchetti proporzionato alla percentuale di traffico
-# dei singoli link
-
+# Creating traffic packets
+# Each fraction of a second (ppsDelta) of simulation creates a number of packets proportionate to the percentage of traffic
+# for each link
+logging.info("Creating packets file..")
+# Defining packets size (MB)
 packetSize = 1518
+# Packets Per Seconds
 pps = int(((linkCap * 1e6) / 8) / packetSize)
+# The packets creation index time
 timeWalker = startTime
+# The time interval unit for packets creation, we'll create packets "creationTime times" in "trafficPercDelta seconds"
 creationRate = int(timedelta(seconds=trafficPercDelta)/timedelta(milliseconds=ppsDelta))
-
-unitsPerSec = trafficPercInterval / ppsInterval
-
-""" print(open('names.yaml').read()) """
-
-
+# Defining the list containing all the packets generated
 packets = []
 # Per ogni creationRate fino a fine simTime della simulazione
 for sec in range(0, simTime * creationRate):
-  # Crea pacchetti ogni 50 ms
+  # Create packets every ppsDelta ms
   if sec % creationRate == 0:
-    print("-----")
     for i in range(0, len(links)):
-      links[i].setTrafficPerc(utils.changeTrafficPerc(links[i].getTrafficPerc()))
-      print(links[i])
+      links[i].trafficPerc = utils.changeTrafficPerc(links[i].trafficPerc)
 
   timeWalker += timedelta(milliseconds=ppsDelta)
-
   for l in links:
-    trafficPerc = l.getTrafficPerc()
+    trafficPerc = l.trafficPerc
     for p in range(0, int(int((pps*trafficPerc)/100)/creationRate)):
       sourceIndex = random.randint(0, 1)
       destIndex = 1 - sourceIndex
-      packet = {"source": l.getEndpoints()[sourceIndex],
-                "destination": l.getEndpoints()[destIndex],
+      packet = {"source": l.endpoints[sourceIndex],
+                "destination": l.endpoints[destIndex],
                 "timestamp": str(timeWalker),
                 "dimension": packetSize}
       packets.append(packet)
 
-
-
-
-print("----------")
-
-with open('packets.yaml', 'w') as file:
+with open('../packets.yaml', 'w') as file:
     yaml.dump(packets, file)
 
+logging.info("..packet file creation done!")
 
+logging.info("Creating network.yaml file..")
+# Defining the network.yaml fields defined in each switch object
 switches = []
 ipAddress = "123.123.123."
 ipLastSect = 1
-# Creo il network.yaml file
+# Creating network.yaml file
 for i in range(1, switchNumber + 1):
   connectedTo = []
   for j in range(1, switchNumber + 1):
     if i == j:
       continue
     connectedTo.append(f"switch{j}")
-  
-  connectedToStr = "["
-  for index in range(0, len(connectedTo)):
-    if index == len(connectedTo) - 1:
-      connectedToStr += f"\"{connectedTo[index]}\"]"
-    else:
-      connectedToStr += f"\"{connectedTo[index]}\","
+
   switches.append({
     "switchName": f"switch{i}",
     "address": f"{ipAddress}{ipLastSect}",
-    "connectedTo": connectedToStr
+    "connectedTo": connectedTo
   })
   ipLastSect += 1
 
-for s in switches:
-  print(s)
-
-with open('network.yaml', 'w') as file:
+with open('../network.yaml', 'w') as file:
   yaml.dump(switches, file)
+logging.info("..network.yaml file creation done!")

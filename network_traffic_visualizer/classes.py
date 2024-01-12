@@ -1,22 +1,21 @@
-class Switch2:
-  def __init__(self, switchName, ipAddress, connectedTo):
-    self.switchName = switchName
-    self.ipAddress = ipAddress
-    self.connectedTo = connectedTo.copy()
+# myclasses.py
 
 class Link:
-  cap = 100
+    cap = 100
+    linkIDcounter = 0
 
-  def __init__(self, capacity, endpoints):
-    self.capacity = capacity
-    self.endpoints = endpoints
-    self.traffic = []
+    def __init__(self, capacity, endpoints):
+      self.capacity = capacity
+      self.endpoints = endpoints
+      self.trafficPerc = 0
+      Link.linkIDcounter += 1
+      self.linkId = Link.linkIDcounter
 
-  def __str__(self):
-    return f"Link with endpoint:{self.endpoints}, capacity:{self.capacity}"
-  
-  def setCap(newCap):
-    Link.cap = newCap
+    def __str__(self):
+      return f"Link ID:{self.linkId}, endpoints:{self.endpoints}, capacity:{self.capacity}, trafficPercentage:{self.trafficPerc}"
+    
+    def checkEndpoints(self, firstEndpoint, secondEndpoint):
+      return firstEndpoint in self.endpoints and secondEndpoint in self.endpoints
 
 class Switch:
   def __init__(self, name, address, connectedTo):
