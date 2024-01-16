@@ -10,6 +10,7 @@ class Link:
       self.trafficPerc = 0
       Link.linkIDcounter += 1
       self.linkId = Link.linkIDcounter
+      self.timeAverages = []
 
     def __str__(self):
       return f"Link ID:{self.linkId}, endpoints:{self.endpoints}, capacity:{self.capacity}, trafficPercentage:{self.trafficPerc}"

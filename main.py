@@ -12,22 +12,33 @@ args = parser.parse_args()
 # Loading files
 networkData, packetsData = utils.fileLoader(args.networkFile, args.packetsFile)
 
+# Data loaded is a "list of list of dictionaries" form for both files
 
-print(type(networkData))
+""" print(type(networkData))
 print(type(networkData[0]))
-print("-----------")
-""" print(type(packetsData))
-print(type(packetsData[0])) """
+print("-----------") """
 
+links = []
 switches = []
+linkIndex = 0
+switchIndex = 1
 
-for s in networkData:
+# Extracting links data
+for link in networkData[linkIndex]:
+  links.append(obj.Link(link["capacity"],link["endpoints"]))
+
+# Extracting switches data
+for s in networkData[switchIndex]:
   switches.append(obj.Switch (s["switchName"], s["address"], s["connectedTo"]))
 
-for s in switches:
-  print(s)
-
-
-print(type(networkData[0]["connectedTo"]))
+""" print(type(networkData[0]["connectedTo"]))
 print(networkData[0]["connectedTo"])
+
+print(type(packetsData[0]["timestamp"]))
+print(packetsData[1]["timestamp"]) """
+
+for i in networkData:
+  print(i)
+
+startTime = packetsData[0]["timestamp"]
 

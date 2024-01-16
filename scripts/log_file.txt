@@ -1,10 +1,10 @@
-2024-01-12 13:46:15,646 [INFO] The choosen switch number is 3 and link capacity is 10Mbps
-2024-01-12 13:46:15,646 [INFO] Creating links..
-2024-01-12 13:46:15,646 [INFO] Links creation done!Links created are:
-2024-01-12 13:46:15,646 [INFO] Link ID:1, endpoints:['switch1', 'switch2'], capacity:10, trafficPercentage:0
-2024-01-12 13:46:15,646 [INFO] Link ID:2, endpoints:['switch1', 'switch3'], capacity:10, trafficPercentage:0
-2024-01-12 13:46:15,646 [INFO] Link ID:3, endpoints:['switch2', 'switch3'], capacity:10, trafficPercentage:0
-2024-01-12 13:46:15,646 [INFO] Creating packets file..
-2024-01-12 13:46:27,529 [INFO] ..packet file creation done!
-2024-01-12 13:46:27,529 [INFO] Creating network.yaml file..
-2024-01-12 13:46:27,546 [INFO] ..network.yaml file creation done!
+2024-01-16 15:50:28,683 [INFO] The choosen switch number is 3 and link capacity is 10Mbps
+2024-01-16 15:50:28,683 [INFO] Creating links..
+2024-01-16 15:50:28,683 [INFO] Links creation done!Links created are:
+2024-01-16 15:50:28,683 [INFO] Link ID:1, endpoints:['switch1', 'switch2'], capacity:10, trafficPercentage:0
+2024-01-16 15:50:28,683 [INFO] Link ID:2, endpoints:['switch1', 'switch3'], capacity:10, trafficPercentage:0
+2024-01-16 15:50:28,683 [INFO] Link ID:3, endpoints:['switch2', 'switch3'], capacity:10, trafficPercentage:0
+2024-01-16 15:50:28,683 [INFO] Creating packets file..
+2024-01-16 15:50:47,624 [INFO] ..packet file creation done!
+2024-01-16 15:50:47,640 [INFO] Creating network.yaml file..
+2024-01-16 15:50:47,640 [INFO] ..network.yaml file creation done!

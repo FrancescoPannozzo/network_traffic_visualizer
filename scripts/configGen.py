@@ -87,7 +87,7 @@ for sec in range(0, simTime * creationRate):
       destIndex = 1 - sourceIndex
       packet = {"source": l.endpoints[sourceIndex],
                 "destination": l.endpoints[destIndex],
-                "timestamp": str(timeWalker),
+                "timestamp": timeWalker,
                 "dimension": packetSize}
       packets.append(packet)
 
@@ -101,7 +101,19 @@ logging.info("Creating network.yaml file..")
 switches = []
 ipAddress = "123.123.123."
 ipLastSect = 1
+
 # Creating network.yaml file
+# File structure composed by a links list and a switches list
+# networkData = [[links list],[switches list]]
+networkData = [[],[]]
+linkIndex = 0
+switchIndex = 1
+
+# filling the links list:
+for link in links:
+  networkData[linkIndex].append({"endpoints": link.endpoints,
+                                 "capacity": link.capacity})
+
 for i in range(1, switchNumber + 1):
   connectedTo = []
   for j in range(1, switchNumber + 1):
@@ -109,7 +121,7 @@ for i in range(1, switchNumber + 1):
       continue
     connectedTo.append(f"switch{j}")
 
-  switches.append({
+  networkData[switchIndex].append({
     "switchName": f"switch{i}",
     "address": f"{ipAddress}{ipLastSect}",
     "connectedTo": connectedTo
@@ -117,5 +129,5 @@ for i in range(1, switchNumber + 1):
   ipLastSect += 1
 
 with open('../network.yaml', 'w') as file:
-  yaml.dump(switches, file)
+  yaml.dump(networkData, file)
 logging.info("..network.yaml file creation done!")

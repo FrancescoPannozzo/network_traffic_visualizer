@@ -21,3 +21,17 @@ def fileLoader(networkFileName, packetsFileName):
       packetsData = yaml.safe_load(packetsFile)
 
   return networkData, packetsData
+
+# Check if a link is already present in links list
+def inLinks(links, firstEndopoint, secondEndpoint):
+    for l in links:
+      if l.checkEndpoints(firstEndopoint, secondEndpoint):
+        return True
+    return False
+
+# Check and return a link, None if the link is not in links
+def getLink(links, firstEndopoint, secondEndpoint):
+    for l in links:
+      if l.checkEndpoints(firstEndopoint, secondEndpoint):
+         return l
+    return None
