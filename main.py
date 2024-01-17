@@ -1,4 +1,5 @@
 import argparse
+from datetime import timedelta
 import os
 from network_traffic_visualizer import classes as obj
 from network_traffic_visualizer import utils
@@ -40,5 +41,34 @@ print(packetsData[1]["timestamp"]) """
 for i in networkData:
   print(i)
 
-startTime = packetsData[0]["timestamp"]
+# Setting the starting time point
+startTimeRange = packetsData[0]["timestamp"]
+# Update average time in milliseconds
+updateDelta = timedelta(milliseconds=100)
+# The considered average time in seconds
+averageDelta = timedelta(seconds=1)
 
+# Initializing temporary variable about links averages sums
+linksTemp = []
+
+for link in links:
+  linksTemp.append({"linkId": link.linkId, "tempSum": 0})
+
+timeWalker = startTimeRange 
+
+# Calculating the first average
+for packet in packetsData:
+  if packet["timestamp"] > (startTimeRange + averageDelta):
+    break
+  link = utils.getLink(links, packet["source"], packet["destination"])
+  utils.addLinkTempSum(links, link.linkId, packet["dimension"])
+
+
+for linkTemp in linksTemp:
+  link = utils.getLinkById(links, linkTemp["linkId"])
+  average = (linkTemp["tempSum"] * 100) / ((link.linkCap * 1e6) / 8)
+  link.timeAverages.append(average)
+
+
+for l in linkTemp:
+  print(l)

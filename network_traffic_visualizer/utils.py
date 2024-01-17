@@ -35,3 +35,14 @@ def getLink(links, firstEndopoint, secondEndpoint):
       if l.checkEndpoints(firstEndopoint, secondEndpoint):
          return l
     return None
+
+def addLinkTempSum(links, linkId, addValue):
+   for link in links:
+      if link.linkId == linkId:
+         link["tempSum"] += addValue
+         break
+      
+def getLinkById(links, linkId):
+   for link in links:
+    if link.linkId == linkId:
+       return link
