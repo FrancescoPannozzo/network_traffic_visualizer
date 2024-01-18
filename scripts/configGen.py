@@ -31,8 +31,8 @@ startTime = datetime(2024, 1, 1, 0, 0, 0)
 
 # Defining the amount of simulation time in seconds
 simTime = 60
-# Defining the pps creation rate delta time (50ms)
-ppsDelta = 50
+# Defining the pps creation rate delta time (100ms)
+ppsDelta = 100
 ppsInterval = timedelta(milliseconds=ppsDelta)
 # Defining the traffic percentage variation, delta time
 trafficPercDelta = 1
@@ -57,6 +57,7 @@ for l in links:
 # Creating the links initial traffic percentage
 for i in range(0, len(links)):
   links[i].trafficPerc = utils.changeTrafficPerc(links[i].trafficPerc)
+  logging.info(f"Link with id: {links[i].linkId}, trafficPerc choose: {links[i].trafficPerc}")
 
 # Creating traffic packets
 # Each fraction of a second (ppsDelta) of simulation creates a number of packets proportionate to the percentage of traffic
@@ -72,14 +73,18 @@ timeWalker = startTime
 creationRate = int(timedelta(seconds=trafficPercDelta)/timedelta(milliseconds=ppsDelta))
 # Defining the list containing all the packets generated
 packets = []
+
+tempPerc = 0
+
 # Per ogni creationRate fino a fine simTime della simulazione
 for sec in range(0, simTime * creationRate):
   # Create packets every ppsDelta ms
   if sec % creationRate == 0:
     for i in range(0, len(links)):
       links[i].trafficPerc = utils.changeTrafficPerc(links[i].trafficPerc)
+      """ tempPerc = links[i].trafficPerc """
+      logging.info(f"Sim second: {sec / creationRate}, Link with id: {links[i].linkId}, trafficPerc choose: {links[i].trafficPerc}")
 
-  timeWalker += timedelta(milliseconds=ppsDelta)
   for l in links:
     trafficPerc = l.trafficPerc
     for p in range(0, int(int((pps*trafficPerc)/100)/creationRate)):
@@ -90,6 +95,8 @@ for sec in range(0, simTime * creationRate):
                 "timestamp": timeWalker,
                 "dimension": packetSize}
       packets.append(packet)
+
+  timeWalker += timedelta(milliseconds=ppsDelta)
 
 with open('../packets.yaml', 'w') as file:
     yaml.dump(packets, file)

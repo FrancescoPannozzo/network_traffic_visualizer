@@ -23,3 +23,12 @@ data[1].append({"name": "switch2",
 
 for i in data:
   print(i)
+
+packetSize = 1518
+# Packets Per Seconds
+ppsint = int(((10 * 1e6) / 8) / packetSize)
+pps = ((10 * 1e6) / 8) / packetSize
+
+print(ppsint)
+print(pps)
+print(1e6)

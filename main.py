@@ -1,8 +1,20 @@
 import argparse
 from datetime import timedelta
+from datetime import datetime
+import logging
 import os
 from network_traffic_visualizer import classes as obj
 from network_traffic_visualizer import utils
+
+# Logger config
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[
+        logging.FileHandler('log_file.txt', mode='w'),  # Adding one handler to manage the messages on a file
+        logging.StreamHandler()  # Adding one handler to see messages on console
+    ]
+)
 
 # Setting the command line option to load the network config file and the packets file
 parser = argparse.ArgumentParser()
@@ -42,7 +54,9 @@ for i in networkData:
   print(i)
 
 # Setting the starting time point
-startTimeRange = packetsData[0]["timestamp"]
+""" startTimeRange = packetsData[0]["timestamp"] """
+startTimeRange = datetime(2024, 1, 1, 0, 0, 0)
+startTime = datetime(2024, 1, 1, 0, 0, 0)
 # Update average time in milliseconds
 updateDelta = timedelta(milliseconds=100)
 # The considered average time in seconds
@@ -52,23 +66,50 @@ averageDelta = timedelta(seconds=1)
 linksTemp = []
 
 for link in links:
-  linksTemp.append({"linkId": link.linkId, "tempSum": 0})
+  linksTemp.append({"linkId": link.linkId, "traffic": 0, "firstDeltaTraffic": 0, "lastDeltaTraffic": 0})
 
-timeWalker = startTimeRange 
+for i in linksTemp:
+  print(i)
 
-# Calculating the first average
+timeWalker = startTimeRange
+
+# Calculating averages
 for packet in packetsData:
-  if packet["timestamp"] > (startTimeRange + averageDelta):
-    break
-  link = utils.getLink(links, packet["source"], packet["destination"])
-  utils.addLinkTempSum(links, link.linkId, packet["dimension"])
+  logging.info(f"Analyzing packet: {packet}")
+  if packet["timestamp"] < (startTime + averageDelta):
+    link = utils.getLink(links, packet["source"], packet["destination"])
+    for linkTemp in linksTemp:
+      if link.linkId == linkTemp["linkId"]:
+        linkTemp["traffic"] += packet["dimension"]
+        if packet["timeStamp"] < (startTime + updateDelta):
+          linkTemp["firstDeltaTraffic"] = linkTemp["traffic"]
+    timeWalker = packet["timestamp"]
+  else:
+    if timeWalker < (timeWalker + updateDelta):
+      link = utils.getLink(links, packet["source"], packet["destination"])
+      for linkTemp in linksTemp:
+        if link.linkId == linkTemp["linkId"]:
+         linkTemp["lastDeltaTraffic"] += packet["dimension"]
+    else:
+      timeWalker += updateDelta
+      for linkTemp in linksTemp:
+        if link.linkId == linkTemp["linkId"]:
+          linkTemp["traffic"] += linkTemp["lastDeltaTraffic"] - linkTemp["firstDeltaTraffic"]
+          linkTemp["firstDeltaTraffic"] = linkTemp["lastDeltaTraffic"]
+          
 
-
+  
+# Saving averages
 for linkTemp in linksTemp:
   link = utils.getLinkById(links, linkTemp["linkId"])
-  average = (linkTemp["tempSum"] * 100) / ((link.linkCap * 1e6) / 8)
-  link.timeAverages.append(average)
+  link.timeAverages.append(utils.getAverage(link.capacity, linkTemp["traffic"]))
+
+# debug
+for i in linksTemp:
+  print(i)
+
+for l in links:
+  print(l.timeAverages)
 
 
-for l in linkTemp:
-  print(l)
+

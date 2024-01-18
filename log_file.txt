@@ -1,0 +1,81 @@
+2024-01-18 17:05:58,128 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-01-18 17:05:58,144 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-01-18 17:05:58,144 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-01-18 17:05:58,149 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-01-18 17:05:58,151 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-01-18 17:05:58,152 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-01-18 17:05:58,153 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-01-18 17:05:58,154 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-01-18 17:05:58,156 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 100000)}
+2024-01-18 17:05:58,158 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 100000)}
+2024-01-18 17:05:58,160 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 100000)}
+2024-01-18 17:05:58,162 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 100000)}
+2024-01-18 17:05:58,165 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 100000)}
+2024-01-18 17:05:58,167 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 100000)}
+2024-01-18 17:05:58,171 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 100000)}
+2024-01-18 17:05:58,172 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 100000)}
+2024-01-18 17:05:58,175 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 200000)}
+2024-01-18 17:05:58,178 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 200000)}
+2024-01-18 17:05:58,181 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 200000)}
+2024-01-18 17:05:58,183 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 200000)}
+2024-01-18 17:05:58,185 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 200000)}
+2024-01-18 17:05:58,186 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 200000)}
+2024-01-18 17:05:58,188 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 200000)}
+2024-01-18 17:05:58,190 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 200000)}
+2024-01-18 17:05:58,192 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 300000)}
+2024-01-18 17:05:58,193 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 300000)}
+2024-01-18 17:05:58,197 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 300000)}
+2024-01-18 17:05:58,199 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 300000)}
+2024-01-18 17:05:58,202 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 300000)}
+2024-01-18 17:05:58,211 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 300000)}
+2024-01-18 17:05:58,213 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 300000)}
+2024-01-18 17:05:58,214 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 300000)}
+2024-01-18 17:05:58,219 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 400000)}
+2024-01-18 17:05:58,220 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 400000)}
+2024-01-18 17:05:58,221 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 400000)}
+2024-01-18 17:05:58,222 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 400000)}
+2024-01-18 17:05:58,225 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 400000)}
+2024-01-18 17:05:58,227 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 400000)}
+2024-01-18 17:05:58,228 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 400000)}
+2024-01-18 17:05:58,234 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 400000)}
+2024-01-18 17:05:58,236 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 500000)}
+2024-01-18 17:05:58,238 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 500000)}
+2024-01-18 17:05:58,240 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 500000)}
+2024-01-18 17:05:58,242 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 500000)}
+2024-01-18 17:05:58,243 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 500000)}
+2024-01-18 17:05:58,245 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 500000)}
+2024-01-18 17:05:58,248 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 500000)}
+2024-01-18 17:05:58,250 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 500000)}
+2024-01-18 17:05:58,253 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 600000)}
+2024-01-18 17:05:58,260 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 600000)}
+2024-01-18 17:05:58,262 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 600000)}
+2024-01-18 17:05:58,265 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 600000)}
+2024-01-18 17:05:58,267 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 600000)}
+2024-01-18 17:05:58,269 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 600000)}
+2024-01-18 17:05:58,271 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 600000)}
+2024-01-18 17:05:58,272 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 600000)}
+2024-01-18 17:05:58,273 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 700000)}
+2024-01-18 17:05:58,282 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 700000)}
+2024-01-18 17:05:58,284 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 700000)}
+2024-01-18 17:05:58,286 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 700000)}
+2024-01-18 17:05:58,287 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 700000)}
+2024-01-18 17:05:58,289 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 700000)}
+2024-01-18 17:05:58,290 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 700000)}
+2024-01-18 17:05:58,291 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 700000)}
+2024-01-18 17:05:58,292 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 800000)}
+2024-01-18 17:05:58,294 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 800000)}
+2024-01-18 17:05:58,296 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 800000)}
+2024-01-18 17:05:58,298 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 800000)}
+2024-01-18 17:05:58,300 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 800000)}
+2024-01-18 17:05:58,302 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 800000)}
+2024-01-18 17:05:58,303 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 800000)}
+2024-01-18 17:05:58,304 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 800000)}
+2024-01-18 17:05:58,305 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 900000)}
+2024-01-18 17:05:58,307 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 900000)}
+2024-01-18 17:05:58,308 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 900000)}
+2024-01-18 17:05:58,309 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 900000)}
+2024-01-18 17:05:58,311 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 900000)}
+2024-01-18 17:05:58,313 [INFO] Analyzing packet: {'destination': 'switch1', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 900000)}
+2024-01-18 17:05:58,315 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 900000)}
+2024-01-18 17:05:58,329 [INFO] Analyzing packet: {'destination': 'switch2', 'dimension': 1518, 'source': 'switch1', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 0, 900000)}
+2024-01-18 17:05:58,330 [INFO] Analyzing packet: {'destination': 'switch3', 'dimension': 1518, 'source': 'switch2', 'timestamp': datetime.datetime(2024, 1, 1, 0, 0, 1)}
