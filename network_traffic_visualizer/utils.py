@@ -43,3 +43,10 @@ def getLinkById(links, linkId):
 
 def getAverage(capacity, tempSum):
    return (tempSum * 100) / ((capacity * 1e6) / 8)
+
+# Function for auxiliary linksTemp structure, return the dictionary linkTemp item 
+def getLinkTempById(linksTemp, linkId):
+    for linkTemp in linksTemp:
+      if linkId == linkTemp["linkTempId"]:
+         return linkTemp
+    return None
