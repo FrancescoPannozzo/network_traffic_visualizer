@@ -50,46 +50,83 @@ print(networkData[0]["connectedTo"])
 print(type(packetsData[0]["timestamp"]))
 print(packetsData[1]["timestamp"]) """
 
+logging.info("Network data:")
 for i in networkData:
-  print(i)
+  logging.info(i)
 
-# Setting the starting time point
-""" startTimeRange = packetsData[0]["timestamp"] """
-startTimeRange = datetime(2024, 1, 1, 0, 0, 0)
 # Update average time in milliseconds
 updateDelta = timedelta(milliseconds=100)
 # The considered average time in seconds
 averageDelta = timedelta(seconds=1)
 
+
+# Setting the starting time point
+startTime = datetime(2024, 1, 1, 0, 0, 0)
+
+timeWalker = startTime
+
+averageFractions = int(averageDelta / updateDelta)
+lastFirstUDindex = averageFractions - 1
+logging.info(f"lastFirstUDindex: {lastFirstUDindex}")
+
+iterator = iter(packetsData)
+
+# Defining the amount of simulation time in seconds
+simTime = timedelta(seconds=60)
+
 # Initializing temporary variable about links averages sums
 linksTemp = []
 
+# updateDeltaTraffic rappresenta tutte le unità frazionarie di secondo date da updatedelta, esempio 60 secondi divisi per 100 ms sono 600 unità frazionarie
+# traffic rappresenta la somma dei bytes in un tempo averageDelta, quindi il primo valore parte dopo le prime averageFractions unità temporali e finisce prima delle ultime averageFraction unità temporali
 for link in links:
   linksTemp.append({"linkId": link.linkId, "trafficDT":0, "trafficUDT":0, "updateDeltaTraffic": [], "traffic": []})
 
+logging.info("LinksTemp structure:")
 for i in linksTemp:
-  print(i)
+  logging.info(i)
 
-timeWalker = startTimeRange
-
-lastFirstUDindex = (averageDelta / updateDelta) + 1
-
+packet = next(iterator, None)
 # Calculating averages
-for packet in packetsData:
-  """ logging.info(f"Analyzing packet: {packet}") """
+
+#Ogni loop è un'unità frazionaria analizzata
+while timeWalker <= startTime + (simTime - updateDelta):
+  # Per ogni updateDelta azzeriamo pesi
+  for linkTemp in linksTemp:
+    linkTemp["trafficUDT"] = 0
+  # Individuo link di appartenenza al packet analizzato
   link = utils.getLink(links, packet["source"], packet["destination"])
   linkTemp = utils.getLinkTempById(linksTemp, link.linkId)
 
-  if packet["timestamp"] >= timeWalker and packet["timestamp"] < (timeWalker + updateDelta):
-    linksTemp["trafficDT"] += packet["dimension"]
-    linksTemp["trafficUDT"] += packet["dimension"]
-    timeWalker += updateDelta
-  else:
+  while packet["timestamp"] >= timeWalker and packet["timestamp"] < timeWalker + updateDelta:
+    linkTemp["trafficUDT"] += packet["dimension"]
+    linkTemp["trafficDT"] += packet["dimension"]
+    packet = next(iterator, None)
+    if packet is not None:
+      link = utils.getLink(links, packet["source"], packet["destination"])
+      linkTemp = utils.getLinkTempById(linksTemp, link.linkId)
+    else:
+      break
+  
+  for linkTemp in linksTemp:
     linkTemp["updateDeltaTraffic"].append(linkTemp["trafficUDT"])
-    linksTemp["trafficUDT"] = 0
-    if packet["timestamp"] >= (startTimeRange + averageDelta):
-      startTimeRange = timeWalker
-      lastFirstDelta = linkTemp["updateDeltaTraffic"][len(linkTemp["updateDeltaTraffic"] - lastFirstUDindex)]
-      linkTemp["trafficDT"] = linkTemp["trafficDT"] - lastFirstDelta
+  
+  if timeWalker >= startTime + averageDelta:
+    for linkTemp in linksTemp:
+      linkTemp["trafficDT"] = linkTemp["trafficDT"] - linkTemp["updateDeltaTraffic"][ (len(linkTemp["updateDeltaTraffic"])) - lastFirstUDindex ]
       linkTemp["traffic"].append(linkTemp["trafficDT"])
-    timeWalker += updateDelta
+
+  timeWalker += updateDelta
+
+""" for linkTemp in linksTemp:
+  logging.info(f"LINK ID:{linkTemp["linkId"]}")
+  logging.info(f"UPDT[]:{linkTemp["updateDeltaTraffic"]}")  
+  logging.info(f"TRAFFIC{linkTemp["traffic"]}")   """
+
+
+""" print("----")
+for linkTemp in linksTemp:
+  logging.info(f"len updt[]:{len(linkTemp["updateDeltaTraffic"])}, len tdt[]:{len(linkTemp["traffic"])}")  """ 
+
+
+    

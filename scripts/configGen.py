@@ -31,7 +31,7 @@ startTime = datetime(2024, 1, 1, 0, 0, 0)
 
 # Defining the amount of simulation time in seconds
 simTime = 60
-# Defining the pps creation rate delta time (100ms)
+# Defining the pps creation rate delta time in milliseconds
 ppsDelta = 100
 ppsInterval = timedelta(milliseconds=ppsDelta)
 # Defining the traffic percentage variation, delta time

@@ -47,6 +47,6 @@ def getAverage(capacity, tempSum):
 # Function for auxiliary linksTemp structure, return the dictionary linkTemp item 
 def getLinkTempById(linksTemp, linkId):
     for linkTemp in linksTemp:
-      if linkId == linkTemp["linkTempId"]:
+      if linkId == linkTemp["linkId"]:
          return linkTemp
     return None
