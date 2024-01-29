@@ -66,7 +66,7 @@ startTime = datetime(2024, 1, 1, 0, 0, 0)
 timeWalker = startTime
 
 averageFractions = int(averageDelta / updateDelta)
-lastFirstUDindex = averageFractions - 1
+lastFirstUDindex = averageFractions
 logging.info(f"lastFirstUDindex: {lastFirstUDindex}")
 
 iterator = iter(packetsData)
@@ -95,8 +95,11 @@ while timeWalker <= startTime + (simTime - updateDelta):
   for linkTemp in linksTemp:
     linkTemp["trafficUDT"] = 0
   # Individuo link di appartenenza al packet analizzato
-  link = utils.getLink(links, packet["source"], packet["destination"])
-  linkTemp = utils.getLinkTempById(linksTemp, link.linkId)
+  if packet is not None:
+    link = utils.getLink(links, packet["source"], packet["destination"])
+    linkTemp = utils.getLinkTempById(linksTemp, link.linkId)
+  else:
+    break
 
   while packet["timestamp"] >= timeWalker and packet["timestamp"] < timeWalker + updateDelta:
     linkTemp["trafficUDT"] += packet["dimension"]
@@ -108,25 +111,26 @@ while timeWalker <= startTime + (simTime - updateDelta):
     else:
       break
   
-  for linkTemp in linksTemp:
-    linkTemp["updateDeltaTraffic"].append(linkTemp["trafficUDT"])
-  
-  if timeWalker >= startTime + averageDelta:
-    for linkTemp in linksTemp:
-      linkTemp["trafficDT"] = linkTemp["trafficDT"] - linkTemp["updateDeltaTraffic"][ (len(linkTemp["updateDeltaTraffic"])) - lastFirstUDindex ]
-      linkTemp["traffic"].append(linkTemp["trafficDT"])
+
 
   timeWalker += updateDelta
 
-""" for linkTemp in linksTemp:
-  logging.info(f"LINK ID:{linkTemp["linkId"]}")
-  logging.info(f"UPDT[]:{linkTemp["updateDeltaTraffic"]}")  
-  logging.info(f"TRAFFIC{linkTemp["traffic"]}")   """
+  for linkTemp in linksTemp:
+    linkTemp["updateDeltaTraffic"].append({"updateTime": timeWalker, "traffic": linkTemp["trafficUDT"]})
+
+  if timeWalker >= startTime + averageDelta:
+    for linkTemp in linksTemp:
+      linkTemp["trafficDT"] = linkTemp["trafficDT"] - linkTemp["updateDeltaTraffic"][ (len(linkTemp["updateDeltaTraffic"]) - 1) - lastFirstUDindex ]["traffic"]
+      linkTemp["traffic"].append({"updateTime": timeWalker, "traffic": linkTemp["trafficDT"]})
 
 
-""" print("----")
 for linkTemp in linksTemp:
-  logging.info(f"len updt[]:{len(linkTemp["updateDeltaTraffic"])}, len tdt[]:{len(linkTemp["traffic"])}")  """ 
-
+  logging.debug(f"linkID: {linkTemp["linkId"]}")
+  logging.debug("updateDeltaTraffic[]:")
+  for i in linkTemp["updateDeltaTraffic"]:
+     logging.debug(i)
+  logging.debug("traffic[]:")
+  for i in linkTemp["traffic"]:
+     logging.debug(i)
 
     
