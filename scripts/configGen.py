@@ -18,10 +18,10 @@ logging.basicConfig(
     ]
 )
 
-# Getting the switch number and the link capacity from the user by prompt
+# Getting the switch number and the link capacity (Mbps) from the user by prompt
 inputParameters = utils.getInputParameters()
 
-logging.info(f"The choosen switch number is {inputParameters.switchNumber} and link capacity is {inputParameters.linkCap}Mbps")
+logging.info(f"The choosen switches number is {inputParameters.switchNumber} and the network link capacity is {inputParameters.linkCap}Mbps")
 
 switchNumber = inputParameters.switchNumber
 linkCap = inputParameters.linkCap
@@ -29,18 +29,19 @@ linkCap = inputParameters.linkCap
 # Defining the simulation start time point
 startTime = datetime(2024, 1, 1, 0, 0, 0)
 
-# Defining the amount of simulation time in seconds
+# Defining the simulation time in seconds
 simTime = 60
-# Defining the pps creation rate delta time in milliseconds
+# Defining the pps creation rate delta time (milliseconds)
 ppsDelta = 100
 ppsInterval = timedelta(milliseconds=ppsDelta)
-# Defining the traffic percentage variation, delta time
+# Defining the traffic percentage variation, delta time (seconds)
 trafficPercDelta = 1
 trafficPercInterval = timedelta(seconds=trafficPercDelta)
 
-# The arcs representing the links that connect the switches (nodes)
+# The arcs representing the links connecting the switches (nodes)
 links = []
 
+# Creating links
 logging.info("Creating links..")
 for i in range(1, switchNumber + 1):
   for p in range(1, switchNumber + 1):
@@ -74,15 +75,12 @@ creationRate = int(timedelta(seconds=trafficPercDelta)/timedelta(milliseconds=pp
 # Defining the list containing all the packets generated
 packets = []
 
-tempPerc = 0
-
-# Per ogni creationRate fino a fine simTime della simulazione
+# Creating packets
 for sec in range(0, simTime * creationRate):
-  # Create packets every ppsDelta ms
+  # Changing trafficPercentage every (sec / creationRate) time units
   if sec % creationRate == 0:
     for i in range(0, len(links)):
       links[i].trafficPerc = utils.changeTrafficPerc(links[i].trafficPerc)
-      """ tempPerc = links[i].trafficPerc """
       logging.info(f"Sim second: {sec / creationRate}, Link with id: {links[i].linkId}, trafficPerc choose: {links[i].trafficPerc}")
 
   for l in links:
@@ -98,20 +96,22 @@ for sec in range(0, simTime * creationRate):
 
   timeWalker += timedelta(milliseconds=ppsDelta)
 
+logging.info("Creating packets.yaml file..")
 with open('../packets.yaml', 'w') as file:
     yaml.dump(packets, file)
-
 logging.info("..packet file creation done!")
 
-logging.info("Creating network.yaml file..")
 # Defining the network.yaml fields defined in each switch object
 switches = []
+# First 3 address groups
 ipAddress = "123.123.123."
+# Last address group
 ipLastSect = 1
 
 # Creating network.yaml file
 # File structure composed by a links list and a switches list
 # networkData = [[links list],[switches list]]
+logging.info("Creating network.yaml file..")
 networkData = [[],[]]
 linkIndex = 0
 switchIndex = 1

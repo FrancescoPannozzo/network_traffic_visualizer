@@ -25,11 +25,7 @@ args = parser.parse_args()
 # Loading files
 networkData, packetsData = utils.fileLoader(args.networkFile, args.packetsFile)
 
-# Data loaded is a "list of list of dictionaries" form for both files
-
-""" print(type(networkData))
-print(type(networkData[0]))
-print("-----------") """
+# Data loaded are "list of list of dictionaries" for both files
 
 links = []
 switches = []
@@ -44,63 +40,62 @@ for link in networkData[linkIndex]:
 for s in networkData[switchIndex]:
   switches.append(obj.Switch (s["switchName"], s["address"], s["connectedTo"]))
 
-""" print(type(networkData[0]["connectedTo"]))
-print(networkData[0]["connectedTo"])
-
-print(type(packetsData[0]["timestamp"]))
-print(packetsData[1]["timestamp"]) """
-
 logging.info("Network data:")
 for i in networkData:
   logging.info(i)
 
+# Range times parameters (must be equal to parameters used in configGen.py script)
 # Update average time in milliseconds
 updateDelta = timedelta(milliseconds=100)
 # The considered average time in seconds
 averageDelta = timedelta(seconds=1)
 
 
-# Setting the starting time point
+# Setting the starting time point, (must be equal to parameters used in configGen.py script)
 startTime = datetime(2024, 1, 1, 0, 0, 0)
-
+# The analyzed time
 timeWalker = startTime
-
+# Number of fractional units per averageDelta
 averageFractions = int(averageDelta / updateDelta)
+# The number of fractional units needed to get the first fractional unit of the last averageDelta
+# starting from the last element of the list updateDeltaTraffic in the in the linksTemp auxiliary structure
 lastFirstUDindex = averageFractions
 logging.info(f"lastFirstUDindex: {lastFirstUDindex}")
 
 iterator = iter(packetsData)
 
-# Defining the amount of simulation time in seconds
+# Defining the amount of simulation time in seconds (must be equal to the simulation time value used in configGen.py script)
 simTime = timedelta(seconds=60)
 
 # Initializing temporary variable about links averages sums
 linksTemp = []
 
-# updateDeltaTraffic rappresenta tutte le unità frazionarie di secondo date da updatedelta, esempio 60 secondi divisi per 100 ms sono 600 unità frazionarie
-# traffic rappresenta la somma dei bytes in un tempo averageDelta, quindi il primo valore parte dopo le prime averageFractions unità temporali e finisce prima delle ultime averageFraction unità temporali
+# updateDeltaTraffic list represents all fractional units of seconds given by updatedelta, for example 60 seconds divided by 100 ms is 600 fractional units
+# traffic list represents the sum of bytes in an averageDelta time
+# Each list element is a dictionary in the form {"updateTime":value, "traffic":value} with
+# "updateTime" meaning the recorded timestamp and "traffic" the packets bytes sum
 for link in links:
   linksTemp.append({"linkId": link.linkId, "trafficDT":0, "trafficUDT":0, "updateDeltaTraffic": [], "traffic": []})
 
 logging.info("LinksTemp structure:")
 for i in linksTemp:
   logging.info(i)
-
+# Taking fist packet to analyze
 packet = next(iterator, None)
-# Calculating averages
 
-#Ogni loop è un'unità frazionaria analizzata
+# Calculating averages
+# Every loop is an analyzed fractional unit
 while timeWalker <= startTime + (simTime - updateDelta):
-  # Per ogni updateDelta azzeriamo pesi
+  # For each updateDelta reset values
   for linkTemp in linksTemp:
     linkTemp["trafficUDT"] = 0
-  # Individuo link di appartenenza al packet analizzato
+  # Identify the link belonging to the analyzed packet
   if packet is not None:
     link = utils.getLink(links, packet["source"], packet["destination"])
     linkTemp = utils.getLinkTempById(linksTemp, link.linkId)
   else:
     break
-
+  # Analyzing every packet in the analyzed range
   while packet["timestamp"] >= timeWalker and packet["timestamp"] < timeWalker + updateDelta:
     linkTemp["trafficUDT"] += packet["dimension"]
     linkTemp["trafficDT"] += packet["dimension"]
@@ -110,14 +105,13 @@ while timeWalker <= startTime + (simTime - updateDelta):
       linkTemp = utils.getLinkTempById(linksTemp, link.linkId)
     else:
       break
-  
-
-
+  # Pushing forward the analyzing time
   timeWalker += updateDelta
-
+  # Storing the fractional time units values
   for linkTemp in linksTemp:
     linkTemp["updateDeltaTraffic"].append({"updateTime": timeWalker, "traffic": linkTemp["trafficUDT"]})
 
+  # Storing the averageDelta units value
   if timeWalker >= startTime + averageDelta:
     for linkTemp in linksTemp:
       linkTemp["trafficDT"] = linkTemp["trafficDT"] - linkTemp["updateDeltaTraffic"][ (len(linkTemp["updateDeltaTraffic"]) - 1) - lastFirstUDindex ]["traffic"]
