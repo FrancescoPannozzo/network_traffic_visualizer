@@ -1,69 +1,70 @@
-2024-01-26 17:30:27,835 [INFO] The choosen switch number is 2 and link capacity is 10Mbps
-2024-01-26 17:30:27,835 [INFO] Creating links..
-2024-01-26 17:30:27,835 [INFO] Links creation done!Links created are:
-2024-01-26 17:30:27,835 [INFO] Link ID:1, endpoints:['switch1', 'switch2'], capacity:10, trafficPercentage:0
-2024-01-26 17:30:27,835 [INFO] Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,835 [INFO] Creating packets file..
-2024-01-26 17:30:27,835 [INFO] Sim second: 0.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,852 [INFO] Sim second: 1.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,854 [INFO] Sim second: 2.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,856 [INFO] Sim second: 3.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,858 [INFO] Sim second: 4.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,860 [INFO] Sim second: 5.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,862 [INFO] Sim second: 6.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,863 [INFO] Sim second: 7.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,865 [INFO] Sim second: 8.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,866 [INFO] Sim second: 9.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,868 [INFO] Sim second: 10.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,870 [INFO] Sim second: 11.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,873 [INFO] Sim second: 12.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,874 [INFO] Sim second: 13.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,877 [INFO] Sim second: 14.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,881 [INFO] Sim second: 15.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,883 [INFO] Sim second: 16.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,892 [INFO] Sim second: 17.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,896 [INFO] Sim second: 18.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,899 [INFO] Sim second: 19.0, Link with id: 1, trafficPerc choose: 20
-2024-01-26 17:30:27,909 [INFO] Sim second: 20.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,912 [INFO] Sim second: 21.0, Link with id: 1, trafficPerc choose: 20
-2024-01-26 17:30:27,918 [INFO] Sim second: 22.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,921 [INFO] Sim second: 23.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,922 [INFO] Sim second: 24.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,926 [INFO] Sim second: 25.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,928 [INFO] Sim second: 26.0, Link with id: 1, trafficPerc choose: 20
-2024-01-26 17:30:27,931 [INFO] Sim second: 27.0, Link with id: 1, trafficPerc choose: 30
-2024-01-26 17:30:27,934 [INFO] Sim second: 28.0, Link with id: 1, trafficPerc choose: 20
-2024-01-26 17:30:27,939 [INFO] Sim second: 29.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,943 [INFO] Sim second: 30.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,944 [INFO] Sim second: 31.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,945 [INFO] Sim second: 32.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,948 [INFO] Sim second: 33.0, Link with id: 1, trafficPerc choose: 20
-2024-01-26 17:30:27,950 [INFO] Sim second: 34.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,952 [INFO] Sim second: 35.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,954 [INFO] Sim second: 36.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,956 [INFO] Sim second: 37.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,965 [INFO] Sim second: 38.0, Link with id: 1, trafficPerc choose: 20
-2024-01-26 17:30:27,967 [INFO] Sim second: 39.0, Link with id: 1, trafficPerc choose: 30
-2024-01-26 17:30:27,970 [INFO] Sim second: 40.0, Link with id: 1, trafficPerc choose: 20
-2024-01-26 17:30:27,972 [INFO] Sim second: 41.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,973 [INFO] Sim second: 42.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,975 [INFO] Sim second: 43.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,976 [INFO] Sim second: 44.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,978 [INFO] Sim second: 45.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,979 [INFO] Sim second: 46.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,980 [INFO] Sim second: 47.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,982 [INFO] Sim second: 48.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,986 [INFO] Sim second: 49.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,989 [INFO] Sim second: 50.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,991 [INFO] Sim second: 51.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:27,993 [INFO] Sim second: 52.0, Link with id: 1, trafficPerc choose: 0
-2024-01-26 17:30:27,996 [INFO] Sim second: 53.0, Link with id: 1, trafficPerc choose: 10
-2024-01-26 17:30:28,000 [INFO] Sim second: 54.0, Link with id: 1, trafficPerc choose: 20
-2024-01-26 17:30:28,002 [INFO] Sim second: 55.0, Link with id: 1, trafficPerc choose: 30
-2024-01-26 17:30:28,013 [INFO] Sim second: 56.0, Link with id: 1, trafficPerc choose: 20
-2024-01-26 17:30:28,025 [INFO] Sim second: 57.0, Link with id: 1, trafficPerc choose: 30
-2024-01-26 17:30:28,030 [INFO] Sim second: 58.0, Link with id: 1, trafficPerc choose: 20
-2024-01-26 17:30:28,031 [INFO] Sim second: 59.0, Link with id: 1, trafficPerc choose: 30
-2024-01-26 17:30:30,057 [INFO] ..packet file creation done!
-2024-01-26 17:30:30,059 [INFO] Creating network.yaml file..
-2024-01-26 17:30:30,072 [INFO] ..network.yaml file creation done!
+2024-01-31 15:01:54,843 [INFO] The choosen switches number is 2 and the network link capacity is 100Mbps
+2024-01-31 15:01:54,843 [INFO] Creating links..
+2024-01-31 15:01:54,843 [INFO] Links creation done!Links created are:
+2024-01-31 15:01:54,843 [INFO] Link ID:1, endpoints:['switch1', 'switch2'], capacity:100, trafficPercentage:0
+2024-01-31 15:01:54,843 [INFO] Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:54,843 [INFO] Creating packets file..
+2024-01-31 15:01:54,843 [INFO] Sim second: 0.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:54,856 [INFO] Sim second: 1.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:54,867 [INFO] Sim second: 2.0, Link with id: 1, trafficPerc choose: 40
+2024-01-31 15:01:54,880 [INFO] Sim second: 3.0, Link with id: 1, trafficPerc choose: 50
+2024-01-31 15:01:54,897 [INFO] Sim second: 4.0, Link with id: 1, trafficPerc choose: 40
+2024-01-31 15:01:54,907 [INFO] Sim second: 5.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:54,917 [INFO] Sim second: 6.0, Link with id: 1, trafficPerc choose: 40
+2024-01-31 15:01:54,938 [INFO] Sim second: 7.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:54,951 [INFO] Sim second: 8.0, Link with id: 1, trafficPerc choose: 40
+2024-01-31 15:01:54,965 [INFO] Sim second: 9.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:54,977 [INFO] Sim second: 10.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:54,987 [INFO] Sim second: 11.0, Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:54,993 [INFO] Sim second: 12.0, Link with id: 1, trafficPerc choose: 0
+2024-01-31 15:01:54,995 [INFO] Sim second: 13.0, Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:54,999 [INFO] Sim second: 14.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:55,007 [INFO] Sim second: 15.0, Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:55,011 [INFO] Sim second: 16.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:55,019 [INFO] Sim second: 17.0, Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:55,024 [INFO] Sim second: 18.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:55,032 [INFO] Sim second: 19.0, Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:55,037 [INFO] Sim second: 20.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:55,053 [INFO] Sim second: 21.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:55,065 [INFO] Sim second: 22.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:55,070 [INFO] Sim second: 23.0, Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:55,074 [INFO] Sim second: 24.0, Link with id: 1, trafficPerc choose: 0
+2024-01-31 15:01:55,075 [INFO] Sim second: 25.0, Link with id: 1, trafficPerc choose: 0
+2024-01-31 15:01:55,076 [INFO] Sim second: 26.0, Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:55,080 [INFO] Sim second: 27.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:55,087 [INFO] Sim second: 28.0, Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:55,090 [INFO] Sim second: 29.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:55,097 [INFO] Sim second: 30.0, Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:55,110 [INFO] Sim second: 31.0, Link with id: 1, trafficPerc choose: 0
+2024-01-31 15:01:55,111 [INFO] Sim second: 32.0, Link with id: 1, trafficPerc choose: 10
+2024-01-31 15:01:55,126 [INFO] Sim second: 33.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:55,133 [INFO] Sim second: 34.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:55,144 [INFO] Sim second: 35.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:55,159 [INFO] Sim second: 36.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:55,171 [INFO] Sim second: 37.0, Link with id: 1, trafficPerc choose: 40
+2024-01-31 15:01:55,186 [INFO] Sim second: 38.0, Link with id: 1, trafficPerc choose: 50
+2024-01-31 15:01:55,211 [INFO] Sim second: 39.0, Link with id: 1, trafficPerc choose: 60
+2024-01-31 15:01:55,259 [INFO] Sim second: 40.0, Link with id: 1, trafficPerc choose: 50
+2024-01-31 15:01:55,278 [INFO] Sim second: 41.0, Link with id: 1, trafficPerc choose: 40
+2024-01-31 15:01:55,292 [INFO] Sim second: 42.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:55,321 [INFO] Sim second: 43.0, Link with id: 1, trafficPerc choose: 40
+2024-01-31 15:01:55,336 [INFO] Sim second: 44.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:55,381 [INFO] Sim second: 45.0, Link with id: 1, trafficPerc choose: 40
+2024-01-31 15:01:55,409 [INFO] Sim second: 46.0, Link with id: 1, trafficPerc choose: 50
+2024-01-31 15:01:55,452 [INFO] Sim second: 47.0, Link with id: 1, trafficPerc choose: 60
+2024-01-31 15:01:55,494 [INFO] Sim second: 48.0, Link with id: 1, trafficPerc choose: 50
+2024-01-31 15:01:55,535 [INFO] Sim second: 49.0, Link with id: 1, trafficPerc choose: 40
+2024-01-31 15:01:55,556 [INFO] Sim second: 50.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:55,568 [INFO] Sim second: 51.0, Link with id: 1, trafficPerc choose: 20
+2024-01-31 15:01:55,574 [INFO] Sim second: 52.0, Link with id: 1, trafficPerc choose: 30
+2024-01-31 15:01:55,586 [INFO] Sim second: 53.0, Link with id: 1, trafficPerc choose: 40
+2024-01-31 15:01:55,600 [INFO] Sim second: 54.0, Link with id: 1, trafficPerc choose: 50
+2024-01-31 15:01:55,622 [INFO] Sim second: 55.0, Link with id: 1, trafficPerc choose: 60
+2024-01-31 15:01:55,680 [INFO] Sim second: 56.0, Link with id: 1, trafficPerc choose: 70
+2024-01-31 15:01:55,693 [INFO] Sim second: 57.0, Link with id: 1, trafficPerc choose: 80
+2024-01-31 15:01:55,722 [INFO] Sim second: 58.0, Link with id: 1, trafficPerc choose: 70
+2024-01-31 15:01:55,742 [INFO] Sim second: 59.0, Link with id: 1, trafficPerc choose: 60
+2024-01-31 15:01:55,762 [INFO] Creating packets.yaml file..
+2024-01-31 15:02:50,369 [INFO] ..packet file creation done!
+2024-01-31 15:02:50,371 [INFO] Creating network.yaml file..
+2024-01-31 15:02:50,371 [INFO] ..network.yaml file creation done!

@@ -1,4 +1,4 @@
-- - capacity: 10
+- - capacity: 100
     endpoints:
     - switch1
     - switch2

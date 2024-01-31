@@ -112,19 +112,32 @@ while timeWalker <= startTime + (simTime - updateDelta):
     linkTemp["updateDeltaTraffic"].append({"updateTime": timeWalker, "traffic": linkTemp["trafficUDT"]})
 
   # Storing the averageDelta units value
-  if timeWalker >= startTime + averageDelta:
+  if timeWalker > startTime + averageDelta:
     for linkTemp in linksTemp:
       linkTemp["trafficDT"] = linkTemp["trafficDT"] - linkTemp["updateDeltaTraffic"][ (len(linkTemp["updateDeltaTraffic"]) - 1) - lastFirstUDindex ]["traffic"]
+  
+  if timeWalker >= startTime + averageDelta:
+    for linkTemp in linksTemp:
       linkTemp["traffic"].append({"updateTime": timeWalker, "traffic": linkTemp["trafficDT"]})
 
 
 for linkTemp in linksTemp:
-  logging.debug(f"linkID: {linkTemp["linkId"]}")
+  logging.debug(f"linkID: {linkTemp['linkId']}")
   logging.debug("updateDeltaTraffic[]:")
   for i in linkTemp["updateDeltaTraffic"]:
      logging.debug(i)
   logging.debug("traffic[]:")
   for i in linkTemp["traffic"]:
      logging.debug(i)
+
+logging.debug("Traffic percetages:")
+for linkTemp in linksTemp:
+  logging.debug(f"linkID: {linkTemp['linkId']}")
+  
+  link = utils.getLinkById(links, linkTemp["linkId"])
+
+  logging.debug("traffic[] (percentage):")
+  for i in linkTemp["traffic"]:
+     logging.debug(f"updateTime: {i['updateTime']}, percentage: {utils.getAverage(link.capacity, i['traffic'])}%")
 
     
