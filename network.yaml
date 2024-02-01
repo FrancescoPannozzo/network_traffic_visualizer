@@ -1,12 +1,27 @@
-- - capacity: 100
+- - capacity: 10
     endpoints:
     - switch1
     - switch2
+  - capacity: 10
+    endpoints:
+    - switch1
+    - switch3
+  - capacity: 10
+    endpoints:
+    - switch2
+    - switch3
 - - address: 123.123.123.1
     connectedTo:
     - switch2
+    - switch3
     switchName: switch1
   - address: 123.123.123.2
     connectedTo:
     - switch1
+    - switch3
     switchName: switch2
+  - address: 123.123.123.3
+    connectedTo:
+    - switch1
+    - switch2
+    switchName: switch3
