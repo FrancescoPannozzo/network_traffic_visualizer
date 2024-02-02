@@ -18,10 +18,9 @@ class Link:
       return firstEndpoint in self.endpoints and secondEndpoint in self.endpoints
 
 class Switch:
-  def __init__(self, name, address, connectedTo):
+  def __init__(self, name, address):
     self.name = name
     self.address = address
-    self.connectedTo = connectedTo
 
   def __str__(self):
-    return f"Switch name:{self.name}, address:{self.address}, connectedTo:{self.connectedTo}"
+    return f"Switch name:{self.name}, address:{self.address}"

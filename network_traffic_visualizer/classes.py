@@ -21,10 +21,9 @@ class Link:
       return f"{str(self)}, timeAverages:{self.timeAverages}"
 
 class Switch:
-  def __init__(self, name, address, connectedTo):
+  def __init__(self, name, address):
     self.name = name
     self.address = address
-    self.connectedTo = connectedTo
 
   def __str__(self):
-    return f"Switch name:{self.name}, address:{self.address}, connectedTo:{self.connectedTo}"
+    return f"Switch name:{self.name}, address:{self.address}"

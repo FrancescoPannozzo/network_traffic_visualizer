@@ -9,10 +9,6 @@ def fileLoader(networkFileName, packetsFileName):
   networkFilePath = current_folder + "\\" + networkFileName + ".yaml"
   packetsFilePath = current_folder + "\\" + packetsFileName + ".yaml"
 
-  #testing
-  print(networkFilePath)
-  print(packetsFilePath)
-
   # Open and parse the YAML file
   with open(networkFilePath, "r") as networkFile:
       networkData = yaml.safe_load(networkFile)

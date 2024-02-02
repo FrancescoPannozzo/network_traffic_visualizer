@@ -22,23 +22,34 @@ parser.add_argument("networkFile", help="The networkFile you want to load")
 parser.add_argument("packetsFile", help="The packetsFile you want to load")
 args = parser.parse_args()
 
+logging.info("Loading files..")
 # Loading files
 networkData, packetsData = utils.fileLoader(args.networkFile, args.packetsFile)
 
 # Data loaded are "list of list of dictionaries" for both files
 
-links = []
+links = {}
 switches = []
 linkIndex = 0
 switchIndex = 1
 
+logging.info("Analyzing files..")
+
 # Extracting links data
+
+# updateDeltaTraffic list represents all fractional units of seconds given by updatedelta, for example 60 seconds divided by 100 ms is 600 fractional units
+# traffic list represents the sum of bytes in an averageDelta time
+# Each list element is a dictionary in the form {"updateTime":value, "traffic":value} with
+# "updateTime" meaning the recorded timestamp and "traffic" the packets bytes sum
 for link in networkData[linkIndex]:
-  links.append(obj.Link(link["capacity"],link["endpoints"]))
+  print(link)
+  links[frozenset({link["endpoints"][0],link["endpoints"][1]})] = {"capacity": link["capacity"], "trafficDT":0, "trafficUDT":0, "updateDeltaTraffic": [], "traffic": []}
+
+logging.debug(links)
 
 # Extracting switches data
 for s in networkData[switchIndex]:
-  switches.append(obj.Switch (s["switchName"], s["address"], s["connectedTo"]))
+  switches.append(obj.Switch (s["switchName"], s["address"]))
 
 logging.info("Network data:")
 for i in networkData:
@@ -49,7 +60,6 @@ for i in networkData:
 updateDelta = timedelta(milliseconds=100)
 # The considered average time in seconds
 averageDelta = timedelta(seconds=1)
-
 
 # Setting the starting time point, (must be equal to parameters used in configGen.py script)
 startTime = datetime(2024, 1, 1, 0, 0, 0)
@@ -67,19 +77,6 @@ iterator = iter(packetsData)
 # Defining the amount of simulation time in seconds (must be equal to the simulation time value used in configGen.py script)
 simTime = timedelta(seconds=60)
 
-# Initializing temporary variable about links averages sums
-linksTemp = []
-
-# updateDeltaTraffic list represents all fractional units of seconds given by updatedelta, for example 60 seconds divided by 100 ms is 600 fractional units
-# traffic list represents the sum of bytes in an averageDelta time
-# Each list element is a dictionary in the form {"updateTime":value, "traffic":value} with
-# "updateTime" meaning the recorded timestamp and "traffic" the packets bytes sum
-for link in links:
-  linksTemp.append({"linkId": link.linkId, "trafficDT":0, "trafficUDT":0, "updateDeltaTraffic": [], "traffic": []})
-
-logging.info("LinksTemp structure:")
-for i in linksTemp:
-  logging.info(i)
 # Taking fist packet to analyze
 packet = next(iterator, None)
 
@@ -87,57 +84,51 @@ packet = next(iterator, None)
 # Every loop is an analyzed fractional unit
 while timeWalker <= startTime + (simTime - updateDelta):
   # For each updateDelta reset values
-  for linkTemp in linksTemp:
-    linkTemp["trafficUDT"] = 0
+  for key in links.keys():
+    links[key]["trafficUDT"] = 0
   # Identify the link belonging to the analyzed packet
   if packet is not None:
-    link = utils.getLink(links, packet["source"], packet["destination"])
-    linkTemp = utils.getLinkTempById(linksTemp, link.linkId)
+    link = links[frozenset({packet["source"], packet["destination"]})]
   else:
     break
   # Analyzing every packet in the analyzed range
   while packet["timestamp"] >= timeWalker and packet["timestamp"] < timeWalker + updateDelta:
-    linkTemp["trafficUDT"] += packet["dimension"]
-    linkTemp["trafficDT"] += packet["dimension"]
+    link["trafficUDT"] += packet["dimension"]
+    link["trafficDT"] += packet["dimension"]
     packet = next(iterator, None)
     if packet is not None:
-      link = utils.getLink(links, packet["source"], packet["destination"])
-      linkTemp = utils.getLinkTempById(linksTemp, link.linkId)
+      link = links[frozenset({packet["source"], packet["destination"]})]
     else:
       break
   # Pushing forward the analyzing time
   timeWalker += updateDelta
   # Storing the fractional time units values
-  for linkTemp in linksTemp:
-    linkTemp["updateDeltaTraffic"].append({"updateTime": timeWalker, "traffic": linkTemp["trafficUDT"]})
+  for key in links.keys():
+    links[key]["updateDeltaTraffic"].append({"updateTime": timeWalker, "traffic": links[key]["trafficUDT"]})
 
   # Storing the averageDelta units value
   if timeWalker > startTime + averageDelta:
-    for linkTemp in linksTemp:
-      linkTemp["trafficDT"] = linkTemp["trafficDT"] - linkTemp["updateDeltaTraffic"][ (len(linkTemp["updateDeltaTraffic"]) - 1) - lastFirstUDindex ]["traffic"]
-  
-  if timeWalker >= startTime + averageDelta:
-    for linkTemp in linksTemp:
-      linkTemp["traffic"].append({"updateTime": timeWalker, "traffic": linkTemp["trafficDT"]})
+    for key in links.keys():
+      links[key]["trafficDT"] = links[key]["trafficDT"] - links[key]["updateDeltaTraffic"][ (len(links[key]["updateDeltaTraffic"]) - 1) - lastFirstUDindex ]["traffic"]
+      links[key]["traffic"].append({"updateTime": timeWalker, "traffic": links[key]["trafficDT"]})
+  elif timeWalker == startTime + averageDelta:
+    for key in links.keys():
+      links[key]["traffic"].append({"updateTime": timeWalker, "traffic": links[key]["trafficDT"]})
 
-
-for linkTemp in linksTemp:
-  logging.debug(f"linkID: {linkTemp['linkId']}")
+for key in links.keys():
+  logging.debug(f"link: {key}")
   logging.debug("updateDeltaTraffic[]:")
-  for i in linkTemp["updateDeltaTraffic"]:
+  for i in links[key]["updateDeltaTraffic"]:
      logging.debug(i)
   logging.debug("traffic[]:")
-  for i in linkTemp["traffic"]:
+  for i in links[key]["traffic"]:
      logging.debug(i)
 
 logging.debug("Traffic percetages:")
-for linkTemp in linksTemp:
-  logging.debug(f"linkID: {linkTemp['linkId']}")
-  
-  link = utils.getLinkById(links, linkTemp["linkId"])
-
+for key in links.keys():
+  logging.debug(f"link: {key}")
   logging.debug("traffic[] (percentage):")
-  for i in linkTemp["traffic"]:
-     logging.debug(f"updateTime: {i['updateTime']}, percentage: {utils.getAverage(link.capacity, i['traffic'])}%")
+  for i in links[key]["traffic"]:
+     logging.debug(f"updateTime: {i['updateTime']}, percentage: {utils.getAverage(links[key]['capacity'], i['traffic'])}%")
 
     

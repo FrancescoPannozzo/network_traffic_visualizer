@@ -121,17 +121,9 @@ for link in links:
   networkData[linkIndex].append({"endpoints": link.endpoints,
                                  "capacity": link.capacity})
 
-for i in range(1, switchNumber + 1):
-  connectedTo = []
-  for j in range(1, switchNumber + 1):
-    if i == j:
-      continue
-    connectedTo.append(f"switch{j}")
-
   networkData[switchIndex].append({
     "switchName": f"switch{i}",
-    "address": f"{ipAddress}{ipLastSect}",
-    "connectedTo": connectedTo
+    "address": f"{ipAddress}{ipLastSect}"
   })
   ipLastSect += 1
 
