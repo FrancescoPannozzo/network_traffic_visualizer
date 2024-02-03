@@ -1,194 +1,381 @@
-2024-02-02 18:34:41,317 [INFO] The choosen switches number is 3 and the network link capacity is 10Mbps
-2024-02-02 18:34:41,317 [INFO] Creating links..
-2024-02-02 18:34:41,317 [INFO] Links creation done!Links created are:
-2024-02-02 18:34:41,317 [INFO] Link ID:1, endpoints:['switch1', 'switch2'], capacity:10, trafficPercentage:0
-2024-02-02 18:34:41,317 [INFO] Link ID:2, endpoints:['switch1', 'switch3'], capacity:10, trafficPercentage:0
-2024-02-02 18:34:41,317 [INFO] Link ID:3, endpoints:['switch2', 'switch3'], capacity:10, trafficPercentage:0
-2024-02-02 18:34:41,330 [INFO] Link with id: 1, trafficPerc choose: 0
-2024-02-02 18:34:41,331 [INFO] Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,332 [INFO] Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,332 [INFO] Creating packets file..
-2024-02-02 18:34:41,333 [INFO] Sim second: 0.0, Link with id: 1, trafficPerc choose: 10
-2024-02-02 18:34:41,334 [INFO] Sim second: 0.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,334 [INFO] Sim second: 0.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,336 [INFO] Sim second: 1.0, Link with id: 1, trafficPerc choose: 20
-2024-02-02 18:34:41,337 [INFO] Sim second: 1.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,338 [INFO] Sim second: 1.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,340 [INFO] Sim second: 2.0, Link with id: 1, trafficPerc choose: 10
-2024-02-02 18:34:41,341 [INFO] Sim second: 2.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,345 [INFO] Sim second: 2.0, Link with id: 3, trafficPerc choose: 0
-2024-02-02 18:34:41,346 [INFO] Sim second: 3.0, Link with id: 1, trafficPerc choose: 0
-2024-02-02 18:34:41,348 [INFO] Sim second: 3.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,349 [INFO] Sim second: 3.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,351 [INFO] Sim second: 4.0, Link with id: 1, trafficPerc choose: 10
-2024-02-02 18:34:41,353 [INFO] Sim second: 4.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,354 [INFO] Sim second: 4.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,356 [INFO] Sim second: 5.0, Link with id: 1, trafficPerc choose: 0
-2024-02-02 18:34:41,357 [INFO] Sim second: 5.0, Link with id: 2, trafficPerc choose: 20
-2024-02-02 18:34:41,358 [INFO] Sim second: 5.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,362 [INFO] Sim second: 6.0, Link with id: 1, trafficPerc choose: 10
-2024-02-02 18:34:41,363 [INFO] Sim second: 6.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,364 [INFO] Sim second: 6.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,366 [INFO] Sim second: 7.0, Link with id: 1, trafficPerc choose: 0
-2024-02-02 18:34:41,367 [INFO] Sim second: 7.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,369 [INFO] Sim second: 7.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,372 [INFO] Sim second: 8.0, Link with id: 1, trafficPerc choose: 10
-2024-02-02 18:34:41,374 [INFO] Sim second: 8.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,376 [INFO] Sim second: 8.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,383 [INFO] Sim second: 9.0, Link with id: 1, trafficPerc choose: 20
-2024-02-02 18:34:41,385 [INFO] Sim second: 9.0, Link with id: 2, trafficPerc choose: 20
-2024-02-02 18:34:41,385 [INFO] Sim second: 9.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,388 [INFO] Sim second: 10.0, Link with id: 1, trafficPerc choose: 30
-2024-02-02 18:34:41,389 [INFO] Sim second: 10.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,389 [INFO] Sim second: 10.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,394 [INFO] Sim second: 11.0, Link with id: 1, trafficPerc choose: 40
-2024-02-02 18:34:41,396 [INFO] Sim second: 11.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,398 [INFO] Sim second: 11.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,401 [INFO] Sim second: 12.0, Link with id: 1, trafficPerc choose: 30
-2024-02-02 18:34:41,402 [INFO] Sim second: 12.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,403 [INFO] Sim second: 12.0, Link with id: 3, trafficPerc choose: 0
-2024-02-02 18:34:41,405 [INFO] Sim second: 13.0, Link with id: 1, trafficPerc choose: 40
-2024-02-02 18:34:41,406 [INFO] Sim second: 13.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,406 [INFO] Sim second: 13.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,409 [INFO] Sim second: 14.0, Link with id: 1, trafficPerc choose: 50
-2024-02-02 18:34:41,411 [INFO] Sim second: 14.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,414 [INFO] Sim second: 14.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,417 [INFO] Sim second: 15.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:41,418 [INFO] Sim second: 15.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,420 [INFO] Sim second: 15.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:41,426 [INFO] Sim second: 16.0, Link with id: 1, trafficPerc choose: 50
-2024-02-02 18:34:41,427 [INFO] Sim second: 16.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,428 [INFO] Sim second: 16.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,431 [INFO] Sim second: 17.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:41,432 [INFO] Sim second: 17.0, Link with id: 2, trafficPerc choose: 20
-2024-02-02 18:34:41,434 [INFO] Sim second: 17.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:41,441 [INFO] Sim second: 18.0, Link with id: 1, trafficPerc choose: 50
-2024-02-02 18:34:41,443 [INFO] Sim second: 18.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,444 [INFO] Sim second: 18.0, Link with id: 3, trafficPerc choose: 40
-2024-02-02 18:34:41,448 [INFO] Sim second: 19.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:41,448 [INFO] Sim second: 19.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,450 [INFO] Sim second: 19.0, Link with id: 3, trafficPerc choose: 50
-2024-02-02 18:34:41,470 [INFO] Sim second: 20.0, Link with id: 1, trafficPerc choose: 50
-2024-02-02 18:34:41,471 [INFO] Sim second: 20.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,472 [INFO] Sim second: 20.0, Link with id: 3, trafficPerc choose: 40
-2024-02-02 18:34:41,476 [INFO] Sim second: 21.0, Link with id: 1, trafficPerc choose: 40
-2024-02-02 18:34:41,478 [INFO] Sim second: 21.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,479 [INFO] Sim second: 21.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:41,482 [INFO] Sim second: 22.0, Link with id: 1, trafficPerc choose: 30
-2024-02-02 18:34:41,483 [INFO] Sim second: 22.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,485 [INFO] Sim second: 22.0, Link with id: 3, trafficPerc choose: 40
-2024-02-02 18:34:41,498 [INFO] Sim second: 23.0, Link with id: 1, trafficPerc choose: 40
-2024-02-02 18:34:41,500 [INFO] Sim second: 23.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,501 [INFO] Sim second: 23.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:41,513 [INFO] Sim second: 24.0, Link with id: 1, trafficPerc choose: 30
-2024-02-02 18:34:41,520 [INFO] Sim second: 24.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,522 [INFO] Sim second: 24.0, Link with id: 3, trafficPerc choose: 40
-2024-02-02 18:34:41,534 [INFO] Sim second: 25.0, Link with id: 1, trafficPerc choose: 20
-2024-02-02 18:34:41,536 [INFO] Sim second: 25.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,540 [INFO] Sim second: 25.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:41,546 [INFO] Sim second: 26.0, Link with id: 1, trafficPerc choose: 10
-2024-02-02 18:34:41,547 [INFO] Sim second: 26.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,549 [INFO] Sim second: 26.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,552 [INFO] Sim second: 27.0, Link with id: 1, trafficPerc choose: 0
-2024-02-02 18:34:41,554 [INFO] Sim second: 27.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,555 [INFO] Sim second: 27.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:41,560 [INFO] Sim second: 28.0, Link with id: 1, trafficPerc choose: 10
-2024-02-02 18:34:41,561 [INFO] Sim second: 28.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,562 [INFO] Sim second: 28.0, Link with id: 3, trafficPerc choose: 40
-2024-02-02 18:34:41,568 [INFO] Sim second: 29.0, Link with id: 1, trafficPerc choose: 0
-2024-02-02 18:34:41,571 [INFO] Sim second: 29.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,573 [INFO] Sim second: 29.0, Link with id: 3, trafficPerc choose: 50
-2024-02-02 18:34:41,577 [INFO] Sim second: 30.0, Link with id: 1, trafficPerc choose: 10
-2024-02-02 18:34:41,578 [INFO] Sim second: 30.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,580 [INFO] Sim second: 30.0, Link with id: 3, trafficPerc choose: 60
-2024-02-02 18:34:41,594 [INFO] Sim second: 31.0, Link with id: 1, trafficPerc choose: 20
-2024-02-02 18:34:41,599 [INFO] Sim second: 31.0, Link with id: 2, trafficPerc choose: 20
-2024-02-02 18:34:41,600 [INFO] Sim second: 31.0, Link with id: 3, trafficPerc choose: 50
-2024-02-02 18:34:41,605 [INFO] Sim second: 32.0, Link with id: 1, trafficPerc choose: 30
-2024-02-02 18:34:41,606 [INFO] Sim second: 32.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,607 [INFO] Sim second: 32.0, Link with id: 3, trafficPerc choose: 40
-2024-02-02 18:34:41,671 [INFO] Sim second: 33.0, Link with id: 1, trafficPerc choose: 20
-2024-02-02 18:34:41,689 [INFO] Sim second: 33.0, Link with id: 2, trafficPerc choose: 20
-2024-02-02 18:34:41,720 [INFO] Sim second: 33.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:41,720 [INFO] Sim second: 34.0, Link with id: 1, trafficPerc choose: 30
-2024-02-02 18:34:41,730 [INFO] Sim second: 34.0, Link with id: 2, trafficPerc choose: 30
-2024-02-02 18:34:41,732 [INFO] Sim second: 34.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,766 [INFO] Sim second: 35.0, Link with id: 1, trafficPerc choose: 20
-2024-02-02 18:34:41,774 [INFO] Sim second: 35.0, Link with id: 2, trafficPerc choose: 40
-2024-02-02 18:34:41,784 [INFO] Sim second: 35.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:41,784 [INFO] Sim second: 36.0, Link with id: 1, trafficPerc choose: 30
-2024-02-02 18:34:41,784 [INFO] Sim second: 36.0, Link with id: 2, trafficPerc choose: 30
-2024-02-02 18:34:41,784 [INFO] Sim second: 36.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,784 [INFO] Sim second: 37.0, Link with id: 1, trafficPerc choose: 40
-2024-02-02 18:34:41,800 [INFO] Sim second: 37.0, Link with id: 2, trafficPerc choose: 20
-2024-02-02 18:34:41,800 [INFO] Sim second: 37.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,800 [INFO] Sim second: 38.0, Link with id: 1, trafficPerc choose: 50
-2024-02-02 18:34:41,800 [INFO] Sim second: 38.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,816 [INFO] Sim second: 38.0, Link with id: 3, trafficPerc choose: 0
-2024-02-02 18:34:41,821 [INFO] Sim second: 39.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:41,823 [INFO] Sim second: 39.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,824 [INFO] Sim second: 39.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,827 [INFO] Sim second: 40.0, Link with id: 1, trafficPerc choose: 50
-2024-02-02 18:34:41,829 [INFO] Sim second: 40.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,830 [INFO] Sim second: 40.0, Link with id: 3, trafficPerc choose: 0
-2024-02-02 18:34:41,833 [INFO] Sim second: 41.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:41,833 [INFO] Sim second: 41.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,833 [INFO] Sim second: 41.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,833 [INFO] Sim second: 42.0, Link with id: 1, trafficPerc choose: 70
-2024-02-02 18:34:41,848 [INFO] Sim second: 42.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,848 [INFO] Sim second: 42.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,848 [INFO] Sim second: 43.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:41,848 [INFO] Sim second: 43.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,848 [INFO] Sim second: 43.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,848 [INFO] Sim second: 44.0, Link with id: 1, trafficPerc choose: 70
-2024-02-02 18:34:41,848 [INFO] Sim second: 44.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,848 [INFO] Sim second: 44.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,865 [INFO] Sim second: 45.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:41,866 [INFO] Sim second: 45.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,882 [INFO] Sim second: 45.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:41,903 [INFO] Sim second: 46.0, Link with id: 1, trafficPerc choose: 50
-2024-02-02 18:34:41,905 [INFO] Sim second: 46.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,907 [INFO] Sim second: 46.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,910 [INFO] Sim second: 47.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:41,911 [INFO] Sim second: 47.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,914 [INFO] Sim second: 47.0, Link with id: 3, trafficPerc choose: 10
-2024-02-02 18:34:41,930 [INFO] Sim second: 48.0, Link with id: 1, trafficPerc choose: 50
-2024-02-02 18:34:41,932 [INFO] Sim second: 48.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,933 [INFO] Sim second: 48.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:41,936 [INFO] Sim second: 49.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:41,936 [INFO] Sim second: 49.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,936 [INFO] Sim second: 49.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:41,952 [INFO] Sim second: 50.0, Link with id: 1, trafficPerc choose: 70
-2024-02-02 18:34:41,952 [INFO] Sim second: 50.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,952 [INFO] Sim second: 50.0, Link with id: 3, trafficPerc choose: 40
-2024-02-02 18:34:41,952 [INFO] Sim second: 51.0, Link with id: 1, trafficPerc choose: 80
-2024-02-02 18:34:41,968 [INFO] Sim second: 51.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,970 [INFO] Sim second: 51.0, Link with id: 3, trafficPerc choose: 50
-2024-02-02 18:34:41,975 [INFO] Sim second: 52.0, Link with id: 1, trafficPerc choose: 70
-2024-02-02 18:34:41,977 [INFO] Sim second: 52.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:41,978 [INFO] Sim second: 52.0, Link with id: 3, trafficPerc choose: 60
-2024-02-02 18:34:41,985 [INFO] Sim second: 53.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:41,987 [INFO] Sim second: 53.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,989 [INFO] Sim second: 53.0, Link with id: 3, trafficPerc choose: 50
-2024-02-02 18:34:41,994 [INFO] Sim second: 54.0, Link with id: 1, trafficPerc choose: 50
-2024-02-02 18:34:41,995 [INFO] Sim second: 54.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:41,995 [INFO] Sim second: 54.0, Link with id: 3, trafficPerc choose: 60
-2024-02-02 18:34:42,000 [INFO] Sim second: 55.0, Link with id: 1, trafficPerc choose: 40
-2024-02-02 18:34:42,000 [INFO] Sim second: 55.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:42,001 [INFO] Sim second: 55.0, Link with id: 3, trafficPerc choose: 50
-2024-02-02 18:34:42,005 [INFO] Sim second: 56.0, Link with id: 1, trafficPerc choose: 50
-2024-02-02 18:34:42,006 [INFO] Sim second: 56.0, Link with id: 2, trafficPerc choose: 0
-2024-02-02 18:34:42,007 [INFO] Sim second: 56.0, Link with id: 3, trafficPerc choose: 40
-2024-02-02 18:34:42,010 [INFO] Sim second: 57.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:42,011 [INFO] Sim second: 57.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:42,012 [INFO] Sim second: 57.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:42,016 [INFO] Sim second: 58.0, Link with id: 1, trafficPerc choose: 70
-2024-02-02 18:34:42,017 [INFO] Sim second: 58.0, Link with id: 2, trafficPerc choose: 20
-2024-02-02 18:34:42,018 [INFO] Sim second: 58.0, Link with id: 3, trafficPerc choose: 20
-2024-02-02 18:34:42,035 [INFO] Sim second: 59.0, Link with id: 1, trafficPerc choose: 60
-2024-02-02 18:34:42,039 [INFO] Sim second: 59.0, Link with id: 2, trafficPerc choose: 10
-2024-02-02 18:34:42,041 [INFO] Sim second: 59.0, Link with id: 3, trafficPerc choose: 30
-2024-02-02 18:34:42,046 [INFO] Creating packets.yaml file..
-2024-02-02 18:34:57,654 [INFO] ..packet file creation done!
-2024-02-02 18:34:57,654 [INFO] Creating network.yaml file..
-2024-02-02 18:34:57,669 [INFO] ..network.yaml file creation done!
+2024-02-03 19:37:39,695 [INFO] The choosen switches number is 4 and the network link capacity is 100 Mbps
+2024-02-03 19:37:39,696 [INFO] Creating links..
+2024-02-03 19:37:39,697 [INFO] Links creation done!Links created are:
+2024-02-03 19:37:39,697 [INFO] Link ID:1, endpoints:['switch1', 'switch2'], capacity:100, trafficPercentage:0
+2024-02-03 19:37:39,698 [INFO] Link ID:2, endpoints:['switch1', 'switch3'], capacity:100, trafficPercentage:0
+2024-02-03 19:37:39,699 [INFO] Link ID:3, endpoints:['switch1', 'switch4'], capacity:100, trafficPercentage:0
+2024-02-03 19:37:39,700 [INFO] Link ID:4, endpoints:['switch2', 'switch3'], capacity:100, trafficPercentage:0
+2024-02-03 19:37:39,702 [INFO] Link ID:5, endpoints:['switch2', 'switch4'], capacity:100, trafficPercentage:0
+2024-02-03 19:37:39,703 [INFO] Link ID:6, endpoints:['switch3', 'switch4'], capacity:100, trafficPercentage:0
+2024-02-03 19:37:39,704 [INFO] Link with id: 1, trafficPerc choose: 10
+2024-02-03 19:37:39,705 [INFO] Link with id: 2, trafficPerc choose: 0
+2024-02-03 19:37:39,706 [INFO] Link with id: 3, trafficPerc choose: 10
+2024-02-03 19:37:39,707 [INFO] Link with id: 4, trafficPerc choose: 0
+2024-02-03 19:37:39,708 [INFO] Link with id: 5, trafficPerc choose: 10
+2024-02-03 19:37:39,709 [INFO] Link with id: 6, trafficPerc choose: 0
+2024-02-03 19:37:39,710 [INFO] Creating packets file..
+2024-02-03 19:37:39,711 [INFO] Packets per second: 8234 
+2024-02-03 19:37:39,712 [INFO] Sim second: 0, Link id: 1, trafficPerc: 0
+2024-02-03 19:37:39,713 [INFO] Sim second: 0, Link id: 2, trafficPerc: 10
+2024-02-03 19:37:39,715 [INFO] Sim second: 0, Link id: 3, trafficPerc: 0
+2024-02-03 19:37:39,717 [INFO] Sim second: 0, Link id: 4, trafficPerc: 10
+2024-02-03 19:37:39,718 [INFO] Sim second: 0, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:39,720 [INFO] Sim second: 0, Link id: 6, trafficPerc: 10
+2024-02-03 19:37:39,738 [INFO] Sim second: 1, Link id: 1, trafficPerc: 10
+2024-02-03 19:37:39,740 [INFO] Sim second: 1, Link id: 2, trafficPerc: 0
+2024-02-03 19:37:39,741 [INFO] Sim second: 1, Link id: 3, trafficPerc: 0
+2024-02-03 19:37:39,742 [INFO] Sim second: 1, Link id: 4, trafficPerc: 20
+2024-02-03 19:37:39,743 [INFO] Sim second: 1, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:39,744 [INFO] Sim second: 1, Link id: 6, trafficPerc: 0
+2024-02-03 19:37:39,751 [INFO] Sim second: 2, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:39,752 [INFO] Sim second: 2, Link id: 2, trafficPerc: 0
+2024-02-03 19:37:39,753 [INFO] Sim second: 2, Link id: 3, trafficPerc: 0
+2024-02-03 19:37:39,754 [INFO] Sim second: 2, Link id: 4, trafficPerc: 10
+2024-02-03 19:37:39,755 [INFO] Sim second: 2, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:39,755 [INFO] Sim second: 2, Link id: 6, trafficPerc: 10
+2024-02-03 19:37:39,781 [INFO] Sim second: 3, Link id: 1, trafficPerc: 10
+2024-02-03 19:37:39,782 [INFO] Sim second: 3, Link id: 2, trafficPerc: 0
+2024-02-03 19:37:39,783 [INFO] Sim second: 3, Link id: 3, trafficPerc: 10
+2024-02-03 19:37:39,786 [INFO] Sim second: 3, Link id: 4, trafficPerc: 20
+2024-02-03 19:37:39,789 [INFO] Sim second: 3, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:39,790 [INFO] Sim second: 3, Link id: 6, trafficPerc: 20
+2024-02-03 19:37:39,808 [INFO] Sim second: 4, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:39,808 [INFO] Sim second: 4, Link id: 2, trafficPerc: 10
+2024-02-03 19:37:39,809 [INFO] Sim second: 4, Link id: 3, trafficPerc: 20
+2024-02-03 19:37:39,810 [INFO] Sim second: 4, Link id: 4, trafficPerc: 10
+2024-02-03 19:37:39,811 [INFO] Sim second: 4, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:39,814 [INFO] Sim second: 4, Link id: 6, trafficPerc: 30
+2024-02-03 19:37:39,836 [INFO] Sim second: 5, Link id: 1, trafficPerc: 10
+2024-02-03 19:37:39,837 [INFO] Sim second: 5, Link id: 2, trafficPerc: 20
+2024-02-03 19:37:39,839 [INFO] Sim second: 5, Link id: 3, trafficPerc: 30
+2024-02-03 19:37:39,839 [INFO] Sim second: 5, Link id: 4, trafficPerc: 0
+2024-02-03 19:37:39,840 [INFO] Sim second: 5, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:39,840 [INFO] Sim second: 5, Link id: 6, trafficPerc: 40
+2024-02-03 19:37:39,873 [INFO] Sim second: 6, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:39,874 [INFO] Sim second: 6, Link id: 2, trafficPerc: 30
+2024-02-03 19:37:39,874 [INFO] Sim second: 6, Link id: 3, trafficPerc: 40
+2024-02-03 19:37:39,875 [INFO] Sim second: 6, Link id: 4, trafficPerc: 0
+2024-02-03 19:37:39,875 [INFO] Sim second: 6, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:39,876 [INFO] Sim second: 6, Link id: 6, trafficPerc: 50
+2024-02-03 19:37:39,918 [INFO] Sim second: 7, Link id: 1, trafficPerc: 30
+2024-02-03 19:37:39,919 [INFO] Sim second: 7, Link id: 2, trafficPerc: 40
+2024-02-03 19:37:39,920 [INFO] Sim second: 7, Link id: 3, trafficPerc: 30
+2024-02-03 19:37:39,920 [INFO] Sim second: 7, Link id: 4, trafficPerc: 10
+2024-02-03 19:37:39,921 [INFO] Sim second: 7, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:39,922 [INFO] Sim second: 7, Link id: 6, trafficPerc: 40
+2024-02-03 19:37:39,968 [INFO] Sim second: 8, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:39,969 [INFO] Sim second: 8, Link id: 2, trafficPerc: 30
+2024-02-03 19:37:39,970 [INFO] Sim second: 8, Link id: 3, trafficPerc: 20
+2024-02-03 19:37:39,970 [INFO] Sim second: 8, Link id: 4, trafficPerc: 20
+2024-02-03 19:37:39,971 [INFO] Sim second: 8, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:39,971 [INFO] Sim second: 8, Link id: 6, trafficPerc: 30
+2024-02-03 19:37:40,011 [INFO] Sim second: 9, Link id: 1, trafficPerc: 30
+2024-02-03 19:37:40,011 [INFO] Sim second: 9, Link id: 2, trafficPerc: 40
+2024-02-03 19:37:40,012 [INFO] Sim second: 9, Link id: 3, trafficPerc: 30
+2024-02-03 19:37:40,012 [INFO] Sim second: 9, Link id: 4, trafficPerc: 10
+2024-02-03 19:37:40,013 [INFO] Sim second: 9, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:40,015 [INFO] Sim second: 9, Link id: 6, trafficPerc: 20
+2024-02-03 19:37:40,061 [INFO] Sim second: 10, Link id: 1, trafficPerc: 40
+2024-02-03 19:37:40,062 [INFO] Sim second: 10, Link id: 2, trafficPerc: 50
+2024-02-03 19:37:40,062 [INFO] Sim second: 10, Link id: 3, trafficPerc: 20
+2024-02-03 19:37:40,063 [INFO] Sim second: 10, Link id: 4, trafficPerc: 20
+2024-02-03 19:37:40,063 [INFO] Sim second: 10, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:40,064 [INFO] Sim second: 10, Link id: 6, trafficPerc: 30
+2024-02-03 19:37:40,121 [INFO] Sim second: 11, Link id: 1, trafficPerc: 50
+2024-02-03 19:37:40,122 [INFO] Sim second: 11, Link id: 2, trafficPerc: 60
+2024-02-03 19:37:40,123 [INFO] Sim second: 11, Link id: 3, trafficPerc: 30
+2024-02-03 19:37:40,123 [INFO] Sim second: 11, Link id: 4, trafficPerc: 10
+2024-02-03 19:37:40,124 [INFO] Sim second: 11, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:40,125 [INFO] Sim second: 11, Link id: 6, trafficPerc: 20
+2024-02-03 19:37:40,172 [INFO] Sim second: 12, Link id: 1, trafficPerc: 40
+2024-02-03 19:37:40,173 [INFO] Sim second: 12, Link id: 2, trafficPerc: 50
+2024-02-03 19:37:40,174 [INFO] Sim second: 12, Link id: 3, trafficPerc: 40
+2024-02-03 19:37:40,175 [INFO] Sim second: 12, Link id: 4, trafficPerc: 20
+2024-02-03 19:37:40,175 [INFO] Sim second: 12, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:40,176 [INFO] Sim second: 12, Link id: 6, trafficPerc: 10
+2024-02-03 19:37:40,228 [INFO] Sim second: 13, Link id: 1, trafficPerc: 30
+2024-02-03 19:37:40,229 [INFO] Sim second: 13, Link id: 2, trafficPerc: 60
+2024-02-03 19:37:40,229 [INFO] Sim second: 13, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:40,230 [INFO] Sim second: 13, Link id: 4, trafficPerc: 30
+2024-02-03 19:37:40,231 [INFO] Sim second: 13, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:40,232 [INFO] Sim second: 13, Link id: 6, trafficPerc: 0
+2024-02-03 19:37:40,289 [INFO] Sim second: 14, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:40,290 [INFO] Sim second: 14, Link id: 2, trafficPerc: 50
+2024-02-03 19:37:40,290 [INFO] Sim second: 14, Link id: 3, trafficPerc: 40
+2024-02-03 19:37:40,291 [INFO] Sim second: 14, Link id: 4, trafficPerc: 40
+2024-02-03 19:37:40,292 [INFO] Sim second: 14, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:40,293 [INFO] Sim second: 14, Link id: 6, trafficPerc: 10
+2024-02-03 19:37:40,336 [INFO] Sim second: 15, Link id: 1, trafficPerc: 30
+2024-02-03 19:37:40,338 [INFO] Sim second: 15, Link id: 2, trafficPerc: 60
+2024-02-03 19:37:40,339 [INFO] Sim second: 15, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:40,341 [INFO] Sim second: 15, Link id: 4, trafficPerc: 30
+2024-02-03 19:37:40,341 [INFO] Sim second: 15, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:40,342 [INFO] Sim second: 15, Link id: 6, trafficPerc: 20
+2024-02-03 19:37:40,389 [INFO] Sim second: 16, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:40,390 [INFO] Sim second: 16, Link id: 2, trafficPerc: 50
+2024-02-03 19:37:40,392 [INFO] Sim second: 16, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:40,393 [INFO] Sim second: 16, Link id: 4, trafficPerc: 40
+2024-02-03 19:37:40,396 [INFO] Sim second: 16, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:40,397 [INFO] Sim second: 16, Link id: 6, trafficPerc: 10
+2024-02-03 19:37:40,432 [INFO] Sim second: 17, Link id: 1, trafficPerc: 30
+2024-02-03 19:37:40,433 [INFO] Sim second: 17, Link id: 2, trafficPerc: 60
+2024-02-03 19:37:40,433 [INFO] Sim second: 17, Link id: 3, trafficPerc: 70
+2024-02-03 19:37:40,433 [INFO] Sim second: 17, Link id: 4, trafficPerc: 30
+2024-02-03 19:37:40,434 [INFO] Sim second: 17, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:40,434 [INFO] Sim second: 17, Link id: 6, trafficPerc: 0
+2024-02-03 19:37:40,477 [INFO] Sim second: 18, Link id: 1, trafficPerc: 40
+2024-02-03 19:37:40,478 [INFO] Sim second: 18, Link id: 2, trafficPerc: 50
+2024-02-03 19:37:40,479 [INFO] Sim second: 18, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:40,479 [INFO] Sim second: 18, Link id: 4, trafficPerc: 40
+2024-02-03 19:37:40,480 [INFO] Sim second: 18, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:40,480 [INFO] Sim second: 18, Link id: 6, trafficPerc: 10
+2024-02-03 19:37:40,520 [INFO] Sim second: 19, Link id: 1, trafficPerc: 50
+2024-02-03 19:37:40,521 [INFO] Sim second: 19, Link id: 2, trafficPerc: 60
+2024-02-03 19:37:40,521 [INFO] Sim second: 19, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:40,522 [INFO] Sim second: 19, Link id: 4, trafficPerc: 50
+2024-02-03 19:37:40,523 [INFO] Sim second: 19, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:40,524 [INFO] Sim second: 19, Link id: 6, trafficPerc: 0
+2024-02-03 19:37:40,572 [INFO] Sim second: 20, Link id: 1, trafficPerc: 40
+2024-02-03 19:37:40,572 [INFO] Sim second: 20, Link id: 2, trafficPerc: 50
+2024-02-03 19:37:40,573 [INFO] Sim second: 20, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:40,574 [INFO] Sim second: 20, Link id: 4, trafficPerc: 60
+2024-02-03 19:37:40,575 [INFO] Sim second: 20, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:40,575 [INFO] Sim second: 20, Link id: 6, trafficPerc: 0
+2024-02-03 19:37:40,617 [INFO] Sim second: 21, Link id: 1, trafficPerc: 50
+2024-02-03 19:37:40,617 [INFO] Sim second: 21, Link id: 2, trafficPerc: 40
+2024-02-03 19:37:40,619 [INFO] Sim second: 21, Link id: 3, trafficPerc: 70
+2024-02-03 19:37:40,619 [INFO] Sim second: 21, Link id: 4, trafficPerc: 70
+2024-02-03 19:37:40,619 [INFO] Sim second: 21, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:40,619 [INFO] Sim second: 21, Link id: 6, trafficPerc: 10
+2024-02-03 19:37:40,666 [INFO] Sim second: 22, Link id: 1, trafficPerc: 60
+2024-02-03 19:37:40,666 [INFO] Sim second: 22, Link id: 2, trafficPerc: 30
+2024-02-03 19:37:40,667 [INFO] Sim second: 22, Link id: 3, trafficPerc: 80
+2024-02-03 19:37:40,667 [INFO] Sim second: 22, Link id: 4, trafficPerc: 60
+2024-02-03 19:37:40,667 [INFO] Sim second: 22, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:40,668 [INFO] Sim second: 22, Link id: 6, trafficPerc: 0
+2024-02-03 19:37:40,735 [INFO] Sim second: 23, Link id: 1, trafficPerc: 50
+2024-02-03 19:37:40,735 [INFO] Sim second: 23, Link id: 2, trafficPerc: 20
+2024-02-03 19:37:40,736 [INFO] Sim second: 23, Link id: 3, trafficPerc: 70
+2024-02-03 19:37:40,736 [INFO] Sim second: 23, Link id: 4, trafficPerc: 50
+2024-02-03 19:37:40,737 [INFO] Sim second: 23, Link id: 5, trafficPerc: 30
+2024-02-03 19:37:40,737 [INFO] Sim second: 23, Link id: 6, trafficPerc: 10
+2024-02-03 19:37:40,781 [INFO] Sim second: 24, Link id: 1, trafficPerc: 60
+2024-02-03 19:37:40,782 [INFO] Sim second: 24, Link id: 2, trafficPerc: 30
+2024-02-03 19:37:40,782 [INFO] Sim second: 24, Link id: 3, trafficPerc: 80
+2024-02-03 19:37:40,782 [INFO] Sim second: 24, Link id: 4, trafficPerc: 60
+2024-02-03 19:37:40,783 [INFO] Sim second: 24, Link id: 5, trafficPerc: 40
+2024-02-03 19:37:40,783 [INFO] Sim second: 24, Link id: 6, trafficPerc: 20
+2024-02-03 19:37:40,844 [INFO] Sim second: 25, Link id: 1, trafficPerc: 50
+2024-02-03 19:37:40,845 [INFO] Sim second: 25, Link id: 2, trafficPerc: 20
+2024-02-03 19:37:40,845 [INFO] Sim second: 25, Link id: 3, trafficPerc: 90
+2024-02-03 19:37:40,846 [INFO] Sim second: 25, Link id: 4, trafficPerc: 50
+2024-02-03 19:37:40,846 [INFO] Sim second: 25, Link id: 5, trafficPerc: 50
+2024-02-03 19:37:40,846 [INFO] Sim second: 25, Link id: 6, trafficPerc: 30
+2024-02-03 19:37:40,902 [INFO] Sim second: 26, Link id: 1, trafficPerc: 40
+2024-02-03 19:37:40,902 [INFO] Sim second: 26, Link id: 2, trafficPerc: 10
+2024-02-03 19:37:40,903 [INFO] Sim second: 26, Link id: 3, trafficPerc: 100
+2024-02-03 19:37:40,903 [INFO] Sim second: 26, Link id: 4, trafficPerc: 40
+2024-02-03 19:37:40,904 [INFO] Sim second: 26, Link id: 5, trafficPerc: 40
+2024-02-03 19:37:40,904 [INFO] Sim second: 26, Link id: 6, trafficPerc: 40
+2024-02-03 19:37:40,953 [INFO] Sim second: 27, Link id: 1, trafficPerc: 30
+2024-02-03 19:37:40,954 [INFO] Sim second: 27, Link id: 2, trafficPerc: 0
+2024-02-03 19:37:40,955 [INFO] Sim second: 27, Link id: 3, trafficPerc: 90
+2024-02-03 19:37:40,956 [INFO] Sim second: 27, Link id: 4, trafficPerc: 50
+2024-02-03 19:37:40,957 [INFO] Sim second: 27, Link id: 5, trafficPerc: 30
+2024-02-03 19:37:40,958 [INFO] Sim second: 27, Link id: 6, trafficPerc: 30
+2024-02-03 19:37:41,008 [INFO] Sim second: 28, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:41,009 [INFO] Sim second: 28, Link id: 2, trafficPerc: 0
+2024-02-03 19:37:41,009 [INFO] Sim second: 28, Link id: 3, trafficPerc: 80
+2024-02-03 19:37:41,010 [INFO] Sim second: 28, Link id: 4, trafficPerc: 40
+2024-02-03 19:37:41,010 [INFO] Sim second: 28, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:41,011 [INFO] Sim second: 28, Link id: 6, trafficPerc: 40
+2024-02-03 19:37:41,050 [INFO] Sim second: 29, Link id: 1, trafficPerc: 10
+2024-02-03 19:37:41,050 [INFO] Sim second: 29, Link id: 2, trafficPerc: 0
+2024-02-03 19:37:41,051 [INFO] Sim second: 29, Link id: 3, trafficPerc: 70
+2024-02-03 19:37:41,052 [INFO] Sim second: 29, Link id: 4, trafficPerc: 30
+2024-02-03 19:37:41,052 [INFO] Sim second: 29, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:41,053 [INFO] Sim second: 29, Link id: 6, trafficPerc: 50
+2024-02-03 19:37:41,084 [INFO] Sim second: 30, Link id: 1, trafficPerc: 0
+2024-02-03 19:37:41,085 [INFO] Sim second: 30, Link id: 2, trafficPerc: 10
+2024-02-03 19:37:41,085 [INFO] Sim second: 30, Link id: 3, trafficPerc: 80
+2024-02-03 19:37:41,086 [INFO] Sim second: 30, Link id: 4, trafficPerc: 40
+2024-02-03 19:37:41,087 [INFO] Sim second: 30, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:41,087 [INFO] Sim second: 30, Link id: 6, trafficPerc: 60
+2024-02-03 19:37:41,140 [INFO] Sim second: 31, Link id: 1, trafficPerc: 10
+2024-02-03 19:37:41,141 [INFO] Sim second: 31, Link id: 2, trafficPerc: 0
+2024-02-03 19:37:41,141 [INFO] Sim second: 31, Link id: 3, trafficPerc: 70
+2024-02-03 19:37:41,142 [INFO] Sim second: 31, Link id: 4, trafficPerc: 50
+2024-02-03 19:37:41,143 [INFO] Sim second: 31, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:41,143 [INFO] Sim second: 31, Link id: 6, trafficPerc: 70
+2024-02-03 19:37:41,185 [INFO] Sim second: 32, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:41,186 [INFO] Sim second: 32, Link id: 2, trafficPerc: 10
+2024-02-03 19:37:41,186 [INFO] Sim second: 32, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:41,187 [INFO] Sim second: 32, Link id: 4, trafficPerc: 40
+2024-02-03 19:37:41,188 [INFO] Sim second: 32, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:41,189 [INFO] Sim second: 32, Link id: 6, trafficPerc: 60
+2024-02-03 19:37:41,224 [INFO] Sim second: 33, Link id: 1, trafficPerc: 10
+2024-02-03 19:37:41,225 [INFO] Sim second: 33, Link id: 2, trafficPerc: 0
+2024-02-03 19:37:41,225 [INFO] Sim second: 33, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:41,226 [INFO] Sim second: 33, Link id: 4, trafficPerc: 30
+2024-02-03 19:37:41,226 [INFO] Sim second: 33, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:41,227 [INFO] Sim second: 33, Link id: 6, trafficPerc: 50
+2024-02-03 19:37:41,256 [INFO] Sim second: 34, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:41,256 [INFO] Sim second: 34, Link id: 2, trafficPerc: 0
+2024-02-03 19:37:41,257 [INFO] Sim second: 34, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:41,258 [INFO] Sim second: 34, Link id: 4, trafficPerc: 20
+2024-02-03 19:37:41,258 [INFO] Sim second: 34, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:41,259 [INFO] Sim second: 34, Link id: 6, trafficPerc: 60
+2024-02-03 19:37:41,294 [INFO] Sim second: 35, Link id: 1, trafficPerc: 30
+2024-02-03 19:37:41,294 [INFO] Sim second: 35, Link id: 2, trafficPerc: 10
+2024-02-03 19:37:41,295 [INFO] Sim second: 35, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:41,295 [INFO] Sim second: 35, Link id: 4, trafficPerc: 30
+2024-02-03 19:37:41,296 [INFO] Sim second: 35, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:41,296 [INFO] Sim second: 35, Link id: 6, trafficPerc: 70
+2024-02-03 19:37:41,338 [INFO] Sim second: 36, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:41,339 [INFO] Sim second: 36, Link id: 2, trafficPerc: 20
+2024-02-03 19:37:41,340 [INFO] Sim second: 36, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:41,340 [INFO] Sim second: 36, Link id: 4, trafficPerc: 40
+2024-02-03 19:37:41,341 [INFO] Sim second: 36, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:41,341 [INFO] Sim second: 36, Link id: 6, trafficPerc: 60
+2024-02-03 19:37:41,382 [INFO] Sim second: 37, Link id: 1, trafficPerc: 30
+2024-02-03 19:37:41,383 [INFO] Sim second: 37, Link id: 2, trafficPerc: 30
+2024-02-03 19:37:41,384 [INFO] Sim second: 37, Link id: 3, trafficPerc: 70
+2024-02-03 19:37:41,385 [INFO] Sim second: 37, Link id: 4, trafficPerc: 50
+2024-02-03 19:37:41,385 [INFO] Sim second: 37, Link id: 5, trafficPerc: 30
+2024-02-03 19:37:41,386 [INFO] Sim second: 37, Link id: 6, trafficPerc: 70
+2024-02-03 19:37:41,444 [INFO] Sim second: 38, Link id: 1, trafficPerc: 40
+2024-02-03 19:37:41,445 [INFO] Sim second: 38, Link id: 2, trafficPerc: 40
+2024-02-03 19:37:41,445 [INFO] Sim second: 38, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:41,446 [INFO] Sim second: 38, Link id: 4, trafficPerc: 40
+2024-02-03 19:37:41,446 [INFO] Sim second: 38, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:41,446 [INFO] Sim second: 38, Link id: 6, trafficPerc: 80
+2024-02-03 19:37:41,502 [INFO] Sim second: 39, Link id: 1, trafficPerc: 50
+2024-02-03 19:37:41,503 [INFO] Sim second: 39, Link id: 2, trafficPerc: 50
+2024-02-03 19:37:41,503 [INFO] Sim second: 39, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:41,504 [INFO] Sim second: 39, Link id: 4, trafficPerc: 30
+2024-02-03 19:37:41,504 [INFO] Sim second: 39, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:41,505 [INFO] Sim second: 39, Link id: 6, trafficPerc: 70
+2024-02-03 19:37:41,555 [INFO] Sim second: 40, Link id: 1, trafficPerc: 40
+2024-02-03 19:37:41,556 [INFO] Sim second: 40, Link id: 2, trafficPerc: 60
+2024-02-03 19:37:41,557 [INFO] Sim second: 40, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:41,558 [INFO] Sim second: 40, Link id: 4, trafficPerc: 40
+2024-02-03 19:37:41,559 [INFO] Sim second: 40, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:41,560 [INFO] Sim second: 40, Link id: 6, trafficPerc: 60
+2024-02-03 19:37:41,611 [INFO] Sim second: 41, Link id: 1, trafficPerc: 50
+2024-02-03 19:37:41,612 [INFO] Sim second: 41, Link id: 2, trafficPerc: 70
+2024-02-03 19:37:41,612 [INFO] Sim second: 41, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:41,613 [INFO] Sim second: 41, Link id: 4, trafficPerc: 50
+2024-02-03 19:37:41,613 [INFO] Sim second: 41, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:41,613 [INFO] Sim second: 41, Link id: 6, trafficPerc: 70
+2024-02-03 19:37:41,666 [INFO] Sim second: 42, Link id: 1, trafficPerc: 40
+2024-02-03 19:37:41,667 [INFO] Sim second: 42, Link id: 2, trafficPerc: 60
+2024-02-03 19:37:41,667 [INFO] Sim second: 42, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:41,668 [INFO] Sim second: 42, Link id: 4, trafficPerc: 60
+2024-02-03 19:37:41,669 [INFO] Sim second: 42, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:41,670 [INFO] Sim second: 42, Link id: 6, trafficPerc: 60
+2024-02-03 19:37:41,748 [INFO] Sim second: 43, Link id: 1, trafficPerc: 30
+2024-02-03 19:37:41,748 [INFO] Sim second: 43, Link id: 2, trafficPerc: 50
+2024-02-03 19:37:41,749 [INFO] Sim second: 43, Link id: 3, trafficPerc: 70
+2024-02-03 19:37:41,749 [INFO] Sim second: 43, Link id: 4, trafficPerc: 50
+2024-02-03 19:37:41,749 [INFO] Sim second: 43, Link id: 5, trafficPerc: 30
+2024-02-03 19:37:41,750 [INFO] Sim second: 43, Link id: 6, trafficPerc: 50
+2024-02-03 19:37:41,800 [INFO] Sim second: 44, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:41,801 [INFO] Sim second: 44, Link id: 2, trafficPerc: 60
+2024-02-03 19:37:41,802 [INFO] Sim second: 44, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:41,807 [INFO] Sim second: 44, Link id: 4, trafficPerc: 60
+2024-02-03 19:37:41,808 [INFO] Sim second: 44, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:41,809 [INFO] Sim second: 44, Link id: 6, trafficPerc: 40
+2024-02-03 19:37:41,862 [INFO] Sim second: 45, Link id: 1, trafficPerc: 10
+2024-02-03 19:37:41,863 [INFO] Sim second: 45, Link id: 2, trafficPerc: 70
+2024-02-03 19:37:41,864 [INFO] Sim second: 45, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:41,865 [INFO] Sim second: 45, Link id: 4, trafficPerc: 50
+2024-02-03 19:37:41,866 [INFO] Sim second: 45, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:41,867 [INFO] Sim second: 45, Link id: 6, trafficPerc: 50
+2024-02-03 19:37:41,916 [INFO] Sim second: 46, Link id: 1, trafficPerc: 0
+2024-02-03 19:37:41,917 [INFO] Sim second: 46, Link id: 2, trafficPerc: 80
+2024-02-03 19:37:41,917 [INFO] Sim second: 46, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:41,918 [INFO] Sim second: 46, Link id: 4, trafficPerc: 60
+2024-02-03 19:37:41,919 [INFO] Sim second: 46, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:41,919 [INFO] Sim second: 46, Link id: 6, trafficPerc: 40
+2024-02-03 19:37:41,962 [INFO] Sim second: 47, Link id: 1, trafficPerc: 0
+2024-02-03 19:37:41,963 [INFO] Sim second: 47, Link id: 2, trafficPerc: 70
+2024-02-03 19:37:41,963 [INFO] Sim second: 47, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:41,963 [INFO] Sim second: 47, Link id: 4, trafficPerc: 70
+2024-02-03 19:37:41,964 [INFO] Sim second: 47, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:41,964 [INFO] Sim second: 47, Link id: 6, trafficPerc: 50
+2024-02-03 19:37:42,010 [INFO] Sim second: 48, Link id: 1, trafficPerc: 0
+2024-02-03 19:37:42,011 [INFO] Sim second: 48, Link id: 2, trafficPerc: 80
+2024-02-03 19:37:42,012 [INFO] Sim second: 48, Link id: 3, trafficPerc: 40
+2024-02-03 19:37:42,012 [INFO] Sim second: 48, Link id: 4, trafficPerc: 60
+2024-02-03 19:37:42,013 [INFO] Sim second: 48, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:42,013 [INFO] Sim second: 48, Link id: 6, trafficPerc: 40
+2024-02-03 19:37:42,061 [INFO] Sim second: 49, Link id: 1, trafficPerc: 0
+2024-02-03 19:37:42,062 [INFO] Sim second: 49, Link id: 2, trafficPerc: 90
+2024-02-03 19:37:42,062 [INFO] Sim second: 49, Link id: 3, trafficPerc: 30
+2024-02-03 19:37:42,063 [INFO] Sim second: 49, Link id: 4, trafficPerc: 50
+2024-02-03 19:37:42,063 [INFO] Sim second: 49, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:42,063 [INFO] Sim second: 49, Link id: 6, trafficPerc: 30
+2024-02-03 19:37:42,100 [INFO] Sim second: 50, Link id: 1, trafficPerc: 0
+2024-02-03 19:37:42,100 [INFO] Sim second: 50, Link id: 2, trafficPerc: 100
+2024-02-03 19:37:42,101 [INFO] Sim second: 50, Link id: 3, trafficPerc: 40
+2024-02-03 19:37:42,101 [INFO] Sim second: 50, Link id: 4, trafficPerc: 60
+2024-02-03 19:37:42,102 [INFO] Sim second: 50, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:42,103 [INFO] Sim second: 50, Link id: 6, trafficPerc: 20
+2024-02-03 19:37:42,147 [INFO] Sim second: 51, Link id: 1, trafficPerc: 0
+2024-02-03 19:37:42,148 [INFO] Sim second: 51, Link id: 2, trafficPerc: 100
+2024-02-03 19:37:42,148 [INFO] Sim second: 51, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:42,148 [INFO] Sim second: 51, Link id: 4, trafficPerc: 70
+2024-02-03 19:37:42,149 [INFO] Sim second: 51, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:42,149 [INFO] Sim second: 51, Link id: 6, trafficPerc: 30
+2024-02-03 19:37:42,208 [INFO] Sim second: 52, Link id: 1, trafficPerc: 10
+2024-02-03 19:37:42,209 [INFO] Sim second: 52, Link id: 2, trafficPerc: 100
+2024-02-03 19:37:42,210 [INFO] Sim second: 52, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:42,210 [INFO] Sim second: 52, Link id: 4, trafficPerc: 60
+2024-02-03 19:37:42,210 [INFO] Sim second: 52, Link id: 5, trafficPerc: 0
+2024-02-03 19:37:42,211 [INFO] Sim second: 52, Link id: 6, trafficPerc: 20
+2024-02-03 19:37:42,256 [INFO] Sim second: 53, Link id: 1, trafficPerc: 20
+2024-02-03 19:37:42,257 [INFO] Sim second: 53, Link id: 2, trafficPerc: 90
+2024-02-03 19:37:42,257 [INFO] Sim second: 53, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:42,258 [INFO] Sim second: 53, Link id: 4, trafficPerc: 70
+2024-02-03 19:37:42,258 [INFO] Sim second: 53, Link id: 5, trafficPerc: 10
+2024-02-03 19:37:42,259 [INFO] Sim second: 53, Link id: 6, trafficPerc: 10
+2024-02-03 19:37:42,306 [INFO] Sim second: 54, Link id: 1, trafficPerc: 30
+2024-02-03 19:37:42,307 [INFO] Sim second: 54, Link id: 2, trafficPerc: 80
+2024-02-03 19:37:42,307 [INFO] Sim second: 54, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:42,308 [INFO] Sim second: 54, Link id: 4, trafficPerc: 80
+2024-02-03 19:37:42,308 [INFO] Sim second: 54, Link id: 5, trafficPerc: 20
+2024-02-03 19:37:42,309 [INFO] Sim second: 54, Link id: 6, trafficPerc: 0
+2024-02-03 19:37:42,367 [INFO] Sim second: 55, Link id: 1, trafficPerc: 40
+2024-02-03 19:37:42,367 [INFO] Sim second: 55, Link id: 2, trafficPerc: 70
+2024-02-03 19:37:42,368 [INFO] Sim second: 55, Link id: 3, trafficPerc: 70
+2024-02-03 19:37:42,368 [INFO] Sim second: 55, Link id: 4, trafficPerc: 90
+2024-02-03 19:37:42,369 [INFO] Sim second: 55, Link id: 5, trafficPerc: 30
+2024-02-03 19:37:42,369 [INFO] Sim second: 55, Link id: 6, trafficPerc: 0
+2024-02-03 19:37:42,428 [INFO] Sim second: 56, Link id: 1, trafficPerc: 50
+2024-02-03 19:37:42,429 [INFO] Sim second: 56, Link id: 2, trafficPerc: 80
+2024-02-03 19:37:42,430 [INFO] Sim second: 56, Link id: 3, trafficPerc: 80
+2024-02-03 19:37:42,431 [INFO] Sim second: 56, Link id: 4, trafficPerc: 100
+2024-02-03 19:37:42,431 [INFO] Sim second: 56, Link id: 5, trafficPerc: 40
+2024-02-03 19:37:42,432 [INFO] Sim second: 56, Link id: 6, trafficPerc: 0
+2024-02-03 19:37:42,504 [INFO] Sim second: 57, Link id: 1, trafficPerc: 60
+2024-02-03 19:37:42,505 [INFO] Sim second: 57, Link id: 2, trafficPerc: 70
+2024-02-03 19:37:42,506 [INFO] Sim second: 57, Link id: 3, trafficPerc: 70
+2024-02-03 19:37:42,506 [INFO] Sim second: 57, Link id: 4, trafficPerc: 90
+2024-02-03 19:37:42,506 [INFO] Sim second: 57, Link id: 5, trafficPerc: 50
+2024-02-03 19:37:42,507 [INFO] Sim second: 57, Link id: 6, trafficPerc: 0
+2024-02-03 19:37:42,569 [INFO] Sim second: 58, Link id: 1, trafficPerc: 70
+2024-02-03 19:37:42,570 [INFO] Sim second: 58, Link id: 2, trafficPerc: 60
+2024-02-03 19:37:42,570 [INFO] Sim second: 58, Link id: 3, trafficPerc: 60
+2024-02-03 19:37:42,571 [INFO] Sim second: 58, Link id: 4, trafficPerc: 80
+2024-02-03 19:37:42,572 [INFO] Sim second: 58, Link id: 5, trafficPerc: 60
+2024-02-03 19:37:42,572 [INFO] Sim second: 58, Link id: 6, trafficPerc: 10
+2024-02-03 19:37:42,649 [INFO] Sim second: 59, Link id: 1, trafficPerc: 80
+2024-02-03 19:37:42,649 [INFO] Sim second: 59, Link id: 2, trafficPerc: 70
+2024-02-03 19:37:42,650 [INFO] Sim second: 59, Link id: 3, trafficPerc: 50
+2024-02-03 19:37:42,651 [INFO] Sim second: 59, Link id: 4, trafficPerc: 70
+2024-02-03 19:37:42,651 [INFO] Sim second: 59, Link id: 5, trafficPerc: 70
+2024-02-03 19:37:42,652 [INFO] Sim second: 59, Link id: 6, trafficPerc: 20
+2024-02-03 19:37:42,718 [INFO] Creating packets.yaml file..
+2024-02-03 19:43:51,213 [INFO] ..packet file creation done!
+2024-02-03 19:43:51,214 [INFO] Creating network.yaml file..
+2024-02-03 19:43:51,227 [INFO] ..network.yaml file creation done!

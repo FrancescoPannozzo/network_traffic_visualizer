@@ -44,3 +44,22 @@ linksTemp[frozenset({"switch3", "switch1"})]["key1"] = 100
 
 print(linksTemp[frozenset({"switch3", "switch1"})]["key1"])
 
+print("-----")
+seasons = ["Spring", "Summer", "Fall", "Winter"]
+
+for i, season in enumerate(seasons):
+    print(i, season)
+
+print("-----")
+
+ORCHESTRA = {
+    "violin": {"feature":"strings", 
+               "sound":"fiiiii"},
+    "gong": {"feature":"strings",
+                "sound":"GONG"}
+}
+
+
+for instrument, features in ORCHESTRA.items():
+    fii = features["sound"]
+    print(f"{instrument}: {fii}")
