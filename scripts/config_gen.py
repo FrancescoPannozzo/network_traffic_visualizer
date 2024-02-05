@@ -32,16 +32,12 @@ switchNumber = inputParameters.switchNumber
 linkCap = inputParameters.linkCap
 
 # Defining the simulation start time point
-startTime = datetime(2024, 1, 1, 0, 0, 0)
-
+START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 # Defining the simulation time in seconds
 SIM_TIME = 60
 # Defining the pps creation rate delta time (milliseconds)
 PPS_DELTA = 100
 ppsInterval = timedelta(milliseconds=PPS_DELTA)
-# Defining the traffic percentage variation, delta time (seconds)
-TRAFFIC_PERC_DELTA = 1
-trafficPercInterval = timedelta(seconds=TRAFFIC_PERC_DELTA)
 
 # The arcs representing the links connecting the switches (nodes)
 links = []
@@ -75,10 +71,10 @@ PACKET_SIZE = 1518
 pps = int(((linkCap * 1e6) / 8) / PACKET_SIZE)
 logging.info("Packets per second: %d ", pps)
 # The packets creation index time
-timeWalker = startTime
-# The time interval unit for packets creation, we'll create packets
-# "creationTime times" in "TRAFFIC_PERC_DELTA seconds"
-creationRate = int(timedelta(seconds=TRAFFIC_PERC_DELTA)/timedelta(milliseconds=PPS_DELTA))
+timeWalker = START_TIME
+# creationRate is the fractional time units value in one second
+# example: 10 fractional time units for 100ms in 1 second
+creationRate = int(timedelta(seconds=1)/timedelta(milliseconds=PPS_DELTA))
 # Defining the list containing all the packets generated
 packets = []
 
@@ -120,11 +116,11 @@ IP_LAST_SECT = 1
 # File structure composed by a links list and a switches list
 # networkData = [[links list],[switches list]]
 logging.info("Creating network.yaml file..")
-networkData = [[],[]]
+networkData = [[],[],{}]
 LINK_INDEX = 0
 SWITCH_INDEX = 1
+SIM_PARAMETERS = 2
 
-# filling the links list:
 for link in links:
     networkData[LINK_INDEX].append({"endpoints": link.endpoints,
                                     "capacity": link.capacity})
@@ -134,6 +130,12 @@ for link in links:
       "address": f"{IP_ADDRESS}{IP_LAST_SECT}"
     })
     IP_LAST_SECT += 1
+
+networkData[SIM_PARAMETERS] = {
+    "simTime": SIM_TIME,
+    "startSimTime": START_TIME,
+    "ppsDelta": PPS_DELTA
+}
 
 with open('../network.yaml', 'w', encoding="utf-8") as file:
     yaml.dump(networkData, file)

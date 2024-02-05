@@ -1,36 +1,9 @@
-- - capacity: 100
+- - capacity: 10
     endpoints:
     - switch1
     - switch2
-  - capacity: 100
-    endpoints:
-    - switch1
-    - switch3
-  - capacity: 100
-    endpoints:
-    - switch1
-    - switch4
-  - capacity: 100
-    endpoints:
-    - switch2
-    - switch3
-  - capacity: 100
-    endpoints:
-    - switch2
-    - switch4
-  - capacity: 100
-    endpoints:
-    - switch3
-    - switch4
 - - address: 123.123.123.1
-    switchName: switch4
-  - address: 123.123.123.2
-    switchName: switch4
-  - address: 123.123.123.3
-    switchName: switch4
-  - address: 123.123.123.4
-    switchName: switch4
-  - address: 123.123.123.5
-    switchName: switch4
-  - address: 123.123.123.6
-    switchName: switch4
+    switchName: switch2
+- ppsDelta: 100
+  simTime: 60
+  startSimTime: 2024-01-01 00:00:00

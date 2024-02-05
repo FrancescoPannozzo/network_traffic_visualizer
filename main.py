@@ -34,6 +34,7 @@ links = {}
 switches = []
 LINK_INDEX = 0
 SWITCH_INDEX = 1
+SIM_PARAMETERS = 2
 
 logging.info("Analyzing files..")
 
@@ -47,9 +48,16 @@ logging.info("Analyzing files..")
 FIRST_ENDPOINT = 0
 SECOND_ENDPOINT = 1
 for link in networkData[LINK_INDEX]:
-    links[frozenset({link["endpoints"][FIRST_ENDPOINT],link["endpoints"][SECOND_ENDPOINT]})] = {"capacity": link["capacity"], "trafficDT":0, "trafficUDT":0, "updateDeltaTraffic": [], "traffic": []}
+    links[frozenset({link["endpoints"][FIRST_ENDPOINT], link["endpoints"][SECOND_ENDPOINT]})] = {
+        "capacity": link["capacity"], 
+        "trafficDT":0, 
+        "trafficUDT":0, 
+        "updateDeltaTraffic": [], 
+        "traffic": []
+        }
 
 logging.debug(links)
+logging.debug(networkData[SIM_PARAMETERS])
 
 # Extracting switches data
 for s in networkData[SWITCH_INDEX]:
@@ -61,12 +69,12 @@ for i in networkData:
 
 # Range times parameters (must be equal to parameters used in configGen.py script)
 # Update average time in milliseconds
-updateDelta = timedelta(milliseconds=100)
+updateDelta = timedelta(milliseconds=networkData[SIM_PARAMETERS]["ppsDelta"])
 # The considered average time in seconds
 averageDelta = timedelta(seconds=1)
 
 # Setting the starting time point, (must be equal to parameters used in configGen.py script)
-startTime = datetime(2024, 1, 1, 0, 0, 0)
+startTime = networkData[SIM_PARAMETERS]["startSimTime"]
 # The analyzed time
 timeWalker = startTime
 # Number of fractional units per averageDelta
@@ -81,7 +89,7 @@ iterator = iter(packetsData)
 
 # Defining the amount of simulation time in seconds (must be equal to the
 # simulation time value used in configGen.py script)
-simTime = timedelta(seconds=60)
+simTime = timedelta(seconds=networkData[SIM_PARAMETERS]["simTime"])
 
 # Taking fist packet to analyze
 packet = next(iterator, None)
@@ -110,33 +118,41 @@ while timeWalker <= startTime + (simTime - updateDelta):
     timeWalker += updateDelta
     # Storing the fractional time units values
     for link, content in links.items():
-        content["updateDeltaTraffic"].append({"updateTime": timeWalker, "traffic": content["trafficUDT"]})
+        content["updateDeltaTraffic"].append(
+            {"updateTime": timeWalker, "traffic": content["trafficUDT"]}
+        )
 
     # Storing the averageDelta units value
+    # If the averageDelta average is not the first one
     if timeWalker > startTime + averageDelta:
         for link, content in links.items():
-            content["trafficDT"] = content["trafficDT"] - content["updateDeltaTraffic"][ (len(content["updateDeltaTraffic"]) - 1) - lastFirstUDindex ]["traffic"]
+            # Calcolate the element index to subtract from `updateDeltaTraffic`
+            index = (len(content["updateDeltaTraffic"]) - 1) - lastFirstUDindex
+            # Traffic value to subtract from the averageTraffic
+            traffic_to_subtract = content["updateDeltaTraffic"][index]["traffic"]
+            content["trafficDT"] -= traffic_to_subtract
             content["traffic"].append({"updateTime": timeWalker, "traffic": content["trafficDT"]})
+    # Else if the averageDelta average is the first one
     elif timeWalker == startTime + averageDelta:
         for link, content in links.items():
             content["traffic"].append({"updateTime": timeWalker, "traffic": content["trafficDT"]})
 
-""" for key in links.keys():
-  logging.debug(f"link: {key}")
-  logging.debug("updateDeltaTraffic[]:")
-  for i in links[key]["updateDeltaTraffic"]:
-     logging.debug(i)
-  logging.debug("traffic[]:")
-  for i in links[key]["traffic"]:
-     logging.debug(i) """
+logging.debug("updateDeltaTraffic percetages:")
+for link, content in links.items():
+    logging.debug("link: %s", link)
+    logging.debug("updateDeltaTraffic[]:")
+    for i in content["updateDeltaTraffic"]:
+        logging.debug("updateTime: %s, packets sum: %d", i['updateTime'], i['traffic'])
 
 logging.debug("Traffic percetages:")
-for key in links.keys():
-  logging.debug(f"link: {key}")
-  logging.debug("traffic[] (percentage):")
-  for i in links[key]["traffic"]:
-     logging.debug(f"updateTime: {i['updateTime']}, percentage: {utils.getAverage(links[key]['capacity'], i['traffic'])}%")
+for link, content in links.items():
+    logging.debug("link: %s", link)
+    logging.debug("traffic[] (percentage):")
+    for i in content["traffic"]:
+        logging.debug(
+            "updateTime: %s, percentage: %f %%",
+            i['updateTime'],
+            utils.getAverage(content['capacity'], i['traffic'])
+        )
 
 logging.info("Done!")
-
-    
