@@ -52,7 +52,7 @@ for i in range(1, switchNumber + 1):
         if utils.inLinks(links, f"switch{i}", f"switch{p}"):
             continue
         links.append(Link(linkCap, [f"switch{i}", f"switch{p}"]))
-        
+
 logging.info("Links creation done!Links created are:")
 for l in links:
     logging.info(l)
@@ -69,8 +69,8 @@ logging.info("Creating packets file..")
 # Defining packets size (MB) 1518
 PACKET_SIZE = 4000
 # Packets Per Seconds
-pps = int(((linkCap * 1e6) / 8) / PACKET_SIZE)
-logging.info("Packets per second: %d ", pps)
+pps = ((linkCap * 1e6) / 8) / PACKET_SIZE
+logging.info("Packets per second: %f ", pps)
 # The packets creation index time
 timeWalker = START_TIME
 # creationRate is the fractional time units value in one second
@@ -90,7 +90,7 @@ for sec in range(0, SIM_TIME * creationRate):
 
     for l in links:
         trafficPerc = l.trafficPerc
-        for p in range(0, int(int((pps*trafficPerc)/100)/creationRate)):
+        for p in range(0, int((pps*(trafficPerc/100))/creationRate) ):
             sourceIndex = random.randint(0, 1)
             destIndex = 1 - sourceIndex
             packet = {"source": l.endpoints[sourceIndex],
