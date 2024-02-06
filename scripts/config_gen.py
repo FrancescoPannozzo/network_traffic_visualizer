@@ -52,6 +52,7 @@ for i in range(1, switchNumber + 1):
         if utils.inLinks(links, f"switch{i}", f"switch{p}"):
             continue
         links.append(Link(linkCap, [f"switch{i}", f"switch{p}"]))
+        
 logging.info("Links creation done!Links created are:")
 for l in links:
     logging.info(l)
@@ -66,7 +67,7 @@ for link in links:
 # proportionate to the percentage of traffic for each link
 logging.info("Creating packets file..")
 # Defining packets size (MB) 1518
-PACKET_SIZE = 1518
+PACKET_SIZE = 4000
 # Packets Per Seconds
 pps = int(((linkCap * 1e6) / 8) / PACKET_SIZE)
 logging.info("Packets per second: %d ", pps)
@@ -110,7 +111,7 @@ switches = []
 # First 3 address groups
 IP_ADDRESS = "123.123.123."
 # Last address group
-IP_LAST_SECT = 1
+ipLstSect = 1
 
 # Creating network.yaml file
 # File structure composed by a links list and a switches list
@@ -125,11 +126,12 @@ for link in links:
     networkData[LINK_INDEX].append({"endpoints": link.endpoints,
                                     "capacity": link.capacity})
 
+for i in range(1, switchNumber + 1):
     networkData[SWITCH_INDEX].append({
       "switchName": f"switch{i}",
-      "address": f"{IP_ADDRESS}{IP_LAST_SECT}"
+      "address": f"{IP_ADDRESS}{ipLstSect}"
     })
-    IP_LAST_SECT += 1
+    ipLstSect += 1
 
 networkData[SIM_PARAMETERS] = {
     "simTime": SIM_TIME,

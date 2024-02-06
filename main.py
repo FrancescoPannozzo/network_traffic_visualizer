@@ -1,7 +1,6 @@
 """ Core script """
 import argparse
 from datetime import timedelta
-from datetime import datetime
 import logging
 from network_traffic_visualizer import classes as obj
 from network_traffic_visualizer import utils
@@ -25,11 +24,11 @@ parser.add_argument("packetsFile", help="The packetsFile you want to load")
 args = parser.parse_args()
 
 logging.info("Loading files..")
-# Loading files
-networkData, packetsData = utils.fileLoader(args.networkFile, args.packetsFile)
+# networkData:composed by a link list, a switch list and network parameters
+# packetsData:composed by a packets list
+networkData, packetsData = utils.file_loader(args.networkFile, args.packetsFile)
 
-# Data loaded are "list of list of dictionaries" for both files
-
+# links is an auxiliary structure, needed to perform the simulation calculations
 links = {}
 switches = []
 LINK_INDEX = 0
@@ -55,16 +54,22 @@ for link in networkData[LINK_INDEX]:
         "updateDeltaTraffic": [], 
         "traffic": []
         }
+    
+# Showing links with own endpoints
+for index, (link, content) in enumerate(links.items(), start=1):
+    logging.info("Link %d:", index)
+    for endpoint in link:
+        logging.info(endpoint)
 
-logging.debug(links)
-logging.debug(networkData[SIM_PARAMETERS])
+logging.info("Simulation parameters:")
+logging.info(networkData[SIM_PARAMETERS])
 
 # Extracting switches data
 for s in networkData[SWITCH_INDEX]:
     switches.append(obj.Switch (s["switchName"], s["address"]))
 
-logging.info("Network data:")
-for i in networkData:
+logging.info("Switches:")
+for i in switches:
     logging.info(i)
 
 # Range times parameters (must be equal to parameters used in configGen.py script)
@@ -83,16 +88,15 @@ averageFractions = int(averageDelta / updateDelta)
 # starting from the last element of the list updateDeltaTraffic in the in the linksTemp
 # auxiliary structure
 lastFirstUDindex = averageFractions
-logging.info("lastFirstUDindex: %d", lastFirstUDindex)
 
-iterator = iter(packetsData)
+packetsDataIterator = iter(packetsData)
 
 # Defining the amount of simulation time in seconds (must be equal to the
 # simulation time value used in configGen.py script)
 simTime = timedelta(seconds=networkData[SIM_PARAMETERS]["simTime"])
 
-# Taking fist packet to analyze
-packet = next(iterator, None)
+# Taking first packet to analyze
+packet = next(packetsDataIterator, None)
 
 # Calculating averages
 # Every loop is an analyzed fractional unit
@@ -109,7 +113,7 @@ while timeWalker <= startTime + (simTime - updateDelta):
     while packet["timestamp"] >= timeWalker and packet["timestamp"] < timeWalker + updateDelta:
         link["trafficUDT"] += packet["dimension"]
         link["trafficDT"] += packet["dimension"]
-        packet = next(iterator, None)
+        packet = next(packetsDataIterator, None)
         if packet is not None:
             link = links[frozenset({packet["source"], packet["destination"]})]
         else:
@@ -137,22 +141,20 @@ while timeWalker <= startTime + (simTime - updateDelta):
         for link, content in links.items():
             content["traffic"].append({"updateTime": timeWalker, "traffic": content["trafficDT"]})
 
-logging.debug("updateDeltaTraffic percetages:")
+logging.debug("UpdateDeltaTraffic sums:")
 for link, content in links.items():
     logging.debug("link: %s", link)
-    logging.debug("updateDeltaTraffic[]:")
     for i in content["updateDeltaTraffic"]:
         logging.debug("updateTime: %s, packets sum: %d", i['updateTime'], i['traffic'])
 
 logging.debug("Traffic percetages:")
 for link, content in links.items():
     logging.debug("link: %s", link)
-    logging.debug("traffic[] (percentage):")
     for i in content["traffic"]:
         logging.debug(
             "updateTime: %s, percentage: %f %%",
             i['updateTime'],
-            utils.getAverage(content['capacity'], i['traffic'])
+            utils.get_average(content['capacity'], i['traffic'])
         )
 
 logging.info("Done!")

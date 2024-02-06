@@ -1,48 +1,25 @@
+"""Utils functions"""
+
 import os
 import yaml
 
-#load the .json configuration files
-def fileLoader(networkFileName, packetsFileName):
-  #Getting absolute path from the running software directory
-  current_folder = os.getcwd()
-  #Abs path plus filename
-  networkFilePath = current_folder + "\\" + networkFileName + ".yaml"
-  packetsFilePath = current_folder + "\\" + packetsFileName + ".yaml"
+def file_loader(network_file_name, packets_file_name):
+    """ load the .yaml configuration files """
+     #Getting absolute path from the running software directory
+    current_folder = os.getcwd()
+    #Abs path plus filename
+    network_file_path = current_folder + "\\" + network_file_name + ".yaml"
+    packets_file_path = current_folder + "\\" + packets_file_name + ".yaml"
 
-  # Open and parse the YAML file
-  with open(networkFilePath, "r") as networkFile:
-      networkData = yaml.safe_load(networkFile)
+    # Open and parse the YAML file
+    with open(network_file_path, "r", encoding="utf-8") as network_file:
+        network_data = yaml.safe_load(network_file)
 
-  with open(packetsFilePath, "r") as packetsFile:
-      packetsData = yaml.safe_load(packetsFile)
+    with open(packets_file_path, "r", encoding="utf-8") as packets_file:
+        packets_data = yaml.safe_load(packets_file)
 
-  return networkData, packetsData
+    return network_data, packets_data
 
-# Check if a link is already present in links list
-def inLinks(links, firstEndopoint, secondEndpoint):
-    for l in links:
-      if l.checkEndpoints(firstEndopoint, secondEndpoint):
-        return True
-    return False
-
-# Check and return a link, None if the link is not in links
-def getLink(links, firstEndopoint, secondEndpoint):
-    for l in links:
-      if l.checkEndpoints(firstEndopoint, secondEndpoint):
-         return l
-    return None
-      
-def getLinkById(links, linkId):
-   for link in links:
-    if link.linkId == linkId:
-       return link
-
-def getAverage(capacity, tempSum):
-   return (tempSum * 100) / ((capacity * 1e6) / 8)
-
-# Function for auxiliary linksTemp structure, return the dictionary linkTemp item 
-def getLinkTempById(linksTemp, linkId):
-    for linkTemp in linksTemp:
-      if linkId == linkTemp["linkId"]:
-         return linkTemp
-    return None
+def get_average(capacity, temp_sum):
+    """ calculate the percentage average """
+    return (temp_sum * 100) / ((capacity * 1e6) / 8)
