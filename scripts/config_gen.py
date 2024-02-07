@@ -35,7 +35,7 @@ linkCap = inputParameters.linkCap
 START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 # Defining the simulation time in seconds
 SIM_TIME = 60
-# Defining the pps creation rate delta time (milliseconds)
+# Defining the packets per second creation rate delta time (milliseconds)
 PPS_DELTA = 100
 ppsInterval = timedelta(milliseconds=PPS_DELTA)
 
@@ -135,8 +135,7 @@ for i in range(1, switchNumber + 1):
 
 networkData[SIM_PARAMETERS] = {
     "simTime": SIM_TIME,
-    "startSimTime": START_TIME,
-    "ppsDelta": PPS_DELTA
+    "startSimTime": START_TIME
 }
 
 with open('../network.yaml', 'w', encoding="utf-8") as file:

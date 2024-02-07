@@ -54,7 +54,7 @@ for link in networkData[LINK_INDEX]:
         "updateDeltaTraffic": [], 
         "traffic": []
         }
-    
+
 # Showing links with own endpoints
 for index, (link, content) in enumerate(links.items(), start=1):
     logging.info("Link %d:", index)
@@ -72,11 +72,12 @@ logging.info("Switches:")
 for i in switches:
     logging.info(i)
 
-# Range times parameters (must be equal to parameters used in configGen.py script)
+# Range times parameters
 # Update average time in milliseconds
-updateDelta = timedelta(milliseconds=networkData[SIM_PARAMETERS]["ppsDelta"])
+updateDelta = timedelta(milliseconds=100)
 # The considered average time in seconds
-averageDelta = timedelta(seconds=1)
+AVG_DELTA_TIME = 1000
+averageDelta = timedelta(milliseconds=AVG_DELTA_TIME)
 
 # Setting the starting time point, (must be equal to parameters used in configGen.py script)
 startTime = networkData[SIM_PARAMETERS]["startSimTime"]
@@ -84,6 +85,7 @@ startTime = networkData[SIM_PARAMETERS]["startSimTime"]
 timeWalker = startTime
 # Number of fractional units per averageDelta
 averageFractions = int(averageDelta / updateDelta)
+logging.debug("averageFraction: %d", averageFractions)
 # The number of fractional units needed to get the first fractional unit of the last averageDelta
 # starting from the last element of the list updateDeltaTraffic in the in the linksTemp
 # auxiliary structure
@@ -147,14 +149,18 @@ for link, content in links.items():
     for i in content["updateDeltaTraffic"]:
         logging.debug("updateTime: %s, packets sum: %d", i['updateTime'], i['traffic'])
 
+timeUnitsPerSec = timedelta(seconds=1)/updateDelta
 logging.debug("Traffic percetages:")
 for link, content in links.items():
     logging.debug("link: %s", link)
     for i in content["traffic"]:
+        # Max traffic per fractional unit
+        maxTrafficPerUnit = ((content['capacity'] * 1e6) / 8) / timeUnitsPerSec
         logging.debug(
-            "updateTime: %s, percentage: %f %%",
+            "updateTime: %s, delta traffic: %d, percentage: %f %%",
             i['updateTime'],
-            utils.get_average(content['capacity'], i['traffic'])
+            i['traffic'],
+            utils.get_average(i['traffic'], averageFractions, maxTrafficPerUnit)
         )
 
 logging.info("Done!")

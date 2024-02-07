@@ -6,6 +6,5 @@
     switchName: switch1
   - address: 123.123.123.2
     switchName: switch2
-- ppsDelta: 100
-  simTime: 60
+- simTime: 60
   startSimTime: 2024-01-01 00:00:00

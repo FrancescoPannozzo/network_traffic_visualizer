@@ -1,10 +1,10 @@
-"""Utils functions"""
+""" Utils functions """
 
 import os
 import yaml
 
 def file_loader(network_file_name, packets_file_name):
-    """ load the .yaml configuration files """
+    """ Load the .yaml configuration files """
      #Getting absolute path from the running software directory
     current_folder = os.getcwd()
     #Abs path plus filename
@@ -20,6 +20,6 @@ def file_loader(network_file_name, packets_file_name):
 
     return network_data, packets_data
 
-def get_average(capacity, temp_sum):
-    """ calculate the percentage average """
-    return (temp_sum * 100) / ((capacity * 1e6) / 8)
+def get_average(temp_sum, average_fractions, max_traffic_unit):
+    """ Calculate the percentage average """
+    return (temp_sum/average_fractions)  *  ( 100 / max_traffic_unit)
