@@ -37,6 +37,10 @@ SIM_PARAMETERS = 2
 
 logging.info("Analyzing files..")
 
+
+logging.debug("networkData[LINK_INDEX] is type of: %s", type(networkData[LINK_INDEX]))
+logging.debug("links: %s", networkData[LINK_INDEX])
+
 # Extracting links data
 
 # updateDeltaTraffic list represents all fractional units of seconds given by updatedelta,
@@ -46,9 +50,10 @@ logging.info("Analyzing files..")
 # "updateTime" meaning the recorded timestamp and "traffic" the packets bytes sum
 FIRST_ENDPOINT = 0
 SECOND_ENDPOINT = 1
-for link in networkData[LINK_INDEX]:
-    links[frozenset({link["endpoints"][FIRST_ENDPOINT], link["endpoints"][SECOND_ENDPOINT]})] = {
-        "capacity": link["capacity"], 
+for link, content in networkData[LINK_INDEX].items():
+    links[frozenset({content["endpoints"][FIRST_ENDPOINT], content["endpoints"][SECOND_ENDPOINT]})] = {
+        "linkID": content["linkID"],
+        "capacity": content["capacity"], 
         "trafficDT":0, 
         "trafficUDT":0, 
         "updateDeltaTraffic": [], 
@@ -57,7 +62,7 @@ for link in networkData[LINK_INDEX]:
 
 # Showing links with own endpoints
 for index, (link, content) in enumerate(links.items(), start=1):
-    logging.info("Link %d:", index)
+    logging.info("Link ID %d:", link)
     for endpoint in link:
         logging.info(endpoint)
 
@@ -85,7 +90,7 @@ startTime = networkData[SIM_PARAMETERS]["startSimTime"]
 timeWalker = startTime
 # Number of fractional units per averageDelta
 averageFractions = int(averageDelta / updateDelta)
-logging.debug("averageFraction: %d", averageFractions)
+
 # The number of fractional units needed to get the first fractional unit of the last averageDelta
 # starting from the last element of the list updateDeltaTraffic in the in the linksTemp
 # auxiliary structure
@@ -109,17 +114,16 @@ while timeWalker <= startTime + (simTime - updateDelta):
     # Identify the link belonging to the analyzed packet
     if packet is not None:
         link = links[frozenset({packet["source"], packet["destination"]})]
-    else:
-        break
-    # Analyzing every packet in the analyzed range
-    while packet["timestamp"] >= timeWalker and packet["timestamp"] < timeWalker + updateDelta:
-        link["trafficUDT"] += packet["dimension"]
-        link["trafficDT"] += packet["dimension"]
-        packet = next(packetsDataIterator, None)
-        if packet is not None:
-            link = links[frozenset({packet["source"], packet["destination"]})]
-        else:
-            break
+        # Analyzing every packet in the analyzed range
+        while packet["timestamp"] >= timeWalker and packet["timestamp"] < timeWalker + updateDelta:
+            link["trafficUDT"] += packet["dimension"]
+            link["trafficDT"] += packet["dimension"]
+            prevPacket = packet
+            packet = next(packetsDataIterator, None)
+            if packet is not None:
+                link = links[frozenset({packet["source"], packet["destination"]})]
+            else:
+                break
     # Pushing forward the analyzing time
     timeWalker += updateDelta
     # Storing the fractional time units values

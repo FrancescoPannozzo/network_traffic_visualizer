@@ -1,14 +1,22 @@
-""" A yaml file config generator script. It creates two network config files:
-a network.yaml file with the networtk features and a packets.yaml file with 
-all the generated traffic packets """
+""" 
+Network and packets traffic generator
+
+Description: 
+    A yaml file config generator script. It creates two network config files,
+    a network.yaml file with the networtk features and a packets.yaml file with 
+    all the generated traffic packets. By inserting a switch number and a links capacity it create
+    a complete graph structure and a packets traffic for evrey link. 
+    Traffic varies by 10% for each second of simulation
+Usage: 
+    launch the script: python config_gen.py switches_number link_capacity_number
+    help: python config_gen.py -h 
+Author: Francesco Pannozzo"""
 
 from datetime import datetime, timedelta
 import logging
 import random
 import utils
 import yaml
-from classes import Link
-
 
 # Logger config
 logging.basicConfig(
@@ -23,54 +31,51 @@ logging.basicConfig(
 )
 
 # Getting the switch number and the link capacity (Mbps) from the user by prompt
-inputParameters = utils.getInputParameters()
+inputParameters = utils.get_input_parameters()
 
 logging.info("The choosen switches number is %d and the network link capacity is %d Mbps",
-             inputParameters.switchNumber, inputParameters.linkCap)
+             inputParameters.switchNumber, inputParameters.linkCapacity)
 
-switchNumber = inputParameters.switchNumber
-linkCap = inputParameters.linkCap
-
+SWITCH_NUMBER = inputParameters.switchNumber
+LINK_CAP = inputParameters.linkCapacity
 # Defining the simulation start time point
 START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 # Defining the simulation time in seconds
 SIM_TIME = 60
 # Defining the packets per second creation rate delta time (milliseconds)
-PPS_DELTA = 100
-ppsInterval = timedelta(milliseconds=PPS_DELTA)
+PPS_DELTA = 50
+# Defining packets size (MB) 1518
+PACKET_SIZE = 1518
+# Packets Per Seconds
+PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
 
 # The arcs representing the links connecting the switches (nodes)
-links = []
-
+links = {}
+# The link ID counter
+linkID = 1
 # Creating links
 logging.info("Creating links..")
-for i in range(1, switchNumber + 1):
-    for p in range(1, switchNumber + 1):
+for i in range(1, SWITCH_NUMBER + 1):
+    for p in range(1, SWITCH_NUMBER + 1):
         if i == p:
             continue
-        # Checking if the link is already created
-        if utils.inLinks(links, f"switch{i}", f"switch{p}"):
-            continue
-        links.append(Link(linkCap, [f"switch{i}", f"switch{p}"]))
+        if linkID not in links:
+            links[linkID] = {
+                "endpoints": [f"switch{i}", f"switch{p}"],
+                "capacity": LINK_CAP,
+                "trafficPerc": utils.change_traffic_perc(0)
+                }
+            linkID += 1
 
 logging.info("Links creation done!Links created are:")
-for l in links:
-    logging.info(l)
-
-# Creating the links initial traffic percentage
-for link in links:
-    link.trafficPerc = utils.changeTrafficPerc(link.trafficPerc)
-    logging.info("Link with id: %d, trafficPerc choose: %d", link.linkId, link.trafficPerc)
+logging.info(links)
 
 # Creating traffic packets
 # Each fraction of a second (PPS_DELTA) of simulation creates a number of packets
 # proportionate to the percentage of traffic for each link
 logging.info("Creating packets file..")
-# Defining packets size (MB) 1518
-PACKET_SIZE = 4000
-# Packets Per Seconds
-pps = ((linkCap * 1e6) / 8) / PACKET_SIZE
-logging.info("Packets per second: %f ", pps)
+
+logging.info("Packets per second: %f ", PPS)
 # The packets creation index time
 timeWalker = START_TIME
 # creationRate is the fractional time units value in one second
@@ -83,18 +88,18 @@ packets = []
 for sec in range(0, SIM_TIME * creationRate):
   # Changing trafficPercentage every (sec / creationRate) time units
     if sec % creationRate == 0:
-        for link in links:
-            link.trafficPerc = utils.changeTrafficPerc(link.trafficPerc)
-            logging.info("Sim second: %d, Link id: %d, trafficPerc: %d",
-                         (sec / creationRate), link.linkId, link.trafficPerc)
+        for link, content in links.items():
+            content["trafficPerc"] = utils.change_traffic_perc(content["trafficPerc"])
+            logging.info("Sim second: %d, trafficPerc: %d",
+                         (sec / creationRate), content["trafficPerc"])
 
-    for l in links:
-        trafficPerc = l.trafficPerc
-        for p in range(0, int((pps*(trafficPerc/100))/creationRate) ):
+    for link, content in links.items():
+        trafficPerc = content["trafficPerc"]
+        for i in range(0, int((PPS*(trafficPerc/100))/creationRate) ):
             sourceIndex = random.randint(0, 1)
             destIndex = 1 - sourceIndex
-            packet = {"source": l.endpoints[sourceIndex],
-                      "destination": l.endpoints[destIndex],
+            packet = {"source": content["endpoints"][sourceIndex],
+                      "destination": content["endpoints"][destIndex],
                       "timestamp": timeWalker,
                       "dimension": PACKET_SIZE}
             packets.append(packet)
@@ -111,33 +116,38 @@ switches = []
 # First 3 address groups
 IP_ADDRESS = "123.123.123."
 # Last address group
-ipLstSect = 1
+ipLastGroup = 1
 
 # Creating network.yaml file
 # File structure composed by a links list and a switches list
 # networkData = [[links list],[switches list]]
 logging.info("Creating network.yaml file..")
-networkData = [[],[],{}]
+networkData = [{},[],{}]
 LINK_INDEX = 0
 SWITCH_INDEX = 1
 SIM_PARAMETERS = 2
 
-for link in links:
-    networkData[LINK_INDEX].append({"endpoints": link.endpoints,
-                                    "capacity": link.capacity})
 
-for i in range(1, switchNumber + 1):
+networkData[LINK_INDEX] = links
+
+for i in range(1, SWITCH_NUMBER + 1):
     networkData[SWITCH_INDEX].append({
       "switchName": f"switch{i}",
-      "address": f"{IP_ADDRESS}{ipLstSect}"
+      "address": f"{IP_ADDRESS}{ipLastGroup}"
     })
-    ipLstSect += 1
+    ipLastGroup += 1
 
 networkData[SIM_PARAMETERS] = {
     "simTime": SIM_TIME,
     "startSimTime": START_TIME
 }
 
-with open('../network.yaml', 'w', encoding="utf-8") as file:
-    yaml.dump(networkData, file)
+try:
+    with open('../network.yaml', 'w', encoding="utf-8") as file:
+        yaml.dump(networkData, file)
+except OSError as e:
+    print(f"I/O error: {e}")
+except yaml.YAMLError as e:
+    print(f"YAML error: {e}")
+
 logging.info("..network.yaml file creation done!")
