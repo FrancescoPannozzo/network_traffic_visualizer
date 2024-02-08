@@ -56,24 +56,23 @@ linkID = 1
 # Creating links
 logging.info("Creating links..")
 for i in range(1, SWITCH_NUMBER + 1):
-    for p in range(1, SWITCH_NUMBER + 1):
-        if i == p:
-            continue
-        if linkID not in links:
-            links[linkID] = {
-                "endpoints": [f"switch{i}", f"switch{p}"],
-                "capacity": LINK_CAP,
-                "trafficPerc": utils.change_traffic_perc(0)
-                }
-            linkID += 1
+    for p in range(i, SWITCH_NUMBER + 1):
+        if i != p:
+            if linkID not in links:
+                links[linkID] = {
+                    "endpoints": [f"switch{i}", f"switch{p}"],
+                    "capacity": LINK_CAP,
+                    "trafficPerc": utils.change_traffic_perc(0)
+                    }
+                linkID += 1
 
 logging.info("Links creation done!Links created are:")
-logging.info(links)
+for link, content in links.items():
+    logging.info("%s: %s", link, content)
 
 # Creating traffic packets
 # Each fraction of a second (PPS_DELTA) of simulation creates a number of packets
 # proportionate to the percentage of traffic for each link
-logging.info("Creating packets file..")
 
 logging.info("Packets per second: %f ", PPS)
 # The packets creation index time
@@ -85,13 +84,14 @@ creationRate = int(timedelta(seconds=1)/timedelta(milliseconds=PPS_DELTA))
 packets = []
 
 # Creating packets
+logging.info("Creating packets.yaml file structure..")
 for sec in range(0, SIM_TIME * creationRate):
   # Changing trafficPercentage every (sec / creationRate) time units
     if sec % creationRate == 0:
         for link, content in links.items():
             content["trafficPerc"] = utils.change_traffic_perc(content["trafficPerc"])
-            logging.info("Sim second: %d, trafficPerc: %d",
-                         (sec / creationRate), content["trafficPerc"])
+            logging.info("Link: %s, endpoints: %s, sim second: %d, trafficPerc: %d",
+                         link, content["endpoints"], (sec / creationRate), content["trafficPerc"])
 
     for link, content in links.items():
         trafficPerc = content["trafficPerc"]
@@ -106,10 +106,11 @@ for sec in range(0, SIM_TIME * creationRate):
 
     timeWalker += timedelta(milliseconds=PPS_DELTA)
 
-logging.info("Creating packets.yaml file..")
+logging.info("..packets.yaml file structure done!")
+logging.info("Writing packets.yaml file..")
 with open('../packets.yaml', 'w', encoding="utf-8") as file:
     yaml.dump(packets, file)
-logging.info("..packet file creation done!")
+logging.info("..packets file creation done!")
 
 # Defining the network.yaml fields defined in each switch object
 switches = []
@@ -121,14 +122,17 @@ ipLastGroup = 1
 # Creating network.yaml file
 # File structure composed by a links list and a switches list
 # networkData = [[links list],[switches list]]
-logging.info("Creating network.yaml file..")
+logging.info("Creating network.yaml file structure..")
 networkData = [{},[],{}]
 LINK_INDEX = 0
 SWITCH_INDEX = 1
 SIM_PARAMETERS = 2
 
-
-networkData[LINK_INDEX] = links
+for link, content in links.items():
+    networkData[LINK_INDEX][link] = {
+        "endpoints": content["endpoints"],
+        "capacity": content["capacity"]
+    }
 
 for i in range(1, SWITCH_NUMBER + 1):
     networkData[SWITCH_INDEX].append({
@@ -141,7 +145,8 @@ networkData[SIM_PARAMETERS] = {
     "simTime": SIM_TIME,
     "startSimTime": START_TIME
 }
-
+logging.info("..network.yaml file structure done!")
+logging.info("Writing network.yaml file..")
 try:
     with open('../network.yaml', 'w', encoding="utf-8") as file:
         yaml.dump(networkData, file)

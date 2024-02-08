@@ -37,10 +37,6 @@ SIM_PARAMETERS = 2
 
 logging.info("Analyzing files..")
 
-
-logging.debug("networkData[LINK_INDEX] is type of: %s", type(networkData[LINK_INDEX]))
-logging.debug("links: %s", networkData[LINK_INDEX])
-
 # Extracting links data
 
 # updateDeltaTraffic list represents all fractional units of seconds given by updatedelta,
@@ -52,7 +48,7 @@ FIRST_ENDPOINT = 0
 SECOND_ENDPOINT = 1
 for link, content in networkData[LINK_INDEX].items():
     links[frozenset({content["endpoints"][FIRST_ENDPOINT], content["endpoints"][SECOND_ENDPOINT]})] = {
-        "linkID": content["linkID"],
+        "linkID": link,
         "capacity": content["capacity"], 
         "trafficDT":0, 
         "trafficUDT":0, 
@@ -61,8 +57,8 @@ for link, content in networkData[LINK_INDEX].items():
         }
 
 # Showing links with own endpoints
-for index, (link, content) in enumerate(links.items(), start=1):
-    logging.info("Link ID %d:", link)
+for link, content in links.items():
+    logging.info("Link ID %s:", link)
     for endpoint in link:
         logging.info(endpoint)
 

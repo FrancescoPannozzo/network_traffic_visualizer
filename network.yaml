@@ -1,44 +1,11 @@
 - 1:
-    capacity: 10
+    capacity: 100
     endpoints:
     - switch1
     - switch2
-    trafficPerc: 30
-  2:
-    capacity: 10
-    endpoints:
-    - switch1
-    - switch3
-    trafficPerc: 80
-  3:
-    capacity: 10
-    endpoints:
-    - switch2
-    - switch1
-    trafficPerc: 30
-  4:
-    capacity: 10
-    endpoints:
-    - switch2
-    - switch3
-    trafficPerc: 30
-  5:
-    capacity: 10
-    endpoints:
-    - switch3
-    - switch1
-    trafficPerc: 50
-  6:
-    capacity: 10
-    endpoints:
-    - switch3
-    - switch2
-    trafficPerc: 30
 - - address: 123.123.123.1
     switchName: switch1
   - address: 123.123.123.2
     switchName: switch2
-  - address: 123.123.123.3
-    switchName: switch3
 - simTime: 60
   startSimTime: 2024-01-01 00:00:00
