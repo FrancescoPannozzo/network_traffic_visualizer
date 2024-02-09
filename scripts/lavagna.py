@@ -1,28 +1,17 @@
-import utils
+import math
 
-ip_address = {
-    "groupA": 10,
-    "groupB": 0,
-    "groupC": 0,
-    "groupD": 0
-}
-IP_ADDRESS = "123.123.123."
-# Last address group
-ipLastGroup = 0
+numero = 123.456
+parte_frazionaria, parte_intera = math.modf(numero)
+print(parte_frazionaria)  # Questo sarà un numero negativo per i numeri float negativi
+print(parte_intera)
 
-networkData = []
+numero = 123.456789
+parte_frazionaria = numero - int(numero)
+parte_frazionaria_arrotondata = round(parte_frazionaria, 3)
+print(parte_frazionaria_arrotondata)
 
-for i in range(0, 600):
-    networkData.append({
-      "switchName": f"switch{i}",
-      "address": utils.ip_to_string(ip_address)
-    })
-    if i % 255 == 0 and i != 0:
-        ip_address["groupC"] += 1
-        ip_address["groupD"] = 0
-    else:
-        ip_address["groupD"] += 1
-
-print("Switches created:")
-for i in networkData:
-    print(i)
+LINK_CAP = 1000
+PACKET_SIZE = 1518
+# Packets Per Seconds
+PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
+print(f"PPS = {PPS}")

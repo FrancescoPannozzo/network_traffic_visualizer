@@ -45,8 +45,8 @@ START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 SIM_TIME = 60
 # Defining the packets per second creation rate delta time (milliseconds)
 PPS_DELTA = 50
-# Defining packets size (MB) 1518
-PACKET_SIZE = 1518
+# Defining packets size (MB) (example 1518 Bytes ipv4)
+PACKET_SIZE = 4000
 # Packets Per Seconds
 PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
 logging.info("LinkCap in Bytes: %d", (LINK_CAP * 1e6) / 8)
@@ -66,7 +66,7 @@ for i in range(1, SWITCH_NUMBER + 1):
                 links[linkID] = {
                     "endpoints": [f"switch{i}", f"switch{p}"],
                     "capacity": LINK_CAP,
-                    "trafficPerc": utils.change_traffic_perc(0)
+                    "trafficPerc": 0
                     }
                 linkID += 1
 
@@ -124,9 +124,6 @@ ip_address = {
     "groupC": 0,
     "groupD": 0
 }
-IP_ADDRESS = "123.123.123."
-# Last address group
-ipLastGroup = 0
 
 # Creating network.yaml file
 # File structure composed by a links list and a switches list
@@ -144,16 +141,15 @@ for link, content in links.items():
         "capacity": content["capacity"]
     }
 
-for i in range(0, SWITCH_NUMBER):
+for i in range(1, SWITCH_NUMBER + 1):
+    if i % (MAX_GROUP_IP_ADDRESS + 1) == 0:
+        ip_address["groupC"] += 1
+    ip_address["groupD"] = i % 256
+
     networkData[SWITCH_INDEX].append({
       "switchName": f"switch{i}",
       "address": utils.ip_to_string(ip_address)
     })
-    if i % MAX_GROUP_IP_ADDRESS == 0 and i != 0:
-        ip_address["groupC"] += 1
-        ip_address["groupD"] = 0
-    else:
-        ip_address["groupD"] += 1
 
 logging.info("Switches created:")
 for i in networkData[SWITCH_INDEX]:

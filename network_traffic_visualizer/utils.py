@@ -26,6 +26,7 @@ def get_average(temp_sum, average_fractions, max_traffic_unit):
     """ Calculate the percentage average """
     return (temp_sum/average_fractions)  *  ( 100 / max_traffic_unit)
 
+# DEBUG function
 def show_updates_data(links):
     """ Show the updates delta time packets sums """
     logging.debug("UpdateDeltaTraffic sums:")
@@ -33,7 +34,8 @@ def show_updates_data(links):
         logging.debug("link: %s", link)
         for i in content["updateDeltaTraffic"]:
             logging.debug("updateTime: %s, packets sum: %d", i['updateTime'], i['traffic'])
-            
+
+# DEBUG function
 def show_averages_data(links, update_delta, average_fractions):
     """ Show the averages delta time packets sums """
     time_units_per_sec = timedelta(seconds=1)/update_delta

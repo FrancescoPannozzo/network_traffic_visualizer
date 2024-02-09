@@ -3,9 +3,9 @@
     endpoints:
     - switch1
     - switch2
-- - address: 10.0.0.0
-    switchName: switch0
-  - address: 10.0.1.0
+- - address: 10.0.0.1
     switchName: switch1
+  - address: 10.0.0.2
+    switchName: switch2
 - simTime: 60
   startSimTime: 2024-01-01 00:00:00

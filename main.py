@@ -154,7 +154,7 @@ while timeWalker <= startTime + (simTime - updateDelta):
             content["traffic"].append({"updateTime": timeWalker, "traffic": content["trafficDT"]})
 
 
-utils.show_updates_data(links)
+# utils.show_updates_data(links)
 utils.show_averages_data(links, updateDelta, averageFractions)
 
 logging.info("Done!")
