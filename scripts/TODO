@@ -1,9 +1,3 @@
 Handling file exceptions
 Handling limit case 256 last ip address group
 cambiare variabile sec in configGen.py
-
-----------------
-Per stesura tesi
-argomento yaml efficienza su json e preferibile a csv per leggibilità, tradeoff
-analisi della complessità per dimostrare la linearità
-scelta del frozenset per il dictionary

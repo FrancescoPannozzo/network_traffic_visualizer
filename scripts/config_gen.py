@@ -6,11 +6,12 @@ Description:
     a network.yaml file with the networtk features and a packets.yaml file with 
     all the generated traffic packets. By inserting a switch number and a links capacity it create
     a complete graph structure and a packets traffic for evrey link. 
-    Traffic varies by 10% for each second of simulation
+    Traffic varies by +/-10% for each second of simulation
 Usage: 
     launch the script: python config_gen.py switches_number link_capacity_number
     help: python config_gen.py -h 
-Author: Francesco Pannozzo"""
+Author: Francesco Pannozzo
+"""
 
 from datetime import datetime, timedelta
 import logging
@@ -48,6 +49,9 @@ PPS_DELTA = 50
 PACKET_SIZE = 1518
 # Packets Per Seconds
 PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
+logging.info("LinkCap in Bytes: %d", (LINK_CAP * 1e6) / 8)
+logging.info("Packets per seconds int: %d", PPS)
+logging.info("Packets per second float: %f ", PPS)
 
 # The arcs representing the links connecting the switches (nodes)
 links = {}
@@ -74,7 +78,6 @@ for link, content in links.items():
 # Each fraction of a second (PPS_DELTA) of simulation creates a number of packets
 # proportionate to the percentage of traffic for each link
 
-logging.info("Packets per second: %f ", PPS)
 # The packets creation index time
 timeWalker = START_TIME
 # creationRate is the fractional time units value in one second
@@ -98,10 +101,10 @@ for sec in range(0, SIM_TIME * creationRate):
         for i in range(0, int((PPS*(trafficPerc/100))/creationRate) ):
             sourceIndex = random.randint(0, 1)
             destIndex = 1 - sourceIndex
-            packet = {"source": content["endpoints"][sourceIndex],
-                      "destination": content["endpoints"][destIndex],
-                      "timestamp": timeWalker,
-                      "dimension": PACKET_SIZE}
+            packet = {"epA": content["endpoints"][sourceIndex],
+                      "epB": content["endpoints"][destIndex],
+                      "timest": timeWalker,
+                      "dim": PACKET_SIZE}
             packets.append(packet)
 
     timeWalker += timedelta(milliseconds=PPS_DELTA)
@@ -114,10 +117,16 @@ logging.info("..packets file creation done!")
 
 # Defining the network.yaml fields defined in each switch object
 switches = []
-# First 3 address groups
+
+ip_address = {
+    "groupA": 10,
+    "groupB": 0,
+    "groupC": 0,
+    "groupD": 0
+}
 IP_ADDRESS = "123.123.123."
 # Last address group
-ipLastGroup = 1
+ipLastGroup = 0
 
 # Creating network.yaml file
 # File structure composed by a links list and a switches list
@@ -127,6 +136,7 @@ networkData = [{},[],{}]
 LINK_INDEX = 0
 SWITCH_INDEX = 1
 SIM_PARAMETERS = 2
+MAX_GROUP_IP_ADDRESS = 255
 
 for link, content in links.items():
     networkData[LINK_INDEX][link] = {
@@ -134,12 +144,20 @@ for link, content in links.items():
         "capacity": content["capacity"]
     }
 
-for i in range(1, SWITCH_NUMBER + 1):
+for i in range(0, SWITCH_NUMBER):
     networkData[SWITCH_INDEX].append({
       "switchName": f"switch{i}",
-      "address": f"{IP_ADDRESS}{ipLastGroup}"
+      "address": utils.ip_to_string(ip_address)
     })
-    ipLastGroup += 1
+    if i % MAX_GROUP_IP_ADDRESS == 0 and i != 0:
+        ip_address["groupC"] += 1
+        ip_address["groupD"] = 0
+    else:
+        ip_address["groupD"] += 1
+
+logging.info("Switches created:")
+for i in networkData[SWITCH_INDEX]:
+    logging.info(i)
 
 networkData[SIM_PARAMETERS] = {
     "simTime": SIM_TIME,

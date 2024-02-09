@@ -1,11 +1,11 @@
 - 1:
-    capacity: 100
+    capacity: 10
     endpoints:
     - switch1
     - switch2
-- - address: 123.123.123.1
+- - address: 10.0.0.0
+    switchName: switch0
+  - address: 10.0.1.0
     switchName: switch1
-  - address: 123.123.123.2
-    switchName: switch2
 - simTime: 60
   startSimTime: 2024-01-01 00:00:00

@@ -1,5 +1,7 @@
 """ Utils functions """
 
+from datetime import timedelta
+import logging
 import os
 import yaml
 
@@ -23,3 +25,27 @@ def file_loader(network_file_name, packets_file_name):
 def get_average(temp_sum, average_fractions, max_traffic_unit):
     """ Calculate the percentage average """
     return (temp_sum/average_fractions)  *  ( 100 / max_traffic_unit)
+
+def show_updates_data(links):
+    """ Show the updates delta time packets sums """
+    logging.debug("UpdateDeltaTraffic sums:")
+    for link, content in links.items():
+        logging.debug("link: %s", link)
+        for i in content["updateDeltaTraffic"]:
+            logging.debug("updateTime: %s, packets sum: %d", i['updateTime'], i['traffic'])
+            
+def show_averages_data(links, update_delta, average_fractions):
+    """ Show the averages delta time packets sums """
+    time_units_per_sec = timedelta(seconds=1)/update_delta
+    logging.debug("Traffic percetages:")
+    for link, content in links.items():
+        logging.debug("link: %s", link)
+        for i in content["traffic"]:
+            # Max traffic per fractional unit
+            max_traffic_per_unit = ((content['capacity'] * 1e6) / 8) / time_units_per_sec
+            logging.debug(
+                "updateTime: %s, delta traffic: %d, percentage: %f %%",
+                i['updateTime'],
+                i['traffic'],
+                get_average(i['traffic'], average_fractions, max_traffic_per_unit)
+            )

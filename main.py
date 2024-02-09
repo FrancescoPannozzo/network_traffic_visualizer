@@ -1,4 +1,15 @@
-""" Core script """
+""" 
+Data loader
+
+Description:
+    The script load data from network.yaml and packets.yaml and 
+    calculates the payloads sums (bytes) for every updateDeltaTime in the
+    time simulation and the average in delta time, updated every updateDeltaTime
+Usage: 
+    launch the script: python main.py switches_number link_capacity_number
+    help: python main.py -h 
+Author: Francesco Pannozzo
+"""
 import argparse
 from datetime import timedelta
 import logging
@@ -24,12 +35,11 @@ parser.add_argument("packetsFile", help="The packetsFile you want to load")
 args = parser.parse_args()
 
 logging.info("Loading files..")
-# networkData:composed by a link list, a switch list and network parameters
-# packetsData:composed by a packets list
+# networkData:list composed by a link dict, a switch list and network parameters dict
+# packetsData:composed by a packets dict
 networkData, packetsData = utils.file_loader(args.networkFile, args.packetsFile)
 
-# links is an auxiliary structure, needed to perform the simulation calculations
-links = {}
+
 switches = []
 LINK_INDEX = 0
 SWITCH_INDEX = 1
@@ -37,15 +47,16 @@ SIM_PARAMETERS = 2
 
 logging.info("Analyzing files..")
 
-# Extracting links data
-
-# updateDeltaTraffic list represents all fractional units of seconds given by updatedelta,
-# for example 60 seconds divided by 100 ms is 600 fractional units
+# links is an auxiliary structure, needed to perform the simulation calculations
+links = {}
+# updateDeltaTraffic list represents all traffic fractional units,
+# for example 60 sim seconds divided by an update delta time 100 ms is 600 fractional units
 # traffic list represents the sum of bytes in an averageDelta time
-# Each list element is a dictionary in the form {"updateTime":value, "traffic":value} with
+# "updateDeltaTraffic" and "traffic" list element is a dictionary in the form {"updateTime":value, "traffic":value} with
 # "updateTime" meaning the recorded timestamp and "traffic" the packets bytes sum
 FIRST_ENDPOINT = 0
 SECOND_ENDPOINT = 1
+# Extracting links data
 for link, content in networkData[LINK_INDEX].items():
     links[frozenset({content["endpoints"][FIRST_ENDPOINT], content["endpoints"][SECOND_ENDPOINT]})] = {
         "linkID": link,
@@ -60,7 +71,7 @@ for link, content in networkData[LINK_INDEX].items():
 for link, content in links.items():
     logging.info("Link ID %s:", link)
     for endpoint in link:
-        logging.info(endpoint)
+        logging.info("endpoint: %s", endpoint)
 
 logging.info("Simulation parameters:")
 logging.info(networkData[SIM_PARAMETERS])
@@ -74,13 +85,14 @@ for i in switches:
     logging.info(i)
 
 # Range times parameters
-# Update average time in milliseconds
-updateDelta = timedelta(milliseconds=100)
+# Update average delta time in milliseconds
+UPDATE_DELTA_TIME = 100
+updateDelta = timedelta(milliseconds=UPDATE_DELTA_TIME)
 # The considered average time in seconds
 AVG_DELTA_TIME = 1000
 averageDelta = timedelta(milliseconds=AVG_DELTA_TIME)
 
-# Setting the starting time point, (must be equal to parameters used in configGen.py script)
+# Setting the starting time point
 startTime = networkData[SIM_PARAMETERS]["startSimTime"]
 # The analyzed time
 timeWalker = startTime
@@ -88,14 +100,13 @@ timeWalker = startTime
 averageFractions = int(averageDelta / updateDelta)
 
 # The number of fractional units needed to get the first fractional unit of the last averageDelta
-# starting from the last element of the list updateDeltaTraffic in the in the linksTemp
+# starting from the last element of the updateDeltaTraffic list in the in the links
 # auxiliary structure
 lastFirstUDindex = averageFractions
 
 packetsDataIterator = iter(packetsData)
 
-# Defining the amount of simulation time in seconds (must be equal to the
-# simulation time value used in configGen.py script)
+# Defining the amount of simulation time in seconds
 simTime = timedelta(seconds=networkData[SIM_PARAMETERS]["simTime"])
 
 # Taking first packet to analyze
@@ -109,15 +120,14 @@ while timeWalker <= startTime + (simTime - updateDelta):
         content["trafficUDT"] = 0
     # Identify the link belonging to the analyzed packet
     if packet is not None:
-        link = links[frozenset({packet["source"], packet["destination"]})]
+        link = links[frozenset({packet["epA"], packet["epB"]})]
         # Analyzing every packet in the analyzed range
-        while packet["timestamp"] >= timeWalker and packet["timestamp"] < timeWalker + updateDelta:
-            link["trafficUDT"] += packet["dimension"]
-            link["trafficDT"] += packet["dimension"]
-            prevPacket = packet
+        while packet["timest"] >= timeWalker and packet["timest"] < timeWalker + updateDelta:
+            link["trafficUDT"] += packet["dim"]
+            link["trafficDT"] += packet["dim"]
             packet = next(packetsDataIterator, None)
             if packet is not None:
-                link = links[frozenset({packet["source"], packet["destination"]})]
+                link = links[frozenset({packet["epA"], packet["epB"]})]
             else:
                 break
     # Pushing forward the analyzing time
@@ -143,24 +153,8 @@ while timeWalker <= startTime + (simTime - updateDelta):
         for link, content in links.items():
             content["traffic"].append({"updateTime": timeWalker, "traffic": content["trafficDT"]})
 
-logging.debug("UpdateDeltaTraffic sums:")
-for link, content in links.items():
-    logging.debug("link: %s", link)
-    for i in content["updateDeltaTraffic"]:
-        logging.debug("updateTime: %s, packets sum: %d", i['updateTime'], i['traffic'])
 
-timeUnitsPerSec = timedelta(seconds=1)/updateDelta
-logging.debug("Traffic percetages:")
-for link, content in links.items():
-    logging.debug("link: %s", link)
-    for i in content["traffic"]:
-        # Max traffic per fractional unit
-        maxTrafficPerUnit = ((content['capacity'] * 1e6) / 8) / timeUnitsPerSec
-        logging.debug(
-            "updateTime: %s, delta traffic: %d, percentage: %f %%",
-            i['updateTime'],
-            i['traffic'],
-            utils.get_average(i['traffic'], averageFractions, maxTrafficPerUnit)
-        )
+utils.show_updates_data(links)
+utils.show_averages_data(links, updateDelta, averageFractions)
 
 logging.info("Done!")
