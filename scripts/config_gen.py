@@ -25,7 +25,7 @@ logging.basicConfig(
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
         # Adding one handler to manage the messages on a file
-        logging.FileHandler('log_file.txt', mode='w'),
+        logging.FileHandler('config_gen_log.txt', mode='w'),
         # Adding one handler to see messages on console
         logging.StreamHandler()
     ]
@@ -45,13 +45,11 @@ START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 SIM_TIME = 60
 # Defining the packets per second creation rate delta time (milliseconds)
 PPS_DELTA = 50
-# Defining packets size (MB) (example 1518 Bytes ipv4)
-PACKET_SIZE = 4000
+# Defining packets size (MB) (example 1518 Bytes ipv4 max payload)
+PACKET_SIZE = 1518
 # Packets Per Seconds
 PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
-logging.info("LinkCap in Bytes: %d", (LINK_CAP * 1e6) / 8)
-logging.info("Packets per seconds int: %d", PPS)
-logging.info("Packets per second float: %f ", PPS)
+logging.info("LinkCap in Bytes: %d B", (LINK_CAP * 1e6) / 8)
 
 # The arcs representing the links connecting the switches (nodes)
 links = {}
@@ -80,21 +78,29 @@ for link, content in links.items():
 
 # The packets creation index time
 timeWalker = START_TIME
+
 # creationRate is the fractional time units value in one second
-# example: 10 fractional time units for 100ms in 1 second
-creationRate = int(timedelta(seconds=1)/timedelta(milliseconds=PPS_DELTA))
+# example: in one second we have 10 fractional units of 100 milliseconds
+# usage: choose PPS_DELTA to avoid remainder != 0
+# PPS_DELTA values examples: 50, 100, 200, 250, 500
+creationRate = int(timedelta(milliseconds=1000)/timedelta(milliseconds=PPS_DELTA))
+
 # Defining the list containing all the packets generated
 packets = []
 
 # Creating packets
 logging.info("Creating packets.yaml file structure..")
-for sec in range(0, SIM_TIME * creationRate):
-  # Changing trafficPercentage every (sec / creationRate) time units
-    if sec % creationRate == 0:
+# Each fractional_unit represents the unit of time space in which a number of packets 
+# proportionate to the chosen traffic are created
+for fractional_unit in range(0, SIM_TIME * creationRate):
+  # Changing trafficPercentage every second
+    if fractional_unit % creationRate == 0:
         for link, content in links.items():
             content["trafficPerc"] = utils.change_traffic_perc(content["trafficPerc"])
             logging.info("Link: %s, endpoints: %s, sim second: %d, trafficPerc: %d",
-                         link, content["endpoints"], (sec / creationRate), content["trafficPerc"])
+                         link, content["endpoints"],
+                         (fractional_unit / creationRate),
+                         content["trafficPerc"])
 
     for link, content in links.items():
         trafficPerc = content["trafficPerc"]
@@ -117,7 +123,7 @@ logging.info("..packets file creation done!")
 
 # Defining the network.yaml fields defined in each switch object
 switches = []
-
+# Defining the switches ip address structure
 ip_address = {
     "groupA": 10,
     "groupB": 0,

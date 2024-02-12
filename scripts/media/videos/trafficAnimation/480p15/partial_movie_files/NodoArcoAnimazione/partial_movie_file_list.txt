@@ -1,6 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/scripts/media/videos/trafficAnimation/480p15/partial_movie_files/NodoArcoAnimazione/1185818338_3069036012_223132457.mp4'
-file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/scripts/media/videos/trafficAnimation/480p15/partial_movie_files/NodoArcoAnimazione/624642324_2582131541_196238768.mp4'
-file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/scripts/media/videos/trafficAnimation/480p15/partial_movie_files/NodoArcoAnimazione/624642324_566333202_196238768.mp4'
-file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/scripts/media/videos/trafficAnimation/480p15/partial_movie_files/NodoArcoAnimazione/624642324_3038242601_196238768.mp4'
-file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/scripts/media/videos/trafficAnimation/480p15/partial_movie_files/NodoArcoAnimazione/624642324_1141282389_108835071.mp4'

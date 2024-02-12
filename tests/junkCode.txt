@@ -1,2 +1,0 @@
-for key in mydictionary:
-   print "key: %s , value: %s" % (key, mydictionary[key])

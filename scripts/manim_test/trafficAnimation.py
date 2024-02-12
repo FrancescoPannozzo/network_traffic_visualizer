@@ -1,6 +1,7 @@
 from manim import *
 
-class NodoArcoAnimazione(Scene):
+class TrafficAnimation(Scene):
+    
     def construct(self):
         # Creare i nodi
         nodo1 = Dot(point=LEFT, color=BLUE)

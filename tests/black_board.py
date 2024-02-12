@@ -1,3 +1,4 @@
+from datetime import timedelta
 import math
 
 numero = 123.456
@@ -15,3 +16,7 @@ PACKET_SIZE = 1518
 # Packets Per Seconds
 PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
 print(f"PPS = {PPS}")
+
+print("--------------")
+creationRate = (timedelta(seconds=1)/timedelta(milliseconds=102))
+""" This is a test script """

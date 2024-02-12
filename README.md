@@ -15,3 +15,7 @@ La simulazione viene calcolata con una proporione temporale, ad esempio una tras
 pacchetti di un'ora viene mostrata in una simulazione della durata di un minuto in cui viene mostrata
 la media calcolata del traffico. La media nel tempo è calcolata tramite un intervallo x di tempo considerato che viene ricalcolato
 ogni intervallo di y tempo più piccolo di x.
+
+Uso:
+Creare traffico di rete con config_gen.py presente nella directory "scripts"
+Caricare i file prodotti da config_gen tramite main.py per analizzare il traffico
