@@ -13,6 +13,8 @@ Author: Francesco Pannozzo
 import argparse
 from datetime import timedelta
 import logging
+
+import yaml
 from network_traffic_visualizer import classes as obj
 from network_traffic_visualizer import utils
 
@@ -75,12 +77,16 @@ SECOND_ENDPOINT = 1
 # Extracting links data
 for link, content in networkData[LINK_INDEX].items():
     links[frozenset({content["endpoints"][FIRST_ENDPOINT], content["endpoints"][SECOND_ENDPOINT]})] = {
+        "linkID": link,
         "capacity": content["capacity"], 
         "trafficDT":0, 
         "trafficUDT":0, 
         "updateDeltaTraffic": [], 
         "traffic": []
         }
+
+logging.debug("SHOWING LINKS STRUCTURE:")
+logging.debug(links)
 
 # Logging links with own endpoints
 for link, content in links.items():
@@ -174,7 +180,40 @@ while timeWalker <= startTime + (simTime - updateDelta):
             content["traffic"].append({"updateTime": timeWalker, "traffic": content["trafficDT"]})
 
 # DEBUG
-utils.show_updates_data(links)
+#utils.show_updates_data(links)
 utils.show_averages_data(links, updateDelta, averageFractions)
 
-logging.info("Done!")
+logging.info("..done!")
+
+# file structure
+analyzed_data = {}
+for link, content in links.items():
+    endpoints = []
+    traffic = []
+    for ep in link:
+        endpoints.append(ep)
+
+    for c in content["traffic"]:
+        average = utils.get_average(c['traffic'], averageFractions, utils.max_traffic_per_unit(content['capacity'], updateDelta))
+        traffic.append({
+            "updateTime": c['updateTime'],
+            "trafficPerc": round(average, 2)
+            })
+
+
+    analyzed_data[content["linkID"]] = {
+        "endpoints": endpoints,
+        "traffic": traffic
+    }
+
+# frontend file input
+logging.info("Writing analyzed_data.yaml file..")
+try:
+    with open('./analyzed_data.yaml', 'w', encoding="utf-8") as file:
+        yaml.dump(analyzed_data, file)
+except OSError as e:
+    print(f"I/O error: {e}")
+except yaml.YAMLError as e:
+    print(f"YAML error: {e}")
+
+logging.info("..analyzed_data.yaml file creation done!")

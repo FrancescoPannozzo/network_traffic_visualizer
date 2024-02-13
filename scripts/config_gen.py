@@ -15,6 +15,7 @@ Author: Francesco Pannozzo
 
 from datetime import datetime, timedelta
 import logging
+import math
 import random
 import utils
 import yaml
@@ -44,13 +45,16 @@ START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 # Defining the simulation time in seconds
 SIM_TIME = 60
 # Defining the packets per second creation rate delta time (milliseconds)
-PPS_DELTA = 50
+PPS_DELTA = 100
 # Defining packets size (MB) (example 1518 Bytes ipv4 max payload)
 PACKET_SIZE = 1518
 # Packets Per Seconds
 PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
-logging.info("LinkCap in Bytes: %d B", (LINK_CAP * 1e6) / 8)
-
+logging.info("LinkCap in Bytes: %dB", (LINK_CAP * 1e6) / 8)
+logging.debug("PPS: %f", PPS)
+parte_frazionaria, parte_intera = math.modf(PPS)
+logging.debug("PPS parte intera: %d", parte_intera)
+logging.debug("PPS parte frazionaria: %f", parte_frazionaria)
 # The arcs representing the links connecting the switches (nodes)
 links = {}
 # The link ID counter
@@ -104,6 +108,7 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
 
     for link, content in links.items():
         trafficPerc = content["trafficPerc"]
+
         for i in range(0, int((PPS*(trafficPerc/100))/creationRate) ):
             sourceIndex = random.randint(0, 1)
             destIndex = 1 - sourceIndex
@@ -111,6 +116,15 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
                       "epB": content["endpoints"][destIndex],
                       "timest": timeWalker,
                       "dim": PACKET_SIZE}
+            packets.append(packet)
+        remaining_packets, _ = math.modf((PPS*(trafficPerc/100))/creationRate)
+        if remaining_packets != 0:
+            packet = {
+                "epA": content["endpoints"][sourceIndex],
+                "epB": content["endpoints"][destIndex],
+                "timest": timeWalker,
+                "dim": int(round(remaining_packets, 3) * PACKET_SIZE)
+                }
             packets.append(packet)
 
     timeWalker += timedelta(milliseconds=PPS_DELTA)
