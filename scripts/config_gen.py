@@ -16,7 +16,6 @@ Author: Francesco Pannozzo
 from datetime import datetime, timedelta
 import logging
 import math
-import random
 import utils
 import yaml
 
@@ -40,6 +39,7 @@ logging.info("The choosen switches number is %d and the network link capacity is
 
 SWITCH_NUMBER = inputParameters.switchNumber
 LINK_CAP = inputParameters.linkCapacity
+
 # Defining the simulation start time point
 START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 # Defining the simulation time in seconds
@@ -48,31 +48,30 @@ SIM_TIME = 60
 PPS_DELTA = 100
 # Defining packets size (MB) (example 1518 Bytes ipv4 max payload)
 PACKET_SIZE = 1518
-# Packets Per Seconds
+# Packets Per Second
 PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
+
 logging.info("LinkCap in Bytes: %dB", (LINK_CAP * 1e6) / 8)
 logging.debug("PPS: %f", PPS)
-parte_frazionaria, parte_intera = math.modf(PPS)
-logging.debug("PPS parte intera: %d", parte_intera)
-logging.debug("PPS parte frazionaria: %f", parte_frazionaria)
+
 # The arcs representing the links connecting the switches (nodes)
 links = {}
 # The link ID counter
-linkID = 1
+link_id = 1
 # Creating links
 logging.info("Creating links..")
 for i in range(1, SWITCH_NUMBER + 1):
     for p in range(i, SWITCH_NUMBER + 1):
         if i != p:
-            if linkID not in links:
-                links[linkID] = {
+            if link_id not in links:
+                links[link_id] = {
                     "endpoints": [f"switch{i}", f"switch{p}"],
                     "capacity": LINK_CAP,
                     "trafficPerc": 0
                     }
-                linkID += 1
+                link_id += 1
 
-logging.info("Links creation done!Links created are:")
+logging.info("..links creation done!Links created are:")
 for link, content in links.items():
     logging.info("%s: %s", link, content)
 
@@ -94,7 +93,7 @@ packets = []
 
 # Creating packets
 logging.info("Creating packets.yaml file structure..")
-# Each fractional_unit represents the unit of time space in which a number of packets 
+# Each fractional_unit represents the unit of time space in which a number of packets
 # proportionate to the chosen traffic are created
 for fractional_unit in range(0, SIM_TIME * creationRate):
   # Changing trafficPercentage every second
@@ -106,25 +105,25 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
                          (fractional_unit / creationRate),
                          content["trafficPerc"])
 
+    ENDP_A = 0
+    ENDP_B = 1
     for link, content in links.items():
         trafficPerc = content["trafficPerc"]
 
         for i in range(0, int((PPS*(trafficPerc/100))/creationRate) ):
-            sourceIndex = random.randint(0, 1)
-            destIndex = 1 - sourceIndex
-            packet = {"epA": content["endpoints"][sourceIndex],
-                      "epB": content["endpoints"][destIndex],
-                      "timest": timeWalker,
-                      "dim": PACKET_SIZE}
+            packet = utils.create_packet(content["endpoints"][ENDP_A],
+                                         content["endpoints"][ENDP_B],
+                                         timeWalker,
+                                         PACKET_SIZE)
             packets.append(packet)
+
         remaining_packets, _ = math.modf((PPS*(trafficPerc/100))/creationRate)
         if remaining_packets != 0:
-            packet = {
-                "epA": content["endpoints"][sourceIndex],
-                "epB": content["endpoints"][destIndex],
-                "timest": timeWalker,
-                "dim": int(round(remaining_packets, 3) * PACKET_SIZE)
-                }
+            remaining_packet_size = int(round(remaining_packets, 3) * PACKET_SIZE)
+            packet = utils.create_packet(content["endpoints"][ENDP_A],
+                                         content["endpoints"][ENDP_B],
+                                         timeWalker,
+                                         remaining_packet_size)
             packets.append(packet)
 
     timeWalker += timedelta(milliseconds=PPS_DELTA)
