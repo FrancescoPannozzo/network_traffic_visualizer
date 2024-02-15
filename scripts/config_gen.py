@@ -96,7 +96,7 @@ logging.info("Creating packets.yaml file structure..")
 # Each fractional_unit represents the unit of time space in which a number of packets
 # proportionate to the chosen traffic are created
 for fractional_unit in range(0, SIM_TIME * creationRate):
-  # Changing trafficPercentage every second
+    # Changing trafficPercentage every second
     if fractional_unit % creationRate == 0:
         for link, content in links.items():
             content["trafficPerc"] = utils.change_traffic_perc(content["trafficPerc"])

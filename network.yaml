@@ -3,9 +3,21 @@
     endpoints:
     - switch1
     - switch2
+  2:
+    capacity: 10
+    endpoints:
+    - switch1
+    - switch3
+  3:
+    capacity: 10
+    endpoints:
+    - switch2
+    - switch3
 - - address: 10.0.0.1
     switchName: switch1
   - address: 10.0.0.2
     switchName: switch2
+  - address: 10.0.0.3
+    switchName: switch3
 - simTime: 60
   startSimTime: 2024-01-01 00:00:00
