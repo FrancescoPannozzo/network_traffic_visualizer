@@ -46,8 +46,8 @@ START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 SIM_TIME = 60
 # Defining the packets per second creation rate delta time (milliseconds)
 PPS_DELTA = 100
-# Defining packets size (MB) (example 1518 Bytes ipv4 max payload)
-PACKET_SIZE = 1518
+# Defining packets size (MB) (example 1518 Bytes ipv4 max payload, 4000 datacenters)
+PACKET_SIZE = 4000
 # Packets Per Second
 PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
 

@@ -87,3 +87,25 @@ def show_averages_data(links, update_delta, average_fractions):
 def max_traffic_per_unit(capacity, update_delta):
     time_units_per_sec = timedelta(seconds=1)/update_delta
     return ((capacity * 1e6) / 8) / time_units_per_sec
+
+def rgb_to_hex(r, g, b):
+    return '#{:02x}{:02x}{:02x}'.format(r, g, b)
+
+def traffic_colors_gen():
+    MID_TRAFFIC = 50
+    MAX_TRAFFIC = 100
+    #percColors = {}
+    hexColors = {}
+    r = 0
+    g = 255
+    b = 0
+
+    for i in range(0, MAX_TRAFFIC+1):
+        if i <= MID_TRAFFIC:
+            r += 5
+        else:
+            g -= 5
+        #percColors[i] = {"r":r, "g":g, "b":b}
+        hexColors[i] = {"hexValue": rgb_to_hex(r, g, b)}
+    
+    return hexColors

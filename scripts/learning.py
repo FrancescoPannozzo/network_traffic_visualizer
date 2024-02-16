@@ -98,5 +98,3 @@ class Test(Scene):
         self.play(grafo.edges[(switch1.name, switch2.name)].animate.set_color(RED), run_time=2)
         self.wait(2)
 
-
-

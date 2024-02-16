@@ -186,34 +186,47 @@ utils.show_averages_data(links, updateDelta, averageFractions)
 logging.info("..done!")
 
 # file structure
+sim_parameters = {
+    "simTime": networkData[SIM_PARAMETERS]["simTime"],
+    "updateDelta": UPDATE_DELTA_TIME,
+    "averageDelta": AVG_DELTA_TIME,
+    "simStartTime": startTime
+}
+
 analyzed_data = {}
 for link, content in links.items():
     endpoints = []
-    traffic = []
+    traffic = {}
     for ep in link:
         endpoints.append(ep)
 
     for c in content["traffic"]:
         average = utils.get_average(c['traffic'], averageFractions, utils.max_traffic_per_unit(content['capacity'], updateDelta))
-        traffic.append({
-            "updateTime": c['updateTime'],
-            "trafficPerc": round(average, 2)
-            })
-
-
+        traffic[ c['updateTime'] ] = round(average, 2)
+           
     analyzed_data[content["linkID"]] = {
-        "endpoints": endpoints,
+        "endpoints": sorted(endpoints),
         "traffic": traffic
     }
+
+fileStructure = []
+fileStructure.append(sim_parameters)
+fileStructure.append(analyzed_data)
 
 # frontend file input
 logging.info("Writing analyzed_data.yaml file..")
 try:
     with open('./analyzed_data.yaml', 'w', encoding="utf-8") as file:
-        yaml.dump(analyzed_data, file)
+        yaml.dump(fileStructure, file)
 except OSError as e:
     print(f"I/O error: {e}")
 except yaml.YAMLError as e:
     print(f"YAML error: {e}")
 
 logging.info("..analyzed_data.yaml file creation done!")
+
+
+"""         traffic.append({
+            "updateTime": c['updateTime'],
+            "trafficPerc": round(average, 2)
+            }) """

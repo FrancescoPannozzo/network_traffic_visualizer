@@ -6,6 +6,8 @@ giallo  0   255 255
 rosso   0   0   255 
 """
 
+from datetime import datetime, timedelta
+
 def rgb_to_hex(r, g, b):
     return '#{:02x}{:02x}{:02x}'.format(r, g, b)
 
@@ -37,10 +39,14 @@ for key, value in hexColors.items():
     print(f"{key}: {value}")
 
 
+START_TIME = datetime(2024, 1, 1, 0, 0, 0)
+print(START_TIME.strftime("%H:%M:%S"))
+
+
 
 """ print(rgb_to_hex(255, 165, 1)) """
 
-0: {'hexValue': '#05ff00'}
+""" 0: {'hexValue': '#05ff00'}
 1: {'hexValue': '#0aff00'}
 2: {'hexValue': '#0fff00'}
 3: {'hexValue': '#14ff00'}
@@ -140,4 +146,4 @@ for key, value in hexColors.items():
 97: {'hexValue': '#ff1400'}
 98: {'hexValue': '#ff0f00'}
 99: {'hexValue': '#ff0a00'}
-100: {'hexValue': '#ff0500'}
+100: {'hexValue': '#ff0500'} """
