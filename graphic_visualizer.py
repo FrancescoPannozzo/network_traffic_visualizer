@@ -1,5 +1,7 @@
 """ Graphic visualizer TEST
-    use: manim -pql graphic_visualizer.py GraphicVisualizer
+    use: 
+    rendering 854x480 15FPS: manim -pql graphic_visualizer.py GraphicVisualizer
+    rendering 1280x720 60FPS: manim -pqm --fps 60 graphic_visualizer.py GraphicVisualizer
 
 """
 
@@ -57,6 +59,8 @@ class GraphicVisualizer(Scene):
         average_delta = trafficData[SIM_PAR]["averageDelta"]
         start_time = trafficData[SIM_PAR]["simStartTime"]
         end_time = start_time + timedelta(seconds=sim_time)
+        show_delta = trafficData[SIM_PAR]["updateDelta"]
+
         time_walker = start_time + timedelta(milliseconds=average_delta)
         sim_time_txt = Text(f"sim time = {time_walker}", font_size=24).to_edge(UR).set_color(YELLOW)
 
@@ -68,8 +72,8 @@ class GraphicVisualizer(Scene):
                 color_perc = int(content["traffic"][time_walker])
                 animations.append(grafo.edges[(content["endpoints"][EP_A], content["endpoints"][EP_B])].animate.set_color(trafficPercColors[color_perc]["hexValue"]))
 
-            self.play(*animations, Transform(sim_time_txt, Text(f"sim time = {time_walker.strftime('%H:%M:%S')}", font_size=24).to_edge(UR).set_color(YELLOW)),
+            self.play(*animations, Transform(sim_time_txt, Text(f"sim time = {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font_size=24).to_edge(UR).set_color(YELLOW)),
                       run_time=1)
-            time_walker += timedelta(milliseconds=average_delta)
+            time_walker += timedelta(milliseconds=show_delta)
 
         self.wait(2) 

@@ -40,7 +40,7 @@ for key, value in hexColors.items():
 
 
 START_TIME = datetime(2024, 1, 1, 0, 0, 0)
-print(START_TIME.strftime("%H:%M:%S"))
+print(START_TIME.strftime("%H:%M:%S.%f")[:-3])
 
 
 

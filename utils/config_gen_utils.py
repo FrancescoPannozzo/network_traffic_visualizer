@@ -20,7 +20,7 @@ def get_input_parameters():
     return args
 
 def check_switch(switch_number):
-    """ A check function for method add_argument(). Check user input switch number parameter 
+    """ A check function for parser method add_argument(). Check user input switch number parameter 
     
     Keyword arguments:
     switch_number: int, the switches number
@@ -35,7 +35,7 @@ def check_switch(switch_number):
     return i_switch_number
 
 def check_link(link_number):
-    """A check function for method add_argument(). Check user input links capacity parameter 
+    """A check function for parser method add_argument(). Check user input links capacity parameter 
     
     Keyword arguments:
     link_number: int -- the links number
@@ -54,7 +54,8 @@ def check_link(link_number):
 
 # Update traffic percentage
 def change_traffic_perc(traffic_perc):
-    """ Change the traffic% by +10% or -10% 
+    """ Change the traffic% by +10% or -10% if CONTROLLED_VERSION is True
+        Random value (0, 100) otherwise
     
     Keyword Arguments:
     traffic_perc -- a traffic perc value
@@ -62,13 +63,19 @@ def change_traffic_perc(traffic_perc):
     Returns:
     int -- a new traffic perc value
     """
-    new_traffic_perc = traffic_perc
-    if random.randint(0, 1) == 1:
-        if new_traffic_perc < 100:
-            new_traffic_perc += 10
+
+    CONTROLLED_VARIATION = False
+
+    if CONTROLLED_VARIATION:
+        new_traffic_perc = traffic_perc
+        if random.randint(0, 1) == 1:
+            if new_traffic_perc < 100:
+                new_traffic_perc += 10
+        else:
+            if new_traffic_perc > 0:
+                new_traffic_perc -= 10
     else:
-        if new_traffic_perc > 0:
-            new_traffic_perc -= 10
+        new_traffic_perc = random.randint(0, 100)
     return new_traffic_perc
 
 def ip_to_string(ip):

@@ -69,13 +69,12 @@ def show_averages_data(links, update_delta, average_fractions):
     update_delta: int, update delta time (milliseconds)
     average_fractions: int, number of fractional units
     """
-    #time_units_per_sec = timedelta(seconds=1)/update_delta
+
     logging.debug("Traffic percetages:")
     for link, content in links.items():
         logging.debug("link: %s", link)
         for i in content["traffic"]:
             # Max traffic per fractional unit
-            # max_traffic_per_unit = ((content['capacity'] * 1e6) / 8) / time_units_per_sec
             max_traffic_pu = max_traffic_per_unit(content['capacity'], update_delta)
             logging.debug(
                 "updateTime: %s, delta traffic: %d, percentage: %f %%",
@@ -85,6 +84,12 @@ def show_averages_data(links, update_delta, average_fractions):
             )
 
 def max_traffic_per_unit(capacity, update_delta):
+    """ Calculate the max traffic per fractional unit time
+    
+    Keyword arguments:
+    capacity: int, link capacity
+    update_delta: int, number of fractional units
+    """
     time_units_per_sec = timedelta(seconds=1)/update_delta
     return ((capacity * 1e6) / 8) / time_units_per_sec
 
