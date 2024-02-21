@@ -16,7 +16,7 @@ import logging
 
 import yaml
 from classes import classes as obj
-from utils import traffic_analyzer_utils
+from utils import utils
 
 # Logger config
 logging.basicConfig(
@@ -39,7 +39,7 @@ args = parser.parse_args()
 logging.info("Loading files..")
 # networkData:list composed by a link dict, a switch list and network parameters dict
 # packetsData:composed by a packets dict
-networkData, packetsData = traffic_analyzer_utils.file_loader(args.networkFile, args.packetsFile)
+networkData, packetsData = utils.file_loader(args.networkFile, args.packetsFile)
 
 logging.debug("networkData is type of %s", type(networkData))
 
@@ -181,7 +181,7 @@ while timeWalker <= startTime + (simTime - updateDelta):
 
 # DEBUG
 #utils.show_updates_data(links)
-traffic_analyzer_utils.show_averages_data(links, updateDelta, averageFractions)
+utils.show_averages_data(links, updateDelta, averageFractions)
 
 logging.info("..done!")
 
@@ -201,7 +201,7 @@ for link, content in links.items():
         endpoints.append(ep)
 
     for c in content["traffic"]:
-        average = traffic_analyzer_utils.get_average(c['traffic'], averageFractions, traffic_analyzer_utils.max_traffic_per_unit(content['capacity'], updateDelta))
+        average = utils.get_average(c['traffic'], averageFractions, utils.max_traffic_per_unit(content['capacity'], updateDelta))
         traffic[ c['updateTime'] ] = round(average, 2)
            
     analyzed_data[content["linkID"]] = {

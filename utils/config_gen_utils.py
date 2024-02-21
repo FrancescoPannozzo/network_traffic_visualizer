@@ -54,7 +54,7 @@ def check_link(link_number):
 
 # Update traffic percentage
 def change_traffic_perc(traffic_perc):
-    """ Change the traffic% by +10% or -10% if CONTROLLED_VERSION is True
+    """ Change the traffic% by +10% or -10% if CONTROLLED is True
         Random value (0, 100) otherwise
     
     Keyword Arguments:
@@ -63,10 +63,9 @@ def change_traffic_perc(traffic_perc):
     Returns:
     int -- a new traffic perc value
     """
+    CONTROLLED = False
 
-    CONTROLLED_VARIATION = False
-
-    if CONTROLLED_VARIATION:
+    if CONTROLLED:
         new_traffic_perc = traffic_perc
         if random.randint(0, 1) == 1:
             if new_traffic_perc < 100:

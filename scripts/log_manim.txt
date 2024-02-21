@@ -1,0 +1,15 @@
+2024-02-21 17:02:53,523 [DEBUG] graph is type of:LabeledDot
+2024-02-21 17:02:53,528 [DEBUG] grafo.edges[(circle, square)] is: Line
+2024-02-21 17:02:55,426 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Graphic_visualizer\1185818338_859162054_223132457.mp4'
+2024-02-21 17:02:57,226 [INFO] Animation 1 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Graphic_visualizer\624642324_4281400944_537796467.mp4'
+2024-02-21 17:02:58,973 [INFO] Animation 2 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Graphic_visualizer\624642324_4084082552_537796467.mp4'
+2024-02-21 17:02:59,950 [INFO] Animation 3 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Graphic_visualizer\624642324_1141282389_284474972.mp4'
+2024-02-21 17:02:59,982 [INFO] Combining to Movie file.
+2024-02-21 17:03:00,529 [INFO] 
+File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\Graphic_visualizer.mp4'
+
+2024-02-21 17:03:00,552 [INFO] Rendered Graphic_visualizer
+Played 4 animations
+2024-02-21 17:03:01,100 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\Graphic_visualizer.mp4'
+2024-02-21 17:03:01,150 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
+2024-02-21 17:03:04,819 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12832
