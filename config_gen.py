@@ -43,7 +43,7 @@ LINK_CAP = inputParameters.linkCapacity
 # Defining the simulation start time point
 START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 # Defining the simulation time in seconds
-SIM_TIME = 20
+SIM_TIME = 10
 # Defining the packets per second creation rate delta time (milliseconds)
 PPS_DELTA = 100
 # Defining packets size (MB) (example 1518 Bytes ipv4 max payload, 4000 datacenters)

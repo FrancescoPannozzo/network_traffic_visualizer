@@ -1,144 +1,185 @@
-2024-02-20 15:48:42,733 [INFO] The choosen switches number is 4 and the network link capacity is 10 Mbps
-2024-02-20 15:48:42,733 [INFO] LinkCap in Bytes: 1250000B
-2024-02-20 15:48:42,733 [DEBUG] PPS: 312.500000
-2024-02-20 15:48:42,733 [INFO] Creating links..
-2024-02-20 15:48:42,733 [INFO] ..links creation done!Links created are:
-2024-02-20 15:48:42,733 [INFO] 1: {'endpoints': ['switch1', 'switch2'], 'capacity': 10, 'trafficPerc': 0}
-2024-02-20 15:48:42,733 [INFO] 2: {'endpoints': ['switch1', 'switch3'], 'capacity': 10, 'trafficPerc': 0}
-2024-02-20 15:48:42,733 [INFO] 3: {'endpoints': ['switch1', 'switch4'], 'capacity': 10, 'trafficPerc': 0}
-2024-02-20 15:48:42,748 [INFO] 4: {'endpoints': ['switch2', 'switch3'], 'capacity': 10, 'trafficPerc': 0}
-2024-02-20 15:48:42,749 [INFO] 5: {'endpoints': ['switch2', 'switch4'], 'capacity': 10, 'trafficPerc': 0}
-2024-02-20 15:48:42,750 [INFO] 6: {'endpoints': ['switch3', 'switch4'], 'capacity': 10, 'trafficPerc': 0}
-2024-02-20 15:48:42,752 [INFO] Creating packets.yaml file structure..
-2024-02-20 15:48:42,753 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 0, trafficPerc: 26
-2024-02-20 15:48:42,754 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 0, trafficPerc: 16
-2024-02-20 15:48:42,755 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 0, trafficPerc: 58
-2024-02-20 15:48:42,758 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 0, trafficPerc: 54
-2024-02-20 15:48:42,759 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 0, trafficPerc: 1
-2024-02-20 15:48:42,760 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 0, trafficPerc: 42
-2024-02-20 15:48:42,765 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 1, trafficPerc: 79
-2024-02-20 15:48:42,766 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 1, trafficPerc: 27
-2024-02-20 15:48:42,767 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 1, trafficPerc: 59
-2024-02-20 15:48:42,768 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 1, trafficPerc: 17
-2024-02-20 15:48:42,770 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 1, trafficPerc: 2
-2024-02-20 15:48:42,771 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 1, trafficPerc: 24
-2024-02-20 15:48:42,774 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 2, trafficPerc: 36
-2024-02-20 15:48:42,774 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 2, trafficPerc: 0
-2024-02-20 15:48:42,775 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 2, trafficPerc: 11
-2024-02-20 15:48:42,776 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 2, trafficPerc: 41
-2024-02-20 15:48:42,777 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 2, trafficPerc: 93
-2024-02-20 15:48:42,777 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 2, trafficPerc: 13
-2024-02-20 15:48:42,780 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 3, trafficPerc: 91
-2024-02-20 15:48:42,781 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 3, trafficPerc: 42
-2024-02-20 15:48:42,782 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 3, trafficPerc: 88
-2024-02-20 15:48:42,783 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 3, trafficPerc: 29
-2024-02-20 15:48:42,784 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 3, trafficPerc: 4
-2024-02-20 15:48:42,784 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 3, trafficPerc: 14
-2024-02-20 15:48:42,788 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 4, trafficPerc: 99
-2024-02-20 15:48:42,788 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 4, trafficPerc: 7
-2024-02-20 15:48:42,789 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 4, trafficPerc: 98
-2024-02-20 15:48:42,790 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 4, trafficPerc: 99
-2024-02-20 15:48:42,791 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 4, trafficPerc: 93
-2024-02-20 15:48:42,793 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 4, trafficPerc: 17
-2024-02-20 15:48:42,812 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 5, trafficPerc: 84
-2024-02-20 15:48:42,814 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 5, trafficPerc: 63
-2024-02-20 15:48:42,816 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 5, trafficPerc: 94
-2024-02-20 15:48:42,817 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 5, trafficPerc: 28
-2024-02-20 15:48:42,817 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 5, trafficPerc: 98
-2024-02-20 15:48:42,818 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 5, trafficPerc: 48
-2024-02-20 15:48:42,826 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 6, trafficPerc: 10
-2024-02-20 15:48:42,827 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 6, trafficPerc: 31
-2024-02-20 15:48:42,828 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 6, trafficPerc: 3
-2024-02-20 15:48:42,829 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 6, trafficPerc: 57
-2024-02-20 15:48:42,829 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 6, trafficPerc: 21
-2024-02-20 15:48:42,830 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 6, trafficPerc: 87
-2024-02-20 15:48:42,834 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 7, trafficPerc: 71
-2024-02-20 15:48:42,836 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 7, trafficPerc: 37
-2024-02-20 15:48:42,837 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 7, trafficPerc: 63
-2024-02-20 15:48:42,838 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 7, trafficPerc: 24
-2024-02-20 15:48:42,838 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 7, trafficPerc: 79
-2024-02-20 15:48:42,839 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 7, trafficPerc: 84
-2024-02-20 15:48:42,847 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 8, trafficPerc: 75
-2024-02-20 15:48:42,849 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 8, trafficPerc: 55
-2024-02-20 15:48:42,850 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 8, trafficPerc: 51
-2024-02-20 15:48:42,851 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 8, trafficPerc: 99
-2024-02-20 15:48:42,852 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 8, trafficPerc: 55
-2024-02-20 15:48:42,854 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 8, trafficPerc: 76
-2024-02-20 15:48:42,861 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 9, trafficPerc: 31
-2024-02-20 15:48:42,862 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 9, trafficPerc: 83
-2024-02-20 15:48:42,863 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 9, trafficPerc: 72
-2024-02-20 15:48:42,863 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 9, trafficPerc: 71
-2024-02-20 15:48:42,864 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 9, trafficPerc: 66
-2024-02-20 15:48:42,865 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 9, trafficPerc: 7
-2024-02-20 15:48:42,871 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 10, trafficPerc: 27
-2024-02-20 15:48:42,872 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 10, trafficPerc: 45
-2024-02-20 15:48:42,874 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 10, trafficPerc: 58
-2024-02-20 15:48:42,874 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 10, trafficPerc: 72
-2024-02-20 15:48:42,875 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 10, trafficPerc: 49
-2024-02-20 15:48:42,876 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 10, trafficPerc: 2
-2024-02-20 15:48:42,881 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 11, trafficPerc: 93
-2024-02-20 15:48:42,881 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 11, trafficPerc: 1
-2024-02-20 15:48:42,882 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 11, trafficPerc: 16
-2024-02-20 15:48:42,883 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 11, trafficPerc: 57
-2024-02-20 15:48:42,884 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 11, trafficPerc: 3
-2024-02-20 15:48:42,884 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 11, trafficPerc: 17
-2024-02-20 15:48:42,889 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 12, trafficPerc: 84
-2024-02-20 15:48:42,890 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 12, trafficPerc: 67
-2024-02-20 15:48:42,891 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 12, trafficPerc: 56
-2024-02-20 15:48:42,891 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 12, trafficPerc: 91
-2024-02-20 15:48:42,892 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 12, trafficPerc: 4
-2024-02-20 15:48:42,893 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 12, trafficPerc: 61
-2024-02-20 15:48:42,902 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 13, trafficPerc: 77
-2024-02-20 15:48:42,904 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 13, trafficPerc: 0
-2024-02-20 15:48:42,904 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 13, trafficPerc: 71
-2024-02-20 15:48:42,904 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 13, trafficPerc: 63
-2024-02-20 15:48:42,904 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 13, trafficPerc: 63
-2024-02-20 15:48:42,904 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 13, trafficPerc: 96
-2024-02-20 15:48:42,913 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 14, trafficPerc: 48
-2024-02-20 15:48:42,913 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 14, trafficPerc: 32
-2024-02-20 15:48:42,914 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 14, trafficPerc: 26
-2024-02-20 15:48:42,915 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 14, trafficPerc: 30
-2024-02-20 15:48:42,916 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 14, trafficPerc: 60
-2024-02-20 15:48:42,916 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 14, trafficPerc: 4
-2024-02-20 15:48:42,921 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 15, trafficPerc: 54
-2024-02-20 15:48:42,922 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 15, trafficPerc: 8
-2024-02-20 15:48:42,923 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 15, trafficPerc: 83
-2024-02-20 15:48:42,924 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 15, trafficPerc: 20
-2024-02-20 15:48:42,925 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 15, trafficPerc: 7
-2024-02-20 15:48:42,926 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 15, trafficPerc: 9
-2024-02-20 15:48:42,930 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 16, trafficPerc: 42
-2024-02-20 15:48:42,931 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 16, trafficPerc: 23
-2024-02-20 15:48:42,932 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 16, trafficPerc: 22
-2024-02-20 15:48:42,933 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 16, trafficPerc: 76
-2024-02-20 15:48:42,943 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 16, trafficPerc: 33
-2024-02-20 15:48:42,953 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 16, trafficPerc: 51
-2024-02-20 15:48:42,957 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 17, trafficPerc: 50
-2024-02-20 15:48:42,958 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 17, trafficPerc: 70
-2024-02-20 15:48:42,959 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 17, trafficPerc: 9
-2024-02-20 15:48:42,959 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 17, trafficPerc: 64
-2024-02-20 15:48:42,960 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 17, trafficPerc: 96
-2024-02-20 15:48:42,960 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 17, trafficPerc: 44
-2024-02-20 15:48:42,964 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 18, trafficPerc: 62
-2024-02-20 15:48:42,964 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 18, trafficPerc: 65
-2024-02-20 15:48:42,966 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 18, trafficPerc: 7
-2024-02-20 15:48:42,966 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 18, trafficPerc: 91
-2024-02-20 15:48:42,967 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 18, trafficPerc: 81
-2024-02-20 15:48:42,967 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 18, trafficPerc: 9
-2024-02-20 15:48:42,971 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 19, trafficPerc: 3
-2024-02-20 15:48:42,971 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 19, trafficPerc: 20
-2024-02-20 15:48:42,972 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 19, trafficPerc: 3
-2024-02-20 15:48:42,974 [INFO] Link: 4, endpoints: ['switch2', 'switch3'], sim second: 19, trafficPerc: 88
-2024-02-20 15:48:42,975 [INFO] Link: 5, endpoints: ['switch2', 'switch4'], sim second: 19, trafficPerc: 69
-2024-02-20 15:48:42,975 [INFO] Link: 6, endpoints: ['switch3', 'switch4'], sim second: 19, trafficPerc: 8
-2024-02-20 15:48:42,978 [INFO] ..packets.yaml file structure done!
-2024-02-20 15:48:42,979 [INFO] Writing packets.yaml file..
-2024-02-20 15:48:49,036 [INFO] ..packets file creation done!
-2024-02-20 15:48:49,036 [INFO] Creating network.yaml file structure..
-2024-02-20 15:48:49,036 [INFO] Switches created:
-2024-02-20 15:48:49,036 [INFO] {'switchName': 'switch1', 'address': '10.0.0.1'}
-2024-02-20 15:48:49,036 [INFO] {'switchName': 'switch2', 'address': '10.0.0.2'}
-2024-02-20 15:48:49,041 [INFO] {'switchName': 'switch3', 'address': '10.0.0.3'}
-2024-02-20 15:48:49,041 [INFO] {'switchName': 'switch4', 'address': '10.0.0.4'}
-2024-02-20 15:48:49,041 [INFO] ..network.yaml file structure done!
-2024-02-20 15:48:49,041 [INFO] Writing network.yaml file..
-2024-02-20 15:48:49,053 [INFO] ..network.yaml file creation done!
+2024-02-22 17:53:40,848 [INFO] The choosen switches number is 6 and the network link capacity is 10 Mbps
+2024-02-22 17:53:40,848 [INFO] LinkCap in Bytes: 1250000B
+2024-02-22 17:53:40,848 [DEBUG] PPS: 312.500000
+2024-02-22 17:53:40,848 [INFO] Creating links..
+2024-02-22 17:53:40,848 [INFO] ..links creation done!Links created are:
+2024-02-22 17:53:40,848 [INFO] 1: {'endpoints': ['switch1', 'switch2'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,848 [INFO] 2: {'endpoints': ['switch1', 'switch3'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,848 [INFO] 3: {'endpoints': ['switch1', 'switch4'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,863 [INFO] 4: {'endpoints': ['switch1', 'switch5'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,864 [INFO] 5: {'endpoints': ['switch1', 'switch6'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,865 [INFO] 6: {'endpoints': ['switch2', 'switch3'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,866 [INFO] 7: {'endpoints': ['switch2', 'switch4'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,867 [INFO] 8: {'endpoints': ['switch2', 'switch5'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,871 [INFO] 9: {'endpoints': ['switch2', 'switch6'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,873 [INFO] 10: {'endpoints': ['switch3', 'switch4'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,876 [INFO] 11: {'endpoints': ['switch3', 'switch5'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,879 [INFO] 12: {'endpoints': ['switch3', 'switch6'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,882 [INFO] 13: {'endpoints': ['switch4', 'switch5'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,887 [INFO] 14: {'endpoints': ['switch4', 'switch6'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,888 [INFO] 15: {'endpoints': ['switch5', 'switch6'], 'capacity': 10, 'trafficPerc': 0}
+2024-02-22 17:53:40,890 [INFO] Creating packets.yaml file structure..
+2024-02-22 17:53:40,891 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 0, trafficPerc: 76
+2024-02-22 17:53:40,892 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 0, trafficPerc: 4
+2024-02-22 17:53:40,893 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 0, trafficPerc: 21
+2024-02-22 17:53:40,894 [INFO] Link: 4, endpoints: ['switch1', 'switch5'], sim second: 0, trafficPerc: 22
+2024-02-22 17:53:40,895 [INFO] Link: 5, endpoints: ['switch1', 'switch6'], sim second: 0, trafficPerc: 54
+2024-02-22 17:53:40,896 [INFO] Link: 6, endpoints: ['switch2', 'switch3'], sim second: 0, trafficPerc: 99
+2024-02-22 17:53:40,896 [INFO] Link: 7, endpoints: ['switch2', 'switch4'], sim second: 0, trafficPerc: 15
+2024-02-22 17:53:40,897 [INFO] Link: 8, endpoints: ['switch2', 'switch5'], sim second: 0, trafficPerc: 96
+2024-02-22 17:53:40,897 [INFO] Link: 9, endpoints: ['switch2', 'switch6'], sim second: 0, trafficPerc: 68
+2024-02-22 17:53:40,898 [INFO] Link: 10, endpoints: ['switch3', 'switch4'], sim second: 0, trafficPerc: 100
+2024-02-22 17:53:40,899 [INFO] Link: 11, endpoints: ['switch3', 'switch5'], sim second: 0, trafficPerc: 58
+2024-02-22 17:53:40,899 [INFO] Link: 12, endpoints: ['switch3', 'switch6'], sim second: 0, trafficPerc: 83
+2024-02-22 17:53:40,900 [INFO] Link: 13, endpoints: ['switch4', 'switch5'], sim second: 0, trafficPerc: 84
+2024-02-22 17:53:40,902 [INFO] Link: 14, endpoints: ['switch4', 'switch6'], sim second: 0, trafficPerc: 46
+2024-02-22 17:53:40,903 [INFO] Link: 15, endpoints: ['switch5', 'switch6'], sim second: 0, trafficPerc: 63
+2024-02-22 17:53:40,941 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 1, trafficPerc: 99
+2024-02-22 17:53:40,942 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 1, trafficPerc: 88
+2024-02-22 17:53:40,942 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 1, trafficPerc: 82
+2024-02-22 17:53:40,943 [INFO] Link: 4, endpoints: ['switch1', 'switch5'], sim second: 1, trafficPerc: 31
+2024-02-22 17:53:40,944 [INFO] Link: 5, endpoints: ['switch1', 'switch6'], sim second: 1, trafficPerc: 82
+2024-02-22 17:53:40,945 [INFO] Link: 6, endpoints: ['switch2', 'switch3'], sim second: 1, trafficPerc: 34
+2024-02-22 17:53:40,946 [INFO] Link: 7, endpoints: ['switch2', 'switch4'], sim second: 1, trafficPerc: 85
+2024-02-22 17:53:40,946 [INFO] Link: 8, endpoints: ['switch2', 'switch5'], sim second: 1, trafficPerc: 94
+2024-02-22 17:53:40,947 [INFO] Link: 9, endpoints: ['switch2', 'switch6'], sim second: 1, trafficPerc: 44
+2024-02-22 17:53:40,948 [INFO] Link: 10, endpoints: ['switch3', 'switch4'], sim second: 1, trafficPerc: 18
+2024-02-22 17:53:40,949 [INFO] Link: 11, endpoints: ['switch3', 'switch5'], sim second: 1, trafficPerc: 57
+2024-02-22 17:53:40,950 [INFO] Link: 12, endpoints: ['switch3', 'switch6'], sim second: 1, trafficPerc: 63
+2024-02-22 17:53:40,950 [INFO] Link: 13, endpoints: ['switch4', 'switch5'], sim second: 1, trafficPerc: 5
+2024-02-22 17:53:40,951 [INFO] Link: 14, endpoints: ['switch4', 'switch6'], sim second: 1, trafficPerc: 57
+2024-02-22 17:53:40,952 [INFO] Link: 15, endpoints: ['switch5', 'switch6'], sim second: 1, trafficPerc: 62
+2024-02-22 17:53:40,973 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 2, trafficPerc: 46
+2024-02-22 17:53:40,974 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 2, trafficPerc: 95
+2024-02-22 17:53:40,974 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 2, trafficPerc: 0
+2024-02-22 17:53:40,975 [INFO] Link: 4, endpoints: ['switch1', 'switch5'], sim second: 2, trafficPerc: 78
+2024-02-22 17:53:40,976 [INFO] Link: 5, endpoints: ['switch1', 'switch6'], sim second: 2, trafficPerc: 17
+2024-02-22 17:53:40,976 [INFO] Link: 6, endpoints: ['switch2', 'switch3'], sim second: 2, trafficPerc: 96
+2024-02-22 17:53:40,977 [INFO] Link: 7, endpoints: ['switch2', 'switch4'], sim second: 2, trafficPerc: 38
+2024-02-22 17:53:40,978 [INFO] Link: 8, endpoints: ['switch2', 'switch5'], sim second: 2, trafficPerc: 69
+2024-02-22 17:53:40,978 [INFO] Link: 9, endpoints: ['switch2', 'switch6'], sim second: 2, trafficPerc: 46
+2024-02-22 17:53:40,979 [INFO] Link: 10, endpoints: ['switch3', 'switch4'], sim second: 2, trafficPerc: 69
+2024-02-22 17:53:40,980 [INFO] Link: 11, endpoints: ['switch3', 'switch5'], sim second: 2, trafficPerc: 52
+2024-02-22 17:53:40,981 [INFO] Link: 12, endpoints: ['switch3', 'switch6'], sim second: 2, trafficPerc: 79
+2024-02-22 17:53:40,981 [INFO] Link: 13, endpoints: ['switch4', 'switch5'], sim second: 2, trafficPerc: 30
+2024-02-22 17:53:40,982 [INFO] Link: 14, endpoints: ['switch4', 'switch6'], sim second: 2, trafficPerc: 79
+2024-02-22 17:53:40,982 [INFO] Link: 15, endpoints: ['switch5', 'switch6'], sim second: 2, trafficPerc: 33
+2024-02-22 17:53:40,997 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 3, trafficPerc: 82
+2024-02-22 17:53:40,998 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 3, trafficPerc: 13
+2024-02-22 17:53:40,999 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 3, trafficPerc: 52
+2024-02-22 17:53:41,000 [INFO] Link: 4, endpoints: ['switch1', 'switch5'], sim second: 3, trafficPerc: 44
+2024-02-22 17:53:41,001 [INFO] Link: 5, endpoints: ['switch1', 'switch6'], sim second: 3, trafficPerc: 77
+2024-02-22 17:53:41,002 [INFO] Link: 6, endpoints: ['switch2', 'switch3'], sim second: 3, trafficPerc: 30
+2024-02-22 17:53:41,003 [INFO] Link: 7, endpoints: ['switch2', 'switch4'], sim second: 3, trafficPerc: 64
+2024-02-22 17:53:41,010 [INFO] Link: 8, endpoints: ['switch2', 'switch5'], sim second: 3, trafficPerc: 99
+2024-02-22 17:53:41,012 [INFO] Link: 9, endpoints: ['switch2', 'switch6'], sim second: 3, trafficPerc: 68
+2024-02-22 17:53:41,013 [INFO] Link: 10, endpoints: ['switch3', 'switch4'], sim second: 3, trafficPerc: 25
+2024-02-22 17:53:41,014 [INFO] Link: 11, endpoints: ['switch3', 'switch5'], sim second: 3, trafficPerc: 62
+2024-02-22 17:53:41,015 [INFO] Link: 12, endpoints: ['switch3', 'switch6'], sim second: 3, trafficPerc: 83
+2024-02-22 17:53:41,015 [INFO] Link: 13, endpoints: ['switch4', 'switch5'], sim second: 3, trafficPerc: 41
+2024-02-22 17:53:41,015 [INFO] Link: 14, endpoints: ['switch4', 'switch6'], sim second: 3, trafficPerc: 68
+2024-02-22 17:53:41,015 [INFO] Link: 15, endpoints: ['switch5', 'switch6'], sim second: 3, trafficPerc: 40
+2024-02-22 17:53:41,034 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 4, trafficPerc: 85
+2024-02-22 17:53:41,035 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 4, trafficPerc: 44
+2024-02-22 17:53:41,036 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 4, trafficPerc: 46
+2024-02-22 17:53:41,037 [INFO] Link: 4, endpoints: ['switch1', 'switch5'], sim second: 4, trafficPerc: 76
+2024-02-22 17:53:41,037 [INFO] Link: 5, endpoints: ['switch1', 'switch6'], sim second: 4, trafficPerc: 25
+2024-02-22 17:53:41,038 [INFO] Link: 6, endpoints: ['switch2', 'switch3'], sim second: 4, trafficPerc: 44
+2024-02-22 17:53:41,038 [INFO] Link: 7, endpoints: ['switch2', 'switch4'], sim second: 4, trafficPerc: 54
+2024-02-22 17:53:41,039 [INFO] Link: 8, endpoints: ['switch2', 'switch5'], sim second: 4, trafficPerc: 90
+2024-02-22 17:53:41,040 [INFO] Link: 9, endpoints: ['switch2', 'switch6'], sim second: 4, trafficPerc: 1
+2024-02-22 17:53:41,040 [INFO] Link: 10, endpoints: ['switch3', 'switch4'], sim second: 4, trafficPerc: 92
+2024-02-22 17:53:41,041 [INFO] Link: 11, endpoints: ['switch3', 'switch5'], sim second: 4, trafficPerc: 96
+2024-02-22 17:53:41,042 [INFO] Link: 12, endpoints: ['switch3', 'switch6'], sim second: 4, trafficPerc: 0
+2024-02-22 17:53:41,043 [INFO] Link: 13, endpoints: ['switch4', 'switch5'], sim second: 4, trafficPerc: 97
+2024-02-22 17:53:41,043 [INFO] Link: 14, endpoints: ['switch4', 'switch6'], sim second: 4, trafficPerc: 65
+2024-02-22 17:53:41,044 [INFO] Link: 15, endpoints: ['switch5', 'switch6'], sim second: 4, trafficPerc: 85
+2024-02-22 17:53:41,054 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 5, trafficPerc: 89
+2024-02-22 17:53:41,055 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 5, trafficPerc: 35
+2024-02-22 17:53:41,056 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 5, trafficPerc: 71
+2024-02-22 17:53:41,057 [INFO] Link: 4, endpoints: ['switch1', 'switch5'], sim second: 5, trafficPerc: 91
+2024-02-22 17:53:41,058 [INFO] Link: 5, endpoints: ['switch1', 'switch6'], sim second: 5, trafficPerc: 83
+2024-02-22 17:53:41,058 [INFO] Link: 6, endpoints: ['switch2', 'switch3'], sim second: 5, trafficPerc: 35
+2024-02-22 17:53:41,059 [INFO] Link: 7, endpoints: ['switch2', 'switch4'], sim second: 5, trafficPerc: 31
+2024-02-22 17:53:41,060 [INFO] Link: 8, endpoints: ['switch2', 'switch5'], sim second: 5, trafficPerc: 64
+2024-02-22 17:53:41,067 [INFO] Link: 9, endpoints: ['switch2', 'switch6'], sim second: 5, trafficPerc: 78
+2024-02-22 17:53:41,069 [INFO] Link: 10, endpoints: ['switch3', 'switch4'], sim second: 5, trafficPerc: 0
+2024-02-22 17:53:41,070 [INFO] Link: 11, endpoints: ['switch3', 'switch5'], sim second: 5, trafficPerc: 29
+2024-02-22 17:53:41,073 [INFO] Link: 12, endpoints: ['switch3', 'switch6'], sim second: 5, trafficPerc: 7
+2024-02-22 17:53:41,073 [INFO] Link: 13, endpoints: ['switch4', 'switch5'], sim second: 5, trafficPerc: 84
+2024-02-22 17:53:41,073 [INFO] Link: 14, endpoints: ['switch4', 'switch6'], sim second: 5, trafficPerc: 72
+2024-02-22 17:53:41,073 [INFO] Link: 15, endpoints: ['switch5', 'switch6'], sim second: 5, trafficPerc: 31
+2024-02-22 17:53:41,086 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 6, trafficPerc: 98
+2024-02-22 17:53:41,087 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 6, trafficPerc: 12
+2024-02-22 17:53:41,088 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 6, trafficPerc: 2
+2024-02-22 17:53:41,089 [INFO] Link: 4, endpoints: ['switch1', 'switch5'], sim second: 6, trafficPerc: 48
+2024-02-22 17:53:41,089 [INFO] Link: 5, endpoints: ['switch1', 'switch6'], sim second: 6, trafficPerc: 20
+2024-02-22 17:53:41,090 [INFO] Link: 6, endpoints: ['switch2', 'switch3'], sim second: 6, trafficPerc: 62
+2024-02-22 17:53:41,090 [INFO] Link: 7, endpoints: ['switch2', 'switch4'], sim second: 6, trafficPerc: 49
+2024-02-22 17:53:41,091 [INFO] Link: 8, endpoints: ['switch2', 'switch5'], sim second: 6, trafficPerc: 69
+2024-02-22 17:53:41,092 [INFO] Link: 9, endpoints: ['switch2', 'switch6'], sim second: 6, trafficPerc: 47
+2024-02-22 17:53:41,093 [INFO] Link: 10, endpoints: ['switch3', 'switch4'], sim second: 6, trafficPerc: 2
+2024-02-22 17:53:41,094 [INFO] Link: 11, endpoints: ['switch3', 'switch5'], sim second: 6, trafficPerc: 26
+2024-02-22 17:53:41,095 [INFO] Link: 12, endpoints: ['switch3', 'switch6'], sim second: 6, trafficPerc: 85
+2024-02-22 17:53:41,095 [INFO] Link: 13, endpoints: ['switch4', 'switch5'], sim second: 6, trafficPerc: 85
+2024-02-22 17:53:41,096 [INFO] Link: 14, endpoints: ['switch4', 'switch6'], sim second: 6, trafficPerc: 85
+2024-02-22 17:53:41,097 [INFO] Link: 15, endpoints: ['switch5', 'switch6'], sim second: 6, trafficPerc: 31
+2024-02-22 17:53:41,108 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 7, trafficPerc: 32
+2024-02-22 17:53:41,109 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 7, trafficPerc: 21
+2024-02-22 17:53:41,110 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 7, trafficPerc: 29
+2024-02-22 17:53:41,111 [INFO] Link: 4, endpoints: ['switch1', 'switch5'], sim second: 7, trafficPerc: 40
+2024-02-22 17:53:41,111 [INFO] Link: 5, endpoints: ['switch1', 'switch6'], sim second: 7, trafficPerc: 88
+2024-02-22 17:53:41,112 [INFO] Link: 6, endpoints: ['switch2', 'switch3'], sim second: 7, trafficPerc: 91
+2024-02-22 17:53:41,113 [INFO] Link: 7, endpoints: ['switch2', 'switch4'], sim second: 7, trafficPerc: 3
+2024-02-22 17:53:41,114 [INFO] Link: 8, endpoints: ['switch2', 'switch5'], sim second: 7, trafficPerc: 42
+2024-02-22 17:53:41,115 [INFO] Link: 9, endpoints: ['switch2', 'switch6'], sim second: 7, trafficPerc: 84
+2024-02-22 17:53:41,116 [INFO] Link: 10, endpoints: ['switch3', 'switch4'], sim second: 7, trafficPerc: 11
+2024-02-22 17:53:41,116 [INFO] Link: 11, endpoints: ['switch3', 'switch5'], sim second: 7, trafficPerc: 58
+2024-02-22 17:53:41,117 [INFO] Link: 12, endpoints: ['switch3', 'switch6'], sim second: 7, trafficPerc: 15
+2024-02-22 17:53:41,118 [INFO] Link: 13, endpoints: ['switch4', 'switch5'], sim second: 7, trafficPerc: 83
+2024-02-22 17:53:41,118 [INFO] Link: 14, endpoints: ['switch4', 'switch6'], sim second: 7, trafficPerc: 6
+2024-02-22 17:53:41,119 [INFO] Link: 15, endpoints: ['switch5', 'switch6'], sim second: 7, trafficPerc: 48
+2024-02-22 17:53:41,201 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 8, trafficPerc: 41
+2024-02-22 17:53:41,203 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 8, trafficPerc: 14
+2024-02-22 17:53:41,243 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 8, trafficPerc: 67
+2024-02-22 17:53:41,248 [INFO] Link: 4, endpoints: ['switch1', 'switch5'], sim second: 8, trafficPerc: 61
+2024-02-22 17:53:41,249 [INFO] Link: 5, endpoints: ['switch1', 'switch6'], sim second: 8, trafficPerc: 89
+2024-02-22 17:53:41,250 [INFO] Link: 6, endpoints: ['switch2', 'switch3'], sim second: 8, trafficPerc: 43
+2024-02-22 17:53:41,258 [INFO] Link: 7, endpoints: ['switch2', 'switch4'], sim second: 8, trafficPerc: 38
+2024-02-22 17:53:41,259 [INFO] Link: 8, endpoints: ['switch2', 'switch5'], sim second: 8, trafficPerc: 33
+2024-02-22 17:53:41,260 [INFO] Link: 9, endpoints: ['switch2', 'switch6'], sim second: 8, trafficPerc: 84
+2024-02-22 17:53:41,262 [INFO] Link: 10, endpoints: ['switch3', 'switch4'], sim second: 8, trafficPerc: 56
+2024-02-22 17:53:41,262 [INFO] Link: 11, endpoints: ['switch3', 'switch5'], sim second: 8, trafficPerc: 27
+2024-02-22 17:53:41,262 [INFO] Link: 12, endpoints: ['switch3', 'switch6'], sim second: 8, trafficPerc: 78
+2024-02-22 17:53:41,262 [INFO] Link: 13, endpoints: ['switch4', 'switch5'], sim second: 8, trafficPerc: 74
+2024-02-22 17:53:41,287 [INFO] Link: 14, endpoints: ['switch4', 'switch6'], sim second: 8, trafficPerc: 67
+2024-02-22 17:53:41,288 [INFO] Link: 15, endpoints: ['switch5', 'switch6'], sim second: 8, trafficPerc: 0
+2024-02-22 17:53:41,302 [INFO] Link: 1, endpoints: ['switch1', 'switch2'], sim second: 9, trafficPerc: 99
+2024-02-22 17:53:41,303 [INFO] Link: 2, endpoints: ['switch1', 'switch3'], sim second: 9, trafficPerc: 37
+2024-02-22 17:53:41,304 [INFO] Link: 3, endpoints: ['switch1', 'switch4'], sim second: 9, trafficPerc: 25
+2024-02-22 17:53:41,304 [INFO] Link: 4, endpoints: ['switch1', 'switch5'], sim second: 9, trafficPerc: 94
+2024-02-22 17:53:41,305 [INFO] Link: 5, endpoints: ['switch1', 'switch6'], sim second: 9, trafficPerc: 95
+2024-02-22 17:53:41,306 [INFO] Link: 6, endpoints: ['switch2', 'switch3'], sim second: 9, trafficPerc: 73
+2024-02-22 17:53:41,306 [INFO] Link: 7, endpoints: ['switch2', 'switch4'], sim second: 9, trafficPerc: 84
+2024-02-22 17:53:41,307 [INFO] Link: 8, endpoints: ['switch2', 'switch5'], sim second: 9, trafficPerc: 2
+2024-02-22 17:53:41,308 [INFO] Link: 9, endpoints: ['switch2', 'switch6'], sim second: 9, trafficPerc: 85
+2024-02-22 17:53:41,308 [INFO] Link: 10, endpoints: ['switch3', 'switch4'], sim second: 9, trafficPerc: 67
+2024-02-22 17:53:41,309 [INFO] Link: 11, endpoints: ['switch3', 'switch5'], sim second: 9, trafficPerc: 15
+2024-02-22 17:53:41,310 [INFO] Link: 12, endpoints: ['switch3', 'switch6'], sim second: 9, trafficPerc: 42
+2024-02-22 17:53:41,311 [INFO] Link: 13, endpoints: ['switch4', 'switch5'], sim second: 9, trafficPerc: 68
+2024-02-22 17:53:41,312 [INFO] Link: 14, endpoints: ['switch4', 'switch6'], sim second: 9, trafficPerc: 1
+2024-02-22 17:53:41,312 [INFO] Link: 15, endpoints: ['switch5', 'switch6'], sim second: 9, trafficPerc: 54
+2024-02-22 17:53:41,326 [INFO] ..packets.yaml file structure done!
+2024-02-22 17:53:41,329 [INFO] Writing packets.yaml file..
+2024-02-22 17:53:49,379 [INFO] ..packets file creation done!
+2024-02-22 17:53:49,379 [INFO] Creating network.yaml file structure..
+2024-02-22 17:53:49,379 [INFO] Switches created:
+2024-02-22 17:53:49,394 [INFO] {'switchName': 'switch1', 'address': '10.0.0.1'}
+2024-02-22 17:53:49,394 [INFO] {'switchName': 'switch2', 'address': '10.0.0.2'}
+2024-02-22 17:53:49,394 [INFO] {'switchName': 'switch3', 'address': '10.0.0.3'}
+2024-02-22 17:53:49,394 [INFO] {'switchName': 'switch4', 'address': '10.0.0.4'}
+2024-02-22 17:53:49,394 [INFO] {'switchName': 'switch5', 'address': '10.0.0.5'}
+2024-02-22 17:53:49,394 [INFO] {'switchName': 'switch6', 'address': '10.0.0.6'}
+2024-02-22 17:53:49,394 [INFO] ..network.yaml file structure done!
+2024-02-22 17:53:49,394 [INFO] Writing network.yaml file..
+2024-02-22 17:53:49,415 [INFO] ..network.yaml file creation done!

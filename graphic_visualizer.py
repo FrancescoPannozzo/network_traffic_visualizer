@@ -10,7 +10,7 @@ from datetime import timedelta
 from manim import *
 from utils import utils
 
-class GraphicVisualizer(Scene):
+class GraphicVisualizer(MovingCameraScene):
     """  Graph creator """
     def construct(self):
         # Logger config
@@ -44,17 +44,20 @@ class GraphicVisualizer(Scene):
         links = []
         EP_A  = 0
         EP_B = 1
-        for _, content in network_data[LINK_INDEX].items():
+        LINK_DATA = 1
+        for _, content in traffic_data[LINK_DATA].items():
             links.append((content["endpoints"][EP_A], content["endpoints"][EP_B]))
 
         logging.debug("links: %s", links)
 
+        layout_scale = (len(switches))/2
         # graph creation
         ZERO_TRAFFIC = '#05ff00'
-        grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=3, vertex_config={"color":BLUE},
+        grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=layout_scale, vertex_config={"color":BLUE},
                       edge_config={"stroke_width": 20, "color":ZERO_TRAFFIC}
                       )
-        self.play(Create(grafo)) 
+        
+
 
         # traffic_data simulation parameters index
         SIM_PAR = 0
@@ -69,9 +72,14 @@ class GraphicVisualizer(Scene):
         # time index to analyze
         time_walker = start_time + timedelta(milliseconds=average_delta)
         # the sim time to visualize
-        sim_time_txt = Text(f"sim time = {time_walker}", font_size=24).to_edge(UR).set_color(YELLOW)
+        sim_time_txt = Text(f"sim time:{time_walker.strftime('%H:%M:%S.%f')[:-3]}", font_size=24).to_corner(UR).set_color(YELLOW)
 
+        self.play(Create(grafo))
         self.add(sim_time_txt)
+        self.play(self.camera.auto_zoom(grafo, margin=1), run_time=0.5)
+       
+        
+        
 
         # creating traffic animations
         while time_walker <= end_time:
@@ -83,10 +91,12 @@ class GraphicVisualizer(Scene):
                 animations.append(grafo.edges[(content["endpoints"][EP_A], content["endpoints"][EP_B])].animate.set_color(traffic_perc_colors[color_perc]["hexValue"]))
             # playing animations
             self.play(*animations, Transform(sim_time_txt,
-                                                Text(f"sim time = {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
-                                                font_size=24).to_edge(UR).set_color(YELLOW)),
+                                                Text(f"sim time:{time_walker.strftime('%H:%M:%S.%f')[:-3]}",
+                                                font_size=24).to_corner(UR).set_color(YELLOW)),
                                                 run_time=1
                                             )
             # pushing forward sim time to check
             time_walker += timedelta(milliseconds=show_delta)
+
+        
         self.wait(2)

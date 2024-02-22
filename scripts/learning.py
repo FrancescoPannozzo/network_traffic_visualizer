@@ -128,7 +128,7 @@ class CustomGraph(MovingCameraScene):
         self.add(n1, n2)
 
         switches = []
-        SWITCH_NUMBER = 5
+        SWITCH_NUMBER = 8
         for i in range(1, SWITCH_NUMBER+1):
             switches.append(f"switch{i}")
 
@@ -151,5 +151,7 @@ class CustomGraph(MovingCameraScene):
         
 
         self.add(grafo)
-        self.play(self.camera.frame.animate.scale(1.2))
+        t1.to_corner(UL)
+        #self.play(self.camera.frame.animate.scale(1.2))
+        self.play(self.camera.auto_zoom(grafo, margin=1), run_time=0.5)
         self.wait(5)
