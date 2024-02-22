@@ -1,4 +1,4 @@
-""" Manim playground """
+""" Manim playground: personal study script"""
 
 import logging
 from manim import *
@@ -112,7 +112,7 @@ class Dots(Scene):
         l1.next_to(t1, UL)
         self.add(l1)
 
-class CustomGraph(Scene):
+class CustomGraph(MovingCameraScene):
     def construct(self):
         
         t1 = Tex("n1", color=RED)
@@ -128,22 +128,21 @@ class CustomGraph(Scene):
         self.add(n1, n2)
 
         switches = []
-        SWITCH_NUMBER = 10
+        SWITCH_NUMBER = 5
         for i in range(1, SWITCH_NUMBER+1):
-            switches.append(f"S{i}")
+            switches.append(f"switch{i}")
 
         links = []
         for i in range(1, len(switches)+1):
             for p in range(i, len(switches)+1):
                 if i != p:
-                    links.append(((f"S{i}"), (f"S{p}")))
+                    links.append(((f"switch{i}"), (f"switch{p}")))
 
         print(switches)
         print(links)
         
-        grafo = Graph(switches, links, labels=True, layout="spring", layout_scale=3)
+        grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=4, vertex_config={"color":BLUE})
         
-
         """         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         # Graph aggiusta da solo il radius dei nodi in base alla lunghezza della label associata
         grafo = Graph(nodi, archi, layout="circular", labels={ n1: "s1", n2: "s2" }, layout_scale=3,
@@ -152,105 +151,5 @@ class CustomGraph(Scene):
         
 
         self.add(grafo)
-
-
-
-class Graph3DScene(ThreeDScene):
-    def construct(self):
-
-        switches = []
-        SWITCH_NUMBER = 10
-        for i in range(1, SWITCH_NUMBER+1):
-            switches.append(f"S{i}")
-
-        links = []
-        for i in range(1, len(switches)+1):
-            for p in range(i, len(switches)+1):
-                if i != p:
-                    links.append(((f"S{i}"), (f"S{p}")))
-
-        # Definizione dei vertici nel 3D (x, y, z)
-        vertices_positions = {
-            1: np.array([1, 1, 1]),
-            2: np.array([-1, 1, -1]),
-            3: np.array([-1, -1, 1]),
-            4: np.array([1, -1, -1]),
-        }
-
-        # Creazione dei nodi come sfere
-        vertices = {k: Sphere(radius=0.1, resolution=(8, 8)).move_to(v) for k, v in vertices_positions.items()}
-        for vertex in vertices.values():
-            self.add(vertex)
-
-        # Definizione degli archi come linee
-        edges = [
-            (1, 2),
-            (2, 3),
-            (3, 1),
-            (1, 4),
-            (2, 4),
-            (3, 4),
-        ]
-
-        # Creazione e aggiunta degli archi alla scena
-        for start, end in edges:
-            start_pos = vertices_positions[start]
-            end_pos = vertices_positions[end]
-            edge = Line(start_pos, end_pos, color=WHITE)
-            self.add(edge)
-
-        # Animazione della scena
-        self.move_camera(phi=75 * DEGREES, theta=30 * DEGREES)
-        self.begin_ambient_camera_rotation(rate=0.2)  # Rotazione lenta della camera
+        self.play(self.camera.frame.animate.scale(1.2))
         self.wait(5)
-
-
-class Custom3D(ThreeDScene):
-    def construct(self):
-        # Definizione dei vertici nel 3D (x, y, z)
-        vertices_positions = {
-            1: np.array([1, 1, 1]),
-            2: np.array([-1, 1, -2]),
-            3: np.array([-1, -1, 2]),
-            4: np.array([1, -1, -2]),
-        }
-
-        # Creazione dei nodi come sfere
-        vertices = {k: Sphere(radius=0.1, resolution=(8, 8)).move_to(v) for k, v in vertices_positions.items()}
-        for vertex in vertices.values():
-            self.add(vertex)
-
-        # Definizione degli archi come linee
-        edges = [
-            (1, 2),
-            (2, 3),
-            (3, 1),
-            (1, 4),
-            (2, 4),
-            (3, 4),
-        ]
-
-        # Creazione e aggiunta degli archi alla scena
-        for start, end in edges:
-            start_pos = vertices_positions[start]
-            end_pos = vertices_positions[end]
-            edge = Line(start_pos, end_pos, color=WHITE)
-            self.add(edge)
-
-        # Animazione della scena
-        self.move_camera(phi=75 * DEGREES, theta=30 * DEGREES)
-        self.begin_ambient_camera_rotation(rate=0.2)  # Rotazione lenta della camera
-        self.wait(5)
-
-class Dot3DExample(ThreeDScene):
-    def construct(self):
-        self.set_camera_orientation(phi=75*DEGREES, theta=-45*DEGREES)
-
-        axes = ThreeDAxes()
-        dot_1 = Dot3D(point=axes.coords_to_point(0, 0, 1), color=RED)
-        dot_2 = Dot3D(point=axes.coords_to_point(2, 0, 0), radius=0.1, color=BLUE)
-        dot_3 = Dot3D(point=[0, 2.5, 0], radius=0.1, color=ORANGE)
-        testo = Text("ciao")
-        testo.move_to([0, 2.5, 0.5])
-        #self.add_fixed_in_frame_mobjects(testo)
-        self.add(axes, dot_1, dot_2,dot_3, testo)

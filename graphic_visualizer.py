@@ -51,7 +51,7 @@ class GraphicVisualizer(Scene):
 
         # graph creation
         ZERO_TRAFFIC = '#05ff00'
-        grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=3,
+        grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=3, vertex_config={"color":BLUE},
                       edge_config={"stroke_width": 20, "color":ZERO_TRAFFIC}
                       )
         self.play(Create(grafo)) 

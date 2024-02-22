@@ -97,10 +97,19 @@ def max_traffic_per_unit(capacity, update_delta):
     return ((capacity * 1e6) / 8) / time_units_per_sec
 
 def rgb_to_hex(r, g, b):
-    """ Translate """
+    """ Translate r, g, b code in hex format
+    
+    Returns:
+    string -- hex color string representation
+    """
     return '#{:02x}{:02x}{:02x}'.format(r, g, b)
 
 def traffic_colors_gen():
+    """ A traffic colors generator, green to red 
+
+    Returns:
+    dict -- a dictionary with keys as percentage number and values as hex color
+    """
     MID_TRAFFIC = 50
     MAX_TRAFFIC = 100
     hexColors = {}
