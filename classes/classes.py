@@ -35,6 +35,7 @@ class Link:
 
 class Switch:
     """ Switch represents the switch object """
+    switch_id = 0
     def __init__(self, name, address):
         """ 
         Keyword arguments:
@@ -46,6 +47,7 @@ class Switch:
          """
         self.name = name
         self.address = address
+        Switch.switch_id += 1
 
     def __str__(self):
-        return f"Switch name:{self.name}, address:{self.address}"
+        return f"Switch ID:{self.switch_id}, switch name:{self.name}, address:{self.address}"

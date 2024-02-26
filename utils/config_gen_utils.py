@@ -109,3 +109,30 @@ def create_packet(ep_a, ep_b, timewalker, packet_size):
         "timest": timewalker,
         "dim": packet_size
         }
+
+def create_complete_links(link_cap, switch_number):
+    """ Create links for a complete graph 
+    
+    Key arguments:
+    link_cap: int -- link capacity
+    switch_number: int -- switch number
+
+    Returns
+    dict -- links representation
+    """
+    # The arcs representing the links connecting the switches (nodes)
+    links = {}
+    # The link ID counter
+    link_id = 1
+
+    for i in range(1, switch_number + 1):
+        for p in range(i, switch_number + 1):
+            if i != p:
+                if link_id not in links:
+                    links[link_id] = {
+                        "endpoints": [f"switch{i}", f"switch{p}"],
+                        "capacity": link_cap,
+                        "trafficPerc": 0
+                        }
+                    link_id += 1
+    return links

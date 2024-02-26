@@ -114,44 +114,112 @@ class Dots(Scene):
 
 class CustomGraph(MovingCameraScene):
     def construct(self):
-        
-        t1 = Tex("n1", color=RED)
-        t1.font_size = 20
-        n1 = LabeledDot(t1)
-        n2 = LabeledDot(Tex("n2", color=BLUE))
 
-        n3 = LabeledDot(Tex("wow"), color=GREEN)
-        nodi = [n1, n2]
-        archi = [(n1, n2)]
-        n1.move_to(UP * 2)
-        n2.next_to(n1)
-        self.add(n1, n2)
+        SWITCH_NUMBER = 10
+        layout_scale = 3
+        font_size = 30
+        
+        t1 = Tex("sim time 00:00:01:000", color=RED, font_size=font_size, stroke_width=1, stroke_color=YELLOW )
+        #t1.shift(RIGHT * (SWITCH_NUMBER/2))
+        
+        
 
         switches = []
-        SWITCH_NUMBER = 8
+        
         for i in range(1, SWITCH_NUMBER+1):
-            switches.append(f"switch{i}")
+            switches.append(f"s{i}")
 
         links = []
         for i in range(1, len(switches)+1):
             for p in range(i, len(switches)+1):
                 if i != p:
-                    links.append(((f"switch{i}"), (f"switch{p}")))
-
-        print(switches)
-        print(links)
+                    links.append(((f"s{i}"), (f"s{p}")))
         
-        grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=4, vertex_config={"color":BLUE})
+        grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=layout_scale, vertex_config={"color":BLUE})
         
-        """         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        # Graph aggiusta da solo il radius dei nodi in base alla lunghezza della label associata
-        grafo = Graph(nodi, archi, layout="circular", labels={ n1: "s1", n2: "s2" }, layout_scale=3,
-                      vertex_config={n1: {"fill_color": RED}, n2: {"fill_color": YELLOW}}
-                     ) """
-        
-
         self.add(grafo)
-        t1.to_corner(UL)
+        t1.next_to(grafo, UP)
+        self.add(t1)
+        
         #self.play(self.camera.frame.animate.scale(1.2))
-        self.play(self.camera.auto_zoom(grafo, margin=1), run_time=0.5)
+        
+        #self.play(self.camera.auto_zoom([grafo, t1], margin=1), run_time=0.5)
+       
+        
         self.wait(5)
+
+
+from manim import *
+
+from manim import *
+
+class GridOfDots(MovingCameraScene):
+    def construct(self):
+        # Dimensioni della griglia
+        rows = 8
+        cols = 16
+        
+        # Distanza tra i nodi
+        spacing = 1
+        
+        # Creazione della griglia di nodi
+        grid = VGroup()  # Gruppo per contenere tutti i nodi
+        for row in range(rows):
+            for col in range(cols):
+                dot = Dot(point=np.array([col * spacing, row * spacing, 0]), radius=0.25)
+                grid.add(dot)
+        
+        # Centrare la griglia nella scena
+        grid.move_to(ORIGIN)
+
+        t1 = Tex("sim time 00:00:01:000", color=RED, font_size=24, stroke_width=1, stroke_color=YELLOW )
+        t1.next_to(grid, UP)
+        self.add(t1)
+        # Visualizzazione della griglia
+        self.add(grid)
+        self.play(self.camera.auto_zoom(grid, margin=1), run_time=0.5)
+        self.wait(5)
+
+class Blackboard(Scene):
+    def construct(self):
+        t1 = Tex("sim time\n00:00:01:000", color=RED, font_size=24, stroke_width=1, stroke_color=YELLOW )
+        t1.to_edge(RIGHT)
+        self.add(t1)
+        Blackboard.test(self, "ciao")
+        rad = 0.25
+        spacing = 1
+
+        index = -6.5
+        dot = Dot(point=np.array([index, 3.5, 0]), radius=rad, color=ORANGE)
+        self.add(dot)
+        prevDot = dot
+        for _ in range(0, 20):
+            index += spacing
+            newdot = Dot(point=np.array([index, 3.5, 0]), radius=rad)
+            #newdot.next_to(prevDot)
+            self.add(newdot)
+            prevDot = newdot
+
+        #lineY = Line(start=[0,-4,0], end=[0,4,0])
+        #lineX = Line(start=[-8,0,0], end=[8,0,0])
+        #self.add(lineX, lineY)
+
+        number_plane = NumberPlane(
+            background_line_style={
+                "stroke_color": TEAL,
+                "stroke_width": 4,
+                "stroke_opacity": 0.6
+            }
+        )
+        self.add(number_plane)
+
+        centerDot = Dot(point=np.array([0, 0, 0]), color=YELLOW, radius=0.5)
+        self.add(centerDot)
+      
+
+    def test(self, saluto):
+        t1 = Tex(f"{saluto}", color=RED, font_size=24, stroke_width=1, stroke_color=YELLOW )
+        t1.to_edge(LEFT)
+        self.add(t1)
+
+

@@ -39,11 +39,10 @@ logging.info("The choosen switches number is %d and the network link capacity is
 
 SWITCH_NUMBER = inputParameters.switchNumber
 LINK_CAP = inputParameters.linkCapacity
-
 # Defining the simulation start time point
 START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 # Defining the simulation time in seconds
-SIM_TIME = 10
+SIM_TIME = 3
 # Defining the packets per second creation rate delta time (milliseconds)
 PPS_DELTA = 100
 # Defining packets size (MB) (example 1518 Bytes ipv4 max payload, 4000 datacenters)
@@ -58,18 +57,9 @@ logging.debug("PPS: %f", PPS)
 links = {}
 # The link ID counter
 link_id = 1
-# Creating links
+# Creating links: complete graph
 logging.info("Creating links..")
-for i in range(1, SWITCH_NUMBER + 1):
-    for p in range(i, SWITCH_NUMBER + 1):
-        if i != p:
-            if link_id not in links:
-                links[link_id] = {
-                    "endpoints": [f"switch{i}", f"switch{p}"],
-                    "capacity": LINK_CAP,
-                    "trafficPerc": 0
-                    }
-                link_id += 1
+links = config_gen_utils.create_complete_links(LINK_CAP, SWITCH_NUMBER)
 
 logging.info("..links creation done!Links created are:")
 for link, content in links.items():
@@ -160,14 +150,17 @@ for link, content in links.items():
         "capacity": content["capacity"]
     }
 
+switch_ID_counter = 0
 for i in range(1, SWITCH_NUMBER + 1):
     if i % (MAX_GROUP_IP_ADDRESS + 1) == 0:
         ip_address["groupC"] += 1
     ip_address["groupD"] = i % 256
 
+    switch_ID_counter += 1
     networkData[SWITCH_INDEX].append({
-      "switchName": f"switch{i}",
-      "address": config_gen_utils.ip_to_string(ip_address)
+        "switchID": switch_ID_counter,
+        "switchName": f"switch{i}",
+        "address": config_gen_utils.ip_to_string(ip_address)
     })
 
 logging.info("Switches created:")

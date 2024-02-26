@@ -3,3 +3,18 @@ verde   0   255 0
 giallo  0   255 255
 rosso   0   0   255
 
+        """         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        # Graph aggiusta da solo il radius dei nodi in base alla lunghezza della label associata
+        grafo = Graph(nodi, archi, layout="circular", labels={ n1: "s1", n2: "s2" }, layout_scale=3,
+                      vertex_config={n1: {"fill_color": RED}, n2: {"fill_color": YELLOW}}
+                     ) """
+
+                             """         n1 = LabeledDot(t1)
+        n2 = LabeledDot(Tex("n2", color=BLUE))
+
+        n3 = LabeledDot(Tex("wow"), color=GREEN)
+        nodi = [n1, n2]
+        archi = [(n1, n2)]
+        n1.move_to(UP * 2)
+        n2.next_to(n1)
+        self.add(n1, n2) """

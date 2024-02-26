@@ -1,0 +1,8 @@
+APPUNTI MEETING
+- testare implementazione con matrice timestamp-link per file anlyzed_data.yaml e vedere performance con mia implementazione precedente e vedere
+chi performa di più, trascrivere risultati nella tesi per riduzioni di tempo, riduzione di tendering e file.
+- implementare creazione grafo a mesh, per grafi non completi, in config_gen.py
+- opzione, utente fornisce le coordinate, fare graphic_visualizer con 2 opzioni, una custom che fa grafo in automatico, l'altra utente che
+prende file yaml di coordinate
+- implementare script di mesh separato per coordinate fornite da utente?
+- fare altro file di configuarzione yaml per delineare le fasi della sim, ogni fase ha uno start time e un end time

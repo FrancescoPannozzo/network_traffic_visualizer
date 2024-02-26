@@ -1,11 +1,11 @@
-2024-02-22 17:30:50,962 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\CustomGraph\1862690495_36141976_219365355.mp4'
-2024-02-22 17:30:53,506 [INFO] Animation 1 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\CustomGraph\269877994_1849251371_3497593675.mp4'
-2024-02-22 17:30:53,527 [INFO] Combining to Movie file.
-2024-02-22 17:30:54,475 [INFO] 
-File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\CustomGraph.mp4'
+2024-02-26 16:48:48,581 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\GridOfDots\2777045371_4182957238_3985264070.mp4'
+2024-02-26 16:48:51,602 [INFO] Animation 1 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\GridOfDots\1076638079_1849251371_960356427.mp4'
+2024-02-26 16:48:51,602 [INFO] Combining to Movie file.
+2024-02-26 16:48:52,559 [INFO] 
+File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\GridOfDots.mp4'
 
-2024-02-22 17:30:54,491 [INFO] Rendered CustomGraph
+2024-02-26 16:48:52,579 [INFO] Rendered GridOfDots
 Played 2 animations
-2024-02-22 17:30:54,868 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\CustomGraph.mp4'
-2024-02-22 17:30:54,909 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
-2024-02-22 17:30:58,184 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12832
+2024-02-26 16:48:54,462 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\GridOfDots.mp4'
+2024-02-26 16:48:54,581 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
+2024-02-26 16:48:58,473 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12832

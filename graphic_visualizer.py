@@ -13,6 +13,7 @@ from utils import utils
 class GraphicVisualizer(MovingCameraScene):
     """  Graph creator """
     def construct(self):
+        
         # Logger config
         logging.basicConfig(
             level=logging.DEBUG,
@@ -72,11 +73,12 @@ class GraphicVisualizer(MovingCameraScene):
         # time index to analyze
         time_walker = start_time + timedelta(milliseconds=average_delta)
         # the sim time to visualize
-        sim_time_txt = Text(f"sim time:{time_walker.strftime('%H:%M:%S.%f')[:-3]}", font_size=24).to_corner(UR).set_color(YELLOW)
-
+        sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font_size=24).set_color(YELLOW)
+        
         self.play(Create(grafo))
+        sim_time_txt.next_to(grafo, UP)
         self.add(sim_time_txt)
-        self.play(self.camera.auto_zoom(grafo, margin=1), run_time=0.5)
+        self.play(self.camera.auto_zoom([grafo, sim_time_txt], margin=1), run_time=0.5)
        
         
         
@@ -91,8 +93,8 @@ class GraphicVisualizer(MovingCameraScene):
                 animations.append(grafo.edges[(content["endpoints"][EP_A], content["endpoints"][EP_B])].animate.set_color(traffic_perc_colors[color_perc]["hexValue"]))
             # playing animations
             self.play(*animations, Transform(sim_time_txt,
-                                                Text(f"sim time:{time_walker.strftime('%H:%M:%S.%f')[:-3]}",
-                                                font_size=24).to_corner(UR).set_color(YELLOW)),
+                                                Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
+                                                font_size=24).next_to(grafo, UP).set_color(YELLOW)),
                                                 run_time=1
                                             )
             # pushing forward sim time to check
