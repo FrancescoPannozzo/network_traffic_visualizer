@@ -1,167 +1,386 @@
-2024-02-26 12:13:52,423 [INFO] Loading files..
-2024-02-26 12:13:53,755 [DEBUG] networkData is type of <class 'list'>
-2024-02-26 12:13:53,755 [INFO] Analyzing files..
-2024-02-26 12:13:53,755 [DEBUG] SHOWING LINKS STRUCTURE:
-2024-02-26 12:13:53,755 [DEBUG] {frozenset({'switch2', 'switch1'}): {'linkID': 1, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({'switch3', 'switch1'}): {'linkID': 2, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({'switch4', 'switch1'}): {'linkID': 3, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({'switch3', 'switch2'}): {'linkID': 4, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({'switch4', 'switch2'}): {'linkID': 5, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({'switch3', 'switch4'}): {'linkID': 6, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}}
-2024-02-26 12:13:53,755 [INFO] Link ID frozenset({'switch2', 'switch1'}):
-2024-02-26 12:13:53,755 [INFO] endpoint: switch2
-2024-02-26 12:13:53,755 [INFO] endpoint: switch1
-2024-02-26 12:13:53,771 [INFO] Link ID frozenset({'switch3', 'switch1'}):
-2024-02-26 12:13:53,774 [INFO] endpoint: switch3
-2024-02-26 12:13:53,775 [INFO] endpoint: switch1
-2024-02-26 12:13:53,776 [INFO] Link ID frozenset({'switch4', 'switch1'}):
-2024-02-26 12:13:53,777 [INFO] endpoint: switch4
-2024-02-26 12:13:53,778 [INFO] endpoint: switch1
-2024-02-26 12:13:53,779 [INFO] Link ID frozenset({'switch3', 'switch2'}):
-2024-02-26 12:13:53,780 [INFO] endpoint: switch3
-2024-02-26 12:13:53,782 [INFO] endpoint: switch2
-2024-02-26 12:13:53,783 [INFO] Link ID frozenset({'switch4', 'switch2'}):
-2024-02-26 12:13:53,784 [INFO] endpoint: switch4
-2024-02-26 12:13:53,789 [INFO] endpoint: switch2
-2024-02-26 12:13:53,790 [INFO] Link ID frozenset({'switch3', 'switch4'}):
-2024-02-26 12:13:53,791 [INFO] endpoint: switch3
-2024-02-26 12:13:53,791 [INFO] endpoint: switch4
-2024-02-26 12:13:53,791 [INFO] Simulation parameters:
-2024-02-26 12:13:53,791 [INFO] {'simTime': 3, 'startSimTime': datetime.datetime(2024, 1, 1, 0, 0)}
-2024-02-26 12:13:53,791 [DEBUG] ipaddress is type of: <class 'str'>
-2024-02-26 12:13:53,791 [INFO] Switches:
-2024-02-26 12:13:53,796 [INFO] Switch ID:4, switch name:switch1, address:10.0.0.1
-2024-02-26 12:13:53,796 [INFO] Switch ID:4, switch name:switch2, address:10.0.0.2
-2024-02-26 12:13:53,797 [INFO] Switch ID:4, switch name:switch3, address:10.0.0.3
-2024-02-26 12:13:53,797 [INFO] Switch ID:4, switch name:switch4, address:10.0.0.4
-2024-02-26 12:13:53,802 [DEBUG] Traffic percetages:
-2024-02-26 12:13:53,803 [DEBUG] link: frozenset({'switch2', 'switch1'})
-2024-02-26 12:13:53,804 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 950000, percentage: 76.000000 %
-2024-02-26 12:13:53,804 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 928752, percentage: 74.300160 %
-2024-02-26 12:13:53,805 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 907504, percentage: 72.600320 %
-2024-02-26 12:13:53,806 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 886256, percentage: 70.900480 %
-2024-02-26 12:13:53,807 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 865008, percentage: 69.200640 %
-2024-02-26 12:13:53,808 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 843760, percentage: 67.500800 %
-2024-02-26 12:13:53,809 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 822512, percentage: 65.800960 %
-2024-02-26 12:13:53,810 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 801264, percentage: 64.101120 %
-2024-02-26 12:13:53,810 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 780016, percentage: 62.401280 %
-2024-02-26 12:13:53,811 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 758768, percentage: 60.701440 %
-2024-02-26 12:13:53,812 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 737520, percentage: 59.001600 %
-2024-02-26 12:13:53,813 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 732520, percentage: 58.601600 %
-2024-02-26 12:13:53,813 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 727520, percentage: 58.201600 %
-2024-02-26 12:13:53,814 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 722520, percentage: 57.801600 %
-2024-02-26 12:13:53,815 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 717520, percentage: 57.401600 %
-2024-02-26 12:13:53,815 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 712520, percentage: 57.001600 %
-2024-02-26 12:13:53,816 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 707520, percentage: 56.601600 %
-2024-02-26 12:13:53,816 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 702520, percentage: 56.201600 %
-2024-02-26 12:13:53,817 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 697520, percentage: 55.801600 %
-2024-02-26 12:13:53,818 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 692520, percentage: 55.401600 %
-2024-02-26 12:13:53,821 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 687520, percentage: 55.001600 %
-2024-02-26 12:13:53,822 [DEBUG] link: frozenset({'switch3', 'switch1'})
-2024-02-26 12:13:53,823 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 287520, percentage: 23.001600 %
-2024-02-26 12:13:53,824 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 300016, percentage: 24.001280 %
-2024-02-26 12:13:53,824 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 312512, percentage: 25.000960 %
-2024-02-26 12:13:53,824 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 325008, percentage: 26.000640 %
-2024-02-26 12:13:53,824 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 337504, percentage: 27.000320 %
-2024-02-26 12:13:53,824 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 350000, percentage: 28.000000 %
-2024-02-26 12:13:53,824 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 362496, percentage: 28.999680 %
-2024-02-26 12:13:53,830 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 374992, percentage: 29.999360 %
-2024-02-26 12:13:53,831 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 387488, percentage: 30.999040 %
-2024-02-26 12:13:53,831 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 399984, percentage: 31.998720 %
-2024-02-26 12:13:53,832 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 412480, percentage: 32.998400 %
-2024-02-26 12:13:53,833 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 454984, percentage: 36.398720 %
-2024-02-26 12:13:53,833 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 497488, percentage: 39.799040 %
-2024-02-26 12:13:53,834 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 539992, percentage: 43.199360 %
-2024-02-26 12:13:53,835 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 582496, percentage: 46.599680 %
-2024-02-26 12:13:53,835 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 625000, percentage: 50.000000 %
-2024-02-26 12:13:53,837 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 667504, percentage: 53.400320 %
-2024-02-26 12:13:53,839 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 710008, percentage: 56.800640 %
-2024-02-26 12:13:53,840 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 752512, percentage: 60.200960 %
-2024-02-26 12:13:53,842 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 795016, percentage: 63.601280 %
-2024-02-26 12:13:53,842 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 837520, percentage: 67.001600 %
-2024-02-26 12:13:53,842 [DEBUG] link: frozenset({'switch4', 'switch1'})
-2024-02-26 12:13:53,842 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 487520, percentage: 39.001600 %
-2024-02-26 12:13:53,842 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 451268, percentage: 36.101440 %
-2024-02-26 12:13:53,842 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 415016, percentage: 33.201280 %
-2024-02-26 12:13:53,847 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 378764, percentage: 30.301120 %
-2024-02-26 12:13:53,848 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 342512, percentage: 27.400960 %
-2024-02-26 12:13:53,848 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 306260, percentage: 24.500800 %
-2024-02-26 12:13:53,849 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 270008, percentage: 21.600640 %
-2024-02-26 12:13:53,849 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 233756, percentage: 18.700480 %
-2024-02-26 12:13:53,850 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 197504, percentage: 15.800320 %
-2024-02-26 12:13:53,851 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 161252, percentage: 12.900160 %
-2024-02-26 12:13:53,851 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 125000, percentage: 10.000000 %
-2024-02-26 12:13:53,852 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 205000, percentage: 16.400000 %
-2024-02-26 12:13:53,855 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 285000, percentage: 22.800000 %
-2024-02-26 12:13:53,857 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 365000, percentage: 29.200000 %
-2024-02-26 12:13:53,863 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 445000, percentage: 35.600000 %
-2024-02-26 12:13:53,865 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 525000, percentage: 42.000000 %
-2024-02-26 12:13:53,865 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 605000, percentage: 48.400000 %
-2024-02-26 12:13:53,866 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 685000, percentage: 54.800000 %
-2024-02-26 12:13:53,867 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 765000, percentage: 61.200000 %
-2024-02-26 12:13:53,868 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 845000, percentage: 67.600000 %
-2024-02-26 12:13:53,870 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 925000, percentage: 74.000000 %
-2024-02-26 12:13:53,882 [DEBUG] link: frozenset({'switch3', 'switch2'})
-2024-02-26 12:13:53,887 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 1125000, percentage: 90.000000 %
-2024-02-26 12:13:53,893 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 1060000, percentage: 84.800000 %
-2024-02-26 12:13:53,894 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 995000, percentage: 79.600000 %
-2024-02-26 12:13:53,903 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 930000, percentage: 74.400000 %
-2024-02-26 12:13:53,914 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 865000, percentage: 69.200000 %
-2024-02-26 12:13:53,925 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 800000, percentage: 64.000000 %
-2024-02-26 12:13:53,932 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 735000, percentage: 58.800000 %
-2024-02-26 12:13:53,950 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 670000, percentage: 53.600000 %
-2024-02-26 12:13:53,964 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 605000, percentage: 48.400000 %
-2024-02-26 12:13:53,968 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 540000, percentage: 43.200000 %
-2024-02-26 12:13:53,973 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 475000, percentage: 38.000000 %
-2024-02-26 12:13:53,982 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 441252, percentage: 35.300160 %
-2024-02-26 12:13:53,989 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 407504, percentage: 32.600320 %
-2024-02-26 12:13:53,998 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 373756, percentage: 29.900480 %
-2024-02-26 12:13:53,999 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 340008, percentage: 27.200640 %
-2024-02-26 12:13:54,017 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 306260, percentage: 24.500800 %
-2024-02-26 12:13:54,019 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 272512, percentage: 21.800960 %
-2024-02-26 12:13:54,024 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 238764, percentage: 19.101120 %
-2024-02-26 12:13:54,066 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 205016, percentage: 16.401280 %
-2024-02-26 12:13:54,078 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 171268, percentage: 13.701440 %
-2024-02-26 12:13:54,081 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 137520, percentage: 11.001600 %
-2024-02-26 12:13:54,115 [DEBUG] link: frozenset({'switch4', 'switch2'})
-2024-02-26 12:13:54,126 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 137520, percentage: 11.001600 %
-2024-02-26 12:13:54,132 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 142520, percentage: 11.401600 %
-2024-02-26 12:13:54,136 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 147520, percentage: 11.801600 %
-2024-02-26 12:13:54,143 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 152520, percentage: 12.201600 %
-2024-02-26 12:13:54,149 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 157520, percentage: 12.601600 %
-2024-02-26 12:13:54,155 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 162520, percentage: 13.001600 %
-2024-02-26 12:13:54,167 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 167520, percentage: 13.401600 %
-2024-02-26 12:13:54,173 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 172520, percentage: 13.801600 %
-2024-02-26 12:13:54,180 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 177520, percentage: 14.201600 %
-2024-02-26 12:13:54,186 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 182520, percentage: 14.601600 %
-2024-02-26 12:13:54,188 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 187520, percentage: 15.001600 %
-2024-02-26 12:13:54,232 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 226268, percentage: 18.101440 %
-2024-02-26 12:13:54,253 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 265016, percentage: 21.201280 %
-2024-02-26 12:13:54,285 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 303764, percentage: 24.301120 %
-2024-02-26 12:13:54,309 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 342512, percentage: 27.400960 %
-2024-02-26 12:13:54,318 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 381260, percentage: 30.500800 %
-2024-02-26 12:13:54,322 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 420008, percentage: 33.600640 %
-2024-02-26 12:13:54,328 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 458756, percentage: 36.700480 %
-2024-02-26 12:13:54,338 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 497504, percentage: 39.800320 %
-2024-02-26 12:13:54,348 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 536252, percentage: 42.900160 %
-2024-02-26 12:13:54,351 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 575000, percentage: 46.000000 %
-2024-02-26 12:13:54,373 [DEBUG] link: frozenset({'switch3', 'switch4'})
-2024-02-26 12:13:54,380 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 262480, percentage: 20.998400 %
-2024-02-26 12:13:54,386 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 303732, percentage: 24.298560 %
-2024-02-26 12:13:54,393 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 344984, percentage: 27.598720 %
-2024-02-26 12:13:54,393 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 386236, percentage: 30.898880 %
-2024-02-26 12:13:54,399 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 427488, percentage: 34.199040 %
-2024-02-26 12:13:54,401 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 468740, percentage: 37.499200 %
-2024-02-26 12:13:54,402 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 509992, percentage: 40.799360 %
-2024-02-26 12:13:54,404 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 551244, percentage: 44.099520 %
-2024-02-26 12:13:54,406 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 592496, percentage: 47.399680 %
-2024-02-26 12:13:54,408 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 633748, percentage: 50.699840 %
-2024-02-26 12:13:54,411 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 675000, percentage: 54.000000 %
-2024-02-26 12:13:54,412 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 672500, percentage: 53.800000 %
-2024-02-26 12:13:54,413 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 670000, percentage: 53.600000 %
-2024-02-26 12:13:54,414 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 667500, percentage: 53.400000 %
-2024-02-26 12:13:54,422 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 665000, percentage: 53.200000 %
-2024-02-26 12:13:54,428 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 662500, percentage: 53.000000 %
-2024-02-26 12:13:54,429 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 660000, percentage: 52.800000 %
-2024-02-26 12:13:54,431 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 657500, percentage: 52.600000 %
-2024-02-26 12:13:54,435 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 655000, percentage: 52.400000 %
-2024-02-26 12:13:54,441 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 652500, percentage: 52.200000 %
-2024-02-26 12:13:54,450 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 650000, percentage: 52.000000 %
-2024-02-26 12:13:54,453 [INFO] ..done!
-2024-02-26 12:13:54,458 [INFO] Writing analyzed_data.yaml file..
-2024-02-26 12:13:54,488 [INFO] analyzed_data.yaml file creation done!
+2024-02-27 12:25:28,535 [INFO] Loading files..
+2024-02-27 12:25:32,516 [DEBUG] networkData is type of <class 'list'>
+2024-02-27 12:25:32,516 [INFO] Analyzing files..
+2024-02-27 12:25:32,516 [DEBUG] SHOWING LINKS STRUCTURE:
+2024-02-27 12:25:32,516 [DEBUG] {frozenset({1, 2}): {'linkID': 1, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({1, 3}): {'linkID': 2, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({1, 4}): {'linkID': 3, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({1, 5}): {'linkID': 4, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({1, 6}): {'linkID': 5, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({2, 3}): {'linkID': 6, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({2, 4}): {'linkID': 7, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({2, 5}): {'linkID': 8, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({2, 6}): {'linkID': 9, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({3, 4}): {'linkID': 10, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({3, 5}): {'linkID': 11, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({3, 6}): {'linkID': 12, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({4, 5}): {'linkID': 13, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({4, 6}): {'linkID': 14, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({5, 6}): {'linkID': 15, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}}
+2024-02-27 12:25:32,516 [INFO] Link ID frozenset({1, 2}):
+2024-02-27 12:25:32,516 [INFO] endpoint: 1
+2024-02-27 12:25:32,529 [INFO] endpoint: 2
+2024-02-27 12:25:32,529 [INFO] Link ID frozenset({1, 3}):
+2024-02-27 12:25:32,530 [INFO] endpoint: 1
+2024-02-27 12:25:32,531 [INFO] endpoint: 3
+2024-02-27 12:25:32,531 [INFO] Link ID frozenset({1, 4}):
+2024-02-27 12:25:32,532 [INFO] endpoint: 1
+2024-02-27 12:25:32,533 [INFO] endpoint: 4
+2024-02-27 12:25:32,534 [INFO] Link ID frozenset({1, 5}):
+2024-02-27 12:25:32,534 [INFO] endpoint: 1
+2024-02-27 12:25:32,535 [INFO] endpoint: 5
+2024-02-27 12:25:32,536 [INFO] Link ID frozenset({1, 6}):
+2024-02-27 12:25:32,536 [INFO] endpoint: 1
+2024-02-27 12:25:32,537 [INFO] endpoint: 6
+2024-02-27 12:25:32,538 [INFO] Link ID frozenset({2, 3}):
+2024-02-27 12:25:32,539 [INFO] endpoint: 2
+2024-02-27 12:25:32,539 [INFO] endpoint: 3
+2024-02-27 12:25:32,540 [INFO] Link ID frozenset({2, 4}):
+2024-02-27 12:25:32,540 [INFO] endpoint: 2
+2024-02-27 12:25:32,541 [INFO] endpoint: 4
+2024-02-27 12:25:32,541 [INFO] Link ID frozenset({2, 5}):
+2024-02-27 12:25:32,542 [INFO] endpoint: 2
+2024-02-27 12:25:32,543 [INFO] endpoint: 5
+2024-02-27 12:25:32,544 [INFO] Link ID frozenset({2, 6}):
+2024-02-27 12:25:32,544 [INFO] endpoint: 2
+2024-02-27 12:25:32,545 [INFO] endpoint: 6
+2024-02-27 12:25:32,545 [INFO] Link ID frozenset({3, 4}):
+2024-02-27 12:25:32,546 [INFO] endpoint: 3
+2024-02-27 12:25:32,546 [INFO] endpoint: 4
+2024-02-27 12:25:32,548 [INFO] Link ID frozenset({3, 5}):
+2024-02-27 12:25:32,549 [INFO] endpoint: 3
+2024-02-27 12:25:32,550 [INFO] endpoint: 5
+2024-02-27 12:25:32,550 [INFO] Link ID frozenset({3, 6}):
+2024-02-27 12:25:32,551 [INFO] endpoint: 3
+2024-02-27 12:25:32,552 [INFO] endpoint: 6
+2024-02-27 12:25:32,552 [INFO] Link ID frozenset({4, 5}):
+2024-02-27 12:25:32,553 [INFO] endpoint: 4
+2024-02-27 12:25:32,554 [INFO] endpoint: 5
+2024-02-27 12:25:32,554 [INFO] Link ID frozenset({4, 6}):
+2024-02-27 12:25:32,555 [INFO] endpoint: 4
+2024-02-27 12:25:32,555 [INFO] endpoint: 6
+2024-02-27 12:25:32,556 [INFO] Link ID frozenset({5, 6}):
+2024-02-27 12:25:32,556 [INFO] endpoint: 5
+2024-02-27 12:25:32,557 [INFO] endpoint: 6
+2024-02-27 12:25:32,558 [INFO] Simulation parameters:
+2024-02-27 12:25:32,558 [INFO] {'simTime': 3, 'startSimTime': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-02-27 12:25:32,573 [DEBUG] Traffic percetages:
+2024-02-27 12:25:32,574 [DEBUG] link: frozenset({1, 2})
+2024-02-27 12:25:32,575 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 1012520, percentage: 81.001600 %
+2024-02-27 12:25:32,576 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 947516, percentage: 75.801280 %
+2024-02-27 12:25:32,577 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 882512, percentage: 70.600960 %
+2024-02-27 12:25:32,578 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 817508, percentage: 65.400640 %
+2024-02-27 12:25:32,580 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 752504, percentage: 60.200320 %
+2024-02-27 12:25:32,581 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 687500, percentage: 55.000000 %
+2024-02-27 12:25:32,582 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 622496, percentage: 49.799680 %
+2024-02-27 12:25:32,582 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 557492, percentage: 44.599360 %
+2024-02-27 12:25:32,583 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 492488, percentage: 39.399040 %
+2024-02-27 12:25:32,584 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 427484, percentage: 34.198720 %
+2024-02-27 12:25:32,584 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 362480, percentage: 28.998400 %
+2024-02-27 12:25:32,585 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 408732, percentage: 32.698560 %
+2024-02-27 12:25:32,585 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 454984, percentage: 36.398720 %
+2024-02-27 12:25:32,586 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 501236, percentage: 40.098880 %
+2024-02-27 12:25:32,587 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 547488, percentage: 43.799040 %
+2024-02-27 12:25:32,587 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 593740, percentage: 47.499200 %
+2024-02-27 12:25:32,588 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 639992, percentage: 51.199360 %
+2024-02-27 12:25:32,589 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 686244, percentage: 54.899520 %
+2024-02-27 12:25:32,589 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 732496, percentage: 58.599680 %
+2024-02-27 12:25:32,590 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 778748, percentage: 62.299840 %
+2024-02-27 12:25:32,590 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 825000, percentage: 66.000000 %
+2024-02-27 12:25:32,591 [DEBUG] link: frozenset({1, 3})
+2024-02-27 12:25:32,592 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 525000, percentage: 42.000000 %
+2024-02-27 12:25:32,592 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 508748, percentage: 40.699840 %
+2024-02-27 12:25:32,593 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 492496, percentage: 39.399680 %
+2024-02-27 12:25:32,593 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 476244, percentage: 38.099520 %
+2024-02-27 12:25:32,594 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 459992, percentage: 36.799360 %
+2024-02-27 12:25:32,595 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 443740, percentage: 35.499200 %
+2024-02-27 12:25:32,595 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 427488, percentage: 34.199040 %
+2024-02-27 12:25:32,596 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 411236, percentage: 32.898880 %
+2024-02-27 12:25:32,597 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 394984, percentage: 31.598720 %
+2024-02-27 12:25:32,597 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 378732, percentage: 30.298560 %
+2024-02-27 12:25:32,598 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 362480, percentage: 28.998400 %
+2024-02-27 12:25:32,599 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 383732, percentage: 30.698560 %
+2024-02-27 12:25:32,599 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 404984, percentage: 32.398720 %
+2024-02-27 12:25:32,600 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 426236, percentage: 34.098880 %
+2024-02-27 12:25:32,601 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 447488, percentage: 35.799040 %
+2024-02-27 12:25:32,601 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 468740, percentage: 37.499200 %
+2024-02-27 12:25:32,602 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 489992, percentage: 39.199360 %
+2024-02-27 12:25:32,603 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 511244, percentage: 40.899520 %
+2024-02-27 12:25:32,604 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 532496, percentage: 42.599680 %
+2024-02-27 12:25:32,605 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 553748, percentage: 44.299840 %
+2024-02-27 12:25:32,606 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 575000, percentage: 46.000000 %
+2024-02-27 12:25:32,607 [DEBUG] link: frozenset({1, 4})
+2024-02-27 12:25:32,608 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 562480, percentage: 44.998400 %
+2024-02-27 12:25:32,609 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 618732, percentage: 49.498560 %
+2024-02-27 12:25:32,610 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 674984, percentage: 53.998720 %
+2024-02-27 12:25:32,610 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 731236, percentage: 58.498880 %
+2024-02-27 12:25:32,611 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 787488, percentage: 62.999040 %
+2024-02-27 12:25:32,612 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 843740, percentage: 67.499200 %
+2024-02-27 12:25:32,619 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 899992, percentage: 71.999360 %
+2024-02-27 12:25:32,620 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 956244, percentage: 76.499520 %
+2024-02-27 12:25:32,621 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 1012496, percentage: 80.999680 %
+2024-02-27 12:25:32,622 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 1068748, percentage: 85.499840 %
+2024-02-27 12:25:32,622 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 1125000, percentage: 90.000000 %
+2024-02-27 12:25:32,623 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 1020000, percentage: 81.600000 %
+2024-02-27 12:25:32,624 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 915000, percentage: 73.200000 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 810000, percentage: 64.800000 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 705000, percentage: 56.400000 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 600000, percentage: 48.000000 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 495000, percentage: 39.600000 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 390000, percentage: 31.200000 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 285000, percentage: 22.800000 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 180000, percentage: 14.400000 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 75000, percentage: 6.000000 %
+2024-02-27 12:25:32,626 [DEBUG] link: frozenset({1, 5})
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 800000, percentage: 64.000000 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 721248, percentage: 57.699840 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 642496, percentage: 51.399680 %
+2024-02-27 12:25:32,626 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 563744, percentage: 45.099520 %
+2024-02-27 12:25:32,637 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 484992, percentage: 38.799360 %
+2024-02-27 12:25:32,638 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 406240, percentage: 32.499200 %
+2024-02-27 12:25:32,639 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 327488, percentage: 26.199040 %
+2024-02-27 12:25:32,639 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 248736, percentage: 19.898880 %
+2024-02-27 12:25:32,640 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 169984, percentage: 13.598720 %
+2024-02-27 12:25:32,640 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 91232, percentage: 7.298560 %
+2024-02-27 12:25:32,641 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 12480, percentage: 0.998400 %
+2024-02-27 12:25:32,641 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 56232, percentage: 4.498560 %
+2024-02-27 12:25:32,642 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 99984, percentage: 7.998720 %
+2024-02-27 12:25:32,642 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 143736, percentage: 11.498880 %
+2024-02-27 12:25:32,643 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 187488, percentage: 14.999040 %
+2024-02-27 12:25:32,643 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 231240, percentage: 18.499200 %
+2024-02-27 12:25:32,643 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 274992, percentage: 21.999360 %
+2024-02-27 12:25:32,644 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 318744, percentage: 25.499520 %
+2024-02-27 12:25:32,644 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 362496, percentage: 28.999680 %
+2024-02-27 12:25:32,645 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 406248, percentage: 32.499840 %
+2024-02-27 12:25:32,646 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 450000, percentage: 36.000000 %
+2024-02-27 12:25:32,646 [DEBUG] link: frozenset({1, 6})
+2024-02-27 12:25:32,647 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 687520, percentage: 55.001600 %
+2024-02-27 12:25:32,648 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 693768, percentage: 55.501440 %
+2024-02-27 12:25:32,648 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 700016, percentage: 56.001280 %
+2024-02-27 12:25:32,649 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 706264, percentage: 56.501120 %
+2024-02-27 12:25:32,650 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 712512, percentage: 57.000960 %
+2024-02-27 12:25:32,651 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 718760, percentage: 57.500800 %
+2024-02-27 12:25:32,651 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 725008, percentage: 58.000640 %
+2024-02-27 12:25:32,652 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 731256, percentage: 58.500480 %
+2024-02-27 12:25:32,652 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 737504, percentage: 59.000320 %
+2024-02-27 12:25:32,652 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 743752, percentage: 59.500160 %
+2024-02-27 12:25:32,653 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 750000, percentage: 60.000000 %
+2024-02-27 12:25:32,653 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 687500, percentage: 55.000000 %
+2024-02-27 12:25:32,654 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 625000, percentage: 50.000000 %
+2024-02-27 12:25:32,655 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 562500, percentage: 45.000000 %
+2024-02-27 12:25:32,656 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 500000, percentage: 40.000000 %
+2024-02-27 12:25:32,657 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 437500, percentage: 35.000000 %
+2024-02-27 12:25:32,657 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 375000, percentage: 30.000000 %
+2024-02-27 12:25:32,658 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 312500, percentage: 25.000000 %
+2024-02-27 12:25:32,658 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 250000, percentage: 20.000000 %
+2024-02-27 12:25:32,659 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 187500, percentage: 15.000000 %
+2024-02-27 12:25:32,660 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 125000, percentage: 10.000000 %
+2024-02-27 12:25:32,660 [DEBUG] link: frozenset({2, 3})
+2024-02-27 12:25:32,660 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 300000, percentage: 24.000000 %
+2024-02-27 12:25:32,661 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 297500, percentage: 23.800000 %
+2024-02-27 12:25:32,661 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 295000, percentage: 23.600000 %
+2024-02-27 12:25:32,662 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 292500, percentage: 23.400000 %
+2024-02-27 12:25:32,663 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 290000, percentage: 23.200000 %
+2024-02-27 12:25:32,663 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 287500, percentage: 23.000000 %
+2024-02-27 12:25:32,664 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 285000, percentage: 22.800000 %
+2024-02-27 12:25:32,664 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 282500, percentage: 22.600000 %
+2024-02-27 12:25:32,665 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 280000, percentage: 22.400000 %
+2024-02-27 12:25:32,665 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 277500, percentage: 22.200000 %
+2024-02-27 12:25:32,666 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 275000, percentage: 22.000000 %
+2024-02-27 12:25:32,666 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 345000, percentage: 27.600000 %
+2024-02-27 12:25:32,667 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 415000, percentage: 33.200000 %
+2024-02-27 12:25:32,667 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 485000, percentage: 38.800000 %
+2024-02-27 12:25:32,668 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 555000, percentage: 44.400000 %
+2024-02-27 12:25:32,668 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 625000, percentage: 50.000000 %
+2024-02-27 12:25:32,668 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 695000, percentage: 55.600000 %
+2024-02-27 12:25:32,669 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 765000, percentage: 61.200000 %
+2024-02-27 12:25:32,669 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 835000, percentage: 66.800000 %
+2024-02-27 12:25:32,670 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 905000, percentage: 72.400000 %
+2024-02-27 12:25:32,671 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 975000, percentage: 78.000000 %
+2024-02-27 12:25:32,671 [DEBUG] link: frozenset({2, 4})
+2024-02-27 12:25:32,672 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 1150000, percentage: 92.000000 %
+2024-02-27 12:25:32,672 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 1123752, percentage: 89.900160 %
+2024-02-27 12:25:32,673 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 1097504, percentage: 87.800320 %
+2024-02-27 12:25:32,673 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 1071256, percentage: 85.700480 %
+2024-02-27 12:25:32,674 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 1045008, percentage: 83.600640 %
+2024-02-27 12:25:32,674 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 1018760, percentage: 81.500800 %
+2024-02-27 12:25:32,675 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 992512, percentage: 79.400960 %
+2024-02-27 12:25:32,675 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 966264, percentage: 77.301120 %
+2024-02-27 12:25:32,676 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 940016, percentage: 75.201280 %
+2024-02-27 12:25:32,676 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 913768, percentage: 73.101440 %
+2024-02-27 12:25:32,677 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 887520, percentage: 71.001600 %
+2024-02-27 12:25:32,678 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 845016, percentage: 67.601280 %
+2024-02-27 12:25:32,678 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 802512, percentage: 64.200960 %
+2024-02-27 12:25:32,679 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 760008, percentage: 60.800640 %
+2024-02-27 12:25:32,679 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 717504, percentage: 57.400320 %
+2024-02-27 12:25:32,680 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 675000, percentage: 54.000000 %
+2024-02-27 12:25:32,680 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 632496, percentage: 50.599680 %
+2024-02-27 12:25:32,681 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 589992, percentage: 47.199360 %
+2024-02-27 12:25:32,681 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 547488, percentage: 43.799040 %
+2024-02-27 12:25:32,682 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 504984, percentage: 40.398720 %
+2024-02-27 12:25:32,683 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 462480, percentage: 36.998400 %
+2024-02-27 12:25:32,684 [DEBUG] link: frozenset({2, 5})
+2024-02-27 12:25:32,684 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 50000, percentage: 4.000000 %
+2024-02-27 12:25:32,685 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 52500, percentage: 4.200000 %
+2024-02-27 12:25:32,686 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 55000, percentage: 4.400000 %
+2024-02-27 12:25:32,687 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 57500, percentage: 4.600000 %
+2024-02-27 12:25:32,688 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 60000, percentage: 4.800000 %
+2024-02-27 12:25:32,688 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 62500, percentage: 5.000000 %
+2024-02-27 12:25:32,689 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 65000, percentage: 5.200000 %
+2024-02-27 12:25:32,689 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 67500, percentage: 5.400000 %
+2024-02-27 12:25:32,690 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 70000, percentage: 5.600000 %
+2024-02-27 12:25:32,690 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 72500, percentage: 5.800000 %
+2024-02-27 12:25:32,690 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 75000, percentage: 6.000000 %
+2024-02-27 12:25:32,691 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 162500, percentage: 13.000000 %
+2024-02-27 12:25:32,691 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 250000, percentage: 20.000000 %
+2024-02-27 12:25:32,692 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 337500, percentage: 27.000000 %
+2024-02-27 12:25:32,692 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 425000, percentage: 34.000000 %
+2024-02-27 12:25:32,693 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 512500, percentage: 41.000000 %
+2024-02-27 12:25:32,693 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 600000, percentage: 48.000000 %
+2024-02-27 12:25:32,694 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 687500, percentage: 55.000000 %
+2024-02-27 12:25:32,694 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 775000, percentage: 62.000000 %
+2024-02-27 12:25:32,695 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 862500, percentage: 69.000000 %
+2024-02-27 12:25:32,695 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 950000, percentage: 76.000000 %
+2024-02-27 12:25:32,696 [DEBUG] link: frozenset({2, 6})
+2024-02-27 12:25:32,696 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 512480, percentage: 40.998400 %
+2024-02-27 12:25:32,696 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 577480, percentage: 46.198400 %
+2024-02-27 12:25:32,697 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 642480, percentage: 51.398400 %
+2024-02-27 12:25:32,697 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 707480, percentage: 56.598400 %
+2024-02-27 12:25:32,698 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 772480, percentage: 61.798400 %
+2024-02-27 12:25:32,698 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 837480, percentage: 66.998400 %
+2024-02-27 12:25:32,699 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 902480, percentage: 72.198400 %
+2024-02-27 12:25:32,700 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 967480, percentage: 77.398400 %
+2024-02-27 12:25:32,700 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 1032480, percentage: 82.598400 %
+2024-02-27 12:25:32,701 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 1097480, percentage: 87.798400 %
+2024-02-27 12:25:32,701 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 1162480, percentage: 92.998400 %
+2024-02-27 12:25:32,702 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 1119984, percentage: 89.598720 %
+2024-02-27 12:25:32,703 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 1077488, percentage: 86.199040 %
+2024-02-27 12:25:32,703 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 1034992, percentage: 82.799360 %
+2024-02-27 12:25:32,703 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 992496, percentage: 79.399680 %
+2024-02-27 12:25:32,704 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 950000, percentage: 76.000000 %
+2024-02-27 12:25:32,704 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 907504, percentage: 72.600320 %
+2024-02-27 12:25:32,705 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 865008, percentage: 69.200640 %
+2024-02-27 12:25:32,705 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 822512, percentage: 65.800960 %
+2024-02-27 12:25:32,706 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 780016, percentage: 62.401280 %
+2024-02-27 12:25:32,706 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 737520, percentage: 59.001600 %
+2024-02-27 12:25:32,707 [DEBUG] link: frozenset({3, 4})
+2024-02-27 12:25:32,707 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 187520, percentage: 15.001600 %
+2024-02-27 12:25:32,709 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 233768, percentage: 18.701440 %
+2024-02-27 12:25:32,711 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 280016, percentage: 22.401280 %
+2024-02-27 12:25:32,713 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 326264, percentage: 26.101120 %
+2024-02-27 12:25:32,714 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 372512, percentage: 29.800960 %
+2024-02-27 12:25:32,716 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 418760, percentage: 33.500800 %
+2024-02-27 12:25:32,717 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 465008, percentage: 37.200640 %
+2024-02-27 12:25:32,718 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 511256, percentage: 40.900480 %
+2024-02-27 12:25:32,720 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 557504, percentage: 44.600320 %
+2024-02-27 12:25:32,720 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 603752, percentage: 48.300160 %
+2024-02-27 12:25:32,721 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 650000, percentage: 52.000000 %
+2024-02-27 12:25:32,723 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 646248, percentage: 51.699840 %
+2024-02-27 12:25:32,723 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 642496, percentage: 51.399680 %
+2024-02-27 12:25:32,723 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 638744, percentage: 51.099520 %
+2024-02-27 12:25:32,723 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 634992, percentage: 50.799360 %
+2024-02-27 12:25:32,723 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 631240, percentage: 50.499200 %
+2024-02-27 12:25:32,723 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 627488, percentage: 50.199040 %
+2024-02-27 12:25:32,723 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 623736, percentage: 49.898880 %
+2024-02-27 12:25:32,723 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 619984, percentage: 49.598720 %
+2024-02-27 12:25:32,723 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 616232, percentage: 49.298560 %
+2024-02-27 12:25:32,723 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 612480, percentage: 48.998400 %
+2024-02-27 12:25:32,732 [DEBUG] link: frozenset({3, 5})
+2024-02-27 12:25:32,732 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 375000, percentage: 30.000000 %
+2024-02-27 12:25:32,732 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 453748, percentage: 36.299840 %
+2024-02-27 12:25:32,733 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 532496, percentage: 42.599680 %
+2024-02-27 12:25:32,733 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 611244, percentage: 48.899520 %
+2024-02-27 12:25:32,734 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 689992, percentage: 55.199360 %
+2024-02-27 12:25:32,734 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 768740, percentage: 61.499200 %
+2024-02-27 12:25:32,735 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 847488, percentage: 67.799040 %
+2024-02-27 12:25:32,735 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 926236, percentage: 74.098880 %
+2024-02-27 12:25:32,736 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 1004984, percentage: 80.398720 %
+2024-02-27 12:25:32,737 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 1083732, percentage: 86.698560 %
+2024-02-27 12:25:32,738 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 1162480, percentage: 92.998400 %
+2024-02-27 12:25:32,738 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 1171232, percentage: 93.698560 %
+2024-02-27 12:25:32,740 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 1179984, percentage: 94.398720 %
+2024-02-27 12:25:32,740 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 1188736, percentage: 95.098880 %
+2024-02-27 12:25:32,741 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 1197488, percentage: 95.799040 %
+2024-02-27 12:25:32,741 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 1206240, percentage: 96.499200 %
+2024-02-27 12:25:32,742 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 1214992, percentage: 97.199360 %
+2024-02-27 12:25:32,743 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 1223744, percentage: 97.899520 %
+2024-02-27 12:25:32,743 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 1232496, percentage: 98.599680 %
+2024-02-27 12:25:32,743 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 1241248, percentage: 99.299840 %
+2024-02-27 12:25:32,744 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 1250000, percentage: 100.000000 %
+2024-02-27 12:25:32,744 [DEBUG] link: frozenset({3, 6})
+2024-02-27 12:25:32,745 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 737520, percentage: 59.001600 %
+2024-02-27 12:25:32,746 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 761268, percentage: 60.901440 %
+2024-02-27 12:25:32,746 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 785016, percentage: 62.801280 %
+2024-02-27 12:25:32,747 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 808764, percentage: 64.701120 %
+2024-02-27 12:25:32,747 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 832512, percentage: 66.600960 %
+2024-02-27 12:25:32,748 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 856260, percentage: 68.500800 %
+2024-02-27 12:25:32,748 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 880008, percentage: 70.400640 %
+2024-02-27 12:25:32,749 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 903756, percentage: 72.300480 %
+2024-02-27 12:25:32,749 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 927504, percentage: 74.200320 %
+2024-02-27 12:25:32,750 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 951252, percentage: 76.100160 %
+2024-02-27 12:25:32,750 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 975000, percentage: 78.000000 %
+2024-02-27 12:25:32,751 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 925000, percentage: 74.000000 %
+2024-02-27 12:25:32,751 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 875000, percentage: 70.000000 %
+2024-02-27 12:25:32,752 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 825000, percentage: 66.000000 %
+2024-02-27 12:25:32,752 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 775000, percentage: 62.000000 %
+2024-02-27 12:25:32,753 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 725000, percentage: 58.000000 %
+2024-02-27 12:25:32,753 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 675000, percentage: 54.000000 %
+2024-02-27 12:25:32,754 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 625000, percentage: 50.000000 %
+2024-02-27 12:25:32,755 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 575000, percentage: 46.000000 %
+2024-02-27 12:25:32,756 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 525000, percentage: 42.000000 %
+2024-02-27 12:25:32,757 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 475000, percentage: 38.000000 %
+2024-02-27 12:25:32,759 [DEBUG] link: frozenset({4, 5})
+2024-02-27 12:25:32,760 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 12480, percentage: 0.998400 %
+2024-02-27 12:25:32,764 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 107480, percentage: 8.598400 %
+2024-02-27 12:25:32,765 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 202480, percentage: 16.198400 %
+2024-02-27 12:25:32,767 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 297480, percentage: 23.798400 %
+2024-02-27 12:25:32,768 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 392480, percentage: 31.398400 %
+2024-02-27 12:25:32,769 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 487480, percentage: 38.998400 %
+2024-02-27 12:25:32,770 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 582480, percentage: 46.598400 %
+2024-02-27 12:25:32,770 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 677480, percentage: 54.198400 %
+2024-02-27 12:25:32,770 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 772480, percentage: 61.798400 %
+2024-02-27 12:25:32,770 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 867480, percentage: 69.398400 %
+2024-02-27 12:25:32,770 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 962480, percentage: 76.998400 %
+2024-02-27 12:25:32,770 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 912480, percentage: 72.998400 %
+2024-02-27 12:25:32,770 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 862480, percentage: 68.998400 %
+2024-02-27 12:25:32,770 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 812480, percentage: 64.998400 %
+2024-02-27 12:25:32,770 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 762480, percentage: 60.998400 %
+2024-02-27 12:25:32,780 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 712480, percentage: 56.998400 %
+2024-02-27 12:25:32,781 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 662480, percentage: 52.998400 %
+2024-02-27 12:25:32,781 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 612480, percentage: 48.998400 %
+2024-02-27 12:25:32,782 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 562480, percentage: 44.998400 %
+2024-02-27 12:25:32,783 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 512480, percentage: 40.998400 %
+2024-02-27 12:25:32,784 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 462480, percentage: 36.998400 %
+2024-02-27 12:25:32,784 [DEBUG] link: frozenset({4, 6})
+2024-02-27 12:25:32,785 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 312480, percentage: 24.998400 %
+2024-02-27 12:25:32,785 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 399984, percentage: 31.998720 %
+2024-02-27 12:25:32,786 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 487488, percentage: 38.999040 %
+2024-02-27 12:25:32,786 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 574992, percentage: 45.999360 %
+2024-02-27 12:25:32,787 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 662496, percentage: 52.999680 %
+2024-02-27 12:25:32,787 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 750000, percentage: 60.000000 %
+2024-02-27 12:25:32,788 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 837504, percentage: 67.000320 %
+2024-02-27 12:25:32,788 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 925008, percentage: 74.000640 %
+2024-02-27 12:25:32,789 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 1012512, percentage: 81.000960 %
+2024-02-27 12:25:32,789 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 1100016, percentage: 88.001280 %
+2024-02-27 12:25:32,789 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 1187520, percentage: 95.001600 %
+2024-02-27 12:25:32,790 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 1136268, percentage: 90.901440 %
+2024-02-27 12:25:32,790 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 1085016, percentage: 86.801280 %
+2024-02-27 12:25:32,791 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 1033764, percentage: 82.701120 %
+2024-02-27 12:25:32,791 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 982512, percentage: 78.600960 %
+2024-02-27 12:25:32,792 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 931260, percentage: 74.500800 %
+2024-02-27 12:25:32,792 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 880008, percentage: 70.400640 %
+2024-02-27 12:25:32,793 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 828756, percentage: 66.300480 %
+2024-02-27 12:25:32,793 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 777504, percentage: 62.200320 %
+2024-02-27 12:25:32,794 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 726252, percentage: 58.100160 %
+2024-02-27 12:25:32,794 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 675000, percentage: 54.000000 %
+2024-02-27 12:25:32,795 [DEBUG] link: frozenset({5, 6})
+2024-02-27 12:25:32,795 [DEBUG] updateTime: 2024-01-01 00:00:01, delta traffic: 1112480, percentage: 88.998400 %
+2024-02-27 12:25:32,796 [DEBUG] updateTime: 2024-01-01 00:00:01.100000, delta traffic: 1006232, percentage: 80.498560 %
+2024-02-27 12:25:32,797 [DEBUG] updateTime: 2024-01-01 00:00:01.200000, delta traffic: 899984, percentage: 71.998720 %
+2024-02-27 12:25:32,797 [DEBUG] updateTime: 2024-01-01 00:00:01.300000, delta traffic: 793736, percentage: 63.498880 %
+2024-02-27 12:25:32,798 [DEBUG] updateTime: 2024-01-01 00:00:01.400000, delta traffic: 687488, percentage: 54.999040 %
+2024-02-27 12:25:32,798 [DEBUG] updateTime: 2024-01-01 00:00:01.500000, delta traffic: 581240, percentage: 46.499200 %
+2024-02-27 12:25:32,799 [DEBUG] updateTime: 2024-01-01 00:00:01.600000, delta traffic: 474992, percentage: 37.999360 %
+2024-02-27 12:25:32,799 [DEBUG] updateTime: 2024-01-01 00:00:01.700000, delta traffic: 368744, percentage: 29.499520 %
+2024-02-27 12:25:32,800 [DEBUG] updateTime: 2024-01-01 00:00:01.800000, delta traffic: 262496, percentage: 20.999680 %
+2024-02-27 12:25:32,800 [DEBUG] updateTime: 2024-01-01 00:00:01.900000, delta traffic: 156248, percentage: 12.499840 %
+2024-02-27 12:25:32,801 [DEBUG] updateTime: 2024-01-01 00:00:02, delta traffic: 50000, percentage: 4.000000 %
+2024-02-27 12:25:32,801 [DEBUG] updateTime: 2024-01-01 00:00:02.100000, delta traffic: 52500, percentage: 4.200000 %
+2024-02-27 12:25:32,802 [DEBUG] updateTime: 2024-01-01 00:00:02.200000, delta traffic: 55000, percentage: 4.400000 %
+2024-02-27 12:25:32,802 [DEBUG] updateTime: 2024-01-01 00:00:02.300000, delta traffic: 57500, percentage: 4.600000 %
+2024-02-27 12:25:32,803 [DEBUG] updateTime: 2024-01-01 00:00:02.400000, delta traffic: 60000, percentage: 4.800000 %
+2024-02-27 12:25:32,803 [DEBUG] updateTime: 2024-01-01 00:00:02.500000, delta traffic: 62500, percentage: 5.000000 %
+2024-02-27 12:25:32,804 [DEBUG] updateTime: 2024-01-01 00:00:02.600000, delta traffic: 65000, percentage: 5.200000 %
+2024-02-27 12:25:32,804 [DEBUG] updateTime: 2024-01-01 00:00:02.700000, delta traffic: 67500, percentage: 5.400000 %
+2024-02-27 12:25:32,804 [DEBUG] updateTime: 2024-01-01 00:00:02.800000, delta traffic: 70000, percentage: 5.600000 %
+2024-02-27 12:25:32,805 [DEBUG] updateTime: 2024-01-01 00:00:02.900000, delta traffic: 72500, percentage: 5.800000 %
+2024-02-27 12:25:32,806 [DEBUG] updateTime: 2024-01-01 00:00:03, delta traffic: 75000, percentage: 6.000000 %
+2024-02-27 12:25:32,806 [INFO] ..done!
+2024-02-27 12:25:32,808 [INFO] Writing analyzed_data.yaml file..
+2024-02-27 12:25:32,851 [INFO] analyzed_data.yaml file creation done!

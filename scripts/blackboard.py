@@ -1,50 +1,13 @@
 """ This is a sketch script """
-""" 
-colori  b   g   r
-verde   0   255 0
-giallo  0   255 255
-rosso   0   0   255 
-"""
 
-from datetime import datetime, timedelta
+import math
 
-def rgb_to_hex(r, g, b):
-    return '#{:02x}{:02x}{:02x}'.format(r, g, b)
+side = math.sqrt(144)
 
-#0 verde 50 per giallo e 50 per rosso
-MID_TRAFFIC = 50
-MAX_TRAFFIC = 100
-percColors = {}
-hexColors = {}
-r = 0
-g = 255
-b = 0
+rows = math.ceil(side * 3/4)
+cols = int(side * 4/3)
 
-
-for i in range(0, MAX_TRAFFIC+1):
-    if i <= MID_TRAFFIC:
-        r += 5
-    else:
-        g -= 5
-
-    percColors[i] = {"r":r, "g":g, "b":b}
-    hexColors[i] = {"hexValue": rgb_to_hex(r, g, b)}
-
-
-for key, value in percColors.items():
-    print(f"{key}: {value}")
-
-print("------------")
-for key, value in hexColors.items():
-    print(f"{key}: {value}")
-
-
-START_TIME = datetime(2024, 1, 1, 0, 0, 0)
-print(START_TIME.strftime("%H:%M:%S.%f")[:-3])
-
-
-
-""" print(rgb_to_hex(255, 165, 1)) """
+print("rows, cols:", rows, cols)
 
 """ 0: {'hexValue': '#05ff00'}
 1: {'hexValue': '#0aff00'}

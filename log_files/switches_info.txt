@@ -1,0 +1,10 @@
+2024-02-27 14:45:29,579 [INFO] {'address': '10.0.0.1', 'switchID': 1, 'switchName': 'switch1'}
+2024-02-27 14:45:29,587 [INFO] type: <class 'dict'>
+2024-02-27 14:45:31,086 [INFO] 
+File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\images\graphic_visualizer\SwitchesInfo_ManimCE_v0.18.0.png'
+
+2024-02-27 14:45:31,145 [INFO] Rendered SwitchesInfo
+Played 0 animations
+2024-02-27 14:45:36,600 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\images\graphic_visualizer\SwitchesInfo_ManimCE_v0.18.0.png'
+2024-02-27 14:45:36,648 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
+2024-02-27 14:45:40,659 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849

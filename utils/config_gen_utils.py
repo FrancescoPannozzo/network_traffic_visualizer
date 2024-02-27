@@ -130,7 +130,7 @@ def create_complete_links(link_cap, switch_number):
             if i != p:
                 if link_id not in links:
                     links[link_id] = {
-                        "endpoints": [f"switch{i}", f"switch{p}"],
+                        "endpoints": [i, p],
                         "capacity": link_cap,
                         "trafficPerc": 0
                         }

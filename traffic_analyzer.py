@@ -13,9 +13,7 @@ Author: Francesco Pannozzo
 import argparse
 from datetime import timedelta
 import logging
-
 import yaml
-from classes import classes as obj
 from utils import utils
 
 # Logger config
@@ -39,12 +37,13 @@ args = parser.parse_args()
 logging.info("Loading files..")
 # networkData:list composed by a link dict, a switch list and network parameters dict
 # packetsData:composed by a packets dict
-networkData, packetsData = utils.file_loader(args.networkFile, args.packetsFile)
+networkData = utils.file_loader(args.networkFile)
+packetsData = utils.file_loader(args.packetsFile) 
 
 logging.debug("networkData is type of %s", type(networkData))
 
-# switches will contain the extracted switch
-switches = []
+""" # switches will contain the extracted switch
+switches = [] """
 # Defining the networkData indices extracted from the network.yaml structure
 # network.yaml is a list composed by:
 # link dict
@@ -98,7 +97,7 @@ for link, content in links.items():
 logging.info("Simulation parameters:")
 logging.info(networkData[SIM_PARAMETERS])
 
-# Extracting switches data
+""" # Extracting switches data
 for s in networkData[SWITCH_INDEX]:
     switches.append(obj.Switch (s["switchName"], s["address"]))
 
@@ -106,7 +105,7 @@ logging.debug("ipaddress is type of: %s", type(networkData[SWITCH_INDEX][0]["add
 
 logging.info("Switches:")
 for i in switches:
-    logging.info(i)
+    logging.info(i) """
 
 # Range times parameters
 # Update average delta time (milliseconds)
