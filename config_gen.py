@@ -59,7 +59,8 @@ links = {}
 link_id = 1
 # Creating links: complete graph
 logging.info("Creating links..")
-links = config_gen_utils.create_complete_links(LINK_CAP, SWITCH_NUMBER)
+#links = config_gen_utils.create_complete_links(LINK_CAP, SWITCH_NUMBER)
+links = config_gen_utils.create_not_complete_links(LINK_CAP, SWITCH_NUMBER)
 
 logging.info("..links creation done!Links created are:")
 for link, content in links.items():

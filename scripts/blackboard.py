@@ -2,6 +2,7 @@
 
 # tesst aspect ratio
 import math
+import random
 
 side = math.sqrt(144)
 
@@ -9,6 +10,29 @@ rows = math.ceil(side * 3/4)
 cols = int(side * 4/3)
 
 print("rows, cols:", rows, cols)
+
+print("-------------")
+# The arcs representing the links connecting the switches (nodes)
+links = []
+# The link ID counter
+switch_number = 5
+link_cap = 10
+link_id = 1
+
+for i in range(1, switch_number + 1):
+    adiacenti_possibili = [s for s in range(1, switch_number+1) if s != i]
+    print(f"----- adiacenti possibili per nodo {i}:{adiacenti_possibili}, tot:", len(adiacenti_possibili))
+    n_adiacenti = random.randint(1, len(adiacenti_possibili))
+    print(f"----- nodo {i} avrà {n_adiacenti} adiacenti")
+    for _ in range(1, n_adiacenti+1):
+        scelto = random.choice(adiacenti_possibili)
+        if sorted([i, scelto]) not in links:
+            links.append(sorted([i, scelto]))
+        adiacenti_possibili.remove(scelto)
+
+
+print("..............")
+print(sorted(links))
 
 """ 0: {'hexValue': '#05ff00'}
 1: {'hexValue': '#0aff00'}
