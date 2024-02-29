@@ -1,4 +1,30 @@
 ---
-- [1, 0, 2, 0]
-- [3, 4, 5, 0]
-- [0, 6, 7, 8]
+coordinates:
+  - [1, 0, 2, 0]
+  - [3, 4, 5, 0]
+  - [0, 6, 7, 8]
+data:
+  1:
+    ip: "123.123.123.0"
+    switchName: s1
+  2:
+    ip: "123.123.123.1"
+    switchName: s2
+  3:
+    ip: "123.123.123.2"
+    switchName: s3
+  4:
+    ip: "123.123.123.3"
+    switchName: s4
+  5:
+    ip: "123.123.123.4"
+    switchName: s5
+  6:
+    ip: "123.123.123.5"
+    switchName: s6
+  7:
+    ip: "123.123.123.6"
+    switchName: s7
+  8:
+    ip: "123.123.123.7"
+    switchName: s8

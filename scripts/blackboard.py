@@ -33,6 +33,8 @@ for i in range(1, switch_number + 1):
 
 print("..............")
 print(sorted(links))
+valore = 5
+print(type(valore) == "class 'int'")
 
 """ 0: {'hexValue': '#05ff00'}
 1: {'hexValue': '#0aff00'}

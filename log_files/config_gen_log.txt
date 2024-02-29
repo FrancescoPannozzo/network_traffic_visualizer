@@ -1,22 +1,59 @@
-2024-02-29 12:22:14,735 [INFO] The choosen switches number is 2, the network link capacity is 10 Mbps, complete: False
-2024-02-29 12:22:14,736 [INFO] LinkCap in Bytes: 1250000B
-2024-02-29 12:22:14,737 [DEBUG] PPS: 312.500000
-2024-02-29 12:22:14,738 [INFO] Creating links..
-2024-02-29 12:22:14,740 [DEBUG] Complete graph links number: {1.0}
-2024-02-29 12:22:14,741 [DEBUG] Partial graph links number: {1}
-2024-02-29 12:22:14,742 [INFO] ..links creation done!Links created are:
-2024-02-29 12:22:14,742 [INFO] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
-2024-02-29 12:22:14,743 [INFO] Creating packets.yaml file structure..
-2024-02-29 12:22:14,744 [INFO] Link: 1, endpoints: [1, 2], sim second: 0, trafficPerc: 86
-2024-02-29 12:22:14,748 [INFO] Link: 1, endpoints: [1, 2], sim second: 1, trafficPerc: 70
-2024-02-29 12:22:14,750 [INFO] Link: 1, endpoints: [1, 2], sim second: 2, trafficPerc: 50
-2024-02-29 12:22:14,751 [INFO] ..packets.yaml file structure done!
-2024-02-29 12:22:14,752 [INFO] Writing packets.yaml file..
-2024-02-29 12:22:15,089 [INFO] ..packets file creation done!
-2024-02-29 12:22:15,089 [INFO] Creating network.yaml file structure..
-2024-02-29 12:22:15,089 [INFO] Switches created:
-2024-02-29 12:22:15,089 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
-2024-02-29 12:22:15,089 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
-2024-02-29 12:22:15,105 [INFO] ..network.yaml file structure done!
-2024-02-29 12:22:15,108 [INFO] Writing network.yaml file..
-2024-02-29 12:22:15,116 [INFO] ..network.yaml file creation done!
+2024-02-29 16:24:30,153 [INFO] You choosed the user mode!
+2024-02-29 16:24:30,153 [INFO] Loading user file..
+2024-02-29 16:24:30,173 [DEBUG] User data is:{'coordinates': [[1, 0, 2, 0], [3, 4, 5, 0], [0, 6, 7, 8]], 'data': {1: {'ip': '123.123.123.0', 'switchName': 's1'}, 2: {'ip': '123.123.123.1', 'switchName': 's2'}, 3: {'ip': '123.123.123.2', 'switchName': 's3'}, 4: {'ip': '123.123.123.3', 'switchName': 's4'}, 5: {'ip': '123.123.123.4', 'switchName': 's5'}, 6: {'ip': '123.123.123.5', 'switchName': 's6'}, 7: {'ip': '123.123.123.6', 'switchName': 's7'}, 8: {'ip': '123.123.123.7', 'switchName': 's8'}}}
+2024-02-29 16:24:32,373 [INFO] LinkCap in Bytes: 1250000B
+2024-02-29 16:24:32,389 [DEBUG] PPS: 312.500000
+2024-02-29 16:24:32,389 [INFO] Creating links..
+2024-02-29 16:24:32,389 [DEBUG] USER LINKS: {1: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}, 2: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}, 3: {'endpoints': [4, 5], 'capacity': 10, 'trafficPerc': 0}, 4: {'endpoints': [2, 5], 'capacity': 10, 'trafficPerc': 0}, 5: {'endpoints': [4, 6], 'capacity': 10, 'trafficPerc': 0}, 6: {'endpoints': [6, 7], 'capacity': 10, 'trafficPerc': 0}, 7: {'endpoints': [5, 7], 'capacity': 10, 'trafficPerc': 0}, 8: {'endpoints': [7, 8], 'capacity': 10, 'trafficPerc': 0}}
+2024-02-29 16:24:32,389 [DEBUG] Complete graph links number: {28.0}
+2024-02-29 16:24:32,389 [DEBUG] Partial graph links number: {8}
+2024-02-29 16:24:32,398 [INFO] ..links creation done!Links created are:
+2024-02-29 16:24:32,399 [INFO] 1: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}
+2024-02-29 16:24:32,400 [INFO] 2: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
+2024-02-29 16:24:32,401 [INFO] 3: {'endpoints': [4, 5], 'capacity': 10, 'trafficPerc': 0}
+2024-02-29 16:24:32,403 [INFO] 4: {'endpoints': [2, 5], 'capacity': 10, 'trafficPerc': 0}
+2024-02-29 16:24:32,405 [INFO] 5: {'endpoints': [4, 6], 'capacity': 10, 'trafficPerc': 0}
+2024-02-29 16:24:32,406 [INFO] 6: {'endpoints': [6, 7], 'capacity': 10, 'trafficPerc': 0}
+2024-02-29 16:24:32,407 [INFO] 7: {'endpoints': [5, 7], 'capacity': 10, 'trafficPerc': 0}
+2024-02-29 16:24:32,408 [INFO] 8: {'endpoints': [7, 8], 'capacity': 10, 'trafficPerc': 0}
+2024-02-29 16:24:32,409 [INFO] Creating packets.yaml file structure..
+2024-02-29 16:24:32,410 [INFO] Link: 1, endpoints: [1, 3], sim second: 0, trafficPerc: 45
+2024-02-29 16:24:32,411 [INFO] Link: 2, endpoints: [3, 4], sim second: 0, trafficPerc: 66
+2024-02-29 16:24:32,411 [INFO] Link: 3, endpoints: [4, 5], sim second: 0, trafficPerc: 69
+2024-02-29 16:24:32,412 [INFO] Link: 4, endpoints: [2, 5], sim second: 0, trafficPerc: 15
+2024-02-29 16:24:32,413 [INFO] Link: 5, endpoints: [4, 6], sim second: 0, trafficPerc: 91
+2024-02-29 16:24:32,414 [INFO] Link: 6, endpoints: [6, 7], sim second: 0, trafficPerc: 69
+2024-02-29 16:24:32,415 [INFO] Link: 7, endpoints: [5, 7], sim second: 0, trafficPerc: 17
+2024-02-29 16:24:32,417 [INFO] Link: 8, endpoints: [7, 8], sim second: 0, trafficPerc: 21
+2024-02-29 16:24:32,426 [INFO] Link: 1, endpoints: [1, 3], sim second: 1, trafficPerc: 63
+2024-02-29 16:24:32,428 [INFO] Link: 2, endpoints: [3, 4], sim second: 1, trafficPerc: 25
+2024-02-29 16:24:32,429 [INFO] Link: 3, endpoints: [4, 5], sim second: 1, trafficPerc: 8
+2024-02-29 16:24:32,431 [INFO] Link: 4, endpoints: [2, 5], sim second: 1, trafficPerc: 17
+2024-02-29 16:24:32,431 [INFO] Link: 5, endpoints: [4, 6], sim second: 1, trafficPerc: 89
+2024-02-29 16:24:32,432 [INFO] Link: 6, endpoints: [6, 7], sim second: 1, trafficPerc: 78
+2024-02-29 16:24:32,433 [INFO] Link: 7, endpoints: [5, 7], sim second: 1, trafficPerc: 9
+2024-02-29 16:24:32,434 [INFO] Link: 8, endpoints: [7, 8], sim second: 1, trafficPerc: 59
+2024-02-29 16:24:32,441 [INFO] Link: 1, endpoints: [1, 3], sim second: 2, trafficPerc: 15
+2024-02-29 16:24:32,443 [INFO] Link: 2, endpoints: [3, 4], sim second: 2, trafficPerc: 19
+2024-02-29 16:24:32,444 [INFO] Link: 3, endpoints: [4, 5], sim second: 2, trafficPerc: 44
+2024-02-29 16:24:32,445 [INFO] Link: 4, endpoints: [2, 5], sim second: 2, trafficPerc: 17
+2024-02-29 16:24:32,456 [INFO] Link: 5, endpoints: [4, 6], sim second: 2, trafficPerc: 15
+2024-02-29 16:24:32,498 [INFO] Link: 6, endpoints: [6, 7], sim second: 2, trafficPerc: 24
+2024-02-29 16:24:32,508 [INFO] Link: 7, endpoints: [5, 7], sim second: 2, trafficPerc: 62
+2024-02-29 16:24:32,509 [INFO] Link: 8, endpoints: [7, 8], sim second: 2, trafficPerc: 24
+2024-02-29 16:24:32,514 [INFO] ..packets.yaml file structure done!
+2024-02-29 16:24:32,514 [INFO] Writing packets.yaml file..
+2024-02-29 16:24:33,871 [INFO] ..packets file creation done!
+2024-02-29 16:24:33,871 [INFO] Creating network.yaml file structure..
+2024-02-29 16:24:33,871 [INFO] Switches created:
+2024-02-29 16:24:33,871 [INFO] {'switchID': 1, 'switchName': 's1', 'address': '123.123.123.0'}
+2024-02-29 16:24:33,871 [INFO] {'switchID': 2, 'switchName': 's2', 'address': '123.123.123.1'}
+2024-02-29 16:24:33,871 [INFO] {'switchID': 3, 'switchName': 's3', 'address': '123.123.123.2'}
+2024-02-29 16:24:33,871 [INFO] {'switchID': 4, 'switchName': 's4', 'address': '123.123.123.3'}
+2024-02-29 16:24:33,871 [INFO] {'switchID': 5, 'switchName': 's5', 'address': '123.123.123.4'}
+2024-02-29 16:24:33,871 [INFO] {'switchID': 6, 'switchName': 's6', 'address': '123.123.123.5'}
+2024-02-29 16:24:33,883 [INFO] {'switchID': 7, 'switchName': 's7', 'address': '123.123.123.6'}
+2024-02-29 16:24:33,884 [INFO] {'switchID': 8, 'switchName': 's8', 'address': '123.123.123.7'}
+2024-02-29 16:24:33,885 [INFO] ..network.yaml file structure done!
+2024-02-29 16:24:33,886 [INFO] Writing network.yaml file..
+2024-02-29 16:24:33,902 [INFO] ..network.yaml file creation done!

@@ -70,7 +70,7 @@ def check_complete(choice):
     if choice not in valid_choices:
         print(f"{choice} not valid, must be one of these link_number: y, yes, n, no")
         sys.exit(1)
-    if choice in ["y, yes"]:
+    if choice in ["y", "yes"]:
         choice_done = True
     else:
         choice_done = False
@@ -162,7 +162,7 @@ def create_complete_links(link_cap, switch_number):
                     link_id += 1
     return links
 
-def create_not_complete_links(link_cap, switch_number):
+def not_complete_links(link_cap, switch_number):
     """ Create links for a complete graph 
     
     Key arguments:
@@ -203,7 +203,7 @@ def create_not_complete_links(link_cap, switch_number):
     return data_links
 
 
-def create_mesh_graph(link_cap, switch_number):
+def create_not_complete_links(link_cap, switch_number):
     data_links = {}
     link_id = 1
 
@@ -271,3 +271,41 @@ def custom_graph_loader(file_name):
         return None
 
     return data
+
+def ip_address(groupA, groupB, groupC, groupD):
+    return {
+        "groupA": groupA,
+        "groupB": groupB,
+        "groupC": groupC,
+        "groupD": groupD
+        }
+
+def create_user_links(user_data, link_cap):
+    mesh = user_data["coordinates"]
+    rows = len(mesh)
+    cols = len(mesh[0])
+    link_id = 1
+    data_links = {}
+
+    print("MESH, rows, cols:", rows, cols)
+
+    for r in range(0, rows):
+        for c in range(0, cols):
+            if c > 0:
+                if mesh[r][c] != 0 and mesh[r][c-1] != 0:
+                    data_links[link_id] = {
+                        "endpoints": sorted((mesh[r][c-1], mesh[r][c])),
+                        "capacity": link_cap,
+                        "trafficPerc": 0
+                        }
+                    link_id += 1
+            if r > 0:
+                if mesh[r][c] != 0 and mesh[r-1][c] != 0:
+                    data_links[link_id] = {
+                        "endpoints": sorted((mesh[r-1][c], mesh[r][c])),
+                        "capacity": link_cap,
+                        "trafficPerc": 0
+                        }
+                    link_id += 1
+
+    return data_links

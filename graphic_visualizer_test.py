@@ -29,19 +29,15 @@ class GraphicVisualizer(MovingCameraScene):
         # load network config
         network_data = utils.file_loader("./data/network")
         SIM_PARAM = 2
-        isComplete = False
-        """         if network_data[SIM_PARAM]["isComplete"] == "true":
-            isComplete = True
-        else:
-            isComplete = False """
-        if isComplete:
-            GraphicVisualizer.complete_graph(self)
-        else:
-            GraphicVisualizer.mesh_graph(self)
       
-    def complete_graph(self):
+        if network_data[SIM_PARAM]["isComplete"]:
+            GraphicVisualizer.complete_graph(self, network_data)
+        else:
+            GraphicVisualizer.mesh_graph(self, network_data)
+      
+    def complete_graph(self, net_data):
          # load network config
-        network_data = utils.file_loader("./data/network")
+        network_data = net_data
         # load analyzed data file
         traffic_data = utils.file_loader("./data/analyzed_data")
         # assign traffic colors
@@ -117,12 +113,15 @@ class GraphicVisualizer(MovingCameraScene):
             # pushing forward sim time to check
             time_walker += timedelta(milliseconds=show_delta)
 
-        
         self.wait(2)
     
-    def mesh_graph(self):
-        dot = LabeledDot("Test")
-        self.add(dot)
+    def mesh_graph(self, net_data):
+        # load network config
+        network_data = net_data
+        # load analyzed data file
+        traffic_data = utils.file_loader("./data/analyzed_data")
+
+
 
 
 class SwitchesInfo(MovingCameraScene):
