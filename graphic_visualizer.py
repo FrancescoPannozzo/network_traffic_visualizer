@@ -70,6 +70,7 @@ class GraphicVisualizer(MovingCameraScene):
         sim_time = traffic_data[SIM_PAR]["simTime"]
         average_delta = traffic_data[SIM_PAR]["averageDelta"]
         start_time = traffic_data[SIM_PAR]["simStartTime"]
+        
         end_time = start_time + timedelta(seconds=sim_time)
         # show_delta is the time range we want to update the visualization
         show_delta = traffic_data[SIM_PAR]["updateDelta"]

@@ -18,6 +18,7 @@ import logging
 import math
 import yaml
 from utils import config_gen_utils
+import utils
 
 # Logger config
 logging.basicConfig(
@@ -33,12 +34,12 @@ logging.basicConfig(
 
 # Getting the switch number and the link capacity (Mbps) from the user by prompt
 inputParameters = config_gen_utils.get_input_parameters()
-
-logging.info("The choosen switches number is %d and the network link capacity is %d Mbps",
-             inputParameters.switchNumber, inputParameters.linkCapacity)
+logging.info("The choosen switches number is %d, the network link capacity is %d Mbps, complete: %s",
+             inputParameters.switchNumber, inputParameters.linkCapacity, inputParameters.isComplete)
 
 SWITCH_NUMBER = inputParameters.switchNumber
 LINK_CAP = inputParameters.linkCapacity
+IS_COMPLETE = inputParameters.isComplete
 # Defining the simulation start time point
 START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 # Defining the simulation time in seconds
@@ -59,8 +60,14 @@ links = {}
 link_id = 1
 # Creating links: complete graph
 logging.info("Creating links..")
-#links = config_gen_utils.create_complete_links(LINK_CAP, SWITCH_NUMBER)
-links = config_gen_utils.create_not_complete_links(LINK_CAP, SWITCH_NUMBER)
+if IS_COMPLETE:
+    links = config_gen_utils.create_complete_links(LINK_CAP, SWITCH_NUMBER)
+else:
+    links = config_gen_utils.create_mesh_graph(LINK_CAP, SWITCH_NUMBER)
+#links = config_gen_utils.create_not_complete_links(LINK_CAP, SWITCH_NUMBER)
+
+logging.debug("Complete graph links number: %s", {(SWITCH_NUMBER*(SWITCH_NUMBER-1))/2})
+logging.debug("Partial graph links number: %s", {len(links)})
 
 logging.info("..links creation done!Links created are:")
 for link, content in links.items():
@@ -170,7 +177,8 @@ for i in networkData[SWITCH_INDEX]:
 
 networkData[SIM_PARAMETERS] = {
     "simTime": SIM_TIME,
-    "startSimTime": START_TIME
+    "startSimTime": START_TIME,
+    "isComplete": IS_COMPLETE
 }
 logging.info("..network.yaml file structure done!")
 logging.info("Writing network.yaml file..")

@@ -1,38 +1,22 @@
-2024-02-28 17:54:56,748 [INFO] The choosen switches number is 4 and the network link capacity is 10 Mbps
-2024-02-28 17:54:56,764 [INFO] LinkCap in Bytes: 1250000B
-2024-02-28 17:54:56,764 [DEBUG] PPS: 312.500000
-2024-02-28 17:54:56,764 [INFO] Creating links..
-2024-02-28 17:54:56,764 [INFO] ..links creation done!Links created are:
-2024-02-28 17:54:56,764 [INFO] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
-2024-02-28 17:54:56,764 [INFO] 2: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}
-2024-02-28 17:54:56,771 [INFO] 3: {'endpoints': [2, 3], 'capacity': 10, 'trafficPerc': 0}
-2024-02-28 17:54:56,772 [INFO] 4: {'endpoints': [2, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-02-28 17:54:56,773 [INFO] 5: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-02-28 17:54:56,774 [INFO] Creating packets.yaml file structure..
-2024-02-28 17:54:56,776 [INFO] Link: 1, endpoints: [1, 2], sim second: 0, trafficPerc: 80
-2024-02-28 17:54:56,777 [INFO] Link: 2, endpoints: [1, 3], sim second: 0, trafficPerc: 17
-2024-02-28 17:54:56,778 [INFO] Link: 3, endpoints: [2, 3], sim second: 0, trafficPerc: 74
-2024-02-28 17:54:56,780 [INFO] Link: 4, endpoints: [2, 4], sim second: 0, trafficPerc: 40
-2024-02-28 17:54:56,782 [INFO] Link: 5, endpoints: [3, 4], sim second: 0, trafficPerc: 97
-2024-02-28 17:54:56,790 [INFO] Link: 1, endpoints: [1, 2], sim second: 1, trafficPerc: 82
-2024-02-28 17:54:56,792 [INFO] Link: 2, endpoints: [1, 3], sim second: 1, trafficPerc: 62
-2024-02-28 17:54:56,793 [INFO] Link: 3, endpoints: [2, 3], sim second: 1, trafficPerc: 2
-2024-02-28 17:54:56,795 [INFO] Link: 4, endpoints: [2, 4], sim second: 1, trafficPerc: 38
-2024-02-28 17:54:56,797 [INFO] Link: 5, endpoints: [3, 4], sim second: 1, trafficPerc: 8
-2024-02-28 17:54:56,801 [INFO] Link: 1, endpoints: [1, 2], sim second: 2, trafficPerc: 73
-2024-02-28 17:54:56,802 [INFO] Link: 2, endpoints: [1, 3], sim second: 2, trafficPerc: 0
-2024-02-28 17:54:56,805 [INFO] Link: 3, endpoints: [2, 3], sim second: 2, trafficPerc: 48
-2024-02-28 17:54:56,806 [INFO] Link: 4, endpoints: [2, 4], sim second: 2, trafficPerc: 30
-2024-02-28 17:54:56,807 [INFO] Link: 5, endpoints: [3, 4], sim second: 2, trafficPerc: 9
-2024-02-28 17:54:56,820 [INFO] ..packets.yaml file structure done!
-2024-02-28 17:54:56,824 [INFO] Writing packets.yaml file..
-2024-02-28 17:54:57,794 [INFO] ..packets file creation done!
-2024-02-28 17:54:57,794 [INFO] Creating network.yaml file structure..
-2024-02-28 17:54:57,796 [INFO] Switches created:
-2024-02-28 17:54:57,796 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
-2024-02-28 17:54:57,796 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
-2024-02-28 17:54:57,796 [INFO] {'switchID': 3, 'switchName': 'switch3', 'address': '10.0.0.3'}
-2024-02-28 17:54:57,796 [INFO] {'switchID': 4, 'switchName': 'switch4', 'address': '10.0.0.4'}
-2024-02-28 17:54:57,796 [INFO] ..network.yaml file structure done!
-2024-02-28 17:54:57,796 [INFO] Writing network.yaml file..
-2024-02-28 17:54:57,807 [INFO] ..network.yaml file creation done!
+2024-02-29 12:22:14,735 [INFO] The choosen switches number is 2, the network link capacity is 10 Mbps, complete: False
+2024-02-29 12:22:14,736 [INFO] LinkCap in Bytes: 1250000B
+2024-02-29 12:22:14,737 [DEBUG] PPS: 312.500000
+2024-02-29 12:22:14,738 [INFO] Creating links..
+2024-02-29 12:22:14,740 [DEBUG] Complete graph links number: {1.0}
+2024-02-29 12:22:14,741 [DEBUG] Partial graph links number: {1}
+2024-02-29 12:22:14,742 [INFO] ..links creation done!Links created are:
+2024-02-29 12:22:14,742 [INFO] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
+2024-02-29 12:22:14,743 [INFO] Creating packets.yaml file structure..
+2024-02-29 12:22:14,744 [INFO] Link: 1, endpoints: [1, 2], sim second: 0, trafficPerc: 86
+2024-02-29 12:22:14,748 [INFO] Link: 1, endpoints: [1, 2], sim second: 1, trafficPerc: 70
+2024-02-29 12:22:14,750 [INFO] Link: 1, endpoints: [1, 2], sim second: 2, trafficPerc: 50
+2024-02-29 12:22:14,751 [INFO] ..packets.yaml file structure done!
+2024-02-29 12:22:14,752 [INFO] Writing packets.yaml file..
+2024-02-29 12:22:15,089 [INFO] ..packets file creation done!
+2024-02-29 12:22:15,089 [INFO] Creating network.yaml file structure..
+2024-02-29 12:22:15,089 [INFO] Switches created:
+2024-02-29 12:22:15,089 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
+2024-02-29 12:22:15,089 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
+2024-02-29 12:22:15,105 [INFO] ..network.yaml file structure done!
+2024-02-29 12:22:15,108 [INFO] Writing network.yaml file..
+2024-02-29 12:22:15,116 [INFO] ..network.yaml file creation done!
