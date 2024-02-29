@@ -6,7 +6,7 @@
   2:
     capacity: 10
     endpoints:
-    - 3
+    - 2
     - 4
   3:
     capacity: 10
@@ -16,27 +16,22 @@
   4:
     capacity: 10
     endpoints:
-    - 2
-    - 5
+    - 3
+    - 6
   5:
     capacity: 10
     endpoints:
     - 4
-    - 6
+    - 7
   6:
     capacity: 10
     endpoints:
-    - 6
     - 7
+    - 8
   7:
     capacity: 10
     endpoints:
     - 5
-    - 7
-  8:
-    capacity: 10
-    endpoints:
-    - 7
     - 8
 - - address: 123.123.123.0
     switchID: 1
@@ -62,6 +57,7 @@
   - address: 123.123.123.7
     switchID: 8
     switchName: s8
-- isComplete: false
+- isComplete: m
+  isCustom: true
   simTime: 3
   startSimTime: 2024-01-01 00:00:00

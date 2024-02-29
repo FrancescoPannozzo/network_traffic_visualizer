@@ -98,7 +98,11 @@ if user_mode == 1:
 else:
     SWITCH_NUMBER = switch_number
 LINK_CAP = link_capacity
-IS_COMPLETE = is_complete == "c"
+IS_COMPLETE = None
+if user_mode == 1:
+    IS_COMPLETE = "m"
+else:
+    IS_COMPLETE = is_complete == "c"
 # Defining the simulation start time point
 START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 # Defining the simulation time in seconds
@@ -249,7 +253,8 @@ for i in networkData[SWITCH_INDEX]:
 networkData[SIM_PARAMETERS] = {
     "simTime": SIM_TIME,
     "startSimTime": START_TIME,
-    "isComplete": IS_COMPLETE
+    "isComplete": IS_COMPLETE,
+    "isCustom": user_mode == 1
 }
 logging.info("..network.yaml file structure done!")
 logging.info("Writing network.yaml file..")
