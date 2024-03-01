@@ -212,8 +212,6 @@ def create_not_complete_links(link_cap, switch_number):
     rows = math.ceil(side * (3/4))
     cols = int(side * (4/3))
 
-    print("########## rows and cols:", rows, cols)
-
     switches = [[0 for _ in range(cols)] for _ in range(rows)]
     #links = []
     switch_cont = 1
@@ -244,7 +242,7 @@ def create_not_complete_links(link_cap, switch_number):
                 link_id += 1
         if(switch_cont > switch_number):
             break
-    return data_links
+    return data_links, switches
 
 def custom_graph_loader(file_name):
     """ Load the custom_graph.yaml configuration files 

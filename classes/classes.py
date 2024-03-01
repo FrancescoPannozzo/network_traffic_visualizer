@@ -51,3 +51,18 @@ class Switch:
 
     def __str__(self):
         return f"Switch ID:{self.switch_id}, switch name:{self.name}, address:{self.address}"
+    
+class CustomLabeledDot():
+
+    def __init__(self, labeled_dot, name):
+        self.labeled_dot = labeled_dot
+        self.name = name
+    
+    def __str__(self):
+        return f"Switch name:{self.name}"
+    
+    def get_switch_name(self):
+         return self.name
+    
+    def get_labeled_dot(self):
+        return self.labeled_dot

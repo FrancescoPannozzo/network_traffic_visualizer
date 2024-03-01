@@ -34,7 +34,7 @@ logging.basicConfig(
 
 link_capacity = None
 switch_number = None
-is_complete = None
+graph_type = None
 user_mode = None
 CORRECT_CHOOSE = False
 while not CORRECT_CHOOSE:
@@ -46,9 +46,9 @@ while not CORRECT_CHOOSE:
         if user_mode in [1, 2]:
             CORRECT_CHOOSE = True
         else:
-           logging.info("WARNING, values must be 1 or 2.\n")
+           logging.warning("WARNING, values must be 1 or 2.\n")
     except ValueError:
-        logging.info("WARNING, value is not an int, please retry, choose 1 or 2.\n")
+        logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")
 
 CORRECT_CHOOSE = False
 user_data = None
@@ -62,16 +62,16 @@ else:
     logging.info("You choosed the auto mode!")
     while not CORRECT_CHOOSE:
         switch_number = input("please insert the switch number min 2 - max 1000:\n")
-        is_complete = input("please enter c if you want a complete graph\n"
-                            "enter m for a mesh graph")
+        graph_type = input("please enter c if you want a complete graph\n"
+                            "enter m for a mesh graph\n")
         try:
             switch_number = int(switch_number)
-            if switch_number in range(2, 1000) and is_complete in ["c", "m"]:
+            if switch_number in range(2, 1000) and graph_type in ["c", "m"]:
                 CORRECT_CHOOSE = True
             else:
-                logging.info("WARNING, values must be in range [2-1000] and c/m.\n")
+                logging.warning("WARNING, values must be in range [2-1000] and c/m.\n")
         except ValueError:
-            logging.info("WARNING, switch number is not an int, please retry.\n")
+            logging.warning("WARNING, switch number is not an int, please retry.\n")
 
 CORRECT_CHOOSE = False
 while not CORRECT_CHOOSE:
@@ -81,9 +81,9 @@ while not CORRECT_CHOOSE:
         if link_capacity in [10, 100, 1000]:
             CORRECT_CHOOSE = True
         else:
-            logging.info("WARNING, values must be one of these [10, 100, 1000].\n")
+            logging.warning("WARNING, values must be one of these [10, 100, 1000].\n")
     except ValueError:
-        logging.info("WARNING, value is not an int, please retry, choose 1 or 2.\n")    
+        logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")    
 
 # Getting the switch number and the link capacity (Mbps) from the user by prompt
 #inputParameters = config_gen_utils.get_input_parameters()
@@ -91,18 +91,13 @@ while not CORRECT_CHOOSE:
 #             inputParameters.switchNumber, inputParameters.linkCapacity, inputParameters.isComplete)
 
 
+if user_mode == 1:
+    switch_number = len(user_data["data"])
+    # m is for mesh graph
+    graph_type = "m"
 
-SWITCH_NUMBER = None
-if user_mode == 1:
-    SWITCH_NUMBER = len(user_data["data"])
-else:
-    SWITCH_NUMBER = switch_number
 LINK_CAP = link_capacity
-IS_COMPLETE = None
-if user_mode == 1:
-    IS_COMPLETE = "m"
-else:
-    IS_COMPLETE = is_complete == "c"
+
 # Defining the simulation start time point
 START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 # Defining the simulation time in seconds
@@ -119,20 +114,22 @@ logging.debug("PPS: %f", PPS)
 
 # The arcs representing the links connecting the switches (nodes)
 links = {}
+# Switches
+switches = []
 # Creating links: complete graph
 logging.info("Creating links..")
 if user_mode == 1:
     links = config_gen_utils.create_user_links(user_data, link_capacity)
     logging.debug("USER LINKS: %s", links)
 else:
-    if IS_COMPLETE:
-        links = config_gen_utils.create_complete_links(LINK_CAP, SWITCH_NUMBER)
+    if graph_type == "c":
+        links = config_gen_utils.create_complete_links(LINK_CAP, switch_number)
     else:
-        links = config_gen_utils.create_not_complete_links(LINK_CAP, SWITCH_NUMBER)
-#links = config_gen_utils.create_not_complete_links(LINK_CAP, SWITCH_NUMBER)
+        links, switches = config_gen_utils.create_not_complete_links(LINK_CAP, switch_number)
+#links = config_gen_utils.create_not_complete_links(LINK_CAP, switch_number)
 
 
-logging.debug("Complete graph links number: %s", {(SWITCH_NUMBER*(SWITCH_NUMBER-1))/2})
+logging.debug("Complete graph links number: %s", {(switch_number*(switch_number-1))/2})
 logging.debug("Partial graph links number: %s", {len(links)})
 
 logging.info("..links creation done!Links created are:")
@@ -199,7 +196,7 @@ with open('./data/packets.yaml', 'w', encoding="utf-8") as file:
 logging.info("..packets file creation done!")
 
 # Defining the network.yaml fields defined in each switch object
-switches = []
+
 # Defining the switches ip address structure
 
 ip_address = {
@@ -213,10 +210,11 @@ ip_address = {
 # File structure composed by a links list and a switches list
 # networkData = [[links list],[switches list]]
 logging.info("Creating network.yaml file structure..")
-networkData = [{},[],{}]
+networkData = [{},[],{},{}]
 LINK_INDEX = 0
 SWITCH_INDEX = 1
 SIM_PARAMETERS = 2
+COORDINATES_INDEX = 3
 MAX_GROUP_IP_ADDRESS = 255
 
 for link, content in links.items():
@@ -226,7 +224,7 @@ for link, content in links.items():
     }
 
 if user_mode == 1:
-    for i in range(1, SWITCH_NUMBER + 1):
+    for i in range(1, switch_number + 1):
         networkData[SWITCH_INDEX].append({
             "switchID": i,
             "switchName": user_data["data"][i]["switchName"],
@@ -234,7 +232,7 @@ if user_mode == 1:
         })
 else:
     switch_ID_counter = 0
-    for i in range(1, SWITCH_NUMBER + 1):
+    for i in range(1, switch_number + 1):
         if i % (MAX_GROUP_IP_ADDRESS + 1) == 0:
             ip_address["groupC"] += 1
         ip_address["groupD"] = i % 256
@@ -253,9 +251,17 @@ for i in networkData[SWITCH_INDEX]:
 networkData[SIM_PARAMETERS] = {
     "simTime": SIM_TIME,
     "startSimTime": START_TIME,
-    "isComplete": IS_COMPLETE,
+    "graphType": graph_type,
     "isCustom": user_mode == 1
 }
+
+logging.debug("SWITCHES ARE: %s", switches)
+
+if user_mode == 1:
+    networkData[COORDINATES_INDEX]["coordinates"] = user_data["coordinates"]
+else:
+    networkData[COORDINATES_INDEX]["coordinates"] = switches
+
 logging.info("..network.yaml file structure done!")
 logging.info("Writing network.yaml file..")
 try:
