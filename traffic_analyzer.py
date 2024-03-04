@@ -15,6 +15,7 @@ from datetime import timedelta
 import logging
 import yaml
 from utils import utils
+from utils import CONSTANTS as CONST
 
 # Logger config
 logging.basicConfig(
@@ -38,20 +39,11 @@ logging.info("Loading files..")
 # networkData:list composed by a link dict, a switch list and network parameters dict
 # packetsData:composed by a packets dict
 networkData = utils.file_loader(args.networkFile)
-packetsData = utils.file_loader(args.packetsFile) 
+packetsData = utils.file_loader(args.packetsFile)
 
 logging.debug("networkData is type of %s", type(networkData))
 
-""" # switches will contain the extracted switch
-switches = [] """
-# Defining the networkData indices extracted from the network.yaml structure
-# network.yaml is a list composed by:
-# link dict
-# switch list
-# sim parameters dict
-LINK_INDEX = 0
-SWITCH_INDEX = 1
-SIM_PARAMETERS = 2
+SIM_PARAMETERS = CONST.NETWORK["SIM_PARAMS"]
 
 logging.info("Analyzing files..")
 
@@ -71,11 +63,9 @@ logging.info("Analyzing files..")
 #       "updateTime": datetime, the timestamp of the sum
 #       "traffic": the traffic bytes sum
 links = {}
-FIRST_ENDPOINT = 0
-SECOND_ENDPOINT = 1
 # Extracting links data
-for link, content in networkData[LINK_INDEX].items():
-    links[frozenset({content["endpoints"][FIRST_ENDPOINT], content["endpoints"][SECOND_ENDPOINT]})] = {
+for link, content in networkData[CONST.NETWORK["LINKS"]].items():
+    links[frozenset({content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]})] = {
         "linkID": link,
         "capacity": content["capacity"], 
         "trafficDT":0, 
@@ -97,22 +87,14 @@ for link, content in links.items():
 logging.info("Simulation parameters:")
 logging.info(networkData[SIM_PARAMETERS])
 
-""" # Extracting switches data
-for s in networkData[SWITCH_INDEX]:
-    switches.append(obj.Switch (s["switchName"], s["address"]))
-
-logging.debug("ipaddress is type of: %s", type(networkData[SWITCH_INDEX][0]["address"]))
-
-logging.info("Switches:")
-for i in switches:
-    logging.info(i) """
-
 # Range times parameters
+# LOADING SETUP PARAMETERS
+setup = utils.file_loader("./data/setup")
 # Update average delta time (milliseconds)
-UPDATE_DELTA_TIME = 100
+UPDATE_DELTA_TIME = setup["updateDelta"]
 updateDelta = timedelta(milliseconds=UPDATE_DELTA_TIME)
 # The considered average time (milliseconds)
-AVG_DELTA_TIME = 1000
+AVG_DELTA_TIME = setup["averageDelta"]
 averageDelta = timedelta(milliseconds=AVG_DELTA_TIME)
 
 # Setting the starting time point
@@ -141,6 +123,7 @@ packet = next(packetsDataIterator, None)
 while timeWalker <= startTime + (simTime - updateDelta):
     # For each updateDelta reset values
     for link, content in links.items():
+        # reset traffic
         content["trafficUDT"] = 0
     # Identify the link belonging to the analyzed packet
     if packet is not None:
@@ -180,7 +163,7 @@ while timeWalker <= startTime + (simTime - updateDelta):
 
 # DEBUG
 #utils.show_updates_data(links)
-utils.show_averages_data(links, updateDelta, averageFractions)
+#utils.show_averages_data(links, updateDelta, averageFractions)
 
 logging.info("..done!")
 
@@ -202,7 +185,7 @@ for link, content in links.items():
     for c in content["traffic"]:
         average = utils.get_average(c['traffic'], averageFractions, utils.max_traffic_per_unit(content['capacity'], updateDelta))
         traffic[ c['updateTime'] ] = round(average, 2)
-           
+
     analyzed_data[content["linkID"]] = {
         "endpoints": sorted(endpoints),
         "traffic": traffic

@@ -4,8 +4,8 @@ from datetime import timedelta
 import logging
 import os
 import sys
-import yaml
 import math
+import yaml
 
 def file_loader(file_name):
     """ Load the .yaml configuration files 

@@ -1,10 +1,14 @@
-2024-03-01 16:59:19,707 [INFO] {'address': '10.0.0.1', 'switchID': 1, 'switchName': 'switch1'}
-2024-03-01 16:59:19,707 [INFO] type: <class 'dict'>
-2024-03-01 16:59:21,045 [INFO] 
-File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\images\graphic_visualizer_test\SwitchesInfo_ManimCE_v0.18.0.png'
+2024-03-04 12:38:28,766 [INFO] Animation 0 : Using cached data (hash : 962036989_931914495_713373439)
+2024-03-04 12:38:30,352 [INFO] Animation 1 : Using cached data (hash : 477946210_705050411_1038498693)
+2024-03-04 12:38:33,035 [INFO] Animation 2 : Using cached data (hash : 243516345_4112031_1965870120)
+2024-03-04 12:38:35,020 [INFO] Animation 3 : Using cached data (hash : 2918212186_2923522423_1382785001)
+2024-03-04 12:38:36,569 [INFO] Animation 4 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer_test\480p15\partial_movie_files\SwitchesInfo\3831752619_4042641242_748898018.mp4'
+2024-03-04 12:38:36,574 [INFO] Combining to Movie file.
+2024-03-04 12:38:37,010 [INFO] 
+File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer_test\480p15\SwitchesInfo.mp4'
 
-2024-03-01 16:59:21,077 [INFO] Rendered SwitchesInfo
-Played 0 animations
-2024-03-01 16:59:25,419 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\images\graphic_visualizer_test\SwitchesInfo_ManimCE_v0.18.0.png'
-2024-03-01 16:59:25,451 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
-2024-03-01 16:59:29,666 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849
+2024-03-04 12:38:37,056 [INFO] Rendered SwitchesInfo
+Played 5 animations
+2024-03-04 12:38:38,027 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer_test\480p15\SwitchesInfo.mp4'
+2024-03-04 12:38:38,207 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
+2024-03-04 12:38:41,674 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849

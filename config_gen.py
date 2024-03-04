@@ -18,7 +18,7 @@ import logging
 import math
 import yaml
 from utils import config_gen_utils
-import utils
+from utils import utils
 
 # Logger config
 logging.basicConfig(
@@ -32,22 +32,83 @@ logging.basicConfig(
     ]
 )
 
-# Getting the switch number and the link capacity (Mbps) from the user by prompt
-inputParameters = config_gen_utils.get_input_parameters()
-logging.info("The choosen switches number is %d, the network link capacity is %d Mbps, complete: %s",
-             inputParameters.switchNumber, inputParameters.linkCapacity, inputParameters.isComplete)
+link_capacity = None
+switch_number = None
+graph_type = None
+user_mode = None
+CORRECT_CHOOSE = False
+while not CORRECT_CHOOSE:
+    choice = input("Choose the graph visualization mode:\n"
+                "1 - User mode\n"
+                "2 - Auto mode\n")
+    try:
+        user_mode = int(choice)
+        if user_mode in [1, 2]:
+            CORRECT_CHOOSE = True
+        else:
+           logging.warning("WARNING, values must be 1 or 2.\n")
+    except ValueError:
+        logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")
 
-SWITCH_NUMBER = inputParameters.switchNumber
-LINK_CAP = inputParameters.linkCapacity
-IS_COMPLETE = inputParameters.isComplete
+CORRECT_CHOOSE = False
+user_data = None
+if user_mode == 1:
+    logging.info("You choosed the user mode!")
+    logging.info("Loading user file..")
+    user_data = utils.file_loader("./data/custom_graph")
+    logging.debug("User data is:%s", user_data)
+
+else:
+    logging.info("You choosed the auto mode!")
+    while not CORRECT_CHOOSE:
+        switch_number = input("please insert the switch number min 2 - max 1000:\n")
+        graph_type = input("please enter c if you want a complete graph\n"
+                            "enter m for a mesh graph\n")
+        try:
+            switch_number = int(switch_number)
+            if switch_number in range(2, 1000) and graph_type in ["c", "m"]:
+                CORRECT_CHOOSE = True
+            else:
+                logging.warning("WARNING, values must be in range [2-1000] and c/m.\n")
+        except ValueError:
+            logging.warning("WARNING, switch number is not an int, please retry.\n")
+
+CORRECT_CHOOSE = False
+while not CORRECT_CHOOSE:
+    link_capacity = input("please insert the links capacity [10, 100, 1000]:\n")
+    try:
+        link_capacity = int(link_capacity)
+        if link_capacity in [10, 100, 1000]:
+            CORRECT_CHOOSE = True
+        else:
+            logging.warning("WARNING, values must be one of these [10, 100, 1000].\n")
+    except ValueError:
+        logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")    
+
+# Getting the switch number and the link capacity (Mbps) from the user by prompt
+#inputParameters = config_gen_utils.get_input_parameters()
+#logging.info("The choosen switches number is %d, the network link capacity is %d Mbps, complete: %s",
+#             inputParameters.switchNumber, inputParameters.linkCapacity, inputParameters.isComplete)
+
+
+if user_mode == 1:
+    switch_number = len(user_data["data"])
+    # m is for mesh graph
+    graph_type = "m"
+
+LINK_CAP = link_capacity
+
+# LOADING SETUP PARAMETERS
+setup = utils.file_loader("./data/setup")
 # Defining the simulation start time point
-START_TIME = datetime(2024, 1, 1, 0, 0, 0)
+#START_TIME = datetime(2024, 1, 1, 0, 0, 0)
+START_TIME = setup["startSimTime"]
 # Defining the simulation time in seconds
-SIM_TIME = 3
+SIM_TIME = setup["simTime"]
 # Defining the packets per second creation rate delta time (milliseconds)
-PPS_DELTA = 100
+PPS_DELTA = setup["updateDelta"]
 # Defining packets size (MB) (example 1518 Bytes ipv4 max payload, 4000 datacenters)
-PACKET_SIZE = 4000
+PACKET_SIZE = setup["packetSize"]
 # Packets Per Second
 PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
 
@@ -56,17 +117,22 @@ logging.debug("PPS: %f", PPS)
 
 # The arcs representing the links connecting the switches (nodes)
 links = {}
-# The link ID counter
-link_id = 1
+# Switches
+switches = []
 # Creating links: complete graph
 logging.info("Creating links..")
-if IS_COMPLETE:
-    links = config_gen_utils.create_complete_links(LINK_CAP, SWITCH_NUMBER)
+if user_mode == 1:
+    links = config_gen_utils.create_user_links(user_data, link_capacity)
+    logging.debug("USER LINKS: %s", links)
 else:
-    links = config_gen_utils.create_mesh_graph(LINK_CAP, SWITCH_NUMBER)
-#links = config_gen_utils.create_not_complete_links(LINK_CAP, SWITCH_NUMBER)
+    if graph_type == "c":
+        links = config_gen_utils.create_complete_links(LINK_CAP, switch_number)
+    else:
+        links, switches = config_gen_utils.create_not_complete_links(LINK_CAP, switch_number)
+#links = config_gen_utils.create_not_complete_links(LINK_CAP, switch_number)
 
-logging.debug("Complete graph links number: %s", {(SWITCH_NUMBER*(SWITCH_NUMBER-1))/2})
+
+logging.debug("Complete graph links number: %s", {(switch_number*(switch_number-1))/2})
 logging.debug("Partial graph links number: %s", {len(links)})
 
 logging.info("..links creation done!Links created are:")
@@ -133,8 +199,9 @@ with open('./data/packets.yaml', 'w', encoding="utf-8") as file:
 logging.info("..packets file creation done!")
 
 # Defining the network.yaml fields defined in each switch object
-switches = []
+
 # Defining the switches ip address structure
+
 ip_address = {
     "groupA": 10,
     "groupB": 0,
@@ -146,10 +213,11 @@ ip_address = {
 # File structure composed by a links list and a switches list
 # networkData = [[links list],[switches list]]
 logging.info("Creating network.yaml file structure..")
-networkData = [{},[],{}]
+networkData = [{},[],{},{}]
 LINK_INDEX = 0
 SWITCH_INDEX = 1
 SIM_PARAMETERS = 2
+COORDINATES_INDEX = 3
 MAX_GROUP_IP_ADDRESS = 255
 
 for link, content in links.items():
@@ -158,18 +226,26 @@ for link, content in links.items():
         "capacity": content["capacity"]
     }
 
-switch_ID_counter = 0
-for i in range(1, SWITCH_NUMBER + 1):
-    if i % (MAX_GROUP_IP_ADDRESS + 1) == 0:
-        ip_address["groupC"] += 1
-    ip_address["groupD"] = i % 256
+if user_mode == 1:
+    for i in range(1, switch_number + 1):
+        networkData[SWITCH_INDEX].append({
+            "switchID": i,
+            "switchName": user_data["data"][i]["switchName"],
+            "address": user_data["data"][i]["ip"]
+        })
+else:
+    switch_ID_counter = 0
+    for i in range(1, switch_number + 1):
+        if i % (MAX_GROUP_IP_ADDRESS + 1) == 0:
+            ip_address["groupC"] += 1
+        ip_address["groupD"] = i % 256
 
-    switch_ID_counter += 1
-    networkData[SWITCH_INDEX].append({
-        "switchID": switch_ID_counter,
-        "switchName": f"switch{i}",
-        "address": config_gen_utils.ip_to_string(ip_address)
-    })
+        switch_ID_counter += 1
+        networkData[SWITCH_INDEX].append({
+            "switchID": switch_ID_counter,
+            "switchName": f"switch{i}",
+            "address": config_gen_utils.ip_to_string(ip_address)
+        })
 
 logging.info("Switches created:")
 for i in networkData[SWITCH_INDEX]:
@@ -178,8 +254,17 @@ for i in networkData[SWITCH_INDEX]:
 networkData[SIM_PARAMETERS] = {
     "simTime": SIM_TIME,
     "startSimTime": START_TIME,
-    "isComplete": IS_COMPLETE
+    "graphType": graph_type,
+    "isCustom": user_mode == 1
 }
+
+logging.debug("SWITCHES ARE: %s", switches)
+
+if user_mode == 1:
+    networkData[COORDINATES_INDEX]["coordinates"] = user_data["coordinates"]
+else:
+    networkData[COORDINATES_INDEX]["coordinates"] = switches
+
 logging.info("..network.yaml file structure done!")
 logging.info("Writing network.yaml file..")
 try:
