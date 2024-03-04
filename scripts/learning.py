@@ -156,8 +156,8 @@ from manim import *
 class GridOfDots(MovingCameraScene):
     def construct(self):
         # Dimensioni della griglia
-        rows = 8
-        cols = 16
+        rows = 10
+        cols = 10
         
         # Distanza tra i nodi
         spacing = 1

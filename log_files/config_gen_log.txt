@@ -1,45 +1,79 @@
-2024-03-04 17:24:29,129 [INFO] You choosed the auto mode!
-2024-03-04 17:24:38,962 [INFO] LinkCap in Bytes: 1250000B
-2024-03-04 17:24:38,962 [DEBUG] PPS: 312.500000
-2024-03-04 17:24:38,962 [INFO] Creating links..
-2024-03-04 17:24:38,962 [DEBUG] Complete graph links number: {6.0}
-2024-03-04 17:24:38,962 [DEBUG] Partial graph links number: {6}
-2024-03-04 17:24:38,962 [INFO] ..links creation done!Links created are:
-2024-03-04 17:24:38,977 [INFO] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
-2024-03-04 17:24:38,979 [INFO] 2: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}
-2024-03-04 17:24:38,980 [INFO] 3: {'endpoints': [1, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-03-04 17:24:38,981 [INFO] 4: {'endpoints': [2, 3], 'capacity': 10, 'trafficPerc': 0}
-2024-03-04 17:24:38,983 [INFO] 5: {'endpoints': [2, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-03-04 17:24:38,984 [INFO] 6: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-03-04 17:24:38,985 [INFO] Creating packets.yaml file structure..
-2024-03-04 17:24:38,986 [INFO] Link: 1, endpoints: [1, 2], sim second: 0, trafficPerc: 71
-2024-03-04 17:24:38,987 [INFO] Link: 2, endpoints: [1, 3], sim second: 0, trafficPerc: 54
-2024-03-04 17:24:38,989 [INFO] Link: 3, endpoints: [1, 4], sim second: 0, trafficPerc: 58
-2024-03-04 17:24:38,990 [INFO] Link: 4, endpoints: [2, 3], sim second: 0, trafficPerc: 98
-2024-03-04 17:24:38,991 [INFO] Link: 5, endpoints: [2, 4], sim second: 0, trafficPerc: 39
-2024-03-04 17:24:38,992 [INFO] Link: 6, endpoints: [3, 4], sim second: 0, trafficPerc: 50
-2024-03-04 17:24:39,003 [INFO] Link: 1, endpoints: [1, 2], sim second: 1, trafficPerc: 57
-2024-03-04 17:24:39,004 [INFO] Link: 2, endpoints: [1, 3], sim second: 1, trafficPerc: 13
-2024-03-04 17:24:39,006 [INFO] Link: 3, endpoints: [1, 4], sim second: 1, trafficPerc: 48
-2024-03-04 17:24:39,006 [INFO] Link: 4, endpoints: [2, 3], sim second: 1, trafficPerc: 25
-2024-03-04 17:24:39,007 [INFO] Link: 5, endpoints: [2, 4], sim second: 1, trafficPerc: 87
-2024-03-04 17:24:39,009 [INFO] Link: 6, endpoints: [3, 4], sim second: 1, trafficPerc: 90
-2024-03-04 17:24:39,018 [INFO] Link: 1, endpoints: [1, 2], sim second: 2, trafficPerc: 100
-2024-03-04 17:24:39,020 [INFO] Link: 2, endpoints: [1, 3], sim second: 2, trafficPerc: 100
-2024-03-04 17:24:39,021 [INFO] Link: 3, endpoints: [1, 4], sim second: 2, trafficPerc: 41
-2024-03-04 17:24:39,022 [INFO] Link: 4, endpoints: [2, 3], sim second: 2, trafficPerc: 61
-2024-03-04 17:24:39,026 [INFO] Link: 5, endpoints: [2, 4], sim second: 2, trafficPerc: 67
-2024-03-04 17:24:39,028 [INFO] Link: 6, endpoints: [3, 4], sim second: 2, trafficPerc: 40
-2024-03-04 17:24:39,036 [INFO] ..packets.yaml file structure done!
-2024-03-04 17:24:39,037 [INFO] Writing packets.yaml file..
-2024-03-04 17:24:40,478 [INFO] ..packets file creation done!
-2024-03-04 17:24:40,478 [INFO] Creating network.yaml file structure..
-2024-03-04 17:24:40,478 [INFO] Switches created:
-2024-03-04 17:24:40,478 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
-2024-03-04 17:24:40,478 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
-2024-03-04 17:24:40,478 [INFO] {'switchID': 3, 'switchName': 'switch3', 'address': '10.0.0.3'}
-2024-03-04 17:24:40,478 [INFO] {'switchID': 4, 'switchName': 'switch4', 'address': '10.0.0.4'}
-2024-03-04 17:24:40,478 [DEBUG] SWITCHES ARE: []
-2024-03-04 17:24:40,478 [INFO] ..network.yaml file structure done!
-2024-03-04 17:24:40,478 [INFO] Writing network.yaml file..
-2024-03-04 17:24:40,502 [INFO] ..network.yaml file creation done!
+2024-03-04 17:51:25,351 [INFO] You choosed the auto mode!
+2024-03-04 17:51:36,571 [INFO] LinkCap in Bytes: 1250000B
+2024-03-04 17:51:36,571 [DEBUG] PPS: 312.500000
+2024-03-04 17:51:36,571 [INFO] Creating links..
+2024-03-04 17:51:36,600 [DEBUG] Complete graph links number: {45.0}
+2024-03-04 17:51:36,602 [DEBUG] Partial graph links number: {13}
+2024-03-04 17:51:36,603 [INFO] ..links creation done!Links created are:
+2024-03-04 17:51:36,604 [INFO] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,606 [INFO] 2: {'endpoints': [2, 3], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,607 [INFO] 3: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,608 [INFO] 4: {'endpoints': [1, 5], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,610 [INFO] 5: {'endpoints': [5, 6], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,611 [INFO] 6: {'endpoints': [2, 6], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,612 [INFO] 7: {'endpoints': [6, 7], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,613 [INFO] 8: {'endpoints': [3, 7], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,614 [INFO] 9: {'endpoints': [7, 8], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,620 [INFO] 10: {'endpoints': [4, 8], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,623 [INFO] 11: {'endpoints': [5, 9], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,625 [INFO] 12: {'endpoints': [9, 10], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,628 [INFO] 13: {'endpoints': [6, 10], 'capacity': 10, 'trafficPerc': 0}
+2024-03-04 17:51:36,628 [INFO] Creating packets.yaml file structure..
+2024-03-04 17:51:36,628 [INFO] Link: 1, endpoints: [1, 2], sim second: 0, trafficPerc: 81
+2024-03-04 17:51:36,635 [INFO] Link: 2, endpoints: [2, 3], sim second: 0, trafficPerc: 86
+2024-03-04 17:51:36,637 [INFO] Link: 3, endpoints: [3, 4], sim second: 0, trafficPerc: 27
+2024-03-04 17:51:36,638 [INFO] Link: 4, endpoints: [1, 5], sim second: 0, trafficPerc: 64
+2024-03-04 17:51:36,639 [INFO] Link: 5, endpoints: [5, 6], sim second: 0, trafficPerc: 35
+2024-03-04 17:51:36,640 [INFO] Link: 6, endpoints: [2, 6], sim second: 0, trafficPerc: 32
+2024-03-04 17:51:36,641 [INFO] Link: 7, endpoints: [6, 7], sim second: 0, trafficPerc: 74
+2024-03-04 17:51:36,642 [INFO] Link: 8, endpoints: [3, 7], sim second: 0, trafficPerc: 46
+2024-03-04 17:51:36,642 [INFO] Link: 9, endpoints: [7, 8], sim second: 0, trafficPerc: 6
+2024-03-04 17:51:36,643 [INFO] Link: 10, endpoints: [4, 8], sim second: 0, trafficPerc: 70
+2024-03-04 17:51:36,644 [INFO] Link: 11, endpoints: [5, 9], sim second: 0, trafficPerc: 43
+2024-03-04 17:51:36,645 [INFO] Link: 12, endpoints: [9, 10], sim second: 0, trafficPerc: 68
+2024-03-04 17:51:36,646 [INFO] Link: 13, endpoints: [6, 10], sim second: 0, trafficPerc: 92
+2024-03-04 17:51:36,667 [INFO] Link: 1, endpoints: [1, 2], sim second: 1, trafficPerc: 55
+2024-03-04 17:51:36,667 [INFO] Link: 2, endpoints: [2, 3], sim second: 1, trafficPerc: 46
+2024-03-04 17:51:36,667 [INFO] Link: 3, endpoints: [3, 4], sim second: 1, trafficPerc: 47
+2024-03-04 17:51:36,667 [INFO] Link: 4, endpoints: [1, 5], sim second: 1, trafficPerc: 14
+2024-03-04 17:51:36,674 [INFO] Link: 5, endpoints: [5, 6], sim second: 1, trafficPerc: 75
+2024-03-04 17:51:36,674 [INFO] Link: 6, endpoints: [2, 6], sim second: 1, trafficPerc: 18
+2024-03-04 17:51:36,675 [INFO] Link: 7, endpoints: [6, 7], sim second: 1, trafficPerc: 56
+2024-03-04 17:51:36,677 [INFO] Link: 8, endpoints: [3, 7], sim second: 1, trafficPerc: 6
+2024-03-04 17:51:36,678 [INFO] Link: 9, endpoints: [7, 8], sim second: 1, trafficPerc: 73
+2024-03-04 17:51:36,679 [INFO] Link: 10, endpoints: [4, 8], sim second: 1, trafficPerc: 47
+2024-03-04 17:51:36,679 [INFO] Link: 11, endpoints: [5, 9], sim second: 1, trafficPerc: 67
+2024-03-04 17:51:36,680 [INFO] Link: 12, endpoints: [9, 10], sim second: 1, trafficPerc: 19
+2024-03-04 17:51:36,681 [INFO] Link: 13, endpoints: [6, 10], sim second: 1, trafficPerc: 33
+2024-03-04 17:51:36,691 [INFO] Link: 1, endpoints: [1, 2], sim second: 2, trafficPerc: 56
+2024-03-04 17:51:36,692 [INFO] Link: 2, endpoints: [2, 3], sim second: 2, trafficPerc: 18
+2024-03-04 17:51:36,694 [INFO] Link: 3, endpoints: [3, 4], sim second: 2, trafficPerc: 6
+2024-03-04 17:51:36,695 [INFO] Link: 4, endpoints: [1, 5], sim second: 2, trafficPerc: 45
+2024-03-04 17:51:36,696 [INFO] Link: 5, endpoints: [5, 6], sim second: 2, trafficPerc: 1
+2024-03-04 17:51:36,696 [INFO] Link: 6, endpoints: [2, 6], sim second: 2, trafficPerc: 86
+2024-03-04 17:51:36,697 [INFO] Link: 7, endpoints: [6, 7], sim second: 2, trafficPerc: 6
+2024-03-04 17:51:36,698 [INFO] Link: 8, endpoints: [3, 7], sim second: 2, trafficPerc: 1
+2024-03-04 17:51:36,699 [INFO] Link: 9, endpoints: [7, 8], sim second: 2, trafficPerc: 68
+2024-03-04 17:51:36,700 [INFO] Link: 10, endpoints: [4, 8], sim second: 2, trafficPerc: 39
+2024-03-04 17:51:36,701 [INFO] Link: 11, endpoints: [5, 9], sim second: 2, trafficPerc: 99
+2024-03-04 17:51:36,702 [INFO] Link: 12, endpoints: [9, 10], sim second: 2, trafficPerc: 35
+2024-03-04 17:51:36,710 [INFO] Link: 13, endpoints: [6, 10], sim second: 2, trafficPerc: 54
+2024-03-04 17:51:36,721 [INFO] ..packets.yaml file structure done!
+2024-03-04 17:51:36,722 [INFO] Writing packets.yaml file..
+2024-03-04 17:51:39,130 [INFO] ..packets file creation done!
+2024-03-04 17:51:39,131 [INFO] Creating network.yaml file structure..
+2024-03-04 17:51:39,131 [INFO] Switches created:
+2024-03-04 17:51:39,132 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
+2024-03-04 17:51:39,132 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
+2024-03-04 17:51:39,133 [INFO] {'switchID': 3, 'switchName': 'switch3', 'address': '10.0.0.3'}
+2024-03-04 17:51:39,133 [INFO] {'switchID': 4, 'switchName': 'switch4', 'address': '10.0.0.4'}
+2024-03-04 17:51:39,133 [INFO] {'switchID': 5, 'switchName': 'switch5', 'address': '10.0.0.5'}
+2024-03-04 17:51:39,134 [INFO] {'switchID': 6, 'switchName': 'switch6', 'address': '10.0.0.6'}
+2024-03-04 17:51:39,134 [INFO] {'switchID': 7, 'switchName': 'switch7', 'address': '10.0.0.7'}
+2024-03-04 17:51:39,135 [INFO] {'switchID': 8, 'switchName': 'switch8', 'address': '10.0.0.8'}
+2024-03-04 17:51:39,135 [INFO] {'switchID': 9, 'switchName': 'switch9', 'address': '10.0.0.9'}
+2024-03-04 17:51:39,136 [INFO] {'switchID': 10, 'switchName': 'switch10', 'address': '10.0.0.10'}
+2024-03-04 17:51:39,137 [DEBUG] SWITCHES ARE: [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 0, 0]]
+2024-03-04 17:51:39,137 [INFO] ..network.yaml file structure done!
+2024-03-04 17:51:39,138 [INFO] Writing network.yaml file..
+2024-03-04 17:51:39,155 [INFO] ..network.yaml file creation done!

@@ -1,11 +1,11 @@
-2024-02-26 16:48:48,581 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\GridOfDots\2777045371_4182957238_3985264070.mp4'
-2024-02-26 16:48:51,602 [INFO] Animation 1 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\GridOfDots\1076638079_1849251371_960356427.mp4'
-2024-02-26 16:48:51,602 [INFO] Combining to Movie file.
-2024-02-26 16:48:52,559 [INFO] 
+2024-03-04 18:03:57,519 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\GridOfDots\2198375208_3284545092_921723605.mp4'
+2024-03-04 18:04:00,137 [INFO] Animation 1 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\GridOfDots\2196164849_1849251371_148929032.mp4'
+2024-03-04 18:04:00,168 [INFO] Combining to Movie file.
+2024-03-04 18:04:03,001 [INFO] 
 File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\GridOfDots.mp4'
 
-2024-02-26 16:48:52,579 [INFO] Rendered GridOfDots
+2024-03-04 18:04:03,016 [INFO] Rendered GridOfDots
 Played 2 animations
-2024-02-26 16:48:54,462 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\GridOfDots.mp4'
-2024-02-26 16:48:54,581 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
-2024-02-26 16:48:58,473 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12832
+2024-03-04 18:04:03,559 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\GridOfDots.mp4'
+2024-03-04 18:04:03,587 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
+2024-03-04 18:04:07,146 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849

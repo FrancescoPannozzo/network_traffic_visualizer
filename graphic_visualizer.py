@@ -134,7 +134,7 @@ class GraphicVisualizer(MovingCameraScene):
                 # Switches with ID=0 are considered as empty spaces
                 if str(mesh[row][col]) == "0":
                     opacity = 0
-                dot = LabeledDot(str(mesh[row][col]), radius=0.25, point=np.array([col * spacing, row * -spacing, 0]))
+                dot = LabeledDot(str(mesh[row][col]), point=np.array([col * spacing, row * -spacing, 0]))
                 dot.set_opacity(opacity)
                 graph_mesh[mesh[row][col]] = dot
                 #grid.add(dot)
