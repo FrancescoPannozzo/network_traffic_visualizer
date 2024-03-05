@@ -1,0 +1,16 @@
+2024-03-05 18:16:32,685 [INFO] Animation 0 : Using cached data (hash : 141555096_1287933521_3802345283)
+2024-03-05 18:16:34,698 [INFO] Animation 1 : Using cached data (hash : 3752940270_4264494765_4242638913)
+2024-03-05 18:16:37,958 [INFO] Animation 2 : Using cached data (hash : 586231772_2521475930_797449823)
+2024-03-05 18:16:40,720 [INFO] Animation 3 : Using cached data (hash : 3741268767_1267509446_2753677039)
+2024-03-05 18:16:47,583 [INFO] Animation 4 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer_test\480p15\partial_movie_files\SwitchesInfo\3727134793_1067524882_2657117147.mp4'
+2024-03-05 18:16:49,559 [INFO] Animation 5 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer_test\480p15\partial_movie_files\SwitchesInfo\2485162645_4042641242_805344292.mp4'
+2024-03-05 18:16:49,564 [INFO] Combining to Movie file.
+2024-03-05 18:16:50,051 [INFO] 
+File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer_test\480p15\SwitchesInfo.mp4'
+
+2024-03-05 18:16:50,230 [INFO] The partial movie directory is full (> 100 files). Therefore, manim has removed the 2 oldest file(s). You can change this behaviour by changing max_files_cached in config.
+2024-03-05 18:16:50,237 [INFO] Rendered SwitchesInfo
+Played 6 animations
+2024-03-05 18:16:50,581 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer_test\480p15\SwitchesInfo.mp4'
+2024-03-05 18:16:50,621 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
+2024-03-05 18:16:54,383 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849

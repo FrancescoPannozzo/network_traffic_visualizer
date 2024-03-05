@@ -1,40 +1,50 @@
 """ This is a sketch script """
 
-# tesst aspect ratio
+# Ottieni l'ora attuale
+from datetime import datetime
 import math
-import random
 
-side = math.sqrt(144)
 
-rows = math.ceil(side * 3/4)
-cols = int(side * 4/3)
+start_time = datetime.now()
 
-print("rows, cols:", rows, cols)
+# Formatta la stringa per includere anche i millisecondi
+formatted_time = start_time.strftime('%Y-%m-%d %H:%M:%S.%f')
 
-print("-------------")
-# The arcs representing the links connecting the switches (nodes)
-links = []
-# The link ID counter
+print(formatted_time)
+
+end_time = datetime.now()
+duration = end_time - start_time
+print("start time:", start_time.strftime('%Y-%m-%d %H:%M:%S.%f'))
+print("end time:", end_time.strftime('%Y-%m-%d %H:%M:%S.%f'))
+print("test duration: ", duration)
+
+print("---------------")
 switch_number = 5
-link_cap = 10
-link_id = 1
+side = math.sqrt(switch_number)
 
-for i in range(1, switch_number + 1):
-    adiacenti_possibili = [s for s in range(1, switch_number+1) if s != i]
-    print(f"----- adiacenti possibili per nodo {i}:{adiacenti_possibili}, tot:", len(adiacenti_possibili))
-    n_adiacenti = random.randint(1, len(adiacenti_possibili))
-    print(f"----- nodo {i} avrà {n_adiacenti} adiacenti")
-    for _ in range(1, n_adiacenti+1):
-        scelto = random.choice(adiacenti_possibili)
-        if sorted([i, scelto]) not in links:
-            links.append(sorted([i, scelto]))
-        adiacenti_possibili.remove(scelto)
+rows = math.ceil(side * (3/4))
+cols = math.ceil(side * (4/3))
+print("rows and cols,",rows, cols)
+
+switch_id = 0
+SWITCH_ZERO = 0
+switches = [[0 for _ in range(cols)] for _ in range(rows)]
+for i in range(rows):
+    for j in range(cols):
+        if switch_id < switch_number:
+            switch_id += 1
+            switches[i][j] = switch_id
+        else:
+            switches[i][j] = SWITCH_ZERO
+
+for i in range(rows):
+    print(switches[i])
 
 
-print("..............")
-print(sorted(links))
-valore = 5
-print(type(valore) == "class 'int'")
+
+
+
+
 
 """ 0: {'hexValue': '#05ff00'}
 1: {'hexValue': '#0aff00'}

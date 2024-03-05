@@ -1,0 +1,85 @@
+test 4 nodi, mesh 6 sim time
+graphic_visualizer = 0:01:27.281847
+graphic_visualizer_test = 0:01:26.691237
+
+test 8 nodi, mesh, 6 sim time
+graphic_visualizer = 0:01:28.857589
+graphic_visualizer_test = 0:01:39.125692
+
+test 20 sim time
+graphic_visualizer = 0:05:15.321164
+graphic_visualizer_test = 0:05:14.589012
+
+test 3 nodi, complete, 30 sec sim
+graphic_visualizer = 0:07:23.220606
+graphic_visualizer_test = 0:07:26.072130
+
+test 4 nodi, sim time 3 new
+graphic_visualizer = 0:00:39.404261
+graphic_visualizer_test = 0:00:39.047314
+
+test 4 nodi, sim time 3 cached
+graphic_visualizer = 
+0:00:21.587138
+0:00:21.528321
+0:00:21.355300
+graphic_visualizer_test = 
+0:00:20.042822
+0:00:19.856030
+0:00:19.498528
+
+test 8 nodi, sim time 3, new
+graphic_visualizer = 
+0:00:42.811909
+graphic_visualizer_test =
+0:00:42.363320
+
+test 8 nodi, sim time 3, cached
+graphic_visualizer =
+0:00:21.356552
+0:00:21.253412
+0:00:21.026130
+graphic_visualizer_test =
+0:00:21.407232
+0:00:22.759541
+0:00:22.106793
+
+test 16 nodi, sim time 3, new
+graphic_visualizer =
+0:00:54.668273
+graphic_visualizer_test =
+0:00:55.419030
+
+test 16 nodi, sim time 3, cached
+graphic_visualizer = 
+0:00:29.132741
+0:00:28.832525
+0:00:26.812232
+0:00:29.605185
+0:00:27.566707
+graphic_visualizer_test =
+0:00:28.845307
+0:00:28.688743
+0:00:28.789876
+0:00:29.605185
+
+test 100 nodi. sim time 3, new
+graphic_visualizer =
+0:04:44.122277
+graphic_visualizer_test =
+0:02:35.008867
+
+cached
+graphic_visualizer = 0:01:26.391297
+graphic_visualizer_test = 0:01:26.653683
+
+test 100 nodi. sim time 3, new
+graphic_visualizer =
+0:02:32.023130
+graphic_visualizer_test =
+0:02:31.532791
+
+test 50 nodi, 3 sim time
+graphic_visualizer = 0:01:40.260058
+graphic_visualizer_test = 0:01:39.868600
+

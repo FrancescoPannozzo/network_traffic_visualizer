@@ -8,8 +8,9 @@
 import logging
 from datetime import timedelta
 from manim import *
-from utils import utils
+from utils import utils, graphic_visualizer_utils
 from utils import CONSTANTS as CONST
+from datetime import datetime
 
 # Logger config
 logging.basicConfig(
@@ -27,6 +28,7 @@ class GraphicVisualizer(MovingCameraScene):
     """  Graph creator """
 
     def construct(self):
+        start_test_time = datetime.now()
         # load network config
         network_data = utils.file_loader("./data/network")
         # load analyzed data file
@@ -36,12 +38,12 @@ class GraphicVisualizer(MovingCameraScene):
       
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.COMPLETE_GRAPH:
             logging.info("The graph type found is complete, rendering..")
-            GraphicVisualizer.complete_graph(self, network_data, traffic_data, traffic_perc_colors)
+            GraphicVisualizer.complete_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time)
         else:
             logging.info("The graph type found is mesh, rendering..")
-            GraphicVisualizer.mesh_graph(self, network_data, traffic_data, traffic_perc_colors)
+            GraphicVisualizer.mesh_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time)
       
-    def complete_graph(self, network_data, traffic_data, traffic_perc_colors):
+    def complete_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time):
         sim_params = traffic_data[CONST.ANALYZED_DATA["SIM_PARAMS"]]
        
         end_time = sim_params["simStartTime"] + timedelta(seconds=sim_params["simTime"])
@@ -95,8 +97,9 @@ class GraphicVisualizer(MovingCameraScene):
             # pushing forward sim time to check
             time_walker += timedelta(milliseconds=show_delta)
         self.wait(2)
+        logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
     
-    def mesh_graph(self, network_data, traffic_data, traffic_perc_colors):
+    def mesh_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time):
 
         sim_params = traffic_data[CONST.ANALYZED_DATA["SIM_PARAMS"]]
 
@@ -176,7 +179,7 @@ class GraphicVisualizer(MovingCameraScene):
             time_walker += timedelta(milliseconds=show_delta)
 
         self.wait(5)
-
+        logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
 
 class SwitchesInfo(MovingCameraScene):
     """  Graph creator """   
@@ -191,8 +194,9 @@ class SwitchesInfo(MovingCameraScene):
         for content in switches:
             if(content['switchID']) == "0":
                 continue
-            dot = LabeledDot(f"ID:{content['switchID']}")
-            text = Text(f"Name: {content['switchName']}\nIP: {content['address']}", font_size=17)
+            dot_text = Text(f"ID{content['switchID']}",font="Courier New", font_size=15, color=BLACK)
+            dot = LabeledDot(dot_text)
+            text = Text(f"Name: {content['switchName']}\nIP: {content['address']}", font_size=10)
             dot.next_to(prev_dot, RIGHT)
             text.next_to(dot, DOWN)
             self.add(dot, text)

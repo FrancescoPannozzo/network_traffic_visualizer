@@ -11,58 +11,18 @@
   3:
     capacity: 10
     endpoints:
-    - 3
+    - 1
     - 4
   4:
     capacity: 10
     endpoints:
-    - 1
+    - 4
     - 5
   5:
     capacity: 10
     endpoints:
-    - 5
-    - 6
-  6:
-    capacity: 10
-    endpoints:
     - 2
-    - 6
-  7:
-    capacity: 10
-    endpoints:
-    - 6
-    - 7
-  8:
-    capacity: 10
-    endpoints:
-    - 3
-    - 7
-  9:
-    capacity: 10
-    endpoints:
-    - 7
-    - 8
-  10:
-    capacity: 10
-    endpoints:
-    - 4
-    - 8
-  11:
-    capacity: 10
-    endpoints:
     - 5
-    - 9
-  12:
-    capacity: 10
-    endpoints:
-    - 9
-    - 10
-  13:
-    capacity: 10
-    endpoints:
-    - 6
-    - 10
 - - address: 10.0.0.1
     switchID: 1
     switchName: switch1
@@ -78,21 +38,6 @@
   - address: 10.0.0.5
     switchID: 5
     switchName: switch5
-  - address: 10.0.0.6
-    switchID: 6
-    switchName: switch6
-  - address: 10.0.0.7
-    switchID: 7
-    switchName: switch7
-  - address: 10.0.0.8
-    switchID: 8
-    switchName: switch8
-  - address: 10.0.0.9
-    switchID: 9
-    switchName: switch9
-  - address: 10.0.0.10
-    switchID: 10
-    switchName: switch10
 - graphType: m
   isCustom: false
   simTime: 3
@@ -101,12 +46,6 @@
   - - 1
     - 2
     - 3
-    - 4
-  - - 5
-    - 6
-    - 7
-    - 8
-  - - 9
-    - 10
-    - 0
+  - - 4
+    - 5
     - 0

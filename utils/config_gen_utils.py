@@ -210,7 +210,7 @@ def create_not_complete_links(link_cap, switch_number):
     side = math.sqrt(switch_number)
     # 16/9 aspect ratio
     rows = math.ceil(side * (3/4))
-    cols = int(side * (4/3))
+    cols = math.ceil(side * (4/3))
 
     switches = [[0 for _ in range(cols)] for _ in range(rows)]
     #links = []
