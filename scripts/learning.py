@@ -1,8 +1,10 @@
 """ Manim playground: personal study script"""
 
+
 import logging
 from manim import *
-import random
+import numpy as np
+
 
 # Logger config
 logging.basicConfig(
@@ -156,28 +158,30 @@ from manim import *
 class GridOfDots(MovingCameraScene):
     def construct(self):
         # Dimensioni della griglia
-        rows = 10
-        cols = 10
+        rows = 24
+        cols = 42
         
         # Distanza tra i nodi
         spacing = 1
         
+        switch_cont = 0
         # Creazione della griglia di nodi
         grid = VGroup()  # Gruppo per contenere tutti i nodi
         for row in range(rows):
             for col in range(cols):
-                dot = Dot(point=np.array([col * spacing, row * spacing, 0]), radius=0.25)
+                switch_cont += 1
+                dot = LabeledDot(f"{switch_cont}", point=np.array([col * spacing, row * spacing, 0]), radius=0.25)
                 grid.add(dot)
         
         # Centrare la griglia nella scena
         grid.move_to(ORIGIN)
 
-        t1 = Tex("sim time 00:00:01:000", color=RED, font_size=24, stroke_width=1, stroke_color=YELLOW )
+        t1 = Tex("sim time 00:00:01:000", color=RED, font_size=100, stroke_width=1, stroke_color=YELLOW )
         t1.next_to(grid, UP)
         self.add(t1)
         # Visualizzazione della griglia
         self.add(grid)
-        self.play(self.camera.auto_zoom(grid, margin=1), run_time=0.5)
+        self.play(self.camera.auto_zoom([grid , t1], margin=1), run_time=0.5)
         self.wait(5)
 
 class Blackboard(Scene):
@@ -223,3 +227,28 @@ class Blackboard(Scene):
         self.add(t1)
 
 
+class SubMatrix(Scene):
+    def construct(self):
+        
+        rows = 5
+        cols = 5
+        switch_count = 1
+        #switches = np.zeros((rows, cols), dtype=int)
+        switches = [[0 for _ in range(cols)] for _ in range(rows)]
+
+        for i in range(rows):
+            for j in range(cols):
+                switches[i][j] = switch_count
+                switch_count += 1
+
+
+        for i in switches:
+            print(i)
+
+        #g1 = switches[:rows//2, :cols//2]
+        g1 = [row[:cols//2] for row in switches[:rows//2]]
+
+        print("--------------")
+
+        for i in g1:
+            print(i)

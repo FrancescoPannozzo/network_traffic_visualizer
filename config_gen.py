@@ -213,11 +213,12 @@ ip_address = {
 # File structure composed by a links list and a switches list
 # networkData = [[links list],[switches list]]
 logging.info("Creating network.yaml file structure..")
-networkData = [{},[],{},{}]
+networkData = [{},[],{},{},{}]
 LINK_INDEX = 0
 SWITCH_INDEX = 1
 SIM_PARAMETERS = 2
 COORDINATES_INDEX = 3
+PHASES_INDEX = 4
 MAX_GROUP_IP_ADDRESS = 255
 
 for link, content in links.items():
@@ -233,6 +234,8 @@ if user_mode == 1:
             "switchName": user_data["data"][i]["switchName"],
             "address": user_data["data"][i]["ip"]
         })
+
+    networkData[PHASES_INDEX] = user_data["phases"]
 else:
     switch_ID_counter = 0
     for i in range(1, switch_number + 1):
@@ -246,6 +249,8 @@ else:
             "switchName": f"switch{i}",
             "address": config_gen_utils.ip_to_string(ip_address)
         })
+
+    networkData[PHASES_INDEX] = config_gen_utils.create_auto_phases(START_TIME, SIM_TIME)
 
 logging.info("Switches created:")
 for i in networkData[SWITCH_INDEX]:

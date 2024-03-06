@@ -5,7 +5,7 @@ from datetime import datetime
 import math
 
 
-start_time = datetime.now()
+""" start_time = datetime.now()
 
 # Formatta la stringa per includere anche i millisecondi
 formatted_time = start_time.strftime('%Y-%m-%d %H:%M:%S.%f')
@@ -21,10 +21,14 @@ print("test duration: ", duration)
 print("---------------")
 switch_number = 5
 side = math.sqrt(switch_number)
-
+print("siede:", side)
 rows = math.ceil(side * (3/4))
-cols = math.ceil(side * (4/3))
+cols = math.ceil(math.ceil(side) * (4/3))
 print("rows and cols,",rows, cols)
+
+fr, _ = math.modf(side)
+
+print("row Fractional:", fr)
 
 switch_id = 0
 SWITCH_ZERO = 0
@@ -38,11 +42,36 @@ for i in range(rows):
             switches[i][j] = SWITCH_ZERO
 
 for i in range(rows):
-    print(switches[i])
+    print(switches[i]) """
 
 
 
+tests = 50
+for i in range(2, tests+1):
+    switch_number = i
+    side = math.sqrt(switch_number)
+    print("switch_number, side:", i, side)
+    rows = math.ceil(side * (3/4))
+    cols = int(math.ceil(side) * (4/3))
+    print("rows and cols,",rows, cols)
 
+    fr, _ = math.modf(side)
+    print("row Fractional:", fr)
+
+    switch_id = 0
+    SWITCH_ZERO = 0
+    switches = [[0 for _ in range(cols)] for _ in range(rows)]
+    for i in range(rows):
+        for j in range(cols):
+            if switch_id < switch_number:
+                switch_id += 1
+                switches[i][j] = switch_id
+            else:
+                switches[i][j] = SWITCH_ZERO
+
+    for i in range(rows):
+        print(switches[i])
+    print("----------------")
 
 
 

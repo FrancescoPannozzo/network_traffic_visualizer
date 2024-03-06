@@ -5,6 +5,8 @@ import os
 import random
 import sys
 import math
+from datetime import datetime, timedelta
+from utils import utils
 
 import yaml
 
@@ -209,7 +211,7 @@ def create_not_complete_links(link_cap, switch_number):
 
     side = math.sqrt(switch_number)
     # 16/9 aspect ratio
-    rows = math.ceil(side * (3/4))
+    rows = int(side * (3/4))
     cols = math.ceil(side * (4/3))
 
     switches = [[0 for _ in range(cols)] for _ in range(rows)]
@@ -219,30 +221,27 @@ def create_not_complete_links(link_cap, switch_number):
         for c in range(0, cols):
             if(switch_cont > switch_number):
                 break
-            print("#### analyzing row, col:", r, c)
-            print("Inserting switch:", switch_cont)
             switches[r][c] = switch_cont
             switch_cont += 1
 
             if c > 0:
                 print(f"link - ({switches[r][c-1]},{switches[r][c]}), linkID: {link_id}")
-                data_links[link_id] = {
-                    "endpoints": sorted((switches[r][c-1], switches[r][c])),
-                    "capacity": link_cap,
-                    "trafficPerc": 0
-                    }
+                data_links[link_id] = not_complete_links_format(switches[r][c-1], switches[r][c], link_cap)
                 link_id += 1
             if r > 0:
                 print(f"link - ({switches[r-1][c]},{switches[r][c]}), linkID: {link_id}")
-                data_links[link_id] = {
-                    "endpoints": sorted((switches[r-1][c], switches[r][c])),
-                    "capacity": link_cap,
-                    "trafficPerc": 0
-                    }
+                data_links[link_id] = not_complete_links_format(switches[r-1][c], switches[r][c], link_cap)
                 link_id += 1
         if(switch_cont > switch_number):
             break
     return data_links, switches
+
+def not_complete_links_format(switch_a, switch_b, link_cap):
+    return {
+            "endpoints": sorted((switch_a, switch_b)),
+            "capacity": link_cap,
+            "trafficPerc": 0
+            }
 
 def custom_graph_loader(file_name):
     """ Load the custom_graph.yaml configuration files 
@@ -307,3 +306,19 @@ def create_user_links(user_data, link_cap):
                     link_id += 1
 
     return data_links
+
+def create_auto_phases(start_time, sim_time):
+    setup = utils.file_loader("./data/setup")
+
+    average_delta = setup["averageDelta"]
+    phase_intervall = timedelta(milliseconds=1000)
+    timewalker = start_time + timedelta(milliseconds=average_delta)
+    phases = {}
+    phase_count = 1
+
+    while timewalker < start_time + timedelta(seconds=sim_time):
+        phases[timewalker] = f"phase{phase_count}"
+        phase_count += 1
+        timewalker += phase_intervall
+
+    return phases

@@ -1,2 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/scripts/media/videos/learning/480p15/partial_movie_files/Test/1185818338_1273206753_223132457.mp4'

@@ -1,25 +1,55 @@
-2024-03-05 18:12:50,908 [INFO] Loading files..
-2024-03-05 18:12:52,274 [DEBUG] networkData is type of <class 'list'>
-2024-03-05 18:12:52,274 [INFO] Analyzing files..
-2024-03-05 18:12:52,274 [DEBUG] SHOWING LINKS STRUCTURE:
-2024-03-05 18:12:52,274 [DEBUG] {frozenset({1, 2}): {'linkID': 1, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({2, 3}): {'linkID': 2, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({1, 4}): {'linkID': 3, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({4, 5}): {'linkID': 4, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({2, 5}): {'linkID': 5, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}}
-2024-03-05 18:12:52,274 [INFO] Link ID frozenset({1, 2}):
-2024-03-05 18:12:52,274 [INFO] endpoint: 1
-2024-03-05 18:12:52,274 [INFO] endpoint: 2
-2024-03-05 18:12:52,274 [INFO] Link ID frozenset({2, 3}):
-2024-03-05 18:12:52,291 [INFO] endpoint: 2
-2024-03-05 18:12:52,292 [INFO] endpoint: 3
-2024-03-05 18:12:52,293 [INFO] Link ID frozenset({1, 4}):
-2024-03-05 18:12:52,295 [INFO] endpoint: 1
-2024-03-05 18:12:52,296 [INFO] endpoint: 4
-2024-03-05 18:12:52,296 [INFO] Link ID frozenset({4, 5}):
-2024-03-05 18:12:52,298 [INFO] endpoint: 4
-2024-03-05 18:12:52,299 [INFO] endpoint: 5
-2024-03-05 18:12:52,300 [INFO] Link ID frozenset({2, 5}):
-2024-03-05 18:12:52,302 [INFO] endpoint: 2
-2024-03-05 18:12:52,303 [INFO] endpoint: 5
-2024-03-05 18:12:52,305 [INFO] Simulation parameters:
-2024-03-05 18:12:52,306 [INFO] {'graphType': 'm', 'isCustom': False, 'simTime': 3, 'startSimTime': datetime.datetime(2024, 1, 1, 0, 0)}
-2024-03-05 18:12:52,316 [INFO] ..done!
-2024-03-05 18:12:52,318 [INFO] Writing analyzed_data_test.yaml file..
-2024-03-05 18:12:52,333 [INFO] analyzed_data_test.yaml file creation done!
+2024-03-06 17:50:38,014 [INFO] Loading files..
+2024-03-06 17:50:43,075 [DEBUG] networkData is type of <class 'list'>
+2024-03-06 17:50:43,075 [INFO] Analyzing files..
+2024-03-06 17:50:43,075 [DEBUG] SHOWING LINKS STRUCTURE:
+2024-03-06 17:50:43,075 [DEBUG] {frozenset({1, 2}): {'linkID': 1, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({1, 3}): {'linkID': 2, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({1, 4}): {'linkID': 3, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({1, 5}): {'linkID': 4, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({1, 6}): {'linkID': 5, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({2, 3}): {'linkID': 6, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({2, 4}): {'linkID': 7, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({2, 5}): {'linkID': 8, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({2, 6}): {'linkID': 9, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({3, 4}): {'linkID': 10, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({3, 5}): {'linkID': 11, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({3, 6}): {'linkID': 12, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({4, 5}): {'linkID': 13, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({4, 6}): {'linkID': 14, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}, frozenset({5, 6}): {'linkID': 15, 'capacity': 10, 'trafficDT': 0, 'trafficUDT': 0, 'updateDeltaTraffic': [], 'traffic': []}}
+2024-03-06 17:50:43,085 [INFO] Link ID frozenset({1, 2}):
+2024-03-06 17:50:43,088 [INFO] endpoint: 1
+2024-03-06 17:50:43,101 [INFO] endpoint: 2
+2024-03-06 17:50:43,102 [INFO] Link ID frozenset({1, 3}):
+2024-03-06 17:50:43,103 [INFO] endpoint: 1
+2024-03-06 17:50:43,104 [INFO] endpoint: 3
+2024-03-06 17:50:43,104 [INFO] Link ID frozenset({1, 4}):
+2024-03-06 17:50:43,105 [INFO] endpoint: 1
+2024-03-06 17:50:43,106 [INFO] endpoint: 4
+2024-03-06 17:50:43,107 [INFO] Link ID frozenset({1, 5}):
+2024-03-06 17:50:43,109 [INFO] endpoint: 1
+2024-03-06 17:50:43,110 [INFO] endpoint: 5
+2024-03-06 17:50:43,111 [INFO] Link ID frozenset({1, 6}):
+2024-03-06 17:50:43,112 [INFO] endpoint: 1
+2024-03-06 17:50:43,113 [INFO] endpoint: 6
+2024-03-06 17:50:43,114 [INFO] Link ID frozenset({2, 3}):
+2024-03-06 17:50:43,115 [INFO] endpoint: 2
+2024-03-06 17:50:43,116 [INFO] endpoint: 3
+2024-03-06 17:50:43,118 [INFO] Link ID frozenset({2, 4}):
+2024-03-06 17:50:43,119 [INFO] endpoint: 2
+2024-03-06 17:50:43,120 [INFO] endpoint: 4
+2024-03-06 17:50:43,121 [INFO] Link ID frozenset({2, 5}):
+2024-03-06 17:50:43,122 [INFO] endpoint: 2
+2024-03-06 17:50:43,123 [INFO] endpoint: 5
+2024-03-06 17:50:43,124 [INFO] Link ID frozenset({2, 6}):
+2024-03-06 17:50:43,125 [INFO] endpoint: 2
+2024-03-06 17:50:43,126 [INFO] endpoint: 6
+2024-03-06 17:50:43,126 [INFO] Link ID frozenset({3, 4}):
+2024-03-06 17:50:43,127 [INFO] endpoint: 3
+2024-03-06 17:50:43,128 [INFO] endpoint: 4
+2024-03-06 17:50:43,129 [INFO] Link ID frozenset({3, 5}):
+2024-03-06 17:50:43,132 [INFO] endpoint: 3
+2024-03-06 17:50:43,133 [INFO] endpoint: 5
+2024-03-06 17:50:43,134 [INFO] Link ID frozenset({3, 6}):
+2024-03-06 17:50:43,135 [INFO] endpoint: 3
+2024-03-06 17:50:43,136 [INFO] endpoint: 6
+2024-03-06 17:50:43,142 [INFO] Link ID frozenset({4, 5}):
+2024-03-06 17:50:43,155 [INFO] endpoint: 4
+2024-03-06 17:50:43,159 [INFO] endpoint: 5
+2024-03-06 17:50:43,169 [INFO] Link ID frozenset({4, 6}):
+2024-03-06 17:50:43,174 [INFO] endpoint: 4
+2024-03-06 17:50:43,175 [INFO] endpoint: 6
+2024-03-06 17:50:43,176 [INFO] Link ID frozenset({5, 6}):
+2024-03-06 17:50:43,177 [INFO] endpoint: 5
+2024-03-06 17:50:43,178 [INFO] endpoint: 6
+2024-03-06 17:50:43,179 [INFO] Simulation parameters:
+2024-03-06 17:50:43,182 [INFO] {'graphType': 'c', 'isCustom': False, 'simTime': 3, 'startSimTime': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-03-06 17:50:43,228 [INFO] ..done!
+2024-03-06 17:50:43,233 [INFO] Writing analyzed_data_test.yaml file..
+2024-03-06 17:50:43,272 [INFO] analyzed_data_test.yaml file creation done!

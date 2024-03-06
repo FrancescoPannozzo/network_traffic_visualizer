@@ -1,3 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/scripts/media/videos/learning/480p15/partial_movie_files/MeshGraph/1185818338_1700840317_223132457.mp4'
-file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/scripts/media/videos/learning/480p15/partial_movie_files/MeshGraph/624642324_2475379470_3878159490.mp4'
