@@ -6,30 +6,28 @@ coordinates:
 data:
   1:
     ip: "123.123.123.0"
-    switchName: s1
+    switchName: A
   2:
     ip: "123.123.123.1"
-    switchName: s2
+    switchName: B
   3:
     ip: "123.123.123.2"
-    switchName: s3
+    switchName: C
   4:
     ip: "123.123.123.3"
-    switchName: s4
+    switchName: D
   5:
     ip: "123.123.123.4"
-    switchName: s5
+    switchName: E
   6:
     ip: "123.123.123.5"
-    switchName: s6
+    switchName: F
   7:
     ip: "123.123.123.6"
-    switchName: s7
+    switchName: G
   8:
     ip: "123.123.123.7"
-    switchName: s8
+    switchName: H
 phases:
-  2024-01-01 00:01:05: "phase1"
-  2024-01-01 00:01:10: "phase2"
-  2024-01-01 00:01:15: "phase3"
-  2024-01-01 00:01:20: "phase4"
+  2024-01-01 00:00:01: "phase1"
+  2024-01-01 00:00:02: "phase2"

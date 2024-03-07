@@ -46,14 +46,16 @@ for i in range(rows):
 
 
 
-tests = 50
+tests = 25
 for i in range(2, tests+1):
     switch_number = i
     side = math.sqrt(switch_number)
     print("switch_number, side:", i, side)
     rows = math.ceil(side * (3/4))
-    cols = int(math.ceil(side) * (4/3))
+    cols = int(side * (4/3))
     print("rows and cols,",rows, cols)
+    if (rows * cols) < switch_number:
+        cols += 1
 
     fr, _ = math.modf(side)
     print("row Fractional:", fr)

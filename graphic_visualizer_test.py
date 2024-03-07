@@ -80,7 +80,7 @@ class GraphicVisualizer(MovingCameraScene):
         #layout_scale = (len(switches))/3
         # graph creation
         grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=2, vertex_config={"color":WHITE},
-                      edge_config={"stroke_width": 10, "color":CONST.ZERO_TRAFFIC}
+                      edge_config={"stroke_width": 8, "color":CONST.ZERO_TRAFFIC}
                       )
         
         self.play(Create(grafo))
@@ -148,7 +148,7 @@ class GraphicVisualizer(MovingCameraScene):
         rows = len(mesh)
         cols = len(mesh[0])
 
-        font_size = 20
+        font_size = 15
 
         graph_mesh = {}
         # Nodes spacing
@@ -165,7 +165,9 @@ class GraphicVisualizer(MovingCameraScene):
         # the sim time to visualize
         sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font="Courier New", font_size=font_size).set_color(YELLOW)
         phase_time_txt = Text(f"PHASE: {phase}", font="Courier New", font_size=font_size).set_color(YELLOW)
-        
+
+        infos = graphic_visualizer_utils.set_sim_infos(traffic_data[CONST.ANALYZED_DATA["SIM_PARAMS"]], font_size)
+
         # Creazione della griglia di nodi
         grid = VGroup()  # Gruppo per contenere tutti i nodi
 
@@ -195,13 +197,15 @@ class GraphicVisualizer(MovingCameraScene):
 
         self.add(sim_time_txt)
         self.add(phase_time_txt)
+        self.add(infos)
         grid.add(lines_grid, mesh_grid)
 
         grid.move_to(ORIGIN)
         self.add(grid)
+        infos.next_to(grid, DOWN)
         phase_time_txt.next_to(grid, UP).set_color(YELLOW)
         sim_time_txt.next_to(phase_time_txt, UP).set_color(YELLOW)
-        self.play(self.camera.auto_zoom([grid, sim_time_txt], margin=1), run_time=0.5)
+        self.play(self.camera.auto_zoom([grid, sim_time_txt, infos], margin=1), run_time=0.5)
 
         traffic_count = 0
         # creating traffic animations

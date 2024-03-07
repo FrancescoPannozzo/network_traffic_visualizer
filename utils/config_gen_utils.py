@@ -157,7 +157,7 @@ def create_complete_links(link_cap, switch_number):
             if i != p:
                 if link_id not in links:
                     links[link_id] = {
-                        "endpoints": [i, p],
+                        "endpoints": sorted([i, p]),
                         "capacity": link_cap,
                         "trafficPerc": 0
                         }
@@ -211,8 +211,11 @@ def create_not_complete_links(link_cap, switch_number):
 
     side = math.sqrt(switch_number)
     # 16/9 aspect ratio
-    rows = int(side * (3/4))
-    cols = math.ceil(side * (4/3))
+    rows = math.ceil(side * (3/4))
+    cols = int(side * (4/3))
+
+    if (rows * cols) < switch_number:
+        cols += 1
 
     switches = [[0 for _ in range(cols)] for _ in range(rows)]
     #links = []

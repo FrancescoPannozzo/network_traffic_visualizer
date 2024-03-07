@@ -1,0 +1,10 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/media/videos/graphic_visualizer_test/480p15/partial_movie_files/SwitchesInfo/983024305_2883963239_713248806.mp4'
+file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/media/videos/graphic_visualizer_test/480p15/partial_movie_files/SwitchesInfo/1809158592_3198605275_2872981399.mp4'
+file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/media/videos/graphic_visualizer_test/480p15/partial_movie_files/SwitchesInfo/995890525_3354828870_1867051912.mp4'
+file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/media/videos/graphic_visualizer_test/480p15/partial_movie_files/SwitchesInfo/814489786_721727532_3451169719.mp4'
+file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/media/videos/graphic_visualizer_test/480p15/partial_movie_files/SwitchesInfo/4113129773_487153511_2982753353.mp4'
+file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/media/videos/graphic_visualizer_test/480p15/partial_movie_files/SwitchesInfo/891436872_3252557830_3050598937.mp4'
+file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/media/videos/graphic_visualizer_test/480p15/partial_movie_files/SwitchesInfo/1778212864_2403740968_2429046081.mp4'
+file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/media/videos/graphic_visualizer_test/480p15/partial_movie_files/SwitchesInfo/391900624_3559799382_1978819351.mp4'
+file 'file:C:/Users/Pan/Desktop/TESI/progetto-tirocinio/network-traffic-visualizer/media/videos/graphic_visualizer_test/480p15/partial_movie_files/SwitchesInfo/1501983331_4042641242_3916163529.mp4'
