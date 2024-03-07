@@ -164,46 +164,6 @@ def create_complete_links(link_cap, switch_number):
                     link_id += 1
     return links
 
-def not_complete_links(link_cap, switch_number):
-    """ Create links for a complete graph 
-    
-    Key arguments:
-    link_cap: int -- link capacity
-    switch_number: int -- switch number
-    creation_perc: in -- percentage links creation
-
-    Returns
-    dict -- links representation
-    """
-    data_links = {}
-    # The arcs representing the links connecting the switches (nodes)
-    links = []
-    # The link ID counter
-    link_id = 1
-
-    for i in range(1, switch_number + 1):
-        adiacenti_possibili = [s for s in range(1, switch_number+1) if s != i]
-        #print(f"----- adiacenti possibili per nodo {i}:", adiacenti_possibili)
-        n_adiacenti = random.randint(1, int(len(adiacenti_possibili)/2))
-        #print(f"----- nodo {i} avrà {n_adiacenti} adiacenti")
-        for _ in range(1, n_adiacenti+1):
-            scelto = random.choice(adiacenti_possibili)
-            if sorted([i, scelto]) not in links:
-                links.append(sorted([i, scelto]))
-            adiacenti_possibili.remove(scelto)
-
-    links = sorted(links)
-
-    for l in links:
-        data_links[link_id] = {
-            "endpoints": l,
-            "capacity": link_cap,
-            "trafficPerc": 0
-            }
-        link_id += 1
-
-    return data_links
-
 
 def create_not_complete_links(link_cap, switch_number):
     data_links = {}
@@ -218,7 +178,6 @@ def create_not_complete_links(link_cap, switch_number):
         cols += 1
 
     switches = [[0 for _ in range(cols)] for _ in range(rows)]
-    #links = []
     switch_cont = 1
     for r in range(0, rows):
         for c in range(0, cols):

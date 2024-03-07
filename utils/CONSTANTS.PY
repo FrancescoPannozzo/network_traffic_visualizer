@@ -13,7 +13,6 @@ ANALYZED_DATA = {
     "TRAFFICS": 1
 }
 
-
 COMPLETE_GRAPH = "c"
 MESH_GRAPH = "m"
 EP_A = 0

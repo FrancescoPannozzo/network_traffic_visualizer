@@ -19,6 +19,7 @@ import math
 import yaml
 from utils import config_gen_utils
 from utils import utils
+from utils import CONSTANTS as CONST
 
 # Logger config
 logging.basicConfig(
@@ -56,7 +57,6 @@ if user_mode == 1:
     logging.info("You choosed the user mode!")
     logging.info("Loading user file..")
     user_data = utils.file_loader("./data/custom_graph")
-    logging.debug("User data is:%s", user_data)
 
 else:
     logging.info("You choosed the auto mode!")
@@ -83,13 +83,7 @@ while not CORRECT_CHOOSE:
         else:
             logging.warning("WARNING, values must be one of these [10, 100, 1000].\n")
     except ValueError:
-        logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")    
-
-# Getting the switch number and the link capacity (Mbps) from the user by prompt
-#inputParameters = config_gen_utils.get_input_parameters()
-#logging.info("The choosen switches number is %d, the network link capacity is %d Mbps, complete: %s",
-#             inputParameters.switchNumber, inputParameters.linkCapacity, inputParameters.isComplete)
-
+        logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")
 
 if user_mode == 1:
     switch_number = len(user_data["data"])
@@ -113,7 +107,7 @@ PACKET_SIZE = setup["packetSize"]
 PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
 
 logging.info("LinkCap in Bytes: %dB", (LINK_CAP * 1e6) / 8)
-logging.debug("PPS: %f", PPS)
+#logging.debug("PPS: %f", PPS)
 
 # The arcs representing the links connecting the switches (nodes)
 links = {}
@@ -129,11 +123,6 @@ else:
         links = config_gen_utils.create_complete_links(LINK_CAP, switch_number)
     else:
         links, switches = config_gen_utils.create_not_complete_links(LINK_CAP, switch_number)
-#links = config_gen_utils.create_not_complete_links(LINK_CAP, switch_number)
-
-
-logging.debug("Complete graph links number: %s", {(switch_number*(switch_number-1))/2})
-logging.debug("Partial graph links number: %s", {len(links)})
 
 logging.info("..links creation done!Links created are:")
 for link, content in links.items():
@@ -168,12 +157,10 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
                          link, content["endpoints"],
                          (fractional_unit / creationRate),
                          content["trafficPerc"])
-
     ENDP_A = 0
     ENDP_B = 1
     for link, content in links.items():
         trafficPerc = content["trafficPerc"]
-
         for i in range(0, int((PPS*(trafficPerc/100))/creationRate) ):
             packet = config_gen_utils.create_packet(content["endpoints"][ENDP_A],
                                          content["endpoints"][ENDP_B],
@@ -189,37 +176,22 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
                                          timeWalker,
                                          remaining_packet_size)
             packets.append(packet)
-
     timeWalker += timedelta(milliseconds=PPS_DELTA)
 
 logging.info("..packets.yaml file structure done!")
-logging.info("Writing packets.yaml file..")
-with open('./data/packets.yaml', 'w', encoding="utf-8") as file:
-    yaml.dump(packets, file)
-logging.info("..packets file creation done!")
 
 # Defining the network.yaml fields defined in each switch object
-
-# Defining the switches ip address structure
-
-ip_address = {
-    "groupA": 10,
-    "groupB": 0,
-    "groupC": 0,
-    "groupD": 0
-}
 
 # Creating network.yaml file
 # File structure composed by a links list and a switches list
 # networkData = [[links list],[switches list]]
 logging.info("Creating network.yaml file structure..")
 networkData = [{},[],{},{},{}]
-LINK_INDEX = 0
-SWITCH_INDEX = 1
-SIM_PARAMETERS = 2
-COORDINATES_INDEX = 3
-PHASES_INDEX = 4
-MAX_GROUP_IP_ADDRESS = 255
+LINK_INDEX = CONST.NETWORK["LINKS"]
+SWITCH_INDEX = CONST.NETWORK["SWITCHES"]
+SIM_PARAMETERS_INDEX = CONST.NETWORK["SIM_PARAMS"]
+COORDINATES_INDEX = CONST.NETWORK["COORDINATES"]
+PHASES_INDEX = CONST.NETWORK["PHASES"]
 
 for link, content in links.items():
     networkData[LINK_INDEX][link] = {
@@ -237,6 +209,14 @@ if user_mode == 1:
 
     networkData[PHASES_INDEX] = user_data["phases"]
 else:
+    # Defining the switches ip address structure for the auto mode
+    MAX_GROUP_IP_ADDRESS = 255
+    ip_address = {
+        "groupA": 10,
+        "groupB": 0,
+        "groupC": 0,
+        "groupD": 0
+    }
     switch_ID_counter = 0
     for i in range(1, switch_number + 1):
         if i % (MAX_GROUP_IP_ADDRESS + 1) == 0:
@@ -256,14 +236,12 @@ logging.info("Switches created:")
 for i in networkData[SWITCH_INDEX]:
     logging.info(i)
 
-networkData[SIM_PARAMETERS] = {
+networkData[SIM_PARAMETERS_INDEX] = {
     "simTime": SIM_TIME,
     "startSimTime": START_TIME,
     "graphType": graph_type,
     "isCustom": user_mode == 1
 }
-
-logging.debug("SWITCHES ARE: %s", switches)
 
 if user_mode == 1:
     networkData[COORDINATES_INDEX]["coordinates"] = user_data["coordinates"]
@@ -271,13 +249,18 @@ else:
     networkData[COORDINATES_INDEX]["coordinates"] = switches
 
 logging.info("..network.yaml file structure done!")
-logging.info("Writing network.yaml file..")
+
 try:
+    logging.info("Writing network.yaml file..")
     with open('./data/network.yaml', 'w', encoding="utf-8") as file:
         yaml.dump(networkData, file)
+    logging.info("..network.yaml file creation done!")
+
+    logging.info("Writing packets.yaml file..")
+    with open('./data/packets.yaml', 'w', encoding="utf-8") as file:
+        yaml.dump(packets, file)
+    logging.info("..packets file creation done!")
 except OSError as e:
     print(f"I/O error: {e}")
 except yaml.YAMLError as e:
     print(f"YAML error: {e}")
-
-logging.info("..network.yaml file creation done!")

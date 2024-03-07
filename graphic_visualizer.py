@@ -1,16 +1,16 @@
 """ Graphic visualizer
     use: 
-    rendering 854x480 15FPS: manim -pql graphic_visualizer.py GraphicVisualizer
-    rendering 1280x720 60FPS: manim -pqm --fps 60 graphic_visualizer.py GraphicVisualizer
+    rendering 854x480 15FPS: manim -pql graphic_visualizer.py GraphicVisualizer/SwitchesInfo
+    rendering 1280x720 60FPS: manim -pqm --fps 60 graphic_visualizer.py GraphicVisualizer/SwitchesInfo
+    Faster rendering: manim -pql --disable_caching graphic_visualizer_test.py ClassName
 
 """
 
 import logging
-from datetime import timedelta
 from manim import *
 from utils import utils, graphic_visualizer_utils
 from utils import CONSTANTS as CONST
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Logger config
 logging.basicConfig(
@@ -65,38 +65,69 @@ class GraphicVisualizer(MovingCameraScene):
 
         logging.debug("links: %s", links)
 
+        font_size = 20
+        if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 100:
+            font_size = 40
+
+        phases = network_data[CONST.NETWORK["PHASES"]]
+        phases_iterator = iter(phases.items())
+        phase_time, phase = next(phases_iterator)
+        logging.info("FIRST PHASE TIMESTAMP: %s", phase_time)
         # the sim time to visualize
-        sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font="Courier New", font_size=20).set_color(YELLOW)
+        sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font="Courier New", font_size=font_size).set_color(YELLOW)
+        phase_time_txt = Text(f"PHASE: {phase}", font="Courier New", font_size=font_size).set_color(YELLOW)
       
         #layout_scale = (len(switches))/3
         # graph creation
         grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=2, vertex_config={"color":WHITE},
-                      edge_config={"stroke_width": 10, "color":CONST.ZERO_TRAFFIC}
+                      edge_config={"stroke_width": 8, "color":CONST.ZERO_TRAFFIC}
                       )
         
         self.play(Create(grafo))
-        sim_time_txt.next_to(grafo, UP)
+        phase_time_txt.next_to(grafo, UP)
+        sim_time_txt.next_to(phase_time_txt, UP)
+        self.add(phase_time_txt)
         self.add(sim_time_txt)
-        self.play(self.camera.auto_zoom([grafo, sim_time_txt], margin=1), run_time=0.5)
+        self.play(self.camera.auto_zoom([grafo, sim_time_txt, phase_time_txt], margin=1), run_time=0.5)
        
         # creating traffic animations
+        traffic_count = 0
         while time_walker <= end_time:
             # temp LabeledDot structure
             animations = []
             # definig all the traffic color links at timeWalker time
             for _, content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]].items():
-                color_perc = int(content["traffic"][time_walker])
+                color_perc = int(content["traffic"][traffic_count])
                 animations.append(grafo.edges[(content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B])].animate.set_color(traffic_perc_colors[color_perc]["hexValue"]))
             # playing animations
-            self.play(*animations, Transform(sim_time_txt,
+            if(time_walker == phase_time):
+                self.play(*animations, Transform(sim_time_txt,
                                                 Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
-                                                    font="Courier New",
-                                                    font_size=24).next_to(grafo, UP).set_color(YELLOW)),
-                                                    run_time=1
+                                                font="Courier New",
+                                                font_size=font_size).next_to(phase_time_txt, UP).set_color(YELLOW)),
+                                        Transform(phase_time_txt,
+                                                Text(f"PHASE: {phase}",
+                                                font="Courier New",
+                                                font_size=font_size).next_to(grafo, UP).set_color(YELLOW)),
+                                    run_time=1
+                                )
+                try:
+                    phase_time, phase = next(phases_iterator)
+                except StopIteration:
+                    logging.info("Phases ended")
+            else:
+                self.play(*animations, Transform(sim_time_txt,
+                                                    Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
+                                                        font="Courier New",
+                                                        font_size=font_size).next_to(phase_time_txt, UP).set_color(YELLOW)),
+                                                        run_time=1
                                             )
+            
+            traffic_count += 1
             # pushing forward sim time to check
             time_walker += timedelta(milliseconds=show_delta)
         self.wait(2)
+
         logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
     
     def mesh_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time):
@@ -112,19 +143,31 @@ class GraphicVisualizer(MovingCameraScene):
         mesh = network_data[CONST.NETWORK["COORDINATES"]]["coordinates"]
 
         logging.debug("MESH: %s", mesh)
-
-        # the sim time to visualize
-        sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font="Courier New", font_size=20).set_color(YELLOW)
        
         # building mesh graph
         rows = len(mesh)
         cols = len(mesh[0])
 
-        graph_mesh = {}
+        font_size = 15
 
+        graph_mesh = {}
         # Nodes spacing
         spacing = 1
-        
+        if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 100:
+            spacing = 1.5
+            font_size = 40
+
+
+        phases = network_data[CONST.NETWORK["PHASES"]]
+        phases_iterator = iter(phases.items())
+        phase_time, phase = next(phases_iterator)
+        logging.info("FIRST PHASE TIMESTAMP: %s", phase_time)
+        # the sim time to visualize
+        sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font="Courier New", font_size=font_size).set_color(YELLOW)
+        phase_time_txt = Text(f"PHASE: {phase}", font="Courier New", font_size=font_size).set_color(YELLOW)
+
+        infos = graphic_visualizer_utils.set_sim_infos(traffic_data[CONST.ANALYZED_DATA["SIM_PARAMS"]], font_size)
+
         # Creazione della griglia di nodi
         grid = VGroup()  # Gruppo per contenere tutti i nodi
 
@@ -153,33 +196,58 @@ class GraphicVisualizer(MovingCameraScene):
             lines_grid.add(line)
 
         self.add(sim_time_txt)
+        self.add(phase_time_txt)
+        self.add(infos)
         grid.add(lines_grid, mesh_grid)
 
         grid.move_to(ORIGIN)
         self.add(grid)
-        sim_time_txt.next_to(grid, UP).set_color(YELLOW)
-        self.play(self.camera.auto_zoom([grid, sim_time_txt], margin=1), run_time=0.5)
+        infos.next_to(grid, DOWN)
+        phase_time_txt.next_to(grid, UP).set_color(YELLOW)
+        sim_time_txt.next_to(phase_time_txt, UP).set_color(YELLOW)
+        self.play(self.camera.auto_zoom([grid, sim_time_txt, infos], margin=1), run_time=0.5)
 
+        traffic_count = 0
         # creating traffic animations
         while time_walker <= end_time:
             # temp LabeledDot structure
             animations = []
             # definig all the traffic color links at timeWalker time
             for _, content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]].items():
-                color_perc = int(content["traffic"][time_walker])
+                color_perc = int(content["traffic"][traffic_count])
                 animations.append(links[(content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B])].animate.set_color(traffic_perc_colors[color_perc]["hexValue"]))
             # playing animations
-            self.play(*animations, Transform(sim_time_txt,
+
+            traffic_count += 1
+            if(time_walker == phase_time):
+                self.play(*animations, Transform(sim_time_txt,
                                                 Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
                                                 font="Courier New",
-                                                font_size=20).next_to(mesh_grid, UP).set_color(YELLOW)),
-                                                run_time=1
-                                            )
+                                                font_size=font_size).next_to(phase_time_txt, UP).set_color(YELLOW)),
+                                        Transform(phase_time_txt,
+                                                Text(f"PHASE: {phase}",
+                                                font="Courier New",
+                                                font_size=font_size).next_to(mesh_grid, UP).set_color(YELLOW)),
+                                    run_time=1
+                                )
+                try:
+                    phase_time, phase = next(phases_iterator)
+                except StopIteration:
+                    logging.info("Phases ended")
+            else:
+                self.play(*animations, Transform(sim_time_txt,
+                                    Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
+                                    font="Courier New",
+                                    font_size=font_size).next_to(phase_time_txt, UP).set_color(YELLOW)),
+                                    run_time=1
+                                )
             # pushing forward sim time to check
             time_walker += timedelta(milliseconds=show_delta)
+        
 
         self.wait(5)
         logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
+
 
 class SwitchesInfo(MovingCameraScene):
     """  Graph creator """   
@@ -194,9 +262,9 @@ class SwitchesInfo(MovingCameraScene):
         for content in switches:
             if(content['switchID']) == "0":
                 continue
-            dot_text = Text(f"ID{content['switchID']}",font="Courier New", font_size=15, color=BLACK)
+            dot_text = Text(f"ID:{content['switchID']}", font="Courier New", font_size=15, color=BLACK)
             dot = LabeledDot(dot_text)
-            text = Text(f"Name: {content['switchName']}\nIP: {content['address']}", font_size=10)
+            text = Text(f"Name: {content['switchName']}\nIP: {content['address']}", font="Courier New", font_size=7)
             dot.next_to(prev_dot, RIGHT)
             text.next_to(dot, DOWN)
             self.add(dot, text)

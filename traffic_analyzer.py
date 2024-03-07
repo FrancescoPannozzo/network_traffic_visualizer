@@ -23,7 +23,7 @@ logging.basicConfig(
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
         # Adding one handler to manage the messages on a file
-        logging.FileHandler('./log_files/traffic_analyzer_log.txt', mode='w'),
+        logging.FileHandler('./log_files/traffic_analyzer_test_log.txt', mode='w'),
         # Adding one handler to see messages on console
         logging.StreamHandler()
     ]
@@ -178,13 +178,13 @@ sim_parameters = {
 analyzed_data = {}
 for link, content in links.items():
     endpoints = []
-    traffic = {}
+    traffic = []
     for ep in link:
         endpoints.append(ep)
 
     for c in content["traffic"]:
         average = utils.get_average(c['traffic'], averageFractions, utils.max_traffic_per_unit(content['capacity'], updateDelta))
-        traffic[ c['updateTime'] ] = round(average, 2)
+        traffic.append(round(average, 2))
 
     analyzed_data[content["linkID"]] = {
         "endpoints": sorted(endpoints),
@@ -196,7 +196,7 @@ fileStructure.append(sim_parameters)
 fileStructure.append(analyzed_data)
 
 # frontend file input
-logging.info("Writing analyzed_data.yaml file..")
+logging.info("Writing analyzed_data_test.yaml file..")
 try:
     with open('./data/analyzed_data.yaml', 'w', encoding="utf-8") as file:
         yaml.dump(fileStructure, file)
@@ -205,4 +205,4 @@ except OSError as e:
 except yaml.YAMLError as e:
     print(f"YAML error: {e}")
 
-logging.info("analyzed_data.yaml file creation done!")
+logging.info("analyzed_data_test.yaml file creation done!")
