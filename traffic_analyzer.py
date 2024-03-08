@@ -23,7 +23,7 @@ logging.basicConfig(
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
         # Adding one handler to manage the messages on a file
-        logging.FileHandler('./log_files/traffic_analyzer_test_log.txt', mode='w'),
+        logging.FileHandler('./log_files/traffic_analyzer_log.txt', mode='w'),
         # Adding one handler to see messages on console
         logging.StreamHandler()
     ]
@@ -38,10 +38,12 @@ args = parser.parse_args()
 logging.info("Loading files..")
 # networkData:list composed by a link dict, a switch list and network parameters dict
 # packetsData:composed by a packets dict
+logging.info("Loading network file..")
 networkData = utils.file_loader(args.networkFile)
+logging.info("..done!")
+logging.info("Loading packets file..")
 packetsData = utils.file_loader(args.packetsFile)
-
-logging.debug("networkData is type of %s", type(networkData))
+logging.info("..done!")
 
 SIM_PARAMETERS = CONST.NETWORK["SIM_PARAMS"]
 
@@ -74,14 +76,14 @@ for link, content in networkData[CONST.NETWORK["LINKS"]].items():
         "traffic": []
         }
 
-logging.debug("SHOWING LINKS STRUCTURE:")
-logging.debug(links)
+#logging.debug("SHOWING LINKS STRUCTURE:")
+#logging.debug(links)
 
 # Logging links with own endpoints
-for link, content in links.items():
-    logging.info("Link ID %s:", link)
-    for endpoint in link:
-        logging.info("endpoint: %s", endpoint)
+#for link, content in links.items():
+#    logging.info("Link ID %s:", link)
+#    for endpoint in link:
+#        logging.info("endpoint: %s", endpoint)
 
 # Logging simulation parameters
 logging.info("Simulation parameters:")
@@ -127,14 +129,14 @@ while timeWalker <= startTime + (simTime - updateDelta):
         content["trafficUDT"] = 0
     # Identify the link belonging to the analyzed packet
     if packet is not None:
-        link = links[frozenset({packet["epA"], packet["epB"]})]
+        link = links[frozenset({packet["A"], packet["B"]})]
         # Analyzing every packet in the analyzed range
-        while packet["timest"] >= timeWalker and packet["timest"] < timeWalker + updateDelta:
-            link["trafficUDT"] += packet["dim"]
-            link["trafficDT"] += packet["dim"]
+        while packet["t"] >= timeWalker and packet["t"] < timeWalker + updateDelta:
+            link["trafficUDT"] += packet["d"]
+            link["trafficDT"] += packet["d"]
             packet = next(packetsDataIterator, None)
             if packet is not None:
-                link = links[frozenset({packet["epA"], packet["epB"]})]
+                link = links[frozenset({packet["A"], packet["B"]})]
             else:
                 break
     # Pushing forward the analyzing time
@@ -200,9 +202,8 @@ logging.info("Writing analyzed_data_test.yaml file..")
 try:
     with open('./data/analyzed_data.yaml', 'w', encoding="utf-8") as file:
         yaml.dump(fileStructure, file)
+    logging.info("analyzed_data_test.yaml file creation done!")
 except OSError as e:
     print(f"I/O error: {e}")
 except yaml.YAMLError as e:
     print(f"YAML error: {e}")
-
-logging.info("analyzed_data_test.yaml file creation done!")

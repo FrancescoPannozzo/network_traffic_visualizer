@@ -3,6 +3,7 @@
     rendering 854x480 15FPS: manim -pql graphic_visualizer.py GraphicVisualizer/SwitchesInfo
     rendering 1280x720 60FPS: manim -pqm --fps 60 graphic_visualizer.py GraphicVisualizer/SwitchesInfo
     Faster rendering: manim -pql --disable_caching graphic_visualizer.py ClassName
+    Reducing fps: manim -pql --fps 24 --disable_caching graphic_visualizer.py GraphicVisualizer
 
 """
 
@@ -74,8 +75,8 @@ class GraphicVisualizer(MovingCameraScene):
         phase_time, phase = next(phases_iterator)
         logging.info("FIRST PHASE TIMESTAMP: %s", phase_time)
         # the sim time to visualize
-        sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font="Courier New", font_size=font_size).set_color(YELLOW)
-        phase_time_txt = Text(f"PHASE: {phase}", font="Courier New", font_size=font_size).set_color(YELLOW)
+        sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font="Courier New", font_size=font_size).set_color(WHITE)
+        phase_time_txt = Text(f"PHASE: {phase}", font="Courier New", font_size=font_size).set_color(WHITE)
       
         #layout_scale = (len(switches))/3
         # graph creation
@@ -104,11 +105,11 @@ class GraphicVisualizer(MovingCameraScene):
                 self.play(*animations, Transform(sim_time_txt,
                                                 Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
                                                 font="Courier New",
-                                                font_size=font_size).next_to(phase_time_txt, UP).set_color(YELLOW)),
+                                                font_size=font_size).next_to(phase_time_txt, UP).set_color(WHITE)),
                                         Transform(phase_time_txt,
                                                 Text(f"PHASE: {phase}",
                                                 font="Courier New",
-                                                font_size=font_size).next_to(grafo, UP).set_color(YELLOW)),
+                                                font_size=font_size).next_to(grafo, UP).set_color(WHITE)),
                                     run_time=1
                                 )
                 try:
@@ -119,7 +120,7 @@ class GraphicVisualizer(MovingCameraScene):
                 self.play(*animations, Transform(sim_time_txt,
                                                     Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
                                                         font="Courier New",
-                                                        font_size=font_size).next_to(phase_time_txt, UP).set_color(YELLOW)),
+                                                        font_size=font_size).next_to(phase_time_txt, UP).set_color(WHITE)),
                                                         run_time=1
                                             )
             
@@ -163,10 +164,10 @@ class GraphicVisualizer(MovingCameraScene):
         phase_time, phase = next(phases_iterator)
         logging.info("FIRST PHASE TIMESTAMP: %s", phase_time)
         # the sim time to visualize
-        sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font="Courier New", font_size=font_size).set_color(YELLOW)
-        phase_time_txt = Text(f"PHASE: {phase}", font="Courier New", font_size=font_size).set_color(YELLOW)
+        sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font="Courier New", font_size=font_size).set_color(WHITE)
+        phase_time_txt = Text(f"PHASE: {phase}", font="Courier New", font_size=font_size).set_color(WHITE)
 
-        infos = graphic_visualizer_utils.set_sim_infos(traffic_data[CONST.ANALYZED_DATA["SIM_PARAMS"]], font_size)
+        #infos = graphic_visualizer_utils.set_sim_infos(traffic_data[CONST.ANALYZED_DATA["SIM_PARAMS"]], font_size)
 
         # Creazione della griglia di nodi
         grid = VGroup()  # Gruppo per contenere tutti i nodi
@@ -195,17 +196,25 @@ class GraphicVisualizer(MovingCameraScene):
             links[(content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B])] = line
             lines_grid.add(line)
 
+        GraphicVisualizer.intro(self, sim_params, network_data)
+
+
+
+        
+
         self.add(sim_time_txt)
         self.add(phase_time_txt)
-        self.add(infos)
+        #self.add(infos)
+        
         grid.add(lines_grid, mesh_grid)
+        
 
         grid.move_to(ORIGIN)
         self.add(grid)
-        infos.next_to(grid, DOWN)
-        phase_time_txt.next_to(grid, UP).set_color(YELLOW)
-        sim_time_txt.next_to(phase_time_txt, UP).set_color(YELLOW)
-        self.play(self.camera.auto_zoom([grid, sim_time_txt, infos], margin=1), run_time=0.5)
+        #infos.next_to(grid, DOWN)
+        phase_time_txt.next_to(grid, UP).set_color(WHITE)
+        sim_time_txt.next_to(phase_time_txt, UP).set_color(WHITE)
+        self.play(FadeIn(grid), FadeIn(sim_time_txt), FadeIn(phase_time_txt, shift=RIGHT), self.camera.auto_zoom([grid, sim_time_txt], margin=1), run_time=0.5)
 
         traffic_count = 0
         # creating traffic animations
@@ -223,11 +232,11 @@ class GraphicVisualizer(MovingCameraScene):
                 self.play(*animations, Transform(sim_time_txt,
                                                 Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
                                                 font="Courier New",
-                                                font_size=font_size).next_to(phase_time_txt, UP).set_color(YELLOW)),
+                                                font_size=font_size).next_to(phase_time_txt, UP).set_color(WHITE)),
                                         Transform(phase_time_txt,
                                                 Text(f"PHASE: {phase}",
                                                 font="Courier New",
-                                                font_size=font_size).next_to(mesh_grid, UP).set_color(YELLOW)),
+                                                font_size=font_size).next_to(mesh_grid, UP).set_color(WHITE)),
                                     run_time=1
                                 )
                 try:
@@ -238,7 +247,7 @@ class GraphicVisualizer(MovingCameraScene):
                 self.play(*animations, Transform(sim_time_txt,
                                     Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
                                     font="Courier New",
-                                    font_size=font_size).next_to(phase_time_txt, UP).set_color(YELLOW)),
+                                    font_size=font_size).next_to(phase_time_txt, UP).set_color(WHITE)),
                                     run_time=1
                                 )
             # pushing forward sim time to check
@@ -247,6 +256,46 @@ class GraphicVisualizer(MovingCameraScene):
 
         self.wait(5)
         logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
+
+    def intro(self, sim_params, network_data):
+        dot = Dot(UP * 2 + LEFT, fill_opacity=0)
+        self.add(dot)
+        net_sim_par = network_data[CONST.NETWORK["SIM_PARAMS"]]
+        #tex = Tex(
+        #    "FadeIn with ", "shift ", " or target\_position", " and scale"
+        #).scale(1)
+        if net_sim_par["graphType"] == "m":
+            graph_type = "mesh"
+        else:
+            graph_type = "complete"
+
+        tex = Tex(f"{net_sim_par['simTime']} seconds simulation time, ", f"{net_sim_par['startSimTime']}").scale(1)
+        tex2 = Tex(f"{len(network_data[CONST.NETWORK['SWITCHES']])} switches, ", f"{graph_type} graph, ", f"{net_sim_par['linkCap']} Mbps").scale(1)
+        tex3 = Tex(f"{sim_params['averageDelta']}ms average delta, ", f"{sim_params['updateDelta']}ms update delta").scale(1)
+        tex2.next_to(tex, DOWN)
+        tex3.next_to(tex2, DOWN)
+        animations = [
+            FadeIn(tex[0]),
+            FadeIn(tex[1], shift=DOWN),
+            FadeIn(tex2[0]),
+            FadeIn(tex2[1], target_position=dot),
+            FadeIn(tex2[2], shift=UP),
+            FadeIn(tex3[0]),
+            FadeIn(tex3[1], scale=1.5)
+        ]
+        
+        self.play(AnimationGroup(*animations, lag_ratio=0.2))
+        self.wait(3)
+        animations = [
+            FadeOut(tex[0]),
+            FadeOut(tex[1], shift=DOWN),
+            FadeOut(tex2[0]),
+            FadeOut(tex2[1], target_position=dot),
+            FadeOut(tex2[2], shift=UP),
+            FadeOut(tex3[0]),
+            FadeOut(tex3[1], scale=1.5)
+        ]
+        self.play(AnimationGroup(*animations, lag_ratio=0.2))
 
 
 class SwitchesInfo(MovingCameraScene):

@@ -131,10 +131,10 @@ def create_packet(ep_a, ep_b, timewalker, packet_size):
     source_ndex = random.randint(0, 1)
     dest_index = 1 - source_ndex
     return {
-        "epA": endpoints[source_ndex],
-        "epB": endpoints[dest_index],
-        "timest": timewalker,
-        "dim": packet_size
+        "A": endpoints[source_ndex],
+        "B": endpoints[dest_index],
+        "t": timewalker,
+        "d": packet_size
         }
 
 def create_complete_links(link_cap, switch_number):

@@ -78,29 +78,38 @@ class Switch():
 
 class Test(Scene):
     def construct(self):
-        """ circle = Circle(color=YELLOW)
-        self.add(circle)
-        self.wait() """
-
-        switch1 = Switch("switch1", "123.123.123.1")
-        switch2 = Switch("switch2", "123.123.123.2")
-        nodi = [switch1.name, switch2.name]
-        archi = [(switch1.name, switch2.name)]
-
-        # Crea un grafo
-        grafo = Graph(nodi, archi, layout="circular", labels=True, layout_scale=3,
-                      vertex_config={switch1.name: {"fill_color": RED, "radius": 0.5}, switch2.name: {"fill_color": YELLOW}})
-        logging.debug("graph elements is type of:%s",grafo[switch1.name])
-
-        #grafo[switch1.name].label = Tex("test", "font_size"=10)
-      
-        grafo.edges[(switch1.name, switch2.name)].set_stroke(color=GREEN, width=30)
-       
-        logging.debug("grafo.edges[(switch1, switch2)] is: %s", grafo.edges[(switch1.name, switch2.name)])
-
-        self.play(Create(grafo))
-        #self.play(grafo.edges[(switch1.name, switch2.name)].animate.set_color('#FFF633'), run_time=2)
-        #self.play(grafo.edges[(switch1.name, switch2.name)].animate.set_color(RED), run_time=2)
+        dot = Dot(UP * 2 + LEFT)
+        self.add(dot)
+        #tex = Tex(
+        #    "FadeIn with ", "shift ", " or target\_position", " and scale"
+        #).scale(1)
+        tex = Tex("3 seconds simulation time, ", "starting at 00:00:00").scale(1)
+        tex2 = Tex("20 switches, ", "mesh graph, ", "100 Mbps").scale(1)
+        tex3 = Tex("1000ms average delta, ", "100ms update delta").scale(1)
+        tex2.next_to(tex, DOWN)
+        tex3.next_to(tex2, DOWN)
+        animations = [
+            FadeIn(tex[0]),
+            FadeIn(tex[1], shift=DOWN),
+            FadeIn(tex2[0]),
+            FadeIn(tex2[1], target_position=dot),
+            FadeIn(tex2[2], shift=UP),
+            FadeIn(tex3[0]),
+            FadeIn(tex3[1], scale=1.5)
+        ]
+        
+        self.play(AnimationGroup(*animations, lag_ratio=0.5))
+        self.wait(3)
+        animations = [
+            FadeOut(tex[0]),
+            FadeOut(tex[1], shift=DOWN),
+            FadeOut(tex2[0]),
+            FadeOut(tex2[1], target_position=dot),
+            FadeOut(tex2[2], shift=UP),
+            FadeOut(tex3[0]),
+            FadeOut(tex3[1], scale=1.5)
+        ]
+        self.play(AnimationGroup(*animations, lag_ratio=0.5))
 
         #self.wait(2)
 
@@ -225,30 +234,3 @@ class Blackboard(Scene):
         t1 = Tex(f"{saluto}", color=RED, font_size=24, stroke_width=1, stroke_color=YELLOW )
         t1.to_edge(LEFT)
         self.add(t1)
-
-
-class SubMatrix(Scene):
-    def construct(self):
-        
-        rows = 5
-        cols = 5
-        switch_count = 1
-        #switches = np.zeros((rows, cols), dtype=int)
-        switches = [[0 for _ in range(cols)] for _ in range(rows)]
-
-        for i in range(rows):
-            for j in range(cols):
-                switches[i][j] = switch_count
-                switch_count += 1
-
-
-        for i in switches:
-            print(i)
-
-        #g1 = switches[:rows//2, :cols//2]
-        g1 = [row[:cols//2] for row in switches[:rows//2]]
-
-        print("--------------")
-
-        for i in g1:
-            print(i)

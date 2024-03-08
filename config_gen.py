@@ -66,7 +66,7 @@ else:
                             "enter m for a mesh graph\n")
         try:
             switch_number = int(switch_number)
-            if switch_number in range(2, 1000) and graph_type in ["c", "m"]:
+            if switch_number in range(2, 1001) and graph_type in ["c", "m"]:
                 CORRECT_CHOOSE = True
             else:
                 logging.warning("WARNING, values must be in range [2-1000] and c/m.\n")
@@ -124,9 +124,11 @@ else:
     else:
         links, switches = config_gen_utils.create_not_complete_links(LINK_CAP, switch_number)
 
-logging.info("..links creation done!Links created are:")
+logging.info("..links creation done!")
+
+logging.debug("Links created are:")
 for link, content in links.items():
-    logging.info("%s: %s", link, content)
+    logging.debug("%s: %s", link, content)
 
 # Creating traffic packets
 # Each fraction of a second (PPS_DELTA) of simulation creates a number of packets
@@ -153,10 +155,10 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
     if fractional_unit % creationRate == 0:
         for link, content in links.items():
             content["trafficPerc"] = config_gen_utils.change_traffic_perc(content["trafficPerc"])
-            logging.info("Link: %s, endpoints: %s, sim second: %d, trafficPerc: %d",
-                         link, content["endpoints"],
-                         (fractional_unit / creationRate),
-                         content["trafficPerc"])
+            #logging.debug("Link: %s, endpoints: %s, sim second: %d, trafficPerc: %d",
+            #             link, content["endpoints"],
+            #             (fractional_unit / creationRate),
+            #             content["trafficPerc"])
     ENDP_A = 0
     ENDP_B = 1
     for link, content in links.items():
@@ -240,7 +242,8 @@ networkData[SIM_PARAMETERS_INDEX] = {
     "simTime": SIM_TIME,
     "startSimTime": START_TIME,
     "graphType": graph_type,
-    "isCustom": user_mode == 1
+    "isCustom": user_mode == 1,
+    "linkCap": LINK_CAP
 }
 
 if user_mode == 1:
