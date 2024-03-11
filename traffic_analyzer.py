@@ -190,7 +190,8 @@ for link, content in links.items():
 
     analyzed_data[content["linkID"]] = {
         "endpoints": sorted(endpoints),
-        "traffic": traffic
+        "traffic": traffic,
+        "linkCap": content["capacity"]
     }
 
 fileStructure = []

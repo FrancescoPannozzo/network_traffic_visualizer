@@ -113,15 +113,42 @@ class Test(Scene):
 
         #self.wait(2)
 
-class Dots(Scene):
+class Dots(MovingCameraScene):
     def construct(self):
 
-        t1 = Tex("test", color=RED)
-        t1.font_size = 60
-        self.add(t1)
+        t1 = Tex("1", color=RED)
+        linkcap = Tex("100", font_size = 20, color=BLUE, stroke_width=1, stroke_color=PINK)
+        linkcap2 = Tex("1000", font_size = 20, color=BLUE, stroke_width=1, stroke_color=PINK)
+        
         l1 = LabeledDot(t1)
-        l1.next_to(t1, UL)
+        
+        dot = LabeledDot("2")
+        dot.next_to(l1, RIGHT * 4)
+
+        dot2 = LabeledDot("3")
+        dot2.next_to(l1, DOWN)
+
+        line = Line(l1.get_center(), dot.get_center())
+        line2 = Line(l1.get_center(), dot2.get_center())
+        
+        self.add(line)
+        self.add(line2)
         self.add(l1)
+        self.add(dot)
+        self.add(dot2)
+
+        self.add(linkcap)
+        linkcap.next_to(line, IN)
+
+        self.add(linkcap2)
+        linkcap2.next_to(line2, IN)
+
+        self.play(self.camera.auto_zoom([l1, dot, dot2, line, line2, linkcap, linkcap2], margin=1))
+        self.wait(3)
+
+
+
+        
 
 class CustomGraph(MovingCameraScene):
     def construct(self):

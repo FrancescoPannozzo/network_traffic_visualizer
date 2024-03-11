@@ -1,9 +1,9 @@
 """ Graphic visualizer
     use: 
-    rendering 854x480 15FPS: manim -pql graphic_visualizer.py GraphicVisualizer/SwitchesInfo
+    rendering 854x480 30FPS: manim -pql graphic_visualizer.py GraphicVisualizer/SwitchesInfo
     rendering 1280x720 60FPS: manim -pqm --fps 60 graphic_visualizer.py GraphicVisualizer/SwitchesInfo
     Faster rendering: manim -pql --disable_caching graphic_visualizer.py ClassName
-    Reducing fps: manim -pql --fps 24 --disable_caching graphic_visualizer.py GraphicVisualizer
+    Reducing fps: manim -pql --fps 15 --disable_caching graphic_visualizer.py GraphicVisualizer
 
 """
 

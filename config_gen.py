@@ -4,12 +4,8 @@ Network and packets traffic generator
 Description: 
     A yaml file config generator script. It creates two network config files,
     a network.yaml file with the networtk features and a packets.yaml file with 
-    all the generated traffic packets. By inserting a switch number and a links capacity it create
-    a complete graph structure and a packets traffic for evrey link. 
-    Traffic varies by +/-10% for each second of simulation
-Usage: 
-    launch the script: python config_gen.py switches_number link_capacity_number
-    help: python config_gen.py -h 
+    all the generated traffic packets.
+
 Author: Francesco Pannozzo
 """
 

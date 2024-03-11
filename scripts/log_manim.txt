@@ -1,15 +1,13 @@
-2024-03-08 12:37:53,723 [ERROR] 
-   blackboard is not in the script
+2024-03-11 14:50:04,288 [INFO] Caching disabled.
+2024-03-11 14:50:05,034 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Dots\uncached_00000.mp4'
+2024-03-11 14:50:05,179 [INFO] Caching disabled.
+2024-03-11 14:50:06,175 [INFO] Animation 1 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Dots\uncached_00001.mp4'
+2024-03-11 14:50:06,195 [INFO] Combining to Movie file.
+2024-03-11 14:50:06,711 [INFO] 
+File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\Dots.mp4'
 
-2024-03-08 12:38:01,911 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Test\665905915_1759238529_2923148166.mp4'
-2024-03-08 12:38:02,489 [INFO] Animation 1 : Using cached data (hash : 2730421047_2475379470_525171715)
-2024-03-08 12:38:07,229 [INFO] Animation 2 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Test\2730421047_2127427961_2069584938.mp4'
-2024-03-08 12:38:07,244 [INFO] Combining to Movie file.
-2024-03-08 12:38:07,414 [INFO] 
-File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\Test.mp4'
-
-2024-03-08 12:38:07,414 [INFO] Rendered Test
-Played 3 animations
-2024-03-08 12:38:07,612 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\Test.mp4'
-2024-03-08 12:38:07,616 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
-2024-03-08 12:38:09,564 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849
+2024-03-11 14:50:06,723 [INFO] Rendered Dots
+Played 2 animations
+2024-03-11 14:50:07,188 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\Dots.mp4'
+2024-03-11 14:50:07,230 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
+2024-03-11 14:50:09,406 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849
