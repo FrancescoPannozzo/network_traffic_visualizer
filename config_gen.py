@@ -33,6 +33,9 @@ link_capacity = None
 switch_number = None
 graph_type = None
 user_mode = None
+user_data = None
+
+# CHOSING USER MODE OR AUTO MODE
 CORRECT_CHOOSE = False
 while not CORRECT_CHOOSE:
     choice = input("Choose the graph visualization mode:\n"
@@ -40,7 +43,7 @@ while not CORRECT_CHOOSE:
                 "2 - Auto mode\n")
     try:
         user_mode = int(choice)
-        if user_mode in [1, 2]:
+        if user_mode in [CONST.USER_MODE, CONST.AUTO_MODE]:
             CORRECT_CHOOSE = True
         else:
            logging.warning("WARNING, values must be 1 or 2.\n")
@@ -48,50 +51,57 @@ while not CORRECT_CHOOSE:
         logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")
 
 CORRECT_CHOOSE = False
-user_data = None
-if user_mode == 1:
+
+if user_mode == CONST.USER_MODE:
     logging.info("You choosed the user mode!")
     logging.info("Loading user file..")
     user_data = utils.file_loader("./data/custom_graph")
+    user_data = user_data["data"]
+
+    switch_number = len(user_data["switches"])
+    graph_type = user_data["graphType"]
+
 
 else:
     logging.info("You choosed the auto mode!")
     while not CORRECT_CHOOSE:
         switch_number = input("please insert the switch number min 2 - max 1000:\n")
         graph_type = input("please enter c if you want a complete graph\n"
-                            "enter m for a mesh graph\n")
+                            "enter m for a mesh graph, t for a toro graph\n")
         try:
             switch_number = int(switch_number)
-            if switch_number in range(2, 1001) and graph_type in ["c", "m"]:
+            if switch_number in range(2, 1001) and graph_type in ["c", "m", "t"]:
                 CORRECT_CHOOSE = True
+                graph_types = {
+                    "c": "complete",
+                    "m": "mesh",
+                    "t": "toro"
+                }
+                graph_type = graph_types[graph_type]
             else:
-                logging.warning("WARNING, values must be in range [2-1000] and c/m.\n")
+                logging.warning("WARNING, values must be in range [2-1000] and c/m/t.\n")
         except ValueError:
             logging.warning("WARNING, switch number is not an int, please retry.\n")
 
 CORRECT_CHOOSE = False
-while not CORRECT_CHOOSE:
-    link_capacity = input("please insert the links capacity [10, 100, 1000]:\n")
-    try:
-        link_capacity = int(link_capacity)
-        if link_capacity in [10, 100, 1000]:
-            CORRECT_CHOOSE = True
-        else:
-            logging.warning("WARNING, values must be one of these [10, 100, 1000].\n")
-    except ValueError:
-        logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")
+if user_mode == CONST.AUTO_MODE:
+    while not CORRECT_CHOOSE:
+        link_capacity = input("please insert the links capacity [10, 100, 1000]:\n")
+        try:
+            link_capacity = int(link_capacity)
+            if link_capacity in [10, 100, 1000]:
+                CORRECT_CHOOSE = True
+            else:
+                logging.warning("WARNING, values must be one of these [10, 100, 1000].\n")
+        except ValueError:
+            logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")
+elif user_mode == CONST.USER_MODE and graph_type != CONST.FREE_GRAPH:
+    link_capacity = user_data["linkCap"]
 
-if user_mode == 1:
-    switch_number = len(user_data["data"])
-    # m is for mesh graph
-    graph_type = "m"
-
-LINK_CAP = link_capacity
-
-# LOADING SETUP PARAMETERS
+# LOADING PARAMETERS
 setup = utils.file_loader("./data/setup")
 # Defining the simulation start time point
-#START_TIME = datetime(2024, 1, 1, 0, 0, 0)
+# START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 START_TIME = setup["startSimTime"]
 # Defining the simulation time in seconds
 SIM_TIME = setup["simTime"]
@@ -99,29 +109,34 @@ SIM_TIME = setup["simTime"]
 PPS_DELTA = setup["updateDelta"]
 # Defining packets size (MB) (example 1518 Bytes ipv4 max payload, 4000 datacenters)
 PACKET_SIZE = setup["packetSize"]
-# Packets Per Second
-PPS = ((LINK_CAP * 1e6) / 8) / PACKET_SIZE
 
-logging.info("LinkCap in Bytes: %dB", (LINK_CAP * 1e6) / 8)
 #logging.debug("PPS: %f", PPS)
 
 # The arcs representing the links connecting the switches (nodes)
 links = {}
 # Switches
 switches = []
-# Creating links: complete graph
+
+# CREATING LINKS
 logging.info("Creating links..")
-if user_mode == 1:
-    links = config_gen_utils.create_user_links(user_data, link_capacity)
+if user_mode == CONST.USER_MODE:
+    if user_data["graphType"] == CONST.MESH_GRAPH:
+        links = config_gen_utils.create_user_mesh_links(user_data)
+    elif user_data["graphType"] == CONST.TORO_GRAPH:
+        links = config_gen_utils.create_user_toro_links(user_data)
+    elif user_data["graphType"] == CONST.FREE_GRAPH:
+        print("execute free graph here")
+
     logging.debug("USER LINKS: %s", links)
 else:
-    if graph_type == "c":
-        links = config_gen_utils.create_complete_links(LINK_CAP, switch_number)
-    else:
-        links, switches = config_gen_utils.create_not_complete_links(LINK_CAP, switch_number)
+    if graph_type == CONST.COMPLETE_GRAPH:
+        links = config_gen_utils.create_auto_complete_links(link_capacity, switch_number)
+    elif graph_type == CONST.MESH_GRAPH:
+        links, switches = config_gen_utils.create_auto_mesh_links(link_capacity, switch_number)
+    elif graph_type == CONST.TORO_GRAPH:
+        links, switches = config_gen_utils.create_auto_toro_links(link_capacity, switch_number)
 
 logging.info("..links creation done!")
-
 logging.debug("Links created are:")
 for link, content in links.items():
     logging.debug("%s: %s", link, content)
@@ -159,6 +174,8 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
     ENDP_B = 1
     for link, content in links.items():
         trafficPerc = content["trafficPerc"]
+        # Packets Per Second
+        PPS = ((content["capacity"] * 1e6) / 8) / PACKET_SIZE
         for i in range(0, int((PPS*(trafficPerc/100))/creationRate) ):
             packet = config_gen_utils.create_packet(content["endpoints"][ENDP_A],
                                          content["endpoints"][ENDP_B],
@@ -197,12 +214,12 @@ for link, content in links.items():
         "capacity": content["capacity"]
     }
 
-if user_mode == 1:
+if user_mode == CONST.USER_MODE:
     for i in range(1, switch_number + 1):
         networkData[SWITCH_INDEX].append({
             "switchID": i,
-            "switchName": user_data["data"][i]["switchName"],
-            "address": user_data["data"][i]["ip"]
+            "switchName": user_data["switches"][i]["switchName"],
+            "address": user_data["switches"][i]["ip"]
         })
 
     networkData[PHASES_INDEX] = user_data["phases"]
@@ -234,15 +251,16 @@ logging.info("Switches created:")
 for i in networkData[SWITCH_INDEX]:
     logging.info(i)
 
+# SIM PARAM FOR COMPLETE/MESH/TORO GRAPHS
 networkData[SIM_PARAMETERS_INDEX] = {
     "simTime": SIM_TIME,
     "startSimTime": START_TIME,
     "graphType": graph_type,
-    "isCustom": user_mode == 1,
-    "linkCap": LINK_CAP
+    "isCustom": user_mode == CONST.USER_MODE,
+    "linkCap": link_capacity
 }
 
-if user_mode == 1:
+if user_mode == CONST.USER_MODE:
     networkData[COORDINATES_INDEX]["coordinates"] = user_data["coordinates"]
 else:
     networkData[COORDINATES_INDEX]["coordinates"] = switches

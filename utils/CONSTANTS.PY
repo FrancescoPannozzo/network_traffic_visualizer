@@ -13,8 +13,12 @@ ANALYZED_DATA = {
     "TRAFFICS": 1
 }
 
-COMPLETE_GRAPH = "c"
-MESH_GRAPH = "m"
+USER_MODE = 1
+AUTO_MODE = 2
+COMPLETE_GRAPH = "complete"
+MESH_GRAPH = "mesh"
+TORO_GRAPH = "toro"
+FREE_GRAPH = "free"
 EP_A = 0
 EP_B = 1
 ZERO_TRAFFIC = '#05ff00'

@@ -1,33 +1,39 @@
 ---
-coordinates:
-  - [1, 0, 2, 0]
-  - [3, 4, 5, 0]
-  - [0, 6, 7, 8]
 data:
-  1:
-    ip: "123.123.123.0"
-    switchName: A
-  2:
-    ip: "123.123.123.1"
-    switchName: B
-  3:
-    ip: "123.123.123.2"
-    switchName: C
-  4:
-    ip: "123.123.123.3"
-    switchName: D
-  5:
-    ip: "123.123.123.4"
-    switchName: E
-  6:
-    ip: "123.123.123.5"
-    switchName: F
-  7:
-    ip: "123.123.123.6"
-    switchName: G
-  8:
-    ip: "123.123.123.7"
-    switchName: H
-phases:
-  2024-01-01 00:00:01: "phase1"
-  2024-01-01 00:00:02: "phase2"
+  graphType: toro
+  coordinates:
+    - [1, 0, 2, 0]
+    - [3, 0, 4, 5]
+    - [6, 7, 8, 9]
+  linkCap: 10
+  switches:
+    1:
+      ip: "123.123.123.0"
+      switchName: A
+    2:
+      ip: "123.123.123.1"
+      switchName: B
+    3:
+      ip: "123.123.123.2"
+      switchName: C
+    4:
+      ip: "123.123.123.3"
+      switchName: D
+    5:
+      ip: "123.123.123.4"
+      switchName: E
+    6:
+      ip: "123.123.123.5"
+      switchName: F
+    7:
+      ip: "123.123.123.6"
+      switchName: G
+    8:
+      ip: "123.123.123.7"
+      switchName: H
+    9:
+      ip: "123.123.123.8"
+      switchName: I
+  phases:
+    2024-01-01 00:00:01: "phase1"
+    2024-01-01 00:00:02: "phase2"

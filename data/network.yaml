@@ -11,17 +11,17 @@
   3:
     capacity: 10
     endpoints:
-    - 1
+    - 3
     - 4
   4:
     capacity: 10
     endpoints:
-    - 1
-    - 5
+    - 2
+    - 4
   5:
     capacity: 10
     endpoints:
-    - 2
+    - 1
     - 3
   6:
     capacity: 10
@@ -31,23 +31,13 @@
   7:
     capacity: 10
     endpoints:
+    - 1
     - 2
-    - 5
   8:
     capacity: 10
     endpoints:
     - 3
     - 4
-  9:
-    capacity: 10
-    endpoints:
-    - 3
-    - 5
-  10:
-    capacity: 10
-    endpoints:
-    - 4
-    - 5
 - - address: 10.0.0.1
     switchID: 1
     switchName: switch1
@@ -60,14 +50,15 @@
   - address: 10.0.0.4
     switchID: 4
     switchName: switch4
-  - address: 10.0.0.5
-    switchID: 5
-    switchName: switch5
-- graphType: c
+- graphType: toro
   isCustom: false
   linkCap: 10
   simTime: 3
   startSimTime: 2024-01-01 00:00:00
-- coordinates: []
+- coordinates:
+  - - 1
+    - 2
+  - - 3
+    - 4
 - 2024-01-01 00:00:01: phase1
   2024-01-01 00:00:02: phase2

@@ -1,29 +1,25 @@
-2024-03-11 10:39:54,450 [INFO] You choosed the auto mode!
-2024-03-11 10:40:09,518 [INFO] LinkCap in Bytes: 1250000B
-2024-03-11 10:40:09,519 [INFO] Creating links..
-2024-03-11 10:40:09,520 [INFO] ..links creation done!
-2024-03-11 10:40:09,520 [DEBUG] Links created are:
-2024-03-11 10:40:09,521 [DEBUG] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
-2024-03-11 10:40:09,521 [DEBUG] 2: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}
-2024-03-11 10:40:09,522 [DEBUG] 3: {'endpoints': [1, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-03-11 10:40:09,523 [DEBUG] 4: {'endpoints': [1, 5], 'capacity': 10, 'trafficPerc': 0}
-2024-03-11 10:40:09,523 [DEBUG] 5: {'endpoints': [2, 3], 'capacity': 10, 'trafficPerc': 0}
-2024-03-11 10:40:09,524 [DEBUG] 6: {'endpoints': [2, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-03-11 10:40:09,524 [DEBUG] 7: {'endpoints': [2, 5], 'capacity': 10, 'trafficPerc': 0}
-2024-03-11 10:40:09,525 [DEBUG] 8: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-03-11 10:40:09,525 [DEBUG] 9: {'endpoints': [3, 5], 'capacity': 10, 'trafficPerc': 0}
-2024-03-11 10:40:09,525 [DEBUG] 10: {'endpoints': [4, 5], 'capacity': 10, 'trafficPerc': 0}
-2024-03-11 10:40:09,526 [INFO] Creating packets.yaml file structure..
-2024-03-11 10:40:09,547 [INFO] ..packets.yaml file structure done!
-2024-03-11 10:40:09,547 [INFO] Creating network.yaml file structure..
-2024-03-11 10:40:09,550 [INFO] Switches created:
-2024-03-11 10:40:09,551 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
-2024-03-11 10:40:09,551 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
-2024-03-11 10:40:09,552 [INFO] {'switchID': 3, 'switchName': 'switch3', 'address': '10.0.0.3'}
-2024-03-11 10:40:09,553 [INFO] {'switchID': 4, 'switchName': 'switch4', 'address': '10.0.0.4'}
-2024-03-11 10:40:09,554 [INFO] {'switchID': 5, 'switchName': 'switch5', 'address': '10.0.0.5'}
-2024-03-11 10:40:09,555 [INFO] ..network.yaml file structure done!
-2024-03-11 10:40:09,555 [INFO] Writing network.yaml file..
-2024-03-11 10:40:09,567 [INFO] ..network.yaml file creation done!
-2024-03-11 10:40:09,567 [INFO] Writing packets.yaml file..
-2024-03-11 10:40:11,079 [INFO] ..packets file creation done!
+2024-03-12 18:21:46,020 [INFO] You choosed the auto mode!
+2024-03-12 18:21:52,629 [INFO] Creating links..
+2024-03-12 18:21:52,631 [INFO] ..links creation done!
+2024-03-12 18:21:52,632 [DEBUG] Links created are:
+2024-03-12 18:21:52,633 [DEBUG] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
+2024-03-12 18:21:52,633 [DEBUG] 2: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}
+2024-03-12 18:21:52,634 [DEBUG] 3: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
+2024-03-12 18:21:52,636 [DEBUG] 4: {'endpoints': [2, 4], 'capacity': 10, 'trafficPerc': 0}
+2024-03-12 18:21:52,637 [DEBUG] 5: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}
+2024-03-12 18:21:52,638 [DEBUG] 6: {'endpoints': [2, 4], 'capacity': 10, 'trafficPerc': 0}
+2024-03-12 18:21:52,639 [DEBUG] 7: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
+2024-03-12 18:21:52,640 [DEBUG] 8: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
+2024-03-12 18:21:52,641 [INFO] Creating packets.yaml file structure..
+2024-03-12 18:21:52,665 [INFO] ..packets.yaml file structure done!
+2024-03-12 18:21:52,666 [INFO] Creating network.yaml file structure..
+2024-03-12 18:21:52,670 [INFO] Switches created:
+2024-03-12 18:21:52,674 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
+2024-03-12 18:21:52,675 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
+2024-03-12 18:21:52,676 [INFO] {'switchID': 3, 'switchName': 'switch3', 'address': '10.0.0.3'}
+2024-03-12 18:21:52,678 [INFO] {'switchID': 4, 'switchName': 'switch4', 'address': '10.0.0.4'}
+2024-03-12 18:21:52,680 [INFO] ..network.yaml file structure done!
+2024-03-12 18:21:52,681 [INFO] Writing network.yaml file..
+2024-03-12 18:21:52,692 [INFO] ..network.yaml file creation done!
+2024-03-12 18:21:52,693 [INFO] Writing packets.yaml file..
+2024-03-12 18:21:54,359 [INFO] ..packets file creation done!

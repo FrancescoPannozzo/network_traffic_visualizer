@@ -143,6 +143,11 @@ class Dots(MovingCameraScene):
         self.add(linkcap2)
         linkcap2.next_to(line2, IN)
 
+        
+        
+        curve = ArcBetweenPoints(dot.get_center(), dot2.get_center(), angle=-TAU/4)
+        self.add(curve)
+
         self.play(self.camera.auto_zoom([l1, dot, dot2, line, line2, linkcap, linkcap2], margin=1))
         self.wait(3)
 

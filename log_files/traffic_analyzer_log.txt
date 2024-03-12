@@ -1,11 +1,11 @@
-2024-03-11 15:00:00,775 [INFO] Loading files..
-2024-03-11 15:00:00,775 [INFO] Loading network file..
-2024-03-11 15:00:00,791 [INFO] ..done!
-2024-03-11 15:00:00,791 [INFO] Loading packets file..
-2024-03-11 15:00:03,124 [INFO] ..done!
-2024-03-11 15:00:03,124 [INFO] Analyzing files..
-2024-03-11 15:00:03,124 [INFO] Simulation parameters:
-2024-03-11 15:00:03,124 [INFO] {'graphType': 'c', 'isCustom': False, 'linkCap': 10, 'simTime': 3, 'startSimTime': datetime.datetime(2024, 1, 1, 0, 0)}
-2024-03-11 15:00:03,138 [INFO] ..done!
-2024-03-11 15:00:03,140 [INFO] Writing analyzed_data_test.yaml file..
-2024-03-11 15:00:03,155 [INFO] analyzed_data_test.yaml file creation done!
+2024-03-12 18:21:57,150 [INFO] Loading files..
+2024-03-12 18:21:57,151 [INFO] Loading network file..
+2024-03-12 18:21:57,200 [INFO] ..done!
+2024-03-12 18:21:57,201 [INFO] Loading packets file..
+2024-03-12 18:22:00,169 [INFO] ..done!
+2024-03-12 18:22:00,169 [INFO] Analyzing files..
+2024-03-12 18:22:00,170 [INFO] Simulation parameters:
+2024-03-12 18:22:00,171 [INFO] {'graphType': 'toro', 'isCustom': False, 'linkCap': 10, 'simTime': 3, 'startSimTime': datetime.datetime(2024, 1, 1, 0, 0)}
+2024-03-12 18:22:00,181 [INFO] ..done!
+2024-03-12 18:22:00,182 [INFO] Writing analyzed_data_test.yaml file..
+2024-03-12 18:22:00,200 [INFO] analyzed_data_test.yaml file creation done!

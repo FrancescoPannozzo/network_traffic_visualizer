@@ -175,6 +175,8 @@ class GraphicVisualizer(MovingCameraScene):
         lines_grid = VGroup()
         mesh_grid = VGroup()
 
+
+
         for row in range(rows):
             for col in range(cols):
                 opacity = 1
@@ -186,21 +188,32 @@ class GraphicVisualizer(MovingCameraScene):
                 graph_mesh[mesh[row][col]] = dot
                 #grid.add(dot)
                 mesh_grid.add(dot)
+
+        curved_links = []
+        if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.TORO_GRAPH:
+            for i in range(cols):
+                if mesh[0][i] != 0 and mesh[rows-1][i] != 0:
+                    curved_links.append(sorted([mesh[0][i], mesh[rows-1][i]]))
+                    print("curved link found: %s", [mesh[0][i], mesh[rows-1][i]])
+            for i in range(rows):
+                if mesh[i][0] != 0 and mesh[i][cols-1] != 0:
+                    curved_links.append(sorted( [mesh[i][0], mesh[i][cols-1]] ))
+                    print("curved link found: %s", [mesh[i][0], mesh[i][cols-1]])
         
         # extracting links data
         links = {}
         for _, content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]].items():
             dot_a = graph_mesh[content["endpoints"][CONST.EP_A]]
             dot_b = graph_mesh[content["endpoints"][CONST.EP_B]]
-            line = Line(dot_a.get_center(), dot_b.get_center(), color=CONST.ZERO_TRAFFIC, stroke_width=8)
+            line = None
+            if sorted([content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]]) in curved_links:
+                line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=-TAU/4)
+            else:
+                line = Line(dot_a.get_center(), dot_b.get_center(), color=CONST.ZERO_TRAFFIC, stroke_width=8)
             links[(content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B])] = line
             lines_grid.add(line)
 
         GraphicVisualizer.intro(self, sim_params, network_data)
-
-
-
-        
 
         self.add(sim_time_txt)
         self.add(phase_time_txt)
