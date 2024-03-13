@@ -223,8 +223,13 @@ def create_auto_toro_links(link_cap, switch_number):
     cols = len(switches[0])
     links_id = len(links) + 1
 
+    linkList = []
+
+    for _, content in links.items():
+        linkList.append(content["endpoints"])
+
     for i in range(cols):
-        if switches[0][i] != 0 and switches[rows-1][i] != 0:
+        if switches[0][i] != 0 and switches[rows-1][i] != 0 and [switches[0][i],switches[rows-1][i]] not in linkList:
             links[links_id] = {
                 "endpoints": sorted((switches[0][i], switches[rows-1][i])),
                 "capacity": link_cap,
@@ -233,7 +238,7 @@ def create_auto_toro_links(link_cap, switch_number):
             links_id += 1
 
     for i in range(rows):
-        if switches[i][0] != 0 and switches[i][cols-1] != 0:
+        if switches[i][0] != 0 and switches[i][cols-1] != 0 and [switches[i][0], switches[i][cols-1]] not in linkList:
             links[links_id] = {
                 "endpoints": sorted((switches[i][0], switches[i][cols-1])),
                 "capacity": link_cap,

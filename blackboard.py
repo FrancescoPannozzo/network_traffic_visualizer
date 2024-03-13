@@ -1,5 +1,7 @@
-from utils import utils
+a = (1, 2)
+b = (3, 4)
+c = sorted((2, 1))
 
-data = utils.file_loader("./data/custom_graph_freehand")
+diz = {a: "uno", b: "due"}
 
-print(type(data["data"]["linkCap"]))
+print(c)

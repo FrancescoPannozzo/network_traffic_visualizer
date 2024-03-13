@@ -16,6 +16,10 @@ import yaml
 from utils import config_gen_utils
 from utils import utils
 from utils import CONSTANTS as CONST
+import os
+
+if not os.path.exists("./log_files"):
+    os.makedirs("./log_files")
 
 # Logger config
 logging.basicConfig(
@@ -266,6 +270,9 @@ else:
     networkData[COORDINATES_INDEX]["coordinates"] = switches
 
 logging.info("..network.yaml file structure done!")
+
+if not os.path.exists("./data"):
+    os.makedirs("./data")
 
 try:
     logging.info("Writing network.yaml file..")

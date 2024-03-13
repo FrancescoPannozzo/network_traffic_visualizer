@@ -116,16 +116,16 @@ class Test(Scene):
 class Dots(MovingCameraScene):
     def construct(self):
 
-        t1 = Tex("1", color=RED)
+        t1 = Tex("t1", color=RED)
         linkcap = Tex("100", font_size = 20, color=BLUE, stroke_width=1, stroke_color=PINK)
         linkcap2 = Tex("1000", font_size = 20, color=BLUE, stroke_width=1, stroke_color=PINK)
         
         l1 = LabeledDot(t1)
         
-        dot = LabeledDot("2")
-        dot.next_to(l1, RIGHT * 4)
+        dot = LabeledDot("Dot1")
+        dot.next_to(l1, RIGHT * 24)
 
-        dot2 = LabeledDot("3")
+        dot2 = LabeledDot("Dot2")
         dot2.next_to(l1, DOWN)
 
         line = Line(l1.get_center(), dot.get_center())
@@ -143,13 +143,64 @@ class Dots(MovingCameraScene):
         self.add(linkcap2)
         linkcap2.next_to(line2, IN)
 
-        
-        
-        curve = ArcBetweenPoints(dot.get_center(), dot2.get_center(), angle=-TAU/4)
-        self.add(curve)
 
-        self.play(self.camera.auto_zoom([l1, dot, dot2, line, line2, linkcap, linkcap2], margin=1))
+        
+        #curve = ArcBetweenPoints(l1.get_center(), dot.get_center(), angle=0.5)
+        #self.add(curve)
+        spacing = 0.5
+        arr = l1.get_center()
+        arr[0] += 1
+        arr[1] += 0.5
+        arrDot = dot.get_center()
+        arrDot[0] -= 1
+        arrDot[1] += 0.5
+        b = [2, 0, 0]
+        c = [0, 2, 0]
+        d = []
+        #ap1 = ArcPolygon(l1.get_center(), arr, arrDot, dot.get_center(), radius=2)
+        #self.add(ap1)
+
+        #punti = [LEFT, LEFT + UP, RIGHT + UP, RIGHT]
+        punti = [l1.get_center(), arr, arrDot, dot.get_center()]
+
+        arrDot2 = dot2.get_center()
+        arrDot2[0] += 1
+        arrDot2[1] += 0.5
+
+        punti2 = [l1.get_center(), arr, arrDot2, dot2.get_center()]
+
+        linea_angolosa = VMobject(fill_color=RED, stroke_width=2, stroke_color=BLUE).set_points_smoothly(punti)
+        #linea_angolosa.set_color(RED)
+
+        linea_angolosa2 = VMobject().set_points_smoothly(punti2)
+
+        self.add(linea_angolosa)
+        self.add(linea_angolosa2)
+
+        testDot = Dot(arr)
+        self.add(testDot)
+
+
+        self.play(self.camera.auto_zoom([l1, dot, dot2, line, line2, linkcap, linkcap2, linea_angolosa, linea_angolosa2, testDot], margin=1))
         self.wait(3)
+
+        print("Array is:", arr)
+        print("First arr element:", arr[0])
+        # Printing type of arr object
+        print("Array is of type: ", type(arr))
+        
+        # Printing array dimensions (axes)
+        print("No. of dimensions: ", arr.ndim)
+        
+        # Printing shape of array
+        print("Shape of array: ", arr.shape)
+        
+        # Printing size (total number of elements) of array
+        print("Size of array: ", arr.size)
+        
+        # Printing type of elements in array
+        print("Array stores elements of type: ", arr.dtype)
+        
 
 
 
@@ -266,3 +317,20 @@ class Blackboard(Scene):
         t1 = Tex(f"{saluto}", color=RED, font_size=24, stroke_width=1, stroke_color=YELLOW )
         t1.to_edge(LEFT)
         self.add(t1)
+
+class MultiPointLine(Scene):
+    def construct(self):
+        # Definisci i punti
+        punti = [LEFT, LEFT + UP, RIGHT + UP, RIGHT]
+        
+        # Crea una linea con angoli definiti
+        linea_angolosa = VMobject().set_points_as_corners(punti)
+        linea_angolosa.set_color(RED)
+        
+        # Crea una linea liscia
+        linea_liscia = VMobject().set_points_smoothly(punti)
+        linea_liscia.set_color(BLUE).next_to(linea_angolosa, DOWN, buff=1)
+        
+        # Mostra le linee
+        self.add(linea_angolosa)
+        self.add(linea_liscia)
