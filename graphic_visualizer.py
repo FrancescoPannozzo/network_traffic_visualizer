@@ -208,25 +208,10 @@ class GraphicVisualizer(MovingCameraScene):
             dot_b = graph_mesh[content["endpoints"][CONST.EP_B]]
             line = None
             if sorted([content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]]) in vertical_links:
-                #line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=0.5, color=CONST.ZERO_TRAFFIC)
-                dot_a_points = dot_a.get_center()
-                dot_b_points = dot_b.get_center()
-                dot_a_points[0] -= 0.5
-                
-                dot_b_points[0] -= 0.5
-                
-                points = [dot_a.get_center(), dot_a_points, dot_b_points, dot_b.get_center()]
-                line = VMobject().set_points_smoothly(points)
+                line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=0.8 + (0.01 * rows), color=CONST.ZERO_TRAFFIC)
                 line.set_color(CONST.ZERO_TRAFFIC)
             elif sorted([content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]]) in horizontal_links:
-                dot_a_points = dot_a.get_center()
-                dot_b_points = dot_b.get_center()
-               
-                dot_a_points[1] -= 0.5
-                
-                dot_b_points[1] -= 0.5
-                points = [dot_a.get_center(), dot_a_points, dot_b_points, dot_b.get_center()]
-                line = VMobject().set_points_smoothly(points)
+                line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=0.8 + (0.01 * cols), color=CONST.ZERO_TRAFFIC)
                 line.set_color(CONST.ZERO_TRAFFIC)
             else:
                 line = Line(dot_a.get_center(), dot_b.get_center(), color=CONST.ZERO_TRAFFIC, stroke_width=8)
