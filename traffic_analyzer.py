@@ -13,6 +13,7 @@ Author: Francesco Pannozzo
 import argparse
 from datetime import timedelta
 import logging
+import sys
 import yaml
 from utils import utils
 from utils import CONSTANTS as CONST
@@ -29,20 +30,23 @@ logging.basicConfig(
     ]
 )
 
-# Setting the command line option to load the network config file and the packets file
+""" # Setting the command line option to load the network config file and the packets file
 parser = argparse.ArgumentParser()
 parser.add_argument("networkFile", help="The networkFile you want to load")
 parser.add_argument("packetsFile", help="The packetsFile you want to load")
-args = parser.parse_args()
+args = parser.parse_args() """
 
 logging.info("Loading files..")
 # networkData:list composed by a link dict, a switch list and network parameters dict
 # packetsData:composed by a packets dict
+
 logging.info("Loading network file..")
-networkData = utils.file_loader(args.networkFile)
+#networkData = utils.file_loader(args.networkFile)
+networkData = utils.file_loader("./data/network")
 logging.info("..done!")
 logging.info("Loading packets file..")
-packetsData = utils.file_loader(args.packetsFile)
+#packetsData = utils.file_loader(args.packetsFile)
+packetsData = utils.file_loader("./data/packets")
 logging.info("..done!")
 
 SIM_PARAMETERS = CONST.NETWORK["SIM_PARAMS"]
@@ -164,8 +168,8 @@ while timeWalker <= startTime + (simTime - updateDelta):
             content["traffic"].append({"updateTime": timeWalker, "traffic": content["trafficDT"]})
 
 # DEBUG
-#utils.show_updates_data(links)
-#utils.show_averages_data(links, updateDelta, averageFractions)
+utils.show_updates_data(links)
+utils.show_averages_data(links, updateDelta, averageFractions)
 
 logging.info("..done!")
 
@@ -207,3 +211,6 @@ except OSError as e:
     print(f"I/O error: {e}")
 except yaml.YAMLError as e:
     print(f"YAML error: {e}")
+
+#any_key = input("Press any key to exit")
+#sys.exit()

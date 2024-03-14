@@ -4,64 +4,64 @@
     - 1
     - 2
   2:
-    capacity: 100
+    capacity: 10
     endpoints:
     - 1
     - 3
   3:
     capacity: 10
     endpoints:
-    - 2
+    - 1
     - 4
   4:
     capacity: 10
     endpoints:
-    - 2
+    - 1
     - 5
   5:
-    capacity: 100
+    capacity: 10
     endpoints:
-    - 3
-    - 6
+    - 2
+    - 8
   6:
-    capacity: 100
+    capacity: 10
     endpoints:
-    - 3
-    - 7
+    - 2
+    - 9
   7:
     capacity: 10
     endpoints:
-    - 4
-    - 8
+    - 3
+    - 10
   8:
     capacity: 10
     endpoints:
-    - 4
-    - 9
+    - 3
+    - 11
   9:
     capacity: 10
     endpoints:
-    - 5
-    - 10
+    - 4
+    - 12
   10:
     capacity: 10
     endpoints:
-    - 5
-    - 11
+    - 4
+    - 13
   11:
     capacity: 10
     endpoints:
+    - 5
     - 6
-    - 12
   12:
     capacity: 10
     endpoints:
-    - 6
-    - 13
+    - 5
+    - 7
   13:
     capacity: 10
     endpoints:
-    - 7
+    - 10
     - 14
   14:
     capacity: 10
@@ -116,10 +116,29 @@
 - graphType: graph
   isCustom: true
   linkCap: null
-  simTime: 3
+  simTime: 4
   startSimTime: 2024-01-01 00:00:00
 - coordinates:
   - - 0
+    - 0
+    - 8
+    - 0
+    - 0
+    - 0
+    - 6
+    - 0
+    - 0
+  - - 0
+    - 9
+    - 0
+    - 2
+    - 0
+    - 5
+    - 0
+    - 7
+    - 15
+  - - 0
+    - 0
     - 0
     - 0
     - 1
@@ -128,28 +147,22 @@
     - 0
     - 0
   - - 0
-    - 0
-    - 2
-    - 0
+    - 10
     - 0
     - 3
     - 0
-    - 0
-  - - 0
     - 4
-    - 5
-    - 0
-    - 0
-    - 6
-    - 7
-    - 0
-  - - 8
-    - 9
-    - 10
-    - 11
-    - 12
     - 13
-    - 14
-    - 15
+    - 0
+    - 0
+  - - 14
+    - 0
+    - 11
+    - 0
+    - 0
+    - 0
+    - 12
+    - 0
+    - 0
 - 2024-01-01 00:00:01: phase1
   2024-01-01 00:00:01.500000: phase2

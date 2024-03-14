@@ -1,44 +1,44 @@
-2024-03-14 12:47:20,915 [INFO] You choosed the user mode!
-2024-03-14 12:47:20,915 [INFO] Loading user file..
-2024-03-14 12:47:20,965 [INFO] Creating links..
-2024-03-14 12:47:20,966 [DEBUG] USER LINKS: {1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}, 2: {'endpoints': [1, 3], 'capacity': 100, 'trafficPerc': 0}, 3: {'endpoints': [2, 4], 'capacity': 10, 'trafficPerc': 0}, 4: {'endpoints': [2, 5], 'capacity': 10, 'trafficPerc': 0}, 5: {'endpoints': [3, 6], 'capacity': 100, 'trafficPerc': 0}, 6: {'endpoints': [3, 7], 'capacity': 100, 'trafficPerc': 0}, 7: {'endpoints': [4, 8], 'capacity': 10, 'trafficPerc': 0}, 8: {'endpoints': [4, 9], 'capacity': 10, 'trafficPerc': 0}, 9: {'endpoints': [5, 10], 'capacity': 10, 'trafficPerc': 0}, 10: {'endpoints': [5, 11], 'capacity': 10, 'trafficPerc': 0}, 11: {'endpoints': [6, 12], 'capacity': 10, 'trafficPerc': 0}, 12: {'endpoints': [6, 13], 'capacity': 10, 'trafficPerc': 0}, 13: {'endpoints': [7, 14], 'capacity': 10, 'trafficPerc': 0}, 14: {'endpoints': [7, 15], 'capacity': 10, 'trafficPerc': 0}}
-2024-03-14 12:47:20,968 [INFO] ..links creation done!
-2024-03-14 12:47:20,969 [DEBUG] Links created are:
-2024-03-14 12:47:20,969 [DEBUG] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,970 [DEBUG] 2: {'endpoints': [1, 3], 'capacity': 100, 'trafficPerc': 0}
-2024-03-14 12:47:20,971 [DEBUG] 3: {'endpoints': [2, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,975 [DEBUG] 4: {'endpoints': [2, 5], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,976 [DEBUG] 5: {'endpoints': [3, 6], 'capacity': 100, 'trafficPerc': 0}
-2024-03-14 12:47:20,977 [DEBUG] 6: {'endpoints': [3, 7], 'capacity': 100, 'trafficPerc': 0}
-2024-03-14 12:47:20,978 [DEBUG] 7: {'endpoints': [4, 8], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,980 [DEBUG] 8: {'endpoints': [4, 9], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,983 [DEBUG] 9: {'endpoints': [5, 10], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,984 [DEBUG] 10: {'endpoints': [5, 11], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,985 [DEBUG] 11: {'endpoints': [6, 12], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,985 [DEBUG] 12: {'endpoints': [6, 13], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,986 [DEBUG] 13: {'endpoints': [7, 14], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,986 [DEBUG] 14: {'endpoints': [7, 15], 'capacity': 10, 'trafficPerc': 0}
-2024-03-14 12:47:20,987 [INFO] Creating packets.yaml file structure..
-2024-03-14 12:47:21,119 [INFO] ..packets.yaml file structure done!
-2024-03-14 12:47:21,120 [INFO] Creating network.yaml file structure..
-2024-03-14 12:47:21,120 [INFO] Switches created:
-2024-03-14 12:47:21,121 [INFO] {'switchID': 1, 'switchName': 'A', 'address': '123.123.123.0'}
-2024-03-14 12:47:21,122 [INFO] {'switchID': 2, 'switchName': 'B', 'address': '123.123.123.1'}
-2024-03-14 12:47:21,122 [INFO] {'switchID': 3, 'switchName': 'C', 'address': '123.123.123.2'}
-2024-03-14 12:47:21,123 [INFO] {'switchID': 4, 'switchName': 'D', 'address': '123.123.123.3'}
-2024-03-14 12:47:21,124 [INFO] {'switchID': 5, 'switchName': 'E', 'address': '123.123.123.4'}
-2024-03-14 12:47:21,125 [INFO] {'switchID': 6, 'switchName': 'F', 'address': '123.123.123.5'}
-2024-03-14 12:47:21,126 [INFO] {'switchID': 7, 'switchName': 'G', 'address': '123.123.123.6'}
-2024-03-14 12:47:21,127 [INFO] {'switchID': 8, 'switchName': 'H', 'address': '123.123.123.7'}
-2024-03-14 12:47:21,130 [INFO] {'switchID': 9, 'switchName': 'I', 'address': '123.123.123.8'}
-2024-03-14 12:47:21,131 [INFO] {'switchID': 10, 'switchName': 'L', 'address': '123.123.123.9'}
-2024-03-14 12:47:21,133 [INFO] {'switchID': 11, 'switchName': 'M', 'address': '123.123.123.10'}
-2024-03-14 12:47:21,134 [INFO] {'switchID': 12, 'switchName': 'N', 'address': '123.123.123.11'}
-2024-03-14 12:47:21,136 [INFO] {'switchID': 13, 'switchName': 'O', 'address': '123.123.123.12'}
-2024-03-14 12:47:21,136 [INFO] {'switchID': 14, 'switchName': 'P', 'address': '123.123.123.13'}
-2024-03-14 12:47:21,139 [INFO] {'switchID': 15, 'switchName': 'Q', 'address': '123.123.123.14'}
-2024-03-14 12:47:21,139 [INFO] ..network.yaml file structure done!
-2024-03-14 12:47:21,139 [INFO] Writing network.yaml file..
-2024-03-14 12:47:21,176 [INFO] ..network.yaml file creation done!
-2024-03-14 12:47:21,177 [INFO] Writing packets.yaml file..
-2024-03-14 12:47:28,541 [INFO] ..packets file creation done!
+2024-03-14 16:50:36,359 [INFO] You choosed the user mode!
+2024-03-14 16:50:36,359 [INFO] Loading user file..
+2024-03-14 16:50:36,418 [INFO] Creating links..
+2024-03-14 16:50:36,419 [DEBUG] USER LINKS: {1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}, 2: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}, 3: {'endpoints': [1, 4], 'capacity': 10, 'trafficPerc': 0}, 4: {'endpoints': [1, 5], 'capacity': 10, 'trafficPerc': 0}, 5: {'endpoints': [2, 8], 'capacity': 10, 'trafficPerc': 0}, 6: {'endpoints': [2, 9], 'capacity': 10, 'trafficPerc': 0}, 7: {'endpoints': [3, 10], 'capacity': 10, 'trafficPerc': 0}, 8: {'endpoints': [3, 11], 'capacity': 10, 'trafficPerc': 0}, 9: {'endpoints': [4, 12], 'capacity': 10, 'trafficPerc': 0}, 10: {'endpoints': [4, 13], 'capacity': 10, 'trafficPerc': 0}, 11: {'endpoints': [5, 6], 'capacity': 10, 'trafficPerc': 0}, 12: {'endpoints': [5, 7], 'capacity': 10, 'trafficPerc': 0}, 13: {'endpoints': [10, 14], 'capacity': 10, 'trafficPerc': 0}, 14: {'endpoints': [7, 15], 'capacity': 10, 'trafficPerc': 0}}
+2024-03-14 16:50:36,422 [INFO] ..links creation done!
+2024-03-14 16:50:36,423 [DEBUG] Links created are:
+2024-03-14 16:50:36,424 [DEBUG] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,425 [DEBUG] 2: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,426 [DEBUG] 3: {'endpoints': [1, 4], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,427 [DEBUG] 4: {'endpoints': [1, 5], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,428 [DEBUG] 5: {'endpoints': [2, 8], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,429 [DEBUG] 6: {'endpoints': [2, 9], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,430 [DEBUG] 7: {'endpoints': [3, 10], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,431 [DEBUG] 8: {'endpoints': [3, 11], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,432 [DEBUG] 9: {'endpoints': [4, 12], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,432 [DEBUG] 10: {'endpoints': [4, 13], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,433 [DEBUG] 11: {'endpoints': [5, 6], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,433 [DEBUG] 12: {'endpoints': [5, 7], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,434 [DEBUG] 13: {'endpoints': [10, 14], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,434 [DEBUG] 14: {'endpoints': [7, 15], 'capacity': 10, 'trafficPerc': 0}
+2024-03-14 16:50:36,435 [INFO] Creating packets.yaml file structure..
+2024-03-14 16:50:36,486 [INFO] ..packets.yaml file structure done!
+2024-03-14 16:50:36,487 [INFO] Creating network.yaml file structure..
+2024-03-14 16:50:36,489 [INFO] Switches created:
+2024-03-14 16:50:36,490 [INFO] {'switchID': 1, 'switchName': 'A', 'address': '123.123.123.0'}
+2024-03-14 16:50:36,491 [INFO] {'switchID': 2, 'switchName': 'B', 'address': '123.123.123.1'}
+2024-03-14 16:50:36,493 [INFO] {'switchID': 3, 'switchName': 'C', 'address': '123.123.123.2'}
+2024-03-14 16:50:36,494 [INFO] {'switchID': 4, 'switchName': 'D', 'address': '123.123.123.3'}
+2024-03-14 16:50:36,495 [INFO] {'switchID': 5, 'switchName': 'E', 'address': '123.123.123.4'}
+2024-03-14 16:50:36,496 [INFO] {'switchID': 6, 'switchName': 'F', 'address': '123.123.123.5'}
+2024-03-14 16:50:36,497 [INFO] {'switchID': 7, 'switchName': 'G', 'address': '123.123.123.6'}
+2024-03-14 16:50:36,499 [INFO] {'switchID': 8, 'switchName': 'H', 'address': '123.123.123.7'}
+2024-03-14 16:50:36,501 [INFO] {'switchID': 9, 'switchName': 'I', 'address': '123.123.123.8'}
+2024-03-14 16:50:36,502 [INFO] {'switchID': 10, 'switchName': 'L', 'address': '123.123.123.9'}
+2024-03-14 16:50:36,505 [INFO] {'switchID': 11, 'switchName': 'M', 'address': '123.123.123.10'}
+2024-03-14 16:50:36,507 [INFO] {'switchID': 12, 'switchName': 'N', 'address': '123.123.123.11'}
+2024-03-14 16:50:36,509 [INFO] {'switchID': 13, 'switchName': 'O', 'address': '123.123.123.12'}
+2024-03-14 16:50:36,512 [INFO] {'switchID': 14, 'switchName': 'P', 'address': '123.123.123.13'}
+2024-03-14 16:50:36,519 [INFO] {'switchID': 15, 'switchName': 'Q', 'address': '123.123.123.14'}
+2024-03-14 16:50:36,521 [INFO] ..network.yaml file structure done!
+2024-03-14 16:50:36,563 [INFO] Writing network.yaml file..
+2024-03-14 16:50:36,617 [INFO] ..network.yaml file creation done!
+2024-03-14 16:50:36,622 [INFO] Writing packets.yaml file..
+2024-03-14 16:50:40,162 [INFO] ..packets file creation done!
