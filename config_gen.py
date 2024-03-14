@@ -9,14 +9,15 @@ Description:
 Author: Francesco Pannozzo
 """
 
-from datetime import datetime, timedelta
+from datetime import timedelta
 import logging
 import math
+import os
 import yaml
 from utils import config_gen_utils
 from utils import utils
 from utils import CONSTANTS as CONST
-import os
+
 
 if not os.path.exists("./log_files"):
     os.makedirs("./log_files")
@@ -50,7 +51,7 @@ while not CORRECT_CHOOSE:
         if user_mode in [CONST.USER_MODE, CONST.AUTO_MODE]:
             CORRECT_CHOOSE = True
         else:
-           logging.warning("WARNING, values must be 1 or 2.\n")
+            logging.warning("WARNING, values must be 1 or 2.\n")
     except ValueError:
         logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")
 
@@ -61,16 +62,13 @@ if user_mode == CONST.USER_MODE:
     logging.info("Loading user file..")
     user_data = utils.file_loader("./data/custom_graph")
     user_data = user_data["data"]
-
     switch_number = len(user_data["switches"])
     graph_type = user_data["graphType"]
-
-
 else:
     logging.info("You choosed the auto mode!")
     while not CORRECT_CHOOSE:
-        switch_number = input("please insert the switch number min 2 - max 1000:\n")
-        graph_type = input("please enter c if you want a complete graph\n"
+        switch_number = input("Please insert the switch number min 2 - max 1000:\n")
+        graph_type = input("Please enter c if you want a complete graph\n"
                             "enter m for a mesh graph, t for a toro graph\n")
         try:
             switch_number = int(switch_number)
@@ -129,7 +127,7 @@ if user_mode == CONST.USER_MODE:
     elif user_data["graphType"] == CONST.TORO_GRAPH:
         links = config_gen_utils.create_user_toro_links(user_data)
     elif user_data["graphType"] == CONST.FREE_GRAPH:
-        print("execute free graph here")
+        links = config_gen_utils.create_user_graph_links(user_data)
 
     logging.debug("USER LINKS: %s", links)
 else:
@@ -203,7 +201,7 @@ logging.info("..packets.yaml file structure done!")
 
 # Creating network.yaml file
 # File structure composed by a links list and a switches list
-# networkData = [[links list],[switches list]]
+# networkData = [[links list],[switches list],{},{},{}]
 logging.info("Creating network.yaml file structure..")
 networkData = [{},[],{},{},{}]
 LINK_INDEX = CONST.NETWORK["LINKS"]

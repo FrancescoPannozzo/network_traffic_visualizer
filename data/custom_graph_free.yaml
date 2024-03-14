@@ -28,12 +28,12 @@ data:
       ip: "123.123.123.6"
       switchName: G
   links:
-    - { linkCap: 100, endpoints: [1, 2] }
-    - { linkCap: 1000, endpoints: [1, 3] }
-    - { linkCap: 100, endpoints: [2, 4] }
-    - { linkCap: 100, endpoints: [2, 5] }
-    - { linkCap: 1000, endpoints: [3, 6] }
-    - { linkCap: 1000, endpoints: [3, 7] }
+    - { linkCap: 10, endpoints: [1, 2] }
+    - { linkCap: 100, endpoints: [1, 3] }
+    - { linkCap: 10, endpoints: [2, 4] }
+    - { linkCap: 10, endpoints: [2, 5] }
+    - { linkCap: 100, endpoints: [3, 6] }
+    - { linkCap: 10, endpoints: [3, 7] }
   phases:
-  2024-01-01 00:00:01: "phase1"
-  2024-01-01 00:00:02: "phase2"
+    2024-01-01 00:00:01: "phase1"
+    2024-01-01 00:00:01.500: "phase2"

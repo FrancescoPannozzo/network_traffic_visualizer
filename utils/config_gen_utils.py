@@ -217,6 +217,22 @@ def create_user_toro_links(user_data):
 
     return links
 
+def create_user_graph_links(user_data):
+    links = {}
+    link_id = 1
+
+    for link in user_data["links"]:
+        links[link_id] = {
+            "endpoints": sorted(link["endpoints"]),
+            "capacity": link["linkCap"],
+            "trafficPerc": 0
+        }
+        link_id += 1
+    
+    return links
+
+
+
 def create_auto_toro_links(link_cap, switch_number):
     links, switches = create_auto_mesh_links(link_cap, switch_number)
     rows = len(switches)

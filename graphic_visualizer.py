@@ -40,6 +40,7 @@ class GraphicVisualizer(MovingCameraScene):
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.COMPLETE_GRAPH:
             logging.info("The graph type found is complete, rendering..")
             GraphicVisualizer.complete_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time)
+
         else:
             logging.info("The graph type found is mesh, rendering..")
             GraphicVisualizer.mesh_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time)
@@ -158,7 +159,6 @@ class GraphicVisualizer(MovingCameraScene):
             spacing = 1.5
             font_size = 40
 
-
         phases = network_data[CONST.NETWORK["PHASES"]]
         phases_iterator = iter(phases.items())
         phase_time, phase = next(phases_iterator)
@@ -174,8 +174,6 @@ class GraphicVisualizer(MovingCameraScene):
 
         lines_grid = VGroup()
         mesh_grid = VGroup()
-
-
 
         for row in range(rows):
             for col in range(cols):
@@ -275,20 +273,20 @@ class GraphicVisualizer(MovingCameraScene):
         self.wait(5)
         logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
 
+
     def intro(self, sim_params, network_data):
         dot = Dot(UP * 2 + LEFT, fill_opacity=0)
         self.add(dot)
         net_sim_par = network_data[CONST.NETWORK["SIM_PARAMS"]]
-        #tex = Tex(
-        #    "FadeIn with ", "shift ", " or target\_position", " and scale"
-        #).scale(1)
-        if net_sim_par["graphType"] == "m":
-            graph_type = "mesh"
-        else:
-            graph_type = "complete"
+        capacity = net_sim_par['linkCap']
+        graph_type = net_sim_par['graphType']
+
+        if net_sim_par['graphType'] == CONST.FREE_GRAPH:
+            capacity = "mixed"
+            graph_type = "custom"
 
         tex = Tex(f"{net_sim_par['simTime']} seconds simulation time, ", f"{net_sim_par['startSimTime']}").scale(1)
-        tex2 = Tex(f"{len(network_data[CONST.NETWORK['SWITCHES']])} switches, ", f"{graph_type} graph, ", f"{net_sim_par['linkCap']} Mbps").scale(1)
+        tex2 = Tex(f"{len(network_data[CONST.NETWORK['SWITCHES']])} switches, ", f"{graph_type} graph, ", f"{capacity} Mbps").scale(1)
         tex3 = Tex(f"{sim_params['averageDelta']}ms average delta, ", f"{sim_params['updateDelta']}ms update delta").scale(1)
         tex2.next_to(tex, DOWN)
         tex3.next_to(tex2, DOWN)
