@@ -116,25 +116,25 @@ class Test(Scene):
 class Dots(MovingCameraScene):
     def construct(self):
 
-        t1 = Tex("t1", color=RED)
+        t1 = Tex("0", color=RED)
         linkcap = Tex("100", font_size = 20, color=BLUE, stroke_width=1, stroke_color=PINK)
         linkcap2 = Tex("1000", font_size = 20, color=BLUE, stroke_width=1, stroke_color=PINK)
         
-        l1 = LabeledDot(t1)
+        dot0 = LabeledDot(t1)
         
-        dot = LabeledDot("Dot1")
-        dot.next_to(l1, RIGHT * 24)
+        dot1 = LabeledDot("1")
+        dot1.next_to(dot0, RIGHT)
 
-        dot2 = LabeledDot("Dot2")
-        dot2.next_to(l1, DOWN)
+        dot2 = LabeledDot("2")
+        dot2.next_to(dot0, DOWN)
 
-        line = Line(l1.get_center(), dot.get_center())
-        line2 = Line(l1.get_center(), dot2.get_center())
+        line = Line(dot0.get_center(), dot1.get_center())
+        line2 = Line(dot0.get_center(), dot2.get_center())
         
         self.add(line)
         self.add(line2)
-        self.add(l1)
-        self.add(dot)
+        self.add(dot0)
+        self.add(dot1)
         self.add(dot2)
 
         self.add(linkcap)
@@ -145,61 +145,61 @@ class Dots(MovingCameraScene):
 
 
         
-        #curve = ArcBetweenPoints(l1.get_center(), dot.get_center(), angle=0.5)
+        #curve = ArcBetweenPoints(dot0.get_center(), dot.get_center(), angle=0.5)
         #self.add(curve)
         spacing = 0.5
-        arr = l1.get_center()
-        arr[0] += 1
-        arr[1] += 0.5
-        arrDot = dot.get_center()
-        arrDot[0] -= 1
-        arrDot[1] += 0.5
+        dot0_coord = dot0.get_center()
+        dot0_coord[0] -= 0.5
+        dot0_coord[1] -= 0.2
+        dot2_coord = dot2.get_center()
+        dot2_coord[0] -= 0.5
+        dot2_coord[1] += 0.2
         b = [2, 0, 0]
         c = [0, 2, 0]
         d = []
-        #ap1 = ArcPolygon(l1.get_center(), arr, arrDot, dot.get_center(), radius=2)
+        #ap1 = ArcPolygon(dot0.get_center(), arr, dot1_coord, dot.get_center(), radius=2)
         #self.add(ap1)
 
         #punti = [LEFT, LEFT + UP, RIGHT + UP, RIGHT]
-        punti = [l1.get_center(), arr, arrDot, dot.get_center()]
 
-        arrDot2 = dot2.get_center()
-        arrDot2[0] += 1
-        arrDot2[1] += 0.5
+        punti = [dot0.get_center(), dot0_coord, dot2_coord, dot2.get_center()]
 
-        punti2 = [l1.get_center(), arr, arrDot2, dot2.get_center()]
 
-        linea_angolosa = VMobject(fill_color=RED, stroke_width=2, stroke_color=BLUE).set_points_smoothly(punti)
-        #linea_angolosa.set_color(RED)
+        dot0_coord = dot0.get_center()
+        dot0_coord[0] += 0.2
+        dot0_coord[1] -= 0.2
+        dot1_coord = dot1.get_center()
+        dot1_coord[0] -= 0.2
+        dot1_coord[1] -= 0.2
+        punti2 = [dot0.get_center(), dot0_coord, dot1_coord, dot1.get_center()]
 
-        linea_angolosa2 = VMobject().set_points_smoothly(punti2)
-
+        linea_angolosa = VMobject(fill_color=RED, stroke_width=2).set_points_as_corners(punti)
+        linea_angolosa.set_color(YELLOW)
         self.add(linea_angolosa)
+
+        linea_angolosa2 = VMobject(fill_color=RED, stroke_width=2).set_points_as_corners(punti2)
+        linea_angolosa2.set_color(RED)
         self.add(linea_angolosa2)
 
-        testDot = Dot(arr)
-        self.add(testDot)
-
-
-        self.play(self.camera.auto_zoom([l1, dot, dot2, line, line2, linkcap, linkcap2, linea_angolosa, linea_angolosa2, testDot], margin=1))
+        self.play(self.camera.auto_zoom([dot0, dot1, dot2, line, line2, linkcap, linkcap2, linea_angolosa, linea_angolosa2], margin=1))
         self.wait(3)
 
-        print("Array is:", arr)
-        print("First arr element:", arr[0])
+        print("dot0_coord is:", dot0_coord)
+        print("First arr element:", dot0_coord[0])
         # Printing type of arr object
-        print("Array is of type: ", type(arr))
+        print("Array is of type: ", type(dot0_coord))
         
         # Printing array dimensions (axes)
-        print("No. of dimensions: ", arr.ndim)
+        print("No. of dimensions: ", dot0_coord.ndim)
         
         # Printing shape of array
-        print("Shape of array: ", arr.shape)
+        print("Shape of array: ", dot0_coord.shape)
         
         # Printing size (total number of elements) of array
-        print("Size of array: ", arr.size)
+        print("Size of array: ", dot0_coord.size)
         
         # Printing type of elements in array
-        print("Array stores elements of type: ", arr.dtype)
+        print("Array stores elements of type: ", dot0_coord.dtype)
         
 
 

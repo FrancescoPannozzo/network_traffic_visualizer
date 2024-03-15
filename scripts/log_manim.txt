@@ -1,13 +1,13 @@
-2024-03-13 17:09:12,193 [INFO] Caching disabled.
-2024-03-13 17:09:13,166 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Dots\uncached_00000.mp4'
-2024-03-13 17:09:13,181 [INFO] Caching disabled.
-2024-03-13 17:09:14,185 [INFO] Animation 1 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Dots\uncached_00001.mp4'
-2024-03-13 17:09:14,246 [INFO] Combining to Movie file.
-2024-03-13 17:09:14,800 [INFO] 
+2024-03-15 12:50:28,337 [INFO] Caching disabled.
+2024-03-15 12:50:28,987 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Dots\uncached_00000.mp4'
+2024-03-15 12:50:29,002 [INFO] Caching disabled.
+2024-03-15 12:50:30,068 [INFO] Animation 1 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\partial_movie_files\Dots\uncached_00001.mp4'
+2024-03-15 12:50:30,115 [INFO] Combining to Movie file.
+2024-03-15 12:50:30,726 [INFO] 
 File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\Dots.mp4'
 
-2024-03-13 17:09:14,815 [INFO] Rendered Dots
+2024-03-15 12:50:30,742 [INFO] Rendered Dots
 Played 2 animations
-2024-03-13 17:09:15,165 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\Dots.mp4'
-2024-03-13 17:09:15,188 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
-2024-03-13 17:09:17,750 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849
+2024-03-15 12:50:31,103 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\scripts\media\videos\learning\480p15\Dots.mp4'
+2024-03-15 12:50:31,134 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
+2024-03-15 12:50:33,586 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849

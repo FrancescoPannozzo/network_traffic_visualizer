@@ -12,6 +12,7 @@ from manim import *
 from utils import utils, graphic_visualizer_utils
 from utils import CONSTANTS as CONST
 from datetime import datetime, timedelta
+import math
 
 # Logger config
 logging.basicConfig(
@@ -67,9 +68,12 @@ class GraphicVisualizer(MovingCameraScene):
 
         logging.debug("links: %s", links)
 
+        stroke_width = 4
         font_size = 20
         if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 100:
             font_size = 40
+        if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 20:
+            stroke_width = 1
 
         phases = network_data[CONST.NETWORK["PHASES"]]
         phases_iterator = iter(phases.items())
@@ -81,15 +85,16 @@ class GraphicVisualizer(MovingCameraScene):
       
         #layout_scale = (len(switches))/3
         # graph creation
-        grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=2, vertex_config={"color":WHITE},
-                      edge_config={"stroke_width": 8, "color":CONST.ZERO_TRAFFIC}
+        grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=math.sqrt(len(switches)), vertex_config={"color":WHITE},
+                      edge_config={"stroke_width": stroke_width, "color":CONST.ZERO_TRAFFIC}
                       )
         
-        self.play(Create(grafo))
+        
         phase_time_txt.next_to(grafo, UP)
         sim_time_txt.next_to(phase_time_txt, UP)
         self.add(phase_time_txt)
         self.add(sim_time_txt)
+        self.play(Create(grafo))
         self.play(self.camera.auto_zoom([grafo, sim_time_txt, phase_time_txt], margin=1), run_time=0.5)
        
         # creating traffic animations
@@ -157,7 +162,10 @@ class GraphicVisualizer(MovingCameraScene):
         spacing = 1
         if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 100:
             spacing = 1.5
-            font_size = 40
+            #font_size = 80
+
+        if cols > 4:
+            font_size = 15 + 1.6 * (cols - 4)
 
         phases = network_data[CONST.NETWORK["PHASES"]]
         phases_iterator = iter(phases.items())
@@ -206,10 +214,28 @@ class GraphicVisualizer(MovingCameraScene):
             dot_b = graph_mesh[content["endpoints"][CONST.EP_B]]
             line = None
             if sorted([content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]]) in vertical_links:
-                line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=0.8 + (0.01 * rows), color=CONST.ZERO_TRAFFIC)
+                #line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=0.8 + (0.01 * rows), color=CONST.ZERO_TRAFFIC)
+                #line.set_color(CONST.ZERO_TRAFFIC)
+                dot_a_coord = dot_a.get_center()
+                dot_a_coord[0] -= 0.5
+                dot_a_coord[1] -= 0.5
+                dot_b_coord = dot_b.get_center()
+                dot_b_coord[0] -= 0.5
+                dot_b_coord[1] += 0.5
+                points = [dot_a.get_center(), dot_a_coord, dot_b_coord, dot_b.get_center()]
+                line = VMobject(stroke_width=2).set_points_as_corners(points)
                 line.set_color(CONST.ZERO_TRAFFIC)
             elif sorted([content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]]) in horizontal_links:
-                line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=0.8 + (0.01 * cols), color=CONST.ZERO_TRAFFIC)
+                #line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=0.8 + (0.01 * cols), color=CONST.ZERO_TRAFFIC)
+                #line.set_color(CONST.ZERO_TRAFFIC)
+                dot_a_coord = dot_a.get_center()
+                dot_a_coord[0] += 0.7
+                dot_a_coord[1] -= 0.4
+                dot_b_coord = dot_b.get_center()
+                dot_b_coord[0] -= 0.7
+                dot_b_coord[1] -= 0.4
+                points = [dot_a.get_center(), dot_a_coord, dot_b_coord, dot_b.get_center()]
+                line = VMobject(stroke_width=2).set_points_as_corners(points)
                 line.set_color(CONST.ZERO_TRAFFIC)
             else:
                 line = Line(dot_a.get_center(), dot_b.get_center(), color=CONST.ZERO_TRAFFIC, stroke_width=8)
@@ -218,19 +244,23 @@ class GraphicVisualizer(MovingCameraScene):
 
         GraphicVisualizer.intro(self, sim_params, network_data)
 
-
         #self.add(infos)
         
         grid.add(lines_grid, mesh_grid)
 
         grid.move_to(ORIGIN)
-        self.add(grid)
-        self.add(sim_time_txt)
-        self.add(phase_time_txt)
+        sim_time_txt.move_to(ORIGIN)
+        phase_time_txt.move_to(ORIGIN)
+ 
         #infos.next_to(grid, DOWN)
         phase_time_txt.next_to(grid, UP).set_color(WHITE)
         sim_time_txt.next_to(phase_time_txt, UP).set_color(WHITE)
-        self.play(FadeIn(grid), FadeIn(sim_time_txt), FadeIn(phase_time_txt, shift=RIGHT), self.camera.auto_zoom([grid, sim_time_txt], margin=1), run_time=0.5)
+
+        self.add(grid)
+        self.add(phase_time_txt)
+        self.add(sim_time_txt)
+        
+        self.play(FadeIn(grid), FadeIn(sim_time_txt), FadeIn(phase_time_txt), self.camera.auto_zoom([grid, sim_time_txt, phase_time_txt], margin=1), run_time=0.5)
 
         traffic_count = 0
         # creating traffic animations
@@ -252,7 +282,7 @@ class GraphicVisualizer(MovingCameraScene):
                                         Transform(phase_time_txt,
                                                 Text(f"PHASE: {phase}",
                                                 font="Courier New",
-                                                font_size=font_size).next_to(mesh_grid, UP).set_color(WHITE)),
+                                                font_size=font_size).next_to(grid, UP).set_color(WHITE)),
                                     run_time=1
                                 )
                 try:
