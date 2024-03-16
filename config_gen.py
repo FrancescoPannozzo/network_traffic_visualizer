@@ -170,8 +170,8 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
             content["trafficPerc"] = config_gen_utils.change_traffic_perc(content["trafficPerc"])
             #logging.debug("Link: %s, endpoints: %s, sim second: %d, trafficPerc: %d",
             #             link, content["endpoints"],
-            #             (fractional_unit / creationRate),
-            #             content["trafficPerc"])
+            #            (fractional_unit / creationRate),
+            #            content["trafficPerc"])
     ENDP_A = 0
     ENDP_B = 1
     for link, content in links.items():

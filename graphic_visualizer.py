@@ -155,7 +155,7 @@ class GraphicVisualizer(MovingCameraScene):
         rows = len(mesh)
         cols = len(mesh[0])
 
-        font_size = 15
+        font_size = 10
 
         graph_mesh = {}
         # Nodes spacing
@@ -165,7 +165,7 @@ class GraphicVisualizer(MovingCameraScene):
             #font_size = 80
 
         if cols > 4:
-            font_size = 15 + 1.6 * (cols - 4)
+            font_size = font_size + 1.6 * (cols - 4)
 
         phases = network_data[CONST.NETWORK["PHASES"]]
         phases_iterator = iter(phases.items())

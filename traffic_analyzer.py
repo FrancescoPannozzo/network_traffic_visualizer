@@ -10,7 +10,7 @@ Usage:
     help: python main.py -h 
 Author: Francesco Pannozzo
 """
-import argparse
+
 from datetime import timedelta
 import logging
 import sys

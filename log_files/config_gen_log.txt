@@ -1,133 +1,85 @@
-2024-03-15 17:49:29,716 [INFO] You choosed the auto mode!
-2024-03-15 17:49:42,787 [INFO] Creating links..
-2024-03-15 17:49:42,818 [INFO] ..links creation done!
-2024-03-15 17:49:42,820 [DEBUG] Links created are:
-2024-03-15 17:49:42,821 [DEBUG] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,821 [DEBUG] 2: {'endpoints': [2, 3], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,823 [DEBUG] 3: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,823 [DEBUG] 4: {'endpoints': [4, 5], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,824 [DEBUG] 5: {'endpoints': [5, 6], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,825 [DEBUG] 6: {'endpoints': [6, 7], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,826 [DEBUG] 7: {'endpoints': [7, 8], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,827 [DEBUG] 8: {'endpoints': [1, 9], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,828 [DEBUG] 9: {'endpoints': [9, 10], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,832 [DEBUG] 10: {'endpoints': [2, 10], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,834 [DEBUG] 11: {'endpoints': [10, 11], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,837 [DEBUG] 12: {'endpoints': [3, 11], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,838 [DEBUG] 13: {'endpoints': [11, 12], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,840 [DEBUG] 14: {'endpoints': [4, 12], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,842 [DEBUG] 15: {'endpoints': [12, 13], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,843 [DEBUG] 16: {'endpoints': [5, 13], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,845 [DEBUG] 17: {'endpoints': [13, 14], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,846 [DEBUG] 18: {'endpoints': [6, 14], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,847 [DEBUG] 19: {'endpoints': [14, 15], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,848 [DEBUG] 20: {'endpoints': [7, 15], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,848 [DEBUG] 21: {'endpoints': [15, 16], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,849 [DEBUG] 22: {'endpoints': [8, 16], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,849 [DEBUG] 23: {'endpoints': [9, 17], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,849 [DEBUG] 24: {'endpoints': [17, 18], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,852 [DEBUG] 25: {'endpoints': [10, 18], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,853 [DEBUG] 26: {'endpoints': [18, 19], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,854 [DEBUG] 27: {'endpoints': [11, 19], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,856 [DEBUG] 28: {'endpoints': [19, 20], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,857 [DEBUG] 29: {'endpoints': [12, 20], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,859 [DEBUG] 30: {'endpoints': [20, 21], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,860 [DEBUG] 31: {'endpoints': [13, 21], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,860 [DEBUG] 32: {'endpoints': [21, 22], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,861 [DEBUG] 33: {'endpoints': [14, 22], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,862 [DEBUG] 34: {'endpoints': [22, 23], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,862 [DEBUG] 35: {'endpoints': [15, 23], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,863 [DEBUG] 36: {'endpoints': [23, 24], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,864 [DEBUG] 37: {'endpoints': [16, 24], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,865 [DEBUG] 38: {'endpoints': [17, 25], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,865 [DEBUG] 39: {'endpoints': [25, 26], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,866 [DEBUG] 40: {'endpoints': [18, 26], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,869 [DEBUG] 41: {'endpoints': [26, 27], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,870 [DEBUG] 42: {'endpoints': [19, 27], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,871 [DEBUG] 43: {'endpoints': [27, 28], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,872 [DEBUG] 44: {'endpoints': [20, 28], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,872 [DEBUG] 45: {'endpoints': [28, 29], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,873 [DEBUG] 46: {'endpoints': [21, 29], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,874 [DEBUG] 47: {'endpoints': [29, 30], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,875 [DEBUG] 48: {'endpoints': [22, 30], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,876 [DEBUG] 49: {'endpoints': [30, 31], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,876 [DEBUG] 50: {'endpoints': [23, 31], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,878 [DEBUG] 51: {'endpoints': [31, 32], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,880 [DEBUG] 52: {'endpoints': [24, 32], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,881 [DEBUG] 53: {'endpoints': [25, 33], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,883 [DEBUG] 54: {'endpoints': [33, 34], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,884 [DEBUG] 55: {'endpoints': [26, 34], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,885 [DEBUG] 56: {'endpoints': [34, 35], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,886 [DEBUG] 57: {'endpoints': [27, 35], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,886 [DEBUG] 58: {'endpoints': [35, 36], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,888 [DEBUG] 59: {'endpoints': [28, 36], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,889 [DEBUG] 60: {'endpoints': [36, 37], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,890 [DEBUG] 61: {'endpoints': [29, 37], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,890 [DEBUG] 62: {'endpoints': [37, 38], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,891 [DEBUG] 63: {'endpoints': [30, 38], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,892 [DEBUG] 64: {'endpoints': [38, 39], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,892 [DEBUG] 65: {'endpoints': [31, 39], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,893 [DEBUG] 66: {'endpoints': [39, 40], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,894 [DEBUG] 67: {'endpoints': [32, 40], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,895 [DEBUG] 68: {'endpoints': [1, 33], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,896 [DEBUG] 69: {'endpoints': [2, 34], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,897 [DEBUG] 70: {'endpoints': [3, 35], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,898 [DEBUG] 71: {'endpoints': [4, 36], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,898 [DEBUG] 72: {'endpoints': [5, 37], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,899 [DEBUG] 73: {'endpoints': [6, 38], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,900 [DEBUG] 74: {'endpoints': [7, 39], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,901 [DEBUG] 75: {'endpoints': [8, 40], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,902 [DEBUG] 76: {'endpoints': [1, 8], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,902 [DEBUG] 77: {'endpoints': [9, 16], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,903 [DEBUG] 78: {'endpoints': [17, 24], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,903 [DEBUG] 79: {'endpoints': [25, 32], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,904 [DEBUG] 80: {'endpoints': [33, 40], 'capacity': 10, 'trafficPerc': 0}
-2024-03-15 17:49:42,904 [INFO] Creating packets.yaml file structure..
-2024-03-15 17:49:42,994 [INFO] ..packets.yaml file structure done!
-2024-03-15 17:49:42,995 [INFO] Creating network.yaml file structure..
-2024-03-15 17:49:42,999 [INFO] Switches created:
-2024-03-15 17:49:43,000 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
-2024-03-15 17:49:43,001 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
-2024-03-15 17:49:43,031 [INFO] {'switchID': 3, 'switchName': 'switch3', 'address': '10.0.0.3'}
-2024-03-15 17:49:43,067 [INFO] {'switchID': 4, 'switchName': 'switch4', 'address': '10.0.0.4'}
-2024-03-15 17:49:43,073 [INFO] {'switchID': 5, 'switchName': 'switch5', 'address': '10.0.0.5'}
-2024-03-15 17:49:43,077 [INFO] {'switchID': 6, 'switchName': 'switch6', 'address': '10.0.0.6'}
-2024-03-15 17:49:43,081 [INFO] {'switchID': 7, 'switchName': 'switch7', 'address': '10.0.0.7'}
-2024-03-15 17:49:43,106 [INFO] {'switchID': 8, 'switchName': 'switch8', 'address': '10.0.0.8'}
-2024-03-15 17:49:43,106 [INFO] {'switchID': 9, 'switchName': 'switch9', 'address': '10.0.0.9'}
-2024-03-15 17:49:43,107 [INFO] {'switchID': 10, 'switchName': 'switch10', 'address': '10.0.0.10'}
-2024-03-15 17:49:43,109 [INFO] {'switchID': 11, 'switchName': 'switch11', 'address': '10.0.0.11'}
-2024-03-15 17:49:43,109 [INFO] {'switchID': 12, 'switchName': 'switch12', 'address': '10.0.0.12'}
-2024-03-15 17:49:43,110 [INFO] {'switchID': 13, 'switchName': 'switch13', 'address': '10.0.0.13'}
-2024-03-15 17:49:43,111 [INFO] {'switchID': 14, 'switchName': 'switch14', 'address': '10.0.0.14'}
-2024-03-15 17:49:43,112 [INFO] {'switchID': 15, 'switchName': 'switch15', 'address': '10.0.0.15'}
-2024-03-15 17:49:43,115 [INFO] {'switchID': 16, 'switchName': 'switch16', 'address': '10.0.0.16'}
-2024-03-15 17:49:43,116 [INFO] {'switchID': 17, 'switchName': 'switch17', 'address': '10.0.0.17'}
-2024-03-15 17:49:43,117 [INFO] {'switchID': 18, 'switchName': 'switch18', 'address': '10.0.0.18'}
-2024-03-15 17:49:43,118 [INFO] {'switchID': 19, 'switchName': 'switch19', 'address': '10.0.0.19'}
-2024-03-15 17:49:43,118 [INFO] {'switchID': 20, 'switchName': 'switch20', 'address': '10.0.0.20'}
-2024-03-15 17:49:43,119 [INFO] {'switchID': 21, 'switchName': 'switch21', 'address': '10.0.0.21'}
-2024-03-15 17:49:43,120 [INFO] {'switchID': 22, 'switchName': 'switch22', 'address': '10.0.0.22'}
-2024-03-15 17:49:43,121 [INFO] {'switchID': 23, 'switchName': 'switch23', 'address': '10.0.0.23'}
-2024-03-15 17:49:43,122 [INFO] {'switchID': 24, 'switchName': 'switch24', 'address': '10.0.0.24'}
-2024-03-15 17:49:43,122 [INFO] {'switchID': 25, 'switchName': 'switch25', 'address': '10.0.0.25'}
-2024-03-15 17:49:43,123 [INFO] {'switchID': 26, 'switchName': 'switch26', 'address': '10.0.0.26'}
-2024-03-15 17:49:43,124 [INFO] {'switchID': 27, 'switchName': 'switch27', 'address': '10.0.0.27'}
-2024-03-15 17:49:43,125 [INFO] {'switchID': 28, 'switchName': 'switch28', 'address': '10.0.0.28'}
-2024-03-15 17:49:43,125 [INFO] {'switchID': 29, 'switchName': 'switch29', 'address': '10.0.0.29'}
-2024-03-15 17:49:43,126 [INFO] {'switchID': 30, 'switchName': 'switch30', 'address': '10.0.0.30'}
-2024-03-15 17:49:43,127 [INFO] {'switchID': 31, 'switchName': 'switch31', 'address': '10.0.0.31'}
-2024-03-15 17:49:43,128 [INFO] {'switchID': 32, 'switchName': 'switch32', 'address': '10.0.0.32'}
-2024-03-15 17:49:43,129 [INFO] {'switchID': 33, 'switchName': 'switch33', 'address': '10.0.0.33'}
-2024-03-15 17:49:43,130 [INFO] {'switchID': 34, 'switchName': 'switch34', 'address': '10.0.0.34'}
-2024-03-15 17:49:43,131 [INFO] {'switchID': 35, 'switchName': 'switch35', 'address': '10.0.0.35'}
-2024-03-15 17:49:43,131 [INFO] {'switchID': 36, 'switchName': 'switch36', 'address': '10.0.0.36'}
-2024-03-15 17:49:43,134 [INFO] {'switchID': 37, 'switchName': 'switch37', 'address': '10.0.0.37'}
-2024-03-15 17:49:43,135 [INFO] {'switchID': 38, 'switchName': 'switch38', 'address': '10.0.0.38'}
-2024-03-15 17:49:43,136 [INFO] {'switchID': 39, 'switchName': 'switch39', 'address': '10.0.0.39'}
-2024-03-15 17:49:43,137 [INFO] {'switchID': 40, 'switchName': 'switch40', 'address': '10.0.0.40'}
-2024-03-15 17:49:43,140 [INFO] ..network.yaml file structure done!
-2024-03-15 17:49:43,142 [INFO] Writing network.yaml file..
-2024-03-15 17:49:43,243 [INFO] ..network.yaml file creation done!
-2024-03-15 17:49:43,244 [INFO] Writing packets.yaml file..
-2024-03-15 17:49:44,197 [INFO] ..packets file creation done!
+2024-03-16 10:40:37,070 [INFO] You choosed the auto mode!
+2024-03-16 10:40:41,593 [INFO] Creating links..
+2024-03-16 10:40:41,615 [INFO] ..links creation done!
+2024-03-16 10:40:41,616 [DEBUG] Links created are:
+2024-03-16 10:40:41,616 [DEBUG] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,617 [DEBUG] 2: {'endpoints': [2, 3], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,617 [DEBUG] 3: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,617 [DEBUG] 4: {'endpoints': [4, 5], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,618 [DEBUG] 5: {'endpoints': [5, 6], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,618 [DEBUG] 6: {'endpoints': [1, 7], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,619 [DEBUG] 7: {'endpoints': [7, 8], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,619 [DEBUG] 8: {'endpoints': [2, 8], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,619 [DEBUG] 9: {'endpoints': [8, 9], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,620 [DEBUG] 10: {'endpoints': [3, 9], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,620 [DEBUG] 11: {'endpoints': [9, 10], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,621 [DEBUG] 12: {'endpoints': [4, 10], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,622 [DEBUG] 13: {'endpoints': [10, 11], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,624 [DEBUG] 14: {'endpoints': [5, 11], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,625 [DEBUG] 15: {'endpoints': [11, 12], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,626 [DEBUG] 16: {'endpoints': [6, 12], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,626 [DEBUG] 17: {'endpoints': [7, 13], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,626 [DEBUG] 18: {'endpoints': [13, 14], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,627 [DEBUG] 19: {'endpoints': [8, 14], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,627 [DEBUG] 20: {'endpoints': [14, 15], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,629 [DEBUG] 21: {'endpoints': [9, 15], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,630 [DEBUG] 22: {'endpoints': [15, 16], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,630 [DEBUG] 23: {'endpoints': [10, 16], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,631 [DEBUG] 24: {'endpoints': [16, 17], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,632 [DEBUG] 25: {'endpoints': [11, 17], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,632 [DEBUG] 26: {'endpoints': [17, 18], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,633 [DEBUG] 27: {'endpoints': [12, 18], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,634 [DEBUG] 28: {'endpoints': [13, 19], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,635 [DEBUG] 29: {'endpoints': [19, 20], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,635 [DEBUG] 30: {'endpoints': [14, 20], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,636 [DEBUG] 31: {'endpoints': [20, 21], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,637 [DEBUG] 32: {'endpoints': [15, 21], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,637 [DEBUG] 33: {'endpoints': [21, 22], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,638 [DEBUG] 34: {'endpoints': [16, 22], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,638 [DEBUG] 35: {'endpoints': [22, 23], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,639 [DEBUG] 36: {'endpoints': [17, 23], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,639 [DEBUG] 37: {'endpoints': [23, 24], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,640 [DEBUG] 38: {'endpoints': [18, 24], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,641 [DEBUG] 39: {'endpoints': [1, 19], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,642 [DEBUG] 40: {'endpoints': [2, 20], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,642 [DEBUG] 41: {'endpoints': [3, 21], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,643 [DEBUG] 42: {'endpoints': [4, 22], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,643 [DEBUG] 43: {'endpoints': [5, 23], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,644 [DEBUG] 44: {'endpoints': [6, 24], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,644 [DEBUG] 45: {'endpoints': [1, 6], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,647 [DEBUG] 46: {'endpoints': [7, 12], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,647 [DEBUG] 47: {'endpoints': [13, 18], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,648 [DEBUG] 48: {'endpoints': [19, 24], 'capacity': 10, 'trafficPerc': 0}
+2024-03-16 10:40:41,648 [INFO] Creating packets.yaml file structure..
+2024-03-16 10:40:41,742 [INFO] ..packets.yaml file structure done!
+2024-03-16 10:40:41,742 [INFO] Creating network.yaml file structure..
+2024-03-16 10:40:41,744 [INFO] Switches created:
+2024-03-16 10:40:41,744 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
+2024-03-16 10:40:41,745 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
+2024-03-16 10:40:41,745 [INFO] {'switchID': 3, 'switchName': 'switch3', 'address': '10.0.0.3'}
+2024-03-16 10:40:41,745 [INFO] {'switchID': 4, 'switchName': 'switch4', 'address': '10.0.0.4'}
+2024-03-16 10:40:41,746 [INFO] {'switchID': 5, 'switchName': 'switch5', 'address': '10.0.0.5'}
+2024-03-16 10:40:41,746 [INFO] {'switchID': 6, 'switchName': 'switch6', 'address': '10.0.0.6'}
+2024-03-16 10:40:41,747 [INFO] {'switchID': 7, 'switchName': 'switch7', 'address': '10.0.0.7'}
+2024-03-16 10:40:41,747 [INFO] {'switchID': 8, 'switchName': 'switch8', 'address': '10.0.0.8'}
+2024-03-16 10:40:41,748 [INFO] {'switchID': 9, 'switchName': 'switch9', 'address': '10.0.0.9'}
+2024-03-16 10:40:41,748 [INFO] {'switchID': 10, 'switchName': 'switch10', 'address': '10.0.0.10'}
+2024-03-16 10:40:41,749 [INFO] {'switchID': 11, 'switchName': 'switch11', 'address': '10.0.0.11'}
+2024-03-16 10:40:41,750 [INFO] {'switchID': 12, 'switchName': 'switch12', 'address': '10.0.0.12'}
+2024-03-16 10:40:41,750 [INFO] {'switchID': 13, 'switchName': 'switch13', 'address': '10.0.0.13'}
+2024-03-16 10:40:41,751 [INFO] {'switchID': 14, 'switchName': 'switch14', 'address': '10.0.0.14'}
+2024-03-16 10:40:41,751 [INFO] {'switchID': 15, 'switchName': 'switch15', 'address': '10.0.0.15'}
+2024-03-16 10:40:41,752 [INFO] {'switchID': 16, 'switchName': 'switch16', 'address': '10.0.0.16'}
+2024-03-16 10:40:41,754 [INFO] {'switchID': 17, 'switchName': 'switch17', 'address': '10.0.0.17'}
+2024-03-16 10:40:41,755 [INFO] {'switchID': 18, 'switchName': 'switch18', 'address': '10.0.0.18'}
+2024-03-16 10:40:41,755 [INFO] {'switchID': 19, 'switchName': 'switch19', 'address': '10.0.0.19'}
+2024-03-16 10:40:41,756 [INFO] {'switchID': 20, 'switchName': 'switch20', 'address': '10.0.0.20'}
+2024-03-16 10:40:41,756 [INFO] {'switchID': 21, 'switchName': 'switch21', 'address': '10.0.0.21'}
+2024-03-16 10:40:41,757 [INFO] {'switchID': 22, 'switchName': 'switch22', 'address': '10.0.0.22'}
+2024-03-16 10:40:41,757 [INFO] {'switchID': 23, 'switchName': 'switch23', 'address': '10.0.0.23'}
+2024-03-16 10:40:41,758 [INFO] {'switchID': 24, 'switchName': 'switch24', 'address': '10.0.0.24'}
+2024-03-16 10:40:41,759 [INFO] ..network.yaml file structure done!
+2024-03-16 10:40:41,759 [INFO] Writing network.yaml file..
+2024-03-16 10:40:41,787 [INFO] ..network.yaml file creation done!
+2024-03-16 10:40:41,787 [INFO] Writing packets.yaml file..
+2024-03-16 10:40:50,330 [INFO] ..packets file creation done!
