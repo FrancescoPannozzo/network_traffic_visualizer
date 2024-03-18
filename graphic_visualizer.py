@@ -89,13 +89,15 @@ class GraphicVisualizer(MovingCameraScene):
                       edge_config={"stroke_width": stroke_width, "color":CONST.ZERO_TRAFFIC}
                       )
         
-        
+        infos = GraphicVisualizer.show_info(self, sim_params, network_data, grafo, font_size)
+
         phase_time_txt.next_to(grafo, UP)
-        sim_time_txt.next_to(phase_time_txt, UP)
+        sim_time_txt.next_to(phase_time_txt, UP/3)
         self.add(phase_time_txt)
         self.add(sim_time_txt)
+        self.add(infos)
         self.play(Create(grafo))
-        self.play(self.camera.auto_zoom([grafo, sim_time_txt, phase_time_txt], margin=1), run_time=0.5)
+        self.play(self.camera.auto_zoom([grafo, sim_time_txt, phase_time_txt, infos], margin=1), run_time=0.5)
        
         # creating traffic animations
         traffic_count = 0
@@ -159,9 +161,9 @@ class GraphicVisualizer(MovingCameraScene):
 
         graph_mesh = {}
         # Nodes spacing
-        spacing = 1
-        if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 100:
-            spacing = 1.5
+        spacing = 1.3
+        #if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 100:
+            #spacing = 1.5
             #font_size = 80
 
         if cols > 4:
@@ -229,11 +231,11 @@ class GraphicVisualizer(MovingCameraScene):
                 #line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=0.8 + (0.01 * cols), color=CONST.ZERO_TRAFFIC)
                 #line.set_color(CONST.ZERO_TRAFFIC)
                 dot_a_coord = dot_a.get_center()
-                dot_a_coord[0] += 0.7
-                dot_a_coord[1] -= 0.4
+                dot_a_coord[0] += 0.6
+                dot_a_coord[1] -= 0.6
                 dot_b_coord = dot_b.get_center()
-                dot_b_coord[0] -= 0.7
-                dot_b_coord[1] -= 0.4
+                dot_b_coord[0] -= 0.8
+                dot_b_coord[1] -= 0.6
                 points = [dot_a.get_center(), dot_a_coord, dot_b_coord, dot_b.get_center()]
                 line = VMobject(stroke_width=2).set_points_as_corners(points)
                 line.set_color(CONST.ZERO_TRAFFIC)
@@ -242,7 +244,7 @@ class GraphicVisualizer(MovingCameraScene):
             links[(content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B])] = line
             lines_grid.add(line)
 
-        GraphicVisualizer.intro(self, sim_params, network_data)
+        #GraphicVisualizer.intro(self, sim_params, network_data)
 
         #self.add(infos)
         
@@ -254,13 +256,15 @@ class GraphicVisualizer(MovingCameraScene):
  
         #infos.next_to(grid, DOWN)
         phase_time_txt.next_to(grid, UP).set_color(WHITE)
-        sim_time_txt.next_to(phase_time_txt, UP).set_color(WHITE)
+        sim_time_txt.next_to(phase_time_txt, UP/3).set_color(WHITE)
 
         self.add(grid)
         self.add(phase_time_txt)
         self.add(sim_time_txt)
+
+        infos = GraphicVisualizer.show_info(self, sim_params, network_data, grid, font_size)
         
-        self.play(FadeIn(grid), FadeIn(sim_time_txt), FadeIn(phase_time_txt), self.camera.auto_zoom([grid, sim_time_txt, phase_time_txt], margin=1), run_time=0.5)
+        self.play(FadeIn(infos), FadeIn(grid), FadeIn(sim_time_txt), FadeIn(phase_time_txt), self.camera.auto_zoom([grid, sim_time_txt, phase_time_txt, infos], margin=1), run_time=0.5)
 
         traffic_count = 0
         # creating traffic animations
@@ -278,7 +282,7 @@ class GraphicVisualizer(MovingCameraScene):
                 self.play(*animations, Transform(sim_time_txt,
                                                 Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
                                                 font="Courier New",
-                                                font_size=font_size).next_to(phase_time_txt, UP).set_color(WHITE)),
+                                                font_size=font_size).next_to(phase_time_txt, UP/3).set_color(WHITE)),
                                         Transform(phase_time_txt,
                                                 Text(f"PHASE: {phase}",
                                                 font="Courier New",
@@ -293,7 +297,7 @@ class GraphicVisualizer(MovingCameraScene):
                 self.play(*animations, Transform(sim_time_txt,
                                     Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
                                     font="Courier New",
-                                    font_size=font_size).next_to(phase_time_txt, UP).set_color(WHITE)),
+                                    font_size=font_size).next_to(phase_time_txt, UP/3).set_color(WHITE)),
                                     run_time=1
                                 )
             # pushing forward sim time to check
@@ -303,6 +307,30 @@ class GraphicVisualizer(MovingCameraScene):
         self.wait(5)
         logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
 
+    def show_info(self, sim_params, network_data, grid, font_size):
+        net_sim_par = network_data[CONST.NETWORK["SIM_PARAMS"]]
+        capacity = net_sim_par['linkCap']
+        graph_type = net_sim_par['graphType']
+
+        if net_sim_par['graphType'] == CONST.FREE_GRAPH:
+            capacity = "mixed"
+            graph_type = "custom"
+
+        tex = Text(f"{net_sim_par['simTime']} sec sim time, {net_sim_par['startSimTime']}",
+                    font="Courier New",
+                    font_size=font_size).scale(1)
+        tex2 = Text(f"{len(network_data[CONST.NETWORK['SWITCHES']])} switches,{graph_type} graph, {capacity} Mbps",
+                    font="Courier New",
+                    font_size=font_size).scale(1)
+        tex3 = Text(f"{sim_params['averageDelta']}ms average delta, {sim_params['updateDelta']}ms update delta",
+                    font="Courier New",
+                    font_size=font_size).scale(1)
+
+        tex.next_to(grid, DOWN)
+        tex2.next_to(tex, DOWN/4)
+        tex3.next_to(tex2, DOWN/4)
+
+        return Group.add(tex, tex2, tex3)
 
     def intro(self, sim_params, network_data):
         dot = Dot(UP * 2 + LEFT, fill_opacity=0)
