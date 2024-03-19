@@ -1,13 +1,10 @@
 """ Utils module for config_gen.py script """
 
-import argparse
-import os
 import random
-import sys
 import math
-from datetime import datetime, timedelta
+from datetime import timedelta
 from utils import utils
-import yaml
+from utils import CONSTANTS as CONST
 
 
 # Update traffic percentage
@@ -118,18 +115,16 @@ def create_auto_mesh_links(link_cap, switch_number):
             switch_cont += 1
 
             if c > 0:
-                print(f"link - ({switches[r][c-1]},{switches[r][c]}), linkID: {link_id}")
-                data_links[link_id] = not_complete_links_format(switches[r][c-1], switches[r][c], link_cap)
+                data_links[link_id] = link_format(switches[r][c-1], switches[r][c], link_cap)
                 link_id += 1
             if r > 0:
-                print(f"link - ({switches[r-1][c]},{switches[r][c]}), linkID: {link_id}")
-                data_links[link_id] = not_complete_links_format(switches[r-1][c], switches[r][c], link_cap)
+                data_links[link_id] = link_format(switches[r-1][c], switches[r][c], link_cap)
                 link_id += 1
         if(switch_cont > switch_number):
             break
     return data_links, switches
 
-def not_complete_links_format(switch_a, switch_b, link_cap):
+def link_format(switch_a, switch_b, link_cap):
     return {
             "endpoints": sorted((switch_a, switch_b)),
             "capacity": link_cap,
@@ -145,33 +140,35 @@ def ip_address(groupA, groupB, groupC, groupD):
         }
 
 def create_user_mesh_links(user_data):
+
+    if "linkCap" not in user_data:
+        return create_user_graph_links(user_data)
+
     mesh = user_data["coordinates"]
     rows = len(mesh)
     cols = len(mesh[0])
     link_id = 1
     data_links = {}
-    link_cap = user_data["linkCap"]
+    link_cap = user_data["links"]
 
     for r in range(0, rows):
         for c in range(0, cols):
             if c > 0:
                 if mesh[r][c] != 0 and mesh[r][c-1] != 0:
-                    data_links[link_id] = {
-                        "endpoints": sorted((mesh[r][c-1], mesh[r][c])),
-                        "capacity": link_cap,
-                        "trafficPerc": 0
-                        }
+                    data_links[link_id] = link_format(mesh[r][c-1], mesh[r][c], link_cap)
                     link_id += 1
             if r > 0:
                 if mesh[r][c] != 0 and mesh[r-1][c] != 0:
-                    data_links[link_id] = {
-                        "endpoints": sorted((mesh[r-1][c], mesh[r][c])),
-                        "capacity": link_cap,
-                        "trafficPerc": 0
-                        }
+                    data_links[link_id] = link_format(mesh[r-1][c], mesh[r][c], link_cap)
                     link_id += 1
 
     return data_links
+
+def check_user_links_cap(mixed_mbps, links, ep_a, ep_b, user_data):
+    if mixed_mbps:
+        return links[frozenset({ep_a, ep_b})]
+    return user_data["linkCap"]
+
 
 def create_auto_phases(start_time, sim_time):
     setup = utils.file_loader("./data/setup")
@@ -189,30 +186,36 @@ def create_auto_phases(start_time, sim_time):
 
     return phases
 
+def extract_custom_links(data_links):
+    links = {}
+
+    for l in data_links:
+        ep_key = sorted([l["endpoints"][CONST.EP_A], l["endpoints"][CONST.EP_B]])
+        links[(ep_key[CONST.EP_A], ep_key[CONST.EP_B])] = l["linkCap"]
+
+    return links
+
 def create_user_toro_links(user_data):
+
+    if "linkCap" not in user_data:
+        return create_user_graph_links(user_data)
+
     links = create_user_mesh_links(user_data)
     toro = user_data["coordinates"]
     rows = len(toro)
     cols = len(toro[0])
     link_cap = user_data["linkCap"]
+
     links_id = len(links) + 1
 
     for i in range(cols):
         if toro[0][i] != 0 and toro[rows-1][i] != 0:
-            links[links_id] = {
-                "endpoints": sorted((toro[0][i], toro[rows-1][i])),
-                "capacity": link_cap,
-                "trafficPerc": 0
-            }
+            links[links_id] = link_format(toro[0][i], toro[rows-1][i], link_cap)
             links_id += 1
 
     for i in range(rows):
         if toro[i][0] != 0 and toro[i][cols-1] != 0:
-            links[links_id] = {
-                "endpoints": sorted((toro[i][0], toro[i][cols-1])),
-                "capacity": link_cap,
-                "trafficPerc": 0
-            }
+            links[links_id] = link_format(toro[i][0], toro[i][cols-1], link_cap)
             links_id += 1
 
     return links
@@ -222,11 +225,7 @@ def create_user_graph_links(user_data):
     link_id = 1
 
     for link in user_data["links"]:
-        links[link_id] = {
-            "endpoints": sorted(link["endpoints"]),
-            "capacity": link["linkCap"],
-            "trafficPerc": 0
-        }
+        links[link_id] = link_format(link["endpoints"][CONST.EP_A], link["endpoints"][CONST.EP_B], link["linkCap"])
         link_id += 1
     
     return links
@@ -246,21 +245,12 @@ def create_auto_toro_links(link_cap, switch_number):
 
     for i in range(cols):
         if switches[0][i] != 0 and switches[rows-1][i] != 0 and [switches[0][i],switches[rows-1][i]] not in linkList:
-            links[links_id] = {
-                "endpoints": sorted((switches[0][i], switches[rows-1][i])),
-                "capacity": link_cap,
-                "trafficPerc": 0
-            }
+            links[links_id] = link_format(switches[0][i], switches[rows-1][i], link_cap)
             links_id += 1
 
     for i in range(rows):
         if switches[i][0] != 0 and switches[i][cols-1] != 0 and [switches[i][0], switches[i][cols-1]] not in linkList:
-            links[links_id] = {
-                "endpoints": sorted((switches[i][0], switches[i][cols-1])),
-                "capacity": link_cap,
-                "trafficPerc": 0
-            }
+            links[links_id] = link_format(switches[i][0], switches[i][cols-1], link_cap)
             links_id += 1
 
     return links, switches
-

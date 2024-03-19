@@ -98,7 +98,10 @@ if user_mode == CONST.AUTO_MODE:
         except ValueError:
             logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")
 elif user_mode == CONST.USER_MODE and graph_type != CONST.FREE_GRAPH:
-    link_capacity = user_data["linkCap"]
+    if "linkCap" in user_data:
+        link_capacity = user_data["linkCap"]
+    else:
+        link_capacity = "mixed"
 
 # LOADING PARAMETERS
 setup = utils.file_loader("./data/setup")
@@ -228,12 +231,7 @@ if user_mode == CONST.USER_MODE:
 else:
     # Defining the switches ip address structure for the auto mode
     MAX_GROUP_IP_ADDRESS = 255
-    ip_address = {
-        "groupA": 10,
-        "groupB": 0,
-        "groupC": 0,
-        "groupD": 0
-    }
+    ip_address = config_gen_utils.ip_address(10, 0, 0, 0)
     switch_ID_counter = 0
     for i in range(1, switch_number + 1):
         if i % (MAX_GROUP_IP_ADDRESS + 1) == 0:

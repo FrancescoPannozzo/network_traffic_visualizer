@@ -113,7 +113,7 @@ class GraphicVisualizer(MovingCameraScene):
                 self.play(*animations, Transform(sim_time_txt,
                                                 Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
                                                 font="Courier New",
-                                                font_size=font_size).next_to(phase_time_txt, UP).set_color(WHITE)),
+                                                font_size=font_size).next_to(phase_time_txt, UP/3).set_color(WHITE)),
                                         Transform(phase_time_txt,
                                                 Text(f"PHASE: {phase}",
                                                 font="Courier New",
@@ -128,7 +128,7 @@ class GraphicVisualizer(MovingCameraScene):
                 self.play(*animations, Transform(sim_time_txt,
                                                     Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}",
                                                         font="Courier New",
-                                                        font_size=font_size).next_to(phase_time_txt, UP).set_color(WHITE)),
+                                                        font_size=font_size).next_to(phase_time_txt, UP/3).set_color(WHITE)),
                                                         run_time=1
                                             )
             
@@ -184,12 +184,13 @@ class GraphicVisualizer(MovingCameraScene):
 
         lines_grid = VGroup()
         mesh_grid = VGroup()
+        EMPTY_SPACE = "0"
 
         for row in range(rows):
             for col in range(cols):
                 opacity = 1
                 # Switches with ID=0 are considered as empty spaces
-                if str(mesh[row][col]) == "0":
+                if str(mesh[row][col]) == EMPTY_SPACE:
                     opacity = 0
                 dot = LabeledDot(str(mesh[row][col]), point=np.array([col * spacing, row * -spacing, 0]))
                 dot.set_opacity(opacity)
@@ -200,13 +201,14 @@ class GraphicVisualizer(MovingCameraScene):
         vertical_links = []
         horizontal_links = []
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.TORO_GRAPH:
-            for i in range(cols):
-                if mesh[0][i] != 0 and mesh[rows-1][i] != 0:
-                    vertical_links.append(sorted([mesh[0][i], mesh[rows-1][i]]))
-                   
-            for i in range(rows):
-                if mesh[i][0] != 0 and mesh[i][cols-1] != 0:
-                    horizontal_links.append(sorted( [mesh[i][0], mesh[i][cols-1]] ))
+            if rows > 2:
+                for i in range(cols):
+                    if mesh[0][i] != 0 and mesh[rows-1][i] != 0:
+                        vertical_links.append(sorted([mesh[0][i], mesh[rows-1][i]]))
+            if cols > 2:
+                for i in range(rows):
+                    if mesh[i][0] != 0 and mesh[i][cols-1] != 0:
+                        horizontal_links.append(sorted( [mesh[i][0], mesh[i][cols-1]] ))
                     
         
         # extracting links data
@@ -245,16 +247,12 @@ class GraphicVisualizer(MovingCameraScene):
             lines_grid.add(line)
 
         #GraphicVisualizer.intro(self, sim_params, network_data)
-
-        #self.add(infos)
         
         grid.add(lines_grid, mesh_grid)
 
         grid.move_to(ORIGIN)
         sim_time_txt.move_to(ORIGIN)
         phase_time_txt.move_to(ORIGIN)
- 
-        #infos.next_to(grid, DOWN)
         phase_time_txt.next_to(grid, UP).set_color(WHITE)
         sim_time_txt.next_to(phase_time_txt, UP/3).set_color(WHITE)
 
@@ -302,7 +300,6 @@ class GraphicVisualizer(MovingCameraScene):
                                 )
             # pushing forward sim time to check
             time_walker += timedelta(milliseconds=show_delta)
-        
 
         self.wait(5)
         logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
@@ -319,7 +316,7 @@ class GraphicVisualizer(MovingCameraScene):
         tex = Text(f"{net_sim_par['simTime']} sec sim time, {net_sim_par['startSimTime']}",
                     font="Courier New",
                     font_size=font_size).scale(1)
-        tex2 = Text(f"{len(network_data[CONST.NETWORK['SWITCHES']])} switches,{graph_type} graph, {capacity} Mbps",
+        tex2 = Text(f"{len(network_data[CONST.NETWORK['SWITCHES']])} switches, {graph_type} graph, {capacity} Mbps",
                     font="Courier New",
                     font_size=font_size).scale(1)
         tex3 = Text(f"{sim_params['averageDelta']}ms average delta, {sim_params['updateDelta']}ms update delta",
@@ -372,8 +369,7 @@ class GraphicVisualizer(MovingCameraScene):
         self.play(AnimationGroup(*animations, lag_ratio=0.2))
 
 
-class SwitchesInfo(MovingCameraScene):
-    """  Graph creator """   
+class SwitchesInfo(MovingCameraScene): 
 
     def construct(self):
         # load network config
@@ -393,5 +389,32 @@ class SwitchesInfo(MovingCameraScene):
             self.add(dot, text)
             prev_dot = dot
             self.play(self.camera.auto_zoom([dot, text], margin=1), FadeIn(dot), FadeIn(text), run_time=2)
+
+        self.wait()
+
+
+class LinksInfo(MovingCameraScene): 
+
+    def construct(self):
+        # load network config
+        network_data = utils.file_loader("./data/network")
+
+        switches = network_data[CONST.NETWORK["SWITCHES"]]
+        links = network_data[CONST.NETWORK["LINKS"]]
+
+        for link, content in links.items():
+
+            ep_a = LabeledDot(str(content["endpoints"][CONST.EP_A]))
+            ep_b = LabeledDot(str(content["endpoints"][CONST.EP_B]))
+            ep_a.move_to(LEFT)
+            ep_b.move_to(RIGHT)
+
+            line = Line(ep_a, ep_b)
+            line_text = Text(str(content["capacity"]))
+            line_text.next_to(line, DOWN)
+
+            self.add(ep_a, ep_b, line, line_text)
+            self.play(FadeIn(ep_a, ep_b, line, line_text), run_time=2)
+            self.play(FadeOut(ep_a, ep_b, line, line_text), run_time=2)
 
         self.wait()
