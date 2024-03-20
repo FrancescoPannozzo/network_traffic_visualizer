@@ -1,4 +1,5 @@
 ---
+# Tree example
 data:
   graphType: graph
   coordinates:

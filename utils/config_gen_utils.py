@@ -3,8 +3,9 @@
 import random
 import math
 from datetime import timedelta
-from utils import utils
+from utils import utils, exceptions
 from utils import CONSTANTS as CONST
+import sys
 
 
 # Update traffic percentage
@@ -141,7 +142,7 @@ def ip_address(groupA, groupB, groupC, groupD):
 
 def create_user_mesh_links(user_data):
 
-    if "linkCap" not in user_data:
+    if "links" in user_data:
         return create_user_graph_links(user_data)
 
     mesh = user_data["coordinates"]
@@ -149,7 +150,7 @@ def create_user_mesh_links(user_data):
     cols = len(mesh[0])
     link_id = 1
     data_links = {}
-    link_cap = user_data["links"]
+    link_cap = user_data["linkCap"]
 
     for r in range(0, rows):
         for c in range(0, cols):
@@ -197,15 +198,19 @@ def extract_custom_links(data_links):
 
 def create_user_toro_links(user_data):
 
-    if "linkCap" not in user_data:
+    if "links" in user_data:
         return create_user_graph_links(user_data)
 
+    try:
+        toro = user_data["coordinates"]
+        link_cap = user_data["linkCap"]
+    except KeyError as e:
+        print(exceptions.CUSTOM_FILE_ERROR_MSG)
+        print(f"{e} missing or badly formatted")
+
     links = create_user_mesh_links(user_data)
-    toro = user_data["coordinates"]
     rows = len(toro)
     cols = len(toro[0])
-    link_cap = user_data["linkCap"]
-
     links_id = len(links) + 1
 
     for i in range(cols):
@@ -224,9 +229,25 @@ def create_user_graph_links(user_data):
     links = {}
     link_id = 1
 
-    for link in user_data["links"]:
-        links[link_id] = link_format(link["endpoints"][CONST.EP_A], link["endpoints"][CONST.EP_B], link["linkCap"])
-        link_id += 1
+    if "linkCap" not in user_data and "links" in user_data:
+        try:
+            for link in user_data["links"]:
+                links[link_id] = link_format(link["endpoints"][CONST.EP_A], link["endpoints"][CONST.EP_B], link["linkCap"])
+                link_id += 1
+        except KeyError as e:
+            print("WARNING, the custom file seems to be not formatted properly, please read the README for infos")
+            print(f"{e} key missing in custom file or not properly formatted")
+            sys.exit()
+    elif "linkCap" in user_data and "links" in user_data:
+        try:
+            link_cap = user_data["linkCap"]
+            for link in user_data["links"]:
+                links[link_id] = link_format(link[CONST.EP_A], link[CONST.EP_B], link_cap)
+                link_id += 1
+        except KeyError as e:
+            print("WARNING, the custom file seems to be not formatted properly, please read the README for infos")
+            print(f"{e} key missing in custom file or not properly formatted")
+            sys.exit()
     
     return links
 

@@ -35,13 +35,23 @@ class GraphicVisualizer(MovingCameraScene):
         network_data = utils.file_loader("./data/network")
         # load analyzed data file
         traffic_data = utils.file_loader("./data/analyzed_data")
+
+        setup_data = utils.file_loader("./data/setup")
+        if setup_data["colorblind"] == "yes":
+            r = 0
+            g = 255
+            b = 255
+        else:
+            r = 0
+            g = 255
+            b = 0
+
         # load traffic colors
-        traffic_perc_colors = utils.traffic_colors_gen()
+        traffic_perc_colors = utils.traffic_colors_gen(r, g, b)
       
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.COMPLETE_GRAPH:
             logging.info("The graph type found is complete, rendering..")
             GraphicVisualizer.complete_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time)
-
         else:
             logging.info("The graph type found is mesh, rendering..")
             GraphicVisualizer.mesh_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time)
@@ -70,6 +80,7 @@ class GraphicVisualizer(MovingCameraScene):
 
         stroke_width = 4
         font_size = 20
+        START_COLOR = BLACK
         if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 100:
             font_size = 40
         if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 20:
@@ -86,7 +97,7 @@ class GraphicVisualizer(MovingCameraScene):
         #layout_scale = (len(switches))/3
         # graph creation
         grafo = Graph(switches, links, labels=True, layout="circular", layout_scale=math.sqrt(len(switches)), vertex_config={"color":WHITE},
-                      edge_config={"stroke_width": stroke_width, "color":CONST.ZERO_TRAFFIC}
+                      edge_config={"stroke_width": stroke_width, "color":START_COLOR}
                       )
         
         infos = GraphicVisualizer.show_info(self, sim_params, network_data, grafo, font_size)
@@ -198,26 +209,44 @@ class GraphicVisualizer(MovingCameraScene):
                 #grid.add(dot)
                 mesh_grid.add(dot)
 
+
+        data_links = {}
+        for _, content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]].items():
+            data_links[(content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B])] = content["traffic"]
+
         vertical_links = []
         horizontal_links = []
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.TORO_GRAPH:
             if rows > 2:
                 for i in range(cols):
                     if mesh[0][i] != 0 and mesh[rows-1][i] != 0:
-                        vertical_links.append(sorted([mesh[0][i], mesh[rows-1][i]]))
+                        if (mesh[0][i], mesh[rows-1][i]) not in data_links:
+                            print("link contrario trovato?", (mesh[rows-1][i], mesh[0][i]) in data_links)
+                            traffic =  data_links[(mesh[rows-1][i], mesh[0][i])]
+                            data_links.pop(mesh[rows-1][i], mesh[0][i])
+                            data_links[(mesh[0][i], mesh[rows-1][i])] = traffic
+                        vertical_links.append((mesh[0][i], mesh[rows-1][i]))
             if cols > 2:
                 for i in range(rows):
                     if mesh[i][0] != 0 and mesh[i][cols-1] != 0:
-                        horizontal_links.append(sorted( [mesh[i][0], mesh[i][cols-1]] ))
-                    
+                        if (mesh[i][0], mesh[i][cols-1]) not in data_links:
+                            print("link contrario trovato?", (mesh[i][cols-1], mesh[i][0]) in data_links)
+                            traffic =  data_links[(mesh[i][cols-1], mesh[i][0])]
+                            data_links.pop(mesh[i][cols-1], mesh[i][0])
+                            data_links[(mesh[i][0], mesh[i][cols-1])] = traffic
+                        horizontal_links.append((mesh[i][0], mesh[i][cols-1]))
+
+        # CONST.ZERO_TRAFFIC
+        #START_COLOR = traffic_perc_colors[0]['hexValue']
+        START_COLOR = BLACK
         
         # extracting links data
         links = {}
-        for _, content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]].items():
-            dot_a = graph_mesh[content["endpoints"][CONST.EP_A]]
-            dot_b = graph_mesh[content["endpoints"][CONST.EP_B]]
+        for link, content in data_links.items():
+            dot_a = graph_mesh[link[CONST.EP_A]]
+            dot_b = graph_mesh[link[CONST.EP_B]]
             line = None
-            if sorted([content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]]) in vertical_links:
+            if (link[CONST.EP_A], link[CONST.EP_B]) in vertical_links:
                 #line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=0.8 + (0.01 * rows), color=CONST.ZERO_TRAFFIC)
                 #line.set_color(CONST.ZERO_TRAFFIC)
                 dot_a_coord = dot_a.get_center()
@@ -228,8 +257,8 @@ class GraphicVisualizer(MovingCameraScene):
                 dot_b_coord[1] += 0.5
                 points = [dot_a.get_center(), dot_a_coord, dot_b_coord, dot_b.get_center()]
                 line = VMobject(stroke_width=2).set_points_as_corners(points)
-                line.set_color(CONST.ZERO_TRAFFIC)
-            elif sorted([content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]]) in horizontal_links:
+                line.set_color(START_COLOR)
+            elif (link[CONST.EP_A], link[CONST.EP_B]) in horizontal_links:
                 #line = ArcBetweenPoints(dot_a.get_center(), dot_b.get_center(), angle=0.8 + (0.01 * cols), color=CONST.ZERO_TRAFFIC)
                 #line.set_color(CONST.ZERO_TRAFFIC)
                 dot_a_coord = dot_a.get_center()
@@ -240,13 +269,16 @@ class GraphicVisualizer(MovingCameraScene):
                 dot_b_coord[1] -= 0.6
                 points = [dot_a.get_center(), dot_a_coord, dot_b_coord, dot_b.get_center()]
                 line = VMobject(stroke_width=2).set_points_as_corners(points)
-                line.set_color(CONST.ZERO_TRAFFIC)
+                line.set_color(START_COLOR)
             else:
-                line = Line(dot_a.get_center(), dot_b.get_center(), color=CONST.ZERO_TRAFFIC, stroke_width=8)
-            links[(content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B])] = line
+                line = Line(dot_a.get_center(), dot_b.get_center(), color=START_COLOR, stroke_width=8)
+            links[(link[CONST.EP_A], link[CONST.EP_B])] = line
             lines_grid.add(line)
 
         #GraphicVisualizer.intro(self, sim_params, network_data)
+        
+        for link, content in data_links.items():
+            print(link)
         
         grid.add(lines_grid, mesh_grid)
 
@@ -270,9 +302,9 @@ class GraphicVisualizer(MovingCameraScene):
             # temp LabeledDot structure
             animations = []
             # definig all the traffic color links at timeWalker time
-            for _, content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]].items():
-                color_perc = int(content["traffic"][traffic_count])
-                animations.append(links[(content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B])].animate.set_color(traffic_perc_colors[color_perc]["hexValue"]))
+            for link, content in data_links.items():
+                color_perc = int(content[traffic_count])
+                animations.append(links[(link[CONST.EP_A], link[CONST.EP_B])].animate.set_color(traffic_perc_colors[color_perc]["hexValue"]))
             # playing animations
 
             traffic_count += 1
@@ -393,16 +425,16 @@ class SwitchesInfo(MovingCameraScene):
         self.wait()
 
 
-class LinksInfo(MovingCameraScene): 
+class LinksInfo(MovingCameraScene):
 
     def construct(self):
         # load network config
         network_data = utils.file_loader("./data/network")
 
-        switches = network_data[CONST.NETWORK["SWITCHES"]]
+        #switches = network_data[CONST.NETWORK["SWITCHES"]]
         links = network_data[CONST.NETWORK["LINKS"]]
 
-        for link, content in links.items():
+        for _, content in links.items():
 
             ep_a = LabeledDot(str(content["endpoints"][CONST.EP_A]))
             ep_b = LabeledDot(str(content["endpoints"][CONST.EP_B]))

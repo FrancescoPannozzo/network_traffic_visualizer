@@ -99,7 +99,7 @@ def rgb_to_hex(r, g, b):
     """
     return '#{:02x}{:02x}{:02x}'.format(r, g, b)
 
-def traffic_colors_gen():
+def traffic_colors_gen(r, g, b):
     """ A traffic colors generator, green to red 
 
     Returns:
@@ -108,9 +108,10 @@ def traffic_colors_gen():
     MID_TRAFFIC = 50
     MAX_TRAFFIC = 100
     hexColors = {}
-    r = 0
-    g = 255
-    b = 0
+    # green to red
+    #r = 0
+    #g = 255
+    #b = 0
 
     for i in range(0, MAX_TRAFFIC+1):
         if i <= MID_TRAFFIC:
@@ -121,7 +122,7 @@ def traffic_colors_gen():
         hexColors[i] = {"hexValue": rgb_to_hex(r, g, b)}
     
     return hexColors
-
+    
 def switches_aspect_ratio(switch_number):
     side = math.sqrt(switch_number)
     

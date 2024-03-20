@@ -1,0 +1,39 @@
+---
+data:
+  graphType: toro
+  coordinates:
+    - [21, 0, 12, 0]
+    - [30, 0, 14, 55]
+    - [61, 71, 80, 19]
+  switches:
+    21:
+      ip: "123.123.123.0"
+      switchName: Anthem
+    12:
+      ip: "123.123.123.1"
+      switchName: Beta
+    30:
+      ip: "123.123.123.2"
+      switchName: Cyber
+    14:
+      ip: "123.123.123.3"
+      switchName: Dafne
+    55:
+      ip: "123.123.123.4"
+      switchName: Eclipse
+    61:
+      ip: "123.123.123.5"
+      switchName: Fox
+    71:
+      ip: "123.123.123.6"
+      switchName: Gg
+    80:
+      ip: "123.123.123.7"
+      switchName: H20
+    19:
+      ip: "123.123.123.8"
+      switchName: Italy
+  linkCap: 10
+  phases:
+    2024-01-01 00:00:01: "phase1"
+    2024-01-01 00:00:02: "phase2"
