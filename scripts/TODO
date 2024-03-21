@@ -11,3 +11,5 @@ APPUNTI MEETING
 Usage: manim [OPTIONS] COMMAND [ARGS]...
 
 Animation engine for explanatory math videos.
+
+- controllo se file custom utente è ben formattato

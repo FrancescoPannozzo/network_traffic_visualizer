@@ -21,7 +21,7 @@ logging.basicConfig(
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
         # Adding one handler to manage the messages on a file
-        logging.FileHandler('graphic_visualizer_log.txt', mode='w'),
+        logging.FileHandler('./log_files/graphic_visualizer_log.txt', mode='w'),
         # Adding one handler to see messages on console
         logging.StreamHandler()
     ]
