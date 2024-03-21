@@ -199,7 +199,8 @@ def extract_custom_links(data_links):
 def create_user_toro_links(user_data):
 
     if "links" in user_data:
-        return create_user_graph_links(user_data)
+        links = create_user_graph_links(user_data)
+        return links
 
     try:
         toro = user_data["coordinates"]

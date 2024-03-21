@@ -97,7 +97,7 @@ if user_mode == CONST.AUTO_MODE:
                 logging.warning("WARNING, values must be one of these [10, 100, 1000].\n")
         except ValueError:
             logging.warning("WARNING, value is not an int, please retry, choose 1 or 2.\n")
-elif user_mode == CONST.USER_MODE and graph_type != CONST.FREE_GRAPH:
+elif user_mode == CONST.USER_MODE:
     if "linkCap" in user_data:
         link_capacity = user_data["linkCap"]
     else:

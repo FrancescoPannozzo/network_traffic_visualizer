@@ -13,6 +13,7 @@ from utils import utils, graphic_visualizer_utils
 from utils import CONSTANTS as CONST
 from datetime import datetime, timedelta
 import math
+import sys
 
 # Logger config
 logging.basicConfig(
@@ -80,7 +81,7 @@ class GraphicVisualizer(MovingCameraScene):
 
         stroke_width = 4
         font_size = 20
-        START_COLOR = BLACK
+        START_COLOR = traffic_perc_colors[0]['hexValue']
         if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 100:
             font_size = 40
         if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 20:
@@ -217,28 +218,37 @@ class GraphicVisualizer(MovingCameraScene):
         vertical_links = []
         horizontal_links = []
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.TORO_GRAPH:
-            if rows > 2:
-                for i in range(cols):
-                    if mesh[0][i] != 0 and mesh[rows-1][i] != 0:
-                        if (mesh[0][i], mesh[rows-1][i]) not in data_links:
-                            print("link contrario trovato?", (mesh[rows-1][i], mesh[0][i]) in data_links)
-                            traffic =  data_links[(mesh[rows-1][i], mesh[0][i])]
-                            data_links.pop(mesh[rows-1][i], mesh[0][i])
-                            data_links[(mesh[0][i], mesh[rows-1][i])] = traffic
-                        vertical_links.append((mesh[0][i], mesh[rows-1][i]))
-            if cols > 2:
-                for i in range(rows):
-                    if mesh[i][0] != 0 and mesh[i][cols-1] != 0:
-                        if (mesh[i][0], mesh[i][cols-1]) not in data_links:
-                            print("link contrario trovato?", (mesh[i][cols-1], mesh[i][0]) in data_links)
-                            traffic =  data_links[(mesh[i][cols-1], mesh[i][0])]
-                            data_links.pop(mesh[i][cols-1], mesh[i][0])
-                            data_links[(mesh[i][0], mesh[i][cols-1])] = traffic
-                        horizontal_links.append((mesh[i][0], mesh[i][cols-1]))
+            try:
+                if rows > 2:
+                    for i in range(cols):
+                        if mesh[0][i] != 0 and mesh[rows-1][i] != 0:
+                            if (mesh[0][i], mesh[rows-1][i]) not in data_links:
+                                print("link contrario trovato?", (mesh[rows-1][i], mesh[0][i]) in data_links)
+                                traffic =  data_links[(mesh[rows-1][i], mesh[0][i])]
+                                data_links.pop((mesh[rows-1][i], mesh[0][i]))
+                                data_links[(mesh[0][i], mesh[rows-1][i])] = traffic
+                            vertical_links.append((mesh[0][i], mesh[rows-1][i]))
+                if cols > 2:
+                    for i in range(rows):
+                        if mesh[i][0] != 0 and mesh[i][cols-1] != 0:
+                            if (mesh[i][0], mesh[i][cols-1]) not in data_links:
+                                print("link contrario trovato?", (mesh[i][cols-1], mesh[i][0]) in data_links)
+                                traffic =  data_links[(mesh[i][cols-1], mesh[i][0])]
+                                data_links.pop((mesh[i][cols-1], mesh[i][0]))
+                                data_links[(mesh[i][0], mesh[i][cols-1])] = traffic
+                            horizontal_links.append((mesh[i][0], mesh[i][cols-1]))
+            except KeyError as e:
+                logging.error("The arc %s is not present in the user data, please check your custom setting yaml file", e)
+                logging.info("Exiting program now")
+                sys.exit()
 
         # CONST.ZERO_TRAFFIC
         #START_COLOR = traffic_perc_colors[0]['hexValue']
-        START_COLOR = BLACK
+        START_COLOR = traffic_perc_colors[0]['hexValue']
+
+        logging.debug("Printing data_links:")
+        for l in data_links:
+            logging.debug(l)
         
         # extracting links data
         links = {}
@@ -342,7 +352,6 @@ class GraphicVisualizer(MovingCameraScene):
         graph_type = net_sim_par['graphType']
 
         if net_sim_par['graphType'] == CONST.FREE_GRAPH:
-            capacity = "mixed"
             graph_type = "custom"
 
         tex = Text(f"{net_sim_par['simTime']} sec sim time, {net_sim_par['startSimTime']}",
