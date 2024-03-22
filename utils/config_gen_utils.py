@@ -85,11 +85,7 @@ def create_auto_complete_links(link_cap, switch_number):
         for p in range(i, switch_number + 1):
             if i != p:
                 if link_id not in links:
-                    links[link_id] = {
-                        "endpoints": sorted([i, p]),
-                        "capacity": link_cap,
-                        "trafficPerc": 0
-                        }
+                    links[link_id] = link_format(i, p, link_cap)
                     link_id += 1
     return links
 
@@ -165,15 +161,9 @@ def create_user_mesh_links(user_data):
 
     return data_links
 
-def check_user_links_cap(mixed_mbps, links, ep_a, ep_b, user_data):
-    if mixed_mbps:
-        return links[frozenset({ep_a, ep_b})]
-    return user_data["linkCap"]
-
 
 def create_auto_phases(start_time, sim_time):
     setup = utils.file_loader("./data/setup")
-
     average_delta = setup["averageDelta"]
     phase_intervall = timedelta(milliseconds=1000)
     timewalker = start_time + timedelta(milliseconds=average_delta)
@@ -199,8 +189,7 @@ def extract_custom_links(data_links):
 def create_user_toro_links(user_data):
 
     if "links" in user_data:
-        links = create_user_graph_links(user_data)
-        return links
+        return create_user_graph_links(user_data)
 
     try:
         toro = user_data["coordinates"]
@@ -230,26 +219,21 @@ def create_user_graph_links(user_data):
     links = {}
     link_id = 1
 
-    if "linkCap" not in user_data and "links" in user_data:
-        try:
+    try:
+        if "linkCap" not in user_data and "links" in user_data:
             for link in user_data["links"]:
                 links[link_id] = link_format(link["endpoints"][CONST.EP_A], link["endpoints"][CONST.EP_B], link["linkCap"])
                 link_id += 1
-        except KeyError as e:
-            print("WARNING, the custom file seems to be not formatted properly, please read the README for infos")
-            print(f"{e} key missing in custom file or not properly formatted")
-            sys.exit()
-    elif "linkCap" in user_data and "links" in user_data:
-        try:
+        elif "linkCap" in user_data and "links" in user_data:
             link_cap = user_data["linkCap"]
             for link in user_data["links"]:
                 links[link_id] = link_format(link[CONST.EP_A], link[CONST.EP_B], link_cap)
                 link_id += 1
-        except KeyError as e:
-            print("WARNING, the custom file seems to be not formatted properly, please read the README for infos")
-            print(f"{e} key missing in custom file or not properly formatted")
-            sys.exit()
-    
+    except KeyError as e:
+        print("WARNING, the custom file seems to be not formatted properly, please read the README for infos")
+        print(f"{e} key missing in custom file or not properly formatted")
+        sys.exit()
+
     return links
 
 
@@ -259,7 +243,6 @@ def create_auto_toro_links(link_cap, switch_number):
     rows = len(switches)
     cols = len(switches[0])
     links_id = len(links) + 1
-
     linkList = []
 
     for _, content in links.items():

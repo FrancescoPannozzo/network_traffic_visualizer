@@ -101,7 +101,7 @@ class GraphicVisualizer(MovingCameraScene):
                       edge_config={"stroke_width": stroke_width, "color":START_COLOR}
                       )
         
-        infos = GraphicVisualizer.show_info(self, sim_params, network_data, grafo, font_size)
+        infos = GraphicVisualizer.show_infos(self, sim_params, network_data, grafo, font_size)
 
         phase_time_txt.next_to(grafo, UP)
         sim_time_txt.next_to(phase_time_txt, UP/3)
@@ -217,7 +217,7 @@ class GraphicVisualizer(MovingCameraScene):
 
         vertical_links = []
         horizontal_links = []
-        if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.TORO_GRAPH:
+        if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.TORUS_GRAPH:
             try:
                 if rows > 2:
                     for i in range(cols):
@@ -302,7 +302,7 @@ class GraphicVisualizer(MovingCameraScene):
         self.add(phase_time_txt)
         self.add(sim_time_txt)
 
-        infos = GraphicVisualizer.show_info(self, sim_params, network_data, grid, font_size)
+        infos = GraphicVisualizer.show_infos(self, sim_params, network_data, grid, font_size)
         
         self.play(FadeIn(infos), FadeIn(grid), FadeIn(sim_time_txt), FadeIn(phase_time_txt), self.camera.auto_zoom([grid, sim_time_txt, phase_time_txt, infos], margin=1), run_time=0.5)
 
@@ -346,7 +346,7 @@ class GraphicVisualizer(MovingCameraScene):
         self.wait(5)
         logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
 
-    def show_info(self, sim_params, network_data, grid, font_size):
+    def show_infos(self, sim_params, network_data, grid, font_size):
         net_sim_par = network_data[CONST.NETWORK["SIM_PARAMS"]]
         capacity = net_sim_par['linkCap']
         graph_type = net_sim_par['graphType']
@@ -410,7 +410,7 @@ class GraphicVisualizer(MovingCameraScene):
         self.play(AnimationGroup(*animations, lag_ratio=0.2))
 
 
-class SwitchesInfo(MovingCameraScene): 
+class SwitchesInfo(MovingCameraScene):
 
     def construct(self):
         # load network config
@@ -430,6 +430,9 @@ class SwitchesInfo(MovingCameraScene):
             self.add(dot, text)
             prev_dot = dot
             self.play(self.camera.auto_zoom([dot, text], margin=1), FadeIn(dot), FadeIn(text), run_time=2)
+
+
+        LinksInfo.construct(self)
 
         self.wait()
 
@@ -459,3 +462,81 @@ class LinksInfo(MovingCameraScene):
             self.play(FadeOut(ep_a, ep_b, line, line_text), run_time=2)
 
         self.wait()
+
+class NetworkData(MovingCameraScene):
+    def construct(self):
+        network_data = utils.file_loader("./data/network")
+        switches = {}
+        links = network_data[CONST.NETWORK["LINKS"]]
+
+        for switch in network_data[CONST.NETWORK["SWITCHES"]]:
+            switches[switch["switchID"]] = { "address": switch["address"], "switchName": switch["switchName"]}
+
+        switch_to_show = []
+        infos_to_show = []
+        switch_show_count = 1
+        switch_count = 1
+        for switch_key, content in switches.items():
+            dot = LabeledDot(str(switch_key))
+            text = Text(f"Name: {content['switchName']}\nIP: {content['address']}", font="Courier New", font_size=20)
+            switch_count += 1
+            switch_to_show.append(dot)
+            infos_to_show.append(text)
+            if switch_show_count % 6 == 1:
+                dot.to_edge(UP)
+            else:
+                dot.next_to(prev_text, DOWN)
+            text.next_to(dot, DOWN)
+            FadeIn(dot, text, shift=RIGHT)
+            prev_text = text
+            switch_show_count += 1
+            self.play(FadeIn(dot, text, shift=LEFT), run_time=0.5)
+            if switch_show_count == 6 or switch_count == len(switches)+1:
+                switch_show_count = 1
+                switch_animations = []
+                text_animations = []
+                for i in switch_to_show:
+                    switch_animations.append(FadeOut(i, shift=LEFT))
+                for i in infos_to_show:   
+                    text_animations.append(FadeOut(i, shift=LEFT))
+                self.wait(2)
+                self.play(AnimationGroup(*switch_animations), AnimationGroup(*text_animations), run_time = 0.5)
+                switch_to_show = []
+                infos_to_show = []
+
+        link_show_count = 1
+        link_count = 1
+        links_to_show = []
+        y = 3.5
+        for _, content in links.items():
+            ep_a = LabeledDot(str(content["endpoints"][CONST.EP_A]))
+            ep_b = LabeledDot(str(content["endpoints"][CONST.EP_B]))
+            text = Text(f"{content['capacity']}", font="Courier New", font_size=20)
+            link_count += 1
+            if link_show_count % 9 == 1:
+                ep_a.move_to([-3, y, 0])
+                ep_b.move_to([3, y, 0])
+            else:
+                y -= 0.9
+                ep_a.move_to([-3, y, 0])
+                ep_b.move_to([3, y, 0])
+            line = Line(ep_a, ep_b)
+            text.next_to(line, DOWN)
+
+            links_to_show.append(ep_a)
+            links_to_show.append(ep_b)
+            links_to_show.append(line)
+            links_to_show.append(text)
+            FadeIn(ep_a, ep_b, line, text, shift=RIGHT)
+            link_show_count += 1
+            self.play(FadeIn(ep_a, ep_b, line, text, shift=LEFT), run_time=0.5)
+            if link_show_count == 9 or link_count == len(links)+1:
+                link_show_count = 1
+                links_animations = []
+                for i in links_to_show:
+                    links_animations.append(FadeOut(i, shift=LEFT))
+                self.wait(2)
+                self.play(AnimationGroup(*links_animations), run_time = 0.5)
+                links_to_show = []
+                y = 3.5
+

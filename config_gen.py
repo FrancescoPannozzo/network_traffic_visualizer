@@ -69,7 +69,7 @@ else:
     while not CORRECT_CHOOSE:
         switch_number = input("Please insert the switch number min 2 - max 1000:\n")
         graph_type = input("Please enter c if you want a complete graph\n"
-                            "enter m for a mesh graph, t for a toro graph\n")
+                            "enter m for a mesh graph, t for a torus graph\n")
         try:
             switch_number = int(switch_number)
             if switch_number in range(2, 1001) and graph_type in ["c", "m", "t"]:
@@ -77,7 +77,7 @@ else:
                 graph_types = {
                     "c": "complete",
                     "m": "mesh",
-                    "t": "toro"
+                    "t": "torus"
                 }
                 graph_type = graph_types[graph_type]
             else:
@@ -103,6 +103,7 @@ elif user_mode == CONST.USER_MODE:
     else:
         link_capacity = "mixed"
 
+
 # LOADING PARAMETERS
 setup = utils.file_loader("./data/setup")
 # Defining the simulation start time point
@@ -127,7 +128,7 @@ logging.info("Creating links..")
 if user_mode == CONST.USER_MODE:
     if user_data["graphType"] == CONST.MESH_GRAPH:
         links = config_gen_utils.create_user_mesh_links(user_data)
-    elif user_data["graphType"] == CONST.TORO_GRAPH:
+    elif user_data["graphType"] == CONST.TORUS_GRAPH:
         links = config_gen_utils.create_user_toro_links(user_data)
     elif user_data["graphType"] == CONST.FREE_GRAPH:
         links = config_gen_utils.create_user_graph_links(user_data)
@@ -138,10 +139,11 @@ else:
         links = config_gen_utils.create_auto_complete_links(link_capacity, switch_number)
     elif graph_type == CONST.MESH_GRAPH:
         links, switches = config_gen_utils.create_auto_mesh_links(link_capacity, switch_number)
-    elif graph_type == CONST.TORO_GRAPH:
+    elif graph_type == CONST.TORUS_GRAPH:
         links, switches = config_gen_utils.create_auto_toro_links(link_capacity, switch_number)
 
 logging.info("..links creation done!")
+
 logging.debug("Links created are:")
 for link, content in links.items():
     logging.debug("%s: %s", link, content)

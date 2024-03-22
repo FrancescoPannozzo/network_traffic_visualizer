@@ -6,154 +6,147 @@
   2:
     capacity: 10
     endpoints:
-    - 1
+    - 2
     - 3
   3:
     capacity: 10
     endpoints:
-    - 2
+    - 3
     - 4
   4:
     capacity: 10
     endpoints:
-    - 2
+    - 4
     - 5
   5:
     capacity: 10
     endpoints:
-    - 3
+    - 1
     - 6
   6:
     capacity: 10
     endpoints:
-    - 3
+    - 6
     - 7
   7:
     capacity: 10
     endpoints:
-    - 4
-    - 8
+    - 2
+    - 7
   8:
+    capacity: 10
+    endpoints:
+    - 7
+    - 8
+  9:
+    capacity: 10
+    endpoints:
+    - 3
+    - 8
+  10:
+    capacity: 10
+    endpoints:
+    - 8
+    - 9
+  11:
     capacity: 10
     endpoints:
     - 4
     - 9
-  9:
+  12:
+    capacity: 10
+    endpoints:
+    - 9
+    - 10
+  13:
     capacity: 10
     endpoints:
     - 5
     - 10
-  10:
-    capacity: 10
-    endpoints:
-    - 5
-    - 11
-  11:
-    capacity: 10
-    endpoints:
-    - 6
-    - 12
-  12:
-    capacity: 10
-    endpoints:
-    - 6
-    - 13
-  13:
-    capacity: 10
-    endpoints:
-    - 7
-    - 14
   14:
     capacity: 10
     endpoints:
+    - 6
+    - 11
+  15:
+    capacity: 10
+    endpoints:
+    - 11
+    - 12
+  16:
+    capacity: 10
+    endpoints:
     - 7
-    - 15
-- - address: 123.123.123.0
+    - 12
+  17:
+    capacity: 10
+    endpoints:
+    - 12
+    - 13
+  18:
+    capacity: 10
+    endpoints:
+    - 8
+    - 13
+- - address: 10.0.0.1
     switchID: 1
-    switchName: A
-  - address: 123.123.123.1
+    switchName: switch1
+  - address: 10.0.0.2
     switchID: 2
-    switchName: B
-  - address: 123.123.123.2
+    switchName: switch2
+  - address: 10.0.0.3
     switchID: 3
-    switchName: C
-  - address: 123.123.123.3
+    switchName: switch3
+  - address: 10.0.0.4
     switchID: 4
-    switchName: D
-  - address: 123.123.123.4
+    switchName: switch4
+  - address: 10.0.0.5
     switchID: 5
-    switchName: E
-  - address: 123.123.123.5
+    switchName: switch5
+  - address: 10.0.0.6
     switchID: 6
-    switchName: F
-  - address: 123.123.123.6
+    switchName: switch6
+  - address: 10.0.0.7
     switchID: 7
-    switchName: G
-  - address: 123.123.123.7
+    switchName: switch7
+  - address: 10.0.0.8
     switchID: 8
-    switchName: H
-  - address: 123.123.123.8
+    switchName: switch8
+  - address: 10.0.0.9
     switchID: 9
-    switchName: I
-  - address: 123.123.123.9
+    switchName: switch9
+  - address: 10.0.0.10
     switchID: 10
-    switchName: L
-  - address: 123.123.123.10
+    switchName: switch10
+  - address: 10.0.0.11
     switchID: 11
-    switchName: M
-  - address: 123.123.123.11
+    switchName: switch11
+  - address: 10.0.0.12
     switchID: 12
-    switchName: N
-  - address: 123.123.123.12
+    switchName: switch12
+  - address: 10.0.0.13
     switchID: 13
-    switchName: O
-  - address: 123.123.123.13
-    switchID: 14
-    switchName: P
-  - address: 123.123.123.14
-    switchID: 15
-    switchName: Q
-- graphType: graph
-  isCustom: true
+    switchName: switch13
+- graphType: mesh
+  isCustom: false
   linkCap: 10
   simTime: 3
   startSimTime: 2024-01-01 00:00:00
 - coordinates:
-  - - 0
-    - 0
-    - 0
-    - 0
-    - 1
-    - 0
-    - 0
-    - 0
-    - 0
-  - - 0
-    - 0
+  - - 1
     - 2
-    - 0
-    - 0
-    - 0
     - 3
-    - 0
-    - 0
-  - - 0
     - 4
-    - 0
     - 5
-    - 0
-    - 6
-    - 0
+  - - 6
     - 7
-    - 0
-  - - 8
+    - 8
     - 9
     - 10
-    - 11
+  - - 11
     - 12
     - 13
-    - 14
     - 0
-    - 15
+    - 0
 - 2024-01-01 00:00:01: phase1
   2024-01-01 00:00:02: phase2
