@@ -30,12 +30,6 @@ logging.basicConfig(
     ]
 )
 
-""" # Setting the command line option to load the network config file and the packets file
-parser = argparse.ArgumentParser()
-parser.add_argument("networkFile", help="The networkFile you want to load")
-parser.add_argument("packetsFile", help="The packetsFile you want to load")
-args = parser.parse_args() """
-
 logging.info("Loading files..")
 # networkData:list composed by a link dict, a switch list and network parameters dict
 # packetsData:composed by a packets dict

@@ -259,3 +259,18 @@ def create_auto_toro_links(link_cap, switch_number):
             links_id += 1
 
     return links, switches
+
+def check_custom_file(user_data):
+    rows = len(user_data["coordinates"])
+    cols = len(user_data["coordinates"][0])
+
+    try:
+        for row in range(rows):
+            for col in range(cols):
+                if user_data["coordinates"][row][col] != 0 and user_data["coordinates"][row][col] not in user_data["switches"]:
+                    raise exceptions.CustomFileError
+    except exceptions.CustomFileError as e:
+        print(e)
+        print("Switch IDs conflict in custom_graph.yaml file: keys coordinates/switches")
+        print("Exiting program now")
+        sys.exit()

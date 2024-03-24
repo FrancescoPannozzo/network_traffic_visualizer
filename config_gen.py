@@ -61,6 +61,7 @@ if user_mode == CONST.USER_MODE:
     logging.info("You choosed the user mode!")
     logging.info("Loading user file..")
     user_data = utils.file_loader("./data/custom_graph")
+    config_gen_utils.check_custom_file(user_data["data"])
     user_data = user_data["data"]
     switch_number = len(user_data["switches"])
     graph_type = user_data["graphType"]
@@ -116,8 +117,6 @@ PPS_DELTA = setup["updateDelta"]
 # Defining packets size (MB) (example 1518 Bytes ipv4 max payload, 4000 datacenters)
 PACKET_SIZE = setup["packetSize"]
 
-#logging.debug("PPS: %f", PPS)
-
 # The arcs representing the links connecting the switches (nodes)
 links = {}
 # Switches
@@ -132,8 +131,6 @@ if user_mode == CONST.USER_MODE:
         links = config_gen_utils.create_user_toro_links(user_data)
     elif user_data["graphType"] == CONST.FREE_GRAPH:
         links = config_gen_utils.create_user_graph_links(user_data)
-
-    logging.debug("USER LINKS: %s", links)
 else:
     if graph_type == CONST.COMPLETE_GRAPH:
         links = config_gen_utils.create_auto_complete_links(link_capacity, switch_number)
@@ -144,9 +141,9 @@ else:
 
 logging.info("..links creation done!")
 
-logging.debug("Links created are:")
+logging.info("Links created are:")
 for link, content in links.items():
-    logging.debug("%s: %s", link, content)
+    logging.info("%s: %s", link, content)
 
 # Creating traffic packets
 # Each fraction of a second (PPS_DELTA) of simulation creates a number of packets
