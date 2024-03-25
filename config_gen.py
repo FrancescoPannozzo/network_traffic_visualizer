@@ -219,13 +219,6 @@ for link, content in links.items():
     }
 
 if user_mode == CONST.USER_MODE:
-    """     for i in range(1, switch_number + 1):
-        networkData[SWITCH_INDEX].append({
-            "switchID": i,
-            "switchName": user_data["switches"][i]["switchName"],
-            "address": user_data["switches"][i]["ip"]
-        }) """
-    
     for switch_key, content in user_data["switches"].items():
         networkData[SWITCH_INDEX].append({
             "switchID": switch_key,

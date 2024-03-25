@@ -92,6 +92,7 @@ class GraphicVisualizer(MovingCameraScene):
         if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 20:
             stroke_width = 1
 
+
         phases = network_data[CONST.NETWORK["PHASES"]]
         phases_iterator = iter(phases.items())
         phase_time, phase = next(phases_iterator)

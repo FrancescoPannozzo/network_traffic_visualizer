@@ -4,7 +4,7 @@
     - 1
     - 3
   2:
-    capacity: 100
+    capacity: 10
     endpoints:
     - 1
     - 6
@@ -14,7 +14,7 @@
     - 3
     - 6
   4:
-    capacity: 100
+    capacity: 10
     endpoints:
     - 4
     - 8
@@ -24,7 +24,7 @@
     - 5
     - 9
   6:
-    capacity: 100
+    capacity: 10
     endpoints:
     - 3
     - 5
@@ -39,7 +39,7 @@
     - 4
     - 5
   9:
-    capacity: 100
+    capacity: 10
     endpoints:
     - 6
     - 7
@@ -54,7 +54,7 @@
     - 8
     - 9
   12:
-    capacity: 100
+    capacity: 10
     endpoints:
     - 2
     - 4

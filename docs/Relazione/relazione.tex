@@ -1,0 +1,50 @@
+% !TeX encoding = UTF-8
+% !TeX program = pdflatex
+% !TeX spellcheck = it_IT
+\documentclass[binding=0.6cm]{sapthesis}
+\usepackage{microtype}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{pdftitle={La mia tesi},pdfauthor={Francesco Biccari}}
+\title{Visualizzazione e simulazione grafica di traffico di reti}
+\author{Francesco Pannozzo}
+\IDnumber{699427}
+\course{Laurea Triennale in Informatica}
+\courseorganizer{Facoltà di Ingegneria dell'Informazione, Informatica e Statistica}
+\AcademicYear{2023/2024}
+\advisor{Prof. Daniele De Sensi}
+\authoremail{francesco.pannozzo@libero.it}
+\copyyear{2024}
+\thesistype{Relazione di tirocinio}
+\begin{document}
+\frontmatter
+\maketitle
+\dedication{Dedicato alla\\ mia famiglia}
+\begin{abstract}
+Questa relazione descrive il lavoro di tirocinio interno svolto presso l'università La Sapienza, 
+concretizzato nella realizzazione 
+di un progetto volto a realizzare un software per poter visualizzare in forma grafica l'andamento 
+del traffico di una rete.
+Il progetto ha come obiettivo di mostrare il traffico di rete al variare del tempo e ciò viene raggiunto
+tramite grafiche e animazioni generate programmaticamente. L'idea dell'ambito di tirocinio nasce 
+dalla volontà di sperimentare una realizzazione front-end tramite la libreria Manim, un motore di animazioni per video
+matematici esplicativi.
+
+\end{abstract}
+\tableofcontents
+\mainmatter
+\chapter{Introduzione}
+...
+\chapter{Progettazione}
+...
+\begin{equation}
+(l+1) (m+1) > m l
+\end{equation}
+\backmatter
+\cleardoublepage
+\phantomsection % Give this command only if hyperref is loaded
+\addcontentsline{toc}{chapter}{\bibname}
+% Here put the code for the bibliography. You can use BibTeX or
+% the BibLaTeX package or the simple environment thebibliography.
+\end{document}
