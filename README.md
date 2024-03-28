@@ -23,7 +23,7 @@ Entrambe le modalità produrranno due files, **network.yaml** conterà le caratt
 di tutti i pacchetti generati dalla simulazione.
 La modalità _auto_ chiede all'utente il numero di switch, la capacità dei link e la tipologia del grafo (completo, mesh, torus) e imposterà in modo del tutto automatico la disposizione degli switch
 in base alla scelta del grafo effettuata.
-Per poter operare, in entrambe le modalità, lo script ha bisogno di leggere il file setup.yaml posto nella directory \*"./data"\_, il quale contiene le informazioni necessarie per la configurazione.
+Per poter operare, in entrambe le modalità, lo script ha bisogno di leggere il file setup.yaml posto nella directory "./data", il quale contiene le informazioni necessarie per la configurazione.
 Il file setup.yaml è impostato come segue:
 
 ```yaml
