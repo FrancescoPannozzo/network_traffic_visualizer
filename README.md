@@ -18,10 +18,10 @@ I componenti principali del progetto sono gli scripts:
 
 ## Simulazione: config_gen.py
 
-Lo script config*gen permette di creare simulazioni di traffico di rete automatiche mettendo a disposizione due modalità **auto** e **user**.
+Lo script _config_gen_ permette di creare simulazioni di traffico di rete automatiche mettendo a disposizione due modalità **auto** e **user**.
 Entrambe le modalità produrranno due files, **network.yaml** conterà le caratteristiche della rete e **packets.yaml** conterrà il traffico vero e proprio
 di tutti i pacchetti generati dalla simulazione.
-La modalità \_auto* chiede all'utente il numero di switch, la capacità dei link e la tipologia del grafo (completo, mesh, torus) e imposterà in modo del tutto automatico la disposizione degli switch
+La modalità _auto_ chiede all'utente il numero di switch, la capacità dei link e la tipologia del grafo (completo, mesh, torus) e imposterà in modo del tutto automatico la disposizione degli switch
 in base alla scelta del grafo effettuata.
 Per poter operare, in entrambe le modalità, lo script ha bisogno di leggere il file setup.yaml posto nella directory _"./data"_, il quale contiene le informazioni necessarie per la configurazione.
 Il file setup.yaml è impostato come segue:
