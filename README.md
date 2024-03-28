@@ -28,6 +28,8 @@ ha bisogno di leggere il file setup.yaml, il quale contiene le informazioni nece
 
 ## Visualizzazione grafica: graphic_visualizer.py
 
+...
+
 ### Prerequisites
 
 - Python 3.6 or higher
