@@ -16,10 +16,17 @@ I componenti principali del progetto sono gli scripts:
 - traffic_analyzer:analizza i files del traffico di rete per estrarne le percentuali di traffico
 - graphic_visualizer: legge i dati prodotti da traffic_analyzer e li mostra graficamente con un video
 
-config_gen:
-Questo script permette di creare simulazioni di traffico di rete producendo due files, network.yaml e packets.yaml,
+## Simulazione: config_gen.py
+
+Lo script config_gen permette di creare simulazioni di traffico di rete producendo due files, network.yaml e packets.yaml,
 i quali rappresentano rispettivamente i dati relativi alla rete e i pacchetti generati. Per poter operare, lo script
 ha bisogno di leggere il file setup.yaml, il quale contiene le informazioni necessarie per la configurazione.
+
+## Analisi dati di rete: traffic_analyzer
+
+...
+
+## Visualizzazione grafica: graphic_visualizer.py
 
 ### Prerequisites
 
