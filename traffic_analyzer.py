@@ -113,7 +113,7 @@ lastFirstUDindex = averageFractions
 packetsDataIterator = iter(packetsData)
 
 # Defining the amount of simulation time in seconds
-simTime = timedelta(seconds=networkData[SIM_PARAMETERS]["simTime"])
+simTime = timedelta(seconds=setup["simTime"])
 
 # Taking first packet to analyze
 packet = next(packetsDataIterator, None)
@@ -169,7 +169,7 @@ logging.info("..done!")
 
 # file structure
 sim_parameters = {
-    "simTime": networkData[SIM_PARAMETERS]["simTime"],
+    "simTime": setup["simTime"],
     "updateDelta": UPDATE_DELTA_TIME,
     "averageDelta": AVG_DELTA_TIME,
     "simStartTime": startTime

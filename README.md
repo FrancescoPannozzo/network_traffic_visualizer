@@ -32,11 +32,16 @@ packetSize: 4000
 colorblind: "no"
 ```
 
-averageDelta rappresenta l'intervallo temporale in millisecondi delle medie di traffico da calcolare
-updateDelta rappresenta ogni quanti millisecondi si deve aggiornare la media averageDelta
-startSimTime è il datetime dell'inizio della simulazione nel formato YY:MM:DD HH:MM:SS
-simTime è la durata della simulazione in secondi
-colorblind è una stringa "yes" o "no" che abilita se posta su "yes" una visualizazione compatibile per persone daltoniche
+- averageDelta rappresenta l'intervallo temporale in millisecondi delle medie di traffico da calcolare
+- updateDelta rappresenta ogni quanti millisecondi si deve aggiornare la media averageDelta
+- startSimTime è il datetime dell'inizio della simulazione nel formato YY:MM:DD HH:MM:SS
+- simTime è la durata della simulazione in secondi
+- packetSize è la dimensione in bytes di un pacchetto
+- colorblind è una stringa "yes" o "no" che abilita se posta su "yes" una visualizazione compatibile per persone daltoniche
+
+Questi campi devono essere **tutti** presenti qualora si decidesse di procedere con la modalità "auto", mentre
+se si decidesse di utilizzare direttamente il **traffic_analyzer** per far analizzare propri files, allora il campo
+"packetSize" può essere omesso.
 
 ## Analisi dati di rete: traffic_analyzer
 
