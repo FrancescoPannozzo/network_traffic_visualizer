@@ -25,7 +25,6 @@ ha bisogno di leggere il file setup.yaml, il quale contiene le informazioni nece
 
 - Python 3.6 or higher
 - PyYAML 5.3 or higher
-- A clone of this repository
 - Manim Community v0.18.0 or higher
 
 ## Uso:
