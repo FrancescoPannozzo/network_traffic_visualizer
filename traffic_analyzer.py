@@ -98,7 +98,7 @@ AVG_DELTA_TIME = setup["averageDelta"]
 averageDelta = timedelta(milliseconds=AVG_DELTA_TIME)
 
 # Setting the starting time point
-startTime = networkData[SIM_PARAMETERS]["startSimTime"]
+startTime = setup["startSimTime"]
 # The analyzed time
 timeWalker = startTime
 # Number of fractional units per averageDelta

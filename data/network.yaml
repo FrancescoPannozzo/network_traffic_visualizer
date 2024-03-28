@@ -2,111 +2,110 @@
     capacity: 10
     endpoints:
     - 1
-    - 3
+    - 2
   2:
     capacity: 10
     endpoints:
-    - 1
-    - 6
+    - 2
+    - 3
   3:
     capacity: 10
     endpoints:
-    - 3
-    - 6
+    - 1
+    - 4
   4:
     capacity: 10
     endpoints:
     - 4
-    - 8
+    - 5
   5:
     capacity: 10
     endpoints:
+    - 2
     - 5
-    - 9
   6:
     capacity: 10
     endpoints:
-    - 3
     - 5
+    - 6
   7:
     capacity: 10
     endpoints:
+    - 3
     - 6
-    - 9
   8:
     capacity: 10
     endpoints:
     - 4
-    - 5
+    - 7
   9:
     capacity: 10
     endpoints:
-    - 6
     - 7
+    - 8
   10:
     capacity: 10
     endpoints:
-    - 7
+    - 5
     - 8
   11:
     capacity: 10
     endpoints:
-    - 8
-    - 9
+    - 1
+    - 7
   12:
     capacity: 10
     endpoints:
     - 2
-    - 4
+    - 8
   13:
     capacity: 10
     endpoints:
-    - 2
-    - 8
-- - address: 123.123.123.0
+    - 1
+    - 3
+  14:
+    capacity: 10
+    endpoints:
+    - 4
+    - 6
+- - address: 10.0.0.1
     switchID: 1
-    switchName: Anthem
-  - address: 123.123.123.1
+    switchName: switch1
+  - address: 10.0.0.2
     switchID: 2
-    switchName: Beta
-  - address: 123.123.123.2
+    switchName: switch2
+  - address: 10.0.0.3
     switchID: 3
-    switchName: Cyber
-  - address: 123.123.123.3
+    switchName: switch3
+  - address: 10.0.0.4
     switchID: 4
-    switchName: Dafne
-  - address: 123.123.123.4
+    switchName: switch4
+  - address: 10.0.0.5
     switchID: 5
-    switchName: Eclipse
-  - address: 123.123.123.5
+    switchName: switch5
+  - address: 10.0.0.6
     switchID: 6
-    switchName: Fox
-  - address: 123.123.123.6
+    switchName: switch6
+  - address: 10.0.0.7
     switchID: 7
-    switchName: Gea
-  - address: 123.123.123.7
+    switchName: switch7
+  - address: 10.0.0.8
     switchID: 8
-    switchName: H20
-  - address: 123.123.123.8
-    switchID: 9
-    switchName: Italy
+    switchName: switch8
 - graphType: torus
-  isCustom: true
-  linkCap: mixed
+  isCustom: false
+  linkCap: 10
   simTime: 3
   startSimTime: 2024-03-22 12:30:00
 - coordinates:
   - - 1
-    - 0
     - 2
-    - 0
-  - - 3
-    - 0
-    - 4
+    - 3
+  - - 4
     - 5
-  - - 6
-    - 7
+    - 6
+  - - 7
     - 8
-    - 9
-- 2024-01-01 00:00:01: phase1
-  2024-01-01 00:00:02: phase2
+    - 0
+- 2024-03-22 12:30:01: phase1
+  2024-03-22 12:30:02: phase2

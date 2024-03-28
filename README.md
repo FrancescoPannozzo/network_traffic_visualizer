@@ -13,14 +13,30 @@ fino ad arrivare a un rosso acceso che rappresenta un alto traffico per la capac
 I componenti principali del progetto sono gli scripts:
 
 - config_gen: crea il traffico simulato
-- traffic_analyzer:analizza i files del traffico di rete per estrarne le percentuali di traffico
+- traffic_analyzer: analizza i files del traffico di rete per estrarne le percentuali di traffico
 - graphic_visualizer: legge i dati prodotti da traffic_analyzer e li mostra graficamente con un video
 
 ## Simulazione: config_gen.py
 
 Lo script config_gen permette di creare simulazioni di traffico di rete producendo due files, network.yaml e packets.yaml,
 i quali rappresentano rispettivamente i dati relativi alla rete e i pacchetti generati. Per poter operare, lo script
-ha bisogno di leggere il file setup.yaml, il quale contiene le informazioni necessarie per la configurazione.
+ha bisogno di leggere il file setup.yaml posto nella directory "./data", il quale contiene le informazioni necessarie per la configurazione.
+Il file setup.yaml è impostato come segue:
+
+```yaml
+averageDelta: 1000
+updateDelta: 100
+startSimTime: 2024-03-22 12:30:00
+simTime: 3
+packetSize: 4000
+colorblind: "no"
+```
+
+averageDelta rappresenta l'intervallo temporale in millisecondi delle medie di traffico da calcolare
+updateDelta rappresenta ogni quanti millisecondi si deve aggiornare la media averageDelta
+startSimTime è il datetime dell'inizio della simulazione nel formato YY:MM:DD HH:MM:SS
+simTime è la durata della simulazione in secondi
+colorblind è una stringa "yes" o "no" che abilita se posta su "yes" una visualizazione compatibile per persone daltoniche
 
 ## Analisi dati di rete: traffic_analyzer
 
@@ -30,11 +46,11 @@ ha bisogno di leggere il file setup.yaml, il quale contiene le informazioni nece
 
 ...
 
-### Prerequisites
+### Prerequisiti
 
-- Python 3.6 or higher
-- PyYAML 5.3 or higher
-- Manim Community v0.18.0 or higher
+- Python 3.6 o superiore
+- PyYAML 5.3 o superiore
+- Manim Community v0.18.0 o superiore
 
 ## Uso:
 
