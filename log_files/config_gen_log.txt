@@ -1,23 +1,2 @@
-2024-03-28 17:31:37,524 [INFO] You choosed the user mode!
-2024-03-28 17:31:37,529 [INFO] Loading user file..
-2024-03-28 17:31:37,569 [INFO] Creating links..
-2024-03-28 17:31:37,570 [INFO] ..links creation done!
-2024-03-28 17:31:37,571 [INFO] Links created are:
-2024-03-28 17:31:37,572 [INFO] Creating packets.yaml file structure..
-2024-03-28 17:31:37,573 [INFO] ..packets.yaml file structure done!
-2024-03-28 17:31:37,574 [INFO] Creating network.yaml file structure..
-2024-03-28 17:31:37,575 [INFO] Switches created:
-2024-03-28 17:31:37,576 [INFO] {'switchID': 1, 'switchName': 'Anthem', 'address': '123.123.123.0'}
-2024-03-28 17:31:37,576 [INFO] {'switchID': 2, 'switchName': 'Beta', 'address': '123.123.123.1'}
-2024-03-28 17:31:37,577 [INFO] {'switchID': 3, 'switchName': 'Cyber', 'address': '123.123.123.2'}
-2024-03-28 17:31:37,579 [INFO] {'switchID': 4, 'switchName': 'Dafne', 'address': '123.123.123.3'}
-2024-03-28 17:31:37,580 [INFO] {'switchID': 5, 'switchName': 'Eclipse', 'address': '123.123.123.4'}
-2024-03-28 17:31:37,581 [INFO] {'switchID': 6, 'switchName': 'Fox', 'address': '123.123.123.5'}
-2024-03-28 17:31:37,582 [INFO] {'switchID': 7, 'switchName': 'Gea', 'address': '123.123.123.6'}
-2024-03-28 17:31:37,582 [INFO] {'switchID': 8, 'switchName': 'H20', 'address': '123.123.123.7'}
-2024-03-28 17:31:37,583 [INFO] {'switchID': 9, 'switchName': 'Italy', 'address': '123.123.123.8'}
-2024-03-28 17:31:37,583 [INFO] ..network.yaml file structure done!
-2024-03-28 17:31:37,584 [INFO] Writing network.yaml file..
-2024-03-28 17:31:37,602 [INFO] ..network.yaml file creation done!
-2024-03-28 17:31:37,606 [INFO] Writing packets.yaml file..
-2024-03-28 17:31:37,609 [INFO] ..packets file creation done!
+2024-03-29 16:32:53,815 [INFO] You choosed the user mode!
+2024-03-29 16:32:53,815 [INFO] Loading user file..

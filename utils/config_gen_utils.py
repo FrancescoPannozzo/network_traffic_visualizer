@@ -264,26 +264,22 @@ def check_custom_file(user_data):
     rows = len(user_data["coordinates"])
     cols = len(user_data["coordinates"][0])
 
-    accepted_graph_types = [CONST.COMPLETE_GRAPH, CONST.MESH_GRAPH, CONST.TORUS_GRAPH, CONST.FREE_GRAPH]
+    accepted_graph_types = [CONST.MESH_GRAPH, CONST.TORUS_GRAPH, CONST.FREE_GRAPH]
 
     try:
         if user_data["graphType"] not in accepted_graph_types:
-            print("Custom file graphType value is not valid")
-            raise exceptions.CustomFileError
+            raise exceptions.CustomFileError("Custom file: graphType value is not valid")
         
         if cols > 1:
             base_col_length = len(user_data["coordinates"][0])
             for row in range(rows):
                 if len(user_data["coordinates"][row]) != base_col_length:
-                    print("WARNING, the coordinates value in the custom file must be a matrix")
-                    raise exceptions.CustomFileError
-
+                    raise exceptions.CustomFileError("WARNING, the coordinates value in the custom file must be a matrix")
 
         for row in range(rows):
             for col in range(cols):
                 if user_data["coordinates"][row][col] != 0 and user_data["coordinates"][row][col] not in user_data["switches"]:
-                    print("WARNING, switch IDs conflict in custom_graph.yaml file: keys coordinates/switches")
-                    raise exceptions.CustomFileError
+                    raise exceptions.CustomFileError("WARNING, switch IDs conflict in custom_graph.yaml file: keys coordinates/switches")
     except exceptions.CustomFileError as e:
         print(e)
         print("Exiting program now")
