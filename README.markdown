@@ -110,7 +110,11 @@ data:
     2024-01-01 00:00:02: "phase2"
 ```
 
-- **graphType** identifica la tipologia del grafo da rappresentare
+- **graphType** identifica la tipologia del grafo da rappresentare, sono disponibili tre opzioni:
+  - **mesh**: l'algoritmo individua in modo automatico gli archi (i link) che collegano i nodi (gli switch) adiacenti tra loro presenti nella matrice **coordinates**
+  - **torus**: esegue lo stessa procedura usate per mesh e in addizione collega tra loro i nodi che si trovano alle estremità della matrice
+  - **graph**: è la modalità più libera, collega gli switch tramite
+    i link forniti dall'utente, indipendentemente da dove vengono collocati
 
 ## Analisi dati di rete: traffic_analyzer
 
