@@ -1,62 +1,73 @@
-2024-03-28 17:32:13,585 [INFO] The graph type found is complete, rendering..
-2024-03-28 17:32:13,590 [DEBUG] switches: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-2024-03-28 17:32:13,590 [DEBUG] links: []
-2024-03-28 17:32:13,590 [INFO] FIRST PHASE TIMESTAMP: 2024-01-01 00:00:01
-2024-03-28 17:32:16,539 [INFO] Caching disabled.
-2024-03-28 17:32:17,552 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00000.mp4'
-2024-03-28 17:32:17,851 [INFO] Caching disabled.
-2024-03-28 17:32:19,742 [INFO] Animation 1 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00001.mp4'
-2024-03-28 17:32:20,047 [INFO] Caching disabled.
-2024-03-28 17:32:22,876 [INFO] Animation 2 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00002.mp4'
-2024-03-28 17:32:23,200 [INFO] Caching disabled.
-2024-03-28 17:32:25,662 [INFO] Animation 3 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00003.mp4'
-2024-03-28 17:32:25,958 [INFO] Caching disabled.
-2024-03-28 17:32:28,627 [INFO] Animation 4 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00004.mp4'
-2024-03-28 17:32:28,983 [INFO] Caching disabled.
-2024-03-28 17:32:31,385 [INFO] Animation 5 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00005.mp4'
-2024-03-28 17:32:31,637 [INFO] Caching disabled.
-2024-03-28 17:32:34,295 [INFO] Animation 6 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00006.mp4'
-2024-03-28 17:32:34,579 [INFO] Caching disabled.
-2024-03-28 17:32:37,135 [INFO] Animation 7 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00007.mp4'
-2024-03-28 17:32:37,431 [INFO] Caching disabled.
-2024-03-28 17:32:40,640 [INFO] Animation 8 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00008.mp4'
-2024-03-28 17:32:40,902 [INFO] Caching disabled.
-2024-03-28 17:32:43,345 [INFO] Animation 9 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00009.mp4'
-2024-03-28 17:32:43,697 [INFO] Caching disabled.
-2024-03-28 17:32:46,821 [INFO] Animation 10 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00010.mp4'
-2024-03-28 17:32:47,115 [INFO] Caching disabled.
-2024-03-28 17:32:50,875 [INFO] Animation 11 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00011.mp4'
-2024-03-28 17:32:51,782 [INFO] Caching disabled.
-2024-03-28 17:32:54,634 [INFO] Animation 12 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00012.mp4'
-2024-03-28 17:32:54,897 [INFO] Caching disabled.
-2024-03-28 17:32:57,546 [INFO] Animation 13 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00013.mp4'
-2024-03-28 17:32:57,844 [INFO] Caching disabled.
-2024-03-28 17:33:00,362 [INFO] Animation 14 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00014.mp4'
-2024-03-28 17:33:00,634 [INFO] Caching disabled.
-2024-03-28 17:33:03,403 [INFO] Animation 15 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00015.mp4'
-2024-03-28 17:33:03,679 [INFO] Caching disabled.
-2024-03-28 17:33:06,212 [INFO] Animation 16 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00016.mp4'
-2024-03-28 17:33:06,466 [INFO] Caching disabled.
-2024-03-28 17:33:09,200 [INFO] Animation 17 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00017.mp4'
-2024-03-28 17:33:09,451 [INFO] Caching disabled.
-2024-03-28 17:33:11,863 [INFO] Animation 18 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00018.mp4'
-2024-03-28 17:33:12,234 [INFO] Caching disabled.
-2024-03-28 17:33:14,944 [INFO] Animation 19 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00019.mp4'
-2024-03-28 17:33:15,198 [INFO] Caching disabled.
-2024-03-28 17:33:17,676 [INFO] Animation 20 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00020.mp4'
-2024-03-28 17:33:17,930 [INFO] Caching disabled.
-2024-03-28 17:33:20,535 [INFO] Animation 21 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00021.mp4'
-2024-03-28 17:33:20,794 [INFO] Caching disabled.
-2024-03-28 17:33:23,319 [INFO] Animation 22 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00022.mp4'
-2024-03-28 17:33:23,329 [INFO] Caching disabled.
-2024-03-28 17:33:24,242 [INFO] Animation 23 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\partial_movie_files\GraphicVisualizer\uncached_00023.mp4'
-2024-03-28 17:33:24,247 [INFO] Test duration:0:01:10.693470
-2024-03-28 17:33:24,247 [INFO] Combining to Movie file.
-2024-03-28 17:33:24,765 [INFO] 
-File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\GraphicVisualizer.mp4'
+2024-04-03 13:09:25,395 [INFO] The graph type found is not complete, rendering..
+2024-04-03 13:09:25,395 [DEBUG] MESH: [[1, 0, 2, 0], [3, 0, 4, 5], [6, 7, 8, 9]]
+2024-04-03 13:09:25,395 [INFO] FIRST PHASE TIMESTAMP: 2024-01-01 00:00:01
+2024-04-03 13:09:26,187 [DEBUG] Printing data_links:
+2024-04-03 13:09:26,187 [DEBUG] (1, 3)
+2024-04-03 13:09:26,187 [DEBUG] (1, 6)
+2024-04-03 13:09:26,187 [DEBUG] (3, 6)
+2024-04-03 13:09:26,187 [DEBUG] (4, 8)
+2024-04-03 13:09:26,187 [DEBUG] (5, 9)
+2024-04-03 13:09:26,187 [DEBUG] (3, 5)
+2024-04-03 13:09:26,187 [DEBUG] (6, 9)
+2024-04-03 13:09:26,187 [DEBUG] (4, 5)
+2024-04-03 13:09:26,187 [DEBUG] (6, 7)
+2024-04-03 13:09:26,187 [DEBUG] (7, 8)
+2024-04-03 13:09:26,187 [DEBUG] (8, 9)
+2024-04-03 13:09:26,187 [DEBUG] (2, 4)
+2024-04-03 13:09:26,200 [DEBUG] (2, 8)
+2024-04-03 13:09:27,712 [INFO] Caching disabled.
+2024-04-03 13:09:30,132 [INFO] Animation 0 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00000.mp4'
+2024-04-03 13:09:30,297 [INFO] Caching disabled.
+2024-04-03 13:09:31,771 [INFO] Animation 1 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00001.mp4'
+2024-04-03 13:09:31,936 [INFO] Caching disabled.
+2024-04-03 13:09:33,452 [INFO] Animation 2 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00002.mp4'
+2024-04-03 13:09:33,588 [INFO] Caching disabled.
+2024-04-03 13:09:35,131 [INFO] Animation 3 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00003.mp4'
+2024-04-03 13:09:35,286 [INFO] Caching disabled.
+2024-04-03 13:09:36,822 [INFO] Animation 4 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00004.mp4'
+2024-04-03 13:09:36,971 [INFO] Caching disabled.
+2024-04-03 13:09:38,497 [INFO] Animation 5 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00005.mp4'
+2024-04-03 13:09:38,652 [INFO] Caching disabled.
+2024-04-03 13:09:40,204 [INFO] Animation 6 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00006.mp4'
+2024-04-03 13:09:40,353 [INFO] Caching disabled.
+2024-04-03 13:09:42,022 [INFO] Animation 7 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00007.mp4'
+2024-04-03 13:09:42,194 [INFO] Caching disabled.
+2024-04-03 13:09:43,705 [INFO] Animation 8 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00008.mp4'
+2024-04-03 13:09:43,853 [INFO] Caching disabled.
+2024-04-03 13:09:45,436 [INFO] Animation 9 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00009.mp4'
+2024-04-03 13:09:45,583 [INFO] Caching disabled.
+2024-04-03 13:09:47,138 [INFO] Animation 10 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00010.mp4'
+2024-04-03 13:09:47,351 [INFO] Caching disabled.
+2024-04-03 13:09:48,912 [INFO] Animation 11 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00011.mp4'
+2024-04-03 13:09:49,095 [INFO] Caching disabled.
+2024-04-03 13:09:50,654 [INFO] Animation 12 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00012.mp4'
+2024-04-03 13:09:50,792 [INFO] Caching disabled.
+2024-04-03 13:09:52,328 [INFO] Animation 13 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00013.mp4'
+2024-04-03 13:09:52,478 [INFO] Caching disabled.
+2024-04-03 13:09:54,064 [INFO] Animation 14 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00014.mp4'
+2024-04-03 13:09:54,213 [INFO] Caching disabled.
+2024-04-03 13:09:55,893 [INFO] Animation 15 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00015.mp4'
+2024-04-03 13:09:56,038 [INFO] Caching disabled.
+2024-04-03 13:09:57,583 [INFO] Animation 16 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00016.mp4'
+2024-04-03 13:09:57,725 [INFO] Caching disabled.
+2024-04-03 13:09:59,300 [INFO] Animation 17 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00017.mp4'
+2024-04-03 13:09:59,443 [INFO] Caching disabled.
+2024-04-03 13:10:01,003 [INFO] Animation 18 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00018.mp4'
+2024-04-03 13:10:01,162 [INFO] Caching disabled.
+2024-04-03 13:10:02,697 [INFO] Animation 19 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00019.mp4'
+2024-04-03 13:10:02,852 [INFO] Caching disabled.
+2024-04-03 13:10:04,398 [INFO] Animation 20 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00020.mp4'
+2024-04-03 13:10:04,599 [INFO] Caching disabled.
+2024-04-03 13:10:06,154 [INFO] Animation 21 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00021.mp4'
+2024-04-03 13:10:06,154 [INFO] Caching disabled.
+2024-04-03 13:10:06,741 [INFO] Animation 22 : Partial movie file written in 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\partial_movie_files\GraphicVisualizer\uncached_00022.mp4'
+2024-04-03 13:10:06,756 [INFO] Test duration:0:00:41.436824
+2024-04-03 13:10:06,756 [INFO] Combining to Movie file.
+2024-04-03 13:10:07,042 [INFO] 
+File ready at 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\GraphicVisualizer.mp4'
 
-2024-03-28 17:33:24,785 [INFO] Rendered GraphicVisualizer
-Played 24 animations
-2024-03-28 17:33:25,023 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\720p15\GraphicVisualizer.mp4'
-2024-03-28 17:33:25,053 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
-2024-03-28 17:33:27,630 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849
+2024-04-03 13:10:07,066 [INFO] Rendered GraphicVisualizer
+Played 23 animations
+2024-04-03 13:10:07,268 [INFO] Previewed File at: 'C:\Users\Pan\Desktop\TESI\progetto-tirocinio\network-traffic-visualizer\media\videos\graphic_visualizer\480p15\GraphicVisualizer.mp4'
+2024-04-03 13:10:07,288 [DEBUG] Starting new HTTPS connection (1): pypi.org:443
+2024-04-03 13:10:09,826 [DEBUG] https://pypi.org:443 "GET /pypi/manim/json HTTP/1.1" 200 12849

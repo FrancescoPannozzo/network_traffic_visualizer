@@ -5,15 +5,10 @@ Description:
     The script load data from network.yaml and packets.yaml and 
     calculates the payloads sums (bytes) for every updateDeltaTime in the
     time simulation and the averages in delta time, updated every updateDeltaTime
-Usage: 
-    launch the script: python traffic_analyzer.py ./data/network ./data/packets
-    help: python main.py -h 
-Author: Francesco Pannozzo
 """
 
 from datetime import timedelta
 import logging
-import sys
 import yaml
 from utils import utils
 from utils import CONSTANTS as CONST
@@ -64,9 +59,9 @@ logging.info("Analyzing files..")
 #       "traffic": the traffic bytes sum
 links = {}
 # Extracting links data
-for link, content in networkData[CONST.NETWORK["LINKS"]].items():
+for content in networkData[CONST.NETWORK["LINKS"]]:
     links[frozenset({content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]})] = {
-        "linkID": link,
+        #"linkID": link,
         "capacity": content["capacity"], 
         "trafficDT":0, 
         "trafficUDT":0, 
@@ -88,17 +83,16 @@ logging.info("Simulation parameters:")
 logging.info(networkData[SIM_PARAMETERS])
 
 # Range times parameters
-# LOADING SETUP PARAMETERS
-setup = utils.file_loader("./data/setup")
+# LOADING PARAMETERS
 # Update average delta time (milliseconds)
-UPDATE_DELTA_TIME = setup["updateDelta"]
+UPDATE_DELTA_TIME = networkData[CONST.NETWORK["SIM_PARAMS"]]["updateDelta"]
 updateDelta = timedelta(milliseconds=UPDATE_DELTA_TIME)
 # The considered average time (milliseconds)
-AVG_DELTA_TIME = setup["averageDelta"]
+AVG_DELTA_TIME = networkData[CONST.NETWORK["SIM_PARAMS"]]["averageDelta"]
 averageDelta = timedelta(milliseconds=AVG_DELTA_TIME)
 
 # Setting the starting time point
-startTime = setup["startSimTime"]
+startTime = networkData[CONST.NETWORK["SIM_PARAMS"]]["startSimTime"]
 # The analyzed time
 timeWalker = startTime
 # Number of fractional units per averageDelta
@@ -113,7 +107,7 @@ lastFirstUDindex = averageFractions
 packetsDataIterator = iter(packetsData)
 
 # Defining the amount of simulation time in seconds
-simTime = timedelta(seconds=setup["simTime"])
+simTime = timedelta(seconds=networkData[CONST.NETWORK["SIM_PARAMS"]]["simTime"])
 
 # Taking first packet to analyze
 packet = next(packetsDataIterator, None)
@@ -169,13 +163,13 @@ logging.info("..done!")
 
 # file structure
 sim_parameters = {
-    "simTime": setup["simTime"],
+    "simTime": networkData[CONST.NETWORK["SIM_PARAMS"]]["simTime"],
     "updateDelta": UPDATE_DELTA_TIME,
     "averageDelta": AVG_DELTA_TIME,
     "simStartTime": startTime
 }
 
-analyzed_data = {}
+analyzed_data = []
 for link, content in links.items():
     endpoints = []
     traffic = []
@@ -186,10 +180,10 @@ for link, content in links.items():
         average = utils.get_average(c['traffic'], averageFractions, utils.max_traffic_per_unit(content['capacity'], updateDelta))
         traffic.append(round(average, 2))
 
-    analyzed_data[content["linkID"]] = {
+    analyzed_data.append({
         "endpoints": sorted(endpoints),
         "traffic": traffic
-    }
+    })
 
 fileStructure = []
 fileStructure.append(sim_parameters)

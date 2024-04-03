@@ -2,7 +2,6 @@
 
 ## Progetto di tesi per corso di Laurea in Informatica, Università La Sapienza
 
-Cosa si propone di fare il progetto:
 Il progetto è un visualizzatore grafico e simulatore di traffico di rete.
 Tramite due file di input, uno con dettagli sulla configurazione di rete
 e un altro con dettagli sui pacchetti trasmessi, si vuole mostrare
@@ -42,7 +41,7 @@ colorblind: "no"
 - **packetSize** è la dimensione in bytes di un pacchetto, i pacchetti nella simulazione avranno questa dimensione
 - **colorblind** è una stringa "yes" o "no" che abilita se posta su "yes" una visualizazione compatibile per persone daltoniche
 
-Una volta lanciato _config_gen_ avremo le seguenti possibilità di scelte:
+Una volta lanciato config_gen avremo le seguenti possibilità di scelte:
 
 - **auto**
   - scelta del numero di switch
@@ -50,10 +49,10 @@ Una volta lanciato _config_gen_ avremo le seguenti possibilità di scelte:
   - scelta della tipologia della rete (grafo completo, mesh, torus)
 - **user**
 
-La modalità _user_ necessita di un file **custom_graph.yaml** con i parametri necessari a descrivere
+La modalità user necessita di un file **custom_graph.yaml** con i parametri necessari a descrivere
 la rete del quale si vuole analizzare il traffico. Con questa modalità l'utente ha completa libertà nel personalizzare la rete
 ed è tenuto quindi a descriverne ogni suo aspetto.
-Il _custom_graph.yaml_ prevede la struttura seguente:
+Il custom_graph.yaml prevede la struttura seguente:
 
 ```yaml
 ---
@@ -115,6 +114,7 @@ data:
   - **torus**: esegue lo stessa procedura usate per mesh e in addizione collega tra loro i nodi che si trovano alle estremità della matrice
   - **graph**: è la modalità più libera, collega gli switch tramite
     i link forniti dall'utente, indipendentemente da dove vengono collocati
+- **coordinates** rappresenta le coordinate dei vari switch, i quali vanno rappresentati con un id numerico che va da 1 a 1000. Gli zeri invece rappresentano uno spazio vuoto in cui non è presente uno switch
 
 ## Analisi dati di rete: traffic_analyzer
 

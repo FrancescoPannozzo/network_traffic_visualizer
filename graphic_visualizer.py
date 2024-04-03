@@ -37,21 +37,17 @@ class GraphicVisualizer(MovingCameraScene):
         network_data = utils.file_loader("./data/network")
         # load analyzed data file
         traffic_data = utils.file_loader("./data/analyzed_data")
-        # load setup file
-        setup_data = utils.file_loader("./data/setup")
-        if setup_data["colorblind"] == "yes":
-            # starting from color '#05ffff' low traffic, '#faffff' mid traffic, '#ff05ff' full traffic
-            r = 0
-            g = 255
-            b = 255
+        # load traffic colors
+        traffic_perc_colors = None
+        if network_data[CONST.NETWORK["SIM_PARAMS"]]["colorblind"] == "yes":
+            # starting from color '##FFFFFF' low traffic, '##05FF00' mid traffic, '##FF05FF' full traffic
+            traffic_perc_colors = graphic_visualizer_utils.traffic_colors_gen_colorblind()
         else:
             # starting from color '#05ff00' low traffic,'#fffa00' mid traffic, '#ff0500' full traffic
             r = 0
             g = 255
             b = 0
-
-        # load traffic colors
-        traffic_perc_colors = utils.traffic_colors_gen(r, g, b)
+            traffic_perc_colors = graphic_visualizer_utils.traffic_colors_gen(r, g, b)
       
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.COMPLETE_GRAPH:
             logging.info("The graph type found is complete, rendering..")
@@ -77,7 +73,7 @@ class GraphicVisualizer(MovingCameraScene):
         
         # extracting links data
         links = []
-        for _, content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]].items():
+        for content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]]:
             links.append((content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]))
 
         logging.debug("links: %s", links)
@@ -195,8 +191,8 @@ class GraphicVisualizer(MovingCameraScene):
 
         #infos = graphic_visualizer_utils.set_sim_infos(traffic_data[CONST.ANALYZED_DATA["SIM_PARAMS"]], font_size)
 
-        # Creazione della griglia di nodi
-        grid = VGroup()  # Gruppo per contenere tutti i nodi
+        # Creating the switches grid
+        grid = VGroup() # Group to contain all the objects
 
         lines_grid = VGroup()
         mesh_grid = VGroup()
@@ -213,9 +209,9 @@ class GraphicVisualizer(MovingCameraScene):
                 graph_mesh[mesh[row][col]] = dot
                 mesh_grid.add(dot)
 
-        # 
+        # extracting links
         data_links = {}
-        for _, content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]].items():
+        for content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]]:
             data_links[(content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B])] = content["traffic"]
 
         vertical_links = []

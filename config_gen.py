@@ -106,7 +106,7 @@ elif user_mode == CONST.USER_MODE:
 
 
 # LOADING PARAMETERS
-setup = utils.file_loader("./data/setup")
+setup = utils.file_loader("./data/sim_setup")
 # Defining the simulation start time point
 # START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 START_TIME = setup["startSimTime"]
@@ -205,7 +205,7 @@ logging.info("..packets.yaml file structure done!")
 # File structure composed by a links list and a switches list
 # networkData = [[links list],[switches list],{},{},{}]
 logging.info("Creating network.yaml file structure..")
-networkData = [{},[],{},{},{}]
+networkData = [[],[],{},{},{}]
 LINK_INDEX = CONST.NETWORK["LINKS"]
 SWITCH_INDEX = CONST.NETWORK["SWITCHES"]
 SIM_PARAMETERS_INDEX = CONST.NETWORK["SIM_PARAMS"]
@@ -213,10 +213,10 @@ COORDINATES_INDEX = CONST.NETWORK["COORDINATES"]
 PHASES_INDEX = CONST.NETWORK["PHASES"]
 
 for link, content in links.items():
-    networkData[LINK_INDEX][link] = {
+    networkData[LINK_INDEX].append({
         "endpoints": content["endpoints"],
         "capacity": content["capacity"]
-    }
+    })
 
 if user_mode == CONST.USER_MODE:
     for switch_key, content in user_data["switches"].items():
@@ -255,8 +255,10 @@ networkData[SIM_PARAMETERS_INDEX] = {
     "simTime": SIM_TIME,
     "startSimTime": START_TIME,
     "graphType": graph_type,
-    "isCustom": user_mode == CONST.USER_MODE,
-    "linkCap": link_capacity
+    "linkCap": link_capacity,
+    "colorblind": setup["colorblind"],
+    "updateDelta": PPS_DELTA,
+    "averageDelta": setup["averageDelta"]
 }
 
 if user_mode == CONST.USER_MODE:
