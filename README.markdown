@@ -41,6 +41,29 @@ colorblind: "no"
 - **packetSize** è la dimensione in bytes di un pacchetto, i pacchetti nella simulazione avranno questa dimensione
 - **colorblind** è una stringa "yes" o "no" che abilita se posta su "yes" una visualizazione compatibile per persone daltoniche
 
+La simulazione prevede una generazione di pacchetti calcolata sulla base della capacità dei link fornita e su un valore casuale di percentuale di traffico che varia ogni secondo, per esempio avendo 6 links su 3 secondi di simulazione potremmo avere delle assegnazioni di percentuali di traffico come le seguenti:
+
+```
+Link: 1, endpoints: [1, 2], sim second: 0, trafficPerc: 65
+Link: 2, endpoints: [1, 3], sim second: 0, trafficPerc: 9
+Link: 3, endpoints: [2, 4], sim second: 0, trafficPerc: 23
+Link: 4, endpoints: [2, 5], sim second: 0, trafficPerc: 67
+Link: 5, endpoints: [3, 6], sim second: 0, trafficPerc: 7
+Link: 6, endpoints: [3, 7], sim second: 0, trafficPerc: 87
+Link: 1, endpoints: [1, 2], sim second: 1, trafficPerc: 86
+Link: 2, endpoints: [1, 3], sim second: 1, trafficPerc: 26
+Link: 3, endpoints: [2, 4], sim second: 1, trafficPerc: 13
+Link: 4, endpoints: [2, 5], sim second: 1, trafficPerc: 13
+Link: 5, endpoints: [3, 6], sim second: 1, trafficPerc: 39
+Link: 6, endpoints: [3, 7], sim second: 1, trafficPerc: 65
+Link: 1, endpoints: [1, 2], sim second: 2, trafficPerc: 31
+Link: 2, endpoints: [1, 3], sim second: 2, trafficPerc: 54
+Link: 3, endpoints: [2, 4], sim second: 2, trafficPerc: 11
+Link: 4, endpoints: [2, 5], sim second: 2, trafficPerc: 20
+Link: 5, endpoints: [3, 6], sim second: 2, trafficPerc: 17
+Link: 6, endpoints: [3, 7], sim second: 2, trafficPerc: 46
+```
+
 Una volta lanciato config_gen avremo le seguenti possibilità di scelte:
 
 - **auto**
@@ -116,7 +139,7 @@ data:
   - **torus**: esegue lo stessa procedura usate per mesh e in addizione collega tra loro i nodi che si trovano alle estremità della matrice
   - **graph**: è la modalità più libera, collega gli switch tramite
     i link forniti dall'utente, indipendentemente da dove vengono collocati
-- **coordinates** rappresenta le coordinate dei vari switch, i quali vanno rappresentati con un id numerico che va da 1 a 1000. Gli zeri invece rappresentano uno spazio vuoto in cui non è presente uno switch.
+- **coordinates** rappresenta le coordinate dei vari switch, i quali vanno rappresentati con un id numerico che va da 1 a 1000. C'è una precisa motivazione di design per questa scelta ed è legata a una rappresentazione grafica ottimale del visualizzatore grafico. Gli zeri invece rappresentano uno spazio vuoto in cui non è presente uno switch.
 - **links** rappresenta i link della rete i quali possono essere specificati con i campi
   - **linkCap** esprime la capacità del link in Mbps
   - **endpoints** esprime gli endpoints collegati al link
@@ -185,12 +208,59 @@ Un'altra possibilità è quella di lasciare che il programma ricavi in automatic
 
 ```yaml
 ---
+# only links
 data:
-  graphType: torus
+  graphType: mesh
   coordinates:
-    - [1, 0, 2, 0]
-    - [3, 0, 4, 5]
-    - [6, 7, 8, 9]
+    - [1, 2, 3]
+    - [4, 5, 6]
+    - [7, 8, 9]
+  linkCap: 10
+  switches:
+    1:
+      ip: "123.123.123.0"
+      switchName: Anthem
+    2:
+      ip: "123.123.123.1"
+      switchName: Beta
+    3:
+      ip: "123.123.123.2"
+      switchName: Cyber
+    4:
+      ip: "123.123.123.3"
+      switchName: Dafne
+    5:
+      ip: "123.123.123.4"
+      switchName: Eclipse
+    6:
+      ip: "123.123.123.5"
+      switchName: Fox
+    7:
+      ip: "123.123.123.6"
+      switchName: Gea
+    8:
+      ip: "123.123.123.7"
+      switchName: H20
+    9:
+      ip: "123.123.123.8"
+      switchName: Italy
+  phases:
+    2024-01-01 00:00:01: "phase1"
+    2024-01-01 00:00:02: "phase2"
+```
+
+![auto_link](./media/images/readme_pics/auto.JPG)
+
+Infine mostriamo un esempio di **graphType** posto con valore **graph**:
+
+```yaml
+---
+data:
+  graphType: graph
+  coordinates:
+    - [0, 0, 0, 0, 1, 0, 0, 0, 0]
+    - [0, 0, 2, 0, 0, 0, 3, 0, 0]
+    - [0, 4, 0, 5, 0, 6, 0, 7, 0]
   linkCap: 10
   switches:
     1:
@@ -214,16 +284,19 @@ data:
     7:
       ip: "123.123.123.6"
       switchName: G
-    8:
-      ip: "123.123.123.7"
-      switchName: H
-    9:
-      ip: "123.123.123.8"
-      switchName: I
+  links:
+    - [1, 2]
+    - [1, 3]
+    - [2, 4]
+    - [2, 5]
+    - [3, 6]
+    - [3, 7]
   phases:
     2024-01-01 00:00:01: "phase1"
     2024-01-01 00:00:02: "phase2"
 ```
+
+![free_graph](./media/images/readme_pics/free_graph.JPG)
 
 ## Analisi dati di rete: traffic_analyzer
 
