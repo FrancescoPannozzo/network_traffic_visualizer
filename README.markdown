@@ -52,7 +52,7 @@ Una volta lanciato config_gen avremo le seguenti possibilità di scelte:
 La modalità user necessita di un file **custom_graph.yaml** con i parametri necessari a descrivere
 la rete del quale si vuole analizzare il traffico. Con questa modalità l'utente ha completa libertà nel personalizzare la rete
 ed è tenuto quindi a descriverne ogni suo aspetto.
-Il custom_graph.yaml prevede la struttura seguente:
+Il custom_graph.yaml prevede la struttura seguente, con possibili varianti:
 
 ```yaml
 ---
@@ -109,12 +109,121 @@ data:
     2024-01-01 00:00:02: "phase2"
 ```
 
+![only_links](./media/images/readme_pics/only_links.JPG)
+
 - **graphType** identifica la tipologia del grafo da rappresentare, sono disponibili tre opzioni:
   - **mesh**: l'algoritmo individua in modo automatico gli archi (i link) che collegano i nodi (gli switch) adiacenti tra loro presenti nella matrice **coordinates**
   - **torus**: esegue lo stessa procedura usate per mesh e in addizione collega tra loro i nodi che si trovano alle estremità della matrice
   - **graph**: è la modalità più libera, collega gli switch tramite
     i link forniti dall'utente, indipendentemente da dove vengono collocati
-- **coordinates** rappresenta le coordinate dei vari switch, i quali vanno rappresentati con un id numerico che va da 1 a 1000. Gli zeri invece rappresentano uno spazio vuoto in cui non è presente uno switch
+- **coordinates** rappresenta le coordinate dei vari switch, i quali vanno rappresentati con un id numerico che va da 1 a 1000. Gli zeri invece rappresentano uno spazio vuoto in cui non è presente uno switch.
+- **links** rappresenta i link della rete i quali possono essere specificati con i campi
+  - **linkCap** esprime la capacità del link in Mbps
+  - **endpoints** esprime gli endpoints collegati al link
+- **phases** rappresenta le fasi temporali che accompagnano la durata dell'attività di rete, sono identificate tramite timestamp che ha come valore la descrizione della fase che parte dal timestamp stesso
+
+Qualora la capacità dei link sia uguale per tutti è possibile insererire il campo **linkCap** e usare la seguente struttura:
+
+```yaml
+---
+# linkCap, links
+data:
+  graphType: torus
+  coordinates:
+    - [1, 0, 2, 0]
+    - [3, 0, 4, 5]
+    - [6, 7, 8, 9]
+  linkCap: 10
+  switches:
+    1:
+      ip: "123.123.123.0"
+      switchName: A
+    2:
+      ip: "123.123.123.1"
+      switchName: B
+    3:
+      ip: "123.123.123.2"
+      switchName: C
+    4:
+      ip: "123.123.123.3"
+      switchName: D
+    5:
+      ip: "123.123.123.4"
+      switchName: E
+    6:
+      ip: "123.123.123.5"
+      switchName: F
+    7:
+      ip: "123.123.123.6"
+      switchName: G
+    8:
+      ip: "123.123.123.7"
+      switchName: H
+    9:
+      ip: "123.123.123.8"
+      switchName: I
+  links:
+    - [1, 3]
+    - [1, 6]
+    - [3, 6]
+    - [4, 8]
+    - [5, 9]
+    - [3, 5]
+    - [6, 9]
+    - [4, 5]
+    - [6, 7]
+    - [7, 8]
+    - [8, 9]
+    - [2, 4]
+    - [2, 8]
+  phases:
+    2024-01-01 00:00:01: "phase1"
+    2024-01-01 00:00:02: "phase2"
+```
+
+Un'altra possibilità è quella di lasciare che il programma ricavi in automatico i link, in questo caso basterà specificare solo **linkCap** che sarà uguale per tutti i link:
+
+```yaml
+---
+data:
+  graphType: torus
+  coordinates:
+    - [1, 0, 2, 0]
+    - [3, 0, 4, 5]
+    - [6, 7, 8, 9]
+  linkCap: 10
+  switches:
+    1:
+      ip: "123.123.123.0"
+      switchName: A
+    2:
+      ip: "123.123.123.1"
+      switchName: B
+    3:
+      ip: "123.123.123.2"
+      switchName: C
+    4:
+      ip: "123.123.123.3"
+      switchName: D
+    5:
+      ip: "123.123.123.4"
+      switchName: E
+    6:
+      ip: "123.123.123.5"
+      switchName: F
+    7:
+      ip: "123.123.123.6"
+      switchName: G
+    8:
+      ip: "123.123.123.7"
+      switchName: H
+    9:
+      ip: "123.123.123.8"
+      switchName: I
+  phases:
+    2024-01-01 00:00:01: "phase1"
+    2024-01-01 00:00:02: "phase2"
+```
 
 ## Analisi dati di rete: traffic_analyzer
 

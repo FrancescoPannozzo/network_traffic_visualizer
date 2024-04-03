@@ -36,17 +36,17 @@ data:
       switchName: Italy
   links:
     - { linkCap: 10, endpoints: [1, 3] }
-    - { linkCap: 10, endpoints: [1, 6] }
+    - { linkCap: 100, endpoints: [1, 6] }
     - { linkCap: 10, endpoints: [3, 6] }
-    - { linkCap: 10, endpoints: [4, 8] }
+    - { linkCap: 100, endpoints: [4, 8] }
     - { linkCap: 10, endpoints: [5, 9] }
-    - { linkCap: 10, endpoints: [3, 5] }
+    - { linkCap: 100, endpoints: [3, 5] }
     - { linkCap: 10, endpoints: [6, 9] }
     - { linkCap: 10, endpoints: [4, 5] }
-    - { linkCap: 10, endpoints: [6, 7] }
+    - { linkCap: 100, endpoints: [6, 7] }
     - { linkCap: 10, endpoints: [7, 8] }
     - { linkCap: 10, endpoints: [8, 9] }
-    - { linkCap: 10, endpoints: [2, 4] }
+    - { linkCap: 100, endpoints: [2, 4] }
     - { linkCap: 10, endpoints: [2, 8] }
   phases:
     2024-01-01 00:00:01: "phase1"

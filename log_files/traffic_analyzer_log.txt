@@ -1,11 +1,11 @@
-2024-04-03 13:09:15,421 [INFO] Loading files..
-2024-04-03 13:09:15,421 [INFO] Loading network file..
-2024-04-03 13:09:15,436 [INFO] ..done!
-2024-04-03 13:09:15,436 [INFO] Loading packets file..
-2024-04-03 13:09:19,288 [INFO] ..done!
-2024-04-03 13:09:19,288 [INFO] Analyzing files..
-2024-04-03 13:09:19,288 [INFO] Simulation parameters:
-2024-04-03 13:09:19,288 [INFO] {'averageDelta': 1000, 'colorblind': 'no', 'graphType': 'torus', 'linkCap': 'mixed', 'simTime': 3, 'startSimTime': datetime.datetime(2024, 3, 22, 12, 30, 0, 500000), 'updateDelta': 100}
-2024-04-03 13:09:19,308 [INFO] ..done!
-2024-04-03 13:09:19,310 [INFO] Writing analyzed_data_test.yaml file..
-2024-04-03 13:09:19,332 [INFO] analyzed_data_test.yaml file creation done!
+2024-04-03 15:36:20,276 [INFO] Loading files..
+2024-04-03 15:36:20,276 [INFO] Loading network file..
+2024-04-03 15:36:20,286 [INFO] ..done!
+2024-04-03 15:36:20,286 [INFO] Loading packets file..
+2024-04-03 15:36:32,973 [INFO] ..done!
+2024-04-03 15:36:32,973 [INFO] Analyzing files..
+2024-04-03 15:36:32,973 [INFO] Simulation parameters:
+2024-04-03 15:36:32,973 [INFO] {'averageDelta': 1000, 'colorblind': 'no', 'graphType': 'torus', 'linkCap': 'mixed', 'simTime': 3, 'startSimTime': datetime.datetime(2024, 3, 22, 12, 30, 0, 500000), 'updateDelta': 100}
+2024-04-03 15:36:33,027 [INFO] ..done!
+2024-04-03 15:36:33,029 [INFO] Writing analyzed_data_test.yaml file..
+2024-04-03 15:36:33,048 [INFO] analyzed_data_test.yaml file creation done!
