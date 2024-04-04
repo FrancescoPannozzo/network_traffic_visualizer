@@ -1,6 +1,6 @@
 # Network traffic visualizer and simulator
 
-## Progetto di tesi per corso di Laurea in Informatica, Università La Sapienza
+## Progetto di tesi per il corso di Laurea triennale in Informatica, Università La Sapienza, anno accademico 2023/2024
 
 Il progetto è un visualizzatore grafico e simulatore di traffico di rete.
 Tramite due file di input, uno con dettagli sulla configurazione di rete
