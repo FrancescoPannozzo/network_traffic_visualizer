@@ -428,6 +428,14 @@ Per quanto riguarda invece il file network.yaml si presenta con la seguente stru
   2024-03-22 12:30:02: phase2
 ```
 
+**NOTA:** Per una rappresentazione più leggibile delle coordinate è possibile usare anche la seguente forma:
+
+```yaml
+- coordinates:
+    - [1, 2]
+    - [3, 0]
+```
+
 Il file rappresenta una lista in cui ogni elemento rappresenta, in ordine, dal primo i seguenti valori:
 
 - La lista dei links
