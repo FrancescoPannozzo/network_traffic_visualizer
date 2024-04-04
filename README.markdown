@@ -440,6 +440,12 @@ Il file rappresenta una lista in cui ogni elemento rappresenta, in ordine, dal p
 
 Una volta ottenuto il file analyzed_data.yaml, esso verrà caricato dal graphic_visualizer al momento del lancio oltre che al file network.yaml, così da poter posizionare gli switch come indicato dalle coordinate, collegarli tra loro tramite la descrizione dei link per poi creare l'ambiente grafico che animerà nel tempo per mostrare la variazione del traffico. Il tutto viene eseguito tramite libreria Manim che provvede e fornire il risultato sottoforma di video
 
+![graphic_visualizer_example](./media/images/readme_pics/GraphicVisualizer_example.gif)
+
+È possibile visualizzare separatamente informazioni relatvie agli switch e ai link. Relativamente all'esempio precedente avremmo:
+
+![network_data_example](./media/images/readme_pics/NetworkData_example.gif)
+
 ### Prerequisiti
 
 - Python 3.6 o superiore

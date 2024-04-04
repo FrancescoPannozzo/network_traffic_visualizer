@@ -472,7 +472,7 @@ class NetworkData(MovingCameraScene):
         link_count = 1
         links_to_show = []
         y = 3.5
-        for _, content in links.items():
+        for content in links:
             ep_a = LabeledDot(str(content["endpoints"][CONST.EP_A]))
             ep_b = LabeledDot(str(content["endpoints"][CONST.EP_B]))
             text = Text(f"{content['capacity']}", font="Courier New", font_size=20)

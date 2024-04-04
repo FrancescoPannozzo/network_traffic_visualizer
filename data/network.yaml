@@ -66,34 +66,6 @@
     endpoints:
     - 8
     - 12
-  - capacity: 10
-    endpoints:
-    - 1
-    - 9
-  - capacity: 10
-    endpoints:
-    - 2
-    - 10
-  - capacity: 10
-    endpoints:
-    - 3
-    - 11
-  - capacity: 10
-    endpoints:
-    - 4
-    - 12
-  - capacity: 10
-    endpoints:
-    - 1
-    - 4
-  - capacity: 10
-    endpoints:
-    - 5
-    - 8
-  - capacity: 10
-    endpoints:
-    - 9
-    - 12
 - - address: 10.0.0.1
     switchID: 1
     switchName: switch1
@@ -131,8 +103,8 @@
     switchID: 12
     switchName: switch12
 - averageDelta: 1000
-  colorblind: 'yes'
-  graphType: torus
+  colorblind: 'no'
+  graphType: mesh
   linkCap: 10
   simTime: 3
   startSimTime: 2024-03-22 12:30:00
