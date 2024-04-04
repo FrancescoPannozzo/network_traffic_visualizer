@@ -147,7 +147,7 @@ La cui rappresentazione grafica ottenuta dal graphic visualizer è la seguente:
   - **endpoints** esprime gli endpoints collegati al link
 - **phases** rappresenta le fasi temporali che accompagnano la durata dell'attività di rete, sono identificate tramite timestamp che ha come valore la descrizione della fase che parte dal timestamp stesso
 
-Qualora la capacità dei link sia uguale per tutti è possibile insererire il campo **linkCap** e usare la seguente struttura:
+Qualora la capacità dei link sia uguale per tutti è possibile insererire il campo **linkCap** per poter così evitare di avere lo stesso valore nei vari link rappresentati nel campo **links**, potendo rappresentare solo gli endpoints:
 
 ```yaml
 ---
