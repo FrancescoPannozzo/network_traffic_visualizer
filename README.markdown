@@ -485,3 +485,7 @@ Visualizzare i dati di switch e links:
 ```python
  manim -pql graphic_visualizer.py NetworkData
 ```
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
