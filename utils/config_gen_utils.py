@@ -203,15 +203,16 @@ def create_user_toro_links(user_data):
     cols = len(toro[0])
     links_id = len(links) + 1
 
-    for i in range(cols):
-        if toro[0][i] != 0 and toro[rows-1][i] != 0:
-            links[links_id] = link_format(toro[0][i], toro[rows-1][i], link_cap)
-            links_id += 1
-
-    for i in range(rows):
-        if toro[i][0] != 0 and toro[i][cols-1] != 0:
-            links[links_id] = link_format(toro[i][0], toro[i][cols-1], link_cap)
-            links_id += 1
+    if rows > 2:
+        for i in range(cols):
+            if toro[0][i] != 0 and toro[rows-1][i] != 0:
+                links[links_id] = link_format(toro[0][i], toro[rows-1][i], link_cap)
+                links_id += 1
+    if cols > 2:
+        for i in range(rows):
+            if toro[i][0] != 0 and toro[i][cols-1] != 0:
+                links[links_id] = link_format(toro[i][0], toro[i][cols-1], link_cap)
+                links_id += 1
 
     return links
 
@@ -247,7 +248,7 @@ def create_auto_toro_links(link_cap, switch_number):
 
     for _, content in links.items():
         linkList.append(content["endpoints"])
-
+    
     for i in range(cols):
         if switches[0][i] != 0 and switches[rows-1][i] != 0 and [switches[0][i],switches[rows-1][i]] not in linkList:
             links[links_id] = link_format(switches[0][i], switches[rows-1][i], link_cap)

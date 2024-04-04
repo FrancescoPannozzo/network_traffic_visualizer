@@ -6,6 +6,8 @@
 \usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily, breaklines=true}
 \hypersetup{pdftitle={La mia tesi},pdfauthor={Francesco Biccari}}
 \title{Visualizzazione e simulazione grafica di traffico di reti}
 \author{Francesco Pannozzo}
@@ -38,9 +40,76 @@ matematici esplicativi..
 ...
 \chapter{Progettazione}
 ...
+\chapter{Test}
+Per ottenere i lati di un rettangolo che abbia proporzioni $16:9$ partendo da un quadrato di lato $n$, dobbiamo innanzitutto considerare che l'area del quadrato è data da $A = n^2$. Vogliamo che il rettangolo abbia la stessa area del quadrato ma rispetti le proporzioni $16:9$.
+
+Denotiamo con $l$ la lunghezza e con $h$ l'altezza del rettangolo. La condizione di proporzione si può esprimere come
+\[
+\frac{l}{h} = \frac{16}{9}.
+\]
+Dato che l'area del rettangolo deve essere uguale a quella del quadrato, abbiamo che
+\[
+l \cdot h = n^2.
+\]
+Utilizzando la proporzione, possiamo esprimere $l$ in termini di $h$ come
+\[
+l = \frac{16}{9}h.
+\]
+Sostituendo questa espressione nell'equazione dell'area, otteniamo
+\[
+\frac{16}{9}h \cdot h = n^2,
+\]
+che si semplifica in
+\[
+\frac{16}{9}h^2 = n^2.
+\]
+Da qui, isoliamo $h$ ottenendo
+\[
+h^2 = \frac{9}{16}n^2 \quad \Longrightarrow \quad h = n \cdot \frac{3}{4}.
+\]
+Risostituendo il valore di $h$ nell'espressione di $l$, abbiamo
+\[
+l = \frac{16}{9} \cdot n \cdot \frac{3}{4} = n \cdot \frac{4}{3}.
+\]
+Quindi, per un quadrato di lato $n$, per ottenere i lati di un rettangolo che mantenga la stessa area ($n^2$) con proporzioni $16:9$, l'altezza $h$ del rettangolo sarà $n \cdot \frac{3}{4}$ e la lunghezza $l$ sarà $n \cdot \frac{4}{3}$.
+
+
+
+Quindi il tutto funziona poichè è sempre vero quanto segue:
 \begin{equation}
 (l+1)(m+1)>ml
 \end{equation}
+
+
+Ecco un esempio di codice YAML:
+
+\begin{lstlisting}
+- coordinates:
+    - [1, 2]
+    - [3, 0]
+\end{lstlisting}
+
+E ora un esempio di codice Python:
+
+\begin{lstlisting}[language=Python]
+links = {}
+# Extracting links data
+for content in networkData[CONST.NETWORK["LINKS"]]:
+    links[frozenset({content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]})] = {
+        #"linkID": link,
+        "capacity": content["capacity"], 
+        "trafficDT":0, 
+        "trafficUDT":0, 
+        "updateDeltaTraffic": [], 
+        "traffic": []
+        }
+\end{lstlisting}
+La complessità temporale dell'algoritmo è $O(m+n)$.
+\begin{equation}
+    O(m+n)
+\end{equation}
+
+.. .. ..
 \backmatter
 \cleardoublepage
 \phantomsection % Give this command only if hyperref is loaded
