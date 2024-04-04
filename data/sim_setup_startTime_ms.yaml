@@ -1,6 +1,6 @@
 averageDelta: 1000
 updateDelta: 100
-startSimTime: 2024-03-22 12:30:00
+startSimTime: 2024-03-22 12:30:00.500
 simTime: 3
 packetSize: 4000
 colorblind: "no"

@@ -132,6 +132,8 @@ data:
     2024-01-01 00:00:02: "phase2"
 ```
 
+La cui rappresentazione grafica ottenuta dal graphic visualizer è la seguente:
+
 ![only_links](./media/images/readme_pics/only_links.JPG)
 
 - **graphType** identifica la tipologia del grafo da rappresentare, sono disponibili tre opzioni:
@@ -208,7 +210,6 @@ Un'altra possibilità è quella di lasciare che il programma ricavi in automatic
 
 ```yaml
 ---
-# only links
 data:
   graphType: mesh
   coordinates:
@@ -300,11 +301,144 @@ data:
 
 ## Analisi dati di rete: traffic_analyzer
 
-...
+Lo script traffic_analyzer carica i due files prodotti da config_gen e analizza il traffico producendo un file, analyzed_data.yaml nella seguente forma:
+
+```yaml
+- averageDelta: 1000
+  simStartTime: 2024-03-22 12:30:00
+  simTime: 3
+  updateDelta: 100
+- - endpoints:
+      - 1
+      - 2
+    traffic:
+      - 35.0
+      - 39.0
+      - 43.0
+      - 47.0
+      - 51.0
+      - 55.0
+      - 59.0
+      - 63.0
+      - 67.0
+      - 71.0
+      - 75.0
+      - 74.7
+      - 74.4
+      - 74.1
+      - 73.8
+      - 73.5
+      - 73.2
+      - 72.9
+      - 72.6
+      - 72.3
+      - 72.0
+  - endpoints:
+      - 1
+      - 3
+    traffic:
+      - 72.0
+      - 70.0
+      - 68.0
+      - 66.0
+      - 64.0
+      - 62.0
+      - 60.0
+      - 58.0
+      - 56.0
+      - 54.0
+      - 52.0
+      - 50.2
+      - 48.4
+      - 46.6
+      - 44.8
+      - 43.0
+      - 41.2
+      - 39.4
+      - 37.6
+      - 35.8
+      - 34.0
+```
+
+Il campo **traffic** rappresenta le percentuali di traffico registrate delle medie del peso dei pacchetti per un dato intervallo di tempo **averageDelta** (espresso in millisecondi), aggiornato ogni **updateDelta** millisecondi. Quindi, in questo specifico esempio in cui si descrive una rete di 3 switch, avremo la prima media percentuale di ciascun link esattamente a un secondo dall'inizio della trasmissione dei pacchetti e avremo valori aggiornati ogni 100 ms.
+Una qualsiasi rete può essere analizzata se si forniscono i files network.yaml e packets.yaml, i quali devono essere correttamente formattati. Traffic analyzer funziona avendo l'assunzione che il file packets.yaml contenga i pacchetti in ordine temporale di invio, il file presenta la seguente struttura:
+
+```yaml
+- A: 2
+  B: 1
+  d: 4000
+  t: &id001 2024-03-22 12:30:00
+- A: 1
+  B: 2
+  d: 4000
+  t: *id001
+- A: 1
+  B: 2
+  d: 4000
+  t: *id001
+- A: 1
+  B: 2
+  d: 4000
+  t: *id001
+# and so on
+```
+
+La struttura prevede una lista di dizionari le quali chiavi sono:
+
+- **A** - un endpoint del link sul quale il pacchetto ha viaggiato
+- **B** - l'altro endpoint
+- **d** - la dimensione del pacchetto in bytes
+- **t** - il timestamp di quando il pacchetto è stato trasmesso
+
+**NOTA:** la scelta di avere singoli caratteri come chiavi è dettata da esigenze di risparmio di data storage
+
+Per quanto riguarda invece il file network.yaml si presenta con la seguente struttura:
+
+```yaml
+- - capacity: 10
+    endpoints:
+      - 1
+      - 2
+  - capacity: 10
+    endpoints:
+      - 1
+      - 3
+- - address: 10.0.0.1
+    switchID: 1
+    switchName: switch1
+  - address: 10.0.0.2
+    switchID: 2
+    switchName: switch2
+  - address: 10.0.0.3
+    switchID: 3
+    switchName: switch3
+- averageDelta: 1000
+  colorblind: "no"
+  graphType: mesh
+  linkCap: 10
+  simTime: 3
+  startSimTime: 2024-03-22 12:30:00
+  updateDelta: 100
+- coordinates:
+    - - 1
+      - 2
+    - - 3
+      - 0
+- 2024-03-22 12:30:01: phase1
+  2024-03-22 12:30:02: phase2
+```
+
+Il file rappresenta una lista in cui ogni elemento rappresenta, in ordine, dal primo i seguenti valori:
+
+- La lista dei links
+- La lista di switches
+- Una lista dei parametri necessari
+- Le coordinate (una lista di liste) del posizionamento degli switch da rappresentare
+- Le fasi che interessano l'andamento del traffico di rete
 
 ## Visualizzazione grafica: graphic_visualizer.py
 
-...
+Una volta ottenuto il file analyzed_data.yaml, esso verrà caricato dal graphic_visualizer al momento del lancio oltre che al file network.yaml, così da poter posizionare gli switch come indicato dalle coordinate, collegarli tra loro tramite la descrizione dei link per poi creare l'ambiente grafico che animerà nel tempo per mostrare la variazione del traffico. Il tutto viene eseguito tramite libreria Manim che provvede e fornire il risultato sottoforma di video
 
 ### Prerequisiti
 
