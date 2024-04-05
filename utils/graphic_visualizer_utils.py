@@ -41,18 +41,16 @@ def traffic_colors_gen_colorblind():
     MID_TRAFFIC = 50
     MAX_TRAFFIC = 100
     hexColors = {}
-    r = 255
+    r = 0
     g = 255
-    b = 255
+    b = 0
 
     for i in range(0, MAX_TRAFFIC+1):
         if i <= MID_TRAFFIC:
-            r -= 5
-            b -= 5
-        else:
             r += 5
-            g -= 5
             b += 5
+        else:
+            g -= 5
         hexColors[i] = {"hexValue": hex_converter(r, g, b)}
     
     return hexColors

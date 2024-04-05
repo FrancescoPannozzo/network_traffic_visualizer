@@ -258,7 +258,8 @@ networkData[SIM_PARAMETERS_INDEX] = {
     "linkCap": link_capacity,
     "colorblind": setup["colorblind"],
     "updateDelta": PPS_DELTA,
-    "averageDelta": setup["averageDelta"]
+    "averageDelta": setup["averageDelta"],
+    "dotsSize": setup["dotsSize"]
 }
 
 if user_mode == CONST.USER_MODE:

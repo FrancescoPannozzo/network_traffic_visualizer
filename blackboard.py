@@ -1,78 +1,165 @@
 
-import datetime
+from utils import graphic_visualizer_utils
 
-from utils import utils
-
-data = utils.file_loader("./data/setup")
-
-start_time = data["startSimTime"]
-
-hours = start_time.strftime('%H')
-minutes = start_time.strftime('%M')
-seconds = start_time.strftime('%S.%f')[:-3]
-
-print(hours, minutes, seconds)
-
-hours = int(start_time.strftime('%H'))
-minutes = int(start_time.strftime('%M'))
-seconds = float(start_time.strftime('%S.%f')[:-3])
-
-print(hours, minutes, seconds)
-colors = utils.traffic_colors_gen(0, 255, 255)
+colors = graphic_visualizer_utils.traffic_colors_gen_colorblind()
 
 for _, color in colors.items():
     print(color)
 
-{'hexValue': '#05ffff'}
-{'hexValue': '#0affff'}
-{'hexValue': '#0fffff'}
-{'hexValue': '#14ffff'}
-{'hexValue': '#19ffff'}
-{'hexValue': '#1effff'}
-{'hexValue': '#23ffff'}
-{'hexValue': '#28ffff'}
-{'hexValue': '#2dffff'}
-{'hexValue': '#32ffff'}
-{'hexValue': '#37ffff'}
-{'hexValue': '#3cffff'}
-{'hexValue': '#41ffff'}
-{'hexValue': '#46ffff'}
-{'hexValue': '#4bffff'}
-{'hexValue': '#50ffff'}
-{'hexValue': '#55ffff'}
-{'hexValue': '#5affff'}
-{'hexValue': '#5fffff'}
-{'hexValue': '#64ffff'}
-{'hexValue': '#69ffff'}
-{'hexValue': '#6effff'}
-{'hexValue': '#73ffff'}
-{'hexValue': '#78ffff'}
-{'hexValue': '#7dffff'}
-{'hexValue': '#82ffff'}
-{'hexValue': '#87ffff'}
-{'hexValue': '#8cffff'}
-{'hexValue': '#91ffff'}
-{'hexValue': '#96ffff'}
-{'hexValue': '#9bffff'}
-{'hexValue': '#a0ffff'}
-{'hexValue': '#a5ffff'}
-{'hexValue': '#aaffff'}
-{'hexValue': '#afffff'}
-{'hexValue': '#b4ffff'}
-{'hexValue': '#b9ffff'}
-{'hexValue': '#beffff'}
-{'hexValue': '#c3ffff'}
-{'hexValue': '#c8ffff'}
-{'hexValue': '#cdffff'}
-{'hexValue': '#d2ffff'}
-{'hexValue': '#d7ffff'}
-{'hexValue': '#dcffff'}
-{'hexValue': '#e1ffff'}
-{'hexValue': '#e6ffff'}
-{'hexValue': '#ebffff'}
-{'hexValue': '#f0ffff'}
-{'hexValue': '#f5ffff'}
-{'hexValue': '#faffff'}
+""" 
+{'hexValue': '#fafffa'}
+{'hexValue': '#f5fff5'}
+{'hexValue': '#f0fff0'}
+{'hexValue': '#ebffeb'}
+{'hexValue': '#e6ffe6'}
+{'hexValue': '#e1ffe1'}
+{'hexValue': '#dcffdc'}
+{'hexValue': '#d7ffd7'}
+{'hexValue': '#d2ffd2'}
+{'hexValue': '#cdffcd'}
+{'hexValue': '#c8ffc8'}
+{'hexValue': '#c3ffc3'}
+{'hexValue': '#beffbe'}
+{'hexValue': '#b9ffb9'}
+{'hexValue': '#b4ffb4'}
+{'hexValue': '#afffaf'}
+{'hexValue': '#aaffaa'}
+{'hexValue': '#a5ffa5'}
+{'hexValue': '#a0ffa0'}
+{'hexValue': '#9bff9b'}
+{'hexValue': '#96ff96'}
+{'hexValue': '#91ff91'}
+{'hexValue': '#8cff8c'}
+{'hexValue': '#87ff87'}
+{'hexValue': '#82ff82'}
+{'hexValue': '#7dff7d'}
+{'hexValue': '#78ff78'}
+{'hexValue': '#73ff73'}
+{'hexValue': '#6eff6e'}
+{'hexValue': '#69ff69'}
+{'hexValue': '#64ff64'}
+{'hexValue': '#5fff5f'}
+{'hexValue': '#5aff5a'}
+{'hexValue': '#55ff55'}
+{'hexValue': '#50ff50'}
+{'hexValue': '#4bff4b'}
+{'hexValue': '#46ff46'}
+{'hexValue': '#41ff41'}
+{'hexValue': '#3cff3c'}
+{'hexValue': '#37ff37'}
+{'hexValue': '#32ff32'}
+{'hexValue': '#2dff2d'}
+{'hexValue': '#28ff28'}
+{'hexValue': '#23ff23'}
+{'hexValue': '#1eff1e'}
+{'hexValue': '#19ff19'}
+{'hexValue': '#14ff14'}
+{'hexValue': '#0fff0f'}
+{'hexValue': '#0aff0a'}
+{'hexValue': '#05ff05'}
+{'hexValue': '#00ff00'}
+{'hexValue': '#05fa05'}
+{'hexValue': '#0af50a'}
+{'hexValue': '#0ff00f'}
+{'hexValue': '#14eb14'}
+{'hexValue': '#19e619'}
+{'hexValue': '#1ee11e'}
+{'hexValue': '#23dc23'}
+{'hexValue': '#28d728'}
+{'hexValue': '#2dd22d'}
+{'hexValue': '#32cd32'}
+{'hexValue': '#37c837'}
+{'hexValue': '#3cc33c'}
+{'hexValue': '#41be41'}
+{'hexValue': '#46b946'}
+{'hexValue': '#4bb44b'}
+{'hexValue': '#50af50'}
+{'hexValue': '#55aa55'}
+{'hexValue': '#5aa55a'}
+{'hexValue': '#5fa05f'}
+{'hexValue': '#649b64'}
+{'hexValue': '#699669'}
+{'hexValue': '#6e916e'}
+{'hexValue': '#738c73'}
+{'hexValue': '#788778'}
+{'hexValue': '#7d827d'}
+{'hexValue': '#827d82'}
+{'hexValue': '#877887'}
+{'hexValue': '#8c738c'}
+{'hexValue': '#916e91'}
+{'hexValue': '#966996'}
+{'hexValue': '#9b649b'}
+{'hexValue': '#a05fa0'}
+{'hexValue': '#a55aa5'}
+{'hexValue': '#aa55aa'}
+{'hexValue': '#af50af'}
+{'hexValue': '#b44bb4'}
+{'hexValue': '#b946b9'}
+{'hexValue': '#be41be'}
+{'hexValue': '#c33cc3'}
+{'hexValue': '#c837c8'}
+{'hexValue': '#cd32cd'}
+{'hexValue': '#d22dd2'}
+{'hexValue': '#d728d7'}
+{'hexValue': '#dc23dc'}
+{'hexValue': '#e11ee1'}
+{'hexValue': '#e619e6'}
+{'hexValue': '#eb14eb'}
+{'hexValue': '#f00ff0'}
+{'hexValue': '#f50af5'}
+{'hexValue': '#fa05fa'} """
+
+
+""" {'hexValue': '#05ff05'}
+{'hexValue': '#0aff0a'}
+{'hexValue': '#0fff0f'}
+{'hexValue': '#14ff14'}
+{'hexValue': '#19ff19'}
+{'hexValue': '#1eff1e'}
+{'hexValue': '#23ff23'}
+{'hexValue': '#28ff28'}
+{'hexValue': '#2dff2d'}
+{'hexValue': '#32ff32'}
+{'hexValue': '#37ff37'}
+{'hexValue': '#3cff3c'}
+{'hexValue': '#41ff41'}
+{'hexValue': '#46ff46'}
+{'hexValue': '#4bff4b'}
+{'hexValue': '#50ff50'}
+{'hexValue': '#55ff55'}
+{'hexValue': '#5aff5a'}
+{'hexValue': '#5fff5f'}
+{'hexValue': '#64ff64'}
+{'hexValue': '#69ff69'}
+{'hexValue': '#6eff6e'}
+{'hexValue': '#73ff73'}
+{'hexValue': '#78ff78'}
+{'hexValue': '#7dff7d'}
+{'hexValue': '#82ff82'}
+{'hexValue': '#87ff87'}
+{'hexValue': '#8cff8c'}
+{'hexValue': '#91ff91'}
+{'hexValue': '#96ff96'}
+{'hexValue': '#9bff9b'}
+{'hexValue': '#a0ffa0'}
+{'hexValue': '#a5ffa5'}
+{'hexValue': '#aaffaa'}
+{'hexValue': '#afffaf'}
+{'hexValue': '#b4ffb4'}
+{'hexValue': '#b9ffb9'}
+{'hexValue': '#beffbe'}
+{'hexValue': '#c3ffc3'}
+{'hexValue': '#c8ffc8'}
+{'hexValue': '#cdffcd'}
+{'hexValue': '#d2ffd2'}
+{'hexValue': '#d7ffd7'}
+{'hexValue': '#dcffdc'}
+{'hexValue': '#e1ffe1'}
+{'hexValue': '#e6ffe6'}
+{'hexValue': '#ebffeb'}
+{'hexValue': '#f0fff0'}
+{'hexValue': '#f5fff5'}
+{'hexValue': '#fafffa'}
 {'hexValue': '#ffffff'}
 {'hexValue': '#fffaff'}
 {'hexValue': '#fff5ff'}
@@ -123,4 +210,4 @@ for _, color in colors.items():
 {'hexValue': '#ff14ff'}
 {'hexValue': '#ff0fff'}
 {'hexValue': '#ff0aff'}
-{'hexValue': '#ff05ff'}
+{'hexValue': '#ff05ff'} """

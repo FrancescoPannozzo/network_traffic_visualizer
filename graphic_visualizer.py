@@ -40,7 +40,7 @@ class GraphicVisualizer(MovingCameraScene):
         # load traffic colors
         traffic_perc_colors = None
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["colorblind"] == "yes":
-            # starting from color '##FFFFFF' low traffic, '##05FF00' mid traffic, '##FF05FF' full traffic
+            # starting from color '#05FF00' low traffic, '#FFFFFF' mid traffic, '#FF05FF' full traffic
             traffic_perc_colors = graphic_visualizer_utils.traffic_colors_gen_colorblind()
         else:
             # starting from color '#05ff00' low traffic,'#fffa00' mid traffic, '#ff0500' full traffic
@@ -174,8 +174,7 @@ class GraphicVisualizer(MovingCameraScene):
         font_size = 10
 
         graph_mesh = {}
-        # Nodes spacing
-        spacing = 1.3
+
 
         # dynamic font-size scaling
         if cols > 4:
@@ -198,6 +197,26 @@ class GraphicVisualizer(MovingCameraScene):
         mesh_grid = VGroup()
         EMPTY_SPACE = "0"
 
+        # Nodes spacing
+        spacing = 1.3
+        vertical_x_curve = 0.5
+        vertical_y_curve = 0.5
+        horizontal_y_curve = 0.5
+        horizontal_x_curve = 0.8
+        X_COORD = 0
+        Y_COORD = 1
+        h_pointA = [0.4, -0.55]
+        h_pointB = [-0.6, -0.55]
+        v_pointA = [-0.55, -0.8]
+        v_pointB = [-0.55, 0.5]
+
+        if network_data[CONST.NETWORK["SIM_PARAMS"]]["dotsSize"] == "fixed":
+            spacing = 1.7
+            h_pointA = [0.6, -0.75]
+            h_pointB = [-1, -0.75]
+            v_pointA = [-0.8, -1]
+            v_pointB = [-0.8, 0.6]
+
         for row in range(rows):
             for col in range(cols):
                 opacity = 1
@@ -205,7 +224,11 @@ class GraphicVisualizer(MovingCameraScene):
                 if str(mesh[row][col]) == EMPTY_SPACE:
                     opacity = 0
                 # radius=0.45 o maggiore per opzione
-                dot = LabeledDot(str(mesh[row][col]), point=np.array([col * spacing, row * -spacing, 0]))
+                dot = None
+                if network_data[CONST.NETWORK["SIM_PARAMS"]]["dotsSize"] == "adaptive":
+                    dot = LabeledDot(str(mesh[row][col]), point=np.array([col * spacing, row * -spacing, 0]))
+                elif network_data[CONST.NETWORK["SIM_PARAMS"]]["dotsSize"] == "fixed":
+                    dot = LabeledDot(str(mesh[row][col]), radius=0.6, point=np.array([col * spacing, row * -spacing, 0]))
                 dot.set_opacity(opacity)
                 graph_mesh[mesh[row][col]] = dot
                 mesh_grid.add(dot)
@@ -232,7 +255,6 @@ class GraphicVisualizer(MovingCameraScene):
                     for i in range(rows):
                         if mesh[i][0] != 0 and mesh[i][cols-1] != 0:
                             if (mesh[i][0], mesh[i][cols-1]) not in data_links:
-                                print("link contrario trovato?", (mesh[i][cols-1], mesh[i][0]) in data_links)
                                 traffic =  data_links[(mesh[i][cols-1], mesh[i][0])]
                                 data_links.pop((mesh[i][cols-1], mesh[i][0]))
                                 data_links[(mesh[i][0], mesh[i][cols-1])] = traffic
@@ -256,21 +278,21 @@ class GraphicVisualizer(MovingCameraScene):
             line = None
             if (link[CONST.EP_A], link[CONST.EP_B]) in vertical_links:
                 dot_a_coord = dot_a.get_center()
-                dot_a_coord[0] -= 0.5
-                dot_a_coord[1] -= 0.5
+                dot_a_coord[0] += v_pointA[X_COORD]
+                dot_a_coord[1] += v_pointA[Y_COORD]
                 dot_b_coord = dot_b.get_center()
-                dot_b_coord[0] -= 0.5
-                dot_b_coord[1] += 0.5
+                dot_b_coord[0] += v_pointB[X_COORD]
+                dot_b_coord[1] += v_pointB[Y_COORD]
                 points = [dot_a.get_center(), dot_a_coord, dot_b_coord, dot_b.get_center()]
                 line = VMobject(stroke_width=2).set_points_as_corners(points)
                 line.set_color(START_COLOR)
             elif (link[CONST.EP_A], link[CONST.EP_B]) in horizontal_links:
                 dot_a_coord = dot_a.get_center()
-                dot_a_coord[0] += 0.6
-                dot_a_coord[1] -= 0.6
+                dot_a_coord[0] += h_pointA[X_COORD]
+                dot_a_coord[1] += h_pointA[Y_COORD]
                 dot_b_coord = dot_b.get_center()
-                dot_b_coord[0] -= 0.8
-                dot_b_coord[1] -= 0.6
+                dot_b_coord[0] += h_pointB[X_COORD]
+                dot_b_coord[1] += h_pointB[Y_COORD]
                 points = [dot_a.get_center(), dot_a_coord, dot_b_coord, dot_b.get_center()]
                 line = VMobject(stroke_width=2).set_points_as_corners(points)
                 line.set_color(START_COLOR)
