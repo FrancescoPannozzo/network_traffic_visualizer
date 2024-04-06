@@ -1,6 +1,6 @@
 """ Traffic analyzer utils """
 
-from datetime import timedelta
+from datetime import timedelta, datetime
 import logging
 import os
 import sys
@@ -99,3 +99,9 @@ def switches_aspect_ratio(switch_number):
     rows = int(side * 4/3)
 
     print("cols:%d, rows:%d", cols, rows)
+
+def get_test_duration(start_time):
+    end_time = datetime.now()
+    duration = end_time - start_time
+    
+    return f"Test duration:{duration}"

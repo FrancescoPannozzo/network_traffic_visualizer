@@ -9,7 +9,7 @@ Description:
 Author: Francesco Pannozzo
 """
 
-from datetime import timedelta
+from datetime import timedelta, datetime
 import logging
 import math
 import os
@@ -17,6 +17,8 @@ import yaml
 from utils import config_gen_utils
 from utils import utils
 from utils import CONSTANTS as CONST
+
+import sys
 
 
 if not os.path.exists("./log_files"):
@@ -170,10 +172,10 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
     if fractional_unit % creationRate == 0:
         for link, content in links.items():
             content["trafficPerc"] = config_gen_utils.change_traffic_perc(content["trafficPerc"])
-            logging.info("Link: %s, endpoints: %s, sim second: %d, trafficPerc: %d",
+            """ logging.info("Link: %s, endpoints: %s, sim second: %d, trafficPerc: %d",
                          link, content["endpoints"],
                         (fractional_unit / creationRate),
-                       content["trafficPerc"])
+                       content["trafficPerc"]) """
     ENDP_A = 0
     ENDP_B = 1
     for link, content in links.items():
@@ -278,11 +280,27 @@ try:
         yaml.dump(networkData, file)
     logging.info("..network.yaml file creation done!")
 
+    start_test_time = datetime.now()
+
     logging.info("Writing packets.yaml file..")
+    # readeblePackets key in sim_setup.yaml file allow to choose if you want a 
+    # readeble packets.yaml file having a bigger file and bigger computational time, or
+    # a not readeble packets.yaml file having a smaller file and a better
+    # computational time
+    flow_style = False if setup["readeblePackets"] == "yes" else True
+    
     with open('./data/packets.yaml', 'w', encoding="utf-8") as file:
-        yaml.dump(packets, file)
+        #yaml.dump(packets, file)
+        yaml.dump(packets, file, default_flow_style=flow_style)
     logging.info("..packets file creation done!")
+
+    logging.info(utils.get_test_duration(start_test_time))
+
 except OSError as e:
     print(f"I/O error: {e}")
 except yaml.YAMLError as e:
     print(f"YAML error: {e}")
+
+
+any_key = input("Press any key to exit")
+sys.exit()

@@ -81,3 +81,25 @@ test 50 nodi, sim time = 3
 graphic_visualizer = 0:01:40.260058
 graphic_visualizer_test = 0:01:39.868600
 
+
+Scrittura dei pacchetti su file
+
+10 switch a 1000 Mbps, 3 secondi simulazione, metodo yaml inline, traffico al 50% fisso, mesh
+Test duration:0:02:39.643070, file size 21309 KB
+
+20 switch a 1000 Mbps, 3 secondi simulazione, metodo yaml inline, traffico al 50% fisso, mesh
+Test duration:0:06:31.596377, file size 52421 KB
+
+30 switch a 1000 Mbps, 3 secondi simulazione, metodo yaml inline, traffico al 50% fisso, mesh
+Test duration:0:10:06.145508, file size 82117 KB
+-------
+10 switch a 1000 Mbps, 3 secondi simulazione, metodo yaml default, traffico al 50% fisso, mesh
+Test duration:0:02:45.431157, 23904 KB
+
+20 switch a 1000 Mbps, 3 secondi simulazione, metodo yaml default, traffico al 50% fisso, mesh
+Test duration:0:06:39.264273, 58339 KB
+
+30 switch a 1000 Mbps, 3 secondi simulazione, metodo yaml default, traffico al 50% fisso, mesh
+Test duration:0:10:25.127766, 91125 KB
+
+

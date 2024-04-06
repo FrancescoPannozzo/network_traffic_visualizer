@@ -51,49 +51,51 @@ class GraphicVisualizer(MovingCameraScene):
       
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["graphType"] == CONST.COMPLETE_GRAPH:
             logging.info("The graph type found is complete, rendering..")
-            GraphicVisualizer.complete_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time)
+            GraphicVisualizer.create_complete_graph_video(self, network_data, traffic_data, traffic_perc_colors, start_test_time)
         else:
             logging.info("The graph type found is not complete, rendering..")
-            GraphicVisualizer.mesh_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time)
+            GraphicVisualizer.create_graph_video(self, network_data, traffic_data, traffic_perc_colors, start_test_time)
       
-    def complete_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time):
+    def create_complete_graph_video(self, network_data, traffic_data, traffic_perc_colors, start_test_time):
+        """ A complete graph to render """
+
         sim_params = traffic_data[CONST.ANALYZED_DATA["SIM_PARAMS"]]
-       
         end_time = sim_params["simStartTime"] + timedelta(seconds=sim_params["simTime"])
         # show_delta is the time range we want to update the visualization
         show_delta = sim_params["updateDelta"]
-        # time index to analyze
+        # index time to analyze
         time_walker = sim_params["simStartTime"] + timedelta(milliseconds=sim_params["averageDelta"])
-        # extracting switches
+        # extracting switches into switches structure "switches"
         switches = []
         for s in network_data[CONST.NETWORK["SWITCHES"]]:
             switches.append(s["switchID"])
 
-        logging.debug("switches: %s", switches)
+        #logging.debug("switches: %s", switches)
         
         # extracting links data
         links = []
         for content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]]:
             links.append((content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]))
 
-        logging.debug("links: %s", links)
+        #logging.debug("links: %s", links)
 
         # link-line stroke
         stroke_width = 4
+        # network parameters font size
         font_size = 20
-
+        # the first color matching the zero traffic color value
         START_COLOR = traffic_perc_colors[0]['hexValue']
+        # adapting font size and line stroke dimensions
         if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 100:
             font_size = 40
         if len(network_data[CONST.NETWORK["SWITCHES"]]) >= 20:
             stroke_width = 1
 
-
+        # the phases for the trasmission period time
         phases = network_data[CONST.NETWORK["PHASES"]]
         phases_iterator = iter(phases.items())
         phase_time, phase = next(phases_iterator)
-        logging.info("FIRST PHASE TIMESTAMP: %s", phase_time)
-        # the sim time to visualize
+        # the sim time and phase time to visualize
         sim_time_txt = Text(f"SIM TIME: {time_walker.strftime('%H:%M:%S.%f')[:-3]}", font="Courier New", font_size=font_size).set_color(WHITE)
         phase_time_txt = Text(f"PHASE: {phase}", font="Courier New", font_size=font_size).set_color(WHITE)
       
@@ -107,10 +109,13 @@ class GraphicVisualizer(MovingCameraScene):
         phase_time_txt.next_to(grafo, UP)
         sim_time_txt.next_to(phase_time_txt, UP/3)
 
+        # adding mobjects to the scene
         self.add(phase_time_txt)
         self.add(sim_time_txt)
         self.add(infos)
+        # creating creation graph animation
         self.play(Create(grafo))
+        # creating screen adjustment animation
         self.play(self.camera.auto_zoom([grafo, sim_time_txt, phase_time_txt, infos], margin=1), run_time=0.5)
        
         # creating traffic animations
@@ -151,9 +156,17 @@ class GraphicVisualizer(MovingCameraScene):
             time_walker += timedelta(milliseconds=show_delta)
         self.wait(2)
 
-        logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
+        logging.info(utils.get_test_duration(start_test_time))
     
-    def mesh_graph(self, network_data, traffic_data, traffic_perc_colors, start_test_time):
+    def create_graph_video(self, network_data, traffic_data, traffic_perc_colors, start_test_time):
+        """ Render every graph type (mesh, torus and user custom)
+        
+         Keyword Arguments:
+         network_data: the network data to render into a video presentation
+         traffic_data: the traffic to render
+         traffic_perc_colors: the chromatic scale used to color the links
+         start_test_time: The time at the start of the rendering process
+         """
 
         sim_params = traffic_data[CONST.ANALYZED_DATA["SIM_PARAMS"]]
 
@@ -165,9 +178,9 @@ class GraphicVisualizer(MovingCameraScene):
 
         mesh = network_data[CONST.NETWORK["COORDINATES"]]["coordinates"]
 
-        logging.debug("MESH: %s", mesh)
+        #logging.debug("Coordinates are: %s", mesh)
        
-        # building mesh graph
+        # building graph
         rows = len(mesh)
         cols = len(mesh[0])
 
@@ -199,10 +212,6 @@ class GraphicVisualizer(MovingCameraScene):
 
         # Nodes spacing
         spacing = 1.3
-        vertical_x_curve = 0.5
-        vertical_y_curve = 0.5
-        horizontal_y_curve = 0.5
-        horizontal_x_curve = 0.8
         X_COORD = 0
         Y_COORD = 1
         h_pointA = [0.4, -0.55]
@@ -211,7 +220,7 @@ class GraphicVisualizer(MovingCameraScene):
         v_pointB = [-0.55, 0.5]
 
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["dotsSize"] == "fixed":
-            spacing = 1.7
+            spacing = 1.8
             h_pointA = [0.6, -0.75]
             h_pointB = [-1, -0.75]
             v_pointA = [-0.8, -1]
@@ -360,9 +369,11 @@ class GraphicVisualizer(MovingCameraScene):
             time_walker += timedelta(milliseconds=show_delta)
 
         self.wait(5)
-        logging.info(graphic_visualizer_utils.get_test_duration(start_test_time))
+        logging.info(utils.get_test_duration(start_test_time))
 
     def show_info(self, sim_params, network_data, grid, font_size):
+        """ These are the network parameters to show in the main visualization """
+        
         net_sim_par = network_data[CONST.NETWORK["SIM_PARAMS"]]
         capacity = net_sim_par['linkCap']
         graph_type = net_sim_par['graphType']
@@ -426,31 +437,10 @@ class GraphicVisualizer(MovingCameraScene):
         self.play(AnimationGroup(*animations, lag_ratio=0.2))
 
 
-class SwitchesInfo(MovingCameraScene):
-
-    def construct(self):
-        # load network config
-        network_data = utils.file_loader("./data/network")
-
-        switches = network_data[CONST.NETWORK["SWITCHES"]]
-
-        prev_dot = Text("SWITCHES:", font_size=17)
-        for content in switches:
-            if(content['switchID']) == "0":
-                continue
-            dot_text = Text(f"ID:{content['switchID']}", font="Courier New", font_size=15, color=BLACK)
-            dot = LabeledDot(dot_text)
-            text = Text(f"Name: {content['switchName']}\nIP: {content['address']}", font="Courier New", font_size=7)
-            dot.next_to(prev_dot, RIGHT)
-            text.next_to(dot, DOWN)
-            self.add(dot, text)
-            prev_dot = dot
-            self.play(self.camera.auto_zoom([dot, text], margin=1), FadeIn(dot), FadeIn(text), run_time=2)
-
-        self.wait()
-
-
 class NetworkData(MovingCameraScene):
+    """ Creates a network data presentation video, it shows the switches with infos
+    and links with the own link capacity"""
+
     def construct(self):
         network_data = utils.file_loader("./data/network")
         switches = {}
@@ -484,7 +474,7 @@ class NetworkData(MovingCameraScene):
                 text_animations = []
                 for i in switch_to_show:
                     switch_animations.append(FadeOut(i, shift=LEFT))
-                for i in infos_to_show:   
+                for i in infos_to_show:
                     text_animations.append(FadeOut(i, shift=LEFT))
                 self.wait(2)
                 self.play(AnimationGroup(*switch_animations), AnimationGroup(*text_animations), run_time = 0.5)

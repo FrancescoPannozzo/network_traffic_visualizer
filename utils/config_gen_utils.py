@@ -31,6 +31,7 @@ def change_traffic_perc(traffic_perc):
                 new_traffic_perc -= 10
     else:
         new_traffic_perc = random.randint(0, 100)
+        #new_traffic_perc = 50
     return new_traffic_perc
 
 def ip_to_string(ip):

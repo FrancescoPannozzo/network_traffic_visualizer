@@ -3,11 +3,6 @@
 from manim import *
 from datetime import datetime
 
-def get_test_duration(start_time):
-    end_time = datetime.now()
-    duration = end_time - start_time
-    
-    return f"Test duration:{duration}"
 
 def set_sim_infos(infos, font_size):
     start_time = f"start sim time: {infos['simStartTime']}\n"

@@ -12,6 +12,7 @@ import logging
 import yaml
 from utils import utils
 from utils import CONSTANTS as CONST
+import sys
 
 # Logger config
 logging.basicConfig(
@@ -200,5 +201,5 @@ except OSError as e:
 except yaml.YAMLError as e:
     print(f"YAML error: {e}")
 
-#any_key = input("Press any key to exit")
-#sys.exit()
+any_key = input("Press any key to exit")
+sys.exit()
