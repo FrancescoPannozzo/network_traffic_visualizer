@@ -31,8 +31,8 @@ def change_traffic_perc(traffic_perc, traffic_variation):
             if new_traffic_perc >= traffic_variation:
                 new_traffic_perc -= traffic_variation
     else:
-        #new_traffic_perc = random.randint(0, 100)
-        new_traffic_perc = 50
+        new_traffic_perc = random.randint(0, 100)
+        #new_traffic_perc = 50
     return new_traffic_perc
 
 def ip_to_string(ip):
