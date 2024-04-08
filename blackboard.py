@@ -1,10 +1,13 @@
 
 from utils import graphic_visualizer_utils
 
-colors = graphic_visualizer_utils.traffic_colors_gen_colorblind()
+#colors = graphic_visualizer_utils.traffic_colors_gen_colorblind()
 
-for _, color in colors.items():
-    print(color)
+#for _, color in colors.items():
+#    print(color)
+
+if 5 == int:
+    print("ciao")
 
 """ 
 {'hexValue': '#fafffa'}

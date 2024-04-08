@@ -31,7 +31,7 @@
   dotsSize: fixed
   graphType: mesh
   linkCap: 10
-  simTime: 3
+  simTime: 10
   startSimTime: 2024-03-22 12:30:00
   updateDelta: 100
 - coordinates:
@@ -40,4 +40,3 @@
   - - 3
     - 4
 - 2024-03-22 12:30:01: phase1
-  2024-03-22 12:30:02: phase2

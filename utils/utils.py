@@ -1,6 +1,7 @@
 """ Traffic analyzer utils """
 
 from datetime import timedelta, datetime
+from utils import exceptions
 import logging
 import os
 import sys
@@ -105,3 +106,49 @@ def get_test_duration(start_time):
     duration = end_time - start_time
     
     return f"Test duration:{duration}"
+
+def check_sim_setup(setup):
+    """ Check if the sim_setup.yaml file is properly written """
+    logger = logging.getLogger()
+
+    try:
+        datetime.strptime(str(setup["startSimTime"]), "%Y-%m-%d %H:%M:%S")
+
+        if setup["packetSize"] not in range(1, 4001):
+            raise exceptions.CustomFileError("WARNING, packetSize must be in range 1 - 4000")
+        if setup["colorblind"] not in ["yes", "no"]:
+            raise exceptions.CustomFileError("WARNING, \"colorBlind\" key mus be \"yes\" or \"no\"")
+        if setup["dotsSize"] not in ["adaptive", "fixed"]:
+            raise exceptions.CustomFileError("WARNING, \"dotSize\" mus be \"adaptive\" or \"fixed\"")
+        if setup["readeblePackets"] not in ["yes", "no"]:
+            raise exceptions.CustomFileError("WARNING, \"readeblePackets\" must be in \"yes\" or \"not\"")
+        if setup["trafficVariation"] not in [5, 10, 20, 25, 50, "random"]:
+            raise exceptions.CustomFileError("WARNING \"trafficVariation\" must be one of [5, 10, 20 ,25, 50] values")
+    except ValueError as ve:
+        logger.error("%s: value not properly written, pleas check the README", ve)
+        sys.exit()
+    except KeyError as ke:
+        logger.error("%s key not valid, please check the README", ke)
+        sys.exit()
+    except exceptions.CustomFileError as ce:
+        logger.error(ce)
+        sys.exit()
+
+def check_network_sim_setup(setup):
+    logger = logging.getLogger()
+
+    try:
+        datetime.strptime(str(setup["startSimTime"]), "%Y-%m-%d %H:%M:%S")
+
+        if setup["graphType"] not in ["mesh", "torus", "graph", "complete"]:
+            raise exceptions.CustomFileError("WARNING, \"graphType\" not valid, please check the README")
+        if setup["colorblind"] not in ["yes", "no"]:
+            raise exceptions.CustomFileError("WARNING, \"colorBlind\" key mus be \"yes\" or \"no\"")
+        if setup["dotsSize"] not in ["adaptive", "fixed"]:
+            raise exceptions.CustomFileError("WARNING, \"dotSize\" mus be \"adaptive\" or \"fixed\"")
+        if setup["linkCap"] not in [10, 100, 1000, 10000, 100000]:
+            raise exceptions.CustomFileError("WARNING, \"linkCap\" mus be one of [10, 100, 1000, 10000, 100000]")
+    
+    except exceptions.CustomFileError as ce:
+        logger.error(ce)
+        sys.exit()

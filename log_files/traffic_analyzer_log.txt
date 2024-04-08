@@ -1,11 +1,14 @@
-2024-04-06 20:07:53,831 [INFO] Loading files..
-2024-04-06 20:07:53,833 [INFO] Loading network file..
-2024-04-06 20:07:53,868 [INFO] ..done!
-2024-04-06 20:07:53,869 [INFO] Loading packets file..
-2024-04-06 20:07:56,024 [INFO] ..done!
-2024-04-06 20:07:56,024 [INFO] Analyzing files..
-2024-04-06 20:07:56,024 [INFO] Simulation parameters:
-2024-04-06 20:07:56,024 [INFO] {'averageDelta': 1000, 'colorblind': 'no', 'dotsSize': 'fixed', 'graphType': 'mesh', 'linkCap': 10, 'simTime': 3, 'startSimTime': datetime.datetime(2024, 3, 22, 12, 30), 'updateDelta': 100}
-2024-04-06 20:07:56,039 [INFO] ..done!
-2024-04-06 20:07:56,064 [INFO] Writing analyzed_data_test.yaml file..
-2024-04-06 20:07:56,095 [INFO] analyzed_data_test.yaml file creation done!
+2024-04-08 15:21:53,464 [INFO] Loading files..
+2024-04-08 15:21:53,464 [INFO] Loading network file..
+2024-04-08 15:21:53,484 [INFO] ..done!
+2024-04-08 15:21:53,493 [INFO] Loading packets file..
+2024-04-08 15:21:53,932 [INFO] ..done!
+2024-04-08 15:21:53,932 [DEBUG] NETWORK and PACKETS structure loading time:Test duration:0:00:00.467614
+2024-04-08 15:21:53,932 [INFO] Analyzing files..
+2024-04-08 15:21:53,932 [INFO] Simulation parameters:
+2024-04-08 15:21:53,932 [INFO] {'averageDelta': 1000, 'colorblind': 'no', 'dotsSize': 'fixed', 'graphType': 'mesh', 'linkCap': 10, 'simTime': 10, 'startSimTime': datetime.datetime(2024, 3, 22, 12, 30), 'updateDelta': 100}
+2024-04-08 15:21:53,932 [INFO] ..done!
+2024-04-08 15:21:53,932 [DEBUG] ANALYZING time:Test duration:0:00:00
+2024-04-08 15:21:53,944 [INFO] Writing analyzed_data_test.yaml file..
+2024-04-08 15:21:53,960 [INFO] analyzed_data_test.yaml file creation done!
+2024-04-08 15:21:53,960 [DEBUG] ANALYZED DATA structure creation and writing time:Test duration:0:00:00.028174

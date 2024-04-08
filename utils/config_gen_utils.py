@@ -1,5 +1,6 @@
 """ Utils module for config_gen.py script """
 
+import logging
 import random
 import math
 from datetime import timedelta
@@ -9,29 +10,29 @@ import sys
 
 
 # Update traffic percentage
-def change_traffic_perc(traffic_perc):
-    """ Change the traffic% by +10% or -10% if CONTROLLED is True.
-        Random value (0, 100) otherwise
+def change_traffic_perc(traffic_perc, traffic_variation):
+    """ Change the traffic% by +traffic_variation% or -traffic_variation% if traffic_variation is a number.
+        Random value (0, 100) if traffic_variation value is "random"
     
     Keyword Arguments:
     traffic_perc -- a traffic perc value
+    traffic_variation -- the traffic_variation option
 
     Returns:
     int -- a new traffic perc value
     """
-    CONTROLLED = False
 
-    if CONTROLLED:
+    if traffic_variation != "random":
         new_traffic_perc = traffic_perc
         if random.randint(0, 1) == 1:
-            if new_traffic_perc < 100:
-                new_traffic_perc += 10
+            if new_traffic_perc <= (100-traffic_variation):
+                new_traffic_perc += traffic_variation
         else:
-            if new_traffic_perc > 0:
-                new_traffic_perc -= 10
+            if new_traffic_perc >= traffic_variation:
+                new_traffic_perc -= traffic_variation
     else:
-        new_traffic_perc = random.randint(0, 100)
-        #new_traffic_perc = 50
+        #new_traffic_perc = random.randint(0, 100)
+        new_traffic_perc = 50
     return new_traffic_perc
 
 def ip_to_string(ip):
@@ -166,7 +167,7 @@ def create_user_mesh_links(user_data):
 def create_auto_phases(start_time, sim_time):
     setup = utils.file_loader("./data/sim_setup")
     average_delta = setup["averageDelta"]
-    phase_intervall = timedelta(milliseconds=1000)
+    phase_intervall = timedelta(milliseconds=10000)
     timewalker = start_time + timedelta(milliseconds=average_delta)
     phases = {}
     phase_count = 1
@@ -198,6 +199,7 @@ def create_user_toro_links(user_data):
     except KeyError as e:
         print(exceptions.CUSTOM_FILE_ERROR_MSG)
         print(f"{e} missing or badly formatted")
+        sys.exit()
 
     links = create_user_mesh_links(user_data)
     rows = len(toro)

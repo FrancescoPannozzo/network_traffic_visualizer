@@ -255,7 +255,6 @@ class GraphicVisualizer(MovingCameraScene):
                     for i in range(cols):
                         if mesh[0][i] != 0 and mesh[rows-1][i] != 0:
                             if (mesh[0][i], mesh[rows-1][i]) not in data_links:
-                                print("link contrario trovato?", (mesh[rows-1][i], mesh[0][i]) in data_links)
                                 traffic =  data_links[(mesh[rows-1][i], mesh[0][i])]
                                 data_links.pop((mesh[rows-1][i], mesh[0][i]))
                                 data_links[(mesh[0][i], mesh[rows-1][i])] = traffic
@@ -339,6 +338,7 @@ class GraphicVisualizer(MovingCameraScene):
             # definig all the traffic color links at timeWalker time
             for link, content in data_links.items():
                 color_perc = int(content[traffic_count])
+
                 animations.append(links[(link[CONST.EP_A], link[CONST.EP_B])].animate.set_color(traffic_perc_colors[color_perc]["hexValue"]))
             # playing animations
 

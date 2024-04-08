@@ -7,12 +7,12 @@ Description:
     time simulation and the averages in delta time, updated every updateDeltaTime
 """
 
-from datetime import timedelta
+from datetime import datetime, timedelta
 import logging
+#import sys
 import yaml
 from utils import utils
 from utils import CONSTANTS as CONST
-import sys
 
 # Logger config
 logging.basicConfig(
@@ -26,20 +26,24 @@ logging.basicConfig(
     ]
 )
 
+start_test_time = datetime.now()
+
 logging.info("Loading files..")
-# networkData:list composed by a link dict, a switch list and network parameters dict
-# packetsData:composed by a packets dict
 
 logging.info("Loading network file..")
-#networkData = utils.file_loader(args.networkFile)
 networkData = utils.file_loader("./data/network")
-logging.info("..done!")
-logging.info("Loading packets file..")
-#packetsData = utils.file_loader(args.packetsFile)
-packetsData = utils.file_loader("./data/packets")
 logging.info("..done!")
 
 SIM_PARAMETERS = CONST.NETWORK["SIM_PARAMS"]
+utils.check_network_sim_setup(networkData[SIM_PARAMETERS])
+
+logging.info("Loading packets file..")
+packetsData = utils.file_loader("./data/packets")
+logging.info("..done!")
+
+
+logging.debug("NETWORK and PACKETS structure loading time:%s", utils.get_test_duration(start_test_time))
+start_test_time = datetime.now()
 
 logging.info("Analyzing files..")
 
@@ -75,9 +79,9 @@ for content in networkData[CONST.NETWORK["LINKS"]]:
 
 # Logging links with own endpoints
 #for link, content in links.items():
-#    logging.info("Link ID %s:", link)
+#    logging.debug("Link ID %s:", link)
 #    for endpoint in link:
-#        logging.info("endpoint: %s", endpoint)
+#        logging.debug("endpoint: %s", endpoint)
 
 # Logging simulation parameters
 logging.info("Simulation parameters:")
@@ -162,6 +166,10 @@ while timeWalker <= startTime + (simTime - updateDelta):
 
 logging.info("..done!")
 
+
+logging.debug("ANALYZING time:%s", utils.get_test_duration(start_test_time))
+start_test_time = datetime.now()
+
 # file structure
 sim_parameters = {
     "simTime": networkData[CONST.NETWORK["SIM_PARAMS"]]["simTime"],
@@ -201,5 +209,8 @@ except OSError as e:
 except yaml.YAMLError as e:
     print(f"YAML error: {e}")
 
-any_key = input("Press any key to exit")
-sys.exit()
+
+logging.debug("ANALYZED DATA structure creation and writing time:%s", utils.get_test_duration(start_test_time))
+
+#any_key = input("Press any key to exit")
+#sys.exit()

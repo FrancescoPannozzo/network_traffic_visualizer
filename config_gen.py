@@ -18,7 +18,7 @@ from utils import config_gen_utils
 from utils import utils
 from utils import CONSTANTS as CONST
 
-import sys
+#import sys
 
 
 if not os.path.exists("./log_files"):
@@ -41,6 +41,10 @@ switch_number = None
 graph_type = None
 user_mode = None
 user_data = None
+
+# LOADING PARAMETERS
+setup = utils.file_loader("./data/sim_setup")
+utils.check_sim_setup(setup)
 
 # CHOSING USER MODE OR AUTO MODE
 CORRECT_CHOOSE = False
@@ -106,9 +110,9 @@ elif user_mode == CONST.USER_MODE:
     else:
         link_capacity = "mixed"
 
+# Testing che network and packets structure creation time
+start_test_time = datetime.now()
 
-# LOADING PARAMETERS
-setup = utils.file_loader("./data/sim_setup")
 # Defining the simulation start time point
 # START_TIME = datetime(2024, 1, 1, 0, 0, 0)
 START_TIME = setup["startSimTime"]
@@ -171,11 +175,11 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
     # Changing trafficPercentage every second
     if fractional_unit % creationRate == 0:
         for link, content in links.items():
-            content["trafficPerc"] = config_gen_utils.change_traffic_perc(content["trafficPerc"])
-            """ logging.info("Link: %s, endpoints: %s, sim second: %d, trafficPerc: %d",
-                         link, content["endpoints"],
-                        (fractional_unit / creationRate),
-                       content["trafficPerc"]) """
+            content["trafficPerc"] = config_gen_utils.change_traffic_perc(content["trafficPerc"], setup["trafficVariation"])
+            #logging.info("Link: %s, endpoints: %s, sim second: %d, trafficPerc: %d",
+            #             link, content["endpoints"],
+            #            (fractional_unit / creationRate),
+            #           content["trafficPerc"])
     ENDP_A = 0
     ENDP_B = 1
     for link, content in links.items():
@@ -271,6 +275,8 @@ else:
 
 logging.info("..network.yaml file structure done!")
 
+logging.debug("NETWORK and PACKETS structure creation time:%s", utils.get_test_duration(start_test_time))
+
 if not os.path.exists("./data"):
     os.makedirs("./data")
 
@@ -293,8 +299,8 @@ try:
         #yaml.dump(packets, file)
         yaml.dump(packets, file, default_flow_style=flow_style)
     logging.info("..packets file creation done!")
-
-    logging.info(utils.get_test_duration(start_test_time))
+    
+    logging.debug("NETWORK and PACKETS structure writing time:%s", utils.get_test_duration(start_test_time))
 
 except OSError as e:
     print(f"I/O error: {e}")
@@ -302,5 +308,5 @@ except yaml.YAMLError as e:
     print(f"YAML error: {e}")
 
 
-any_key = input("Press any key to exit")
-sys.exit()
+#any_key = input("Press any key to exit")
+#sys.exit()

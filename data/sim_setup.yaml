@@ -1,8 +1,9 @@
 averageDelta: 1000
 updateDelta: 100
-startSimTime: 2024-03-22 12:30:00
-simTime: 3
-packetSize: 4000
+startSimTime: 2024-03-22 12:30:00 #timestamp
+simTime: 10
+packetSize: 4000 # max 4000
 colorblind: "no"
-dotsSize: "fixed"
-readeblePackets: "yes"
+dotsSize: "fixed" # fixed or adaptive
+readeblePackets: "no" # yes or no
+trafficVariation: 5
