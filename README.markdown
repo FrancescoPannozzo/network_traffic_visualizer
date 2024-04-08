@@ -32,6 +32,8 @@ startSimTime: 2024-03-22 12:30:00
 simTime: 3
 packetSize: 4000
 colorblind: "no"
+readeblePackets: "no"
+trafficVariation: random
 ```
 
 - **averageDelta** rappresenta l'intervallo temporale in millisecondi delle medie di traffico da calcolare

@@ -7,6 +7,7 @@ from datetime import timedelta
 from utils import utils, exceptions
 from utils import CONSTANTS as CONST
 import sys
+import json
 
 
 # Update traffic percentage

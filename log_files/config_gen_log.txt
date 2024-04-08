@@ -1,23 +1,24 @@
-2024-04-08 15:03:04,807 [INFO] You choosed the auto mode!
-2024-04-08 15:03:08,534 [INFO] Creating links..
-2024-04-08 15:03:08,534 [INFO] ..links creation done!
-2024-04-08 15:03:08,534 [INFO] Links created are:
-2024-04-08 15:03:08,534 [INFO] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
-2024-04-08 15:03:08,534 [INFO] 2: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}
-2024-04-08 15:03:08,534 [INFO] 3: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-04-08 15:03:08,534 [INFO] 4: {'endpoints': [2, 4], 'capacity': 10, 'trafficPerc': 0}
-2024-04-08 15:03:08,534 [INFO] Creating packets.yaml file structure..
-2024-04-08 15:03:08,553 [INFO] ..packets.yaml file structure done!
-2024-04-08 15:03:08,554 [INFO] Creating network.yaml file structure..
-2024-04-08 15:03:08,558 [INFO] Switches created:
-2024-04-08 15:03:08,559 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
-2024-04-08 15:03:08,559 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
-2024-04-08 15:03:08,560 [INFO] {'switchID': 3, 'switchName': 'switch3', 'address': '10.0.0.3'}
-2024-04-08 15:03:08,561 [INFO] {'switchID': 4, 'switchName': 'switch4', 'address': '10.0.0.4'}
-2024-04-08 15:03:08,561 [INFO] ..network.yaml file structure done!
-2024-04-08 15:03:08,562 [DEBUG] NETWORK and PACKETS structure creation time:Test duration:0:00:00.028038
-2024-04-08 15:03:08,563 [INFO] Writing network.yaml file..
-2024-04-08 15:03:08,571 [INFO] ..network.yaml file creation done!
-2024-04-08 15:03:08,572 [INFO] Writing packets.yaml file..
-2024-04-08 15:03:08,804 [INFO] ..packets file creation done!
-2024-04-08 15:03:08,804 [DEBUG] NETWORK and PACKETS structure writing time:Test duration:0:00:00.232095
+2024-04-08 18:23:45,477 [INFO] You choosed the auto mode!
+2024-04-08 18:23:49,616 [INFO] Creating links..
+2024-04-08 18:23:49,616 [INFO] ..links creation done!
+2024-04-08 18:23:49,616 [INFO] Links created are:
+2024-04-08 18:23:49,616 [INFO] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
+2024-04-08 18:23:49,616 [INFO] 2: {'endpoints': [1, 3], 'capacity': 10, 'trafficPerc': 0}
+2024-04-08 18:23:49,616 [INFO] 3: {'endpoints': [3, 4], 'capacity': 10, 'trafficPerc': 0}
+2024-04-08 18:23:49,631 [INFO] 4: {'endpoints': [2, 4], 'capacity': 10, 'trafficPerc': 0}
+2024-04-08 18:23:49,631 [INFO] Creating packets.yaml file structure..
+2024-04-08 18:23:49,631 [INFO] ..packets.yaml file structure done!
+2024-04-08 18:23:49,631 [INFO] Creating network.yaml file structure..
+2024-04-08 18:23:49,641 [INFO] Switches created:
+2024-04-08 18:23:49,641 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
+2024-04-08 18:23:49,642 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
+2024-04-08 18:23:49,642 [INFO] {'switchID': 3, 'switchName': 'switch3', 'address': '10.0.0.3'}
+2024-04-08 18:23:49,643 [INFO] {'switchID': 4, 'switchName': 'switch4', 'address': '10.0.0.4'}
+2024-04-08 18:23:49,643 [INFO] ..network.yaml file structure done!
+2024-04-08 18:23:49,644 [DEBUG] NETWORK and PACKETS structure creation time:Test duration:0:00:00.028018
+2024-04-08 18:23:49,645 [INFO] Writing network.yaml file..
+2024-04-08 18:23:49,652 [INFO] ..network.yaml file creation done!
+2024-04-08 18:23:49,653 [INFO] Writing packets.yaml file..
+2024-04-08 18:23:49,945 [INFO] ..packets file creation done!
+2024-04-08 18:23:49,945 [DEBUG] TEST PARAMS: 4 switches, 10 link cap, 10 sim time, mesh
+2024-04-08 18:23:49,945 [DEBUG] NETWORK and PACKETS structure writing time:Test duration:0:00:00.291655

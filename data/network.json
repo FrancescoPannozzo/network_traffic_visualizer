@@ -1,0 +1,77 @@
+[
+    [
+        {
+            "endpoints": [
+                1,
+                2
+            ],
+            "capacity": 1000
+        },
+        {
+            "endpoints": [
+                1,
+                3
+            ],
+            "capacity": 1000
+        },
+        {
+            "endpoints": [
+                3,
+                4
+            ],
+            "capacity": 1000
+        },
+        {
+            "endpoints": [
+                2,
+                4
+            ],
+            "capacity": 1000
+        }
+    ],
+    [
+        {
+            "switchID": 1,
+            "switchName": "switch1",
+            "address": "10.0.0.1"
+        },
+        {
+            "switchID": 2,
+            "switchName": "switch2",
+            "address": "10.0.0.2"
+        },
+        {
+            "switchID": 3,
+            "switchName": "switch3",
+            "address": "10.0.0.3"
+        },
+        {
+            "switchID": 4,
+            "switchName": "switch4",
+            "address": "10.0.0.4"
+        }
+    ],
+    {
+        "simTime": "10",
+        "startSimTime": "2024-03-22 12:30:00",
+        "graphType": "mesh",
+        "linkCap": 1000,
+        "colorblind": "no",
+        "updateDelta": 100,
+        "averageDelta": 1000,
+        "dotsSize": "fixed"
+    },
+    {
+        "coordinates": [
+            [
+                1,
+                2
+            ],
+            [
+                3,
+                4
+            ]
+        ]
+    },
+    {}
+]

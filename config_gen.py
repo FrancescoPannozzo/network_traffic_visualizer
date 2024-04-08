@@ -300,6 +300,7 @@ try:
         yaml.dump(packets, file, default_flow_style=flow_style)
     logging.info("..packets file creation done!")
     
+    logging.debug("TEST PARAMS: %s switches, %s link cap, %s sim time, mesh", switch_number, link_capacity, SIM_TIME)
     logging.debug("NETWORK and PACKETS structure writing time:%s", utils.get_test_duration(start_test_time))
 
 except OSError as e:
