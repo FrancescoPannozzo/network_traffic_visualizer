@@ -18,7 +18,7 @@ I componenti principali del progetto sono gli scripts:
 ## Simulazione: config_gen.py
 
 Lo script permette di creare simulazioni di traffico di rete automatiche mettendo a disposizione due modalità **auto** e **user**.
-Entrambe le modalità produrranno due files, **network.yaml** conterà le caratteristiche della rete e **packets.yaml** conterrà il traffico vero e proprio
+Entrambe le modalità produrranno due files, **network.yaml** conterà le caratteristiche della rete e **packets.json** conterrà il traffico vero e proprio
 di tutti i pacchetti generati dalla simulazione.
 La modalità _auto_ chiede all'utente il numero di switch, la capacità dei link e la tipologia del grafo (completo, mesh, torus) e imposterà in modo del tutto automatico la disposizione degli switch
 in base alla scelta del grafo effettuata.
@@ -32,7 +32,6 @@ startSimTime: 2024-03-22 12:30:00
 simTime: 3
 packetSize: 4000
 colorblind: "no"
-readeblePackets: "no"
 trafficVariation: random
 ```
 
@@ -42,8 +41,9 @@ trafficVariation: random
 - **simTime** è la durata della simulazione in secondi
 - **packetSize** è la dimensione in bytes di un pacchetto, i pacchetti nella simulazione avranno questa dimensione
 - **colorblind** è una stringa "yes" o "no" che abilita se posta su "yes" una visualizazione compatibile per persone daltoniche
+- **trafficVariation** può essere il valore "random" oppure uno dei seguenti [5, 10, 20, 25, 50] e di conseguenza determinerà la variazione percentuale di traffico che avviene ogni secondo di simulazione. Il valore "random" sceglie casualmente una percentuale ogni secondo con un valore che va da 1 a 100
 
-La simulazione prevede una generazione di pacchetti calcolata sulla base della capacità dei link fornita e su un valore casuale di percentuale di traffico che varia ogni secondo, per esempio avendo 6 links su 3 secondi di simulazione potremmo avere delle assegnazioni di percentuali di traffico come le seguenti:
+La simulazione prevede una generazione di pacchetti calcolata sulla base della capacità dei link fornita e su un valore casuale di percentuale di traffico che varia ogni secondo, per esempio avendo 6 links su 3 secondi di simulazione e il parametro "trafficVariation" settato a _random_ potremmo avere delle assegnazioni di percentuali di traffico come le seguenti:
 
 ```
 Link: 1, endpoints: [1, 2], sim second: 0, trafficPerc: 65
@@ -363,25 +363,31 @@ Lo script traffic_analyzer carica i due files prodotti da config_gen e analizza 
 ```
 
 Il campo **traffic** rappresenta le percentuali di traffico registrate delle medie del peso dei pacchetti per un dato intervallo di tempo **averageDelta** (espresso in millisecondi), aggiornato ogni **updateDelta** millisecondi. Quindi, in questo specifico esempio in cui si descrive una rete di 3 switch, avremo la prima media percentuale di ciascun link esattamente a un secondo dall'inizio della trasmissione dei pacchetti e avremo valori aggiornati ogni 100 ms.
-Una qualsiasi rete può essere analizzata se si forniscono i files network.yaml e packets.yaml, i quali devono essere correttamente formattati. Traffic analyzer funziona avendo l'assunzione che il file packets.yaml contenga i pacchetti in ordine temporale di invio, il file presenta la seguente struttura:
+Una qualsiasi rete può essere analizzata se si forniscono i files network.yaml e packets.json, i quali devono essere correttamente formattati. Traffic analyzer funziona avendo l'assunzione che il file packets.json contenga i pacchetti in ordine temporale di invio, il file presenta la seguente struttura:
 
-```yaml
-- A: 2
-  B: 1
-  d: 4000
-  t: &id001 2024-03-22 12:30:00
-- A: 1
-  B: 2
-  d: 4000
-  t: *id001
-- A: 1
-  B: 2
-  d: 4000
-  t: *id001
-- A: 1
-  B: 2
-  d: 4000
-  t: *id001
+```json
+[
+    {
+        "A": 2,
+        "B": 1,
+        "t": "2024-03-22 12:30:00",
+        "d": 4000
+    },
+    {
+        "A": 2,
+        "B": 1,
+        "t": "2024-03-22 12:30:00",
+        "d": 4000
+    },
+    {
+        "A": 1,
+        "B": 2,
+        "t": "2024-03-22 12:30:00",
+        "d": 4000
+    },
+    .
+    .
+    .
 # and so on
 ```
 
@@ -389,8 +395,8 @@ La struttura prevede una lista di dizionari le quali chiavi sono:
 
 - **A** - un endpoint del link sul quale il pacchetto ha viaggiato
 - **B** - l'altro endpoint
-- **d** - la dimensione del pacchetto in bytes
 - **t** - il timestamp di quando il pacchetto è stato trasmesso
+- **d** - la dimensione del pacchetto in bytes
 
 **NOTA:** la scelta di avere singoli caratteri come chiavi è dettata da esigenze di risparmio di data storage
 
@@ -486,6 +492,24 @@ Visualizzare i dati di switch e links:
 
 ```python
  manim -pql graphic_visualizer.py NetworkData
+```
+
+La libreria Manim è una bellissima opportunità per creare video matematici esplicativi e rende possibile molte opzioni per poterli renderizzare:
+
+```python
+# opzione disponibili per la qualità del rendering
+-q, --quality [l|m|h|p|k]
+    Render quality at the follow resolution
+    framerates, respectively: 854x480 15FPS,
+    1280x720 30FPS, 1920x1080 60FPS, 2560x1440
+    60FPS, 3840x2160 60FPS
+
+# esempio con scelta di risoluzione in HD
+manim -pqm graphic_visualizer.py GraphicVisualizer
+# esempio con scelta di risoluzione in FHD a 30 fps
+manim -pqh --fps 30 graphic_visualizer.py GraphicVisualizer
+# esempio creazione gif, senza sistema di cashing, a 15 fps
+manim -pql --format=gif --fps 15 --disable_caching graphic_visualizer.py NetworkData
 ```
 
 ## License
