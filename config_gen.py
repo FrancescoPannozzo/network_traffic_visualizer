@@ -17,6 +17,7 @@ import yaml
 from utils import config_gen_utils
 from utils import utils
 from utils import CONSTANTS as CONST
+import json
 
 #import sys
 
@@ -30,7 +31,7 @@ logging.basicConfig(
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
         # Adding one handler to manage the messages on a file
-        logging.FileHandler('./log_files/config_gen_log.txt', mode='w'),
+        logging.FileHandler('./log_files/config_gen_jsonTest_log.txt', mode='w'),
         # Adding one handler to see messages on console
         logging.StreamHandler()
     ]
@@ -186,10 +187,15 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
         trafficPerc = content["trafficPerc"]
         # Packets Per Second
         PPS = ((content["capacity"] * 1e6) / 8) / PACKET_SIZE
+        timeWalker_toStore = None
+        if setup["packetsFile"] == "json":
+            timeWalker_toStore = str(timeWalker)
+        else:
+            timeWalker_toStore = timeWalker
         for i in range(0, int((PPS*(trafficPerc/100))/creationRate) ):
             packet = config_gen_utils.create_packet(content["endpoints"][ENDP_A],
                                          content["endpoints"][ENDP_B],
-                                         timeWalker,
+                                         timeWalker_toStore,
                                          PACKET_SIZE)
             packets.append(packet)
 
@@ -198,12 +204,12 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
             remaining_packet_size = int(round(remaining_packets, 3) * PACKET_SIZE)
             packet = config_gen_utils.create_packet(content["endpoints"][ENDP_A],
                                          content["endpoints"][ENDP_B],
-                                         timeWalker,
+                                         timeWalker_toStore, # json non parsa i datetime!
                                          remaining_packet_size)
             packets.append(packet)
     timeWalker += timedelta(milliseconds=PPS_DELTA)
 
-logging.info("..packets.yaml file structure done!")
+logging.info("..packets file structure done!")
 
 # Defining the network.yaml fields defined in each switch object
 
@@ -265,7 +271,8 @@ networkData[SIM_PARAMETERS_INDEX] = {
     "colorblind": setup["colorblind"],
     "updateDelta": PPS_DELTA,
     "averageDelta": setup["averageDelta"],
-    "dotsSize": setup["dotsSize"]
+    "dotsSize": setup["dotsSize"],
+    "packetsFile": setup["packetsFile"]
 }
 
 if user_mode == CONST.USER_MODE:
@@ -284,6 +291,7 @@ try:
     logging.info("Writing network.yaml file..")
     with open('./data/network.yaml', 'w', encoding="utf-8") as file:
         yaml.dump(networkData, file)
+        #json.dump(networkData, file, ensure_ascii=False, indent=4)
     logging.info("..network.yaml file creation done!")
 
     start_test_time = datetime.now()
@@ -293,14 +301,20 @@ try:
     # readeble packets.yaml file having a bigger file and bigger computational time, or
     # a not readeble packets.yaml file having a smaller file and a better
     # computational time
-    flow_style = False if setup["readeblePackets"] == "yes" else True
+
+    if setup["packetsFile"] == "json":
+        with open('./data/packets.json', 'w', encoding="utf-8") as file:
+            #yaml.dump(packets, file)
+            #yaml.dump(packets, file, default_flow_style=flow_style)
+            json.dump(packets, file, ensure_ascii=False, indent=4)
+    else:
+        flow_style = False if setup["readeblePackets"] == "yes" else True
+        with open('./data/packets.yaml', 'w', encoding="utf-8") as file:
+            #yaml.dump(packets, file)
+            yaml.dump(packets, file, default_flow_style=flow_style)
     
-    with open('./data/packets.yaml', 'w', encoding="utf-8") as file:
-        #yaml.dump(packets, file)
-        yaml.dump(packets, file, default_flow_style=flow_style)
     logging.info("..packets file creation done!")
     
-    logging.debug("TEST PARAMS: %s switches, %s link cap, %s sim time, mesh", switch_number, link_capacity, SIM_TIME)
     logging.debug("NETWORK and PACKETS structure writing time:%s", utils.get_test_duration(start_test_time))
 
 except OSError as e:

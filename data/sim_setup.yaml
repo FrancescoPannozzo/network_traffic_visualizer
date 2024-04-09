@@ -7,3 +7,4 @@ colorblind: "no"
 dotsSize: "fixed" # fixed or adaptive
 readeblePackets: "yes" # yes or no
 trafficVariation: random # random of number in [5, 10, 20, 25, 50]
+packetsFile: json

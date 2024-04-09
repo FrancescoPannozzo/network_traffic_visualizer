@@ -12,7 +12,9 @@ import logging
 #import sys
 import yaml
 from utils import utils
+from utils import utils_json
 from utils import CONSTANTS as CONST
+import json
 
 # Logger config
 logging.basicConfig(
@@ -31,14 +33,14 @@ start_test_time = datetime.now()
 logging.info("Loading files..")
 
 logging.info("Loading network file..")
-networkData = utils.file_loader("./data/network", "yaml")
+networkData = utils_json.file_loader("./data/network", "yaml")
 logging.info("..done!")
 
 SIM_PARAMETERS = CONST.NETWORK["SIM_PARAMS"]
 utils.check_network_sim_setup(networkData[SIM_PARAMETERS])
 
 logging.info("Loading packets file..")
-packetsData = utils.file_loader("./data/packets", "yaml")
+packetsData = utils_json.file_loader("./data/packets", networkData[SIM_PARAMETERS]["packetsFile"])
 logging.info("..done!")
 
 
@@ -100,6 +102,7 @@ averageDelta = timedelta(milliseconds=AVG_DELTA_TIME)
 startTime = networkData[CONST.NETWORK["SIM_PARAMS"]]["startSimTime"]
 # The analyzed time
 timeWalker = startTime
+print("timewlaker: ", timeWalker)
 # Number of fractional units per averageDelta
 #(averageDelta / updateDelta) must be int
 averageFractions = int(averageDelta / updateDelta)
@@ -112,10 +115,11 @@ lastFirstUDindex = averageFractions
 packetsDataIterator = iter(packetsData)
 
 # Defining the amount of simulation time in seconds
-simTime = timedelta(seconds=networkData[CONST.NETWORK["SIM_PARAMS"]]["simTime"])
+simTime = timedelta(seconds=int(networkData[CONST.NETWORK["SIM_PARAMS"]]["simTime"]))
 
 # Taking first packet to analyze
 packet = next(packetsDataIterator, None)
+print(packet)
 
 # Calculating averages
 # Every loop is an analyzed fractional unit
@@ -128,12 +132,21 @@ while timeWalker <= startTime + (simTime - updateDelta):
     if packet is not None:
         link = links[frozenset({packet["A"], packet["B"]})]
         # Analyzing every packet in the analyzed range
-        print("Analyzing time: ", packet["t"])
-        while packet["t"] >= timeWalker and packet["t"] < timeWalker + updateDelta:
+        print("analyzing time: ", packet["t"])
+        packetTimestamp = None
+        if networkData[SIM_PARAMETERS]["packetsFile"] == "json":
+            packetTimestamp = utils.str_to_datetime(packet["t"])
+        else:
+            packetTimestamp = packet["t"]
+        while packetTimestamp >= timeWalker and packetTimestamp < timeWalker + updateDelta:
             link["trafficUDT"] += packet["d"]
             link["trafficDT"] += packet["d"]
             packet = next(packetsDataIterator, None)
             if packet is not None:
+                if networkData[SIM_PARAMETERS]["packetsFile"] == "json":
+                    packetTimestamp = utils.str_to_datetime(packet["t"])
+                else:
+                    packetTimestamp = packet["t"]
                 link = links[frozenset({packet["A"], packet["B"]})]
             else:
                 break

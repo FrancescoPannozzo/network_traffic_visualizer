@@ -18,7 +18,7 @@ I componenti principali del progetto sono gli scripts:
 ## Simulazione: config_gen.py
 
 Lo script permette di creare simulazioni di traffico di rete automatiche mettendo a disposizione due modalità **auto** e **user**.
-Entrambe le modalità produrranno due files, **network.yaml** conterà le caratteristiche della rete e **packets.json** conterrà il traffico vero e proprio
+Entrambe le modalità produrranno due files, **network.yaml** conterà le caratteristiche della rete e il file**packets.json** o **packets.yaml** (a seconda della scelta) conterrà il traffico vero e proprio
 di tutti i pacchetti generati dalla simulazione.
 La modalità _auto_ chiede all'utente il numero di switch, la capacità dei link e la tipologia del grafo (completo, mesh, torus) e imposterà in modo del tutto automatico la disposizione degli switch
 in base alla scelta del grafo effettuata.
@@ -33,6 +33,7 @@ simTime: 3
 packetSize: 4000
 colorblind: "no"
 trafficVariation: random
+packetsFile: json
 ```
 
 - **averageDelta** rappresenta l'intervallo temporale in millisecondi delle medie di traffico da calcolare
@@ -41,7 +42,8 @@ trafficVariation: random
 - **simTime** è la durata della simulazione in secondi
 - **packetSize** è la dimensione in bytes di un pacchetto, i pacchetti nella simulazione avranno questa dimensione
 - **colorblind** è una stringa "yes" o "no" che abilita se posta su "yes" una visualizazione compatibile per persone daltoniche
-- **trafficVariation** può essere il valore "random" oppure uno dei seguenti [5, 10, 20, 25, 50] e di conseguenza determinerà la variazione percentuale di traffico che avviene ogni secondo di simulazione. Il valore "random" sceglie casualmente una percentuale ogni secondo con un valore che va da 1 a 100
+- **trafficVariation** può essere il valore "random" oppure uno dei seguenti [5, 10, 20, 25, 50] e di conseguenza determinerà la variazione percentuale di traffico che avviene ogni secondo di simulazione. Il valore "random" sceglie casualmente una percentuale ogni secondo con un valore che va da 0 a 100
+- **packetsFile** specifica quale tecnologia si vuole utilizzare per il file packets, si pò scegliere tra json e yaml, qualora si scelgiesse yaml occorre inserire un campo **readeblePackets** da settare con "yes" o "no". Questo campo permette di codificare il file yaml in modo inline (priorità alla leggibilità) oppure in modo block (poco leggibile ma risparmia spazio su disco).
 
 La simulazione prevede una generazione di pacchetti calcolata sulla base della capacità dei link fornita e su un valore casuale di percentuale di traffico che varia ogni secondo, per esempio avendo 6 links su 3 secondi di simulazione e il parametro "trafficVariation" settato a _random_ potremmo avere delle assegnazioni di percentuali di traffico come le seguenti:
 
@@ -427,6 +429,7 @@ Per quanto riguarda invece il file network.yaml si presenta con la seguente stru
   simTime: 3
   startSimTime: 2024-03-22 12:30:00
   updateDelta: 100
+  packetsFile: json
 - coordinates:
     - - 1
       - 2
@@ -448,7 +451,7 @@ Il file rappresenta una lista in cui ogni elemento rappresenta, in ordine, dal p
 
 - La lista dei links
 - La lista di switches
-- Una lista dei parametri necessari
+- Una lista dei parametri necessari per la corretta codifica/analisi
 - Le coordinate (una lista di liste) del posizionamento degli switch da rappresentare
 - Le fasi che interessano l'andamento del traffico di rete
 
@@ -497,7 +500,7 @@ Visualizzare i dati di switch e links:
 La libreria Manim è una bellissima opportunità per creare video matematici esplicativi e rende possibile molte opzioni per poterli renderizzare:
 
 ```python
-# opzione disponibili per la qualità del rendering
+# opzioni disponibili per la qualità del rendering
 -q, --quality [l|m|h|p|k]
     Render quality at the follow resolution
     framerates, respectively: 854x480 15FPS,

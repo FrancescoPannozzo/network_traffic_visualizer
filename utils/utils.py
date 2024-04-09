@@ -125,7 +125,7 @@ def check_sim_setup(setup):
             raise exceptions.CustomFileError("WARNING, \"colorBlind\" key mus be \"yes\" or \"no\"")
         if setup["dotsSize"] not in ["adaptive", "fixed"]:
             raise exceptions.CustomFileError("WARNING, \"dotSize\" mus be \"adaptive\" or \"fixed\"")
-        if setup["readeblePackets"] not in ["yes", "no"]:
+        if setup["packetsFile"] == "yaml" and setup["readeblePackets"] not in ["yes", "no"]:
             raise exceptions.CustomFileError("WARNING, \"readeblePackets\" must be in \"yes\" or \"not\"")
         if setup["trafficVariation"] not in [5, 10, 20, 25, 50, "random"]:
             raise exceptions.CustomFileError("WARNING \"trafficVariation\" must be one of [5, 10, 20 ,25, 50] values")
