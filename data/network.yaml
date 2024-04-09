@@ -8,12 +8,108 @@
     - 3
   - capacity: 10
     endpoints:
-    - 3
+    - 1
     - 4
+  - capacity: 10
+    endpoints:
+    - 1
+    - 5
+  - capacity: 10
+    endpoints:
+    - 1
+    - 6
+  - capacity: 10
+    endpoints:
+    - 1
+    - 7
+  - capacity: 10
+    endpoints:
+    - 1
+    - 8
+  - capacity: 10
+    endpoints:
+    - 2
+    - 3
   - capacity: 10
     endpoints:
     - 2
     - 4
+  - capacity: 10
+    endpoints:
+    - 2
+    - 5
+  - capacity: 10
+    endpoints:
+    - 2
+    - 6
+  - capacity: 10
+    endpoints:
+    - 2
+    - 7
+  - capacity: 10
+    endpoints:
+    - 2
+    - 8
+  - capacity: 10
+    endpoints:
+    - 3
+    - 4
+  - capacity: 10
+    endpoints:
+    - 3
+    - 5
+  - capacity: 10
+    endpoints:
+    - 3
+    - 6
+  - capacity: 10
+    endpoints:
+    - 3
+    - 7
+  - capacity: 10
+    endpoints:
+    - 3
+    - 8
+  - capacity: 10
+    endpoints:
+    - 4
+    - 5
+  - capacity: 10
+    endpoints:
+    - 4
+    - 6
+  - capacity: 10
+    endpoints:
+    - 4
+    - 7
+  - capacity: 10
+    endpoints:
+    - 4
+    - 8
+  - capacity: 10
+    endpoints:
+    - 5
+    - 6
+  - capacity: 10
+    endpoints:
+    - 5
+    - 7
+  - capacity: 10
+    endpoints:
+    - 5
+    - 8
+  - capacity: 10
+    endpoints:
+    - 6
+    - 7
+  - capacity: 10
+    endpoints:
+    - 6
+    - 8
+  - capacity: 10
+    endpoints:
+    - 7
+    - 8
 - - address: 10.0.0.1
     switchID: 1
     switchName: switch1
@@ -26,17 +122,25 @@
   - address: 10.0.0.4
     switchID: 4
     switchName: switch4
+  - address: 10.0.0.5
+    switchID: 5
+    switchName: switch5
+  - address: 10.0.0.6
+    switchID: 6
+    switchName: switch6
+  - address: 10.0.0.7
+    switchID: 7
+    switchName: switch7
+  - address: 10.0.0.8
+    switchID: 8
+    switchName: switch8
 - averageDelta: 1000
   colorblind: 'no'
   dotsSize: fixed
-  graphType: mesh
+  graphType: complete
   linkCap: 10
-  simTime: 10
+  simTime: 5
   startSimTime: 2024-03-22 12:30:00
   updateDelta: 100
-- coordinates:
-  - - 1
-    - 2
-  - - 3
-    - 4
+- coordinates: []
 - 2024-03-22 12:30:01: phase1

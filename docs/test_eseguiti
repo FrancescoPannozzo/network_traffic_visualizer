@@ -1,3 +1,6 @@
+2024-04-08 23:18:53,542 [DEBUG] TEST PARAMS: 10 switches, 1000 link cap, 10 sim time, mesh
+2024-04-08 23:18:53,542 [DEBUG] NETWORK and PACKETS structure writing time:Test duration:0:08:56.878392
+
 test 4 nodi, mesh 6 sim time
 graphic_visualizer = 0:01:27.281847
 graphic_visualizer_test = 0:01:26.691237
@@ -101,5 +104,34 @@ Test duration:0:06:39.264273, 58339 KB
 
 30 switch a 1000 Mbps, 3 secondi simulazione, metodo yaml default, traffico al 50% fisso, mesh
 Test duration:0:10:25.127766, 91125 KB
+
+-------
+
+test json vs yaml
+50% traffic, 1Gbps, 10 switch, 5 sec sim time, mesh
+dim file
+json 110578 KB
+yaml 39840 KB
+scrittura
+json 00:19.73
+yaml 04:35.11
+lettura
+json 00:25.42
+yaml 9:13.25
+
+50% traffic, 1Gbps, 5 switch, 5 sec sim time, mesh
+dim file
+json 41312 KB
+lettura
+json 00:09.65
+yaml 02:55.72
+scrittura
+json 00:06:22
+yaml 01:31.38
+
+100 switch, 50% traffic, 1Gbps, 5 sec sim time
+dim file
+json 1.499 GB 
+tempo scrittura 03:45.81542
 
 

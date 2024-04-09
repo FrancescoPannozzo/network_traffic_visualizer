@@ -1,13 +1,18 @@
 
 from utils import graphic_visualizer_utils
+from datetime import datetime
 
 #colors = graphic_visualizer_utils.traffic_colors_gen_colorblind()
 
 #for _, color in colors.items():
 #    print(color)
 
-if 5 == int:
-    print("ciao")
+timestamp1 = "2024-03-22 12:30:00"
+print(len(timestamp1))
+timestamp2 = "2024-03-22 12:30:00.100000"
+
+print(datetime.strptime(timestamp1, "%Y-%m-%d %H:%M:%S"))
+print(datetime.strptime(timestamp2, "%Y-%m-%d %H:%M:%S.%f"))
 
 """ 
 {'hexValue': '#fafffa'}

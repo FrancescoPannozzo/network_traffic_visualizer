@@ -34,9 +34,9 @@ class GraphicVisualizer(MovingCameraScene):
         # loadind date time for testing purpose
         start_test_time = datetime.now()
         # load network config
-        network_data = utils.file_loader("./data/network")
+        network_data = utils.file_loader("./data/network", "yaml")
         # load analyzed data file
-        traffic_data = utils.file_loader("./data/analyzed_data")
+        traffic_data = utils.file_loader("./data/analyzed_data", "yaml")
         # load traffic colors
         traffic_perc_colors = None
         if network_data[CONST.NETWORK["SIM_PARAMS"]]["colorblind"] == "yes":
@@ -124,7 +124,7 @@ class GraphicVisualizer(MovingCameraScene):
             # temp LabeledDot structure
             animations = []
             # definig all the traffic color links at timeWalker time
-            for _, content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]].items():
+            for content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]]:
                 color_perc = int(content["traffic"][traffic_count])
                 animations.append(grafo.edges[(content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B])].animate.set_color(traffic_perc_colors[color_perc]["hexValue"]))
             # playing animations
@@ -274,9 +274,9 @@ class GraphicVisualizer(MovingCameraScene):
 
         START_COLOR = traffic_perc_colors[0]['hexValue']
 
-        logging.debug("Printing data_links:")
-        for l in data_links:
-            logging.debug(l)
+        #logging.debug("Printing data_links:")
+        #for l in data_links:
+        #    logging.debug(l)
         
         # extracting links data
         links = {}
@@ -309,10 +309,12 @@ class GraphicVisualizer(MovingCameraScene):
             links[(link[CONST.EP_A], link[CONST.EP_B])] = line
             lines_grid.add(line)
 
+        # If you want include the intro, insert this one:
         #GraphicVisualizer.intro(self, sim_params, network_data)
         
-        for link, content in data_links.items():
-            print(link)
+        # debug
+        #for link, content in data_links.items():
+        #    print(link)
         
         grid.add(lines_grid, mesh_grid)
 
@@ -442,7 +444,7 @@ class NetworkData(MovingCameraScene):
     and links with the own link capacity"""
 
     def construct(self):
-        network_data = utils.file_loader("./data/network")
+        network_data = utils.file_loader("./data/network", "yaml")
         switches = {}
         links = network_data[CONST.NETWORK["LINKS"]]
 

@@ -1,14 +1,14 @@
-2024-04-08 16:31:30,567 [INFO] Loading files..
-2024-04-08 16:31:30,567 [INFO] Loading network file..
-2024-04-08 16:31:30,591 [INFO] ..done!
-2024-04-08 16:31:30,606 [INFO] Loading packets file..
-2024-04-08 16:31:31,215 [INFO] ..done!
-2024-04-08 16:31:31,215 [DEBUG] NETWORK and PACKETS structure loading time:Test duration:0:00:00.648275
-2024-04-08 16:31:31,215 [INFO] Analyzing files..
-2024-04-08 16:31:31,215 [INFO] Simulation parameters:
-2024-04-08 16:31:31,215 [INFO] {'averageDelta': 1000, 'colorblind': 'no', 'dotsSize': 'fixed', 'graphType': 'mesh', 'linkCap': 10, 'simTime': 10, 'startSimTime': datetime.datetime(2024, 3, 22, 12, 30), 'updateDelta': 100}
-2024-04-08 16:31:31,215 [INFO] ..done!
-2024-04-08 16:31:31,215 [DEBUG] ANALYZING time:Test duration:0:00:00
-2024-04-08 16:31:31,224 [INFO] Writing analyzed_data_test.yaml file..
-2024-04-08 16:31:31,247 [INFO] analyzed_data_test.yaml file creation done!
-2024-04-08 16:31:31,248 [DEBUG] ANALYZED DATA structure creation and writing time:Test duration:0:00:00.032383
+2024-04-09 15:24:16,944 [INFO] Loading files..
+2024-04-09 15:24:16,944 [INFO] Loading network file..
+2024-04-09 15:24:16,991 [INFO] ..done!
+2024-04-09 15:24:17,005 [INFO] Loading packets file..
+2024-04-09 15:24:17,153 [INFO] ..done!
+2024-04-09 15:24:17,157 [DEBUG] NETWORK and PACKETS structure loading time:Test duration:0:00:00.213084
+2024-04-09 15:24:17,159 [INFO] Analyzing files..
+2024-04-09 15:24:17,160 [INFO] Simulation parameters:
+2024-04-09 15:24:17,161 [INFO] {'averageDelta': 1000, 'colorblind': 'no', 'dotsSize': 'fixed', 'graphType': 'complete', 'linkCap': 10, 'simTime': 5, 'startSimTime': datetime.datetime(2024, 3, 22, 12, 30), 'updateDelta': 100}
+2024-04-09 15:24:18,350 [INFO] ..done!
+2024-04-09 15:24:18,350 [DEBUG] ANALYZING time:Test duration:0:00:01.190971
+2024-04-09 15:24:18,363 [INFO] Writing analyzed_data_test.yaml file..
+2024-04-09 15:24:18,456 [INFO] analyzed_data_test.yaml file creation done!
+2024-04-09 15:24:18,456 [DEBUG] ANALYZED DATA structure creation and writing time:Test duration:0:00:00.104819

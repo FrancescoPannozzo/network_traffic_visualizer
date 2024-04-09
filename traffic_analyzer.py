@@ -31,14 +31,14 @@ start_test_time = datetime.now()
 logging.info("Loading files..")
 
 logging.info("Loading network file..")
-networkData = utils.file_loader("./data/network")
+networkData = utils.file_loader("./data/network", "yaml")
 logging.info("..done!")
 
 SIM_PARAMETERS = CONST.NETWORK["SIM_PARAMS"]
 utils.check_network_sim_setup(networkData[SIM_PARAMETERS])
 
 logging.info("Loading packets file..")
-packetsData = utils.file_loader("./data/packets")
+packetsData = utils.file_loader("./data/packets", "yaml")
 logging.info("..done!")
 
 
@@ -128,6 +128,7 @@ while timeWalker <= startTime + (simTime - updateDelta):
     if packet is not None:
         link = links[frozenset({packet["A"], packet["B"]})]
         # Analyzing every packet in the analyzed range
+        print("Analyzing time: ", packet["t"])
         while packet["t"] >= timeWalker and packet["t"] < timeWalker + updateDelta:
             link["trafficUDT"] += packet["d"]
             link["trafficDT"] += packet["d"]

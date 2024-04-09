@@ -165,8 +165,7 @@ def create_user_mesh_links(user_data):
     return data_links
 
 
-def create_auto_phases(start_time, sim_time):
-    setup = utils.file_loader("./data/sim_setup")
+def create_auto_phases(start_time, sim_time, setup):
     average_delta = setup["averageDelta"]
     phase_intervall = timedelta(milliseconds=10000)
     timewalker = start_time + timedelta(milliseconds=average_delta)

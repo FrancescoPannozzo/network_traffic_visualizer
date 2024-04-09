@@ -7,9 +7,10 @@ import os
 import sys
 import math
 import yaml
+import json
 
-def file_loader(file_name):
-    """ Load the .yaml configuration files 
+def file_loader(file_name, extension):
+    """ Load the configuration files 
 
     Keyword arguments:
     file_name: string
@@ -22,12 +23,16 @@ def file_loader(file_name):
     #Getting absolute path from the running software directory
     current_folder = os.getcwd()
     #Abs path plus filename
-    network_file_path = current_folder + "\\" + file_name + ".yaml"
+    network_file_path = current_folder + "\\" + file_name + "." + extension
 
     # Open and parse the YAML file
     try:
-        with open(network_file_path, "r", encoding="utf-8") as data_file:
-            data = yaml.safe_load(data_file)
+        if extension == "json":
+            with open(network_file_path, "r", encoding="utf-8") as data_file:
+                data = json.load(data_file)
+        else:
+            with open(network_file_path, "r", encoding="utf-8") as data_file:
+                data = yaml.safe_load(data_file)
     except FileNotFoundError as e:
         print(f"Warning, error with the provided file name, error: {e}")
         sys.exit(1)
@@ -152,3 +157,13 @@ def check_network_sim_setup(setup):
     except exceptions.CustomFileError as ce:
         logger.error(ce)
         sys.exit()
+
+
+def str_to_datetime(str_date):
+    packet_timestamp = None
+    if len(str_date) == 19:
+        packet_timestamp = datetime.strptime(str_date, "%Y-%m-%d %H:%M:%S")
+    else:
+        packet_timestamp = datetime.strptime(str_date, "%Y-%m-%d %H:%M:%S.%f")
+    
+    return packet_timestamp

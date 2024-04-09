@@ -43,7 +43,7 @@ user_mode = None
 user_data = None
 
 # LOADING PARAMETERS
-setup = utils.file_loader("./data/sim_setup")
+setup = utils.file_loader("./data/sim_setup", "yaml")
 utils.check_sim_setup(setup)
 
 # CHOSING USER MODE OR AUTO MODE
@@ -66,7 +66,7 @@ CORRECT_CHOOSE = False
 if user_mode == CONST.USER_MODE:
     logging.info("You choosed the user mode!")
     logging.info("Loading user file..")
-    user_data = utils.file_loader("./data/custom_graph")
+    user_data = utils.file_loader("./data/custom_graph", "yaml")
     config_gen_utils.check_custom_file(user_data["data"])
     user_data = user_data["data"]
     switch_number = len(user_data["switches"])
@@ -250,7 +250,7 @@ else:
             "address": config_gen_utils.ip_to_string(ip_address)
         })
 
-    networkData[PHASES_INDEX] = config_gen_utils.create_auto_phases(START_TIME, SIM_TIME)
+    networkData[PHASES_INDEX] = config_gen_utils.create_auto_phases(START_TIME, SIM_TIME, setup)
 
 logging.info("Switches created:")
 for i in networkData[SWITCH_INDEX]:
