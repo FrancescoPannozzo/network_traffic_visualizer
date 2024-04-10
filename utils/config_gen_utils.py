@@ -33,7 +33,8 @@ def change_traffic_perc(traffic_perc, traffic_variation):
                 new_traffic_perc -= traffic_variation
     else:
         new_traffic_perc = random.randint(0, 100)
-        #new_traffic_perc = 50
+        # fixed perc, testing
+        # new_traffic_perc = 50
     return new_traffic_perc
 
 def ip_to_string(ip):
@@ -94,6 +95,7 @@ def create_auto_complete_links(link_cap, switch_number):
 
 
 def create_auto_mesh_links(link_cap, switch_number):
+    """ Auto detect links """
     data_links = {}
     link_id = 1
 
@@ -125,6 +127,7 @@ def create_auto_mesh_links(link_cap, switch_number):
     return data_links, switches
 
 def link_format(switch_a, switch_b, link_cap):
+    """ Utility, a formatted link """
     return {
             "endpoints": sorted((switch_a, switch_b)),
             "capacity": link_cap,
@@ -132,6 +135,7 @@ def link_format(switch_a, switch_b, link_cap):
             }
 
 def ip_address(groupA, groupB, groupC, groupD):
+    """ Utility, an IP formatter """
     return {
         "groupA": groupA,
         "groupB": groupB,
@@ -140,6 +144,7 @@ def ip_address(groupA, groupB, groupC, groupD):
         }
 
 def create_user_mesh_links(user_data):
+    """ Creates mesh graph links from the user custom_graph data """
 
     if "links" in user_data:
         return create_user_graph_links(user_data)
@@ -166,6 +171,7 @@ def create_user_mesh_links(user_data):
 
 
 def create_auto_phases(start_time, sim_time, setup):
+    """ Phases auto-generator """
     average_delta = setup["averageDelta"]
     phase_intervall = timedelta(milliseconds=10000)
     timewalker = start_time + timedelta(milliseconds=average_delta)
@@ -180,6 +186,7 @@ def create_auto_phases(start_time, sim_time, setup):
     return phases
 
 def extract_custom_links(data_links):
+    """ Utility, auxiliary links structure """
     links = {}
 
     for l in data_links:
@@ -189,7 +196,7 @@ def extract_custom_links(data_links):
     return links
 
 def create_user_toro_links(user_data):
-
+    """ User torus links generator """
     if "links" in user_data:
         return create_user_graph_links(user_data)
 
@@ -220,6 +227,7 @@ def create_user_toro_links(user_data):
     return links
 
 def create_user_graph_links(user_data):
+    """ A links generator from the freehand graph opzion (graph) """
     links = {}
     link_id = 1
 
@@ -243,6 +251,7 @@ def create_user_graph_links(user_data):
 
 
 def create_auto_toro_links(link_cap, switch_number):
+    """ Torus graph links auto generator """
     links, switches = create_auto_mesh_links(link_cap, switch_number)
     rows = len(switches)
     cols = len(switches[0])
@@ -265,6 +274,7 @@ def create_auto_toro_links(link_cap, switch_number):
     return links, switches
 
 def check_custom_file(user_data):
+    """ Sanity check utility, It check if the custom file is properly formatted """
     rows = len(user_data["coordinates"])
     cols = len(user_data["coordinates"][0])
 

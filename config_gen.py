@@ -177,10 +177,14 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
     if fractional_unit % creationRate == 0:
         for link, content in links.items():
             content["trafficPerc"] = config_gen_utils.change_traffic_perc(content["trafficPerc"], setup["trafficVariation"])
+            # debug
             #logging.info("Link: %s, endpoints: %s, sim second: %d, trafficPerc: %d",
             #             link, content["endpoints"],
             #            (fractional_unit / creationRate),
             #           content["trafficPerc"])
+            # debug
+            #numero = str(content["trafficPerc"]).replace('.', ',')
+            #print(numero)
     ENDP_A = 0
     ENDP_B = 1
     for link, content in links.items():
@@ -189,7 +193,7 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
         PPS = ((content["capacity"] * 1e6) / 8) / PACKET_SIZE
         timeWalker_toStore = None
         if setup["packetsFile"] == "json":
-            timeWalker_toStore = str(timeWalker)
+            timeWalker_toStore = str(timeWalker) # json non parsa i datetime!
         else:
             timeWalker_toStore = timeWalker
         for i in range(0, int((PPS*(trafficPerc/100))/creationRate) ):
@@ -204,7 +208,7 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
             remaining_packet_size = int(round(remaining_packets, 3) * PACKET_SIZE)
             packet = config_gen_utils.create_packet(content["endpoints"][ENDP_A],
                                          content["endpoints"][ENDP_B],
-                                         timeWalker_toStore, # json non parsa i datetime!
+                                         timeWalker_toStore,
                                          remaining_packet_size)
             packets.append(packet)
     timeWalker += timedelta(milliseconds=PPS_DELTA)

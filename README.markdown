@@ -387,9 +387,7 @@ Una qualsiasi rete può essere analizzata se si forniscono i files network.yaml 
         "t": "2024-03-22 12:30:00",
         "d": 4000
     },
-    .
-    .
-    .
+    ...
 # and so on
 ```
 

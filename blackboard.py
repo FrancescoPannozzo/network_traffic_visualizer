@@ -14,6 +14,17 @@ timestamp2 = "2024-03-22 12:30:00.100000"
 print(datetime.strptime(timestamp1, "%Y-%m-%d %H:%M:%S"))
 print(datetime.strptime(timestamp2, "%Y-%m-%d %H:%M:%S.%f"))
 
+i = 2.1
+print(round(i))
+i = 2.2
+print(round(i))
+i = 2.5
+print(round(i))
+i = 2.6
+print(round(i))
+i = 2.9
+print(round(i))
+
 """ 
 {'hexValue': '#fafffa'}
 {'hexValue': '#f5fff5'}

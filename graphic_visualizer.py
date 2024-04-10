@@ -28,7 +28,7 @@ logging.basicConfig(
 )
 
 class GraphicVisualizer(MovingCameraScene):
-    """  Graph creator """
+    """ Video graph creator """
 
     def construct(self):
         # loadind date time for testing purpose
@@ -339,7 +339,7 @@ class GraphicVisualizer(MovingCameraScene):
             animations = []
             # definig all the traffic color links at timeWalker time
             for link, content in data_links.items():
-                color_perc = int(content[traffic_count])
+                color_perc = round(content[traffic_count])
 
                 animations.append(links[(link[CONST.EP_A], link[CONST.EP_B])].animate.set_color(traffic_perc_colors[color_perc]["hexValue"]))
             # playing animations

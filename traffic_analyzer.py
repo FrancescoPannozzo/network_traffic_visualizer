@@ -12,7 +12,6 @@ import logging
 #import sys
 import yaml
 from utils import utils
-from utils import utils_json
 from utils import CONSTANTS as CONST
 import json
 
@@ -33,14 +32,14 @@ start_test_time = datetime.now()
 logging.info("Loading files..")
 
 logging.info("Loading network file..")
-networkData = utils_json.file_loader("./data/network", "yaml")
+networkData = utils.file_loader("./data/network", "yaml")
 logging.info("..done!")
 
 SIM_PARAMETERS = CONST.NETWORK["SIM_PARAMS"]
 utils.check_network_sim_setup(networkData[SIM_PARAMETERS])
 
 logging.info("Loading packets file..")
-packetsData = utils_json.file_loader("./data/packets", networkData[SIM_PARAMETERS]["packetsFile"])
+packetsData = utils.file_loader("./data/packets", networkData[SIM_PARAMETERS]["packetsFile"])
 logging.info("..done!")
 
 
@@ -202,7 +201,9 @@ for link, content in links.items():
     for c in content["traffic"]:
         average = utils.get_average(c['traffic'], averageFractions, utils.max_traffic_per_unit(content['capacity'], updateDelta))
         traffic.append(round(average, 2))
-
+        ## DEBUG
+        #numero = str(round(average, 2)).replace('.', ',')
+        #print(numero)
     analyzed_data.append({
         "endpoints": sorted(endpoints),
         "traffic": traffic

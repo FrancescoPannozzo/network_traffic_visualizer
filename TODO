@@ -1,7 +1,9 @@
 Comunicazioni meeting Prof.
+
 - Cambio colori daltonismo perchè dal verde al fucsia sfuma in grigio
-quindi poco leggibile con sfondo nero FATTO
+  quindi poco leggibile con sfondo nero, messo bianco come intermedio FATTO
 - Aggiunta opzione per dots a dimensione fissa e aggiustato posizionamento archi
-per torus graph FATTO
-- Aggiungere opzione per velocizzare scrittura su disco FATTO; versione JSON anche
-- traffic variation? FATTO
+  per torus graph FATTO
+- Aggiungere opzione per velocizzare scrittura su disco con versione JSON e opzione per file di dimensioni minori per yaml FATTO
+- traffic variation FATTO
+- grafici performance a andamenti generazione packets FATTO

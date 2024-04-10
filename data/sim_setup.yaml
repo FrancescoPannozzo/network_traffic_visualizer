@@ -1,10 +1,10 @@
 averageDelta: 1000
 updateDelta: 100
-startSimTime: 2024-03-22 12:30:00 #timestamp
+startSimTime: 2024-03-22 12:30:00 # start sim time timestamp
 simTime: 5
 packetSize: 4000 # max 4000
 colorblind: "no"
 dotsSize: "fixed" # fixed or adaptive
-readeblePackets: "yes" # yes or no
+readeblePackets: "no" # yes or no (only for yaml)
 trafficVariation: random # random of number in [5, 10, 20, 25, 50]
 packetsFile: json

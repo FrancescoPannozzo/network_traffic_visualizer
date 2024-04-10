@@ -1,18 +1,18 @@
-2024-04-09 19:11:38,837 [INFO] You choosed the auto mode!
-2024-04-09 19:11:42,583 [INFO] Creating links..
-2024-04-09 19:11:42,584 [INFO] ..links creation done!
-2024-04-09 19:11:42,587 [INFO] Links created are:
-2024-04-09 19:11:42,587 [INFO] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
-2024-04-09 19:11:42,589 [INFO] Creating packets.yaml file structure..
-2024-04-09 19:11:42,595 [INFO] ..packets file structure done!
-2024-04-09 19:11:42,596 [INFO] Creating network.yaml file structure..
-2024-04-09 19:11:42,597 [INFO] Switches created:
-2024-04-09 19:11:42,598 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
-2024-04-09 19:11:42,598 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
-2024-04-09 19:11:42,599 [INFO] ..network.yaml file structure done!
-2024-04-09 19:11:42,600 [DEBUG] NETWORK and PACKETS structure creation time:Test duration:0:00:00.017694
-2024-04-09 19:11:42,601 [INFO] Writing network.yaml file..
-2024-04-09 19:11:42,608 [INFO] ..network.yaml file creation done!
-2024-04-09 19:11:42,609 [INFO] Writing packets.yaml file..
-2024-04-09 19:11:42,642 [INFO] ..packets file creation done!
-2024-04-09 19:11:42,642 [DEBUG] NETWORK and PACKETS structure writing time:Test duration:0:00:00.034258
+2024-04-10 19:08:21,490 [INFO] You choosed the auto mode!
+2024-04-10 19:08:25,711 [INFO] Creating links..
+2024-04-10 19:08:25,711 [INFO] ..links creation done!
+2024-04-10 19:08:25,711 [INFO] Links created are:
+2024-04-10 19:08:25,711 [INFO] 1: {'endpoints': [1, 2], 'capacity': 10, 'trafficPerc': 0}
+2024-04-10 19:08:25,711 [INFO] Creating packets.yaml file structure..
+2024-04-10 19:08:25,711 [INFO] ..packets file structure done!
+2024-04-10 19:08:25,711 [INFO] Creating network.yaml file structure..
+2024-04-10 19:08:25,711 [INFO] Switches created:
+2024-04-10 19:08:25,711 [INFO] {'switchID': 1, 'switchName': 'switch1', 'address': '10.0.0.1'}
+2024-04-10 19:08:25,711 [INFO] {'switchID': 2, 'switchName': 'switch2', 'address': '10.0.0.2'}
+2024-04-10 19:08:25,711 [INFO] ..network.yaml file structure done!
+2024-04-10 19:08:25,722 [DEBUG] NETWORK and PACKETS structure creation time:Test duration:0:00:00.011619
+2024-04-10 19:08:25,724 [INFO] Writing network.yaml file..
+2024-04-10 19:08:25,730 [INFO] ..network.yaml file creation done!
+2024-04-10 19:08:25,731 [INFO] Writing packets.yaml file..
+2024-04-10 19:08:25,751 [INFO] ..packets file creation done!
+2024-04-10 19:08:25,752 [DEBUG] NETWORK and PACKETS structure writing time:Test duration:0:00:00.020917

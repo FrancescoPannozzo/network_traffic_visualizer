@@ -25,7 +25,7 @@ def file_loader(file_name, extension):
     #Abs path plus filename
     network_file_path = current_folder + "\\" + file_name + "." + extension
 
-    # Open and parse the YAML file
+    # Open and parse the JSON/YAML file
     try:
         if extension == "json":
             with open(network_file_path, "r", encoding="utf-8") as data_file:
@@ -99,6 +99,7 @@ def max_traffic_per_unit(capacity, update_delta):
 
     
 def switches_aspect_ratio(switch_number):
+    """ Provides a 16/9 aspect ratio for the graphic_visualizer """
     side = math.sqrt(switch_number)
     
     cols = math.ceil(side * 3/4)
@@ -107,6 +108,7 @@ def switches_aspect_ratio(switch_number):
     print("cols:%d, rows:%d", cols, rows)
 
 def get_test_duration(start_time):
+    """ Utility, a time duration test """
     end_time = datetime.now()
     duration = end_time - start_time
     
@@ -140,6 +142,7 @@ def check_sim_setup(setup):
         sys.exit()
 
 def check_network_sim_setup(setup):
+    """  Check if the network.json/yaml file is properly written """
     logger = logging.getLogger()
 
     try:
@@ -160,6 +163,7 @@ def check_network_sim_setup(setup):
 
 
 def str_to_datetime(str_date):
+    """ A string converter to datetime object for json use """
     packet_timestamp = None
     if len(str_date) == 19:
         packet_timestamp = datetime.strptime(str_date, "%Y-%m-%d %H:%M:%S")

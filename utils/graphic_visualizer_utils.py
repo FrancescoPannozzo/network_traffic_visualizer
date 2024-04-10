@@ -5,6 +5,7 @@ from datetime import datetime
 
 
 def set_sim_infos(infos, font_size):
+    """ The sim infos generator """
     start_time = f"start sim time: {infos['simStartTime']}\n"
     sim_time = f"sim time: {infos['simTime']} secs\n"
     average_delta = f"average delta: {infos['averageDelta']} ms\n"
@@ -33,6 +34,7 @@ def traffic_colors_gen(r, g, b):
     return hexColors
 
 def traffic_colors_gen_colorblind():
+    """ A traffic colors generator for colorblind people, green to white to purple  """
     MID_TRAFFIC = 50
     MAX_TRAFFIC = 100
     hexColors = {}
