@@ -7,9 +7,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{listings}
+\usepackage{biblatex}
+\addbibresource{bibliografia.bib}
 \lstset{basicstyle=\ttfamily, breaklines=true}
 \hypersetup{pdftitle={La mia tesi},pdfauthor={Francesco Biccari}}
-\title{Visualizzazione e simulazione grafica di traffico di reti}
+\title{Generazione e visualizzazione grafica di traffico di reti}
 \author{Francesco Pannozzo}
 \IDnumber{699427}
 \course{Laurea Triennale in Informatica}
@@ -41,7 +43,10 @@ matematici esplicativi..
 \chapter{Progettazione}
 ...
 \chapter{Test}
-Per ottenere i lati di un rettangolo che abbia proporzioni $16:9$ partendo da un quadrato di lato $n$, dobbiamo innanzitutto considerare che l'area del quadrato è data da $A = n^2$. Vogliamo che il rettangolo abbia la stessa area del quadrato ma rispetti le proporzioni $16:9$.
+Per ottenere i lati di un rettangolo che abbia proporzioni $16:9$ partendo da un 
+quadrato di lato $n$, dobbiamo innanzitutto considerare che l'area del quadrato è data 
+da $A = n^2$. Vogliamo che il rettangolo abbia la stessa area del quadrato ma rispetti
+ le proporzioni $16:9$.
 
 Denotiamo con $l$ la lunghezza e con $h$ l'altezza del rettangolo. La condizione di proporzione si può esprimere come
 \[
@@ -80,6 +85,7 @@ Quindi il tutto funziona poichè è sempre vero quanto segue:
 (l+1)(m+1)>ml
 \end{equation}
 
+\section{Sotto capitolo test}
 
 Ecco un esempio di codice YAML:
 
@@ -108,8 +114,23 @@ La complessità temporale dell'algoritmo è $O(m+n)$.
 \begin{equation}
     O(m+n)
 \end{equation}
-
+Let's cite! The Einstein's journal paper \cite{einstein} and the Dirac's 
+book \cite{dirac} are physics related items.
 .. .. ..
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/only_links.JPG}
+    \caption{a nice plot}
+    \label{fig:only_links}
+\end{figure}
+
+As you can see in the figure \ref{fig:only_links}, the 
+function grows near 0. Also, in the page \pageref{fig:only_links} 
+is the same example.
+
+
+\printbibliography
+
 \backmatter
 \cleardoublepage
 \phantomsection % Give this command only if hyperref is loaded

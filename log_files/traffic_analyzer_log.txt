@@ -1,14 +1,14 @@
-2024-04-10 18:43:21,047 [INFO] Loading files..
-2024-04-10 18:43:21,047 [INFO] Loading network file..
-2024-04-10 18:43:21,069 [INFO] ..done!
-2024-04-10 18:43:21,085 [INFO] Loading packets file..
-2024-04-10 18:43:21,110 [INFO] ..done!
-2024-04-10 18:43:21,111 [DEBUG] NETWORK and PACKETS structure loading time:Test duration:0:00:00.064120
-2024-04-10 18:43:21,112 [INFO] Analyzing files..
-2024-04-10 18:43:21,112 [INFO] Simulation parameters:
-2024-04-10 18:43:21,113 [INFO] {'averageDelta': 1000, 'colorblind': 'no', 'dotsSize': 'fixed', 'graphType': 'mesh', 'linkCap': 10, 'packetsFile': 'json', 'simTime': 5, 'startSimTime': datetime.datetime(2024, 3, 22, 12, 30), 'updateDelta': 100}
-2024-04-10 18:43:21,209 [INFO] ..done!
-2024-04-10 18:43:21,209 [DEBUG] ANALYZING time:Test duration:0:00:00.096065
-2024-04-10 18:43:21,212 [INFO] Writing analyzed_data_test.yaml file..
-2024-04-10 18:43:21,219 [INFO] analyzed_data_test.yaml file creation done!
-2024-04-10 18:43:21,222 [DEBUG] ANALYZED DATA structure creation and writing time:Test duration:0:00:00.012090
+2024-04-10 19:59:41,426 [INFO] Loading files..
+2024-04-10 19:59:41,426 [INFO] Loading network file..
+2024-04-10 19:59:41,470 [INFO] ..done!
+2024-04-10 19:59:41,485 [INFO] Loading packets file..
+2024-04-10 19:59:41,528 [INFO] ..done!
+2024-04-10 19:59:41,529 [DEBUG] NETWORK and PACKETS structure loading time:Test duration:0:00:00.103315
+2024-04-10 19:59:41,529 [INFO] Analyzing files..
+2024-04-10 19:59:41,530 [INFO] Simulation parameters:
+2024-04-10 19:59:41,533 [INFO] {'averageDelta': 1000, 'colorblind': 'no', 'dotsSize': 'fixed', 'graphType': 'mesh', 'linkCap': 10, 'packetsFile': 'json', 'simTime': 5, 'startSimTime': datetime.datetime(2024, 3, 22, 12, 30), 'updateDelta': 100}
+2024-04-10 19:59:41,983 [INFO] ..done!
+2024-04-10 19:59:41,984 [DEBUG] ANALYZING time:Test duration:0:00:00.454296
+2024-04-10 19:59:41,988 [INFO] Writing analyzed_data_test.yaml file..
+2024-04-10 19:59:42,021 [INFO] analyzed_data_test.yaml file creation done!
+2024-04-10 19:59:42,023 [DEBUG] ANALYZED DATA structure creation and writing time:Test duration:0:00:00.039502

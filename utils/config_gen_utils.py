@@ -274,7 +274,7 @@ def create_auto_toro_links(link_cap, switch_number):
     return links, switches
 
 def check_custom_file(user_data):
-    """ Sanity check utility, It check if the custom file is properly formatted """
+    """ Sanity check utility, It checks if the custom file is properly formatted """
     rows = len(user_data["coordinates"])
     cols = len(user_data["coordinates"][0])
 
