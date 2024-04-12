@@ -43,7 +43,7 @@ packetsFile: json
 - **packetSize** è la dimensione in bytes di un pacchetto, i pacchetti nella simulazione avranno questa dimensione
 - **colorblind** è una stringa "yes" o "no" che abilita se posta su "yes" una visualizazione compatibile per persone daltoniche
 - **trafficVariation** può essere il valore "random" oppure uno dei seguenti [5, 10, 20, 25, 50] e di conseguenza determinerà la variazione percentuale di traffico che avviene ogni secondo di simulazione. Il valore "random" sceglie casualmente una percentuale ogni secondo con un valore che va da 0 a 100
-- **packetsFile** specifica quale tecnologia si vuole utilizzare per il file packets, si pò scegliere tra json e yaml, qualora si scelgiesse yaml occorre inserire un campo **readeblePackets** da settare con "yes" o "no". Questo campo permette di codificare il file yaml in modo inline (priorità alla leggibilità) oppure in modo block (poco leggibile ma risparmia spazio su disco).
+- **packetsFile** specifica quale tecnologia si vuole utilizzare per il file packets, si pò scegliere tra json e yaml
 
 La simulazione prevede una generazione di pacchetti calcolata sulla base della capacità dei link fornita e su un valore casuale di percentuale di traffico che varia ogni secondo, per esempio avendo 6 links su 3 secondi di simulazione e il parametro "trafficVariation" settato a _random_ potremmo avere delle assegnazioni di percentuali di traffico come le seguenti:
 
