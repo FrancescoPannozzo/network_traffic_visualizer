@@ -299,6 +299,7 @@ INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy6.tfm
 OUTPUT relazione.toc
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr17.tfm
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
+INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ts1-lmr10.tfm
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
@@ -318,7 +319,6 @@ INPUT .\immagini\only_links.JPG
 INPUT .\immagini\only_links.JPG
 INPUT .\immagini\only_links.JPG
 INPUT .\immagini\only_links.JPG
-INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmcsc10.tfm
 INPUT relazione.aux
 INPUT .\relazione.out
 INPUT .\relazione.out
@@ -328,8 +328,6 @@ INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx10.pf
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
-INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmcsc10.pfb
-INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmcsc10.pfb
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi10.pfb
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi10.pfb
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr10.pfb
