@@ -312,10 +312,11 @@ try:
             #yaml.dump(packets, file, default_flow_style=flow_style)
             json.dump(packets, file, ensure_ascii=False, indent=4)
     else:
-        flow_style = False if setup["readeblePackets"] == "yes" else True
+        # deprecated option
+        # flow_style = False if setup["readeblePackets"] == "yes" else True
         with open('./data/packets.yaml', 'w', encoding="utf-8") as file:
-            #yaml.dump(packets, file)
-            yaml.dump(packets, file, default_flow_style=flow_style)
+            yaml.dump(packets, file)
+            #yaml.dump(packets, file, default_flow_style=flow_style)
     
     logging.info("..packets file creation done!")
     
