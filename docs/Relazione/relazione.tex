@@ -177,9 +177,9 @@ cercare di sfruttare le potenzialità della libreria e renderle al servizio di u
 Il terzo aspetto tecnologico riguarda l'aspetto di gestione dei dati. Un visualizzatore grafico di traffico di reti ha bisogno principalmente di due insiemi di informazioni importanti; uno riguarda tutte le informazioni
 che riguardano il come è costruita la rate, parliamo quindi degli endpoint quali sono gli switch e conseguenti informazioni annesse, pensiamo ad esempio all'indirizzo di rete, un nome identificativo e così via, ma parliamo anche dei link che collegano
 i vari endpoints, con la necessità di tenere traccia delle loro capacità trasmissive, la tipologia di rete, se ha una struttura a grafo completo, mesh, torus o disposizione libera e molte altre informazioni che discuteremo in seguito.
-L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; json\cite{RFC791}, yaml\cite{RFC9512} e CSV\cite{RFC4180}.
+L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; json\cite{RFC791}, yaml\cite{RFC9512} e csv\cite{RFC4180}.
 Dopo attenta anlisi si è deciso di adottare il formato json per strutturare e memorizzare i dati legati al traffico, con la possibilità di scegliere anche il formato yaml, mentre per i dati relativi alla descrizione della rete il compito è stato affidato esclusivamente a yaml, csv è stato scartato.
-Perchè csv è stato scartato? Sebbene csv rappresenti un'ottima alternativa, essendo molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse dalla semplice forma tabellare, tipicamente usate nei database. 
+Perchè csv è stato scartato? Sebbene csv rappresenti una valida alternativa tenendo conto di aspetti prestazionali, essendo un formato molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse dalla semplice forma tabellare, tipicamente usate nei database. 
 L'idea di scartarla, sia per strutturare i dati della rete che per quelli del traffico, deriva principalmente dai seguenti motivi:
 
 \begin{itemize}
@@ -190,26 +190,87 @@ L'idea di scartarla, sia per strutturare i dati della rete che per quelli del tr
     nell'ottica di espansione del progetto
 \end{itemize}
 Per esplicare meglio il concetto di struttura complessa non fattibile è possibile focalizzarsi sul seguente esempio. Segue la rappresentazione di diversi pacchetti così come sono utilizzati nel progetto:
+
 \begin{lstlisting}[caption={pacchetti di rete rappresentati in json}]
     [
         {
             "A": 1,
             "B": 2,
             "t": "2024-03-22 12:30:00",
-            "d": 4000
+            "d": 1518
         },
         {
             "A": 2,
             "B": 1,
             "t": "2024-03-22 12:30:00",
-            "d": 4000
+            "d": 1518
         }
     ]
 \end{lstlisting}
-
+Dove A e B sono gli endpoints interessati, t è il timestamp di creazione pacchetto e d la dimesione del payload in bytes(). In csv questa struttura è rappresentabile come segue:
+\begin{lstlisting}[caption={pacchetti di rete rappresentati in csv}]
+    A,B,t,d
+    2,1,2024-03-22 12:30:00,1518
+    2,1,2024-03-22 12:30:00,1518
+\end{lstlisting}
+Tuttavia se si dovesse rendere questa struttura più complessa, avremmo problemi a realizzarla in csv, basterebbe l'aggiunta
+di un campo che a sua volta necessita di informazione strutturata, come ad esempio inserire le informazione dell'header:
+\begin{lstlisting}[caption={pacchetto di rete maggiormente strutturate in json}]
+    [
+        {
+          "A": 1,
+          "B": 2,
+          "t": "2024-03-22 12:30:00",
+          "d": 4000,
+          "ip_header": {
+            "version": 4,
+            "ihl": 5,
+            "type_of_service": 0,
+            "total_length": 300,
+            "identification": 98765,
+            "flags": {
+              "reserved_bit": false,
+              "dont_fragment": true,
+              "more_fragments": false
+            },
+            "fragment_offset": 0,
+            "time_to_live": 64,
+            "protocol": 6,
+            "header_checksum": "2B5A",
+            "source_address": "192.168.1.1",
+            "destination_address": "192.168.1.2"
+          }
+        }
+      ]
+\end{lstlisting}
+In questa struttura abbiamo ben due oggetti nidificati, ip header e flags. 
+Questo tipo di struttura è difficilmente replicabile in csv che si presta maggiormente
+per strutture piatte mentre json e yaml permettono molta più libertà di strutturazione.
+La scelta del formato json per rappresentare i dati del traffico di rete è quindi legata alla possibilità di espandere la
+rappresentazione con strutture più complesse in ottica di espansioni future del progetto, ma è indubbiamente legata alle prestazioni che questo formato riesce a dare.
+Json è un formato ampiamente supportato e la sua semplicità permette di ottenere risultati ottimi per le operazioni di parsing, lettura e scrittura per strutture aventi grandi quantità di dati.
+Per dare una stima approssimativa di grandezza, calcoliamo la quantità di pacchetti per secondo 
+in un link con capacità di 1Gbps e relativa dimensione di un ipotetico file finale necessario
+a memorizzare il tutto:
+\begin{align*}
+    \text{Capacità in bit} &= 10^9 \text{ bit} && \text{(1 gigabit)} \\
+    \text{Capacità in bytes} &= \frac{10^9}{8} = 125,000,000 \text{ bytes} && \text{(1 byte = 8 bit)} \\
+    \text{Dimensione massima del pacchetto} &= 1518 \text{ bytes} \\
+    \text{Numero di pacchetti} &= \frac{125,000,000 \text{ bytes}}{1518 \text{ bytes per pacchetto}} \\
+    &\approx 82345.19 && \text{(pacchetti)}\\
+    \text{Bytes per pacchetto} &= 123 \text{ bytes} && \text{(Bytes per la scrittura su file)}\\
+    \text{Numero righe di testo} &= 82345 \times 123 = 10128435 \text{ bytes}
+    \end{align*}
+Sebbene l'applicazione supporti sia json che yaml per quanto riguarda il memorizzare i dati legati al traffico, la scelta preferenziale ricade su json.
+Questo perchè, nonostante json produca files di dimensioni maggiori rispetto a yaml, la schiacciante velocità di elaborazione di json rende la creazione di
+un file di dimensioni maggiore ampiamente giustificabile, considerando soprattuto la natura del progetto in cui non vi è una
+criticità d'uso nella dimensione dei files. Come vedremo in seguito, i test eseguiti sui tempi di lettura e scrittura rispettivamente della stessa struttura
+ricreata sia in json che in yaml, sapranno ben
+dimostrare quanto appena affermato.
+Infinie giungiamo ai motivi per cui si è scelto invece esclusivamente yaml per rappresentare i dati relativi alle informazioni che descrivono la rete.
 
 \chapter{Progettazione}
-...
+
 \chapter{Test}
 Per ottenere i lati di un rettangolo che abbia proporzioni $16:9$ partendo da un 
 quadrato di lato $n$, dobbiamo innanzitutto considerare che l'area del quadrato è data 
