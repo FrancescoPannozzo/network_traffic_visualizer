@@ -2370,6 +2370,14 @@
     <bcf:citekey order="7" intorder="1">UCINET2024</bcf:citekey>
     <bcf:citekey order="8" intorder="1">SocNetV2024</bcf:citekey>
     <bcf:citekey order="9" intorder="1">Pajek2024</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">PythonWebsite</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">IEEEwebsite</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">IEEESpectrumArticle2023</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">Manim</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">Manim</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">RFC791</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">RFC9512</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">RFC4180</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

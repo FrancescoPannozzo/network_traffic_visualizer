@@ -9,7 +9,21 @@
 \usepackage{listings}
 \usepackage{biblatex}
 \addbibresource{bibliografia.bib}
-\lstset{basicstyle=\ttfamily, breaklines=true}
+%\lstset{basicstyle=\ttfamily, breaklines=true}
+\usepackage{xcolor}  % Pacchetto per la gestione dei colori
+
+% Impostazioni di base per lstlisting
+\lstset{
+    basicstyle=\ttfamily,  % Usa un font monospace per il codice
+    backgroundcolor=\color{gray!10},  % Sfondo leggermente grigio
+    frame=single,  % Aggiunge un bordo attorno al codice
+    %caption={didascalia},  % Didascalia del blocco di codice
+    captionpos=b,  % Posizione della didascalia (b = bottom, t = top)
+    escapeinside={(*@}{@*)},  % Permette di aggiungere LaTeX all'interno del codice se necessario
+}
+\renewcommand{\lstlistingname}{fig.}
+
+
 \hypersetup{pdftitle={La mia tesi},pdfauthor={Francesco Biccari}}
 \title{Generazione e visualizzazione grafica di traffico di reti}
 \author{Francesco Pannozzo}
@@ -114,6 +128,84 @@ di software per la visualizzazione e analisi di reti\cite{JHUDatavisNetwork2024}
   fino a un miliardo di vertici. L'analisi e la visualizzazione vengono eseguite utilizzando sei tipi di dati: 
   rete (grafico), partizione, vettore, cluster (sottoinsieme di vertici), permutazione (riordinamento dei vertici, proprietà ordinali); e gerarchia (struttura generale ad albero sui vertici).
 \end{itemize}
+
+\section{Contributi}
+Da un punto di vista grafico e quindi di visualizzazione, la maggior parte degli strumenti sopra elencati, permette una certa forma di personalizzazione nella disposizione dei nodi, sia automaticamente attraverso algoritmi di layout sia manualmente, 
+permettendo agli utenti di spostare i nodi per ottimizzare la visualizzazione o per enfatizzare certi aspetti della rete. Tuttavia, la possibilità di
+avere animazioni dinamiche che mostrino l'andamento del traffico nel tempo, mostrando la variazione del colore in base alla quantità dello stesso, risulta
+essere una caratteristica meno comune nei software di analisi di rete, nello specifico:
+\begin{itemize}	
+  \item Gephi: Non supporta nativamente animazioni dinamiche basate su traffico in tempo reale. Tuttavia, la sua flessibilità e la capacità di aggiungere plugin potrebbero permettere implementazioni personalizzate.
+  \item Cytoscape: Anche se fortemente orientato all'analisi statica, plugin o estensioni potrebbero aggiungere capacità simili.
+  \item GraphVis (Graphviz): Principalmente orientato verso la visualizzazione statica; non supporta direttamente animazioni dinamiche dei link basate sul traffico.
+  \item igraph: Come libreria di analisi, non è orientato verso la visualizzazione in tempo reale o animazioni dei link basate su traffico nel suo utilizzo standard.
+  \item UCINET (con NetDraw): Focalizzato sull'analisi statica di reti sociali; non supporta animazioni dinamiche in base al traffico.
+  \item SocNetV: Orientato all'analisi statica e alla visualizzazione; non è progettato per visualizzare animazioni dinamiche basate sul traffico.
+  \item Pajek: Simile agli altri, è più un tool per l'analisi statica e la visualizzazione di grandi reti, senza un supporto diretto per animazioni dei link basate su traffico.
+\end{itemize}
+In questo contesto, l'inserimento di una caratteristica che permetta di fare quanto premesso come base
+del progetto di tirocinio, risulta particolarmente indicata nel contribuire a fornire una soluzione visiva come
+strumento aggiuntivo di analisi di una rete, di debugging e anche come strumento didattico. La possibilità di
+avere un riscontro visivo istantaneo di cosa avviene nel tempo in una rete, a livello di traffico, può dare immediato feedback nel
+caso ci fosse un problema di congestione in un punto nevralgico, oppure mostrare parti di rete libere dove poter studiare un
+reindirizzamento dello stesso, volto a ottimizzare le prestazioni. A livello didattico ciò si potrebbe mostrare per presentazioni così come per didattica tramite banalmente spiegazioni. 
+Insomma i benefici derivanti da una rappresentazione del generale sono evidenti e ciò
+può essere di grosso aiuto nell'analisi così anche solo come semplice rappresentazione del traffico di rete, nonchè uno strumento complementare a quanto già presente in circolazione.
+
+\section{Base di partenza del progetto}
+Il progetto è partito da zero, si basa sullo sviluppo totalmente nuovo dell'applicazione ed è stato tutto idealizzato e pianificato in sede di proposta.
+Come approfondirò in seguito, nella sezione dedicata alla tecnologia impiegata, il progetto non è l'unica cosa a essere partita da zero, poichè il linguaggio
+scelto per sviluppare l'applicazione è Python\cite{PythonWebsite}, linguaggio non incluso nel mio 
+personale percorso di studi e che ho dovuto necessariamente studiare da zero per poter affrontare il percorso di tirocinio.
+
+\chapter{Contesto di sviluppo: le tecnologie impiegate}
+Il progetto, a livello di tecnologia impiegata, pone le fondamenta su tre aspetti, uno dei quali è
+la scelta del linguaggio di programmazione che, come accennato precedentemente, è Python. Ci sono diversi validi motivi per cui 
+puntare su questa tecnologia;
+in primis è materia di insegnamento alla facoltà di Informatica de La Sapienza, ciò ha quindi una forte valenza accedemica, 
+in secondo luogo risulta essere il linguaggio più
+usato al mondo, ad affermarlo è l' Institute of Electrical and Electronics Engineers (IEEE)\cite{IEEEwebsite}\cite{IEEESpectrumArticle2023} 
+un'associazione internazionale di scienziati professionisti con l'obiettivo della promozione delle scienze tecnologiche. Il linguaggio ha molte caratteristiche ottime, come
+una sintassi semplice e leggibile che lo rende facile da imparare e semplice da usare per gli sviluppatori esperti accorciando di gran lunga i tempi di sviluppo,
+una grande versatilità per poter essere usato in ambiti diversi come l'intelligenza artificiale, il web development, data analysys e molto altro, un ampio
+supporto delle librerie, due delle quali usate proprio nel progetto (di cui ne parlerò a breve), una grande comunità in cui trovare facilmente risorse, tutorial e supporto,
+una interoperabilità che permette un'ottima integrazione con altre tecnologie e altri linguaggi, orientato agli oggetti volto a facilitare la gestione del codice e migliora il riuso,
+scalabile e di facile integrazizone. Il secondo aspetto risiede nella scelta della libreria Manim\cite{Manim}, che viene definita come "Animation engine for explanatory math videos". Lo scopo di Manim è quindi
+quello di animare concetti tecnici legati alla matematica e si affida alla semplicità di Python per generare animazioni in modo programmatico. Manim può produrre anche immagini e gif, ma è nella produzione di video che splende, in questo modo
+è possibile progettare animazioni e renderle visibili in movimento, coprendo figure algebriche, grafici cartesiani, grafi e molto altro\cite{Manim}. Manim viene impiegato principalmente per presentazioni che implichino aspetti matematici, la sfida del progetto è stata quella di 
+cercare di sfruttare le potenzialità della libreria e renderle al servizio di uno strumento di analisi sul traffico di reti, una sfida vinta come potremo vedere in seguito.
+Il terzo aspetto tecnologico riguarda l'aspetto di gestione dei dati. Un visualizzatore grafico di traffico di reti ha bisogno principalmente di due insiemi di informazioni importanti; uno riguarda tutte le informazioni
+che riguardano il come è costruita la rate, parliamo quindi degli endpoint quali sono gli switch e conseguenti informazioni annesse, pensiamo ad esempio all'indirizzo di rete, un nome identificativo e così via, ma parliamo anche dei link che collegano
+i vari endpoints, con la necessità di tenere traccia delle loro capacità trasmissive, la tipologia di rete, se ha una struttura a grafo completo, mesh, torus o disposizione libera e molte altre informazioni che discuteremo in seguito.
+L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; json\cite{RFC791}, yaml\cite{RFC9512} e CSV\cite{RFC4180}.
+Dopo attenta anlisi si è deciso di adottare il formato json per strutturare e memorizzare i dati legati al traffico, con la possibilità di scegliere anche il formato yaml, mentre per i dati relativi alla descrizione della rete il compito è stato affidato esclusivamente a yaml, csv è stato scartato.
+Perchè csv è stato scartato? Sebbene csv rappresenti un'ottima alternativa, essendo molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse dalla semplice forma tabellare, tipicamente usate nei database. 
+L'idea di scartarla, sia per strutturare i dati della rete che per quelli del traffico, deriva principalmente dai seguenti motivi:
+
+\begin{itemize}
+    \item \textbf{Leggibilità:} uno dei primi intenti del progetto era di rendere l'applicazione il più leggibile possibile, questo perchè si è
+    fortemente voluto attribuirne anche scopi di debugging e didattici, laddove avere una certa leggibilità è più che ragionevole.
+    \item \textbf{Strutture complesse:} sicuramente il motivo più importante. Con csv non è possibile rappresentare strutture complesse, parliamo ad esempio di oggetti
+    all'interno di altri oggetti. Sebbene per come sia ora strutturato il progetto una rappresentazione cvs è ancora possibile, ciò potrebbe non esserlo in futuro
+    nell'ottica di espansione del progetto
+\end{itemize}
+Per esplicare meglio il concetto di struttura complessa non fattibile è possibile focalizzarsi sul seguente esempio. Segue la rappresentazione di diversi pacchetti così come sono utilizzati nel progetto:
+\begin{lstlisting}[caption={pacchetti di rete rappresentati in json}]
+    [
+        {
+            "A": 1,
+            "B": 2,
+            "t": "2024-03-22 12:30:00",
+            "d": 4000
+        },
+        {
+            "A": 2,
+            "B": 1,
+            "t": "2024-03-22 12:30:00",
+            "d": 4000
+        }
+    ]
+\end{lstlisting}
 
 
 \chapter{Progettazione}

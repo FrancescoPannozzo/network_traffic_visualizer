@@ -19,6 +19,30 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{IEEESpectrumArticle2023}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=166064ca933449519bff868a0dd7f668}{%
+           family={Author},
+           familyi={A\bibinitperiod},
+           given={Stephen\bibnamedelima Cass},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{166064ca933449519bff868a0dd7f668}
+      \strng{fullhash}{166064ca933449519bff868a0dd7f668}
+      \strng{bibnamehash}{166064ca933449519bff868a0dd7f668}
+      \strng{authorbibnamehash}{166064ca933449519bff868a0dd7f668}
+      \strng{authornamehash}{166064ca933449519bff868a0dd7f668}
+      \strng{authorfullhash}{166064ca933449519bff868a0dd7f668}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://spectrum.ieee.org/the-top-programming-languages-2023}}
+      \field{journaltitle}{IEEE Spectrum}
+      \field{note}{Accessed: 2024-04-12}
+      \field{title}{The Top Programming Languages 2023}
+      \field{year}{2023}
+    \endentry
     \entry{Cytoscape2024}{misc}{}
       \name{author}{1}{}{%
         {{hash=11380d448cdf814a494e1dac43ddd525}{%
@@ -105,6 +129,27 @@
       \field{title}{igraph - The Network Analysis Package}
       \field{year}{2024}
     \endentry
+    \entry{IEEEwebsite}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e2dd85d5ed4ff94326a8b5cb5fb21ab4}{%
+           family={{Institute of Electrical and Electronics Engineers}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{e2dd85d5ed4ff94326a8b5cb5fb21ab4}
+      \strng{fullhash}{e2dd85d5ed4ff94326a8b5cb5fb21ab4}
+      \strng{bibnamehash}{e2dd85d5ed4ff94326a8b5cb5fb21ab4}
+      \strng{authorbibnamehash}{e2dd85d5ed4ff94326a8b5cb5fb21ab4}
+      \strng{authornamehash}{e2dd85d5ed4ff94326a8b5cb5fb21ab4}
+      \strng{authorfullhash}{e2dd85d5ed4ff94326a8b5cb5fb21ab4}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.ieee.org}}
+      \field{note}{Accessed: 2024-04-12}
+      \field{title}{IEEE - Advancing Technology for Humanity}
+      \field{year}{2024}
+    \endentry
     \entry{JohnsHopkinsUniversity2024}{misc}{}
       \name{author}{1}{}{%
         {{hash=21a41c5054834afb1fd4dce5010d533d}{%
@@ -168,6 +213,93 @@
       \field{title}{Pajek - Program for Large Network Analysis}
       \field{year}{2024}
     \endentry
+    \entry{RFC791}{report}{}
+      \name{author}{1}{}{%
+        {{hash=02b8dba2b9241ee3cbe59775cce0328d}{%
+           family={Postel},
+           familyi={P\bibinitperiod},
+           given={Jon},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {RFC Editor}%
+      }
+      \strng{namehash}{02b8dba2b9241ee3cbe59775cce0328d}
+      \strng{fullhash}{02b8dba2b9241ee3cbe59775cce0328d}
+      \strng{bibnamehash}{02b8dba2b9241ee3cbe59775cce0328d}
+      \strng{authorbibnamehash}{02b8dba2b9241ee3cbe59775cce0328d}
+      \strng{authornamehash}{02b8dba2b9241ee3cbe59775cce0328d}
+      \strng{authorfullhash}{02b8dba2b9241ee3cbe59775cce0328d}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-04-12}
+      \field{number}{791}
+      \field{title}{Internet Protocol}
+      \field{type}{RFC}
+      \field{year}{1981}
+      \verb{urlraw}
+      \verb https://www.rfc-editor.org/rfc/rfc791#page-11
+      \endverb
+      \verb{url}
+      \verb https://www.rfc-editor.org/rfc/rfc791#page-11
+      \endverb
+    \endentry
+    \entry{PythonWebsite}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c7b5508dc5e59a2846d22617276cc27c}{%
+           family={{Python Software Foundation}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{fullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{bibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authorbibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authornamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authorfullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.python.org}}
+      \field{note}{Accessed: 2024-04-12}
+      \field{title}{Python Programming Language -- Official Website}
+      \field{year}{2024}
+    \endentry
+    \entry{RFC4180}{report}{}
+      \name{author}{1}{}{%
+        {{hash=947495204d4130d1a21539ecb2825287}{%
+           family={Shafranovich},
+           familyi={S\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {RFC Editor}%
+      }
+      \strng{namehash}{947495204d4130d1a21539ecb2825287}
+      \strng{fullhash}{947495204d4130d1a21539ecb2825287}
+      \strng{bibnamehash}{947495204d4130d1a21539ecb2825287}
+      \strng{authorbibnamehash}{947495204d4130d1a21539ecb2825287}
+      \strng{authornamehash}{947495204d4130d1a21539ecb2825287}
+      \strng{authorfullhash}{947495204d4130d1a21539ecb2825287}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-04-12}
+      \field{number}{4180}
+      \field{title}{Common Format and MIME Type for Comma-Separated Values (CSV) Files}
+      \field{type}{RFC}
+      \field{year}{2005}
+      \verb{urlraw}
+      \verb https://www.rfc-editor.org/rfc/rfc4180.html#page-2
+      \endverb
+      \verb{url}
+      \verb https://www.rfc-editor.org/rfc/rfc4180.html#page-2
+      \endverb
+    \endentry
     \entry{SocNetV2024}{misc}{}
       \name{author}{1}{}{%
         {{hash=ceb0e8fcfc2030d3c9a0eae47ed52bd4}{%
@@ -189,6 +321,32 @@
       \field{title}{Social Network Visualizer (SocNetV)}
       \field{year}{2024}
     \endentry
+    \entry{Manim}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=0c6c914811edee3ebb09f940013689dd}{%
+           family={{The Manim Community Developers}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{0c6c914811edee3ebb09f940013689dd}
+      \strng{fullhash}{0c6c914811edee3ebb09f940013689dd}
+      \strng{bibnamehash}{0c6c914811edee3ebb09f940013689dd}
+      \strng{authorbibnamehash}{0c6c914811edee3ebb09f940013689dd}
+      \strng{authornamehash}{0c6c914811edee3ebb09f940013689dd}
+      \strng{authorfullhash}{0c6c914811edee3ebb09f940013689dd}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-03-25}
+      \field{title}{Manim Documentation: Quickstart Guide}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://docs.manim.community/en/stable/index.html
+      \endverb
+      \verb{url}
+      \verb https://docs.manim.community/en/stable/index.html
+      \endverb
+    \endentry
     \entry{UCINET2024}{misc}{}
       \name{author}{1}{}{%
         {{hash=ce9ae0814670ca4de7c0f3a2364d7342}{%
@@ -209,6 +367,27 @@
       \field{note}{Accessed: 2024-04-12}
       \field{title}{UCINET Software}
       \field{year}{2024}
+    \endentry
+    \entry{RFC9512}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=86a321bcb9ba596790d2e73abd14d072}{%
+           family={{YAML Core Team}},
+           familyi={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{86a321bcb9ba596790d2e73abd14d072}
+      \strng{fullhash}{86a321bcb9ba596790d2e73abd14d072}
+      \strng{bibnamehash}{86a321bcb9ba596790d2e73abd14d072}
+      \strng{authorbibnamehash}{86a321bcb9ba596790d2e73abd14d072}
+      \strng{authornamehash}{86a321bcb9ba596790d2e73abd14d072}
+      \strng{authorfullhash}{86a321bcb9ba596790d2e73abd14d072}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.rfc-editor.org/info/rfc9512}}
+      \field{note}{Accessed: 2024-04-12}
+      \field{title}{YAML Ain't Markup Language (YAML™) Version 1.2}
+      \field{year}{2009}
     \endentry
   \enddatalist
 \endrefsection
