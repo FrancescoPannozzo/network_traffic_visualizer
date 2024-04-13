@@ -1,15 +1,15 @@
-[1] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:307> INFO - This is Biber 2.19
 [1] Config.pm:310> INFO - Logfile is 'relazione.blg'
-[271] biber-MSWIN64:340> INFO - === 
-[356] Biber.pm:419> INFO - Reading 'relazione.bcf'
-[622] Biber.pm:979> INFO - Found 1 citekeys in bib section 0
-[659] Biber.pm:4419> INFO - Processing section 0
-[687] Biber.pm:4610> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
-[794] bibtex.pm:1713> INFO - LaTeX decoding ...
-[842] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
-[942] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[942] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'variable = shifted' with 'variable = non-ignorable'
-[942] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'it-IT'
-[942] Biber.pm:4245> INFO - No sort tailoring available for locale 'it-IT'
-[945] bbl.pm:660> INFO - Writing 'relazione.bbl' with encoding 'UTF-8'
-[946] bbl.pm:763> INFO - Output to relazione.bbl
+[370] biber-MSWIN64:340> INFO - === 
+[475] Biber.pm:419> INFO - Reading 'relazione.bcf'
+[832] Biber.pm:979> INFO - Found 9 citekeys in bib section 0
+[879] Biber.pm:4419> INFO - Processing section 0
+[911] Biber.pm:4610> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
+[1064] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1110] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
+[1310] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1310] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1310] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'it-IT'
+[1310] Biber.pm:4245> INFO - No sort tailoring available for locale 'it-IT'
+[1332] bbl.pm:660> INFO - Writing 'relazione.bbl' with encoding 'UTF-8'
+[1354] bbl.pm:763> INFO - Output to relazione.bbl

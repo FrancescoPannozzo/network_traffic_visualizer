@@ -2361,7 +2361,15 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">Gephi2024</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">JohnsHopkinsUniversity2024</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">JHUDatavisNetwork2024</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">Gephi2024</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">Cytoscape2024</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">Graphviz2024</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">igraph2024</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">UCINET2024</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">SocNetV2024</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">Pajek2024</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
