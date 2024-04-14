@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  14 APR 2024 16:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  14 APR 2024 19:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -675,7 +675,11 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 LaTeX Warning: Unused global option(s):
     [binding=0.6cm].
 
-(relazione.aux)
+(relazione.aux
+
+LaTeX Warning: Label `fig:custom_graph_example' multiply defined.
+
+)
 \openout1 = `relazione.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
@@ -886,8 +890,8 @@ Capitolo 2.
 [5
 
 ] [6]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 214.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 214.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 219.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 219.
  (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -899,59 +903,73 @@ Package microtype Info: Loading generic protrusion settings for font family
 Capitolo 3.
 [9
 
-] [10
+] [10] [11] [12] [13] [14]
+<immagini/torus_graph.png, id=409, 457.71pt x 451.6875pt>
+File: immagini/torus_graph.png Graphic file (type png)
+<use immagini/torus_graph.png>
+Package pdftex.def Info: immagini/torus_graph.png  used on input line 571.
+(pdftex.def)             Requested size: 198.0pt x 195.39351pt.
+<immagini/only_links.JPG, id=411, 636.87938pt x 357.58594pt>
+File: immagini/only_links.JPG Graphic file (type jpg)
+<use immagini/only_links.JPG>
+Package pdftex.def Info: immagini/only_links.JPG  used on input line 583.
+(pdftex.def)             Requested size: 316.80121pt x 177.8704pt.
 
-]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15 <./immagini/torus_graph.png>] [16 <./immagini/only_links.JPG>]
 Capitolo 4.
-[11{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+[17
+
+{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/03/11 1.10a listings language file
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 348.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 649.
 
-Overfull \hbox (252.4646pt too wide) in paragraph at lines 349--350
+Overfull \hbox (252.4646pt too wide) in paragraph at lines 650--651
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<immagini/only_links.JPG, id=243, 636.87938pt x 357.58594pt>
-File: immagini/only_links.JPG Graphic file (type jpg)
-<use immagini/only_links.JPG>
-Package pdftex.def Info: immagini/only_links.JPG  used on input line 366.
-(pdftex.def)             Requested size: 316.80121pt x 177.8704pt.
-[12 <./immagini/only_links.JPG>]
+[18]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Overfull \hbox (30.28568pt too wide) in paragraph at lines 377--377
+Overfull \hbox (30.28568pt too wide) in paragraph at lines 672--672
 []\T1/lmr/m/n/10.95 (-20) UCINET. \T1/lmr/m/it/10.95 (-20) UCI-NET Soft-ware\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / sites . google . com / site / ucinetsoftware/$[]\T1/lmr/m/n/10.95 (-20) .
  []
 
-[13
+[19
 
-] [14] (relazione.aux)
+] [20] (relazione.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 9BD2600A26E9551E875B1E2FF8972DCA;1929.
+(rerunfilecheck)             Checksum: 31A971764A113B29885D1A52311C4F12;2020.
 Package logreq Info: Writing requests to 'relazione.run.xml'.
 \openout1 = `relazione.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 24933 strings out of 474423
- 432006 string characters out of 5742662
- 1961496 words of memory out of 5000000
- 46675 multiletter control sequences out of 15000+600000
- 639891 words of font info for 173 fonts, out of 8000000 for 9000
+ 25136 strings out of 474423
+ 435204 string characters out of 5742662
+ 1975496 words of memory out of 5000000
+ 46684 multiletter control sequences out of 15000+600000
+ 640444 words of font info for 179 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,13n,131p,1126b,2074s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,131p,1126b,2082s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on relazione.pdf (22 pages, 455830 bytes).
+Output written on relazione.pdf (28 pages, 576956 bytes).
 PDF statistics:
- 401 PDF objects out of 1000 (max. 8388607)
- 113 named destinations out of 1000 (max. 500000)
- 52851 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 643 PDF objects out of 1000 (max. 8388607)
+ 295 named destinations out of 1000 (max. 500000)
+ 52856 words of extra memory for PDF output out of 61914 (max. 10000000)
 
