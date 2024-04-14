@@ -159,7 +159,10 @@ scelto per sviluppare l'applicazione è Python\cite{PythonWebsite}, linguaggio n
 personale percorso di studi e che ho dovuto necessariamente studiare da zero per poter affrontare il percorso di tirocinio.
 
 \chapter{Contesto di sviluppo: le tecnologie impiegate}
-Il progetto, a livello di tecnologia impiegata, pone le fondamenta su tre aspetti, uno dei quali è
+Il progetto, a livello di tecnologia impiegata, pone le fondamenta su tre aspetti che andremo a 
+elencare di seguito, descrivendo le varie motivazioni che hanno spinto a sceglierli. 
+\section{Python}
+Uno dei primi aspetti di cui si è tenuto conto è stata
 la scelta del linguaggio di programmazione che, come accennato precedentemente, è Python. Ci sono diversi validi motivi per cui 
 puntare su questa tecnologia;
 in primis è materia di insegnamento alla facoltà di Informatica de La Sapienza, ciò ha quindi una forte valenza accedemica, 
@@ -170,13 +173,28 @@ una sintassi semplice e leggibile che lo rende facile da imparare e semplice da 
 una grande versatilità per poter essere usato in ambiti diversi come l'intelligenza artificiale, il web development, data analysys e molto altro, un ampio
 supporto delle librerie, due delle quali usate proprio nel progetto (di cui ne parlerò a breve), una grande comunità in cui trovare facilmente risorse, tutorial e supporto,
 una interoperabilità che permette un'ottima integrazione con altre tecnologie e altri linguaggi, orientato agli oggetti volto a facilitare la gestione del codice e migliora il riuso,
-scalabile e di facile integrazizone. Il secondo aspetto risiede nella scelta della libreria Manim\cite{Manim}, che viene definita come "Animation engine for explanatory math videos". Lo scopo di Manim è quindi
+scalabile e di facile integrazizone. 
+
+\section{La libreria Manim}
+Il secondo aspetto risiede nella scelta della libreria Manim\cite{Manim}, che viene definita come "Animation engine for explanatory math videos". Lo scopo di Manim è quindi
 quello di animare concetti tecnici legati alla matematica e si affida alla semplicità di Python per generare animazioni in modo programmatico. Manim può produrre anche immagini e gif, ma è nella produzione di video che splende, in questo modo
-è possibile progettare animazioni e renderle visibili in movimento, coprendo figure algebriche, grafici cartesiani, grafi e molto altro\cite{Manim}. Manim viene impiegato principalmente per presentazioni che implichino aspetti matematici, la sfida del progetto è stata quella di 
+è possibile progettare animazioni e renderle visibili in movimento, coprendo figure algebriche, grafici cartesiani, grafi e molto altro\cite{Manim}. 
+La libreria offre molta liberà sui risultati che si vogliono ottenere, può renderizzare singole immagini, gif e da molte opzioni per quanto riguarda l'output video, fornendo la possibilità
+di renderizzarli nei formati più comuni con la possibilità di personalizzazione del framerate:
+\begin{itemize}	
+    \item 480p (SD): 854 x 480
+    \item 720p (HD): 1280 x 720
+    \item 1080p (HD): 1920 x 1080
+    \item 1440p (2K): 2560 x 1440
+    \item 2160p (4K): 3840 x 2160
+\end{itemize}
+Manim viene impiegato principalmente per presentazioni che implichino aspetti matematici, la sfida del progetto è stata quella di 
 cercare di sfruttare le potenzialità della libreria e renderle al servizio di uno strumento di analisi sul traffico di reti, una sfida vinta come potremo vedere in seguito.
 Il terzo aspetto tecnologico riguarda l'aspetto di gestione dei dati. Un visualizzatore grafico di traffico di reti ha bisogno principalmente di due insiemi di informazioni importanti; uno riguarda tutte le informazioni
 che riguardano il come è costruita la rate, parliamo quindi degli endpoint quali sono gli switch e conseguenti informazioni annesse, pensiamo ad esempio all'indirizzo di rete, un nome identificativo e così via, ma parliamo anche dei link che collegano
 i vari endpoints, con la necessità di tenere traccia delle loro capacità trasmissive, la tipologia di rete, se ha una struttura a grafo completo, mesh, torus o disposizione libera e molte altre informazioni che discuteremo in seguito.
+
+\section{I formati Json e Yaml}
 L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; json\cite{RFC791}, yaml\cite{RFC9512} e csv\cite{RFC4180}.
 Dopo attenta anlisi si è deciso di adottare il formato json per strutturare e memorizzare i dati legati al traffico, con la possibilità di scegliere anche il formato yaml, mentre per i dati relativi alla descrizione della rete il compito è stato affidato esclusivamente a yaml, csv è stato scartato.
 Perchè csv è stato scartato? Sebbene csv rappresenti una valida alternativa tenendo conto di aspetti prestazionali, essendo un formato molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse dalla semplice forma tabellare, tipicamente usate nei database. 
@@ -189,32 +207,31 @@ L'idea di scartarla, sia per strutturare i dati della rete che per quelli del tr
     all'interno di altri oggetti. Sebbene per come sia ora strutturato il progetto una rappresentazione cvs è ancora possibile, ciò potrebbe non esserlo in futuro
     nell'ottica di espansione del progetto
 \end{itemize}
-Per esplicare meglio il concetto di struttura complessa non fattibile è possibile focalizzarsi sul seguente esempio. Segue la rappresentazione di diversi pacchetti così come sono utilizzati nel progetto:
+Per esplicare meglio il concetto di struttura complessa non fattibile è possibile focalizzarsi
+ sul seguente esempio. Segue la rappresentazione di un pacchetto di rete così come viene
+ utilizzato nel progetto, in questo caso una lista contenente un solo elemento:
 
-\begin{lstlisting}[caption={pacchetti di rete rappresentati in json}]
-    [
-        {
-            "A": 1,
-            "B": 2,
-            "t": "2024-03-22 12:30:00",
-            "d": 1518
-        },
-        {
-            "A": 2,
-            "B": 1,
-            "t": "2024-03-22 12:30:00",
-            "d": 1518
-        }
-    ]
+\begin{lstlisting}[caption={pacchetto di rete rappresentato in json}, label={fig:packet_example}]
+[    
+    {
+        "A": 1,
+        "B": 2,
+        "t": "2024-03-22 12:30:00",
+        "d": 1518
+    }
+]
 \end{lstlisting}
-Dove A e B sono gli endpoints interessati, t è il timestamp di creazione pacchetto e d la dimesione del payload in bytes(). In csv questa struttura è rappresentabile come segue:
+Dove A e B sono gli endpoints interessati, t è il timestamp di creazione pacchetto e d 
+la dimesione del payload in bytes(). In csv questa struttura è rappresentabile come segue:
+
 \begin{lstlisting}[caption={pacchetti di rete rappresentati in csv}]
     A,B,t,d
     2,1,2024-03-22 12:30:00,1518
     2,1,2024-03-22 12:30:00,1518
 \end{lstlisting}
 Tuttavia se si dovesse rendere questa struttura più complessa, avremmo problemi a realizzarla in csv, basterebbe l'aggiunta
-di un campo che a sua volta necessita di informazione strutturata, come ad esempio inserire le informazione dell'header:
+di un campo che a sua volta necessita di informazione strutturata, come ad esempio 
+inserire le informazione dell'header:
 \begin{lstlisting}[caption={pacchetto di rete maggiormente strutturate in json}]
     [
         {
@@ -249,27 +266,26 @@ per strutture piatte mentre json e yaml permettono molta più libertà di strutt
 La scelta del formato json per rappresentare i dati del traffico di rete è quindi legata alla possibilità di espandere la
 rappresentazione con strutture più complesse in ottica di espansioni future del progetto, ma è indubbiamente legata alle prestazioni che questo formato riesce a dare.
 Json è un formato ampiamente supportato e la sua semplicità permette di ottenere risultati ottimi per le operazioni di parsing, lettura e scrittura per strutture aventi grandi quantità di dati.
-Per dare una stima approssimativa di grandezza, calcoliamo la quantità di pacchetti per secondo 
-in un link con capacità di 1Gbps e relativa dimensione di un ipotetico file finale necessario
-a memorizzare il tutto:
-\begin{align*}
-    \text{Capacità in bit} &= 10^9 \text{ bit} && \text{(1 gigabit)} \\
-    \text{Capacità in bytes} &= \frac{10^9}{8} = 125,000,000 \text{ bytes} && \text{(1 byte = 8 bit)} \\
-    \text{Dimensione massima del pacchetto} &= 1518 \text{ bytes} \\
-    \text{Numero di pacchetti} &= \frac{125,000,000 \text{ bytes}}{1518 \text{ bytes per pacchetto}} \\
-    &\approx 82345.19 && \text{(pacchetti)}\\
-    \text{Bytes per pacchetto} &= 123 \text{ bytes} && \text{(Bytes per la scrittura su file)}\\
-    \text{Numero righe di testo} &= 82345 \times 123 = 10128435 \text{ bytes}
-    \end{align*}
 Sebbene l'applicazione supporti sia json che yaml per quanto riguarda il memorizzare i dati legati al traffico, la scelta preferenziale ricade su json.
 Questo perchè, nonostante json produca files di dimensioni maggiori rispetto a yaml, la schiacciante velocità di elaborazione di json rende la creazione di
 un file di dimensioni maggiore ampiamente giustificabile, considerando soprattuto la natura del progetto in cui non vi è una
 criticità d'uso nella dimensione dei files. Come vedremo in seguito, i test eseguiti sui tempi di lettura e scrittura rispettivamente della stessa struttura
 ricreata sia in json che in yaml, sapranno ben
 dimostrare quanto appena affermato.
-Infinie giungiamo ai motivi per cui si è scelto invece esclusivamente yaml per rappresentare i dati relativi alle informazioni che descrivono la rete.
+Infinie giungiamo ai motivi per cui si è scelto invece esclusivamente yaml per rappresentare i 
+dati relativi alle informazioni che descrivono la rete. Le motivazioni consistono sempre nella volontà
+di garantire un formato che si presti a espansioni future e quindi che possano richiede strutturazioni complesse, ma soprattutto,
+in questo caso specifico, nell'alta leggiblità che yaml offre. Generalmente i dati che servono a descrivere una rete non sono mai paragonabili a quelli
+necessari per registrare tutto il traffico, si voleva dare quindi uno strumento molto chiaro da leggere per fare in modo che la configurazione di rete
+fosse sempre molto chiara, intuitiva e di facile accesso, sia in scrittura che in lettura. 
+Per dare una stima di grandezza, il file
+di configurazione network che produce il generatore di pacchetti, basato su 50 switch collegati come un grafo mesh pesa appena 9 KB.
+Seguirà la descrizione approfondita del progetto, principalmente suddiviso in tre parti; la prima 
+parte riguarda la generazione di traffico di rete fittizio, la seconda è l'analizzatore dei dati di configurazione di rete e relativo traffico mentre la terza
+parte riguarda il visualizzatore grafico vero e proprio.
 
-\chapter{Progettazione}
+\chapter{Generatore di traffico di rete}
+
 
 \chapter{Test}
 Per ottenere i lati di un rettangolo che abbia proporzioni $16:9$ partendo da un 
