@@ -300,7 +300,7 @@ try:
 
     start_test_time = datetime.now()
 
-    logging.info("Writing packets.yaml file..")
+    logging.info("Writing packets file..")
     # readeblePackets key in sim_setup.yaml file allow to choose if you want a 
     # readeble packets.yaml file having a bigger file and bigger computational time, or
     # a not readeble packets.yaml file having a smaller file and a better
