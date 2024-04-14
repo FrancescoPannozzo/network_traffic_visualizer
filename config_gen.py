@@ -13,13 +13,11 @@ from datetime import timedelta, datetime
 import logging
 import math
 import os
+import json
 import yaml
 from utils import config_gen_utils
 from utils import utils
 from utils import CONSTANTS as CONST
-import json
-
-#import sys
 
 
 if not os.path.exists("./log_files"):
