@@ -10,6 +10,8 @@
 \contentsline {section}{\numberline {2.1}Python}{5}{section.2.1}%
 \contentsline {section}{\numberline {2.2}La libreria Manim}{5}{section.2.2}%
 \contentsline {section}{\numberline {2.3}I formati Json e Yaml}{6}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Generatore di configurazione e traffico di rete}{9}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Test}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Sotto capitolo test}{18}{section.4.1}%
+\contentsline {chapter}{\numberline {3}Generatore di traffico e configurazione di rete}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Funzionalità e setup}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Avvio del generatore e files prodotti}{18}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Test}{21}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Sotto capitolo test}{22}{section.4.1}%

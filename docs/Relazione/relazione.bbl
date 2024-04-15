@@ -368,6 +368,27 @@
       \field{title}{UCINET Software}
       \field{year}{2024}
     \endentry
+    \entry{torusgraph}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://en.m.wikipedia.org/wiki/File:Torus_graph.png}}
+      \field{note}{Accessed: 2024-04-12}
+      \field{title}{File:Torus graph.png}
+      \field{year}{2024}
+    \endentry
     \entry{RFC9512}{misc}{}
       \name{author}{1}{}{%
         {{hash=86a321bcb9ba596790d2e73abd14d072}{%

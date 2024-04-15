@@ -8,6 +8,8 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{biblatex}
+\usepackage{graphicx}
+%\graphicspath{{immagini/}}
 \addbibresource{bibliografia.bib}
 %\lstset{basicstyle=\ttfamily, breaklines=true}
 \usepackage{xcolor}  % Pacchetto per la gestione dei colori
@@ -21,7 +23,7 @@
     captionpos=b,  % Posizione della didascalia (b = bottom, t = top)
     escapeinside={(*@}{@*)},  % Permette di aggiungere LaTeX all'interno del codice se necessario
 }
-\renewcommand{\lstlistingname}{fig.}
+\renewcommand{\lstlistingname}{Codice}
 
 
 \hypersetup{pdftitle={La mia tesi},pdfauthor={Francesco Biccari}}
@@ -92,6 +94,7 @@ come focus dell'esperienza. Nel mio personale corso di studi presso il Dipartime
 di studiare e approfondire un discorso legato al front-end, per cui la volontà di intraprendere questo percorso
 nasce in primis da un forte interesse verso questo aspetto dell'informatica e in secondo luogo per un completamento di formazione professionale personale.
 \section{Stato dell'arte}
+\label{sec:stato_arte}
 L'esigenza di analisi di reti informatiche ha portato alla luce svariati tool che permettono
 appunto di analizzare cosa avviene in una rete, di studiarne i dati statistici e di visualizzare
 graficamente determinati scenari. L'universita americana Johns Hopkins\cite{JohnsHopkinsUniversity2024} ha stilato una lista
@@ -289,15 +292,19 @@ Seguirà la descrizione approfondita del progetto, principalmente suddiviso in t
 parte riguarda la generazione di traffico di rete fittizio, la seconda è l'analizzatore dei dati di configurazione di rete e relativo traffico mentre la terza
 parte riguarda il visualizzatore grafico vero e proprio.
 
-\chapter{Generatore di configurazione e traffico di rete}
+\chapter{Generatore di traffico e configurazione di rete}
+
 Il progetto è composto da tre anime, una di esse è un generatore di traffico di rete e relativa configurazione.
 Lo scopo del generatore è da ricercare principalmente in motivazioni di testing, ma può essere
- usato anche per didattica per scopi
-esemplicativi. 
+ usato anche in ambito didattica per scopi
+esemplicativi. Con esso è stato possibile testare l'analizzatore e conseguentemente il visualizzatore grafico, nonchè si è creato 
+uno strumento esemplicativo di determinati funzionamenti collegati al traffico di rete.
 La configurazione di rete consiste nella produzione di una struttura dati che descriva 
 le caratteristiche della rete, la quale
-verrà memorizzata in un file dal nome network e avente estensione yaml, mentre per quanto
-riguarda il traffico, crea una struttura che consiste in una lista di pacchetti. 
+verrà memorizzata in un file dal nome "network" e avente estensione yaml, mentre per quanto
+riguarda il traffico, crea una struttura che consiste in una lista di pacchetti e memorizzata in un file denominato "packets".
+
+\section{Funzionalità e setup} 
 Lo script permette di eseguire quanto descritto mettendo a
  disposizione due modalità, auto e user. Entrambe le modalità produrranno due files, 
  network.yaml conterà le caratteristiche della rete e il file packets.json (o packets.yaml
@@ -382,7 +389,7 @@ La modalità user necessita di un file "custom\_graph.yaml" con i parametri
 necessari a descrivere la rete del quale si vuole analizzare il traffico. 
 Con questa modalità l'utente ha completa libertà nel personalizzare la rete ed 
 è tenuto quindi a descriverne ogni suo aspetto. Il custom\_graph.yaml prevede la 
-struttura seguente, con possibili varianti:
+struttura seguente, con possibili varianti che elencheremo:
 \begin{lstlisting}[caption={esempio di custom file per la configurazione}, label={fig:custom_graph_example}]
     ---
     data:
@@ -456,9 +463,16 @@ Descriviamo i vari parametri:
 \end{itemize}
 Come si può notare dalla figura \ref{fig:custom_graph_example}, gli switch sono identificati tramite un valore numerico, 
 questa è una precisa scelta di design e mira a mantenere il concetto di leggibilità sempre
-presente. In questo caso la scelta deriva dal semplificare e rendere immediatamente chiaro il campo coordinates;
-così facendo si rende intuitivo il posizionamento degli switch nello spazio 
+presente. In questo caso la scelta deriva dal semplificare e rendere immediatamente chiaro il campo coordinates 
 (rappresentato da una matrice quadrata), e l'occhio identifica immediatamente la rappresentazione della disposizione.
+Così facendo si rende intuitivo il posizionamento degli switch nello spazio, inoltre è una caratteristica importante per quanto riguarda il
+visualizzatore grafico, poichè rappresentando i nodi con un valore numerico che va da 1 a 1000 (spiegheremo il perchè di questa scelta a breve), è 
+possibile rappresentare su schermo una grande quantità di elementi per far si che possano essere visualizzati contemporaneamente e rimanere leggibili ma soprattuto,
+ distinguibili. Uno dei problemi maggiormente riscontrati nelle applicazioni discusse nella sezione Stato dell'arte \ref{sec:stato_arte} è che, le varie soluzioni impiegate
+ per la rappresentazione dei nodi, risultano essere confusionarie per via di una sovrapposizione massiva di link che collegano i nodi, mentre uno degli scopi del
+ progetto è di rendere altamente leggibile l'interpretazione del traffico di rete ed è per questo che si è posto una particolare attenzione in termini di
+ sovrapposizione degli elementi, spaziatura adeguata, scelta dei colori giusti e altri aspetti che approfondiremo nella sezione apposita riguardante la parte
+ di visualizzazione grafica.
 Qualora la capacità dei link sia uguale per tutti è possibile insererire il campo 
 linkCap per poter così evitare di avere lo stesso valore nei vari link rappresentati nel campo links, potendo rappresentare solo gli endpoints:
 
@@ -562,30 +576,112 @@ data:
     2024-01-01 00:00:02: "phase2"
 \end{lstlisting}
 Come si può notare, questo tipo di approccio concede una certa libertà di azione, dando la possibilità
-di prestarsi anche a soluzioni ibride di grafi canonici. Possiamo avere un esempio di qaunto descritto
+di prestarsi anche a soluzioni ibride di grafi canonici. Possiamo avere un esempio di quanto descritto
 nell'opzione torus. Il tipo di grafo torus generalmente è associato ad un grafo in cui ogni nodo
 ha quattro nodi adiacenti come mostrato in figura:
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{immagini/torus_graph.png}
-    \caption{esempio di torus graph}
+    \caption{esempio di torus graph \cite{torusgraph}}
     \label{fig:torus_graph}
 \end{figure}
 
 Tuttavia, le opzioni messe a disposizione dall'applicazione permettono una certa libertà di movimento,
 per esempio avendo una configurazione come quella riportata in figura \ref{fig:custom_graph_example},
-una volta analizzati i dati tramite l'analizzatore e dati come imput al visualizzatore, potremmo ottenere
+una volta analizzati i dati tramite l'analizzatore e forniti come imput al visualizzatore, potremmo ottenere
 un risultato in cui i nodi nella matrice che abbiano un valore pari a zero, non vengano
 collegati:
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/only_links.JPG}
     \caption{risultato grafico del visualizzatore per un custom graph file}
-    \label{fig:only_links}
+    \label{fig:hybrid_custom_torus}
 \end{figure}
 
-Perfetto ora continuiamo
+L'ultima possibilità di personalizzazione consiste nel poter personalizzare la matrice coordinates come si preferisce, seguendo sempre la regola
+che laddove c'è un valore numerico, esso sarà un nodo, mentre laddove ci sarà uno zero verrà inteso come spazio vuoto. Quindi se si vuole rappresentare
+un grafico che non sia di tipo mesh o torus, bisogna specificare nel campo graphType il valore "graph", mostriamo un esempio:
+
+\begin{lstlisting}[caption={esempio di custom graph file, graphType posto al valore graph}]
+    ---
+    data:
+      graphType: graph
+      coordinates:
+        - [0, 0, 0, 0, 1, 0, 0, 0, 0]
+        - [0, 0, 2, 0, 0, 0, 3, 0, 0]
+        - [0, 4, 0, 5, 0, 6, 0, 7, 0]
+      linkCap: 10
+      switches:
+        1:
+          ip: "123.123.123.0"
+          switchName: A
+        2:
+          ip: "123.123.123.1"
+          switchName: B
+        3:
+          ip: "123.123.123.2"
+          switchName: C
+        4:
+          ip: "123.123.123.3"
+          switchName: D
+        5:
+          ip: "123.123.123.4"
+          switchName: E
+        6:
+          ip: "123.123.123.5"
+          switchName: F
+        7:
+          ip: "123.123.123.6"
+          switchName: G
+      links:
+        - [1, 2]
+        - [1, 3]
+        - [2, 4]
+        - [2, 5]
+        - [3, 6]
+        - [3, 7]
+      phases:
+        2024-01-01 00:00:01: "phase1"
+        2024-01-01 00:00:02: "phase2"
+\end{lstlisting}
+Come possiamo intuire osservando i valori nel campo coordinates, l'esempio ricrea la struttura di un albero, i links sono appunto specificati 
+nel campo link e una volta generato il traffico con il generatore, analizzato e dato come input 
+al visualizzatore otteniamo un risultato come in figura \ref{fig:tree_custom}.
+\newline
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/free_graph.JPG}
+    \caption{risultato grafico del visualizzatore per un custom graph file in modalità "graph"}
+    \label{fig:tree_custom}
+\end{figure}
+Vien da sè che si ottiene così una certa libertà di espressione bidimensionale, con la quale l'utente può scegliere
+la rappresentazione che più si addice alla rete che si vuole realizzare.
+
+\section{Avvio del generatore e files prodotti}
+Descriveremo ora il funzionamento dell'esecuzione vera e propria dello script relativo alla generazione del traffico e dei files che produrrà.
+All'avvio l'utente sarà chiamato a scegliere tra due modalità, come accennato precedentemente, auto e user; scegliendo auto verrà chiesto all'utente
+di scegliere il numero di switch che si vuole attribuire alla rete, da un minimo di due a un massimo di mille. Questo intervallo numerico nasce per
+poter rappresentare una rete in un generico datacenter, il quale generalmente ospita fino a un migliaio di switch. Ciò non toglie che,
+in un ottica futura di espansione del software, questo range non possa essere espanso con le dovute modifiche. Successivamente alla scelta nel numero
+di switch l'utente sarà chiamato a scegliere la tipologia di rete potendo scegliere tra i valori "c" (completo), "m" (mesh) e "t" (torus). Per 
+grafo completo
+si intende quando un nodo è collegato a tutti i nodi rimanenti, è il grafo computazionalmente parlando più oneroso da ricreare per via 
+della grande crescita
+del numero di archi da rappresentare al crescere dei nodi. Avendo infatti \(n\) nodi avremo un numero di link \(l\) pari a:
+\[ l = \frac{n(n-1)}{2} \]
+Si parla quindi di una crescita esponenziale al variare del numero di nodi.
+Per grafo mesh si è inteso una rappresentazione in cui ogni nodo ha quattro nodi adiacenti, fatta eccezione dei nodi che risiedono alle estremità, come
+raffigurato nell'esempio in figura \ref{fig:mesh_example}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/mesh_example.jpg}
+    \caption{risultato grafico del visualizzatore per un auto mesh graph}
+    \label{fig:mesh_example}
+\end{figure}
+
+
 
 
 \chapter{Test}
@@ -662,10 +758,6 @@ La complessità temporale dell'algoritmo è $O(m+n)$.
 \end{equation}
 
 .. .. ..
-
-As you can see in the figure \ref{fig:only_links}, the 
-function grows near 0. Also, in the page \pageref{fig:only_links} 
-is the same example.
 
 
 \printbibliography

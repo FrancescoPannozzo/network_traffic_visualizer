@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  14 APR 2024 19:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  15 APR 2024 17:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -667,7 +667,7 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count444
 \@quotereset=\count445
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 38.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 40.
 (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -682,24 +682,24 @@ LaTeX Warning: Label `fig:custom_graph_example' multiply defined.
 )
 \openout1 = `relazione.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -761,29 +761,29 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Redefining \textsubscript on input line 38.
-LaTeX Info: Redefining \microtypecontext on input line 38.
-Package microtype Info: Applying patch `item' on input line 38.
-Package microtype Info: Applying patch `toc' on input line 38.
-Package microtype Info: Applying patch `eqnum' on input line 38.
-Package microtype Info: Applying patch `footnote' on input line 38.
-Package microtype Info: Applying patch `verbatim' on input line 38.
+LaTeX Info: Redefining \textsubscript on input line 40.
+LaTeX Info: Redefining \microtypecontext on input line 40.
+Package microtype Info: Applying patch `item' on input line 40.
+Package microtype Info: Applying patch `toc' on input line 40.
+Package microtype Info: Applying patch `eqnum' on input line 40.
+Package microtype Info: Applying patch `footnote' on input line 40.
+Package microtype Info: Applying patch `verbatim' on input line 40.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 38.
+LaTeX Info: Redefining \showhyphens on input line 40.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
  (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Info: Redefining \it@ocap on input line 38.
-LaTeX Info: Redefining \it@ccap on input line 38.
-Package hyperref Info: Link coloring OFF on input line 38.
+LaTeX Info: Redefining \it@ocap on input line 40.
+LaTeX Info: Redefining \it@ccap on input line 40.
+Package hyperref Info: Link coloring OFF on input line 40.
  (relazione.out) (relazione.out)
 \@outlinefile=\write4
 \openout4 = `relazione.out'.
@@ -802,11 +802,11 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'relazione.bbl' found.
  (relazione.bbl)
-Package biblatex Info: Reference section=0 on input line 38.
-Package biblatex Info: Reference segment=0 on input line 38.
+Package biblatex Info: Reference section=0 on input line 40.
+Package biblatex Info: Reference segment=0 on input line 40.
 \SAP@parboxindent=\skip87
 \SAP@parboxwidth=\skip88
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 41.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 43.
  (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -814,48 +814,48 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<sapienzalogo.pdf, id=55, 288.07625pt x 89.33376pt>
+<sapienzalogo.pdf, id=63, 288.07625pt x 89.33376pt>
 File: sapienzalogo.pdf Graphic file (type pdf)
 <use sapienzalogo.pdf>
-Package pdftex.def Info: sapienzalogo.pdf  used on input line 41.
+Package pdftex.def Info: sapienzalogo.pdf  used on input line 43.
 (pdftex.def)             Requested size: 142.26378pt x 44.11742pt.
  [1
 
 
 
 {C:/Users/Pan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <C:/Users/Pan/AppData/Local/Programs/MiKTeX/tex/latex/sapthesis/sapienzalogo.pdf>]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 41.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 43.
  (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 41--41
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
 
  []
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 41.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 43.
 (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 41.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 43.
  (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 41.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 43.
  (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 41.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 43.
  (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 41.
+(Font)              <10> on input line 43.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 41.
+(Font)              <7> on input line 43.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 41.
+(Font)              <5> on input line 43.
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--41
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
 
  []
 
@@ -890,8 +890,8 @@ Capitolo 2.
 [5
 
 ] [6]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 219.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 219.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 222.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 222.
  (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -904,46 +904,69 @@ Capitolo 3.
 [9
 
 ] [10] [11] [12] [13] [14]
-<immagini/torus_graph.png, id=409, 457.71pt x 451.6875pt>
+<immagini/torus_graph.png, id=401, 457.71pt x 451.6875pt>
 File: immagini/torus_graph.png Graphic file (type png)
 <use immagini/torus_graph.png>
-Package pdftex.def Info: immagini/torus_graph.png  used on input line 571.
+Package pdftex.def Info: immagini/torus_graph.png  used on input line 585.
 (pdftex.def)             Requested size: 198.0pt x 195.39351pt.
-<immagini/only_links.JPG, id=411, 636.87938pt x 357.58594pt>
-File: immagini/only_links.JPG Graphic file (type jpg)
-<use immagini/only_links.JPG>
-Package pdftex.def Info: immagini/only_links.JPG  used on input line 583.
-(pdftex.def)             Requested size: 316.80121pt x 177.8704pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[15 <./immagini/torus_graph.png>] [16 <./immagini/only_links.JPG>]
-Capitolo 4.
-[17
+<immagini/only_links.JPG, id=405, 636.87938pt x 357.58594pt>
+File: immagini/only_links.JPG Graphic file (type jpg)
+<use immagini/only_links.JPG>
+Package pdftex.def Info: immagini/only_links.JPG  used on input line 597.
+(pdftex.def)             Requested size: 316.80121pt x 177.8704pt.
+[15] [16 <./immagini/torus_graph.png> <./immagini/only_links.JPG>]
+<immagini/free_graph.JPG, id=460, 639.13782pt x 356.83313pt>
+File: immagini/free_graph.JPG Graphic file (type jpg)
+<use immagini/free_graph.JPG>
+Package pdftex.def Info: immagini/free_graph.JPG  used on input line 654.
+(pdftex.def)             Requested size: 316.80121pt x 176.86978pt.
 
-{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [17]
+<immagini/mesh_example.jpg, id=503, 953.81343pt x 532.99126pt>
+File: immagini/mesh_example.jpg Graphic file (type jpg)
+<use immagini/mesh_example.jpg>
+Package pdftex.def Info: immagini/mesh_example.jpg  used on input line 679.
+(pdftex.def)             Requested size: 316.80121pt x 177.02625pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[18{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./immagini/free_graph.JPG>] [19 <./immagini/mesh_example.jpg>] [20
+
+]
+Capitolo 4.
+[21] (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/03/11 1.10a listings language file
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 649.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 745.
 
-Overfull \hbox (252.4646pt too wide) in paragraph at lines 650--651
+Overfull \hbox (252.4646pt too wide) in paragraph at lines 746--747
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[18]
+[22]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Overfull \hbox (30.28568pt too wide) in paragraph at lines 672--672
+Overfull \hbox (30.28568pt too wide) in paragraph at lines 764--764
 []\T1/lmr/m/n/10.95 (-20) UCINET. \T1/lmr/m/it/10.95 (-20) UCI-NET Soft-ware\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / sites . google . com / site / ucinetsoftware/$[]\T1/lmr/m/n/10.95 (-20) .
  []
 
-[19
+[23
 
-] [20] (relazione.aux)
+] [24] (relazione.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -953,23 +976,23 @@ L3 programming layer <2024-03-14>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 31A971764A113B29885D1A52311C4F12;2020.
+(rerunfilecheck)             Checksum: AD9DF89BB1603B7E5FE5FED7AC37B06F;2439.
 Package logreq Info: Writing requests to 'relazione.run.xml'.
 \openout1 = `relazione.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25136 strings out of 474423
- 435204 string characters out of 5742662
- 1975496 words of memory out of 5000000
- 46684 multiletter control sequences out of 15000+600000
+ 25208 strings out of 474423
+ 436593 string characters out of 5742662
+ 1981496 words of memory out of 5000000
+ 46706 multiletter control sequences out of 15000+600000
  640444 words of font info for 179 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,13n,131p,1126b,2082s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,131p,1126b,2088s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on relazione.pdf (28 pages, 576956 bytes).
+Output written on relazione.pdf (32 pages, 704198 bytes).
 PDF statistics:
- 643 PDF objects out of 1000 (max. 8388607)
- 295 named destinations out of 1000 (max. 500000)
- 52856 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 730 PDF objects out of 1000 (max. 8388607)
+ 345 named destinations out of 1000 (max. 500000)
+ 52882 words of extra memory for PDF output out of 61914 (max. 10000000)
 
