@@ -12,6 +12,12 @@
 \contentsline {section}{\numberline {2.3}I formati Json e Yaml}{6}{section.2.3}%
 \contentsline {chapter}{\numberline {3}Generatore di traffico e configurazione di rete}{9}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Funzionalità e setup}{9}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Avvio del generatore e files prodotti}{18}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Test}{21}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Sotto capitolo test}{22}{section.4.1}%
+\contentsline {section}{\numberline {3.2}Esecuzione del generatore e files prodotti}{16}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Creazione della rete: links e distribuzione nodi}{18}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Distribuzione spaziale dei nodi: aspect ratio}{18}{subsection.3.3.1}%
+\contentsline {chapter}{\numberline {4}Analizzatore di traffico}{21}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Visualizzatore grafico}{23}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Prestazioni e complessità computazionale}{25}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusioni}{27}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Test}{29}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Sotto capitolo test}{30}{section.8.1}%

@@ -219,6 +219,7 @@ Per esplicare meglio il concetto di struttura complessa non fattibile è possibi
  sul seguente esempio. Segue la rappresentazione di un pacchetto di rete così come viene
  utilizzato nel progetto, in questo caso una lista contenente un solo elemento:
 
+ {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={pacchetto di rete rappresentato in json}, label={fig:packet_example}]
 [    
     {
@@ -229,17 +230,23 @@ Per esplicare meglio il concetto di struttura complessa non fattibile è possibi
     }
 ]
 \end{lstlisting}
+ }
+
 Dove A e B sono gli endpoints interessati, t è il timestamp di creazione pacchetto e d 
 la dimesione del payload in bytes(). In csv questa struttura è rappresentabile come segue:
 
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={pacchetti di rete rappresentati in csv}]
     A,B,t,d
     2,1,2024-03-22 12:30:00,1518
     2,1,2024-03-22 12:30:00,1518
 \end{lstlisting}
+}
+
 Tuttavia se si dovesse rendere questa struttura più complessa, avremmo problemi a realizzarla in csv, basterebbe l'aggiunta
 di un campo che a sua volta necessita di informazione strutturata, come ad esempio 
 inserire le informazione dell'header:
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={pacchetto di rete maggiormente strutturate in json}]
     [
         {
@@ -268,6 +275,7 @@ inserire le informazione dell'header:
         }
       ]
 \end{lstlisting}
+}
 In questa struttura abbiamo ben due oggetti nidificati, ip header e flags. 
 Questo tipo di struttura è difficilmente replicabile in csv che si presta maggiormente
 per strutture piatte mentre json e yaml permettono molta più libertà di strutturazione.
@@ -315,6 +323,7 @@ Lo script permette di eseguire quanto descritto mettendo a
    la disposizione degli switch in base alla scelta del grafo effettuata. Per poter operare,
     in entrambe le modalità, lo script ha bisogno di leggere il file sim\_setup.yaml, il quale contiene le informazioni necessarie per la configurazione. 
     Il file di setup è impostato come segue:
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={esempio di setup file}]
     averageDelta: 1000
     updateDelta: 100
@@ -326,6 +335,7 @@ Lo script permette di eseguire quanto descritto mettendo a
     trafficVariation: random
     packetsFile: json
 \end{lstlisting}
+}
 Andremo ora a spiegare il significato dietro ogni voce:
 \begin{itemize}
     \item \textbf{averageDelta:} rappresenta l'intervallo temporale in millisecondi 
@@ -352,6 +362,7 @@ della capacità dei link fornita e su un valore casuale di percentuale di traffi
 che varia ogni secondo, per esempio avendo 6 links su 3 secondi di simulazione e il 
 parametro "trafficVariation" settato a random potremmo avere delle assegnazioni di 
 percentuali di traffico come le seguenti:
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={esempio di variazione traffico casuale}]
     endpoints: [1, 2], sim second: 0, trafficPerc: 65
     endpoints: [1, 3], sim second: 0, trafficPerc: 9
@@ -372,6 +383,7 @@ percentuali di traffico come le seguenti:
     endpoints: [3, 6], sim second: 2, trafficPerc: 17
     endpoints: [3, 7], sim second: 2, trafficPerc: 46
 \end{lstlisting}
+}
 Una volta lanciato il generatore avremo le seguenti possibilità di scelte:
 
 \begin{itemize}
@@ -390,6 +402,8 @@ necessari a descrivere la rete del quale si vuole analizzare il traffico.
 Con questa modalità l'utente ha completa libertà nel personalizzare la rete ed 
 è tenuto quindi a descriverne ogni suo aspetto. Il custom\_graph.yaml prevede la 
 struttura seguente, con possibili varianti che elencheremo:
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={esempio di custom file per la configurazione}, label={fig:custom_graph_example}]
     ---
     data:
@@ -444,6 +458,7 @@ struttura seguente, con possibili varianti che elencheremo:
         2024-01-01 00:00:01: "phase1"
         2024-01-01 00:00:02: "phase2"
 \end{lstlisting}
+}
 
 Descriviamo i vari parametri:
 \begin{itemize}
@@ -476,6 +491,7 @@ possibile rappresentare su schermo una grande quantità di elementi per far si c
 Qualora la capacità dei link sia uguale per tutti è possibile insererire il campo 
 linkCap per poter così evitare di avere lo stesso valore nei vari link rappresentati nel campo links, potendo rappresentare solo gli endpoints:
 
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={esempio di custom file con capacità uguali a tutti i link}, label={fig:custom_graph_example}]
 data:
   graphType: torus
@@ -530,10 +546,12 @@ data:
     2024-01-01 00:00:01: "phase1"
     2024-01-01 00:00:02: "phase2"
 \end{lstlisting}
+}
 
 Un'altra possibilità è quella di lasciare che il programma ricavi in automatico i link, 
 in questo caso basterà specificare solo linkCap che sarà uguale per tutti i link:
 
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={esempio di custom graph file con link di eguale capacità}]
     ---
 data:
@@ -575,6 +593,8 @@ data:
     2024-01-01 00:00:01: "phase1"
     2024-01-01 00:00:02: "phase2"
 \end{lstlisting}
+}
+
 Come si può notare, questo tipo di approccio concede una certa libertà di azione, dando la possibilità
 di prestarsi anche a soluzioni ibride di grafi canonici. Possiamo avere un esempio di quanto descritto
 nell'opzione torus. Il tipo di grafo torus generalmente è associato ad un grafo in cui ogni nodo
@@ -603,6 +623,7 @@ L'ultima possibilità di personalizzazione consiste nel poter personalizzare la 
 che laddove c'è un valore numerico, esso sarà un nodo, mentre laddove ci sarà uno zero verrà inteso come spazio vuoto. Quindi se si vuole rappresentare
 un grafico che non sia di tipo mesh o torus, bisogna specificare nel campo graphType il valore "graph", mostriamo un esempio:
 
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={esempio di custom graph file, graphType posto al valore graph}]
     ---
     data:
@@ -645,6 +666,8 @@ un grafico che non sia di tipo mesh o torus, bisogna specificare nel campo graph
         2024-01-01 00:00:01: "phase1"
         2024-01-01 00:00:02: "phase2"
 \end{lstlisting}
+}
+
 Come possiamo intuire osservando i valori nel campo coordinates, l'esempio ricrea la struttura di un albero, i links sono appunto specificati 
 nel campo link e una volta generato il traffico con il generatore, analizzato e dato come input 
 al visualizzatore otteniamo un risultato come in figura \ref{fig:tree_custom}.
@@ -658,7 +681,7 @@ al visualizzatore otteniamo un risultato come in figura \ref{fig:tree_custom}.
 Vien da sè che si ottiene così una certa libertà di espressione bidimensionale, con la quale l'utente può scegliere
 la rappresentazione che più si addice alla rete che si vuole realizzare.
 
-\section{Avvio del generatore e files prodotti}
+\section{Esecuzione del generatore e files prodotti}
 Descriveremo ora il funzionamento dell'esecuzione vera e propria dello script relativo alla generazione del traffico e dei files che produrrà.
 All'avvio l'utente sarà chiamato a scegliere tra due modalità, come accennato precedentemente, auto e user; scegliendo auto verrà chiesto all'utente
 di scegliere il numero di switch che si vuole attribuire alla rete, da un minimo di due a un massimo di mille. Questo intervallo numerico nasce per
@@ -669,21 +692,121 @@ grafo completo
 si intende quando un nodo è collegato a tutti i nodi rimanenti, è il grafo computazionalmente parlando più oneroso da ricreare per via 
 della grande crescita
 del numero di archi da rappresentare al crescere dei nodi. Avendo infatti \(n\) nodi avremo un numero di link \(l\) pari a:
-\[ l = \frac{n(n-1)}{2} \]
-Si parla quindi di una crescita esponenziale al variare del numero di nodi.
-Per grafo mesh si è inteso una rappresentazione in cui ogni nodo ha quattro nodi adiacenti, fatta eccezione dei nodi che risiedono alle estremità, come
-raffigurato nell'esempio in figura \ref{fig:mesh_example}.
-
+\begin{equation}
+    l = \frac{n(n-1)}{2}
+    \label{eq:link_number}
+\end{equation}
+Ogni nodo è collegato a tutti gli altri meno se stesso, \(n(n-1)\), e si divide per due perchè gli archi non vanno contati due volte. Si parla quindi di una crescita esponenziale al variare del numero di nodi.
+Per grafo mesh si è inteso una rappresentazione in cui ogni nodo ha quattro nodi adiacenti, fatta eccezione di coloro che risiedono alle estremità, come
+raffigurato nell'esempio in figura creato dal visualizzatore\ref{fig:mesh_example}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/mesh_example.jpg}
     \caption{risultato grafico del visualizzatore per un auto mesh graph}
     \label{fig:mesh_example}
 \end{figure}
+Nel caso della scelta di un grafico torus, il visualizzatore provvederà a disegnare la struttura come mostrata in figura \ref{fig:torus_graph}.
+La scelta successiva in cui l'utente sarà invitato a fornire, riguarda la capacità che si vuole associare ai link appartenenti alla rete, potendo
+scegliere tra i valori 10, 100 e 1000 e vengono intese come grandezze espresse in megabytes (MB).
+Una volta inseriti questi parametri il generatore provvederà a creare la configurazione di rete e il rispettivo traffico, memorizzando i dati rispettivamente
+nei files network.yaml e packets.json/yaml.
+Scegliendo la modalità user non viene richiesto alcun dato via prompt, questo perchè, come descritto in precedenza, tutti i dati di cui ha bisogno
+il generatore devono essere presenti nel file custom\_graph.yaml \ref{fig:custom_graph_example}. Un diagramma che illustra le fasi e le
+ scelte cui è possibile fare
+è rappresentato in figura \ref{fig:diagramma_generatore}:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.55\textwidth]{immagini/diagramma_selezioni_config_gen.jpg}
+    \caption{diagramma di flusso di esecuzione del generatore}
+    \label{fig:diagramma_generatore}
+\end{figure}
+\section{Creazione della rete: links e distribuzione nodi}
+Il generatore si serve di una serie di funzioni di utilità per creare le strutture in base alle scelte dell'utente. 
+Tutte le tipologie di rappresentazioni avvengono seguendo una logica di distribuzione nodi in forma matriciale, fatta eccezione della tipologia di
+grafo completo (spiegheremo nella parte dedicata al visualizzatore il perchè), come spiegheremo in dettaglio nel prossimo paragrafo.
+
+\subsection{Distribuzione spaziale dei nodi: aspect ratio}
+Come appena descritto, la distribuzione dei nodi è pensata per essere disegnata in forma matriciale, questo segue una precisa scelta di design e riguarda
+l'aspect ratio adotatto per disegnare al meglio gli elementi su schermo tramite la libreria Manim, la quale produce video in 16:9, quindi è sorta l'esigenza
+di sfruttare al massimo questo formato visivo per poter inserire nel modo più coerente e ottimizzato possibile i vari elementi della rete.
+La soluzione adottata è stata quella di pensare al numero di nodi come un'area di un quadrato (matrice quadrata) e successivamente trovare l'area equivalente 
+di un rettangolo (matrice rettangolare) considerando un
+aspetc ratio di 16:9. Consideriamo il numero di nodi \(A\) come l'area del quadrato e con \(n\) un suo lato \(n = \sqrt{A}\).
+Denotiamo con $l$ la lunghezza e con $h$ l'altezza del rettangolo. La condizione di proporzione si può esprimere come
+\[
+\frac{l}{h} = \frac{16}{9}.
+\]
+Dato che l'area del rettangolo deve essere uguale a quella del quadrato, abbiamo che
+\[
+l \cdot h = n^2.
+\]
+Utilizzando la proporzione, possiamo esprimere $l$ in termini di $h$ come
+\[
+l = \frac{16}{9}h.
+\]
+Sostituendo questa espressione nell'equazione dell'area, otteniamo
+\[
+\frac{16}{9}h \cdot h = n^2,
+\]
+che si semplifica in
+\[
+\frac{16}{9}h^2 = n^2.
+\]
+Da qui, isoliamo $h$ ottenendo
+\[
+h^2 = \frac{9}{16}n^2 \quad \Longrightarrow \quad h = n \cdot \frac{3}{4}.
+\]
+Risostituendo il valore di $h$ nell'espressione di $l$, abbiamo
+\[
+l = \frac{16}{9} \cdot n \cdot \frac{3}{4} = n \cdot \frac{4}{3}.
+\]
+Abbiamo ottenuto la base \(l\), corrispondente al numero di colonne della matrice, e l'altezza \(h\), corrispondente al numero
+di righe, del rettangolo in 16:9. Tuttavia c'è l'esigenza di rappresentare numeri interi e la radice dell'area \(A\) può non essere un numero intero.
+Per ovviare al problema si è deciso di arrotondare il lato \(s\) all'intero superiore, così facendo sarà sempre verificato:
+\begin{equation}
+    (l+1)(h+1)>lh
+\end{equation}
+riuscendo a contenere l'area e rimanendo in proporzione.
+
+
+\chapter{Analizzatore di traffico}
+\chapter{Visualizzatore grafico}
+\chapter{Prestazioni e complessità computazionale}
 
 
 
+Per quanto riguarda la creazione automatica dei links e dei nodi
+per la tipologia di grafo completo, la funzione dedicata al compito è riportata in figura \ref{codice:create_auto_complete_links}
 
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={funzione per la creazione automatica di un grafo di rete completo}, label={codice:create_auto_complete_links}]
+    def create_auto_complete_links(link_cap, switch_number):
+    """ Create links for a complete graph 
+    
+    Key arguments:
+    link_cap: int -- link capacity
+    switch_number: int -- switch number
+
+    Returns
+    dict -- links representation
+    """
+    # The arcs representing the links connecting the switches (nodes)
+    links = {}
+    # The link ID counter
+    link_id = 1
+
+    for i in range(1, switch_number + 1):
+        for p in range(i, switch_number + 1):
+            if i != p:
+                if link_id not in links:
+                    links[link_id] = link_format(i, p, link_cap)
+                    link_id += 1
+    return links
+\end{lstlisting}
+} % Fine del gruppo che modifica la dimensione del testo
+
+
+\chapter{Conclusioni}
 \chapter{Test}
 Per ottenere i lati di un rettangolo che abbia proporzioni $16:9$ partendo da un 
 quadrato di lato $n$, dobbiamo innanzitutto considerare che l'area del quadrato è data 

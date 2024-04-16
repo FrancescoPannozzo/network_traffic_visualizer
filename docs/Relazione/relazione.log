@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  15 APR 2024 17:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  16 APR 2024 13:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -814,7 +814,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<sapienzalogo.pdf, id=63, 288.07625pt x 89.33376pt>
+<sapienzalogo.pdf, id=87, 288.07625pt x 89.33376pt>
 File: sapienzalogo.pdf Graphic file (type pdf)
 <use sapienzalogo.pdf>
 Package pdftex.def Info: sapienzalogo.pdf  used on input line 43.
@@ -890,8 +890,8 @@ Capitolo 2.
 [5
 
 ] [6]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 222.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 222.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 223.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 223.
  (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -903,70 +903,90 @@ Package microtype Info: Loading generic protrusion settings for font family
 Capitolo 3.
 [9
 
-] [10] [11] [12] [13] [14]
-<immagini/torus_graph.png, id=401, 457.71pt x 451.6875pt>
+] [10] [11] [12] [13]
+<immagini/torus_graph.png, id=423, 457.71pt x 451.6875pt>
 File: immagini/torus_graph.png Graphic file (type png)
 <use immagini/torus_graph.png>
-Package pdftex.def Info: immagini/torus_graph.png  used on input line 585.
+Package pdftex.def Info: immagini/torus_graph.png  used on input line 605.
 (pdftex.def)             Requested size: 198.0pt x 195.39351pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<immagini/only_links.JPG, id=405, 636.87938pt x 357.58594pt>
+<immagini/only_links.JPG, id=427, 636.87938pt x 357.58594pt>
 File: immagini/only_links.JPG Graphic file (type jpg)
 <use immagini/only_links.JPG>
-Package pdftex.def Info: immagini/only_links.JPG  used on input line 597.
+Package pdftex.def Info: immagini/only_links.JPG  used on input line 617.
 (pdftex.def)             Requested size: 316.80121pt x 177.8704pt.
-[15] [16 <./immagini/torus_graph.png> <./immagini/only_links.JPG>]
-<immagini/free_graph.JPG, id=460, 639.13782pt x 356.83313pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14] [15 <./immagini/torus_graph.png> <./immagini/only_links.JPG>]
+<immagini/free_graph.JPG, id=500, 639.13782pt x 356.83313pt>
 File: immagini/free_graph.JPG Graphic file (type jpg)
 <use immagini/free_graph.JPG>
-Package pdftex.def Info: immagini/free_graph.JPG  used on input line 654.
+Package pdftex.def Info: immagini/free_graph.JPG  used on input line 677.
 (pdftex.def)             Requested size: 316.80121pt x 176.86978pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [17]
-<immagini/mesh_example.jpg, id=503, 953.81343pt x 532.99126pt>
+ [16 <./immagini/free_graph.JPG>]
+<immagini/mesh_example.jpg, id=528, 953.81343pt x 532.99126pt>
 File: immagini/mesh_example.jpg Graphic file (type jpg)
 <use immagini/mesh_example.jpg>
-Package pdftex.def Info: immagini/mesh_example.jpg  used on input line 679.
+Package pdftex.def Info: immagini/mesh_example.jpg  used on input line 704.
 (pdftex.def)             Requested size: 316.80121pt x 177.02625pt.
+<immagini/diagramma_selezioni_config_gen.jpg, id=532, 503.8825pt x 584.1825pt>
+File: immagini/diagramma_selezioni_config_gen.jpg Graphic file (type jpg)
+<use immagini/diagramma_selezioni_config_gen.jpg>
+Package pdftex.def Info: immagini/diagramma_selezioni_config_gen.jpg  used on input line 719.
+(pdftex.def)             Requested size: 217.80121pt x 252.51283pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[18{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./immagini/free_graph.JPG>] [19 <./immagini/mesh_example.jpg>] [20
+[17{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./immagini/mesh_example.jpg>] [18 <./immagini/diagramma_selezioni_config_gen.jpg>] [19] [20
 
 ]
 Capitolo 4.
-[21] (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+[21] [22
+
+]
+Capitolo 5.
+[23] [24
+
+]
+Capitolo 6.
+(C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/03/11 1.10a listings language file
 )
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 745.
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <8> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 783.
+ [25] [26
 
-Overfull \hbox (252.4646pt too wide) in paragraph at lines 746--747
+]
+Capitolo 7.
+[27] [28
+
+]
+Capitolo 8.
+[29]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 868.
+
+Overfull \hbox (252.4646pt too wide) in paragraph at lines 869--870
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[22]
+[30]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Overfull \hbox (30.28568pt too wide) in paragraph at lines 764--764
+Overfull \hbox (30.28568pt too wide) in paragraph at lines 887--887
 []\T1/lmr/m/n/10.95 (-20) UCINET. \T1/lmr/m/it/10.95 (-20) UCI-NET Soft-ware\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / sites . google . com / site / ucinetsoftware/$[]\T1/lmr/m/n/10.95 (-20) .
  []
 
-[23
+[31
 
-] [24] (relazione.aux)
+] [32] (relazione.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -976,23 +996,23 @@ L3 programming layer <2024-03-14>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: AD9DF89BB1603B7E5FE5FED7AC37B06F;2439.
+(rerunfilecheck)             Checksum: BA3AB90F213026023689A90DC8DC1B48;3761.
 Package logreq Info: Writing requests to 'relazione.run.xml'.
 \openout1 = `relazione.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25208 strings out of 474423
- 436593 string characters out of 5742662
- 1981496 words of memory out of 5000000
- 46706 multiletter control sequences out of 15000+600000
- 640444 words of font info for 179 fonts, out of 8000000 for 9000
+ 25303 strings out of 474423
+ 438146 string characters out of 5742662
+ 1998496 words of memory out of 5000000
+ 46743 multiletter control sequences out of 15000+600000
+ 651101 words of font info for 193 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,13n,131p,1126b,2088s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on relazione.pdf (32 pages, 704198 bytes).
+ 84i,13n,131p,1126b,2114s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
+Output written on relazione.pdf (40 pages, 789159 bytes).
 PDF statistics:
- 730 PDF objects out of 1000 (max. 8388607)
- 345 named destinations out of 1000 (max. 500000)
- 52882 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 839 PDF objects out of 1000 (max. 8388607)
+ 385 named destinations out of 1000 (max. 500000)
+ 60615 words of extra memory for PDF output out of 61914 (max. 10000000)
 
