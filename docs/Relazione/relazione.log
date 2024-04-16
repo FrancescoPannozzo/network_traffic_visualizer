@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  16 APR 2024 17:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  16 APR 2024 18:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -951,15 +951,20 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [18 <./immagini/mesh_example.jpg>] [19 <./immagini/diagramma_selezioni_config_gen.jpg>] [20] [21] [22]
-Capitolo 4.
-[23
+ [17{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [18 <./immagini/mesh_example.jpg>] [19 <./immagini/diagramma_selezioni_config_gen.jpg>] [20] [21]
+Overfull \hbox (28.64131pt too wide) detected at line 945
+[]
+ []
 
-] [24
+[22] [23] [24
+
+]
+Capitolo 4.
+[25] [26
 
 ]
 Capitolo 5.
-[25] [26
+[27] [28
 
 ]
 Capitolo 6.
@@ -967,27 +972,27 @@ Capitolo 6.
 File: lstlang1.sty 2024/03/11 1.10a listings language file
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <8> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 929.
- [27] [28
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 961.
+ [29] [30
 
 ]
 Capitolo 7.
-[29] [30
+[31] [32
 
 ]
 Capitolo 8.
-[31] [32
+[33] [34
 
 ]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Overfull \hbox (30.28568pt too wide) in paragraph at lines 966--966
+Overfull \hbox (30.28568pt too wide) in paragraph at lines 998--998
 []\T1/lmr/m/n/10.95 (-20) UCINET. \T1/lmr/m/it/10.95 (-20) UCI-NET Soft-ware\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / sites . google . com / site / ucinetsoftware/$[]\T1/lmr/m/n/10.95 (-20) .
  []
 
-[33] [34] (relazione.aux)
+[35] [36] (relazione.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -1003,17 +1008,17 @@ Package logreq Info: Writing requests to 'relazione.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25358 strings out of 474423
- 439059 string characters out of 5742662
+ 25377 strings out of 474423
+ 439352 string characters out of 5742662
  1998496 words of memory out of 5000000
- 46735 multiletter control sequences out of 15000+600000
- 650464 words of font info for 191 fonts, out of 8000000 for 9000
+ 46740 multiletter control sequences out of 15000+600000
+ 653610 words of font info for 194 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,131p,1126b,2108s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on relazione.pdf (42 pages, 799726 bytes).
+Output written on relazione.pdf (44 pages, 806760 bytes).
 PDF statistics:
- 925 PDF objects out of 1000 (max. 8388607)
- 448 named destinations out of 1000 (max. 500000)
- 59591 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 945 PDF objects out of 1000 (max. 8388607)
+ 457 named destinations out of 1000 (max. 500000)
+ 61639 words of extra memory for PDF output out of 61914 (max. 10000000)
 

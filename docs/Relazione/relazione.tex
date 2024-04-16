@@ -912,7 +912,39 @@ In cui in entrambi i casi abbiamo i seguenti campi:
     \item d: la dimensione del payload del pacchetto espresso in Bytes
     \item t: il timestamp rappresentante la data e l'ora di invio del pacchetto
 \end{itemize}
+La scelta di usare un solo carattere per descrivere i vari campi può sembrare in contrasto con la volontà di rendere leggibile il tutto,
+ma c'è una valida motivazione dietro. Il risparmio di caratteri, in files che sono potenzialmente molto grandi, è un aspetto cruciale sia per quanto
+riguarda l'occupazione di memoria fisica, sia per motivi di efficienza. Consideriamo una rappresentazione di un pacchetto più descrittivo come in figura \ref{codice:long_description_packet}:
 
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[caption={rappresentazione di un pacchetto con descrizione completa}, label={codice:long_description_packet}]
+{
+    "endpointA": 1,
+    "endpointB": 2,
+    "timestamp": "2024-03-22 12:30:00",
+    "dimension": 1518
+}
+\end{lstlisting}
+}
+
+Avremmo così 37 bytes necessari per i nomi contro i 4 per la rappresentazione di un pacchetto descritta precedentemente, avendo uno scarto di
+33 bytes per pacchetto. Questa quantità moltiplicata la grande quantità di pacchetti da rappresentare può pesare non poco.
+Indipendentemente dal numero di bytes necessari a rappresentare un pacchetto in forma minimale, possiamo fare una stima di quanto sarebbe più grande
+un file packets avendo descrizioni di nomi più lunghi; supponiamo di avere un grafo completo costituito da 5 switch collegati tra loro con switch
+aventi capienza 1 Gbps, il numero dei link, per l'equazione in fig. \ref{eq:link_number}, risulta essere pari a 10. Supponiamo che tutta la rete
+stia trasmettendo al 50\% della sua capacità trasmissiva per tutta la durata della stessa. Considerando una dimensione \(d\) di payload pari 
+a 1518 Bytes,
+definiamo come \(pps\) i pacchetti al secondo, da cui, per un link in un dato secondo avremo:
+\begin{align*}
+    \text{1 Gbps} &= 10^9 \text{ bit} && \text{(1 gigabit)} \\
+    \text{1 GBps} &= \frac{10^9}{8} = 125,000,000 \text{ bytes} && \text{(1 byte = 8 bit)} \\
+    \text{50\% capacity} &= \frac{125,000,000}{2} = 65,500,000 \text{ bytes}\\
+    \text{d} &= 1518 \text{ bytes} \\
+    \text{pps} &= \frac{65,500,000 \text{ bytes}}{d}\approx 41172.59\\
+    \text{bytes di differenza} &= 41172.59 \times 33 = 1358695.65 \text{ bytes} \approx 1.35 \text{ MBytes}\\
+\end{align*}
+Ciò significa che per ogni secondo di traffico abbiamo \(1.35 \text{ MB} \times 10\text{ links} = 13.5 \text{MB}\) in più, 
+ in 100 secondi di traffico avremmo 1350 Mbytes, cioè 1.35 GBytes in più per una rete avente soltanto 10 links.
 
 \chapter{Analizzatore di traffico}
 
