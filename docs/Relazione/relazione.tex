@@ -488,7 +488,8 @@ Descriviamo i vari parametri:
 Come si può notare dalla figura \ref{fig:custom_graph_example}, gli switch sono identificati tramite un valore numerico, 
 questa è una precisa scelta di design e mira a mantenere il concetto di leggibilità sempre
 presente. In questo caso la scelta deriva dal semplificare e rendere immediatamente chiaro il campo coordinates 
-(rappresentato da una matrice quadrata), e l'occhio identifica immediatamente la rappresentazione della disposizione.
+(rappresentato da una matrice quadrata), e l'occhio identifica immediatamente la rappresentazione della disposizione. Questa leggibilità è ottenuta
+grazie al formato yaml, il quale minimizza i caratteri da scrivere.
 Così facendo si rende intuitivo il posizionamento degli switch nello spazio, inoltre è una caratteristica importante per quanto riguarda il
 visualizzatore grafico, poichè rappresentando i nodi con un valore numerico che va da 1 a 1000 (spiegheremo il perchè di questa scelta a breve), è 
 possibile rappresentare su schermo una grande quantità di elementi per far si che possano essere visualizzati contemporaneamente e rimanere leggibili ma soprattuto,
@@ -778,7 +779,8 @@ l = \frac{16}{9} \cdot n \cdot \frac{3}{4} = n \cdot \frac{4}{3}.
 \]
 Abbiamo ottenuto la base \(l\), corrispondente al numero di colonne della matrice, e l'altezza \(h\), corrispondente al numero
 di righe, del rettangolo in 16:9. Tuttavia c'è l'esigenza di rappresentare numeri interi e la radice dell'area \(A\) può non essere un numero intero.
-Per ovviare al problema si è deciso di arrotondare il lato \(s\) all'intero superiore, così facendo sarà sempre verificato:
+Per ovviare al problema si è deciso di arrotondare il lato \(s\) all'intero superiore, così facendo, qualora si avesse
+il lato \(s\) avente parte decimale, sarà sempre verificato:
 \begin{equation}
     (l+1)(h+1)>lh
 \end{equation}

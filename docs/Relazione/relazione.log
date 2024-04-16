@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  16 APR 2024 17:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  16 APR 2024 17:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -907,7 +907,7 @@ Capitolo 3.
 <immagini/torus_graph.png, id=423, 457.71pt x 451.6875pt>
 File: immagini/torus_graph.png Graphic file (type png)
 <use immagini/torus_graph.png>
-Package pdftex.def Info: immagini/torus_graph.png  used on input line 614.
+Package pdftex.def Info: immagini/torus_graph.png  used on input line 615.
 (pdftex.def)             Requested size: 198.0pt x 195.39351pt.
 
 
@@ -916,29 +916,42 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <immagini/only_links.JPG, id=427, 636.87938pt x 357.58594pt>
 File: immagini/only_links.JPG Graphic file (type jpg)
 <use immagini/only_links.JPG>
-Package pdftex.def Info: immagini/only_links.JPG  used on input line 626.
+Package pdftex.def Info: immagini/only_links.JPG  used on input line 627.
 (pdftex.def)             Requested size: 316.80121pt x 177.8704pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [14] [15 <./immagini/torus_graph.png> <./immagini/only_links.JPG>]
-<immagini/free_graph.JPG, id=500, 639.13782pt x 356.83313pt>
+<immagini/free_graph.JPG, id=497, 639.13782pt x 356.83313pt>
 File: immagini/free_graph.JPG Graphic file (type jpg)
 <use immagini/free_graph.JPG>
-Package pdftex.def Info: immagini/free_graph.JPG  used on input line 686.
+Package pdftex.def Info: immagini/free_graph.JPG  used on input line 687.
 (pdftex.def)             Requested size: 316.80121pt x 176.86978pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [16 <./immagini/free_graph.JPG>]
 <immagini/mesh_example.jpg, id=529, 953.81343pt x 532.99126pt>
 File: immagini/mesh_example.jpg Graphic file (type jpg)
 <use immagini/mesh_example.jpg>
-Package pdftex.def Info: immagini/mesh_example.jpg  used on input line 718.
+Package pdftex.def Info: immagini/mesh_example.jpg  used on input line 719.
 (pdftex.def)             Requested size: 316.80121pt x 177.02625pt.
 <immagini/diagramma_selezioni_config_gen.jpg, id=533, 503.8825pt x 584.1825pt>
 File: immagini/diagramma_selezioni_config_gen.jpg Graphic file (type jpg)
 <use immagini/diagramma_selezioni_config_gen.jpg>
-Package pdftex.def Info: immagini/diagramma_selezioni_config_gen.jpg  used on input line 733.
+Package pdftex.def Info: immagini/diagramma_selezioni_config_gen.jpg  used on input line 734.
 (pdftex.def)             Requested size: 217.80121pt x 252.51283pt.
- [17{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./immagini/mesh_example.jpg>] [18 <./immagini/diagramma_selezioni_config_gen.jpg>] [19] [20] [21] [22]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [17{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [18 <./immagini/mesh_example.jpg>] [19 <./immagini/diagramma_selezioni_config_gen.jpg>] [20] [21] [22]
 Capitolo 4.
 [23
 
@@ -954,7 +967,7 @@ Capitolo 6.
 File: lstlang1.sty 2024/03/11 1.10a listings language file
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <8> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 927.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 929.
  [27] [28
 
 ]
@@ -970,7 +983,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Overfull \hbox (30.28568pt too wide) in paragraph at lines 964--964
+Overfull \hbox (30.28568pt too wide) in paragraph at lines 966--966
 []\T1/lmr/m/n/10.95 (-20) UCINET. \T1/lmr/m/it/10.95 (-20) UCI-NET Soft-ware\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / sites . google . com / site / ucinetsoftware/$[]\T1/lmr/m/n/10.95 (-20) .
  []
 
@@ -996,9 +1009,9 @@ Here is how much of TeX's memory you used:
  46735 multiletter control sequences out of 15000+600000
  650464 words of font info for 191 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,13n,131p,1126b,2114s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,131p,1126b,2108s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on relazione.pdf (42 pages, 799413 bytes).
+Output written on relazione.pdf (42 pages, 799726 bytes).
 PDF statistics:
  925 PDF objects out of 1000 (max. 8388607)
  448 named destinations out of 1000 (max. 500000)
