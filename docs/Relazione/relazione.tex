@@ -49,7 +49,15 @@ del traffico di una rete.
 Il progetto ha come obiettivo di mostrare il traffico di rete al variare del tempo e ciò viene raggiunto
 tramite grafiche e animazioni generate programmaticamente. L'idea dell'ambito di tirocinio nasce 
 dalla volontà di sperimentare una realizzazione front-end tramite la libreria Manim, un motore di animazioni per video
-matematici esplicativi..
+matematici esplicativi. Nel capitolo dedicato all'introduzione descriveremo l'ambito in cui si è tenuto il tirocinio, le motivazioni
+alla base in cui è stato idealizzato l'argomento, seguito da un'analisi dello stato dell'arte attuale, descrivendo diverse realtà affini al progetto
+e studiandone caratteristiche, i loro pregi e mancanze. A seguire ci sarà una descrizione dei contributi che vuole dare il progetto, scaturiti dall'analisi
+dello stato dell'arte e infine una breve panoramica sulla base di partenza del progetto, descrivendo da cosa si è partiti, come è nata l'argomentazione
+che ha portato alla scelta del progetto e la modalità di svolgimento. Nel capitolo 2 parleremo del contesto di sviluppo, ovvero le tecnologie impiegate.
+Seguirà quindi una descrizione approfondita della scelta di certe tecnologie ma soprattutto del perchè le si è scelte. Il capitolo 3
+descriverà il generatore di traffico e configurazione di rete, descrivendone funzionalità, condizioni inziali di setup di questa parte di applicazione e infine
+descrivendo come il tutto viene generato, passando dalla distribuzione spaziale dei nodi e creazione dei links all'ottenimento dei files sui quali sono memorizzati i dati ottenuti.
+Il capitolo 4 descriverà l'analizzatore..
 
 \end{abstract}
 \tableofcontents
@@ -165,6 +173,7 @@ Il progetto è partito da zero, si basa sullo sviluppo totalmente nuovo dell'app
 Come approfondirò in seguito, nella sezione dedicata alla tecnologia impiegata, il progetto non è l'unica cosa a essere partita da zero, poichè il linguaggio
 scelto per sviluppare l'applicazione è Python\cite{PythonWebsite}, linguaggio non incluso nel mio 
 personale percorso di studi e che ho dovuto necessariamente studiare da zero per poter affrontare il percorso di tirocinio.
+Il lavoro è stato svolto individualmente.
 
 \chapter{Contesto di sviluppo: le tecnologie impiegate}
 Il progetto, a livello di tecnologia impiegata, pone le fondamenta su tre aspetti che andremo a 
@@ -324,7 +333,7 @@ Lo script permette di eseguire quanto descritto mettendo a
     in entrambe le modalità, lo script ha bisogno di leggere il file sim\_setup.yaml, il quale contiene le informazioni necessarie per la configurazione. 
     Il file di setup è impostato come segue:
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di setup file}]
+\begin{lstlisting}[caption={esempio di setup file}, label={codice:sim_setup_example}]
     averageDelta: 1000
     updateDelta: 100
     startSimTime: 2024-03-22 12:30:00
@@ -681,7 +690,12 @@ al visualizzatore otteniamo un risultato come in figura \ref{fig:tree_custom}.
 Vien da sè che si ottiene così una certa libertà di espressione bidimensionale, con la quale l'utente può scegliere
 la rappresentazione che più si addice alla rete che si vuole realizzare.
 
-\section{Esecuzione del generatore e files prodotti}
+\section{Generatore di traffico e configurazione di rete}
+Il generatore può essere pensato come suddiviso in sezioni logiche per quanto riguarda la stesura del codice nello script; la prima riguarda la fase
+di interazione con l'utente, il codice  strutturato in una serie di richieste per l'utente e controlli sul corretto inserimento dei dati, successivamente
+vi è la parte di caricamento del file contentente i parametri di rete \ref{codice:sim_setup_example}, segue la creazione dei links, la generazione del traffico
+creando tutti i pacchetti, si creano le informazioni inerenti agli switch e il tutto viene memorizzato sui files. Vedremo più in dettaglio questi
+aspetti nel capitolo dedicato allo studio della complessità computazionale e prestazioni.
 Descriveremo ora il funzionamento dell'esecuzione vera e propria dello script relativo alla generazione del traffico e dei files che produrrà.
 All'avvio l'utente sarà chiamato a scegliere tra due modalità, come accennato precedentemente, auto e user; scegliendo auto verrà chiesto all'utente
 di scegliere il numero di switch che si vuole attribuire alla rete, da un minimo di due a un massimo di mille. Questo intervallo numerico nasce per
@@ -720,10 +734,12 @@ il generatore devono essere presenti nel file custom\_graph.yaml \ref{fig:custom
     \caption{diagramma di flusso di esecuzione del generatore}
     \label{fig:diagramma_generatore}
 \end{figure}
-\section{Creazione della rete: links e distribuzione nodi}
+
+
+\section{Creazione della rete}
 Il generatore si serve di una serie di funzioni di utilità per creare le strutture in base alle scelte dell'utente. 
-Tutte le tipologie di rappresentazioni avvengono seguendo una logica di distribuzione nodi in forma matriciale, fatta eccezione della tipologia di
-grafo completo (spiegheremo nella parte dedicata al visualizzatore il perchè), come spiegheremo in dettaglio nel prossimo paragrafo.
+Tutte le tipologie di rappresentazioni avvengono seguendo una logica di distribuzione dei nodi in forma matriciale, fatta eccezione della tipologia di
+grafo completo (spiegheremo nella parte dedicata al visualizzatore il perchè), come descritto in dettaglio nel prossimo paragrafo.
 
 \subsection{Distribuzione spaziale dei nodi: aspect ratio}
 Come appena descritto, la distribuzione dei nodi è pensata per essere disegnata in forma matriciale, questo segue una precisa scelta di design e riguarda
@@ -768,8 +784,136 @@ Per ovviare al problema si è deciso di arrotondare il lato \(s\) all'intero sup
 \end{equation}
 riuscendo a contenere l'area e rimanendo in proporzione.
 
+\subsection{Files prodotti}
+Andiamo ora a descrivere i files prodotti dal generatore. Un esempio di file network lo ritroviamo in figura \ref*{codice:network_file_example}.
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[caption={esempio di network file}, label={codice:network_file_example}]
+- - capacity: 10
+    endpoints:
+    - 1
+    - 2
+  - capacity: 10
+    endpoints:
+    - 1
+    - 3
+  - capacity: 10
+    endpoints:
+    - 3
+    - 4
+  - capacity: 10
+    endpoints:
+    - 2
+    - 4
+- - address: 10.0.0.1
+    switchID: 1
+    switchName: switch1
+  - address: 10.0.0.2
+    switchID: 2
+    switchName: switch2
+  - address: 10.0.0.3
+    switchID: 3
+    switchName: switch3
+  - address: 10.0.0.4
+    switchID: 4
+    switchName: switch4
+- averageDelta: 1000
+  colorblind: 'no'
+  dotsSize: fixed
+  graphType: mesh
+  linkCap: 10
+  packetsFile: json
+  simTime: 5
+  startSimTime: 2024-03-22 12:30:00
+  updateDelta: 100
+- coordinates:
+  - - 1
+    - 2
+  - - 3
+    - 4
+- 2024-03-22 12:30:01: phase1
+
+\end{lstlisting}
+}
+Il file è una lista contenente tutti i valori relativi alla configurazione network, avendo i seguenti campi nell'ordine:
+
+\begin{itemize}
+    \item Una lista di links ognuno dei quali descrive la capacità e gli endpoints al quale è collegato
+    \item Una lista di switch ognuno dei quali descrive l'indirizzo, il proprio identificativo e un eventuale nome associato
+    \item Un oggetto rappresentante un dizionario con i parametri di rete:
+    \begin{itemize}
+        \item averageDelta: l'intervallo di tempo delle medie percentuali di traffico da calcolare con l'analizzatore espressi in millisecondi
+        \item colorblind: yes/no, abilita nel caso di scelta "yes" una palette cromatica nel visualizzatore grafico adatta a persone affette da daltonismo
+        \item dotSize: fixed/adaptive, un'opzione che rende uguale la dimensione a tutti gli elementi raffiguranti gli switch nel visualizzatore grafico (fixed), oppure che adatta la dimensione alla lunghezza dell'identificativo degli switch (adaptive)
+        \item graphType: la tipologia del grafo da visualizzare (complete, mesh, torus)
+        \item linkCap: valore compreso tra [10, 100, 1000]/mixed, un valore che identifica la capacità dei links qualora fossero tutti della stessa grandezza, mixed altrimenti
+        \item packetsFile: json/yaml, la scelta del formato con il quale si vuole memorizzare il traffico di rete
+        \item simTime: la durata complessiva delle operazioni di rete
+        \item startSimTime: timestamp, data e ora nel formato YY:MM:DD HH:MM:SS dell'inizio della trasmissione del traffico
+        \item updateDelta: un intervallo temporale che identifica ogni quanto la media averageDelta debba essere aggiornata
+    \end{itemize}
+    \item Una lista di liste che descrive la matrice del posizionamento degli switch.Nel caso di scelta di grafo completo questo campo è una lista vuota ([])
+    \item Una lista di fasi temporali che descrivono specifici intervalli temporali nel formato "YY:MM:DD HH:MM:SS = descrizione fase"
+\end{itemize}
+Per il file packets abbiamo invece due possibili risultati in base alla scelta fatta nel file di setup \ref{codice:sim_setup_example}, ovvero json e yaml.
+Il generatore crea i pacchetti secondo l'assunzione in cui essi vengano registrati in ordine di invio, avremo quindi una struttura corrispondente
+a una lista di pacchetti ordinati per timestamp di invio.
+Le strutture si presentano come in figura \ref{codice:json_packets_file} per il formato json e in figura \ref{codice:yaml_packets_file} per il formato yaml.
+Come vedremo nel prossimo capitolo, questi due files rappresentano l'esatto formato che riesce a leggere l'analizzatore, quindi un utente
+che voglia usare l'analizzatore e il visualizzatore grafico dovrà formattare accuratamente i suoi dati come descritto.
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[caption={esempio di packets file in formato json}, label={codice:json_packets_file}]
+[
+    {
+        "A": 1,
+        "B": 2,
+        "t": "2024-03-22 12:30:00",
+        "d": 4000
+    },
+    {
+        "A": 2,
+        "B": 1,
+        "t": "2024-03-22 12:30:00",
+        "d": 4000
+    },
+    {
+        "A": 2,
+        "B": 1,
+        "t": "2024-03-22 12:30:00",
+        "d": 4000
+    }
+]
+\end{lstlisting}
+}
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[caption={esempio di packets file in formato yaml}, label={codice:yaml_packets_file}]
+  - A: 1
+    B: 2
+    d: 4000
+    t: &id001 2024-03-22 12:30:00
+  - A: 1
+    B: 2
+    d: 4000
+    t: *id001
+  - A: 1
+    B: 2
+    d: 4000
+    t: *id001
+\end{lstlisting}
+}
+
+In cui in entrambi i casi abbiamo i seguenti campi:
+\begin{itemize}
+    \item A: l'endpoint di partenza del pacchetto
+    \item B: l'endpoint di arrivo del pacchetto
+    \item d: la dimensione del payload del pacchetto espresso in Bytes
+    \item t: il timestamp rappresentante la data e l'ora di invio del pacchetto
+\end{itemize}
+
 
 \chapter{Analizzatore di traffico}
+
 \chapter{Visualizzatore grafico}
 \chapter{Prestazioni e complessità computazionale}
 
@@ -808,73 +952,6 @@ per la tipologia di grafo completo, la funzione dedicata al compito è riportata
 
 \chapter{Conclusioni}
 \chapter{Test}
-Per ottenere i lati di un rettangolo che abbia proporzioni $16:9$ partendo da un 
-quadrato di lato $n$, dobbiamo innanzitutto considerare che l'area del quadrato è data 
-da $A = n^2$. Vogliamo che il rettangolo abbia la stessa area del quadrato ma rispetti
- le proporzioni $16:9$.
-
-Denotiamo con $l$ la lunghezza e con $h$ l'altezza del rettangolo. La condizione di proporzione si può esprimere come
-\[
-\frac{l}{h} = \frac{16}{9}.
-\]
-Dato che l'area del rettangolo deve essere uguale a quella del quadrato, abbiamo che
-\[
-l \cdot h = n^2.
-\]
-Utilizzando la proporzione, possiamo esprimere $l$ in termini di $h$ come
-\[
-l = \frac{16}{9}h.
-\]
-Sostituendo questa espressione nell'equazione dell'area, otteniamo
-\[
-\frac{16}{9}h \cdot h = n^2,
-\]
-che si semplifica in
-\[
-\frac{16}{9}h^2 = n^2.
-\]
-Da qui, isoliamo $h$ ottenendo
-\[
-h^2 = \frac{9}{16}n^2 \quad \Longrightarrow \quad h = n \cdot \frac{3}{4}.
-\]
-Risostituendo il valore di $h$ nell'espressione di $l$, abbiamo
-\[
-l = \frac{16}{9} \cdot n \cdot \frac{3}{4} = n \cdot \frac{4}{3}.
-\]
-Quindi, per un quadrato di lato $n$, per ottenere i lati di un rettangolo che mantenga la stessa area ($n^2$) con proporzioni $16:9$, l'altezza $h$ del rettangolo sarà $n \cdot \frac{3}{4}$ e la lunghezza $l$ sarà $n \cdot \frac{4}{3}$.
-
-
-
-Quindi il tutto funziona poichè è sempre vero quanto segue:
-\begin{equation}
-(l+1)(m+1)>ml
-\end{equation}
-
-\section{Sotto capitolo test}
-
-Ecco un esempio di codice YAML:
-
-\begin{lstlisting}
-- coordinates:
-    - [1, 2]
-    - [3, 0]
-\end{lstlisting}
-
-E ora un esempio di codice Python:
-
-\begin{lstlisting}[language=Python]
-links = {}
-# Extracting links data
-for content in networkData[CONST.NETWORK["LINKS"]]:
-    links[frozenset({content["endpoints"][CONST.EP_A], content["endpoints"][CONST.EP_B]})] = {
-        #"linkID": link,
-        "capacity": content["capacity"], 
-        "trafficDT":0, 
-        "trafficUDT":0, 
-        "updateDeltaTraffic": [], 
-        "traffic": []
-        }
-\end{lstlisting}
 La complessità temporale dell'algoritmo è $O(m+n)$.
 \begin{equation}
     O(m+n)
