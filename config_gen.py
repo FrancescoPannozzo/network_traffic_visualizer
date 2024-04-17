@@ -117,8 +117,8 @@ start_test_time = datetime.now()
 START_TIME = setup["startSimTime"]
 # Defining the simulation time in seconds
 SIM_TIME = setup["simTime"]
-# Defining the packets per second creation rate delta time (milliseconds)
-PPS_DELTA = setup["updateDelta"]
+# Defining the packets creation delta time rate(milliseconds)
+PC_DELTA = setup["creationDelta"]
 # Defining packets size (MB) (example 1518 Bytes ipv4 max payload, 4000 datacenters)
 PACKET_SIZE = setup["packetSize"]
 
@@ -151,7 +151,7 @@ for link, content in links.items():
     logging.info("%s: %s", link, content)
 
 # Creating traffic packets
-# Each fraction of a second (PPS_DELTA) of simulation creates a number of packets
+# Each fraction of a second (PC_DELTA) of simulation creates a number of packets
 # proportionate to the percentage of traffic for each link
 
 # The packets creation index time
@@ -159,9 +159,9 @@ timeWalker = START_TIME
 
 # creationRate is the fractional time units value in one second
 # example: in one second we have 10 fractional units of 100 milliseconds
-# usage: choose PPS_DELTA to avoid remainder != 0
-# PPS_DELTA values examples: 50, 100, 200, 250, 500
-creationRate = int(timedelta(milliseconds=1000)/timedelta(milliseconds=PPS_DELTA))
+# usage: choose PC_DELTA to avoid remainder != 0
+# PC_DELTA values examples: 50, 100, 200, 250, 500
+creationRate = int(timedelta(milliseconds=1000)/timedelta(milliseconds=PC_DELTA))
 
 # Defining the list containing all the packets generated
 packets = []
@@ -209,7 +209,7 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
                                          timeWalker_toStore,
                                          remaining_packet_size)
             packets.append(packet)
-    timeWalker += timedelta(milliseconds=PPS_DELTA)
+    timeWalker += timedelta(milliseconds=PC_DELTA)
 
 logging.info("..packets file structure done!")
 
@@ -271,7 +271,7 @@ networkData[SIM_PARAMETERS_INDEX] = {
     "graphType": graph_type,
     "linkCap": link_capacity,
     "colorblind": setup["colorblind"],
-    "updateDelta": PPS_DELTA,
+    "updateDelta": setup["updateDelta"],
     "averageDelta": setup["averageDelta"],
     "dotsSize": setup["dotsSize"],
     "packetsFile": setup["packetsFile"]

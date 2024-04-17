@@ -160,11 +160,15 @@ def create_user_mesh_links(user_data):
         for c in range(0, cols):
             if c > 0:
                 if mesh[r][c] != 0 and mesh[r][c-1] != 0:
-                    data_links[link_id] = link_format(mesh[r][c-1], mesh[r][c], link_cap)
+                    data_links[link_id] = link_format(mesh[r][c-1], 
+                                                      mesh[r][c], 
+                                                      link_cap)
                     link_id += 1
             if r > 0:
                 if mesh[r][c] != 0 and mesh[r-1][c] != 0:
-                    data_links[link_id] = link_format(mesh[r-1][c], mesh[r][c], link_cap)
+                    data_links[link_id] = link_format(mesh[r-1][c], 
+                                                      mesh[r][c], 
+                                                      link_cap)
                     link_id += 1
 
     return data_links
