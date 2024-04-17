@@ -1055,20 +1055,31 @@ lo stile flow che corrisponde al codice in figura.
 Inizialmente si era provato a dare la possibilità di scegliere, tramite file sim\_setup, 
 tra il formato block e flow poichè in fase di test
 si è visto che l'opzione flow riduce ulteriormente la dimensione del file packets.yaml. Tuttavia i test hanno dimostrato che le differenze delle grandezze
-dei files e i tempi necessari a realizzarli non erano così diversi tra loro, quindi si è deciso di scartare del tutto l'opzione, possiamo vedere
-i risultati dei test in figura.
+dei files e i tempi necessari a realizzarli non erano così diversi tra loro, quindi si è deciso di scartare del tutto l'opzione. Possiamo vedere
+il risultato del test sulle dimensioni dei files in figura \ref{fig:yaml_block_flow_dim} e quello relativo ai tempi di scrittura/lettura in 
+figura \ref{fig:yaml_block_flow_wr}. Possiamo notare dei grafici che il risparmio di bytes è di circa 4 MB per il test effettuato su 10 switch, mentre
+i tempi di esecuzione, si di scrittura che di lettura, sono praticamente sovrapponibili, infatti l'operazione di scrittura per block e flow style è identico, mentre lievemente
+più performante è il block style in lettura.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{immagini/torus_graph.png}
-    \caption{esempio di torus graph \cite{torusgraph}}
-    \label{fig:torus_graph}
+    \includegraphics[width=1\textwidth]{immagini/yaml_block_flow_dim.png}
+    \caption{test yaml block/flow style, dimensione files}
+    \label{fig:yaml_block_flow_dim}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{immagini/yaml_block_flow_wr.png}
+    \caption{test yaml block/flow style, tempi di scrittura e lettura}
+    \label{fig:yaml_block_flow_wr}
 \end{figure}
 
 
 
 
 \chapter{Analizzatore di traffico}
+
 
 \chapter{Visualizzatore grafico}
 \chapter{Prestazioni e complessità computazionale}
