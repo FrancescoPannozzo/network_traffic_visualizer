@@ -868,6 +868,7 @@ quanto riguarda l'essere più fedeli possibili alle percentuali di traffico da g
 
 
 \section{Files prodotti}
+\label{sec:files_prodotti}
 Una volta creati links e nodi, generato il traffico, costruito le strutture del traffico e della rete, lo script provvederà a salvare il risultato nei files descritti precedentemente.
 Un esempio di file network lo ritroviamo in figura \ref*{codice:network_file_example}.
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
@@ -1079,7 +1080,11 @@ più performante è il block style in lettura.
 
 
 \chapter{Analizzatore di traffico}
-
+L'analizzatore di traffico è la seconda anima del progetto, è la parte che analizza il traffico calcolando le medie percentuali e producendo
+un file, analyzed\_data.yaml, che conterrà sia le informazioni di rete come links, switches e parametri di rete, sia le registrazioni del traffico percentuale
+di ogni link. Per poter operare, l'analizzatore ha bisogno dei due files, network.yaml e packets.yaml, creati dal generatore o che siano
+creati e formattati dall'utente. Abbiamo descritto in dettaglio la composizione dei files nella sezione \ref{sec:files_prodotti}.
+L'esecuzione dello script parte in primo luogo caricando i files richiesti e creando le strutture
 
 \chapter{Visualizzatore grafico}
 \chapter{Prestazioni e complessità computazionale}

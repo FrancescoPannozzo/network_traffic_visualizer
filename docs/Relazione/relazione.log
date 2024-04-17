@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  17 APR 2024 23:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  18 APR 2024 00:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -957,7 +957,7 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <8> not available
 <immagini/yaml_block_flow_dim.png, id=711, 434.058pt x 253.383pt>
 File: immagini/yaml_block_flow_dim.png Graphic file (type png)
 <use immagini/yaml_block_flow_dim.png>
-Package pdftex.def Info: immagini/yaml_block_flow_dim.png  used on input line 1066.
+Package pdftex.def Info: immagini/yaml_block_flow_dim.png  used on input line 1067.
 (pdftex.def)             Requested size: 396.0pt x 231.17816pt.
 
 
@@ -966,7 +966,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <immagini/yaml_block_flow_wr.png, id=712, 434.277pt x 253.602pt>
 File: immagini/yaml_block_flow_wr.png Graphic file (type png)
 <use immagini/yaml_block_flow_wr.png>
-Package pdftex.def Info: immagini/yaml_block_flow_wr.png  used on input line 1073.
+Package pdftex.def Info: immagini/yaml_block_flow_wr.png  used on input line 1074.
 (pdftex.def)             Requested size: 396.0pt x 231.26189pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -998,7 +998,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
  [37]
-Overfull \hbox (30.28568pt too wide) in paragraph at lines 1131--1131
+Overfull \hbox (30.28568pt too wide) in paragraph at lines 1136--1136
 []\T1/lmr/m/n/10.95 (-20) UCINET. \T1/lmr/m/it/10.95 (-20) UCI-NET Soft-ware\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / sites . google . com / site / ucinetsoftware/$[]\T1/lmr/m/n/10.95 (-20) .
  []
 
@@ -1018,17 +1018,17 @@ Package logreq Info: Writing requests to 'relazione.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25486 strings out of 474423
- 441466 string characters out of 5742662
+ 25487 strings out of 474423
+ 441486 string characters out of 5742662
  2174496 words of memory out of 5000000
- 46803 multiletter control sequences out of 15000+600000
+ 46804 multiletter control sequences out of 15000+600000
  656498 words of font info for 196 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,131p,1126b,2113s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on relazione.pdf (46 pages, 979450 bytes).
+Output written on relazione.pdf (46 pages, 980306 bytes).
 PDF statistics:
- 1027 PDF objects out of 1200 (max. 8388607)
+ 1028 PDF objects out of 1200 (max. 8388607)
  498 named destinations out of 1000 (max. 500000)
  61665 words of extra memory for PDF output out of 61914 (max. 10000000)
 
