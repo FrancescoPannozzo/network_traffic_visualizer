@@ -340,6 +340,7 @@ Lo script permette di eseguire quanto descritto mettendo a
 \begin{lstlisting}[caption={esempio di setup file}, label={codice:sim_setup_example}]
     averageDelta: 1000
     updateDelta: 100
+    creationDelta: 100
     startSimTime: 2024-03-22 12:30:00
     simTime: 5
     packetSize: 4000
@@ -353,7 +354,8 @@ Andremo ora a spiegare il significato dietro ogni voce:
 \begin{itemize}
     \item \textbf{averageDelta:} rappresenta l'intervallo temporale in millisecondi 
     delle medie percentuali di traffico da calcolare nell'analizzatore di traffico.
-    \item \textbf{updateDelta:} rappresenta ogni quanti millisecondi debbano essere creati i pacchetti nel generatore
+    \item \textbf{updateDelta:} rappresenta ogni quanti millisecondi debbano essere aggiornate le medie averageDelta nell'analizzatore
+    \item \textbf{creationDelta:} rappresenta ogni quanti millisecondi debbano essere creati i pacchetti nel generatore
     \item \textbf{startSimTime:} è il datetime dell'inizio della generazione nel formato \newline
     YY:MM:DD HH:MM:SS, inoltre è possibile specificare anche un eventuale tempo avente millisecondi da specificare come ad esempio 
     12:30:00.500
@@ -852,12 +854,22 @@ riuscendo a contenere l'area e rimanendo in proporzione.
 
 \section{Generazione del traffico}
 Successivamente alla creazione dei link e dei nodi vi è la generazione del traffico, ovvero la creazione di tutti i pacchetti che vengono
-creati. Il criterio di creazione si basa sul prendere il timestamp startSimTime caricato dal file sim\_setup.yaml in cui vi è la data e l'ora di inizo creazione, questo
-serve a identificare l'inizio temporale di cui tenere traccia per la creazione del traffico.
+creati. Descriveremo ora il criterio di creazione del traffico; l'idea è quella di iterare su frazioni di tempo cui l'unità temporale è definita
+ dal campo creationDelta (tutti i campi che citeremo provengono dal file setup sim\_setup.yaml). L'algoritmo cicla per ogni frazione di 
+ tempo per la durata della generazione, definita nel campo
+ simTime e per ciascuna calcola un quantitativo di pacchetti, proporzionale alla 
+percentuale di traffico, per ogni link presente nella rete. Ogni secondo trascorso viene cambiata la percentuale di traffico di ogni link secondo
+la scelta fatta nel campo trafficVariation.
+Il tempo, data e ora, che definisce quando è cominciata la trasmissione lo ritroviamo nel timestamp startSimTime.
+Poichè per ogni frazione il calcolo dei pacchetti può non essere preciso, ovvero può capitare che ci sia un numero con una parte decimale, l'algoritmo
+provvede a recupere questa rimanenza, tramutarla in pacchetto e aggiungerla. Questo fa si di avere un'elevata approssimazione, tendente al 100\% per
+quanto riguarda l'essere più fedeli possibili alle percentuali di traffico da generare.
+
 
 
 \section{Files prodotti}
-Andiamo ora a descrivere i files prodotti dal generatore. Un esempio di file network lo ritroviamo in figura \ref*{codice:network_file_example}.
+Una volta creati links e nodi, generato il traffico, costruito le strutture del traffico e della rete, lo script provvederà a salvare il risultato nei files descritti precedentemente.
+Un esempio di file network lo ritroviamo in figura \ref*{codice:network_file_example}.
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={esempio di network file}, label={codice:network_file_example}]
 - - capacity: 10
@@ -1019,9 +1031,42 @@ Ciò significa che per ogni secondo di traffico avremmo \(1.35 \text{ MB} \times
  si ha un notevole risparmio in termini di data storage. Chiaramente in ottica di espansione futura del progetto, avendo strutture più complesse
  per i pacchetti, potrebbe essere necessario avere elementi maggiormente descrittivi, tuttavia ciò non toglie che una certa cura nella scelta di una 
  descrizione minimale non possa essere comunque adottata in via preferenziale.
+
+
  \section{Aspetti realizzativi scartati: yaml flow e block style}
  Un approccio inizialmente realizzato e poi scartato, è stato quello di poter dare la possibilità di scegliere la modalità di salvataggio del file packets.yaml.
- Abbiamo
+La libreria PyYAML permette di salvare un file yaml secondo due modalità; la prima è definita block style e l'altra flow style.
+Di default, PyYAML sceglie lo stile di una collection a seconda che abbia a sua volta collection nidificate. Qualora ci fossero collection nidificate
+verrà assegnato lo stile block, il quale è il formato come lo abbiamo già visto in figura \ref{codice:yaml_packets_file}, altrimenti verrà assegnato
+lo stile flow che corrisponde al codice in figura.
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[caption={rappresentazione di un pacchetto con descrizione completa}, label={codice:long_description_packet}, breaklines=true]
+[{A: 2, B: 1, d: 4000, t: &id001 !!timestamp '2024-03-22 12:30:00'}, {A: 1, B: 2,
+    d: 4000, t: *id001}, {A: 1, B: 2, d: 4000, t: *id001}, {A: 2, B: 1, d: 4000, t: *id001},
+  {A: 2, B: 1, d: 4000, t: *id001}, {A: 2, B: 1, d: 3752, t: *id001}, {A: 1, B: 2,
+    d: 4000, t: &id002 !!timestamp '2024-03-22 12:30:00.100000'}, {A: 2, B: 1, d: 4000,
+    t: *id002}, {A: 1, B: 2, d: 4000, t: *id002}, {A: 1, B: 2, d: 4000, t: *id002},
+  {A: 2, B: 1, d: 4000, t: *id002}, {A: 2, B: 1, d: 3752, t: *id002}, {A: 1, B: 2,
+    d: 4000, t: &id003 !!timestamp '2024-03-22 12:30:00.200000'}, {A: 2, B: 1, d: 4000,
+    t: *id003}, {A: 2, B: 1, d: 4000, t: *id003}, {A: 1, B: 2, d: 4000, t: *id003},
+\end{lstlisting}
+}
+Inizialmente si era provato a dare la possibilità di scegliere, tramite file sim\_setup, 
+tra il formato block e flow poichè in fase di test
+si è visto che l'opzione flow riduce ulteriormente la dimensione del file packets.yaml. Tuttavia i test hanno dimostrato che le differenze delle grandezze
+dei files e i tempi necessari a realizzarli non erano così diversi tra loro, quindi si è deciso di scartare del tutto l'opzione, possiamo vedere
+i risultati dei test in figura.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{immagini/torus_graph.png}
+    \caption{esempio di torus graph \cite{torusgraph}}
+    \label{fig:torus_graph}
+\end{figure}
+
+
+
 
 \chapter{Analizzatore di traffico}
 
