@@ -43,6 +43,32 @@
       \field{title}{The Top Programming Languages 2023}
       \field{year}{2023}
     \endentry
+    \entry{PyYAMLDocumentation}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c2e70fbae5f95506396162dab6617978}{%
+           family={Canonical},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{c2e70fbae5f95506396162dab6617978}
+      \strng{fullhash}{c2e70fbae5f95506396162dab6617978}
+      \strng{bibnamehash}{c2e70fbae5f95506396162dab6617978}
+      \strng{authorbibnamehash}{c2e70fbae5f95506396162dab6617978}
+      \strng{authornamehash}{c2e70fbae5f95506396162dab6617978}
+      \strng{authorfullhash}{c2e70fbae5f95506396162dab6617978}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-04-12}
+      \field{title}{PyYAML Documentation}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://pyyaml.org/wiki/PyYAMLDocumentation
+      \endverb
+      \verb{url}
+      \verb https://pyyaml.org/wiki/PyYAMLDocumentation
+      \endverb
+    \endentry
     \entry{Cytoscape2024}{misc}{}
       \name{author}{1}{}{%
         {{hash=11380d448cdf814a494e1dac43ddd525}{%
@@ -246,6 +272,33 @@
       \verb https://www.rfc-editor.org/rfc/rfc791#page-11
       \endverb
     \endentry
+    \entry{PythonJSONLibrary}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c7b5508dc5e59a2846d22617276cc27c}{%
+           family={{Python Software Foundation}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{fullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{bibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authorbibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authornamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authorfullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \field{extraname}{1}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-04-12}
+      \field{title}{JSON encoder and decoder -- Python 3.10.8 documentation}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://docs.python.org/3/library/json.html
+      \endverb
+      \verb{url}
+      \verb https://docs.python.org/3/library/json.html
+      \endverb
+    \endentry
     \entry{PythonWebsite}{misc}{}
       \name{author}{1}{}{%
         {{hash=c7b5508dc5e59a2846d22617276cc27c}{%
@@ -258,6 +311,7 @@
       \strng{authorbibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
       \strng{authornamehash}{c7b5508dc5e59a2846d22617276cc27c}
       \strng{authorfullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \field{extraname}{2}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}

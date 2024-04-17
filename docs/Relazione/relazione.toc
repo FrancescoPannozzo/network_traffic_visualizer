@@ -12,10 +12,12 @@
 \contentsline {section}{\numberline {2.3}I formati Json e Yaml}{6}{section.2.3}%
 \contentsline {chapter}{\numberline {3}Generatore di traffico e configurazione di rete}{9}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Funzionalità e setup}{9}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Generatore di traffico e configurazione di rete}{17}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Creazione della rete}{18}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Distribuzione spaziale dei nodi: aspect ratio}{18}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Files prodotti}{20}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.2}Esecuzione del generatore}{17}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Creazione dei links e nodi}{18}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Distribuzione dei nodi: aspect ratio}{20}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Generazione del traffico}{21}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Files prodotti}{21}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Aspetti realizzativi scartati: yaml flow e block style}{24}{section.3.7}%
 \contentsline {chapter}{\numberline {4}Analizzatore di traffico}{25}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Visualizzatore grafico}{27}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Prestazioni e complessità computazionale}{29}{chapter.6}%

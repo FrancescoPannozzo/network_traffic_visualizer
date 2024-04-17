@@ -13,6 +13,9 @@
 \addbibresource{bibliografia.bib}
 %\lstset{basicstyle=\ttfamily, breaklines=true}
 \usepackage{xcolor}  % Pacchetto per la gestione dei colori
+\usepackage{caption}
+\captionsetup{font=it}  % Imposta il font delle didascalie in corsivo
+
 
 % Impostazioni di base per lstlisting
 \lstset{
@@ -296,7 +299,8 @@ Questo perchè, nonostante json produca files di dimensioni maggiori rispetto a 
 un file di dimensioni maggiore ampiamente giustificabile, considerando soprattuto la natura del progetto in cui non vi è una
 criticità d'uso nella dimensione dei files. Come vedremo in seguito, i test eseguiti sui tempi di lettura e scrittura rispettivamente della stessa struttura
 ricreata sia in json che in yaml, sapranno ben
-dimostrare quanto appena affermato.
+dimostrare quanto appena affermato. Per impiegare questi formati sono state usate rispettivamente la libreria json \cite{PythonJSONLibrary}, appartenente alla libreria standard di Python, e la
+libreria esterna PyYAML \cite{PyYAMLDocumentation}, un parser ed emitter di yaml per Python.
 Infinie giungiamo ai motivi per cui si è scelto invece esclusivamente yaml per rappresentare i 
 dati relativi alle informazioni che descrivono la rete. Le motivazioni consistono sempre nella volontà
 di garantire un formato che si presti a espansioni future e quindi che possano richiede strutturazioni complesse, ma soprattutto,
@@ -349,7 +353,7 @@ Andremo ora a spiegare il significato dietro ogni voce:
 \begin{itemize}
     \item \textbf{averageDelta:} rappresenta l'intervallo temporale in millisecondi 
     delle medie percentuali di traffico da calcolare nell'analizzatore di traffico.
-    \item \textbf{updateDelta:} rappresenta ogni quanti millisecondi si deve aggiornare la media averageDelta
+    \item \textbf{updateDelta:} rappresenta ogni quanti millisecondi debbano essere creati i pacchetti nel generatore
     \item \textbf{startSimTime:} è il datetime dell'inizio della generazione nel formato \newline
     YY:MM:DD HH:MM:SS, inoltre è possibile specificare anche un eventuale tempo avente millisecondi da specificare come ad esempio 
     12:30:00.500
@@ -410,7 +414,7 @@ La modalità user necessita di un file "custom\_graph.yaml" con i parametri
 necessari a descrivere la rete del quale si vuole analizzare il traffico. 
 Con questa modalità l'utente ha completa libertà nel personalizzare la rete ed 
 è tenuto quindi a descriverne ogni suo aspetto. Il custom\_graph.yaml prevede la 
-struttura seguente, con possibili varianti che elencheremo:
+struttura di un dizionario in cui a ogni chiave corrisponde un valore, mostriamo un esempio con possibili varianti che elencheremo:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={esempio di custom file per la configurazione}, label={fig:custom_graph_example}]
@@ -691,12 +695,13 @@ al visualizzatore otteniamo un risultato come in figura \ref{fig:tree_custom}.
 Vien da sè che si ottiene così una certa libertà di espressione bidimensionale, con la quale l'utente può scegliere
 la rappresentazione che più si addice alla rete che si vuole realizzare.
 
-\section{Generatore di traffico e configurazione di rete}
+\section{Esecuzione del generatore}
 Il generatore può essere pensato come suddiviso in sezioni logiche per quanto riguarda la stesura del codice nello script; la prima riguarda la fase
 di interazione con l'utente, il codice  strutturato in una serie di richieste per l'utente e controlli sul corretto inserimento dei dati, successivamente
 vi è la parte di caricamento del file contentente i parametri di rete \ref{codice:sim_setup_example}, segue la creazione dei links, la generazione del traffico
 creando tutti i pacchetti, si creano le informazioni inerenti agli switch e il tutto viene memorizzato sui files. Vedremo più in dettaglio questi
-aspetti nel capitolo dedicato allo studio della complessità computazionale e prestazioni.
+aspetti, a livello di codice, nel capitolo dedicato allo studio della complessità computazionale e prestazioni, mentre in questo capitolo ci focalizzeremo
+sulla descrizione su come viene generato il tutto.
 Descriveremo ora il funzionamento dell'esecuzione vera e propria dello script relativo alla generazione del traffico e dei files che produrrà.
 All'avvio l'utente sarà chiamato a scegliere tra due modalità, come accennato precedentemente, auto e user; scegliendo auto verrà chiesto all'utente
 di scegliere il numero di switch che si vuole attribuire alla rete, da un minimo di due a un massimo di mille. Questo intervallo numerico nasce per
@@ -713,7 +718,7 @@ del numero di archi da rappresentare al crescere dei nodi. Avendo infatti \(n\) 
 \end{equation}
 Ogni nodo è collegato a tutti gli altri meno se stesso, \(n(n-1)\), e si divide per due perchè gli archi non vanno contati due volte. Si parla quindi di una crescita esponenziale al variare del numero di nodi.
 Per grafo mesh si è inteso una rappresentazione in cui ogni nodo ha quattro nodi adiacenti, fatta eccezione di coloro che risiedono alle estremità, come
-raffigurato nell'esempio in figura creato dal visualizzatore\ref{fig:mesh_example}.
+raffigurato nell'esempio in figura creato dal visualizzatore \ref{fig:mesh_example}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/mesh_example.jpg}
@@ -728,22 +733,81 @@ nei files network.yaml e packets.json/yaml.
 Scegliendo la modalità user non viene richiesto alcun dato via prompt, questo perchè, come descritto in precedenza, tutti i dati di cui ha bisogno
 il generatore devono essere presenti nel file custom\_graph.yaml \ref{fig:custom_graph_example}. Un diagramma che illustra le fasi e le
  scelte cui è possibile fare
-è rappresentato in figura \ref{fig:diagramma_generatore}:
+è rappresentato in figura \ref{fig:diagramma_generatore}.   
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.55\textwidth]{immagini/diagramma_selezioni_config_gen.jpg}
+    \includegraphics[width=0.40\textwidth]{immagini/diagramma_selezioni_config_gen.jpg}
     \caption{diagramma di flusso di esecuzione del generatore}
     \label{fig:diagramma_generatore}
 \end{figure}
 
 
-\section{Creazione della rete}
 Il generatore si serve di una serie di funzioni di utilità per creare le strutture in base alle scelte dell'utente. 
 Tutte le tipologie di rappresentazioni avvengono seguendo una logica di distribuzione dei nodi in forma matriciale, fatta eccezione della tipologia di
 grafo completo (spiegheremo nella parte dedicata al visualizzatore il perchè), come descritto in dettaglio nel prossimo paragrafo.
 
-\subsection{Distribuzione spaziale dei nodi: aspect ratio}
-Come appena descritto, la distribuzione dei nodi è pensata per essere disegnata in forma matriciale, questo segue una precisa scelta di design e riguarda
+
+\section{Creazione dei links e nodi}
+Dopo aver effettuato le scelte via prompt e dopo che il programma ha caricato i parametri dal file sim\_setup.yaml 
+avviene la creazione dei link e dei nodi. Per i link viene creata una struttura che consiste in un dizionario in cui ogni chiave sarà associata
+ai parametri del link con un identificativo come chiave:
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[language=Python, caption={esempio di rappresentazione di un link}, label={codice:links_key_value}]
+    {
+        "endpoints": sorted((switch_a, switch_b)),
+        "capacity": link_cap,
+        "trafficPerc": 0
+    }
+\end{lstlisting}
+}
+Il campo enpoints rappresenta i nodi che il link collega, capacity è la capcità del link e trafficPerc è la percentuale di traffico del link.
+Le percentuali di traffico del link sono pensate per variare ogni secondo di generazione e servono solo ai fini della creazione della quantità di traffico, questo specifico campo non sarà riportato nel network.yaml
+pochè è un dato che non servirà più, di fatti la struttura che rappresenta i link verrà memorizzata come una lista di dizionari come segue:
+
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[caption={esempio di struttura finale dei links}, label={codice:links_structure}]
+  - capacity: 10
+    endpoints:
+    - 1
+    - 2
+  - capacity: 10
+    endpoints:
+    - 2
+    - 3
+  - capacity: 10
+    endpoints:
+    - 1
+    - 4
+  - capacity: 10
+    endpoints:
+    - 4
+    - 5
+\end{lstlisting}
+}
+
+Il campo \(capacity\) identifica la capacità del link espressa in MB, mentre \(endpoints\) è una lista di due identificatori numerici compresi tra
+2 e 1000 che rappresentano i nodi che li collega.
+Ci sono diverse configuazioni che lo script sarà tenuto a considerare in base alle scelte dell'utente, possiamo individuarle in:
+
+\begin{itemize}
+    \item \textbf{Modalità auto} ci sono 3 configurazioni possibili, complete graph, mesh e torus.
+    \begin{itemize}
+        \item \textbf{Complete graph:} i links vengono in modo tale che ogni nodo sia collegato a tutti i nodi rimanenti. Non c'è un riferimento esplicito al posizionamento poichè, come vedremo successivamente, sarà compito del visualizzatore grafico a disporre i nodi nello spazio.
+        \item \textbf{Mesh graph: } i links vengono creati in modo tale che ogni nodo abbia 4 nodi adiacenti rispetto a una distribuzione spaziale su matrice rettangolare, la cui verrà descritta in dettaglio nel prossimo paragrafo, fatta eccezione di quelli che risiedono all'estremità.
+        \item \textbf{Torus graph: } i links vengono creati in modo da replicare il più possibile la struttura di un torus graph completo, come mostrato in fig. \ref{fig:torus_graph} utilizzando lo stesso sistema di disposizione usato per il mesh graph basato su matrice rettandolare.
+        Qualora il numero di nodi scelto non riesca a riempire la matrice, l'algoritmo non creerà i link di nodi che non risultino essere alle estremità.
+    \end{itemize} 
+    \item \textbf{Modalità user:} i links vengono semplicemente caricati dal file e copiati nella struttura, non vi è niente da generare.
+\end{itemize}
+In questa fase i nodi (ovvero gli endpoints) sono definiti tramite il campo \(enpoints\) dei vari links, solo successivamente verrà aggiunto l'indirizzo di ciascun endpoint, un suo nome e l'ID.
+Nel caso di modalità auto vengono creati indirizzi automaticamente a partire da \(10.0.0.1\), l'identificativo è un valore numerico crescente a partire da 1 e il nome è semplicemente la composizione
+della parola \(switch\) seguita dall' ID, come ad esempio \(switch1\).
+Nel caso di modalità user tutte le informazioni inerenti agli switch saranno copiate nella struttura così come sono memorizzate nel file custom\_graph.yaml
+
+\section{Distribuzione dei nodi: aspect ratio}
+Come accennato precedentemente, la distribuzione dei nodi è pensata per essere disegnata in forma matriciale, questo segue una precisa scelta di design e riguarda
 l'aspect ratio adotatto per disegnare al meglio gli elementi su schermo tramite la libreria Manim, la quale produce video in 16:9, quindi è sorta l'esigenza
 di sfruttare al massimo questo formato visivo per poter inserire nel modo più coerente e ottimizzato possibile i vari elementi della rete.
 La soluzione adottata è stata quella di pensare al numero di nodi come un'area di un quadrato (matrice quadrata) e successivamente trovare l'area equivalente 
@@ -786,7 +850,13 @@ il lato \(s\) avente parte decimale, sarà sempre verificato:
 \end{equation}
 riuscendo a contenere l'area e rimanendo in proporzione.
 
-\subsection{Files prodotti}
+\section{Generazione del traffico}
+Successivamente alla creazione dei link e dei nodi vi è la generazione del traffico, ovvero la creazione di tutti i pacchetti che vengono
+creati. Il criterio di creazione si basa sul prendere il timestamp startSimTime caricato dal file sim\_setup.yaml in cui vi è la data e l'ora di inizo creazione, questo
+serve a identificare l'inizio temporale di cui tenere traccia per la creazione del traffico.
+
+
+\section{Files prodotti}
 Andiamo ora a descrivere i files prodotti dal generatore. Un esempio di file network lo ritroviamo in figura \ref*{codice:network_file_example}.
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={esempio di network file}, label={codice:network_file_example}]
@@ -928,23 +998,30 @@ riguarda l'occupazione di memoria fisica, sia per motivi di efficienza. Consider
 }
 
 Avremmo così 37 bytes necessari per i nomi contro i 4 per la rappresentazione di un pacchetto descritta precedentemente, avendo uno scarto di
-33 bytes per pacchetto. Questa quantità moltiplicata la grande quantità di pacchetti da rappresentare può pesare non poco.
+33 bytes per pacchetto. Questa quantità, moltiplicata la grande quantità di pacchetti da rappresentare, può pesare non poco.
 Indipendentemente dal numero di bytes necessari a rappresentare un pacchetto in forma minimale, possiamo fare una stima di quanto sarebbe più grande
 un file packets avendo descrizioni di nomi più lunghi; supponiamo di avere un grafo completo costituito da 5 switch collegati tra loro con switch
-aventi capienza 1 Gbps, il numero dei link, per l'equazione in fig. \ref{eq:link_number}, risulta essere pari a 10. Supponiamo che tutta la rete
-stia trasmettendo al 50\% della sua capacità trasmissiva per tutta la durata della stessa. Considerando una dimensione \(d\) di payload pari 
-a 1518 Bytes,
+aventi capienza 1 Gbps (gigabit), il numero dei link, per l'equazione in fig. \ref{eq:link_number}, risulta essere pari a 10. Supponiamo che tutta la rete
+stia trasmettendo al 50\% della sua capacità trasmissiva per tutta la durata dell'attività di rete. Considerando una dimensione \(d\) di payload pari 
+a 1518 Bytes uguale per tutti i pacchetti trasmessi,
 definiamo come \(pps\) i pacchetti al secondo, da cui, per un link in un dato secondo avremo:
 \begin{align*}
-    \text{1 Gbps} &= 10^9 \text{ bit} && \text{(1 gigabit)} \\
+    \text{1 Gbps} &= 10^9 \text{ bit}\\
     \text{1 GBps} &= \frac{10^9}{8} = 125,000,000 \text{ bytes} && \text{(1 byte = 8 bit)} \\
     \text{50\% capacity} &= \frac{125,000,000}{2} = 65,500,000 \text{ bytes}\\
     \text{d} &= 1518 \text{ bytes} \\
     \text{pps} &= \frac{65,500,000 \text{ bytes}}{d}\approx 41172.59\\
-    \text{bytes di differenza} &= 41172.59 \times 33 = 1358695.65 \text{ bytes} \approx 1.35 \text{ MBytes}\\
+    \text{bytes di differenza} &= 41172.59 \times 33 \approx 1.35 \text{ MBytes}
 \end{align*}
-Ciò significa che per ogni secondo di traffico abbiamo \(1.35 \text{ MB} \times 10\text{ links} = 13.5 \text{MB}\) in più, 
- in 100 secondi di traffico avremmo 1350 Mbytes, cioè 1.35 GBytes in più per una rete avente soltanto 10 links.
+Ciò significa che per ogni secondo di traffico avremmo \(1.35 \text{ MB} \times 10\text{ links} = 13.5 \text{MB}\) in più, 
+ in 100 secondi di traffico avremmo 1350 Mbytes, cioè 1.35 GBytes in più per una rete avente soltanto 10 links, quindi con la scelta di rendere
+  mono carattere le descrizioni
+ si ha un notevole risparmio in termini di data storage. Chiaramente in ottica di espansione futura del progetto, avendo strutture più complesse
+ per i pacchetti, potrebbe essere necessario avere elementi maggiormente descrittivi, tuttavia ciò non toglie che una certa cura nella scelta di una 
+ descrizione minimale non possa essere comunque adottata in via preferenziale.
+ \section{Aspetti realizzativi scartati: yaml flow e block style}
+ Un approccio inizialmente realizzato e poi scartato, è stato quello di poter dare la possibilità di scegliere la modalità di salvataggio del file packets.yaml.
+ Abbiamo
 
 \chapter{Analizzatore di traffico}
 

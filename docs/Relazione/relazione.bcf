@@ -2378,8 +2378,10 @@
     <bcf:citekey order="15" intorder="1">RFC791</bcf:citekey>
     <bcf:citekey order="16" intorder="1">RFC9512</bcf:citekey>
     <bcf:citekey order="17" intorder="1">RFC4180</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">torusgraph</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">torusgraph</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">PythonJSONLibrary</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">PyYAMLDocumentation</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">torusgraph</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">torusgraph</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
