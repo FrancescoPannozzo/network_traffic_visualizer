@@ -28,6 +28,7 @@ Il file setup.yaml è impostato come segue:
 ```yaml
 averageDelta: 1000
 updateDelta: 100
+creationDelta: 100
 startSimTime: 2024-03-22 12:30:00
 simTime: 3
 packetSize: 4000
@@ -36,8 +37,9 @@ trafficVariation: random
 packetsFile: json
 ```
 
-- **averageDelta** rappresenta l'intervallo temporale in millisecondi delle medie di traffico da calcolare
+- **averageDelta** rappresenta l'intervallo temporale in millisecondi delle medie di traffico da calcolare nel traffic analyzer
 - **updateDelta** rappresenta ogni quanti millisecondi si deve aggiornare la media averageDelta
+- **creationDelta** rappresenta ogni quanti millisecondi devono essere creati i pacchetti nel config gen. Deve essere settato con un valore divisibile per 1000 (1 secondo) che dia resto zero. Questo perchè stiamo creando unità frazionarie precise.
 - **startSimTime** è il datetime dell'inizio della simulazione nel formato YY:MM:DD HH:MM:SS
 - **simTime** è la durata della simulazione in secondi
 - **packetSize** è la dimensione in bytes di un pacchetto, i pacchetti nella simulazione avranno questa dimensione
