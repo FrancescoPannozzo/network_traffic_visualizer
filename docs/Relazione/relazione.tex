@@ -14,6 +14,9 @@
 %\lstset{basicstyle=\ttfamily, breaklines=true}
 \usepackage{xcolor}  % Pacchetto per la gestione dei colori
 \usepackage{caption}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
 \captionsetup{font=it}  % Imposta il font delle didascalie in corsivo
 
 
@@ -1090,7 +1093,6 @@ L'esecuzione dello script parte in primo luogo caricando i files richiesti e cre
 \chapter{Prestazioni e complessità computazionale}
 
 
-
 Per quanto riguarda la creazione automatica dei links e dei nodi
 per la tipologia di grafo completo, la funzione dedicata al compito è riportata in figura \ref{codice:create_auto_complete_links}
 
@@ -1121,6 +1123,33 @@ per la tipologia di grafo completo, la funzione dedicata al compito è riportata
 \end{lstlisting}
 } % Fine del gruppo che modifica la dimensione del testo
 
+Poichè in questo caso il numero di link può essere molto elevato, consideriamo il numero di link come \(n\) essendo il ciclo for esterno condizionato
+dal numero di switch. Ma se osserviamo bene notiamo che il ciclo interno parte dall'indice del ciclo for esterno. Non avremo quindi n iterazioni moltiplicato n,
+ma avremo una quantità di iterazioni totali pari a:
+
+\begin{equation}
+    O\left(\sum_{i=1}^n (n-i)\right)
+\end{equation}
+
+Che andando a sviluppare risulterà essere:
+\begin{align}
+    O\left(\sum_{i=1}^n (n-i)\right) &= O\left(\sum_{i=1}^n n - \sum_{i=1}^n i\right) \\
+    &= O\left(n\sum_{i=1}^n 1 - \sum_{i=1}^n i\right) \\
+    &= O\left(n \cdot n - \frac{n(n+1)}{2}\right) \\
+    &= O\left(n^2 - \frac{n^2 + n}{2}\right) \\
+    &= O\left(\frac{2n^2 - n^2 - n}{2}\right) \\
+    &= O\left(\frac{n^2 - n}{2}\right) \\
+    &= O(n^2) \quad
+    \end{align}
+Poiché il termine lineare è dominato dal termine quadratico per grandi \( n \). Ciò è in linea con la grandezza intrinseca del numero di links
+per un grafo completo, come visto nell'equazione \ref{eq:link_number}, per cui siamo obbligati a una complessità quadratica.
+Tuttavia possiamo osservare dal calcolo:
+\begin{align*}
+    \sum_{i=1}^n (n-i) &= \frac{n^2 - n}{2} = \frac{n(n-1)}{2}
+\end{align*}
+    
+La quale è esattamente l'equazione \(\frac{n(n-1)}{2}\) che determina il numero di links in un grafo completo. Con questo vogliamo dire che 
+l'algoritmo performa esattamente il numero di iterazioni necessarie a creare i link ottimizzando al massimo le risorse computazionali.
 
 \chapter{Conclusioni}
 \chapter{Test}
