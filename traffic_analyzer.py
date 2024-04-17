@@ -13,7 +13,6 @@ import logging
 import yaml
 from utils import utils
 from utils import CONSTANTS as CONST
-import json
 
 # Logger config
 logging.basicConfig(
