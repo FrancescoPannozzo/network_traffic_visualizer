@@ -484,7 +484,7 @@ Descriviamo i vari parametri:
     \begin{itemize}
         \item \textbf{mesh:} l'algoritmo individua in modo automatico gli archi (i link) che collegano i nodi (gli switch) adiacenti tra loro presenti nella matrice coordinates
         \item \textbf{torus:} esegue lo stessa procedura usate per mesh e in addizione collega tra loro i nodi che si trovano alle estremità della matrice
-        \item \textbf{graph:} è la modalità più libera, collega gli switch tramite i link forniti dall'utente, indipendentemente da dove vengono collocati
+        \item \textbf{graph:} è la modalità più libera, collega gli switch tramite i link forniti dall'utente, indipendentemente da dove vengano collocati
     \end{itemize}
     \item \textbf{coordinates:} rappresenta le coordinate dei vari switch, i quali vanno rappresentati con un id numerico che va da 1 a 1000. C'è una precisa motivazione di design per questa scelta ed è legata a una rappresentazione grafica ottimale del visualizzatore grafico. Gli zeri invece rappresentano uno spazio vuoto in cui non è presente uno switch.
     \item \textbf{links:} rappresenta i link della rete i quali possono essere specificati con i campi:
@@ -494,6 +494,12 @@ Descriviamo i vari parametri:
     \end{itemize}
     \item \textbf{phases:} rappresenta le fasi temporali che accompagnano la durata dell'attività di rete, sono identificate tramite timestamp che ha come valore la descrizione della fase che parte dal timestamp stesso.
 \end{itemize}
+Il lettore avrà notato che per il campo graphType manca la possibilità di scegliere un grafo completo. In realtà la possibilità c'è e risiede semplicemente
+nell'opzione "graph", essendo la modalità libera, l'utente può tranquillamente descrivere un grafo completo in questo modo avendo chiaramente l'accortezza di posizionare i nodi in modo tale che i link si sovrappongano.
+Tuttavia ciò e solo valido per quanto riguarda il generatore, se l'utente dovesse fornire un file network.yaml, che descriva un grafo completo,
+da fornire direttamente come input per l'analizzatore di traffico, può farlo tranquillamente, in quel caso avrà ben due modi per farlo:
+scegliere il graphType come "complete" per avere una disposizione circolare dei nodi e lasciando il campo "coordinates" vuoto, oppure come "graph" ma
+specificando le coordinate. Torneremo sull'argomento nel capitolo dedicato al visualizzatore grafico.
 Come si può notare dalla figura \ref{fig:custom_graph_example}, gli switch sono identificati tramite un valore numerico, 
 questa è una precisa scelta di design e mira a mantenere il concetto di leggibilità sempre
 presente. In questo caso la scelta deriva dal semplificare e rendere immediatamente chiaro il campo coordinates 
@@ -1060,8 +1066,11 @@ Inizialmente si era provato a dare la possibilità di scegliere, tramite file si
 tra il formato block e flow poichè in fase di test
 si è visto che l'opzione flow riduce ulteriormente la dimensione del file packets.yaml. Tuttavia i test hanno dimostrato che le differenze delle grandezze
 dei files e i tempi necessari a realizzarli non erano così diversi tra loro, quindi si è deciso di scartare del tutto l'opzione. Possiamo vedere
-il risultato del test sulle dimensioni dei files in figura \ref{fig:yaml_block_flow_dim} e quello relativo ai tempi di scrittura/lettura in 
-figura \ref{fig:yaml_block_flow_wr}. Possiamo notare dei grafici che il risparmio di bytes è di circa 4 MB per il test effettuato su 10 switch, mentre
+il risultato del test sulle dimensioni dei files in figura \ref{fig:yaml_block_flow_dim}, dove troviamo sull'asse delle ascisse il numero di switch per test, mentre
+sull'asse delle ordinate abbiamo la variabile che esprime i megabytes, questo perchè essa è la variabile dipendente, ovvero i megabytes dipendono dal numero di switch
+che viene scelto. Il grafico relativo ai tempi di scrittura/lettura lo troviamo in 
+figura \ref{fig:yaml_block_flow_wr}, in questo caso abbiamo sull'asse delle ascisse sempre il numero di switch per test emntre sull'asse delle ordinate
+il tempo (in secondi) necessario per le scritture e letture, poichè il tempo di computazione dipende dal numero di switch scelto. Possiamo notare dai grafici che il risparmio di bytes è di circa 4 MB per il test effettuato su 10 switch, mentre
 i tempi di esecuzione, si di scrittura che di lettura, sono praticamente sovrapponibili, infatti l'operazione di scrittura per block e flow style è identico, mentre lievemente
 più performante è il block style in lettura.
 
@@ -1087,9 +1096,148 @@ L'analizzatore di traffico è la seconda anima del progetto, è la parte che ana
 un file, analyzed\_data.yaml, che conterrà sia le informazioni di rete come links, switches e parametri di rete, sia le registrazioni del traffico percentuale
 di ogni link. Per poter operare, l'analizzatore ha bisogno dei due files, network.yaml e packets.yaml, creati dal generatore o che siano
 creati e formattati dall'utente. Abbiamo descritto in dettaglio la composizione dei files nella sezione \ref{sec:files_prodotti}.
-L'esecuzione dello script parte in primo luogo caricando i files richiesti e creando le strutture
+L'esecuzione dello script parte in primo luogo caricando i files richiesti e creando le strutture necessarie al calcolo delle medie, dopodichè
+avviene il calcolo vero e proprio, viene creata la struttura che servirà come input del visualizzatore grafico e infine viene creato il file
+analyzed\_data.yaml con tale struttura.
+Poichè per motivi di efficienza si è scelto di strutturare i link come una lista nel file network.yaml e non come dizionario (in cui ogni link avrebbe avuto un identificativo come chiave), si è presentato il problema dell'identificazione dei link.
+I link in fin dei conti possono essere identificati dai propri endpoints (il grafo viene inteso in modo tale che ci sia un unico link tra due endpoints), ovvero una coppia di nodi,
+nel nostro caso, una coppia di switch. Tuttavia la sfida che si è presentata è rappresentata dal fatto che se è vero quindi che un link è identificato
+da un endpoint a e un endpoint b, è vero anche in questo caso l'ordinamento degli endpoints non deve essere rilevante. Abbiamo infatti pacchetti
+che vengono inviati sia da a per poi arrivare a b, sia da b verso a. Questo è un problema poichè stiamo cercando di identificare un link ma abbiamo
+due coppie, \((a, b)\) e \((b, a)\) che sì sono ugualmente valide ma rappresentano anche due coppie distinte, il che contrasta con il concetto di identificatore. 
+L'ideale sarebbe usare il tipo set, ovvero il concetto di insieme 
+come collezione non ordinata in cui due insiemi \(\{b, b\}, \{b, a\}\) sono considerati uguali in termini di contenuto. Sembrerebbe un problema risolto, ma non è così, il perchè risiede
+nel fatto che i set in Python sono mutabili: il contenuto può essere modificato utilizzando metodi come add() e remove(). 
+Poiché set è mutabile, non ha valore hash \cite{pythonGlossaryHashable} e non può essere utilizzato come chiave del dizionario \cite{pythonStdTypesMapping}.
+Il tipo di dato che fa al caso nostro è quindi il frozenset, un set che è immutabile e hashable, quindi utilizzabile come chiave di un dizionario.
+Nell'analizzatore l'identificazione dei link è molto importante, perchè nel momento in cui si va a scorrere la lista di tutti i pacchetti registrati,
+vi è il bisogno di identificare il link per potergli attribuire le varie medie da calcolare. Viene quindi creata una struttura ausiliaria in cui
+la lista di link presente nel file network.yaml viene tramutata in un dizionario avente come chiavi dei frozenset con gli endpoints e, come valori associati,
+una serie di variabili atte a mantenere le somme dei pacchetti che man mano verrano scanditi.
+Segue la scansione dei pacchetti in cui, per ogni unità frazionaria di tempo dettata dal campo updateDelta presente in network.yaml, vengono sommati tutti i bytes di tutti i pacchetti
+e attribuiti ai link corrispettivi.
+Una volta finita la scansione, la struttura ausiliaria viene scandita per ricavare le medie percentuali delle vaire somme calcolate le passaggio precedente e viene
+creata la struttura che verrà memorizzata in analyzed\_data.yaml. La struttura memorizzata è raffigurata in figura \ref{codice:analyzed_data_structure}.
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[caption={rappresentazione della struttura analyzed\_data}, label={codice:analyzed_data_structure}]
+{
+  - averageDelta: 1000
+    simStartTime: 2024-03-22 12:30:00
+    simTime: 2
+    updateDelta: 100
+  - - endpoints:
+      - 1
+      - 2
+      traffic:
+      - 59.0
+      - 53.5
+      - 48.0
+      - 42.5
+      - 37.0
+      - 31.5
+      - 26.0
+      - 20.5
+      - 15.0
+      - 9.5
+      - 4.0
+    - endpoints:
+      - 1
+      - 3
+      traffic:
+      - 33.0
+      - 38.8
+      - 44.6
+      - 50.4
+      - 56.2
+      - 62.0
+      - 67.8
+      - 73.6
+      - 79.4
+      - 85.2
+      - 91.0
+}
+\end{lstlisting}
+}
+
+La struttura consiste in una lista di due elementi, il primo è un dizionario rappresentate 
+i parametri di rete necessari al visualizzatore grafico, il
+secondo è una lista di dizionari rappresentati i link, definiti dal campo enpoints, e le loro medie percentuali memorizzate nel campo traffic.
+L'unico campo che non abbiamo ancora incontrato finora è traffic, esso rappresenta le medie percentuali di tempo averageDelta, calcolate ogni updateDelta millisecondi.
+Nell esempio in figura \ref{codice:analyzed_data_structure} abbiamo che le medie vengono calcolate quindi in intervalli di 1000 ms (millisecondi), aggiornati ogni
+100 ms. Prendiamo ad esempio il primo link identificato dalla coppia di endpoints \((1, 2)\), i suoi valori del campo traffic sono associati ai seguenti tempi:
+\newline
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[caption={timestamps e medie percentuali calcolate dall'analizzatore}, label={codice:analyzed_data_structure}]
+{
+    2024-03-22 12:30:01 - 59
+    2024-03-22 12:30:01.100000 - 53,5
+    2024-03-22 12:30:01.200000 - 48
+    2024-03-22 12:30:01.300000 - 42,5
+    2024-03-22 12:30:01.400000 - 37
+    2024-03-22 12:30:01.500000 - 31,5
+    2024-03-22 12:30:01.600000 - 26
+    2024-03-22 12:30:01.700000 - 20,5
+    2024-03-22 12:30:01.800000 - 15
+    2024-03-22 12:30:01.900000 - 9,5
+    2024-03-22 12:30:02 - 4
+}
+\end{lstlisting}
+}
+I timestamps sono espressi nel formato YY:MM:DD HH:MM:SS.Microseconds, questo per via dell'impiego dell'oggetto timedelta \cite{pythonDatetimeTimedelta} che converte un millisecondo in 1000 microsecondi e con cui è possibile effettuare
+operazioni aritmetiche di somma e differenza tra due oggetti datetime \cite{pythonDatetimeTimedelta}.
+Il primo valore che abbiamo, \(59\), è quindi la media percentuale dei pacchetti inviati tra il tempo 12:30:00 e 12:30:01, il secondo valore, \(53.3\) è la media
+dell'intervallo 12:30:00.100000 e 12:30:01.100000, e così via.
+Il file prodotto analyzed\_data.yaml sarà l'input necessario per il visualizzatore grafico, che verrà discusso nel capitolo successivo.
 
 \chapter{Visualizzatore grafico}
+La terza anima del progetto è il visualizzatore grafico sviluppato tramite l'ausilio della libreria Manim. Andremo a descrivere il funzionamento dello script,
+come è strutturato e organizzato, in seguito descriveremo le modalità grafiche dei grafi che sono possibili ottenere, inclusa la rappresentazione video
+delle informazioni relative ai switch e link. Seguirà una sezione sulle scelte di design servite a curare l'aspetto visivo e infine ci sarà spazio
+per l'accessibilità inclusa nel progetto che prevede un'opzione per daltonici e che consente quindi di cambiare i colori che rappresentano il traffico.
+
+\section{Strutturazione e organizzazione del visualizzatore}
+Andremo ora a descrivere come è strutturato il codice a livello logico. La prima cosa che salta all'occhio aprendo il progetto potrebbe essere la riga di codice:
+
+{\scriptsize
+\begin{lstlisting}[language=Python]
+    from manim import *
+\end{lstlisting}
+}
+
+Potrebbe sembrare un errore, o una scelta pigra per velocizzare le importazioni delle sezioni di libreria necessaria, ma in realtà questo è proprio
+l'uso raccomandato dalla documentazione ufficiale di utilizzare Manim \cite{ManimDocs}.
+Una volta avviato lo script verranno caricati i files analyzed\_data.yaml e network.yaml, successivamente verranno impostati i colori del traffico in base
+alla scelta fatta nel campo colorblind all'interno del file network, dopodichè possiamo pensare allo script come un grande bivio in cui ci sono due funzioni;
+la funzione che renderizzerà il grafo in caso di grafo completo e la funzione che renderizzerà un grafo pensato per essere disposto
+tramite matrice. La funzione relativa al grafo completo sfrutta la potenza di Manim per la disposizione dei nodi e degli archi (links), provvedendo
+una disposizione automatica ed organica degli elementi e rappresenta la scelta più indicata per questo tipo di rappresentazione; per
+farlo bisogna settare il campo customGraph nel file network al valore "complete" e lasciare il campo "coordinates" vuoto. Per ottenere un grafo
+completo con coordinate personalizzate bisognerà assegnare a graphType il valore "graph" e specificare le coordinate nel campo "coordinates". Vedremo degli esempi in figura nel paragrafo successivo.
+
+
+\section{Modalità grafiche}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{immagini/custom_complete_autopositioning.JPG}
+    \caption{visualizzazione per opzione grafo completo con disposizione automatica}
+    \label{fig:custom_complete_autopositioning}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{immagini/custom_complete_manual_positioning.JPG}
+    \caption{visualizzazione per opzione grafo completo con coordinate personalizzate}
+    \label{fig:custom_complete_manual_positioning}
+\end{figure}
+
+
+%\section{Design: scelte implementative}
+
+%\section{Accessibilità: modalità daltonismo}
+
 \chapter{Prestazioni e complessità computazionale}
 
 
@@ -1148,7 +1296,7 @@ Tuttavia possiamo osservare dal calcolo:
     \sum_{i=1}^n (n-i) &= \frac{n^2 - n}{2} = \frac{n(n-1)}{2}
 \end{align*}
     
-La quale è esattamente l'equazione \(\frac{n(n-1)}{2}\) che determina il numero di links in un grafo completo. Con questo vogliamo dire che 
+IL che è esattamente l'equazione \(\frac{n(n-1)}{2}\) che determina il numero di links in un grafo completo. Con questo vogliamo dire che 
 l'algoritmo performa esattamente il numero di iterazioni necessarie a creare i link ottimizzando al massimo le risorse computazionali.
 
 \chapter{Conclusioni}

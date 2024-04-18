@@ -272,7 +272,7 @@
       \verb https://www.rfc-editor.org/rfc/rfc791#page-11
       \endverb
     \endentry
-    \entry{PythonJSONLibrary}{misc}{}
+    \entry{pythonStdTypesMapping}{online}{}
       \name{author}{1}{}{%
         {{hash=c7b5508dc5e59a2846d22617276cc27c}{%
            family={{Python Software Foundation}},
@@ -285,6 +285,101 @@
       \strng{authornamehash}{c7b5508dc5e59a2846d22617276cc27c}
       \strng{authorfullhash}{c7b5508dc5e59a2846d22617276cc27c}
       \field{extraname}{1}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-04-12}
+      \field{title}{8.3. Mapping Types --- dict}
+      \field{urlday}{12}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.python.org/3/library/stdtypes.html#typesmapping
+      \endverb
+      \verb{url}
+      \verb https://docs.python.org/3/library/stdtypes.html#typesmapping
+      \endverb
+    \endentry
+    \entry{pythonDatetimeTimedelta}{online}{}
+      \name{author}{1}{}{%
+        {{hash=c7b5508dc5e59a2846d22617276cc27c}{%
+           family={{Python Software Foundation}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{fullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{bibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authorbibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authornamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authorfullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \field{extraname}{2}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-04-12}
+      \field{subtitle}{timedelta Objects}
+      \field{title}{datetime --- Basic date and time types}
+      \field{urlday}{12}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.python.org/3/library/datetime.html
+      \endverb
+      \verb{url}
+      \verb https://docs.python.org/3/library/datetime.html
+      \endverb
+    \endentry
+    \entry{pythonGlossaryHashable}{online}{}
+      \name{author}{1}{}{%
+        {{hash=c7b5508dc5e59a2846d22617276cc27c}{%
+           family={{Python Software Foundation}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{fullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{bibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authorbibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authornamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authorfullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \field{extraname}{3}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-04-12}
+      \field{subtitle}{Term: hashable}
+      \field{title}{Glossary --- Python 3.10.8 documentation}
+      \field{urlday}{12}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.python.org/3/glossary.html#term-hashable
+      \endverb
+      \verb{url}
+      \verb https://docs.python.org/3/glossary.html#term-hashable
+      \endverb
+    \endentry
+    \entry{PythonJSONLibrary}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c7b5508dc5e59a2846d22617276cc27c}{%
+           family={{Python Software Foundation}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{fullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{bibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authorbibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authornamehash}{c7b5508dc5e59a2846d22617276cc27c}
+      \strng{authorfullhash}{c7b5508dc5e59a2846d22617276cc27c}
+      \field{extraname}{4}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}
@@ -311,7 +406,7 @@
       \strng{authorbibnamehash}{c7b5508dc5e59a2846d22617276cc27c}
       \strng{authornamehash}{c7b5508dc5e59a2846d22617276cc27c}
       \strng{authorfullhash}{c7b5508dc5e59a2846d22617276cc27c}
-      \field{extraname}{2}
+      \field{extraname}{5}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}
@@ -387,6 +482,7 @@
       \strng{authorbibnamehash}{0c6c914811edee3ebb09f940013689dd}
       \strng{authornamehash}{0c6c914811edee3ebb09f940013689dd}
       \strng{authorfullhash}{0c6c914811edee3ebb09f940013689dd}
+      \field{extraname}{1}
       \field{sortinit}{T}
       \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
       \field{labelnamesource}{author}
@@ -399,6 +495,33 @@
       \endverb
       \verb{url}
       \verb https://docs.manim.community/en/stable/index.html
+      \endverb
+    \endentry
+    \entry{ManimDocs}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=0c6c914811edee3ebb09f940013689dd}{%
+           family={{The Manim Community Developers}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{0c6c914811edee3ebb09f940013689dd}
+      \strng{fullhash}{0c6c914811edee3ebb09f940013689dd}
+      \strng{bibnamehash}{0c6c914811edee3ebb09f940013689dd}
+      \strng{authorbibnamehash}{0c6c914811edee3ebb09f940013689dd}
+      \strng{authornamehash}{0c6c914811edee3ebb09f940013689dd}
+      \strng{authorfullhash}{0c6c914811edee3ebb09f940013689dd}
+      \field{extraname}{2}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-03-25}
+      \field{title}{Manim Documentation: Quickstart Guide}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://docs.manim.community/en/stable/tutorials/quickstart.html
+      \endverb
+      \verb{url}
+      \verb https://docs.manim.community/en/stable/tutorials/quickstart.html
       \endverb
     \endentry
     \entry{UCINET2024}{misc}{}
