@@ -22,6 +22,11 @@
 \contentsline {chapter}{\numberline {5}Visualizzatore grafico}{33}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Strutturazione e organizzazione del visualizzatore}{33}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Modalità grafiche}{35}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Design: scelte implementative}{36}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Accessibilità: modalità daltonismo}{36}{section.5.4}%
 \contentsline {chapter}{\numberline {6}Prestazioni e complessità computazionale}{37}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Complessità generatore di traffico}{37}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Complessità analizzatore di traffico}{37}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Complessità visualizzatore grafico}{37}{section.6.3}%
 \contentsline {chapter}{\numberline {7}Conclusioni}{39}{chapter.7}%
 \contentsline {chapter}{\numberline {8}Test}{41}{chapter.8}%
