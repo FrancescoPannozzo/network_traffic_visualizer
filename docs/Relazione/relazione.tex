@@ -1209,14 +1209,89 @@ Andremo ora a descrivere come è strutturato il codice a livello logico. La prim
 Potrebbe sembrare un errore, o una scelta pigra per velocizzare le importazioni delle sezioni di libreria necessaria, ma in realtà questo è proprio
 l'uso raccomandato dalla documentazione ufficiale di utilizzare Manim \cite{ManimDocs}.
 Una volta avviato lo script verranno caricati i files analyzed\_data.yaml e network.yaml, successivamente verranno impostati i colori del traffico in base
-alla scelta fatta nel campo colorblind all'interno del file network, dopodichè possiamo pensare allo script come un grande bivio in cui ci sono due funzioni;
+alla scelta fatta nel campo colorblind all'interno del file network, dopodichè possiamo pensare al resto dello script come un bivio in cui ci sono le due funzioni principali;
 la funzione che renderizzerà il grafo in caso di grafo completo e la funzione che renderizzerà un grafo pensato per essere disposto
 tramite matrice. La funzione relativa al grafo completo sfrutta la potenza di Manim per la disposizione dei nodi e degli archi (links), provvedendo
 una disposizione automatica ed organica degli elementi e rappresenta la scelta più indicata per questo tipo di rappresentazione; per
 farlo bisogna settare il campo customGraph nel file network al valore "complete" e lasciare il campo "coordinates" vuoto. Per ottenere un grafo
 completo con coordinate personalizzate bisognerà assegnare a graphType il valore "graph" e specificare le coordinate nel campo "coordinates". 
-Vedremo degli esempi in figura nel paragrafo successivo.
+Vedremo degli esempi in figura nel paragrafo successivo. Entrambe le funzioni hanno lo stesso pattern di creazione del grafico e di creazione delle animazioni;
+prima si costruiscono le strutture da visualizzare, inclusi i parametri di rete da visualizzare, successivamente viene eseguito una iterazione sui timestamps ricavati
+dal file analyzed\_data in cui per ogni intervallo di tempo updateTime viene presa la parcentuale corrispondente di ciascun link, 
+si prendono i colori associati alle varie percentuali e si crea un'animazione di durata 1 secondo di transizione verso il colore scelto e si ripete 
+fino a quando non si arriva a fine simTime.
+Per dare una maggiore idea sul come vengono create le forme e le animazioni in Manim faremo una breve introduzione alla libreria.
+In Manim ogni oggetto viene definito Mobject, ovvero un "Mathematical Object", e deriva dalla classe di base Mobject, cioè un oggetto che può essere visualizzato a schermo,
+per esempio una forma rettangolo, una linea o un cerchio, vengono definiti tutti mobject.
+La classe Scene è la tela sul quale si disegnano i mobjects, una volta istanziati essi vanno aggiunti alla Scene per poter essere visualizzati,
+ciò e possibile tramite il metodo \lstinline|add()|. Prendiamo il primo esempio fornito dalla documentazione Manim:
 
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[language=Python, caption={un primo esempio di utilizzo di Manim \cite{ManimDocs}}, label={codice:manim_example}]
+{
+    from manim import *
+
+    class CreatingMobjects(Scene):
+        def construct(self):
+            circle = Circle()
+            self.add(circle)
+            self.wait(1)
+            self.remove(circle)
+}
+\end{lstlisting}
+}
+
+Come descrive la documentazione ufficiale, generalmente tutto il codice che descrive un video va all'interno del metodo \lstinline|construct()|
+della classe \lstinline|Scene|, per poter visualizzare un mobject si chiama il metodo \lstinline|add()| della \lstinline|Scene| contenuta, in questo caso
+passiamo un mobject \lstinline|circle| come parametro, aggiungendolo alla \lstinline|Scene|.
+Il metodo \lstinline|wait(1)| fa passare un secondo di tempo e \lstinline|remove(circle)| lo rimuove.
+Si intuisce da subito le potenzialità che offre la libreria ma sono le animazioni il cuore di Manim.
+Ogni proprietà di un mobject che può essere modificata, può essere animata. Infatti ogni metodo che cambia una proprietà di un mobject può essere
+usato come un'animazione tramite l'uso di \lstinline|animate()|.
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[language=Python, caption={un primo esempio di animazioni in Manim \cite{ManimDocs}}, label={codice:manim_animation_example}]
+{
+    from manim import *
+
+    class AnimateExample(Scene):
+        def construct(self):
+            square = Square().set_fill(RED, opacity=1.0)
+            self.add(square)
+    
+            # animate the change of color
+            self.play(square.animate.set_fill(WHITE))
+            self.wait(1)
+    
+            # animate the change of position and the rotation
+            self.play(square.animate.shift(UP).rotate(PI / 3))
+            self.wait(1)
+}
+\end{lstlisting}
+}
+
+Nel codice in fig. \ref{codice:manim_animation_example}, vediamo come impostare il colore rosso e il livello di opacità al mobject \lstinline|Square()|,
+applicando poi il metodo \lstinline|square.animate.set_fill(WHITE)| viene creata l'animazione di transizione di colore da rosso a bianco.
+L'animazione creata deve essere aggiunta alla \lstinline|Scene| per poterla visualizzare e lo si fa tramite \lstinline|play()|.
+Questa breve introduzione a Manim ci da già l'idea della potenza che offre ponendo come unico limite la creatività dello sviluppatore.
+Ritornando alla descrizione delle funzioni principali, il grafo completo, della funzione dedicata, viene creato tramite la classe
+\lstinline|Graph()|, in cui due dei principali parametri richiesti sono una lista di valori che identificano i nomi dei nodi e una lista di coppie (tuple)
+che descrivono gli archi (link). Chiaramente la liste degli switch e delle tuple di endpoints vengono create a monte. Per quanto riguarda
+la creazione delle animazioni, il cuore risiede in questo pseudocodice:
+
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[language=Python, caption={creazione animazione traffico}, label={codice:traffic_animation_example}]
+animations.append(grafo.edges[(A, B)].animate.set_color(traffic_color))
+\end{lstlisting}
+}
+In questo pseudocodice abbiamo una lista di animazioni \lstinline|animations|, in cui aggiungiamo un'animazione \lstinline|animate| che interessa l'oggetto arco 
+restituito da \lstinline|grafo.edges[(A, B)]| e individuato dalla coppia di endpoints (A, B). Dopodichè definiamo quale proprietà deve essere animata,
+ in questo caso l'impostazione di un nuovo colore tramite \lstinline|set_color()| il quale è il colore corrispondente al timestamp correntemente analizzato.
+Questa operazione viene effettuata per tutti i link per l'intervallo di tempo updateDelta, quando tutte le animazioni sono settate si usa
+il metodo \lstinline|play(animation*)| per animarle tutte conteporaneamente e ciò si ripete per la durata di tempo registrato.
+
+Per quanto riguarda la seconda funzione principale, il pattern di creazione è analogo, tuttavia è interessante descrivere il posizionamento dei nodi.
 
 \section{Modalità grafiche}
 

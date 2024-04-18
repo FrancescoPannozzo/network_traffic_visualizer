@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  18 APR 2024 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  19 APR 2024 01:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1000,32 +1000,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 1163--1170
 
 ]
 Capitolo 5.
-<immagini/custom_complete_autopositioning.JPG, id=831, 946.28531pt x 529.98pt>
+[33] [34]
+<immagini/custom_complete_autopositioning.JPG, id=877, 946.28531pt x 529.98pt>
 File: immagini/custom_complete_autopositioning.JPG Graphic file (type jpg)
 <use immagini/custom_complete_autopositioning.JPG>
-Package pdftex.def Info: immagini/custom_complete_autopositioning.JPG  used on input line 1225.
+Package pdftex.def Info: immagini/custom_complete_autopositioning.JPG  used on input line 1300.
 (pdftex.def)             Requested size: 396.0pt x 221.78139pt.
-
-Underfull \vbox (badness 1189) has occurred while \output is active []
-
- [33]
-<immagini/custom_complete_manual_positioning.JPG, id=839, 946.28531pt x 530.73282pt>
+<immagini/custom_complete_manual_positioning.JPG, id=878, 946.28531pt x 530.73282pt>
 File: immagini/custom_complete_manual_positioning.JPG Graphic file (type jpg)
 <use immagini/custom_complete_manual_positioning.JPG>
-Package pdftex.def Info: immagini/custom_complete_manual_positioning.JPG  used on input line 1232.
+Package pdftex.def Info: immagini/custom_complete_manual_positioning.JPG  used on input line 1307.
 (pdftex.def)             Requested size: 396.0pt x 222.09642pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[34 <./immagini/custom_complete_autopositioning.JPG>] [35 <./immagini/custom_complete_manual_positioning.JPG>] [36
-
-]
+[35 <./immagini/custom_complete_autopositioning.JPG>] [36 <./immagini/custom_complete_manual_positioning.JPG>]
 Capitolo 6.
 
 Underfull \vbox (badness 4647) has occurred while \output is active []
 
- [37{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [38]
+ [37
+
+{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [38]
 Capitolo 7.
 [39
 
@@ -1040,7 +1037,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
  [43]
-Overfull \hbox (30.28568pt too wide) in paragraph at lines 1314--1314
+Overfull \hbox (30.28568pt too wide) in paragraph at lines 1389--1389
 []\T1/lmr/m/n/10.95 (-20) UCINET. \T1/lmr/m/it/10.95 (-20) UCI-NET Soft-ware\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / sites . google . com / site / ucinetsoftware/$[]\T1/lmr/m/n/10.95 (-20) .
  []
 
@@ -1060,17 +1057,17 @@ Package logreq Info: Writing requests to 'relazione.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26165 strings out of 474423
- 451245 string characters out of 5742662
+ 26228 strings out of 474423
+ 452134 string characters out of 5742662
  2180496 words of memory out of 5000000
- 47379 multiletter control sequences out of 15000+600000
+ 47412 multiletter control sequences out of 15000+600000
  659061 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,131p,1126b,2119s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on relazione.pdf (52 pages, 1141549 bytes).
+Output written on relazione.pdf (52 pages, 1156610 bytes).
 PDF statistics:
- 1179 PDF objects out of 1200 (max. 8388607)
- 573 named destinations out of 1000 (max. 500000)
+ 1220 PDF objects out of 1440 (max. 8388607)
+ 603 named destinations out of 1000 (max. 500000)
  61691 words of extra memory for PDF output out of 61914 (max. 10000000)
 

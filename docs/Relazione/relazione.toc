@@ -21,7 +21,7 @@
 \contentsline {chapter}{\numberline {4}Analizzatore di traffico}{29}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Visualizzatore grafico}{33}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Strutturazione e organizzazione del visualizzatore}{33}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Modalità grafiche}{34}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Modalità grafiche}{35}{section.5.2}%
 \contentsline {chapter}{\numberline {6}Prestazioni e complessità computazionale}{37}{chapter.6}%
 \contentsline {chapter}{\numberline {7}Conclusioni}{39}{chapter.7}%
 \contentsline {chapter}{\numberline {8}Test}{41}{chapter.8}%
