@@ -63,7 +63,11 @@ che ha portato alla scelta del progetto e la modalità di svolgimento. Nel capit
 Seguirà quindi una descrizione approfondita della scelta di certe tecnologie ma soprattutto del perchè le si è scelte. Il capitolo 3
 descriverà il generatore di traffico e configurazione di rete, descrivendone funzionalità, condizioni inziali di setup di questa parte di applicazione e infine
 descrivendo come il tutto viene generato, passando dalla distribuzione spaziale dei nodi e creazione dei links all'ottenimento dei files sui quali sono memorizzati i dati ottenuti.
-Il capitolo 4 descriverà l'analizzatore..
+Il capitolo 4 tratterà l'analizzatore di traffico, nello specifico dell'implementazione della logica che risiede dietro l'analisi del file contenente il traffico.
+Il capitolo 5 sarà sul visualizzatore grafico, in cui verrà fornita una manoramica sulle logiche dietro la creazione degli elementi grafici e delle animazioni, le modalità
+grafiche che è possibile ottenere, la descrizione delle scelte di design legate all'aspetto grafico e una sezione dedicata all'accessibilità, con cui si tratterà
+l'implementazione di soluzioni che trattano il tema del daltonismo. Il capitolo 6 darà un quadro generale sulla complessità computazionle delle sezioni di codice più sensibili, analizzando gli andamenti asintotici di tutte le principali parti.
+Infine avremo il capitolo 7, in cui tireremo le conclusioni del progetto.
 
 \end{abstract}
 \tableofcontents
@@ -75,7 +79,7 @@ Basti pensare già alle  reti PAN (Personal Area Network) le quali connettono di
 personali entro pochi metri e che ognuno di noi usa abitualmente nella propria casa, 
 alle reti LAN (Local Area Network), 
 anch'esse presenti
-nelle nostre case così come in uffici o edifici scolastici, le reti dei datacenter 
+nelle nostre case così come in uffici o edifici scolastici, le reti dei data center 
 fino a giungere alla rete globale internet, la quale è creatrice a sua volta di paradigmi come
 può essere l'internet of things. Le reti informatiche sono impiegate nei più vari 
 settori come l'istruzione, in cui le reti
@@ -85,7 +89,7 @@ streaming di contenuti multimediali: insomma, le reti informatiche sono di fatto
 ed è estremamente difficile riuscire a immaginare il mondo come lo vediamo oggi senza questa tecnologia.
 Con l'aumentare delle funzionalità legate alle reti, così come i dispositivi collegati a esse, capire cosa succede al
 loro interno, come si muovono i dati, è quindi di cruciale importanza, tramite l'analisi dei dati che vi fruiscono è possibile fare diagnostica, per quanto
-riguarda un discorso di monitoraggio, ma anche è possibile applicare le analisi in un ambito didattico e accademico.
+riguarda un discorso di monitoraggio, ma è anche possibile applicare le analisi in un ambito didattico e accademico.
 Capire cosa sta succedendo in una rete in modo immediato e visivo è lo scopo di questo progetto, il quale punta a mostrare,
 in modo grafico, l'andamento del traffico di una rete.
 \section{Ambito del tirocinio}
@@ -124,7 +128,7 @@ di software per la visualizzazione e analisi di reti\cite{JHUDatavisNetwork2024}
   analisi dei collegamenti per rivelare le strutture sottostanti delle associazioni tra oggetti, 
   analisi dei social network per la creazione di connettori di dati sociali per mappare le organizzazioni della comunità e le reti di piccoli mondi, 
   analisi della rete biologica per rappresentazione di modelli di dati biologici ed esportazione e 
-  creazione poster erp promuovere e divulgare il lavoro scientifico con mappe stampabili di alta qualità.
+  creazione poster per promuovere e divulgare il lavoro scientifico con mappe stampabili di alta qualità.
   \item \textbf{Cytoscape\cite{Cytoscape2024}:} è una piattaforma software open source per visualizzare 
   reti complesse e integrarle con qualsiasi tipo di dati. Consiste in una piattaforma per
   visualizzare reti di interazioni molecolari e percorsi biologici, potendo integrare queste reti con annotazioni,
@@ -220,7 +224,7 @@ i vari endpoints, con la necessità di tenere traccia delle loro capacità trasm
 \section{I formati Json e Yaml}
 L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; json\cite{RFC791}, yaml\cite{RFC9512} e csv\cite{RFC4180}.
 Dopo attenta anlisi si è deciso di adottare il formato json per strutturare e memorizzare i dati legati al traffico, con la possibilità di scegliere anche il formato yaml, mentre per i dati relativi alla descrizione della rete il compito è stato affidato esclusivamente a yaml, csv è stato scartato.
-Perchè csv è stato scartato? Sebbene csv rappresenti una valida alternativa tenendo conto di aspetti prestazionali, essendo un formato molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse dalla semplice forma tabellare, tipicamente usate nei database. 
+Perchè csv è stato scartato? Sebbene csv rappresenti una valida alternativa tenendo conto di aspetti prestazionali, essendo un formato molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse della semplice forma tabellare, tipicamente usate nei database. 
 L'idea di scartarla, sia per strutturare i dati della rete che per quelli del traffico, deriva principalmente dai seguenti motivi:
 
 \begin{itemize}
@@ -306,7 +310,7 @@ dimostrare quanto appena affermato. Per impiegare questi formati sono state usat
 libreria esterna PyYAML \cite{PyYAMLDocumentation}, un parser ed emitter di yaml per Python.
 Infinie giungiamo ai motivi per cui si è scelto invece esclusivamente yaml per rappresentare i 
 dati relativi alle informazioni che descrivono la rete. Le motivazioni consistono sempre nella volontà
-di garantire un formato che si presti a espansioni future e quindi che possano richiede strutturazioni complesse, ma soprattutto,
+di garantire un formato che si presti a espansioni future e quindi che possano richiedere strutturazioni complesse, ma soprattutto,
 in questo caso specifico, nell'alta leggiblità che yaml offre. Generalmente i dati che servono a descrivere una rete non sono mai paragonabili a quelli
 necessari per registrare tutto il traffico, si voleva dare quindi uno strumento molto chiaro da leggere per fare in modo che la configurazione di rete
 fosse sempre molto chiara, intuitiva e di facile accesso, sia in scrittura che in lettura. 
@@ -320,7 +324,7 @@ parte riguarda il visualizzatore grafico vero e proprio.
 
 Il progetto è composto da tre anime, una di esse è un generatore di traffico di rete e relativa configurazione.
 Lo scopo del generatore è da ricercare principalmente in motivazioni di testing, ma può essere
- usato anche in ambito didattica per scopi
+ usato anche in ambito didattico per scopi
 esemplicativi. Con esso è stato possibile testare l'analizzatore e conseguentemente il visualizzatore grafico, nonchè si è creato 
 uno strumento esemplicativo di determinati funzionamenti collegati al traffico di rete.
 La configurazione di rete consiste nella produzione di una struttura dati che descriva 
@@ -364,7 +368,7 @@ Andremo ora a spiegare il significato dietro ogni voce:
     12:30:00.500
     \item \textbf{simTime:} è la durata della simulazione in secondi
     \item \textbf{packetSize:} è la dimensione in bytes di un pacchetto, i pacchetti nella simulazione avranno questa dimensione
-    \item \textbf{colorblind:} è una stringa "yes" o "no" che abilita se posta su "yes" una visualizazione compatibile per persone daltoniche
+    \item \textbf{colorblind:} è una stringa "yes" o "no" che abilita, se posta su "yes", una visualizazione compatibile per persone daltoniche
     di cui parleremo successivamente quando discuteremo della parte relativa al visualizzatore grafico.
     \item \textbf{trafficVariation:} è la variazione di traffico per secondo che si desidera impostare; 
     può essere il valore "random" oppure uno dei seguenti [5, 10, 20, 25, 50] e 
@@ -503,7 +507,7 @@ specificando le coordinate. Torneremo sull'argomento nel capitolo dedicato al vi
 Come si può notare dalla figura \ref{fig:custom_graph_example}, gli switch sono identificati tramite un valore numerico, 
 questa è una precisa scelta di design e mira a mantenere il concetto di leggibilità sempre
 presente. In questo caso la scelta deriva dal semplificare e rendere immediatamente chiaro il campo coordinates 
-(rappresentato da una matrice quadrata), e l'occhio identifica immediatamente la rappresentazione della disposizione. Questa leggibilità è ottenuta
+(rappresentato da una matrice quadrata), così che l'occhio possa identificare immediatamente la rappresentazione della disposizione. Questa leggibilità è ottenuta
 grazie al formato yaml, il quale minimizza i caratteri da scrivere.
 Così facendo si rende intuitivo il posizionamento degli switch nello spazio, inoltre è una caratteristica importante per quanto riguarda il
 visualizzatore grafico, poichè rappresentando i nodi con un valore numerico che va da 1 a 1000 (spiegheremo il perchè di questa scelta a breve), è 
@@ -716,7 +720,7 @@ sulla descrizione su come viene generato il tutto.
 Descriveremo ora il funzionamento dell'esecuzione vera e propria dello script relativo alla generazione del traffico e dei files che produrrà.
 All'avvio l'utente sarà chiamato a scegliere tra due modalità, come accennato precedentemente, auto e user; scegliendo auto verrà chiesto all'utente
 di scegliere il numero di switch che si vuole attribuire alla rete, da un minimo di due a un massimo di mille. Questo intervallo numerico nasce per
-poter rappresentare una rete in un generico datacenter, il quale generalmente ospita fino a un migliaio di switch. Ciò non toglie che,
+poter rappresentare una rete in un generico data center, il quale generalmente ospita fino a un migliaio di switch. Ciò non toglie che,
 in un ottica futura di espansione del software, questo range non possa essere espanso con le dovute modifiche. Successivamente alla scelta nel numero
 di switch l'utente sarà chiamato a scegliere la tipologia di rete potendo scegliere tra i valori "c" (completo), "m" (mesh) e "t" (torus). Per 
 grafo completo
@@ -803,14 +807,14 @@ Il campo \(capacity\) identifica la capacità del link espressa in MB, mentre \(
 Ci sono diverse configuazioni che lo script sarà tenuto a considerare in base alle scelte dell'utente, possiamo individuarle in:
 
 \begin{itemize}
-    \item \textbf{Modalità auto} ci sono 3 configurazioni possibili, complete graph, mesh e torus.
+    \item \textbf{Modalità auto:} ci sono 3 configurazioni possibili, complete graph, mesh e torus.
     \begin{itemize}
-        \item \textbf{Complete graph:} i links vengono in modo tale che ogni nodo sia collegato a tutti i nodi rimanenti. Non c'è un riferimento esplicito al posizionamento poichè, come vedremo successivamente, sarà compito del visualizzatore grafico a disporre i nodi nello spazio.
-        \item \textbf{Mesh graph: } i links vengono creati in modo tale che ogni nodo abbia 4 nodi adiacenti rispetto a una distribuzione spaziale su matrice rettangolare, la cui verrà descritta in dettaglio nel prossimo paragrafo, fatta eccezione di quelli che risiedono all'estremità.
+        \item \textbf{Complete graph:} i links vengono in modo tale che ogni nodo sia collegato a tutti i nodi rimanenti. Non c'è un riferimento esplicito al posizionamento poichè, come vedremo successivamente, sarà compito del visualizzatore grafico disporre i nodi nello spazio.
+        \item \textbf{Mesh graph: } i links vengono creati in modo tale che ogni nodo abbia 4 nodi adiacenti rispetto a una distribuzione spaziale su matrice rettangolare, a eccezione dei nodi che risiedono alle estremità.
         \item \textbf{Torus graph: } i links vengono creati in modo da replicare il più possibile la struttura di un torus graph completo, come mostrato in fig. \ref{fig:torus_graph} utilizzando lo stesso sistema di disposizione usato per il mesh graph basato su matrice rettandolare.
         Qualora il numero di nodi scelto non riesca a riempire la matrice, l'algoritmo non creerà i link di nodi che non risultino essere alle estremità.
     \end{itemize} 
-    \item \textbf{Modalità user:} i links vengono semplicemente caricati dal file e copiati nella struttura, non vi è niente da generare.
+    \item \textbf{Modalità user:} i links vengono semplicemente caricati dal file e copiati nella struttura. Nel caso in cui i link non siano specificati nel custom file allora vengono generati.
 \end{itemize}
 In questa fase i nodi (ovvero gli endpoints) sono definiti tramite il campo \(enpoints\) dei vari links, solo successivamente verrà aggiunto l'indirizzo di ciascun endpoint, un suo nome e l'ID.
 Nel caso di modalità auto vengono creati indirizzi automaticamente a partire da \(10.0.0.1\), l'identificativo è un valore numerico crescente a partire da 1 e il nome è semplicemente la composizione
@@ -853,8 +857,8 @@ Risostituendo il valore di $h$ nell'espressione di $l$, abbiamo
 l = \frac{16}{9} \cdot n \cdot \frac{3}{4} = n \cdot \frac{4}{3}.
 \]
 Abbiamo ottenuto la base \(l\), corrispondente al numero di colonne della matrice, e l'altezza \(h\), corrispondente al numero
-di righe, del rettangolo in 16:9. Tuttavia c'è l'esigenza di rappresentare numeri interi e la radice dell'area \(A\) può non essere un numero intero.
-Per ovviare al problema si è deciso di arrotondare il lato \(s\) all'intero superiore, così facendo, qualora si avesse
+di righe, del rettangolo in 16:9. Tuttavia c'è l'esigenza di rappresentare numeri interi poichè la radice dell'area \(A\) può non essere un numero intero e di conseguenza anche \(l\) e \(h\).
+Per ovviare al problema si è deciso di arrotondare \(l\) e \(h\) all'intero superiore, così facendo, qualora si avesse
 il lato \(s\) avente parte decimale, sarà sempre verificato:
 \begin{equation}
     (l+1)(h+1)>lh
@@ -948,6 +952,7 @@ Il file è una lista contenente tutti i valori relativi alla configurazione netw
     \item Una lista di liste che descrive la matrice del posizionamento degli switch.Nel caso di scelta di grafo completo questo campo è una lista vuota ([])
     \item Una lista di fasi temporali che descrivono specifici intervalli temporali nel formato "YY:MM:DD HH:MM:SS = descrizione fase"
 \end{itemize}
+Il generatore crea delle fasi descrittive ogni 10 secondi di simulazione e le memorizza come ultimo valore della lista della struttura network.
 Per il file packets abbiamo invece due possibili risultati in base alla scelta fatta nel file di setup \ref{codice:sim_setup_example}, ovvero json e yaml.
 Il generatore crea i pacchetti secondo l'assunzione in cui essi vengano registrati in ordine di invio, avremo quindi una struttura corrispondente
 a una lista di pacchetti ordinati per timestamp di invio.
@@ -1006,7 +1011,7 @@ In cui in entrambi i casi abbiamo i seguenti campi:
 \end{itemize}
 La scelta di usare un solo carattere per descrivere i vari campi può sembrare in contrasto con la volontà di rendere leggibile il tutto,
 ma c'è una valida motivazione dietro. Il risparmio di caratteri, in files che sono potenzialmente molto grandi, è un aspetto cruciale sia per quanto
-riguarda l'occupazione di memoria fisica, sia per motivi di efficienza. Consideriamo una rappresentazione di un pacchetto più descrittivo come in figura \ref{codice:long_description_packet}:
+riguarda l'occupazione di memoria, sia per motivi di efficienza. Consideriamo una rappresentazione di un pacchetto più descrittivo come in figura \ref{codice:long_description_packet}:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={rappresentazione di un pacchetto con descrizione completa}, label={codice:long_description_packet}]
@@ -1019,7 +1024,7 @@ riguarda l'occupazione di memoria fisica, sia per motivi di efficienza. Consider
 \end{lstlisting}
 }
 
-Avremmo così 37 bytes necessari per i nomi contro i 4 per la rappresentazione di un pacchetto descritta precedentemente, avendo uno scarto di
+Avremmo così 37 bytes necessari per i nomi dei campi contro i 4 per la rappresentazione di un pacchetto descritta precedentemente, avendo uno scarto di
 33 bytes per pacchetto. Questa quantità, moltiplicata la grande quantità di pacchetti da rappresentare, può pesare non poco.
 Indipendentemente dal numero di bytes necessari a rappresentare un pacchetto in forma minimale, possiamo fare una stima di quanto sarebbe più grande
 un file packets avendo descrizioni di nomi più lunghi; supponiamo di avere un grafo completo costituito da 5 switch collegati tra loro con switch
@@ -1069,9 +1074,9 @@ dei files e i tempi necessari a realizzarli non erano così diversi tra loro, qu
 il risultato del test sulle dimensioni dei files in figura \ref{fig:yaml_block_flow_dim}, dove troviamo sull'asse delle ascisse il numero di switch per test, mentre
 sull'asse delle ordinate abbiamo la variabile che esprime i megabytes, questo perchè essa è la variabile dipendente, ovvero i megabytes dipendono dal numero di switch
 che viene scelto. Il grafico relativo ai tempi di scrittura/lettura lo troviamo in 
-figura \ref{fig:yaml_block_flow_wr}, in questo caso abbiamo sull'asse delle ascisse sempre il numero di switch per test emntre sull'asse delle ordinate
+figura \ref{fig:yaml_block_flow_wr}, in questo caso abbiamo sull'asse delle ascisse sempre il numero di switch per test, mentre sull'asse delle ordinate
 il tempo (in secondi) necessario per le scritture e letture, poichè il tempo di computazione dipende dal numero di switch scelto. Possiamo notare dai grafici che il risparmio di bytes è di circa 4 MB per il test effettuato su 10 switch, mentre
-i tempi di esecuzione, si di scrittura che di lettura, sono praticamente sovrapponibili, infatti l'operazione di scrittura per block e flow style è identico, mentre lievemente
+i tempi di esecuzione, sia di scrittura che di lettura, sono praticamente sovrapponibili, infatti l'operazione di scrittura per block e flow style è identico, mentre lievemente
 più performante è il block style in lettura.
 
 \begin{figure}[h]
@@ -1092,7 +1097,7 @@ più performante è il block style in lettura.
 
 
 \chapter{Analizzatore di traffico}
-L'analizzatore di traffico è la seconda anima del progetto, è la parte che analizza il traffico calcolando le medie percentuali e producendo
+L'analizzatore di traffico è la seconda anima del progetto essendo la parte che analizza il traffico calcolando le medie percentuali e che produce
 un file, analyzed\_data.yaml, che conterrà sia le informazioni di rete come links, switches e parametri di rete, sia le registrazioni del traffico percentuale
 di ogni link. Per poter operare, l'analizzatore ha bisogno dei due files, network.yaml e packets.yaml, creati dal generatore o che siano
 creati e formattati dall'utente. Abbiamo descritto in dettaglio la composizione dei files nella sezione \ref{sec:files_prodotti}.
@@ -1102,7 +1107,7 @@ analyzed\_data.yaml con tale struttura.
 Poichè per motivi di efficienza si è scelto di strutturare i link come una lista nel file network.yaml e non come dizionario (in cui ogni link avrebbe avuto un identificativo come chiave), si è presentato il problema dell'identificazione dei link.
 I link in fin dei conti possono essere identificati dai propri endpoints (il grafo viene inteso in modo tale che ci sia un unico link tra due endpoints), ovvero una coppia di nodi,
 nel nostro caso, una coppia di switch. Tuttavia la sfida che si è presentata è rappresentata dal fatto che se è vero quindi che un link è identificato
-da un endpoint a e un endpoint b, è vero anche in questo caso l'ordinamento degli endpoints non deve essere rilevante. Abbiamo infatti pacchetti
+da due endpoints, a e b, è vero anche che in questo caso l'ordinamento degli endpoints non deve essere rilevante. Abbiamo infatti pacchetti
 che vengono inviati sia da a per poi arrivare a b, sia da b verso a. Questo è un problema poichè stiamo cercando di identificare un link ma abbiamo
 due coppie, \((a, b)\) e \((b, a)\) che sì sono ugualmente valide ma rappresentano anche due coppie distinte, il che contrasta con il concetto di identificatore. 
 L'ideale sarebbe usare il tipo set, ovvero il concetto di insieme 
@@ -1116,7 +1121,7 @@ la lista di link presente nel file network.yaml viene tramutata in un dizionario
 una serie di variabili atte a mantenere le somme dei pacchetti che man mano verrano scanditi.
 Segue la scansione dei pacchetti in cui, per ogni unità frazionaria di tempo dettata dal campo updateDelta presente in network.yaml, vengono sommati tutti i bytes di tutti i pacchetti
 e attribuiti ai link corrispettivi.
-Una volta finita la scansione, la struttura ausiliaria viene scandita per ricavare le medie percentuali delle vaire somme calcolate le passaggio precedente e viene
+Una volta finita la scansione, la struttura ausiliaria viene scandita per ricavare le medie percentuali delle varie somme calcolate dal passaggio precedente e viene
 creata la struttura che verrà memorizzata in analyzed\_data.yaml. La struttura memorizzata è raffigurata in figura \ref{codice:analyzed_data_structure}.
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
@@ -1170,7 +1175,7 @@ Nell esempio in figura \ref{codice:analyzed_data_structure} abbiamo che le medie
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={timestamps e medie percentuali calcolate dall'analizzatore}, label={codice:analyzed_data_structure}]
-{
+
     2024-03-22 12:30:01 - 59
     2024-03-22 12:30:01.100000 - 53,5
     2024-03-22 12:30:01.200000 - 48
@@ -1182,7 +1187,7 @@ Nell esempio in figura \ref{codice:analyzed_data_structure} abbiamo che le medie
     2024-03-22 12:30:01.800000 - 15
     2024-03-22 12:30:01.900000 - 9,5
     2024-03-22 12:30:02 - 4
-}
+
 \end{lstlisting}
 }
 I timestamps sono espressi nel formato YY:MM:DD HH:MM:SS.Microseconds, questo per via dell'impiego dell'oggetto timedelta \cite{pythonDatetimeTimedelta} che converte un millisecondo in 1000 microsecondi e con cui è possibile effettuare
