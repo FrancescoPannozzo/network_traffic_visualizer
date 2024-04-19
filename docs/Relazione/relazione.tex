@@ -711,6 +711,7 @@ Vien da sè che si ottiene così una certa libertà di espressione bidimensional
 la rappresentazione che più si addice alla rete che si vuole realizzare.
 
 \section{Esecuzione del generatore}
+\label{sec:esecuzione_del_generatore}
 Il generatore può essere pensato come suddiviso in sezioni logiche per quanto riguarda la stesura del codice nello script; la prima riguarda la fase
 di interazione con l'utente, il codice  strutturato in una serie di richieste per l'utente e controlli sul corretto inserimento dei dati, successivamente
 vi è la parte di caricamento del file contentente i parametri di rete \ref{codice:sim_setup_example}, segue la creazione dei links, la generazione del traffico
@@ -822,6 +823,7 @@ della parola \(switch\) seguita dall' ID, come ad esempio \(switch1\).
 Nel caso di modalità user tutte le informazioni inerenti agli switch saranno copiate nella struttura così come sono memorizzate nel file custom\_graph.yaml
 
 \section{Distribuzione dei nodi: aspect ratio}
+\label{sec:aspect_ratio}
 Come accennato precedentemente, la distribuzione dei nodi è pensata per essere disegnata in forma matriciale, questo segue una precisa scelta di design e riguarda
 l'aspect ratio adotatto per disegnare al meglio gli elementi su schermo tramite la libreria Manim, la quale produce video in 16:9, quindi è sorta l'esigenza
 di sfruttare al massimo questo formato visivo per poter inserire nel modo più coerente e ottimizzato possibile i vari elementi della rete.
@@ -1203,6 +1205,7 @@ delle informazioni relative ai switch e link. Seguirà una sezione sulle scelte 
 per l'accessibilità inclusa nel progetto che prevede un'opzione per daltonici e che consente quindi di cambiare i colori che rappresentano il traffico.
 
 \section{Strutturazione e organizzazione del visualizzatore}
+\label{sec:strutturazione_visualizzatore}
 Andremo ora a descrivere come è strutturato il codice a livello logico. La prima cosa che salta all'occhio aprendo il progetto potrebbe essere la riga di codice:
 
 {\scriptsize
@@ -1298,31 +1301,214 @@ il metodo \lstinline|play(animation*)| per animarle tutte conteporaneamente e ci
 
 Per quanto riguarda la seconda funzione principale, il pattern di creazione è analogo, tuttavia è interessante descrivere il posizionamento dei nodi.
 
-\section{Modalità grafiche}
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[language=Python, caption={creazione posizionamento nodi griglia}, label={codice:grid_nodes_example}]
+for row in range(rows):
+    for col in range(cols):
+        opacity = 1
+        # Switches with ID=0 are considered as empty spaces
+        if str(mesh[row][col]) == EMPTY_SPACE:
+            opacity = 0
+        dot = None
+        if network_data[CONST.NETWORK["SIM_PARAMS"]]["dotsSize"]=="adaptive":
+            dot = LabeledDot(str(mesh[row][col]), 
+                            point=np.array([col * spacing, row*-spacing, 0]))
+        elif network_data[CONST.NETWORK["SIM_PARAMS"]]["dotsSize"]=="fixed":
+            dot = LabeledDot(str(mesh[row][col]), 
+                            radius=0.6, 
+                            point=np.array([col*spacing, row*-spacing, 0]))
+        dot.set_opacity(opacity)
+        graph_mesh[mesh[row][col]] = dot
+        mesh_grid.add(dot)
+\end{lstlisting}
+}
+
+Il codice in figura \ref{codice:grid_nodes_example} mostra come vengono creati e disposti i nodi in una griglia. Vengono considerati tutti i valori rappresentanti i nodi (switch)
+presenti nel campo coordinates del file network.yaml, anche quelli aventi valori zero, i quali vengono comunque aggiunti ma settati con opacità pari a zero i quali non verranno renderizzati nel risultato finale,
+quindi non peseranno in termini computazionali, e fungono da riferimento per i valori adiacenti al pari dei valori diversi da zero.
+I nodi sono rappresentati da mobject \lstinline|LabeledDot()|, ovvero dei cerchi pieni con raffigurato al loro interno il valore dell'ID dello switch. Al momento di creazione, nel \lstinline|LabeledDot()|,
+viene passato anche un array rappresentante le coordinate [x, y, z] che il nodo dovrà avere. 
+Tutti i nodi vengono aggiunti singolarmente in un mobject \lstinline|VGroup()| (variabile mesh\_grid),
+ovvero un gruppo che può contenere oggetti vettorializzati.
+Per quanto riguarda invece la creazione dei links, la parte che rappresenta il mesh graph è creata tramite mobjects \lstinline|Line()|, i quali
+rappresentano rette che congiungono due punti, avremo così i link definiti come segue:
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[language=Python, caption={creazione link}, label={codice:link_creation_example}]
+    line = Line(dot_a.get_center(), 
+        dot_b.get_center(), 
+        color=START_COLOR, 
+        stroke_width=8)
+\end{lstlisting}
+}
+
+Il mobject prende le coordinate dei nodi da collegare come paramtri, oltre al colore di partenza e alla dimesione.
+Nel caso di grafo torus si aggiunge il controllo dei nodi posti all'estremità della griglia; qui vi è un controllo preciso circa la tipologia di posizionamento poichè se nell'analizzatore di traffico
+avevamo il problema del rappresentare in un unico modo due tuple con ordinamento diverso, 
+in questo caso l'ordinamento è molto importante per poter disegnare gli archi dei nodi alle estremità, questo perchè i link che le collegano devono essere disegnati manualmente creando più segementi concatenati.
+Il lettore si starà chiedendo se non esistesse un mobject come \lstinline|Line()| per rappresentare dei link arcati, e in effetti uno c'è ed è \lstinline|ArcbetweenPoints()|, il quale funzionamento è esattamente cme \lstinline|Line()|.
+Il problema che è sorto in fase di sviluppo è che, per ridimensionare i grafi quando diventano più grandi dell'area di visualizzazione, si è reso neccessario del metodo
+ \lstinline|auto_zoom()| della classe \lstinline|MovingCameraScene|, ovvero la scena utilizzata nel progetto che permette cambiamenti di visuale della camera.
+Il ridimensionamento generato automaticamente dal metodo va in conflitto con \lstinline|ArcsBetweenPoints()|, creando artifici grafici non desiderati, per cui si è reso necessario questo altrimenti utilissimo mobject.
+Si è quindi passati a una realizzazione manuale degli archi che segue la creazione di 3 segmenti concatenati per rappresentare i link del torus dei nodi posti alle estremità.
+Perticolare attenzione va data al metodo \lstinline|get_center()| del mobject \lstinline|LabeledDot()|, poichè il metodo ritorna le coordinate del nodo, ci servirà per descrivere come vengono creati i link manuali.
+L'idea di creazione deriva dal considere il centro dei nodi delle estremità come punti di origine di piani cartesiani \(x, y\) dai quali ricavare le coordinate dei 3 segmenti, i vari sistemi di coordinate sono;
+
+\begin{itemize}
+    \item \textbf{Links verticali:} 
+    \begin{itemize}
+        \item prima linea: si parte da un nodo posto all'estremità superiore della griglia ottenendo le coordinate con \lstinline|get_center()| e ne definiamo il punto \(pointA\), si prende il punto \(p1 = (-x, -y)\), rispetto alle coordinate di \(pointA\), e si crea la linea che parte da p1 a pointA
+        \item seconda linea: si prende il nodo posto all'estremità inferiore della griglia nella stessa colonna in cui è presente \(pointA\), e ricavandone le coordinate con il metodo abbiamo un punto che definiamo come \(pointB\), si prende il punto \(p2 = (-x, y)\), rispetto alle coordinate di \(pointB\), e si crea la linea che parte da p2 a pointB 
+        \item terza linea: si crea una linea che va dal punto p1 al punto p2.
+    \end{itemize}
+    \item \textbf{Links orizzontali:} 
+    \begin{itemize}
+        \item prima linea: si parte da un nodo posto all'estremità sinistra della griglia ottenendo le coordinate con \lstinline|get_center()| e ne definiamo il punto \(pointA\), si prende il punto \(p1 = (x, -y)\), rispetto alle coordinate di \(pointA\), e si crea la linea che parte da p1 a pointA
+        \item seconda linea: si prende il nodo posto all'estremità destra della griglia nella stessa riga in cui è presente \(pointA\), e ricavandone le coordinate con il metodo abbiamo un punto che definiamo come \(pointB\), si prende il punto \(p2 = (-x, -y)\), rispetto alle coordinate di \(pointB\), e si crea la linea che parte da p2 a pointB 
+        \item terza linea: si crea una linea che va dal punto p1 al punto p2.
+    \end{itemize}
+
+\end{itemize}
+
+Vien da sè che in questo caso è indispensabile l'ordinameto, poichè per ogni specifico nodo ci sono delle specidiche coordinate per la creazione dei link manuali.
+Se non si facesse questo tipo di controllo, potremmo avere una situazione come in figura \ref{fig:torus_archi_asimmetrici}, avremmo una situazione
+molto disorganica e asimmetrica.
+
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\textwidth]{immagini/custom_complete_autopositioning.JPG}
+    \includegraphics[width=0.4\textwidth]{immagini/archi_asimmetrici_torus.png}
+    \caption{visualizzazione di archi non ordinati alle estremità di un torus graph}
+    \label{fig:torus_archi_asimmetrici}
+\end{figure}
+
+Per questo motivo viene eseguito un controllo nel caso di analisi di un grafo torus, con l'algoritmo che scansiona la matrice e seleziona gli a archi che sono verticali, orizzontali
+e en assegna le giuste coordinate.
+Infinie la parte di animazione è pressoché uguale come logica.
+Per quanto riguarda le informazioni della rete che vengono mostrate a schermo si è implementato un effetto contatore sul tempo che scorre ed è presente
+un ridimensionamento dinamico dei font che si adatta al crescere del grafico, questo per poter rendere sempre leggibile il testo.
+Per visualizzare le informazioni relative agli switch e ai link è stata realizzata una classe apposita, la quale può venire renderizzata separatamente dai grafici.
+Il video che produce è una presentazione animata di switch e links, gli switch, correlati con le loro info, vengono mostrati cinque alla volta con un effetto di comparsa e scomparsa, con effetto slide, mostrando poi i successivi cinque switch e relative info.
+Una volta terminati gli switch si susseguiranno i link, animanti nello stesso modo e comaprendo otto alla volta, mostrando gli enpoints al quale sono collegati e le capacità. Mostreremo graficamente ciò nel capitolo dedicato alle modalità grafiche.
+\section{Modalità grafiche e design}
+In questo capitolo si vogliono mostrare tutte le configurazioni grafiche, i modi in cui l'algoritmo adatta gli elementi a schermo e le soluzioni trovate.
+Essendo un progetto che si basa fortemente su un aspetto front-end, questo capitolo sarà ficalizzato sul mostrare visivamente cosa può produrre il visualizzatore nelle varie configurazioni possibili.
+Partendo dal grafo completo, come descritto precedentemente, un grafo completo può essere disposto in modo automatico e imposto tramite coordinate dei nodi dall'utente. 
+Considerandone un esempio, sulla base dello stetto packets file, i due modi di visualizzare il grafo completo possono apparire come nella fig. \ref{fig:custom_complete_autopositioning} per l'auto-posizionamento e come in fig \ref{fig:custom_complete_manual_positioning} per il posizionamento manuale.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/custom_complete_autopositioning.JPG}
     \caption{visualizzazione per opzione grafo completo con disposizione automatica}
     \label{fig:custom_complete_autopositioning}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\textwidth]{immagini/custom_complete_manual_positioning.JPG}
+    \includegraphics[width=0.8\textwidth]{immagini/custom_complete_manual_positioning.JPG}
     \caption{visualizzazione per opzione grafo completo con coordinate personalizzate}
     \label{fig:custom_complete_manual_positioning}
 \end{figure}
 
 
-\section{Design: scelte implementative}
+La scelta di design dietro la visualizzazione del grafo completo in modo circolare è stata fatta per motivi di leggibilità, Manim propone diversi
+layout di configurazione, come possiamo vedere dall'immagine presa dalla documentazione ufficiale \cite{manimGraph} in fig. \ref{fig:graph_layouts_types}. Dagli esempi
+si nota subito che l'opzione circolare è quella meglio distribuita, il che è ragionevolmente utile quando si tratta di disegnare molti elementi a schermo. 
+I layouts possibili come scelta sono, in ordine di apparizione; spring, circular, kamada kawai, planar, random, shell, spectral e spiral.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/graph_layouts_types.png}
+    \caption{layouts possibili per Graph()}
+    \label{fig:graph_layouts_types}
+\end{figure}
+
+
+Un esempio di grafo completo con modalità auto, settato con 10 switch in modalità circular, lo troviamo in figura \ref{fig:custom_complete_autopositioning10}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/auto_complete_10.JPG}
+    \caption{visualizzazione grafo completo con disposizione automatica di 10 switch}
+    \label{fig:custom_complete_autopositioning10}
+\end{figure}
+
+Come abbiamo detto nella sezione \ref{sec:aspect_ratio}, la modalità auto gestisce l'aspect ratio sulla base del numero di switch scelti,vi sono quindi
+due risultati possibili di visualizzazione; il primo è che il numero di switch combacia con il calcolo dell'aspect ratio e fornisce una riempimento
+completo della matrice da visualizzare (già visto nel capitolo \ref{sec:esecuzione_del_generatore} in fig. \ref{fig:mesh_example}), 
+il secondo coincide con un riempimento parziale e in questo caso l'algoritmo lascerà semplicemente dello spazio vuoto (fig. \ref{fig:mesh_not_full}).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/mesh_not_full.JPG}
+    \caption{visualizzazione grafo mesh completo}
+    \label{fig:mesh_not_full}
+\end{figure}
+
+
+La figura \ref{fig:mesh_not_full} mostra inoltre il comportamento del grafo qualora si decidesse di settare il parametro \lstinline|fixedDots| al valore \lstinline|fixed|, 
+il quale rende la dimensione dei nodi uguale per tutti, la stessa tipologia di grafo con il parametro settato ad \lstinline|adaptive| adatterà la dimensione dei nodi
+in base all'ID con il quale vengono rappresentati, possiamo vedere un esempio in figura \ref{adaptive_dots_example}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/adaptive_dots_example.JPG}
+    \caption{visualizzazione grafo mesh con opzione dotsSize posta ad adaptive}
+    \label{adaptive_dots_example}
+\end{figure}
+
+La logica di riempimento vale anche per il torus graph (fig.), con l'unica differenza che nel caso di mancato riempimento vengono collegati solo i nodi
+che risultano essere posti alle estremità (fig. ). Questa soluzione ibrida segue la convenzione per cui generalmente il torus graph è inteso come completo,
+ovvero che riempie tutte le posizioni della matrice imamginaria sul quale ci sono i nodi.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/torus_full_24.JPG}
+    \caption{grafo torus completo}
+    \label{torus_full_24}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/torus_not_full_adaptive.JPG}
+    \caption{grafo torus non completo}
+    \label{torus_not_full_adaptive}
+\end{figure}
+
+Osservando gli esempi del torus graph si può notare come i link dei nodi delle estremità sia meno spesso degli altri che formano la griglia.
+Questa è scelta di design volta a rendere maggiormente leggibile il grafo; in questo modo si percepisce subito la tipologia di link a un primo sguardo e il
+posizionamento dei punti che definiscono i link sono stati studiati appositamente per fare in modo che non si sovrapponessero, mantenendo l'immagine pulita e organizzata.
+Per quanto riguarda la scelta di design dietro il testo visualizzato a schermo, è stato scelto di suddividere le informazioni e distribuirne in due gruppi, uno posto nel margine superiore e l'altro in quello inferiore;
+il motivo è per dare enfasi al grafico, che rimane centrale nell'economia dell'esperienza, in questo modo il focus principale rimane sul protagonista della scena, mentre i parametri descrittivi della rete
+sono presenti in modo tale da non essere invasivi.
+Infine abbiamo la modalità "graph", la modalità in cui l'utente può scegliere dove posizionare i nodi come già visto in fig \ref{fig:tree_custom}
+Il visualizzatore possiede anche una modalità per generare un video in cui si mostrano le informazioni degli switch 
+e nei nodi come spiegato nella sezione precedente \ref{sec:strutturazione_visualizzatore}. Per dare un'idea di come viene mostrato, riportiamo due frammenti di video in cui vengono mostrate
+le varie tipologie di dati (fig. \ref{switch_info} e fig. \ref{links_info})
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/switch_info.JPG}
+    \caption{un frammento di video sulle info degli switch}
+    \label{switch_info}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/links_info.JPG}
+    \caption{un frammento di video sulle info dei links}
+    \label{links_info}
+\end{figure}
+
+
+
 
 \section{Accessibilità: modalità daltonismo}
 
 \chapter{Prestazioni e complessità computazionale}
-\section{Complessità generatore di traffico}
-\section{Complessità analizzatore di traffico}
-\section{Complessità visualizzatore grafico}
+%\section{Complessità generatore di traffico}
+%\section{Complessità analizzatore di traffico}
+%\section{Complessità visualizzatore grafico}
 
 
 Per quanto riguarda la creazione automatica dei links e dei nodi

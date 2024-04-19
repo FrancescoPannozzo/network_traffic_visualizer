@@ -69,6 +69,34 @@
       \verb https://pyyaml.org/wiki/PyYAMLDocumentation
       \endverb
     \endentry
+    \entry{manimGraph}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=f97cd20f5d7c36f5d16d4c5368bcff8a}{%
+           family={Community},
+           familyi={C\bibinitperiod},
+           given={Manim},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{f97cd20f5d7c36f5d16d4c5368bcff8a}
+      \strng{fullhash}{f97cd20f5d7c36f5d16d4c5368bcff8a}
+      \strng{bibnamehash}{f97cd20f5d7c36f5d16d4c5368bcff8a}
+      \strng{authorbibnamehash}{f97cd20f5d7c36f5d16d4c5368bcff8a}
+      \strng{authornamehash}{f97cd20f5d7c36f5d16d4c5368bcff8a}
+      \strng{authorfullhash}{f97cd20f5d7c36f5d16d4c5368bcff8a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-04-12}
+      \field{title}{{Graph Class Documentation}}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://docs.manim.community/en/stable/reference/manim.mobject.graph.Graph.html
+      \endverb
+      \verb{url}
+      \verb https://docs.manim.community/en/stable/reference/manim.mobject.graph.Graph.html
+      \endverb
+    \endentry
     \entry{Cytoscape2024}{misc}{}
       \name{author}{1}{}{%
         {{hash=11380d448cdf814a494e1dac43ddd525}{%
