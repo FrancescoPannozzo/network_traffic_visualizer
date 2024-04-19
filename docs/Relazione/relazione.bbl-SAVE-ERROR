@@ -122,21 +122,21 @@
     \endentry
     \entry{ColorBlindPalette2024}{misc}{}
       \name{author}{1}{}{%
-        {{hash=ceb0a825aff9841e121ab4494962f87c}{%
-           family={{David Nichols}},
+        {{hash=488df5765188093b21d78edb3fbf0a86}{%
+           family={{David Math Logic}},
            familyi={D\bibinitperiod}}}%
       }
-      \strng{namehash}{ceb0a825aff9841e121ab4494962f87c}
-      \strng{fullhash}{ceb0a825aff9841e121ab4494962f87c}
-      \strng{bibnamehash}{ceb0a825aff9841e121ab4494962f87c}
-      \strng{authorbibnamehash}{ceb0a825aff9841e121ab4494962f87c}
-      \strng{authornamehash}{ceb0a825aff9841e121ab4494962f87c}
-      \strng{authorfullhash}{ceb0a825aff9841e121ab4494962f87c}
+      \strng{namehash}{488df5765188093b21d78edb3fbf0a86}
+      \strng{fullhash}{488df5765188093b21d78edb3fbf0a86}
+      \strng{bibnamehash}{488df5765188093b21d78edb3fbf0a86}
+      \strng{authorbibnamehash}{488df5765188093b21d78edb3fbf0a86}
+      \strng{authornamehash}{488df5765188093b21d78edb3fbf0a86}
+      \strng{authorfullhash}{488df5765188093b21d78edb3fbf0a86}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://davidmathlogic.com/colorblind}}
+      \field{howpublished}{\url{https://davidmathlogic.com/colorblind/#%2305FF00-%23FFFFFF-%23FF05FF}}
       \field{note}{Accessed: 2024-04-12}
       \field{title}{Color Blindness Palette Generator}
       \field{year}{2024}

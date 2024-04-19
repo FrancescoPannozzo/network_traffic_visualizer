@@ -1393,21 +1393,25 @@ Una volta terminati gli switch si susseguiranno i link, animanti nello stesso mo
 \section{Modalità grafiche e design}
 In questo capitolo si vogliono mostrare tutte le configurazioni grafiche, i modi in cui l'algoritmo adatta gli elementi a schermo e le soluzioni trovate.
 Essendo un progetto che si basa fortemente su un aspetto front-end, questo capitolo sarà ficalizzato sul mostrare visivamente cosa può produrre il visualizzatore nelle varie configurazioni possibili.
-Partendo dal grafo completo, come descritto precedentemente, un grafo completo può essere disposto in modo automatico e imposto tramite coordinate dei nodi dall'utente. 
+Partiamo con la scelta di design dei colori che rappresentano le intensità di traffico; la scelta è ricaduta su colori ai quali generalmente associamo significati abitudinari e comuni,
+come il verde per indicare traffico zero o basso, per poi arrivare al giallo per indicare un traffico di intensità media, fino ad arrivare al rosso
+per indicare il traffico molto intenso o massimo. Le varie gradazioni sono calcolate a partire da valori rgb e distribuiti su una scala che va da 1 (verde) a 100 (rosso), modificando opportunamente le graduazioni intermedie a cavallo tra le diverse colorazioni.
+Parlando invece del grafo completo, come descritto precedentemente, un grafo completo può essere disposto in modo automatico e imposto tramite coordinate dei nodi dall'utente. 
 Considerandone un esempio, sulla base dello stetto packets file, i due modi di visualizzare il grafo completo possono apparire come nella fig. \ref{fig:custom_complete_autopositioning} per l'auto-posizionamento e come in fig \ref{fig:custom_complete_manual_positioning} per il posizionamento manuale.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{immagini/custom_complete_autopositioning.JPG}
-    \caption{visualizzazione per opzione grafo completo con disposizione automatica}
-    \label{fig:custom_complete_autopositioning}
-\end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{immagini/custom_complete_manual_positioning.JPG}
-    \caption{visualizzazione per opzione grafo completo con coordinate personalizzate}
-    \label{fig:custom_complete_manual_positioning}
+    \begin{minipage}{0.46\textwidth}
+      \includegraphics[width=\linewidth]{immagini/custom_complete_autopositioning.JPG}
+      \caption{visualizzazione per opzione grafo completo con disposizione automatica}
+      \label{fig:custom_complete_autopositioning}
+    \end{minipage}\hfill
+    \begin{minipage}{0.47\textwidth}
+      \includegraphics[width=\linewidth]{immagini/custom_complete_manual_positioning.JPG}
+      \caption{visualizzazione per opzione grafo completo con coordinate personalizzate}
+      \label{fig:custom_complete_manual_positioning}
+    \end{minipage}
 \end{figure}
 
 
@@ -1437,45 +1441,46 @@ Come abbiamo detto nella sezione \ref{sec:aspect_ratio}, la modalità auto gesti
 due risultati possibili di visualizzazione; il primo è che il numero di switch combacia con il calcolo dell'aspect ratio e fornisce una riempimento
 completo della matrice da visualizzare (già visto nel capitolo \ref{sec:esecuzione_del_generatore} in fig. \ref{fig:mesh_example}), 
 il secondo coincide con un riempimento parziale e in questo caso l'algoritmo lascerà semplicemente dello spazio vuoto (fig. \ref{fig:mesh_not_full}).
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{immagini/mesh_not_full.JPG}
-    \caption{visualizzazione grafo mesh completo}
-    \label{fig:mesh_not_full}
-\end{figure}
-
-
 La figura \ref{fig:mesh_not_full} mostra inoltre il comportamento del grafo qualora si decidesse di settare il parametro \lstinline|fixedDots| al valore \lstinline|fixed|, 
 il quale rende la dimensione dei nodi uguale per tutti, la stessa tipologia di grafo con il parametro settato ad \lstinline|adaptive| adatterà la dimensione dei nodi
-in base all'ID con il quale vengono rappresentati, possiamo vedere un esempio in figura \ref{adaptive_dots_example}
+in base all'ID con il quale vengono rappresentati, possiamo vedere un esempio in figura \ref{fig:adaptive_dots_example}
+
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{immagini/adaptive_dots_example.JPG}
-    \caption{visualizzazione grafo mesh con opzione dotsSize posta ad adaptive}
-    \label{adaptive_dots_example}
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/mesh_not_full.JPG}
+      \caption{visualizzazione grafo mesh completo}
+      \label{fig:mesh_not_full}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/adaptive_dots_example.JPG}
+      \caption{visualizzazione grafo mesh con opzione dotsSize posta ad adaptive}
+      \label{fig:adaptive_dots_example}
+    \end{minipage}
 \end{figure}
 
 La logica di riempimento vale anche per il torus graph (fig.), con l'unica differenza che nel caso di mancato riempimento vengono collegati solo i nodi
 che risultano essere posti alle estremità (fig. ). Questa soluzione ibrida segue la convenzione per cui generalmente il torus graph è inteso come completo,
 ovvero che riempie tutte le posizioni della matrice imamginaria sul quale ci sono i nodi.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{immagini/torus_full_24.JPG}
-    \caption{grafo torus completo}
-    \label{torus_full_24}
-\end{figure}
+
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{immagini/torus_not_full_adaptive.JPG}
-    \caption{grafo torus non completo}
-    \label{torus_not_full_adaptive}
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/torus_full_24.JPG}
+      \caption{grafo torus completo}
+      \label{fig:torus_full_24}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/torus_not_full_adaptive.JPG}
+      \caption{grafo torus non completo}
+      \label{fig:torus_not_full_adaptive}
+    \end{minipage}
 \end{figure}
 
-Osservando gli esempi del torus graph si può notare come i link dei nodi delle estremità sia meno spesso degli altri che formano la griglia.
+Osservando gli esempi del torus graph, si può notare come i link dei nodi delle estremità siano meno spesso degli altri che formano la griglia.
 Questa è scelta di design volta a rendere maggiormente leggibile il grafo; in questo modo si percepisce subito la tipologia di link a un primo sguardo e il
 posizionamento dei punti che definiscono i link sono stati studiati appositamente per fare in modo che non si sovrapponessero, mantenendo l'immagine pulita e organizzata.
 Per quanto riguarda la scelta di design dietro il testo visualizzato a schermo, è stato scelto di suddividere le informazioni e distribuirne in due gruppi, uno posto nel margine superiore e l'altro in quello inferiore;
@@ -1484,26 +1489,69 @@ sono presenti in modo tale da non essere invasivi.
 Infine abbiamo la modalità "graph", la modalità in cui l'utente può scegliere dove posizionare i nodi come già visto in fig \ref{fig:tree_custom}
 Il visualizzatore possiede anche una modalità per generare un video in cui si mostrano le informazioni degli switch 
 e nei nodi come spiegato nella sezione precedente \ref{sec:strutturazione_visualizzatore}. Per dare un'idea di come viene mostrato, riportiamo due frammenti di video in cui vengono mostrate
-le varie tipologie di dati (fig. \ref{switch_info} e fig. \ref{links_info})
+le varie tipologie di dati (fig. \ref{fig:switch_info} e fig. \ref{fig:links_info}).
+\newline
+\newline
 
-\begin{figure}[h]
+
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{immagini/switch_info.JPG}
-    \caption{un frammento di video sulle info degli switch}
-    \label{switch_info}
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/switch_info.JPG}
+      \caption{switch info}
+      \label{fig:switch_info}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/links_info.JPG}
+      \caption{link info}
+      \label{fig:links_info}
+    \end{minipage}
 \end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{immagini/links_info.JPG}
-    \caption{un frammento di video sulle info dei links}
-    \label{links_info}
-\end{figure}
-
-
-
 
 \section{Accessibilità: modalità daltonismo}
+In un'applicazione in cui i colori sono parte integrante dell'esperienza, è più che opportuno approcciarsi alla progettazione tenendo
+in considerazione delle possibili implementazioni che possano affrontare la questione del daltonismo. 
+Il daltonismo è una condizione in cui l'occhio umano presenta cecità ereditaria verso uno o più colori. Le forme più comuni sono:
+\begin{itemize}
+    \item \textbf{protanopia:} sensibilità deficitaria per il colore rosso.
+    \item \textbf{deuteranopia:} sendibilità deficitaria per il colore verde.
+    \item \textbf{tritanopia:} sensibilità deficitaria per i colori giallo e blu.
+\end{itemize}
+Come detto nel capitolo precedente, utilizziamo
+i colori verde, giallo e rosso per esprimere rispettivamente basso, medio e alto traffico; andando a vedere le varie tipologie più comuni di daltonismo, 
+notiamo da subito che i colori scelti non sono adatti a tutti i tipi di daltonismo. Si è pensato quindi di introdurre l'opzione
+\lstinline|colorBlind| che se posta su "yes" cambia i colori in verde per un basso traffico, bianco per traffico medio e fucsia per alto traffico.
+Il colore bianco e nero sono visti in egual modo da tutti, questo è anche il motivo per cui lo sfondo del visualizzatore è proprio nero, quindi si è
+deciso di utilizzare il bianco come uno dei colori adatti, mentre per gli altri colori si è fatto ricorso al tool "Coloring for Colorblindness" \cite{ColorBlindPalette2024} 
+del Professor Nichols, docente dell' Universita del Connecticut, il quale permette di visualizzare una palette cromatica nel modo in cui i vari tipi
+di daltonismo si manifestano. Mostriamo le due palette cromatiche, quella di default \ref{fig:palette_cromatica} e quella scelta per l'opzione daltonismo \ref{fig:colorblind_palette}.
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/palette_cromatica.JPG}
+      \caption{palette cromatica di default}
+      \label{fig:palette_cromatica}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/colorblind_palette.JPG}
+      \caption{palette cromatica daltonismo}
+      \label{fig:colorblind_palette}
+    \end{minipage}
+\end{figure}
+
+Come possiamo notare dalle palette cromatiche, quella di default costituirebbe un crosso problema visivo per chi è affetto da protanopia e da deuteranopia, avendo
+una selezione di colori davvero molto simili tra loro non si potrebbe distinguere efficacemente il livello di traffico. La soluzione proposta
+risiede nella palette cromatica per daltonismo, in cui i colori scelti si riescono a differenziare per ogni tipologia di condizione visiva, potendo così
+attribuire al colore verde un livello di traffico nullo o basso, bianco per traffico medio e fucsia per traffico alto o massimo. Un esempio
+del risultato finale lo possiamo vedere in figura \ref{fig:colorblind_torus}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/colorblind_torus.JPG}
+    \caption{torus graph, opzione colorblind}
+    \label{fig:colorblind_torus}
+\end{figure}
 
 \chapter{Prestazioni e complessità computazionale}
 %\section{Complessità generatore di traffico}
