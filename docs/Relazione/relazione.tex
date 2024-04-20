@@ -1549,16 +1549,18 @@ del risultato finale lo possiamo vedere in figura \ref{fig:colorblind_torus}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/colorblind_torus.JPG}
-    \caption{torus graph, opzione colorblind}
+    \caption{opzione colorblind per torus graph}
     \label{fig:colorblind_torus}
 \end{figure}
 
 \chapter{Prestazioni e complessità computazionale}
-%\section{Complessità generatore di traffico}
-%\section{Complessità analizzatore di traffico}
-%\section{Complessità visualizzatore grafico}
 
+Andremo ora ad analizzare le complessità computazionali dei vari componenti del progetto, mostrando anche le prestazioni ottenute in fase di test.
 
+\section{Generatore di traffico}
+Analizzando il codice inerente al generatore, un approccio allo studio della complessità potrebbe essere quello di individuare quelle che si ritengono essere
+i punti computazionalmente critici, al fine di individuare l'andamento degli algoritmi nelle varie situazioni. Essendo lo script dedicato alla creazione della struttura di rete e del traffico,
+è stato ritenuto opportuno cominciare l'analisi dalla creazione della struttura inerente ai link.
 Per quanto riguarda la creazione automatica dei links e dei nodi
 per la tipologia di grafo completo, la funzione dedicata al compito è riportata in figura \ref{codice:create_auto_complete_links}
 
@@ -1615,7 +1617,194 @@ Tuttavia possiamo osservare dal calcolo:
 \end{align*}
     
 IL che è esattamente l'equazione \(\frac{n(n-1)}{2}\) che determina il numero di links in un grafo completo. Con questo vogliamo dire che 
-l'algoritmo performa esattamente il numero di iterazioni necessarie a creare i link ottimizzando al massimo le risorse computazionali.
+l'algoritmo performa esattamente il numero di iterazioni necessarie a creare i link, ottimizzando al massimo le risorse computazionali.
+Vi sono poi le varie funzioni dedicate alla creazione delle strutture mesh, torus e graph (la modalità libera), le quali sono tutte basate sul concetto di
+disporre i nodi su una matrice (griglia).
+Analizziamo la funzione dedicata alla creazione automatica di un grafo mesh.
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={funzione per la creazione automatica di un grafo mesh}, label={codice:create_auto_mesh_links}]
+    def create_auto_mesh_links(link_cap, switch_number):
+    """ Auto detect links """
+    data_links = {}
+    link_id = 1
+
+    side = math.sqrt(switch_number)
+    # 16/9 aspect ratio
+    rows = math.ceil(side * (3/4))
+    cols = int(side * (4/3))
+
+    if (rows * cols) < switch_number:
+        cols += 1
+
+    switches = [[0 for _ in range(cols)] for _ in range(rows)]
+    switch_cont = 1
+    for r in range(0, rows):
+        for c in range(0, cols):
+            if(switch_cont > switch_number):
+                break
+            switches[r][c] = switch_cont
+            switch_cont += 1
+
+            if c > 0:
+                data_links[link_id] = link_format(switches[r][c-1], 
+                                                  switches[r][c], 
+                                                  link_cap)
+                link_id += 1
+            if r > 0:
+                data_links[link_id] = link_format(switches[r-1][c], 
+                                                  switches[r][c], 
+                                                  link_cap)
+                link_id += 1
+        if(switch_cont > switch_number):
+            break
+    return data_links, switches
+\end{lstlisting}
+} % Fine del gruppo che modifica la dimensione del testo
+
+Come possiamo vedere nel codice \ref{codice:create_auto_mesh_links}, la condizione che domina la complessità è rappresentata dai due cicli \texttt{for} annidati mentre il resto delle
+operazioni viene effettuato in tempo costante. I cicli \texttt{for} vendono effettuati sui valori rows e cols, i quali sono derivati dalla radice quadrata nel numero di switch. 
+Nel caso di questa applicazione, in cui è permesso un massimo di 1000 switch, la complessità risulta essere in tempo costante, 
+poichè nel caso peggiore il valore 1000 è considerabile come costante \(c\), 
+avremmo un numero di iterazioni pari a  \( \sqrt{c} \times \sqrt{c} = c \).
+Tuttavia lo sarebbe anche se il numero di switch fosse \(n\) 
+(con \(n\) molto grande). Consideriamo i due cicli \texttt{for} annidati, ognuno dei quali itera fino alla radice quadrata di \( n \):
+\begin{verbatim}
+for i in range(sqrt(n)):
+    for j in range(sqrt(n)):
+        # operazioni
+\end{verbatim}
+Poiché ogni ciclo itera \( \sqrt{n} \) volte, il numero totale di iterazioni è \( \sqrt{n} \times \sqrt{n} = n \). Pertanto, la complessità computazionale è \( O(n) \).
+Analizziamo la funzione dedicata alla creazione automatica di un grafo torus.
+
+{\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={funzione per la creazione automatica di un grafo torus}, label={codice:create_auto_torus_links}, breaklines=true]
+    def create_auto_toro_links(link_cap, switch_number):
+    """ Torus graph links auto generator """
+    links, switches = create_auto_mesh_links(link_cap, switch_number)
+    rows = len(switches)
+    cols = len(switches[0])
+    links_id = len(links) + 1
+    linkList = []
+
+    for _, content in links.items():
+        linkList.append(content["endpoints"])
+    
+    for i in range(cols):
+        if switches[0][i] != 0 and switches[rows-1][i] != 0 and [switches[0][i],switches[rows-1][i]] not in linkList:
+            links[links_id] = link_format(switches[0][i], switches[rows-1][i], link_cap)
+            links_id += 1
+
+    for i in range(rows):
+        if switches[i][0] != 0 and switches[i][cols-1] != 0 and [switches[i][0], switches[i][cols-1]] not in linkList:
+            links[links_id] = link_format(switches[i][0], switches[i][cols-1], link_cap)
+            links_id += 1
+
+    return links, switches
+\end{lstlisting}
+} % Fine del gruppo che modifica la dimensione del testo
+
+La funzione \ref{codice:create_auto_torus_links}, si serve del codice di creazione mesh graph automatica\ref{codice:create_auto_mesh_links} per 
+creare i link interni alla struttura e successivamente itera prima sulle colonne per individuare i link che collegano i nodi dell' estremità superiore della matrice con quelli dell'estremità inferiore e,
+successivamente, itera sulle righe per fare la stessa cosa con i nodi posti alle estremità laterali.
+Calcolando la complessità abbiamo, il costo computazionale della funzione di creazione automatica dei link di un mesh graph \(O(c)\), il quale
+viene sommato al costo del primo ciclo \(O(\sqrt{c})\) e al costo del secondo ciclo \(O(\sqrt{c})\) mentre tutte le altre operazioni hanno tempo costante.
+
+\[
+    O(c) + O(\sqrt{c}) + O(\sqrt{c}) = O(c + \sqrt{c} + \sqrt{c}) = O(c + 2\sqrt{c}) = O(c)
+\]
+
+Tuttavia nel caso ipotetico si abbia un numero elevato di switch, la complessità risulterebbe lineare poichè il calcolo rimarrebbe invariato, con la soltanto
+eccezione di avere \(n\) al posto della costante \(c\).
+Passando alle funzioni user per la creazione dei link troviamo che le funzioni dedicate per il mesh e torus graph sono logicamente molto simili a quelle auto, con
+la differenza che in quelle user ci sono dei controlli legati all'inserimento dei valori numerici dei nodi e degli zeri per gli spazi vuoti, sono quindi tutte operazioni che hanno un tempo costante,
+quindi queste funzioni hanno la stessa complessità delle controparti auto analizzate precedentemente.
+Diverso il discorso per la funzione per tipo di grafo personalizzato, qui la logica è molto più semplice
+poichè essendo già tutto descritto nel custom file, si tratta soltanto di ricopiare la struttura dei links così come rappresentata nel file,
+quindi in un caso peggiore in cui ci sia un numero elevato \(n\) di links la complessità sarà lineare.
+
+Successivamente alla creazione dei link, la struttura critica è la creazione dei pacchetti in quanto il loro numero può essere davvero grande.
+
+{\scriptsize
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={logica creazione pacchetti}, label={codice:create_packets}, breaklines=true]
+for fractional_unit in range(0, SIM_TIME * creationRate):
+    # Changing trafficPercentage every second
+    if fractional_unit % creationRate == 0:
+        for link, content in links.items():
+            content["trafficPerc"] = config_gen_utils.change_traffic_perc(content["trafficPerc"], setup["trafficVariation"])
+    ENDP_A = 0
+    ENDP_B = 1
+    for link, content in links.items():
+        trafficPerc = content["trafficPerc"]
+        # Packets Per Second
+        PPS = ((content["capacity"] * 1e6) / 8) / PACKET_SIZE
+        timeWalker_toStore = None
+        if setup["packetsFile"] == "json":
+            timeWalker_toStore = str(timeWalker) # json non parsa i datetime!
+        else:
+            timeWalker_toStore = timeWalker
+        for i in range(0, int((PPS*(trafficPerc/100))/creationRate) ):
+            packet = config_gen_utils.create_packet(content["endpoints"][ENDP_A],
+                                         content["endpoints"][ENDP_B],
+                                         timeWalker_toStore,
+                                         PACKET_SIZE)
+            packets.append(packet)
+        remaining_packets, _ = math.modf((PPS*(trafficPerc/100))/creationRate)
+        if remaining_packets != 0:
+            remaining_packet_size = int(round(remaining_packets, 3) * PACKET_SIZE)
+            packet = config_gen_utils.create_packet(content["endpoints"][ENDP_A],
+                                         content["endpoints"][ENDP_B],
+                                         timeWalker_toStore,
+                                         remaining_packet_size)
+            packets.append(packet)
+    timeWalker += timedelta(milliseconds=PC_DELTA)
+\end{lstlisting}
+}
+
+Nel codice \ref{codice:create_packets}, il ciclo esterno che dipende da \lstinline|SIM_TIME * creationRate|, sim time è il tempo totale della simulazione di generazione pacchetti, 
+il quale dipende da quanto si vuol fare durare la generazione. La variabile \lstinline|creationRate| rappresenta in quante parti è suddiviso un secondo, questo è dato
+dalla scelta del parametro creationDelta del file di setup e che indica la frequenza temporale di creazione dei pacchetti, quindi il ciclo dipende dalla quantità di frazioni temporali in cui si generano i pacchetti.
+Questi paramentri non sono grandi ai fini del progetto, supponendo di avere un sim time di 3600 secondi (un'ora) e un creationRate di 10 dato da: 
+
+\begin{align*}
+    \text{creationDelta} &=  100 \text{ millisecondi} \\
+    \text{creationRate} &= \frac{1 \text{ sec}}{\text{creationDelta}} = 10
+\end{align*}
+
+Ne ricaviamo un valore pari a 36000, il quale può essere considerato una costante. Il secondo ciclo che troviamo è all'interno del primo costrutto \lstinline|if|, il quale scandisce tutti i link per cambiarne le percentuali di traffico da creare; il caso peggiore qui è il caso di grafo completo avente un numero di link
+riportato nell'equazione \ref{eq:link_number}, quindi con complessita quadratica, tuttavia è bene precisare che il progetto vuole rappresentare maggiormente la rete in un data center, la quale nella realtà non è mai costruita come un grafo completo poichè i costi sarebbero proibitivi, piuttosto è comune avere delle 
+rappresentazioni come il grafo mesh o torus, per questo motivo d'ora in poi consideremo numerazioni di links e nodi legati soltanto a questi due tipi di grafi. Analizzando i grafi mesh e torus troviamo che la quantità di link che possiamo considerare è costante, infatti
+se consideriamo \(n\) il numero di switch, troviamo che il numero \(l\) di link di un grafo torus è dall'equazione:
+\begin{equation}
+    l = \frac{4n}{2} = 2n
+    \label{eq:torus_link_number}
+\end{equation}
+
+Poichè ogni nodo ha 4 nodi adiacenti che vengono contati due volte. Essendo il grafo torus più ricco di links rispetto al grafo mesh, definisce il caso peggiore tra i due risultando così \(O(\frac{4c}{2}) = O(c)\), essendo il numero di switch massimo pari a 1000 quindi costante.
+Una precisazione sulla funzione \lstinline|change_traffic_perc()|, la quale opera in tempo costante poichè ha solo il compito di cambiare il valore di percentuale di traffico.
+Il secondo ciclo che troviamo ha all'interno un altro ciclo, il primo itera sempre sui links, il secondo itera per il numero di pacchetti da creare, dato un certa percentuale di traffico, in una data frazione temporale.
+Troviamo quindi che la variabile PPS (che indica il numero di pacchetti al secondo massimi che un link può trasportare), può essere molto grande, è quindi il nostro \(n\).
+Possiamo quindi affermare che il parametro dominante per la complessità sia:
+\begin{align}
+    O(\frac{\text{PPS}\frac{\text{trafficPerc}}{100}}{\text{creationRate}}) = O(\frac{cn}{c}) = O(n)
+    \label{packets_per_fractional_time}
+\end{align}
+
+La funzione \lstinline|create_packet()| opera in tempo costante poichè semplicemente formatta in modo corretto il pacchetto da salvare, così come operano in tempo costante tutte le restanti operazioni.
+Facendo quindi una somma di tutte le complessità riguardanti i punti critici troviamo che:
+
+\begin{align}
+    O(\frac{\text{PPS}\frac{\text{trafficPerc}}{100}}{\text{creationRate}}) = O(\frac{cn}{c}) = O(n)
+    \label{packets_per_fractional_time}
+\end{align}
+
+
+
+\section{Analizzatore di traffico}
+\section{Visualizzatore grafico}
+
+
+
 
 \chapter{Conclusioni}
 \chapter{Test}

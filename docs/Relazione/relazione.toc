@@ -24,5 +24,8 @@
 \contentsline {section}{\numberline {5.2}Modalità grafiche e design}{38}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Accessibilità: modalità daltonismo}{41}{section.5.3}%
 \contentsline {chapter}{\numberline {6}Prestazioni e complessità computazionale}{43}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusioni}{45}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Test}{47}{chapter.8}%
+\contentsline {section}{\numberline {6.1}Generatore di traffico}{43}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Analizzatore di traffico}{48}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Visualizzatore grafico}{48}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Conclusioni}{49}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Test}{51}{chapter.8}%
