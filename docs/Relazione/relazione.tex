@@ -1785,17 +1785,47 @@ Una precisazione sulla funzione \lstinline|change_traffic_perc()|, la quale oper
 Il secondo ciclo che troviamo ha all'interno un altro ciclo, il primo itera sempre sui links, il secondo itera per il numero di pacchetti da creare, dato un certa percentuale di traffico, in una data frazione temporale.
 Troviamo quindi che la variabile PPS (che indica il numero di pacchetti al secondo massimi che un link può trasportare), può essere molto grande, è quindi il nostro \(n\).
 Possiamo quindi affermare che il parametro dominante per la complessità sia:
+
 \begin{align}
-    O(\frac{\text{PPS}\frac{\text{trafficPerc}}{100}}{\text{creationRate}}) = O(\frac{cn}{c}) = O(n)
+    O(\frac{\text{PPS}(\frac{\text{trafficPerc}}{100})}{\text{creationRate}}) = O(\frac{cn}{c}) = O(n)
     \label{packets_per_fractional_time}
 \end{align}
 
 La funzione \lstinline|create_packet()| opera in tempo costante poichè semplicemente formatta in modo corretto il pacchetto da salvare, così come operano in tempo costante tutte le restanti operazioni.
-Facendo quindi una somma di tutte le complessità riguardanti i punti critici troviamo che:
+Facendo quindi una somma di tutte le complessità riguardanti i punti critici \ref{codice:create_packets_complexity} troviamo che la complessità di questo pezzo logico di codice è \(O(n)\) \ref{eq:complexity_traffic_generator}, quindi lineare.
+
+{\scriptsize
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={complessità della logica di creazione pacchetti}, label={codice:create_packets_complexity}, breaklines=true]
+O(c)    for fractional_unit in range(0, SIM_TIME * creationRate):
+O(1)        if fractional_unit % creationRate == 0:
+O(c)            for link, content in links.items():
+O(1)                content["trafficPerc"] = config_gen_utils.change_traffic_perc(content["trafficPerc"], setup["trafficVariation"])
+O(1)        # operazioni
+O(c)        for link, content in links.items():
+O(1)            # operazioni
+O(n)            for i in range(0, int((PPS*(trafficPerc/100))/creationRate)):
+O(1)                # operazioni
+O(1)         # operazioni
+O(1)    # operazioni
+\end{lstlisting}
+}
+
+Tirando le somme, la complessità globale per il generatore può dirsi essere lineare, come lo mostrano anche i test effettuati in figura \ref{fig:prestazioni_config_gen}.
+I test hanno come parametri un tempo di generazione pari a due secondi, link con capacità di 1 Gbps in un grafo di tipo torus.
+Si può vedere che all'aumentare del numero di nodi (switch) il tempo necessario a generare i pacchetti cresce in modo lineare.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{immagini/prestazioni_config_gen.png}
+    \caption{Prestazioni per il generatore di traffico}
+    \label{fig:prestazioni_config_gen}
+\end{figure}
+
+
 
 \begin{align}
-    O(\frac{\text{PPS}\frac{\text{trafficPerc}}{100}}{\text{creationRate}}) = O(\frac{cn}{c}) = O(n)
-    \label{packets_per_fractional_time}
+    O(c(c+cn)) = O(c^2 + c^2n) = O(n)
+    \label{eq:complexity_traffic_generator}
 \end{align}
 
 

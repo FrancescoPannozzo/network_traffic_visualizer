@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  20 APR 2024 15:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  20 APR 2024 17:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -694,9 +694,6 @@ LaTeX Warning: Label `codice:long_description_packet' multiply defined.
 
 LaTeX Warning: Label `codice:analyzed_data_structure' multiply defined.
 
-
-LaTeX Warning: Label `packets_per_fractional_time' multiply defined.
-
 )
 \openout1 = `relazione.aux'.
 
@@ -1110,26 +1107,36 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Capitolo 6.
 [43
 
-] [44{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [45] [46] [47] [48]
-Capitolo 7.
-[49
+] [44{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [45] [46] [47]
+<immagini/prestazioni_config_gen.png, id=1160, 434.058pt x 253.383pt>
+File: immagini/prestazioni_config_gen.png Graphic file (type png)
+<use immagini/prestazioni_config_gen.png>
+Package pdftex.def Info: immagini/prestazioni_config_gen.png  used on input line 1819.
+(pdftex.def)             Requested size: 396.0pt x 231.17816pt.
 
-] [50
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[48] [49 <./immagini/prestazioni_config_gen.png>] [50
+
+]
+Capitolo 7.
+[51] [52
 
 ]
 Capitolo 8.
-[51] [52
+[53] [54
 
 ]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
- [53]
-Overfull \hbox (30.28568pt too wide) in paragraph at lines 1820--1820
+ [55]
+Overfull \hbox (30.28568pt too wide) in paragraph at lines 1850--1850
 []\T1/lmr/m/n/10.95 (-20) UCINET. \T1/lmr/m/it/10.95 (-20) UCI-NET Soft-ware\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / sites . google . com / site / ucinetsoftware/$[]\T1/lmr/m/n/10.95 (-20) .
  []
 
-[54] (relazione.aux)
+[56] (relazione.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -1145,17 +1152,17 @@ Package logreq Info: Writing requests to 'relazione.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26574 strings out of 474423
- 459447 string characters out of 5742662
+ 26601 strings out of 474423
+ 460059 string characters out of 5742662
  2179496 words of memory out of 5000000
- 47607 multiletter control sequences out of 15000+600000
+ 47619 multiletter control sequences out of 15000+600000
  659751 words of font info for 215 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,131p,1126b,2209s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on relazione.pdf (62 pages, 1907343 bytes).
+Output written on relazione.pdf (64 pages, 1967317 bytes).
 PDF statistics:
- 1482 PDF objects out of 1728 (max. 8388607)
- 742 named destinations out of 1000 (max. 500000)
- 61783 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 1512 PDF objects out of 1728 (max. 8388607)
+ 757 named destinations out of 1000 (max. 500000)
+ 61788 words of extra memory for PDF output out of 61914 (max. 10000000)
 
