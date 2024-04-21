@@ -67,7 +67,7 @@ Il capitolo 4 tratterà l'analizzatore di traffico, nello specifico dell'impleme
 Il capitolo 5 sarà sul visualizzatore grafico, in cui verrà fornita una manoramica sulle logiche dietro la creazione degli elementi grafici e delle animazioni, le modalità
 grafiche che è possibile ottenere, la descrizione delle scelte di design legate all'aspetto grafico e una sezione dedicata all'accessibilità, con cui si tratterà
 l'implementazione di soluzioni che trattano il tema del daltonismo. Il capitolo 6 darà un quadro generale sulla complessità computazionle delle sezioni di codice più sensibili, analizzando gli andamenti asintotici di tutte le principali parti.
-Infine avremo il capitolo 7, in cui tireremo le conclusioni del progetto.
+Infine avremo il capitolo 7, in cui tireremo le conclusioni del progetto, discutendo dei risulati finali e possibili impieghi futuri dell'applicazione.
 
 \end{abstract}
 \tableofcontents
@@ -94,7 +94,7 @@ Capire cosa sta succedendo in una rete in modo immediato e visivo è lo scopo di
 in modo grafico, l'andamento del traffico di una rete.
 \section{Ambito del tirocinio}
 Il progetto fa parte del percorso di tirocinio interno intrapreso presso l'Università La Sapienza di Roma. L'argomento su cui verte il progetto
-è la realizzazione di un visualizzatore grafico dell'andamento del traffico di una rete, basato
+è la realizzazione di un visualizzatore grafico dell'andamento del traffico di una rete di data center, basato
 su animazioni programmatiche. Il tool permette di visualizzare gli switch rappresentanti 
 i vari endpoints e i link
 che li collegano i quali vengono colorati tramite animazioni nel tempo in base al traffico di 
@@ -874,13 +874,25 @@ creati. Descriveremo ora il criterio di creazione del traffico; l'idea è quella
  tempo per la durata della generazione, definita nel campo
  simTime e per ciascuna calcola un quantitativo di pacchetti, proporzionale alla 
 percentuale di traffico, per ogni link presente nella rete. Ogni secondo trascorso viene cambiata la percentuale di traffico di ogni link secondo
-la scelta fatta nel campo trafficVariation.
+la scelta fatta nel campo trafficVariation. Nei grafici nelle figure \ref{fig:generatore_traffico_random}, \ref{fig:generatore_traffico_fissato} possiamo vedere due esempi di andamento di variazione di traffico percentuale.
 Il tempo, data e ora, che definisce quando è cominciata la trasmissione lo ritroviamo nel timestamp startSimTime.
 Poichè per ogni frazione il calcolo dei pacchetti può non essere preciso, ovvero può capitare che ci sia un numero con una parte decimale, l'algoritmo
 provvede a recupere questa rimanenza, tramutarla in pacchetto e aggiungerla. Questo fa si di avere un'elevata approssimazione, tendente al 100\% per
 quanto riguarda l'essere più fedeli possibili alle percentuali di traffico da generare.
 
-
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/generatore_traffico_random.png}
+      \caption{esempio, varaizione di traffico percentuale casuale per 10 secondi}
+      \label{fig:generatore_traffico_random}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/generatore_traffico_fissato.png}
+      \caption{esempio, varaizione di traffico percentuale fissato per 10 secondi}
+      \label{fig:generatore_traffico_fissato}
+    \end{minipage}
+\end{figure}
 
 \section{Files prodotti}
 \label{sec:files_prodotti}
@@ -1450,7 +1462,7 @@ in base all'ID con il quale vengono rappresentati, possiamo vedere un esempio in
     \centering
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/mesh_not_full.JPG}
-      \caption{visualizzazione grafo mesh completo}
+      \caption{visualizzazione grafo mesh completo, opzione dotsSize posta a fixed}
       \label{fig:mesh_not_full}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
@@ -1548,7 +1560,7 @@ del risultato finale lo possiamo vedere in figura \ref{fig:colorblind_torus}.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{immagini/colorblind_torus.JPG}
+    \includegraphics[width=1\textwidth]{immagini/colorblind_torus.JPG}
     \caption{opzione colorblind per torus graph}
     \label{fig:colorblind_torus}
 \end{figure}
@@ -1764,15 +1776,15 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
 Nel codice \ref{codice:create_packets}, il ciclo esterno che dipende da \lstinline|SIM_TIME * creationRate|, sim time è il tempo totale della simulazione di generazione pacchetti, 
 il quale dipende da quanto si vuol fare durare la generazione. La variabile \lstinline|creationRate| rappresenta in quante parti è suddiviso un secondo, questo è dato
 dalla scelta del parametro creationDelta del file di setup e che indica la frequenza temporale di creazione dei pacchetti, quindi il ciclo dipende dalla quantità di frazioni temporali in cui si generano i pacchetti.
-Questi paramentri non sono grandi ai fini del progetto, supponendo di avere un sim time di 3600 secondi (un'ora) e un creationRate di 10 dato da: 
+Questi paramentri non sono grandi ai fini del progetto, supponendo di avere un sim time di 3600 secondi (un'ora), creationDelta posto a 100 millisecondi e un creationRate di 10 dato da: 
 
-\begin{align*}
-    \text{creationDelta} &=  100 \text{ millisecondi} \\
-    \text{creationRate} &= \frac{1 \text{ sec}}{\text{creationDelta}} = 10
-\end{align*}
+\begin{equation}
+    \text{creationRate} = \frac{1 \text{ sec}}{\text{creationDelta}} = 10 
+    \label{eq:creation_rate_example}
+\end{equation}
 
 Ne ricaviamo un valore pari a 36000, il quale può essere considerato una costante. Il secondo ciclo che troviamo è all'interno del primo costrutto \lstinline|if|, il quale scandisce tutti i link per cambiarne le percentuali di traffico da creare; il caso peggiore qui è il caso di grafo completo avente un numero di link
-riportato nell'equazione \ref{eq:link_number}, quindi con complessita quadratica, tuttavia è bene precisare che il progetto vuole rappresentare maggiormente la rete in un data center, la quale nella realtà non è mai costruita come un grafo completo poichè i costi sarebbero proibitivi, piuttosto è comune avere delle 
+riportato nell'equazione \ref{eq:link_number}, quindi con complessita quadratica, tuttavia è bene precisare che il progetto vuole rappresentare maggiormente la rete in un data center, la quale nella realtà non è mai costruita come un grafo completo poichè i costi sarebbero proibitivi e la complessità aumenta notevolmente, piuttosto è comune avere delle 
 rappresentazioni come il grafo mesh o torus, per questo motivo d'ora in poi consideremo numerazioni di links e nodi legati soltanto a questi due tipi di grafi. Analizzando i grafi mesh e torus troviamo che la quantità di link che possiamo considerare è costante, infatti
 se consideriamo \(n\) il numero di switch, troviamo che il numero \(l\) di link di un grafo torus è dall'equazione:
 \begin{equation}
@@ -1788,7 +1800,7 @@ Possiamo quindi affermare che il parametro dominante per la complessità sia:
 
 \begin{align}
     O(\frac{\text{PPS}(\frac{\text{trafficPerc}}{100})}{\text{creationRate}}) = O(\frac{cn}{c}) = O(n)
-    \label{packets_per_fractional_time}
+    \label{eq:packets_per_fractional_time}
 \end{align}
 
 La funzione \lstinline|create_packet()| opera in tempo costante poichè semplicemente formatta in modo corretto il pacchetto da salvare, così come operano in tempo costante tutte le restanti operazioni.
@@ -1831,19 +1843,229 @@ Si può vedere che all'aumentare del numero di nodi (switch) il tempo necessario
 
 
 \section{Analizzatore di traffico}
+Il cuore dell'analizzatore è la parte logica di codice incaricata di scandire tutti i pacchetti, estrarne le somme dei valori di payload e relative vedie percentuali.
+L'analizzatore in primis carica i due files network.yaml e packets.json/yaml, in questo caso creiamo sempre una struttura ausiliaria necessaria a memorizzare man mano le somme pei payload; ciò 
+consiste semplicemente in un ciclo for che scandisce la lista di link presente nel network file e quindi abbiamo tempo costante O(c), ricordando che stiamo
+analizzando come caso peggiore un numero di link presenti un un torus graph, come mostrato precedentemente in fig. \ref{eq:torus_link_number}.
+Analizziamo ora il codice \ref{codice:analyze_packets} in cui avviene l'analisi vera e propria.
+
+{\scriptsize
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={logica analisi pacchetti}, label={codice:analyze_packets}, breaklines=true]
+    # Every loop is an analyzed fractional unit
+    while timeWalker <= startTime + (simTime - updateDelta):
+        # For each updateDelta reset values
+        for link, content in links.items():
+            # Reset traffic
+            content["trafficUDT"] = 0
+        # Identify the link belonging to the analyzed packet
+        if packet is not None:
+            link = links[frozenset({packet["A"], packet["B"]})]
+            # Analyzing every packet in the analyzed range
+            print("analyzing time: ", packet["t"])
+            packetTimestamp = None
+            if networkData[SIM_PARAMETERS]["packetsFile"] == "json":
+                packetTimestamp = utils.str_to_datetime(packet["t"])
+            else:
+                packetTimestamp = packet["t"]
+            while packetTimestamp >= timeWalker and packetTimestamp < timeWalker + updateDelta:
+                link["trafficUDT"] += packet["d"]
+                link["trafficDT"] += packet["d"]
+                packet = next(packetsDataIterator, None)
+                if packet is not None:
+                    if networkData[SIM_PARAMETERS]["packetsFile"] == "json":
+                        packetTimestamp = utils.str_to_datetime(packet["t"])
+                    else:
+                        packetTimestamp = packet["t"]
+                    link = links[frozenset({packet["A"], packet["B"]})]
+                else:
+                    break
+        # Pushing forward the analyzing time
+        timeWalker += updateDelta
+        # Storing the fractional time units values
+        for link, content in links.items():
+            content["updateDeltaTraffic"].append(
+                {"updateTime": timeWalker, "traffic": content["trafficUDT"]}
+            )
+    
+        # Storing the averageDelta units value
+        # If the averageDelta average is not the first one
+        if timeWalker > startTime + averageDelta:
+            for link, content in links.items():
+                # Calcolate the element index to subtract from `updateDeltaTraffic`
+                index = (len(content["updateDeltaTraffic"]) - 1) - lastFirstUDindex
+                # Traffic value to subtract from the averageTraffic
+                traffic_to_subtract = content["updateDeltaTraffic"][index]["traffic"]
+                content["trafficDT"] -= traffic_to_subtract
+                content["traffic"].append({"updateTime": timeWalker, "traffic": content["trafficDT"]})
+        # Else if the averageDelta average is the first one:
+        # in this case we don't need to subtract an updateDeltaTraffic
+        elif timeWalker == startTime + averageDelta:
+            for link, content in links.items():
+                content["traffic"].append({"updateTime": timeWalker, "traffic": content["trafficDT"]})
+\end{lstlisting}
+}
+
+Il primo ciclo while scandisce semplicemente le unità frazionarie temporali scandite da updateTime, come visto precedentemente con l'esempio in fig. \ref{eq:creation_rate_example}, ciò comporta un numero di iterazioni \(O(c)\).
+Segue un ciclo for che itera sui link, anche qui abbiamo una complessità di \(O(c)\). Dopo divere operazioni con tempo O(1), la parte che merita attenzione è il ciclo while nidificato.
+Questo ciclo itera su tutti i pacchetti che hanno un timestamp che ricade nell'unità frazionaria di tempo da analizzare, sono quindi tutti i pacchetti in un dato updateDelta per un dato traffico percentuale; abbiamo già incontrato questo
+parametro e ne abbiamo calcolato il peso in termini computazionali nell' equazione \ref{eq:packets_per_fractional_time}, ottenendo \(O(n)\). Dopo diverse
+operazioni, tutte con complessità O(1), i cicli che troviamo sono tre, interessano iterazioni sui link, ciascuno con complessità \(O(c)\), e non sono annidati poichè si susseguono.
+Possiamo quindi definire la complessità compelssiva di questa parte logica che risulta essere lineare. \ref{eq:complexity_analyzer}.
+
+
+\begin{align}
+    O(c(c+n+c+c)) = O(c^2 + cn + c^2 + c^2) = O(c + n) = O(n)
+    \label{eq:complexity_analyzer}
+\end{align}
+
+Un'evenutale conferma arriva dai test dove possiamo vedere l'andamento lineare nel grafico \ref{fig:prestazioni_analizzatore}. Possiamo
+notare che all'aumentare del numero di switch nella rete, il tempo cresce in modo lineare.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/prestazioni_analyzer.png}
+    \caption{prestazioni dell'analizzatore}
+    \label{fig:prestazioni_analizzatore}
+\end{figure}
+
+
+
 \section{Visualizzatore grafico}
+Analizzando il visualizzatore troviamo che il cuore da analizzare ricade sulla parte di codice che crea le animazioni. Nel creare le strutture necessarie, caricandole dai files,
+troviamo le stesse complessità computazionali ricavate per i precedenti moduli sofware, mentre per la creazione della base di partenza grafica abbiamo
+la funzione \lstinline|Graph()| per disegnare i grafi completi mentre abbiamo il codice visto in fig. \ref{codice:grid_nodes_example} per i grafi mesh, torus e personalizzato.
+Per quanto riguarda \lstinline|Graph()| rimane valida l'analisi di complessità quadratica per via nel calcolo del numero di link in un grafo completo, mentre per la creazione delle altre tipologie di grafo
+osserviamo dalla fig. \ref{codice:grid_nodes_example} che la complessità è costante, essendo riproposti due cicli annidati che iterano sulla radice quadrata
+del numero di nodi. 
+Analizziamo quindi la logica che risulta maggiormente critica, la creazione delle animazioni che,
+per motivi di lunghezza del codice sarà descritto come pseudocodice:
+
+{\scriptsize
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={logica creazione animazioni}, label={codice:create_animation}, breaklines=true]
+while time_walker <= end_time:
+    animations = []
+    # definig all the traffic color links at timeWalker time
+    for content in traffic_data[CONST.ANALYZED_DATA["TRAFFICS"]]:
+        color_perc = int(content["traffic"][traffic_count])
+        animations.append(animation for the link in content)
+    # playing animations
+    if(time_walker == phase_time):
+        self.play(every traffic animation and the changing phases text animation)
+    else:
+        self.play(every traffic animation)
+    traffic_count += 1
+    # pushing forward sim time to check
+    time_walker += timedelta(milliseconds=show_delta)
+\end{lstlisting}
+}
+
+Il primo ciclo while itera su ciscuna unità frazionaria, il quale numero sappiamo essere costante, quindi \(O(c)\), vengono scanditi i link nel for interno andando a prendere il valore del traffico percentuale per l'unità frazionaria analizzata, abbiamo quindi \(O(c)\).
+Si disegnano le animazioni e il resto sono operazioni con complessità \(O(1)\). La libreria non dichiara la complessità che può interessare il metodo \lstinline|play()|, tuttavia
+i parametri di ingresso rappresentano principalmente una lista di animazioni e diversi mobject di tipo \lstinline|Text()|. 
+La complessità in questo caso possiamo ricavarla dai test, i quali mostrano che l'algoritmo opera, nella sua interezza, in tempo lineare.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/720p_rendering_performance.png}
+    \caption{prestazioni per video con risoluzione di 720p a 30 fps}
+    \label{fig:720p_rendering_performance}
+\end{figure}
+
+Il grafico in fig. \ref{fig:720p_rendering_performance} si basa su una simulazione di 5 secondi con tipologia grafo mesh; possiamo notare che al
+crescere del numero degli switch il tempo per il rendering del video cresce in modo lineare. Possiamo concludere che il codice in fig. \ref{codice:create_animation}, opera con 
+complessità \(O(n)\). Ipotizzando quindi un caso d'uso realistico in cui non viene previsto un grafo completo nell'impiego di una rete di data center
+possiamo concludere che la complessità generale del visualizzatore sia il peso della creazione delle strutture, caricamento dal files e creazione base grafica, sommato 
+al peso dato dalla parte di animazione ottenendo complessità lineare come riportato nell'equazione \ref{eq:complexity_visualizer}.
+
+\begin{align}
+    O(c + n) = O(n)
+    \label{eq:complexity_visualizer}
+\end{align}
 
 
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/480_720_1080_rend_perf.png}
+    \caption{comparazione prestazioni per risoluzioni di 480, 720p e 1080 a 30 fps}
+    \label{fig:480_720_1080_rend_perf}
+\end{figure}
+
+Volendo osservare i test da un'altra prospettiva, possiamo intendere il tempo di rendering come la variabile dipendente rispetto al numero di switch; in questo
+esempio mostriamo una comparazione con le risoluzioni 480p, 720p e 1080p renderizzati a 30 fps(frames per second),
+ sempre per 5 secondi di simulazione con grafo mesh, come mostrato in fig. \ref{fig:480_720_1080_rend_perf}. Possiamo osservare dal grafico che l'andamento è lineare per tutti i tipi di rendering analizzati.
 
 \chapter{Conclusioni}
-\chapter{Test}
-La complessità temporale dell'algoritmo è $O(m+n)$.
-\begin{equation}
-    O(m+n)
-\end{equation}
+Facendo un riepilogo dei punti cardine dello sviluppo del progetto, si è potuto giungere a diverse conclusioni. Dal punto di vista delle prestazioni implicate
+dai formati scelti json e yaml, si è dimostrato che json è incredibilmente più performante rispetto a yaml per quanto riguarda files di grandi dimensioni, possiamo vederne un risultato nel test raffigurato in fig. \ref{fig:json_yaml_wr_comparison}.
 
-.. .. ..
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/json_yaml_wr_comparison.png}
+    \caption{comparazione prestazioni json e yaml, scrittura e lettura}
+    \label{fig:json_yaml_wr_comparison}
+\end{figure}
+
+Il test è basato sulla configurazione avente tempo di generazione 5 secondi e tipologia di grafo mesh con links aventi capacità 1 Gbps.
+In questo caso, così come anche i futuri test che verrano riportati, si considera il tempo come la variabile dipendente dal numero di switch impiegati.
+Possiamo osservare dal test che json è decisamente più veloce di yaml sia in scrittura che in lettura, tanto da avere tempi praticamente sovrapposti, mentre per yaml,
+seppur con un andamento lineare, ha un coefficiente angolare che fa pesare molto di più l'andamento della curva. Quindi possiamo concludere che json è decisamente la scelta più opportuna 
+per i fini del progetto. Risulta comunque interessante notare l'andamento di json nella lettura e scrittura per un numero di switch superiore a 7; avendo la stessa configurazione di test precedente otteniamo i grafici in fig. \ref{fig:json_wr_nature} e \ref{fig:json_writing_reading}.
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/json_wr_nature.png}
+      \caption{json, lettura e scrittura da 2 a 10 switch}
+      \label{fig:json_wr_nature}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{immagini/json_writing_reading.png}
+      \caption{json, lettura e scrittura da 2 a 10 switch}
+      \label{fig:json_writing_reading}
+    \end{minipage}
+\end{figure}
+
+Osservando i grafici notiamo come il carattere degli andamenti di scrittura e lettura di json prenda forma a partire da una configurazione con 7 switch,
+delineando un andamento lineare in entrambi i casi, con un'ottima performance per la lettura. Per quanto riguarda il peso dei files prodotti abbiamo visto yaml produce
+files decisamente più piccoli di json, possiamo farci un'idea dai dati registrati in fase di test in fig. \ref{fig:json_yaml_files_dim}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{immagini/json_yaml_files_dim.png}
+    \caption{comparazione dimensioni files json e yaml}
+    \label{fig:json_yaml_files_dim}
+\end{figure}
+
+Possiamo concludere che la dimensione dei file json è in media 2.7 volte maggiore rispetto ai corrispondenti file yaml, 
+indicando un rapporto di dimensione di circa 2.7 tra i due formati. Ciò è chiaramente un pro nei confronti di yaml, tuttavia la velocità che riesce a garantire json è talmente 
+superiore da far propendere per un compromesso in termini di dimensione dei files, rendendo quindi json una scelta preferenziale.
+Per quanto riguarda generatore, analizzatore e visualizzatore grafico, possiamo concludere che tutti i moduli del progetto operano in tempo lineare, fatta eccezione della tipologia di grafo completo che intrinsicamente porta dietro di se una natura di complessità quadratica,
+rappresentando così un'ottimo risultato in termini prestazionali.
+Un'altra conclusione, non banale, riguarda l'essere riusciti a realizzare un prodotto di analisi di rete da una libreria che nasce come scopi relativi a video esplicativi matematici, come possono essere grafi cartesiani animati, spazi vettoriali animati e così via;
+si è riusciti quindi a sfruttare la libreria per scopi non strettamente inerenti ai suoi scopi di esistenza, questo processo di adattabilità ha portato a un percorso formativo decisamente creativo, sperimentando nuove soluzioni con in mezzi forniti.
+Questo processo fa si che ci siano ampi margini di manovra per applicazioni future, sia legati al concetto di cosa si propone di fare questo progetto sia in termini di integrazioni future di caratteristiche; il concetto che sta alla base del progetto può essere allargato al di fuori di un data center e trovare
+altri terreni in cui potersi adattare, sfruttandone le caratteristiche di base si potrebbe adattare l'applicazione ad esempio per il traffico di reti stradali in cui 
+i nodi sono rappresentati da punti d'interesse, raggiungibili tramite strade (i link) e con i pacchetti che rappresentano i veicoli, analizzandone il traffico, oppure per reti di gioco multiplayer massivo (MMO), in cui la topologia mesh può essere utilizzata per gestire la comunicazione tra server distribuiti geograficamente, reti di sensori 
+in cui la topologia mesh permette ai dispositivi di comunicare anche in condizioni ambientali difficili o in scenari dove i nodi sono distribuiti in modo irregolare, gli ambiti sono potenzialmente tanti.
+Un'altra caratteristica di Manim che può essere sfruttata in futuro è la possibilità di renderizzare video in 3D, infatti la libreria supporta anche mobject e spazio vettoriale 3D e potrebbe essere interessante rappresentare ad esempio una rete satellitare che faccia uso di topologie torus e mesh, potendo 
+rappresentare la tridimensionalità di un'orbita terrestre, oppure reti di droni, in cui la topologia mesh permette ai nodi di comunicare direttamente l'uno con l'altro senza necessità di un'infrastruttura centrale e potendo sfruttare lo spazio 3D per rappresentare i droni.
+
+\section{Riflessioni personali e ringraziamenti}
+Per concludere questo percorso di tirocinio e la realizzazione di questa relazione, ritengo più che opportuno rivolgere una riflessione personale.
+Questo percorso è stato per il sottoscritto una grande opportunità sotto diversi punti di vista; ha rappresentato grande fonte di arricchimento 
+professionale e personale, mi ha fornito competenze complementari
+agli insegnamenti ricevuti durante il mio percorso di studi soprattutto in ambito front-end, 
+ho approfondito la mia comprensione i tutti i campi incontrati, acquisito nuove competenze tecniche e consolidate altre con cui sono entrato in contatto precedentemente.
+Personalmente trovo di non poter concludere meglio di così il mio percorso accademico, 
+avendo avuto l'opportunità di dedicare gli sforzi, in questa prova finale, verso qualcosa su cui nutrivo forte interesse, ovvero la programmazione di elementi grafici e loro animazioni in modo programmatico.
+Ed è in termini di opportunità ricevuta che desidero esprimere la mia sincera gratitudine al mio Relatore, 
+per essersi prodigato tento per trovare l'ambito di interesse che mi sarebbe piaciuto affrontare, per la sua guida e per il
+supporto inestimabile e prezioso, fondamentale per il mio sviluppo professionale durante questo periodo.
+Desidero ringraziare la mia compagna di vita, Chiara, senza
+
+
 
 
 \printbibliography
