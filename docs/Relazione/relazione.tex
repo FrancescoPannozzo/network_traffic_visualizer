@@ -266,8 +266,7 @@ Tuttavia se si dovesse rendere questa struttura più complessa, avremmo problemi
 di un campo che a sua volta necessita di informazione strutturata, come ad esempio 
 inserire le informazione dell'header:
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={pacchetto di rete maggiormente strutturate in json}]
-    [
+\begin{lstlisting}[caption={pacchetto di rete maggiormente strutturato in json}]
         {
           "A": 1,
           "B": 2,
@@ -292,7 +291,6 @@ inserire le informazione dell'header:
             "destination_address": "192.168.1.2"
           }
         }
-      ]
 \end{lstlisting}
 }
 In questa struttura abbiamo ben due oggetti nidificati, ip header e flags. 
@@ -582,7 +580,6 @@ in questo caso basterà specificare solo linkCap che sarà uguale per tutti i li
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={esempio di custom graph file con link di eguale capacità}]
-    ---
 data:
   graphType: mesh
   coordinates:
@@ -884,12 +881,12 @@ quanto riguarda l'essere più fedeli possibili alle percentuali di traffico da g
     \centering
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/generatore_traffico_random.png}
-      \caption{esempio, varaizione di traffico percentuale casuale per 10 secondi}
+      \caption{esempio di variazione di traffico percentuale casuale per 10 secondi}
       \label{fig:generatore_traffico_random}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/generatore_traffico_fissato.png}
-      \caption{esempio, varaizione di traffico percentuale fissato per 10 secondi}
+      \caption{esempio di variazione di traffico percentuale fissato per 10 secondi}
       \label{fig:generatore_traffico_fissato}
     \end{minipage}
 \end{figure}
@@ -1045,11 +1042,11 @@ un file packets avendo descrizioni di nomi più lunghi; supponiamo di avere un g
 aventi capienza 1 Gbps (gigabit), il numero dei link, per l'equazione in fig. \ref{eq:link_number}, risulta essere pari a 10. Supponiamo che tutta la rete
 stia trasmettendo al 50\% della sua capacità trasmissiva per tutta la durata dell'attività di rete. Considerando una dimensione \(d\) di payload pari 
 a 1518 Bytes uguale per tutti i pacchetti trasmessi,
-definiamo come \(pps\) i pacchetti al secondo, da cui, per un link in un dato secondo avremo:
+definiamo come \(pps\) i pacchetti al secondo, \(c\) il 50\% di capacità di un link, in un dato secondo avremo:
 \begin{align*}
     \text{1 Gbps} &= 10^9 \text{ bit}\\
     \text{1 GBps} &= \frac{10^9}{8} = 125,000,000 \text{ bytes} && \text{(1 byte = 8 bit)} \\
-    \text{50\% capacity} &= \frac{125,000,000}{2} = 65,500,000 \text{ bytes}\\
+    \text{c} &= \frac{125,000,000}{2} = 65,500,000 \text{ bytes}\\
     \text{d} &= 1518 \text{ bytes} \\
     \text{pps} &= \frac{65,500,000 \text{ bytes}}{d}\approx 41172.59\\
     \text{bytes di differenza} &= 41172.59 \times 33 \approx 1.35 \text{ MBytes}
