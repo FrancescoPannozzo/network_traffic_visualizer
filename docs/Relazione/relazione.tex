@@ -1237,7 +1237,7 @@ prima si costruiscono le strutture da visualizzare, inclusi i parametri di rete 
 dal file analyzed\_data in cui per ogni intervallo di tempo updateTime viene presa la parcentuale corrispondente di ciascun link, 
 si prendono i colori associati alle varie percentuali e si crea un'animazione di durata 1 secondo di transizione verso il colore scelto e si ripete 
 fino a quando non si arriva a fine simTime.
-Per dare una maggiore idea sul come vengono create le forme e le animazioni in Manim faremo una breve introduzione alla libreria.
+Per dare una maggiore idea sul come vengono create le forme e le animazioni in Manim, faremo una breve introduzione alla libreria.
 In Manim ogni oggetto viene definito Mobject, ovvero un "Mathematical Object", e deriva dalla classe di base Mobject, cioè un oggetto che può essere visualizzato a schermo,
 per esempio una forma rettangolo, una linea o un cerchio, vengono definiti tutti mobject.
 La classe Scene è la tela sul quale si disegnano i mobjects, una volta istanziati essi vanno aggiunti alla Scene per poter essere visualizzati,
@@ -1305,7 +1305,7 @@ animations.append(grafo.edges[(A, B)].animate.set_color(traffic_color))
 In questo pseudocodice abbiamo una lista di animazioni \lstinline|animations|, in cui aggiungiamo un'animazione \lstinline|animate| che interessa l'oggetto arco 
 restituito da \lstinline|grafo.edges[(A, B)]| e individuato dalla coppia di endpoints (A, B). Dopodichè definiamo quale proprietà deve essere animata,
  in questo caso l'impostazione di un nuovo colore tramite \lstinline|set_color()| il quale è il colore corrispondente al timestamp correntemente analizzato.
-Questa operazione viene effettuata per tutti i link per l'intervallo di tempo updateDelta, quando tutte le animazioni sono settate si usa
+Questa operazione viene effettuata per tutti i link per l'intervallo di tempo updateDelta; quando tutte le animazioni sono settate si usa
 il metodo \lstinline|play(animation*)| per animarle tutte conteporaneamente e ciò si ripete per la durata di tempo registrato.
 
 Per quanto riguarda la seconda funzione principale, il pattern di creazione è analogo, tuttavia è interessante descrivere il posizionamento dei nodi.
@@ -1332,9 +1332,11 @@ for row in range(rows):
 \end{lstlisting}
 }
 
-Il codice in figura \ref{codice:grid_nodes_example} mostra come vengono creati e disposti i nodi in una griglia. Vengono considerati tutti i valori rappresentanti i nodi (switch)
-presenti nel campo coordinates del file network.yaml, anche quelli aventi valori zero, i quali vengono comunque aggiunti ma settati con opacità pari a zero i quali non verranno renderizzati nel risultato finale,
-quindi non peseranno in termini computazionali, e fungono da riferimento per i valori adiacenti al pari dei valori diversi da zero.
+Il codice in figura \ref{codice:grid_nodes_example} mostra come vengono creati e disposti i nodi in una griglia. 
+Vengono considerati tutti i valori rappresentanti i nodi (switch)
+presenti nel campo coordinates del file network.yaml, anche quelli aventi valori zero,
+ i quali vengono comunque aggiunti ma settati con opacità pari a zero non venendo renderizzati nel risultato finale,
+quindi non peseranno in termini computazionali e fungono da riferimento per i valori adiacenti al pari dei valori diversi da zero.
 I nodi sono rappresentati da mobject \lstinline|LabeledDot()|, ovvero dei cerchi pieni con raffigurato al loro interno il valore dell'ID dello switch. Al momento di creazione, nel \lstinline|LabeledDot()|,
 viene passato anche un array rappresentante le coordinate [x, y, z] che il nodo dovrà avere. 
 Tutti i nodi vengono aggiunti singolarmente in un mobject \lstinline|VGroup()| (variabile mesh\_grid),
@@ -1355,18 +1357,18 @@ Il mobject prende le coordinate dei nodi da collegare come paramtri, oltre al co
 Nel caso di grafo torus si aggiunge il controllo dei nodi posti all'estremità della griglia; qui vi è un controllo preciso circa la tipologia di posizionamento poichè se nell'analizzatore di traffico
 avevamo il problema del rappresentare in un unico modo due tuple con ordinamento diverso, 
 in questo caso l'ordinamento è molto importante per poter disegnare gli archi dei nodi alle estremità, questo perchè i link che le collegano devono essere disegnati manualmente creando più segementi concatenati.
-Il lettore si starà chiedendo se non esistesse un mobject come \lstinline|Line()| per rappresentare dei link arcati, e in effetti uno c'è ed è \lstinline|ArcbetweenPoints()|, il quale funzionamento è esattamente cme \lstinline|Line()|.
+Il lettore si starà chiedendo se non esistesse un mobject come \lstinline|Line()| per rappresentare dei link arcati, e in effetti uno c'è ed è \lstinline|ArcbetweenPoints()|, il quale funzionamento è esattamente come \lstinline|Line()|.
 Il problema che è sorto in fase di sviluppo è che, per ridimensionare i grafi quando diventano più grandi dell'area di visualizzazione, si è reso neccessario del metodo
  \lstinline|auto_zoom()| della classe \lstinline|MovingCameraScene|, ovvero la scena utilizzata nel progetto che permette cambiamenti di visuale della camera.
-Il ridimensionamento generato automaticamente dal metodo va in conflitto con \lstinline|ArcsBetweenPoints()|, creando artifici grafici non desiderati, per cui si è reso necessario questo altrimenti utilissimo mobject.
-Si è quindi passati a una realizzazione manuale degli archi che segue la creazione di 3 segmenti concatenati per rappresentare i link del torus dei nodi posti alle estremità.
+Il ridimensionamento generato automaticamente dal metodo va in conflitto con \lstinline|ArcsBetweenPoints()|, creando artifici grafici non desiderati.
+Si è quindi passati a una realizzazione manuale degli archi che segue la creazione di 3 segmenti con mobjects \lstinline|Line()| concatenati per rappresentare i link del torus dei nodi posti alle estremità.
 Perticolare attenzione va data al metodo \lstinline|get_center()| del mobject \lstinline|LabeledDot()|, poichè il metodo ritorna le coordinate del nodo, ci servirà per descrivere come vengono creati i link manuali.
 L'idea di creazione deriva dal considere il centro dei nodi delle estremità come punti di origine di piani cartesiani \(x, y\) dai quali ricavare le coordinate dei 3 segmenti, i vari sistemi di coordinate sono;
 
 \begin{itemize}
     \item \textbf{Links verticali:} 
     \begin{itemize}
-        \item prima linea: si parte da un nodo posto all'estremità superiore della griglia ottenendo le coordinate con \lstinline|get_center()| e ne definiamo il punto \(pointA\), si prende il punto \(p1 = (-x, -y)\), rispetto alle coordinate di \(pointA\), e si crea la linea che parte da p1 a pointA
+        \item prima linea: si parte da un nodo posto all'estremità superiore della griglia ottenendo le coordinate con \lstinline|get_center()| e ne definiamo il punto \(pointA\), si prende il punto \(p1 = (-x, -y)\), rispetto alle coordinate di \(pointA\), e si crea la linea che parte da p1 a \(pointA\)
         \item seconda linea: si prende il nodo posto all'estremità inferiore della griglia nella stessa colonna in cui è presente \(pointA\), e ricavandone le coordinate con il metodo abbiamo un punto che definiamo come \(pointB\), si prende il punto \(p2 = (-x, y)\), rispetto alle coordinate di \(pointB\), e si crea la linea che parte da p2 a pointB 
         \item terza linea: si crea una linea che va dal punto p1 al punto p2.
     \end{itemize}
@@ -1380,8 +1382,8 @@ L'idea di creazione deriva dal considere il centro dei nodi delle estremità com
 \end{itemize}
 
 Vien da sè che in questo caso è indispensabile l'ordinameto, poichè per ogni specifico nodo ci sono delle specidiche coordinate per la creazione dei link manuali.
-Se non si facesse questo tipo di controllo, potremmo avere una situazione come in figura \ref{fig:torus_archi_asimmetrici}, avremmo una situazione
-molto disorganica e asimmetrica.
+Se non si facesse questo tipo di controllo, potremmo avere una situazione come in figura \ref{fig:torus_archi_asimmetrici}, ottenendo un grafico
+molto disorganico e asimmetrico.
 
 
 \begin{figure}[h]
@@ -1391,22 +1393,23 @@ molto disorganica e asimmetrica.
     \label{fig:torus_archi_asimmetrici}
 \end{figure}
 
-Per questo motivo viene eseguito un controllo nel caso di analisi di un grafo torus, con l'algoritmo che scansiona la matrice e seleziona gli a archi che sono verticali, orizzontali
-e en assegna le giuste coordinate.
+Per questo motivo viene eseguito un controllo nel caso di analisi di un grafo torus, con l'algoritmo che scansiona la matrice e seleziona gli 
+archi che sono verticali, orizzontali
+e ne assegna le giuste coordinate.
 Infinie la parte di animazione è pressoché uguale come logica.
 Per quanto riguarda le informazioni della rete che vengono mostrate a schermo si è implementato un effetto contatore sul tempo che scorre ed è presente
 un ridimensionamento dinamico dei font che si adatta al crescere del grafico, questo per poter rendere sempre leggibile il testo.
-Per visualizzare le informazioni relative agli switch e ai link è stata realizzata una classe apposita, la quale può venire renderizzata separatamente dai grafici.
-Il video che produce è una presentazione animata di switch e links, gli switch, correlati con le loro info, vengono mostrati cinque alla volta con un effetto di comparsa e scomparsa, con effetto slide, mostrando poi i successivi cinque switch e relative info.
-Una volta terminati gli switch si susseguiranno i link, animanti nello stesso modo e comaprendo otto alla volta, mostrando gli enpoints al quale sono collegati e le capacità. Mostreremo graficamente ciò nel capitolo dedicato alle modalità grafiche.
+Per visualizzare le informazioni relative agli switch e ai link è stata realizzata una classe apposita, la quale può essere renderizzata separatamente dai grafici.
+Il video che produce è una presentazione animata di switch e links: gli switch, correlati con le loro info, vengono mostrati cinque alla volta con un effetto di comparsa e scomparsa, con effetto slide, mostrando poi i successivi cinque switch e relative info.
+Una volta terminati gli switch si susseguiranno i link, animati nello stesso modo e comparendo otto alla volta, mostrando gli enpoints al quale sono collegati e le capacità. Mostreremo graficamente ciò nel capitolo dedicato alle modalità grafiche.
 \section{Modalità grafiche e design}
 In questo capitolo si vogliono mostrare tutte le configurazioni grafiche, i modi in cui l'algoritmo adatta gli elementi a schermo e le soluzioni trovate.
 Essendo un progetto che si basa fortemente su un aspetto front-end, questo capitolo sarà ficalizzato sul mostrare visivamente cosa può produrre il visualizzatore nelle varie configurazioni possibili.
 Partiamo con la scelta di design dei colori che rappresentano le intensità di traffico; la scelta è ricaduta su colori ai quali generalmente associamo significati abitudinari e comuni,
 come il verde per indicare traffico zero o basso, per poi arrivare al giallo per indicare un traffico di intensità media, fino ad arrivare al rosso
 per indicare il traffico molto intenso o massimo. Le varie gradazioni sono calcolate a partire da valori rgb e distribuiti su una scala che va da 1 (verde) a 100 (rosso), modificando opportunamente le graduazioni intermedie a cavallo tra le diverse colorazioni.
-Parlando invece del grafo completo, come descritto precedentemente, un grafo completo può essere disposto in modo automatico e imposto tramite coordinate dei nodi dall'utente. 
-Considerandone un esempio, sulla base dello stetto packets file, i due modi di visualizzare il grafo completo possono apparire come nella fig. \ref{fig:custom_complete_autopositioning} per l'auto-posizionamento e come in fig \ref{fig:custom_complete_manual_positioning} per il posizionamento manuale.
+Parlando invece del grafo completo, come descritto precedentemente, può essere disposto in modo automatico oppure impostato tramite coordinate dei nodi dall'utente. 
+Considerandone un esempio, sulla base dello stesso packets file, i due modi di visualizzare il grafo completo possono apparire come nella fig. \ref{fig:custom_complete_autopositioning} per l'auto-posizionamento e come in fig \ref{fig:custom_complete_manual_positioning} per il posizionamento manuale.
 
 
 \begin{figure}[h]
@@ -1424,7 +1427,7 @@ Considerandone un esempio, sulla base dello stetto packets file, i due modi di v
 \end{figure}
 
 
-La scelta di design dietro la visualizzazione del grafo completo in modo circolare è stata fatta per motivi di leggibilità, Manim propone diversi
+La scelta di design dietro la visualizzazione del grafo completo in modo circolare è stata fatta per motivi di leggibilità; Manim propone diversi
 layout di configurazione, come possiamo vedere dall'immagine presa dalla documentazione ufficiale \cite{manimGraph} in fig. \ref{fig:graph_layouts_types}. Dagli esempi
 si nota subito che l'opzione circolare è quella meglio distribuita, il che è ragionevolmente utile quando si tratta di disegnare molti elementi a schermo. 
 I layouts possibili come scelta sono, in ordine di apparizione; spring, circular, kamada kawai, planar, random, shell, spectral e spiral.
@@ -1446,7 +1449,7 @@ Un esempio di grafo completo con modalità auto, settato con 10 switch in modali
     \label{fig:custom_complete_autopositioning10}
 \end{figure}
 
-Come abbiamo detto nella sezione \ref{sec:aspect_ratio}, la modalità auto gestisce l'aspect ratio sulla base del numero di switch scelti,vi sono quindi
+Come abbiamo detto nella sezione \ref{sec:aspect_ratio}, la modalità auto del generatore, per grafi mesh, torus e personalizzati, gestisce l'aspect ratio sulla base del numero di switch scelti, vi sono quindi
 due risultati possibili di visualizzazione; il primo è che il numero di switch combacia con il calcolo dell'aspect ratio e fornisce una riempimento
 completo della matrice da visualizzare (già visto nel capitolo \ref{sec:esecuzione_del_generatore} in fig. \ref{fig:mesh_example}), 
 il secondo coincide con un riempimento parziale e in questo caso l'algoritmo lascerà semplicemente dello spazio vuoto (fig. \ref{fig:mesh_not_full}).
@@ -1495,7 +1498,7 @@ posizionamento dei punti che definiscono i link sono stati studiati appositament
 Per quanto riguarda la scelta di design dietro il testo visualizzato a schermo, è stato scelto di suddividere le informazioni e distribuirne in due gruppi, uno posto nel margine superiore e l'altro in quello inferiore;
 il motivo è per dare enfasi al grafico, che rimane centrale nell'economia dell'esperienza, in questo modo il focus principale rimane sul protagonista della scena, mentre i parametri descrittivi della rete
 sono presenti in modo tale da non essere invasivi.
-Infine abbiamo la modalità "graph", la modalità in cui l'utente può scegliere dove posizionare i nodi come già visto in fig \ref{fig:tree_custom}
+Infine abbiamo la modalità "graph", la modalità in cui l'utente può scegliere dove posizionare i nodi come già visto in fig \ref{fig:tree_custom}.
 Il visualizzatore possiede anche una modalità per generare un video in cui si mostrano le informazioni degli switch 
 e nei nodi come spiegato nella sezione precedente \ref{sec:strutturazione_visualizzatore}. Per dare un'idea di come viene mostrato, riportiamo due frammenti di video in cui vengono mostrate
 le varie tipologie di dati (fig. \ref{fig:switch_info} e fig. \ref{fig:links_info}).
@@ -1529,7 +1532,7 @@ Il daltonismo è una condizione in cui l'occhio umano presenta cecità ereditari
 Come detto nel capitolo precedente, utilizziamo
 i colori verde, giallo e rosso per esprimere rispettivamente basso, medio e alto traffico; andando a vedere le varie tipologie più comuni di daltonismo, 
 notiamo da subito che i colori scelti non sono adatti a tutti i tipi di daltonismo. Si è pensato quindi di introdurre l'opzione
-\lstinline|colorBlind| che se posta su "yes" cambia i colori in verde per un basso traffico, bianco per traffico medio e fucsia per alto traffico.
+\lstinline|colorBlind| che se posta su "yes" cambia i colori in; verde per un basso traffico, bianco per traffico medio e fucsia per elevato traffico.
 Il colore bianco e nero sono visti in egual modo da tutti, questo è anche il motivo per cui lo sfondo del visualizzatore è proprio nero, quindi si è
 deciso di utilizzare il bianco come uno dei colori adatti, mentre per gli altri colori si è fatto ricorso al tool "Coloring for Colorblindness" \cite{ColorBlindPalette2024} 
 del Professor Nichols, docente dell' Universita del Connecticut, il quale permette di visualizzare una palette cromatica nel modo in cui i vari tipi
@@ -1549,7 +1552,7 @@ di daltonismo si manifestano. Mostriamo le due palette cromatiche, quella di def
     \end{minipage}
 \end{figure}
 
-Come possiamo notare dalle palette cromatiche, quella di default costituirebbe un crosso problema visivo per chi è affetto da protanopia e da deuteranopia, avendo
+Come possiamo notare dalle palette cromatiche, quella di default costituirebbe un grosso problema visivo per chi è affetto da protanopia e da deuteranopia, avendo
 una selezione di colori davvero molto simili tra loro non si potrebbe distinguere efficacemente il livello di traffico. La soluzione proposta
 risiede nella palette cromatica per daltonismo, in cui i colori scelti si riescono a differenziare per ogni tipologia di condizione visiva, potendo così
 attribuire al colore verde un livello di traffico nullo o basso, bianco per traffico medio e fucsia per traffico alto o massimo. Un esempio
@@ -1567,7 +1570,7 @@ del risultato finale lo possiamo vedere in figura \ref{fig:colorblind_torus}.
 Andremo ora ad analizzare le complessità computazionali dei vari componenti del progetto, mostrando anche le prestazioni ottenute in fase di test.
 
 \section{Generatore di traffico}
-Analizzando il codice inerente al generatore, un approccio allo studio della complessità potrebbe essere quello di individuare quelle che si ritengono essere
+Analizzando il codice inerente al generatore, un approccio allo studio della complessità potrebbe essere quello di individuare quelli che si ritengono essere
 i punti computazionalmente critici, al fine di individuare l'andamento degli algoritmi nelle varie situazioni. Essendo lo script dedicato alla creazione della struttura di rete e del traffico,
 è stato ritenuto opportuno cominciare l'analisi dalla creazione della struttura inerente ai link.
 Per quanto riguarda la creazione automatica dei links e dei nodi
@@ -1600,8 +1603,8 @@ per la tipologia di grafo completo, la funzione dedicata al compito è riportata
 \end{lstlisting}
 } % Fine del gruppo che modifica la dimensione del testo
 
-Poichè in questo caso il numero di link può essere molto elevato, consideriamo il numero di link come \(n\) essendo il ciclo for esterno condizionato
-dal numero di switch. Ma se osserviamo bene notiamo che il ciclo interno parte dall'indice del ciclo for esterno. Non avremo quindi n iterazioni moltiplicato n,
+Consideriamo il numero di switch come \(n\); notiamo che il ciclo interno parte dall'indice del ciclo for esterno. 
+Non avremo quindi n iterazioni moltiplicato n,
 ma avremo una quantità di iterazioni totali pari a:
 
 \begin{equation}
@@ -1620,12 +1623,12 @@ Che andando a sviluppare risulterà essere:
     \end{align}
 Poiché il termine lineare è dominato dal termine quadratico per grandi \( n \). Ciò è in linea con la grandezza intrinseca del numero di links
 per un grafo completo, come visto nell'equazione \ref{eq:link_number}, per cui siamo obbligati a una complessità quadratica.
-Tuttavia possiamo osservare dal calcolo:
+Possiamo inoltre osservare dal passaggio 6.7:
 \begin{align*}
     \sum_{i=1}^n (n-i) &= \frac{n^2 - n}{2} = \frac{n(n-1)}{2}
 \end{align*}
     
-IL che è esattamente l'equazione \(\frac{n(n-1)}{2}\) che determina il numero di links in un grafo completo. Con questo vogliamo dire che 
+Il che è esattamente l'equazione \(\frac{n(n-1)}{2}\) che determina il numero di links in un grafo completo. Con questo vogliamo dire che 
 l'algoritmo performa esattamente il numero di iterazioni necessarie a creare i link, ottimizzando al massimo le risorse computazionali.
 Vi sono poi le varie funzioni dedicate alla creazione delle strutture mesh, torus e graph (la modalità libera), le quali sono tutte basate sul concetto di
 disporre i nodi su una matrice (griglia).
@@ -1676,14 +1679,14 @@ operazioni viene effettuato in tempo costante. I cicli \texttt{for} vendono effe
 Nel caso di questa applicazione, in cui è permesso un massimo di 1000 switch, la complessità risulta essere in tempo costante, 
 poichè nel caso peggiore il valore 1000 è considerabile come costante \(c\), 
 avremmo un numero di iterazioni pari a  \( \sqrt{c} \times \sqrt{c} = c \).
-Tuttavia lo sarebbe anche se il numero di switch fosse \(n\) 
-(con \(n\) molto grande). Consideriamo i due cicli \texttt{for} annidati, ognuno dei quali itera fino alla radice quadrata di \( n \):
+Tuttavia ipotizziamo se il numero di switch fosse \(n\) 
+,con \(n\) molto grande. Consideriamo i due cicli \texttt{for} annidati, ognuno dei quali itera fino alla radice quadrata di \( n \):
 \begin{verbatim}
 for i in range(sqrt(n)):
     for j in range(sqrt(n)):
         # operazioni
 \end{verbatim}
-Poiché ogni ciclo itera \( \sqrt{n} \) volte, il numero totale di iterazioni è \( \sqrt{n} \times \sqrt{n} = n \). Pertanto, la complessità computazionale è \( O(n) \).
+Poiché ogni ciclo itera \( \sqrt{n} \) volte, il numero totale di iterazioni è \( \sqrt{n} \times \sqrt{n} = n \). Pertanto, la complessità computazionale è \( O(n) \), quindi lineare.
 Analizziamo la funzione dedicata alla creazione automatica di un grafo torus.
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
