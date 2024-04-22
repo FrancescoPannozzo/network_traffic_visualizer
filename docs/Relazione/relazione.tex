@@ -1804,7 +1804,20 @@ Possiamo quindi affermare che il parametro dominante per la complessità sia:
 \end{align}
 
 La funzione \lstinline|create_packet()| opera in tempo costante poichè semplicemente formatta in modo corretto il pacchetto da salvare, così come operano in tempo costante tutte le restanti operazioni.
-Facendo quindi una somma di tutte le complessità riguardanti i punti critici \ref{codice:create_packets_complexity} troviamo che la complessità di questo pezzo logico di codice è \(O(n)\) \ref{eq:complexity_traffic_generator}, quindi lineare.
+Facendo quindi una somma di tutte le complessità riguardanti i punti critici \ref{codice:create_packets_complexity} 
+troviamo che la complessità di questo pezzo logico di codice è \(O(n)\) \ref{eq:complexity_traffic_generator}, fatta eccezione per l'opzione di grafo completo, poichè avremmo un numero di
+links molto grande pari a \(n\) così come il numero di pacchetti e la parte di codice \ref{codice:create_packets_n_links} avrebbe complessità \(O(n^2)\).
+
+{\scriptsize
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={complessità per numero di links di un grafo completo}, label={codice:create_packets_n_links}, breaklines=true]
+O(c)        for link, content in links.items():
+O(n)            # operazioni
+O(n)            for i in range(0, int((PPS*(trafficPerc/100))/creationRate)):
+O(1)                # operazioni  
+\end{lstlisting}
+}
+
+
 
 {\scriptsize
 \begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={complessità della logica di creazione pacchetti}, label={codice:create_packets_complexity}, breaklines=true]
@@ -1822,7 +1835,8 @@ O(1)    # operazioni
 \end{lstlisting}
 }
 
-Tirando le somme, la complessità globale per il generatore può dirsi essere lineare, come lo mostrano anche i test effettuati in figura \ref{fig:prestazioni_config_gen}.
+Assumendo che i grafi completi siano estremamente rari nella realtà e che nei data center troviamo per lo più configurazioni mesh e torus, possiamo
+affermare che complessità globale per il generatore può dirsi essere lineare, come lo mostrano anche i test effettuati in figura \ref{fig:prestazioni_config_gen}.
 I test hanno come parametri un tempo di generazione pari a due secondi, link con capacità di 1 Gbps in un grafo di tipo torus.
 Si può vedere che all'aumentare del numero di nodi (switch) il tempo necessario a generare i pacchetti cresce in modo lineare.
 
