@@ -60,7 +60,7 @@ alla base in cui è stato idealizzato l'argomento, seguito da un'analisi dello s
 e studiandone caratteristiche, i loro pregi e mancanze. A seguire ci sarà una descrizione dei contributi che vuole dare il progetto, scaturiti dall'analisi
 dello stato dell'arte e infine una breve panoramica sulla base di partenza del progetto, descrivendo da cosa si è partiti, come è nata l'argomentazione
 che ha portato alla scelta del progetto e la modalità di svolgimento. Nel capitolo 2 parleremo del contesto di sviluppo, ovvero le tecnologie impiegate.
-Seguirà quindi una descrizione approfondita della scelta di certe tecnologie ma soprattutto del perchè le si è scelte. Il capitolo 3
+Seguirà quindi una descrizione approfondita della scelta di certe tecnologie ma soprattutto del perché le si è scelte. Il capitolo 3
 descriverà il generatore di traffico e configurazione di rete, descrivendone funzionalità, condizioni inziali di setup di questa parte di applicazione e infine
 descrivendo come il tutto viene generato, passando dalla distribuzione spaziale dei nodi e creazione dei links all'ottenimento dei files sui quali sono memorizzati i dati ottenuti.
 Il capitolo 4 tratterà l'analizzatore di traffico, nello specifico dell'implementazione della logica che risiede dietro l'analisi del file contenente il traffico.
@@ -180,7 +180,7 @@ può essere di grosso aiuto nell'analisi così anche solo come semplice rapprese
 
 \section{Base di partenza del progetto}
 Il progetto è partito da zero, si basa sullo sviluppo totalmente nuovo dell'applicazione ed è stato tutto idealizzato e pianificato in sede di proposta.
-Come approfondirò in seguito, nella sezione dedicata alla tecnologia impiegata, il progetto non è l'unica cosa a essere partita da zero, poichè il linguaggio
+Come approfondirò in seguito, nella sezione dedicata alla tecnologia impiegata, il progetto non è l'unica cosa a essere partita da zero, poiché il linguaggio
 scelto per sviluppare l'applicazione è Python\cite{PythonWebsite}, linguaggio non incluso nel mio 
 personale percorso di studi e che ho dovuto necessariamente studiare da zero per poter affrontare il percorso di tirocinio.
 Il lavoro è stato svolto individualmente.
@@ -224,11 +224,11 @@ i vari endpoints, con la necessità di tenere traccia delle loro capacità trasm
 \section{I formati Json e Yaml}
 L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; json\cite{RFC791}, yaml\cite{RFC9512} e csv\cite{RFC4180}.
 Dopo attenta anlisi si è deciso di adottare il formato json per strutturare e memorizzare i dati legati al traffico, con la possibilità di scegliere anche il formato yaml, mentre per i dati relativi alla descrizione della rete il compito è stato affidato esclusivamente a yaml, csv è stato scartato.
-Perchè csv è stato scartato? Sebbene csv rappresenti una valida alternativa tenendo conto di aspetti prestazionali, essendo un formato molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse della semplice forma tabellare, tipicamente usate nei database. 
+Perché csv è stato scartato? Sebbene csv rappresenti una valida alternativa tenendo conto di aspetti prestazionali, essendo un formato molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse della semplice forma tabellare, tipicamente usate nei database. 
 L'idea di scartarla, sia per strutturare i dati della rete che per quelli del traffico, deriva principalmente dai seguenti motivi:
 
 \begin{itemize}
-    \item \textbf{Leggibilità:} uno dei primi intenti del progetto era di rendere l'applicazione il più leggibile possibile, questo perchè si è
+    \item \textbf{Leggibilità:} uno dei primi intenti del progetto era di rendere l'applicazione il più leggibile possibile, questo perché si è
     fortemente voluto attribuirne anche scopi di debugging e didattici, laddove avere una certa leggibilità è più che ragionevole.
     \item \textbf{Strutture complesse:} sicuramente il motivo più importante. Con csv non è possibile rappresentare strutture complesse, parliamo ad esempio di oggetti
     all'interno di altri oggetti. Sebbene per come sia ora strutturato il progetto una rappresentazione cvs è ancora possibile, ciò potrebbe non esserlo in futuro
@@ -300,7 +300,7 @@ La scelta del formato json per rappresentare i dati del traffico di rete è quin
 rappresentazione con strutture più complesse in ottica di espansioni future del progetto, ma è indubbiamente legata alle prestazioni che questo formato riesce a dare.
 Json è un formato ampiamente supportato e la sua semplicità permette di ottenere risultati ottimi per le operazioni di parsing, lettura e scrittura per strutture aventi grandi quantità di dati.
 Sebbene l'applicazione supporti sia json che yaml per quanto riguarda il memorizzare i dati legati al traffico, la scelta preferenziale ricade su json.
-Questo perchè, nonostante json produca files di dimensioni maggiori rispetto a yaml, la schiacciante velocità di elaborazione di json rende la creazione di
+Questo perché, nonostante json produca files di dimensioni maggiori rispetto a yaml, la schiacciante velocità di elaborazione di json rende la creazione di
 un file di dimensioni maggiore ampiamente giustificabile, considerando soprattuto la natura del progetto in cui non vi è una
 criticità d'uso nella dimensione dei files. Come vedremo in seguito, i test eseguiti sui tempi di lettura e scrittura rispettivamente della stessa struttura
 ricreata sia in json che in yaml, sapranno ben
@@ -508,7 +508,7 @@ presente. In questo caso la scelta deriva dal semplificare e rendere immediatame
 (rappresentato da una matrice quadrata), così che l'occhio possa identificare immediatamente la rappresentazione della disposizione. Questa leggibilità è ottenuta
 grazie al formato yaml, il quale minimizza i caratteri da scrivere.
 Così facendo si rende intuitivo il posizionamento degli switch nello spazio, inoltre è una caratteristica importante per quanto riguarda il
-visualizzatore grafico, poichè rappresentando i nodi con un valore numerico che va da 1 a 1000 (spiegheremo il perchè di questa scelta a breve), è 
+visualizzatore grafico, poiché rappresentando i nodi con un valore numerico che va da 1 a 1000 (spiegheremo il perché di questa scelta a breve), è 
 possibile rappresentare su schermo una grande quantità di elementi per far si che possano essere visualizzati contemporaneamente e rimanere leggibili ma soprattuto,
  distinguibili. Uno dei problemi maggiormente riscontrati nelle applicazioni discusse nella sezione Stato dell'arte \ref{sec:stato_arte} è che, le varie soluzioni impiegate
  per la rappresentazione dei nodi, risultano essere confusionarie per via di una sovrapposizione massiva di link che collegano i nodi, mentre uno degli scopi del
@@ -729,7 +729,7 @@ del numero di archi da rappresentare al crescere dei nodi. Avendo infatti \(n\) 
     l = \frac{n(n-1)}{2}
     \label{eq:link_number}
 \end{equation}
-Ogni nodo è collegato a tutti gli altri meno se stesso, \(n(n-1)\), e si divide per due perchè gli archi non vanno contati due volte. Si parla quindi di una crescita esponenziale al variare del numero di nodi.
+Ogni nodo è collegato a tutti gli altri meno se stesso, \(n(n-1)\), e si divide per due perché gli archi non vanno contati due volte. Si parla quindi di una crescita esponenziale al variare del numero di nodi.
 Per grafo mesh si è inteso una rappresentazione in cui ogni nodo ha quattro nodi adiacenti, fatta eccezione di coloro che risiedono alle estremità, come
 raffigurato nell'esempio in figura creato dal visualizzatore \ref{fig:mesh_example}.
 \begin{figure}[h]
@@ -743,7 +743,7 @@ La scelta successiva in cui l'utente sarà invitato a fornire, riguarda la capac
 scegliere tra i valori 10, 100 e 1000 e vengono intese come grandezze espresse in megabytes (MB).
 Una volta inseriti questi parametri il generatore provvederà a creare la configurazione di rete e il rispettivo traffico, memorizzando i dati rispettivamente
 nei files network.yaml e packets.json/yaml.
-Scegliendo la modalità user non viene richiesto alcun dato via prompt, questo perchè, come descritto in precedenza, tutti i dati di cui ha bisogno
+Scegliendo la modalità user non viene richiesto alcun dato via prompt, questo perché, come descritto in precedenza, tutti i dati di cui ha bisogno
 il generatore devono essere presenti nel file custom\_graph.yaml \ref{fig:custom_graph_example}. Un diagramma che illustra le fasi e le
  scelte cui è possibile fare
 è rappresentato in figura \ref{fig:diagramma_generatore}.   
@@ -757,7 +757,7 @@ il generatore devono essere presenti nel file custom\_graph.yaml \ref{fig:custom
 
 Il generatore si serve di una serie di funzioni di utilità per creare le strutture in base alle scelte dell'utente. 
 Tutte le tipologie di rappresentazioni avvengono seguendo una logica di distribuzione dei nodi in forma matriciale, fatta eccezione della tipologia di
-grafo completo (spiegheremo nella parte dedicata al visualizzatore il perchè), come descritto in dettaglio nel prossimo paragrafo.
+grafo completo (spiegheremo nella parte dedicata al visualizzatore il perché), come descritto in dettaglio nel prossimo paragrafo.
 
 
 \section{Creazione dei links e nodi}
@@ -807,7 +807,7 @@ Ci sono diverse configuazioni che lo script sarà tenuto a considerare in base a
 \begin{itemize}
     \item \textbf{Modalità auto:} ci sono 3 configurazioni possibili, complete graph, mesh e torus.
     \begin{itemize}
-        \item \textbf{Complete graph:} i links vengono in modo tale che ogni nodo sia collegato a tutti i nodi rimanenti. Non c'è un riferimento esplicito al posizionamento poichè, come vedremo successivamente, sarà compito del visualizzatore grafico disporre i nodi nello spazio.
+        \item \textbf{Complete graph:} i links vengono in modo tale che ogni nodo sia collegato a tutti i nodi rimanenti. Non c'è un riferimento esplicito al posizionamento poiché, come vedremo successivamente, sarà compito del visualizzatore grafico disporre i nodi nello spazio.
         \item \textbf{Mesh graph: } i links vengono creati in modo tale che ogni nodo abbia 4 nodi adiacenti rispetto a una distribuzione spaziale su matrice rettangolare, a eccezione dei nodi che risiedono alle estremità.
         \item \textbf{Torus graph: } i links vengono creati in modo da replicare il più possibile la struttura di un torus graph completo, come mostrato in fig. \ref{fig:torus_graph} utilizzando lo stesso sistema di disposizione usato per il mesh graph basato su matrice rettandolare.
         Qualora il numero di nodi scelto non riesca a riempire la matrice, l'algoritmo non creerà i link di nodi che non risultino essere alle estremità.
@@ -856,7 +856,7 @@ Risostituendo il valore di $h$ nell'espressione di $l$, abbiamo
 l = \frac{16}{9} \cdot n \cdot \frac{3}{4} = n \cdot \frac{4}{3}.
 \]
 Abbiamo ottenuto la base \(l\), corrispondente al numero di colonne della matrice, e l'altezza \(h\), corrispondente al numero
-di righe, del rettangolo in 16:9. Tuttavia c'è l'esigenza di rappresentare numeri interi poichè la radice dell'area \(A\) può non essere un numero intero e di conseguenza anche \(l\) e \(h\).
+di righe, del rettangolo in 16:9. Tuttavia c'è l'esigenza di rappresentare numeri interi poiché la radice dell'area \(A\) può non essere un numero intero e di conseguenza anche \(l\) e \(h\).
 Per ovviare al problema si è deciso di arrotondare \(l\) e \(h\) all'intero superiore, così facendo, qualora si avesse
 il lato \(s\) avente parte decimale, sarà sempre verificato:
 \begin{equation}
@@ -1079,14 +1079,14 @@ lo stile flow che corrisponde al codice in figura.
 \end{lstlisting}
 }
 Inizialmente si era provato a dare la possibilità di scegliere, tramite file sim\_setup, 
-tra il formato block e flow poichè in fase di test
+tra il formato block e flow poiché in fase di test
 si è visto che l'opzione flow riduce ulteriormente la dimensione del file packets.yaml. Tuttavia i test hanno dimostrato che le differenze delle grandezze
 dei files e i tempi necessari a realizzarli non erano così diversi tra loro, quindi si è deciso di scartare del tutto l'opzione. Possiamo vedere
 il risultato del test sulle dimensioni dei files in figura \ref{fig:yaml_block_flow_dim}, dove troviamo sull'asse delle ascisse il numero di switch per test, mentre
-sull'asse delle ordinate abbiamo la variabile che esprime i megabytes, questo perchè essa è la variabile dipendente, ovvero i megabytes dipendono dal numero di switch
+sull'asse delle ordinate abbiamo la variabile che esprime i megabytes, questo perché essa è la variabile dipendente, ovvero i megabytes dipendono dal numero di switch
 che viene scelto. Il grafico relativo ai tempi di scrittura/lettura lo troviamo in 
 figura \ref{fig:yaml_block_flow_wr}, in questo caso abbiamo sull'asse delle ascisse sempre il numero di switch per test, mentre sull'asse delle ordinate
-il tempo (in secondi) necessario per le scritture e letture, poichè il tempo di computazione dipende dal numero di switch scelto. Possiamo notare dai grafici che il risparmio di bytes è di circa 4 MB per il test effettuato su 10 switch, mentre
+il tempo (in secondi) necessario per le scritture e letture, poiché il tempo di computazione dipende dal numero di switch scelto. Possiamo notare dai grafici che il risparmio di bytes è di circa 4 MB per il test effettuato su 10 switch, mentre
 i tempi di esecuzione, sia di scrittura che di lettura, sono praticamente sovrapponibili, infatti l'operazione di scrittura per block e flow style è identico, mentre lievemente
 più performante è il block style in lettura.
 
@@ -1119,14 +1119,14 @@ Poichè per motivi di efficienza si è scelto di strutturare i link come una lis
 I link in fin dei conti possono essere identificati dai propri endpoints (il grafo viene inteso in modo tale che ci sia un unico link tra due endpoints), ovvero una coppia di nodi,
 nel nostro caso, una coppia di switch. Tuttavia la sfida che si è presentata è rappresentata dal fatto che se è vero quindi che un link è identificato
 da due endpoints, a e b, è vero anche che in questo caso l'ordinamento degli endpoints non deve essere rilevante. Abbiamo infatti pacchetti
-che vengono inviati sia da a per poi arrivare a b, sia da b verso a. Questo è un problema poichè stiamo cercando di identificare un link ma abbiamo
+che vengono inviati sia da a per poi arrivare a b, sia da b verso a. Questo è un problema poiché stiamo cercando di identificare un link ma abbiamo
 due coppie, \((a, b)\) e \((b, a)\) che sì sono ugualmente valide ma rappresentano anche due coppie distinte, il che contrasta con il concetto di identificatore. 
 L'ideale sarebbe usare il tipo set, ovvero il concetto di insieme 
-come collezione non ordinata in cui due insiemi \(\{b, b\}, \{b, a\}\) sono considerati uguali in termini di contenuto. Sembrerebbe un problema risolto, ma non è così, il perchè risiede
+come collezione non ordinata in cui due insiemi \(\{b, b\}, \{b, a\}\) sono considerati uguali in termini di contenuto. Sembrerebbe un problema risolto, ma non è così, il perché risiede
 nel fatto che i set in Python sono mutabili: il contenuto può essere modificato utilizzando metodi come add() e remove(). 
 Poiché set è mutabile, non ha valore hash \cite{pythonGlossaryHashable} e non può essere utilizzato come chiave del dizionario \cite{pythonStdTypesMapping}.
 Il tipo di dato che fa al caso nostro è quindi il frozenset, un set che è immutabile e hashable, quindi utilizzabile come chiave di un dizionario.
-Nell'analizzatore l'identificazione dei link è molto importante, perchè nel momento in cui si va a scorrere la lista di tutti i pacchetti registrati,
+Nell'analizzatore l'identificazione dei link è molto importante, perché nel momento in cui si va a scorrere la lista di tutti i pacchetti registrati,
 vi è il bisogno di identificare il link per potergli attribuire le varie medie da calcolare. Viene quindi creata una struttura ausiliaria in cui
 la lista di link presente nel file network.yaml viene tramutata in un dizionario avente come chiavi dei frozenset con gli endpoints e, come valori associati,
 una serie di variabili atte a mantenere le somme dei pacchetti che man mano verrano scanditi.
@@ -1209,7 +1209,7 @@ Il file prodotto analyzed\_data.yaml sarà l'input necessario per il visualizzat
 
 \chapter{Visualizzatore grafico}
 La terza anima del progetto è il visualizzatore grafico sviluppato tramite l'ausilio della libreria Manim. Andremo a descrivere il funzionamento dello script,
-come è strutturato e organizzato, in seguito descriveremo le modalità grafiche dei grafi che sono possibili ottenere, inclusa la rappresentazione video
+come è strutturato e organizzato, in seguito descriveremo le modalità grafiche dei grafi che è possibile ottenere, inclusa la rappresentazione video
 delle informazioni relative ai switch e link. Seguirà una sezione sulle scelte di design servite a curare l'aspetto visivo e infine ci sarà spazio
 per l'accessibilità inclusa nel progetto che prevede un'opzione per daltonici e che consente quindi di cambiare i colori che rappresentano il traffico.
 
@@ -1354,34 +1354,34 @@ rappresentano rette che congiungono due punti, avremo così i link definiti come
 }
 
 Il mobject prende le coordinate dei nodi da collegare come paramtri, oltre al colore di partenza e alla dimesione.
-Nel caso di grafo torus si aggiunge il controllo dei nodi posti all'estremità della griglia; qui vi è un controllo preciso circa la tipologia di posizionamento poichè se nell'analizzatore di traffico
+Nel caso di grafo torus si aggiunge il controllo dei nodi posti all'estremità della griglia; qui vi è un controllo preciso circa la tipologia di posizionamento poiché se nell'analizzatore di traffico
 avevamo il problema del rappresentare in un unico modo due tuple con ordinamento diverso, 
-in questo caso l'ordinamento è molto importante per poter disegnare gli archi dei nodi alle estremità, questo perchè i link che le collegano devono essere disegnati manualmente creando più segementi concatenati.
+in questo caso l'ordinamento è molto importante per poter disegnare gli archi dei nodi alle estremità, questo perché i link che le collegano devono essere disegnati manualmente creando più segementi concatenati.
 Il lettore si starà chiedendo se non esistesse un mobject come \lstinline|Line()| per rappresentare dei link arcati, e in effetti uno c'è ed è \lstinline|ArcbetweenPoints()|, il quale funzionamento è esattamente come \lstinline|Line()|.
 Il problema che è sorto in fase di sviluppo è che, per ridimensionare i grafi quando diventano più grandi dell'area di visualizzazione, si è reso neccessario del metodo
  \lstinline|auto_zoom()| della classe \lstinline|MovingCameraScene|, ovvero la scena utilizzata nel progetto che permette cambiamenti di visuale della camera.
 Il ridimensionamento generato automaticamente dal metodo va in conflitto con \lstinline|ArcsBetweenPoints()|, creando artifici grafici non desiderati.
 Si è quindi passati a una realizzazione manuale degli archi che segue la creazione di 3 segmenti con mobjects \lstinline|Line()| concatenati per rappresentare i link del torus dei nodi posti alle estremità.
-Perticolare attenzione va data al metodo \lstinline|get_center()| del mobject \lstinline|LabeledDot()|, poichè il metodo ritorna le coordinate del nodo, ci servirà per descrivere come vengono creati i link manuali.
+Perticolare attenzione va data al metodo \lstinline|get_center()| del mobject \lstinline|LabeledDot()|, poiché il metodo ritorna le coordinate del nodo, ci servirà per descrivere come vengono creati i link manuali.
 L'idea di creazione deriva dal considere il centro dei nodi delle estremità come punti di origine di piani cartesiani \(x, y\) dai quali ricavare le coordinate dei 3 segmenti, i vari sistemi di coordinate sono;
 
 \begin{itemize}
     \item \textbf{Links verticali:} 
     \begin{itemize}
         \item prima linea: si parte da un nodo posto all'estremità superiore della griglia ottenendo le coordinate con \lstinline|get_center()| e ne definiamo il punto \(pointA\), si prende il punto \(p1 = (-x, -y)\), rispetto alle coordinate di \(pointA\), e si crea la linea che parte da p1 a \(pointA\)
-        \item seconda linea: si prende il nodo posto all'estremità inferiore della griglia nella stessa colonna in cui è presente \(pointA\), e ricavandone le coordinate con il metodo abbiamo un punto che definiamo come \(pointB\), si prende il punto \(p2 = (-x, y)\), rispetto alle coordinate di \(pointB\), e si crea la linea che parte da p2 a pointB 
+        \item seconda linea: si prende il nodo posto all'estremità inferiore della griglia nella stessa colonna in cui è presente \(pointA\) e, ricavandone le coordinate con il metodo, abbiamo un punto che definiamo come \(pointB\), si prende il punto \(p2 = (-x, y)\), rispetto alle coordinate di \(pointB\), e si crea la linea che parte da p2 a pointB 
         \item terza linea: si crea una linea che va dal punto p1 al punto p2.
     \end{itemize}
     \item \textbf{Links orizzontali:} 
     \begin{itemize}
         \item prima linea: si parte da un nodo posto all'estremità sinistra della griglia ottenendo le coordinate con \lstinline|get_center()| e ne definiamo il punto \(pointA\), si prende il punto \(p1 = (x, -y)\), rispetto alle coordinate di \(pointA\), e si crea la linea che parte da p1 a pointA
-        \item seconda linea: si prende il nodo posto all'estremità destra della griglia nella stessa riga in cui è presente \(pointA\), e ricavandone le coordinate con il metodo abbiamo un punto che definiamo come \(pointB\), si prende il punto \(p2 = (-x, -y)\), rispetto alle coordinate di \(pointB\), e si crea la linea che parte da p2 a pointB 
+        \item seconda linea: si prende il nodo posto all'estremità destra della griglia nella stessa riga in cui è presente \(pointA\) e, ricavandone le coordinate con il metodo, abbiamo un punto che definiamo come \(pointB\), si prende il punto \(p2 = (-x, -y)\), rispetto alle coordinate di \(pointB\), e si crea la linea che parte da p2 a pointB 
         \item terza linea: si crea una linea che va dal punto p1 al punto p2.
     \end{itemize}
 
 \end{itemize}
 
-Vien da sè che in questo caso è indispensabile l'ordinameto, poichè per ogni specifico nodo ci sono delle specidiche coordinate per la creazione dei link manuali.
+Vien da sè che in questo caso è indispensabile l'ordinameto, poiché per ogni specifico nodo ci sono delle specidiche coordinate per la creazione dei link manuali.
 Se non si facesse questo tipo di controllo, potremmo avere una situazione come in figura \ref{fig:torus_archi_asimmetrici}, ottenendo un grafico
 molto disorganico e asimmetrico.
 
@@ -1677,7 +1677,7 @@ Analizziamo la funzione dedicata alla creazione automatica di un grafo mesh.
 Come possiamo vedere nel codice \ref{codice:create_auto_mesh_links}, la condizione che domina la complessità è rappresentata dai due cicli \texttt{for} annidati mentre il resto delle
 operazioni viene effettuato in tempo costante. I cicli \texttt{for} vendono effettuati sui valori rows e cols, i quali sono derivati dalla radice quadrata nel numero di switch. 
 Nel caso di questa applicazione, in cui è permesso un massimo di 1000 switch, la complessità risulta essere in tempo costante, 
-poichè nel caso peggiore il valore 1000 è considerabile come costante \(c\), 
+poiché nel caso peggiore il valore 1000 è considerabile come costante \(c\), 
 avremmo un numero di iterazioni pari a  \( \sqrt{c} \times \sqrt{c} = c \).
 Tuttavia ipotizziamo se il numero di switch fosse \(n\) 
 ,con \(n\) molto grande. Consideriamo i due cicli \texttt{for} annidati, ognuno dei quali itera fino alla radice quadrata di \( n \):
@@ -1726,13 +1726,13 @@ viene sommato al costo del primo ciclo \(O(\sqrt{c})\) e al costo del secondo ci
     O(c) + O(\sqrt{c}) + O(\sqrt{c}) = O(c + \sqrt{c} + \sqrt{c}) = O(c + 2\sqrt{c}) = O(c)
 \]
 
-Tuttavia nel caso ipotetico si abbia un numero elevato di switch, la complessità risulterebbe lineare poichè il calcolo rimarrebbe invariato, con la soltanto
-eccezione di avere \(n\) al posto della costante \(c\).
-Passando alle funzioni user per la creazione dei link troviamo che le funzioni dedicate per il mesh e torus graph sono logicamente molto simili a quelle auto, con
-la differenza che in quelle user ci sono dei controlli legati all'inserimento dei valori numerici dei nodi e degli zeri per gli spazi vuoti, sono quindi tutte operazioni che hanno un tempo costante,
-quindi queste funzioni hanno la stessa complessità delle controparti auto analizzate precedentemente.
+Tuttavia nel caso ipotetico si abbia un numero elevato di switch, la complessità risulterebbe lineare poiché il calcolo rimarrebbe invariato, avendo
+\(n\) al posto della costante \(c\).
+Passando alle funzioni user per la creazione dei link troviamo che le quelle dedicate per il mesh e torus graph sono logicamente molto simili a quelle auto, con
+la differenza che in quelle user ci sono dei controlli legati all'inserimento dei valori numerici dei nodi e degli zeri per gli spazi vuoti. Sono quindi tutte operazioni che hanno un tempo costante,
+avendo la stessa complessità delle controparti auto analizzate precedentemente.
 Diverso il discorso per la funzione per tipo di grafo personalizzato, qui la logica è molto più semplice
-poichè essendo già tutto descritto nel custom file, si tratta soltanto di ricopiare la struttura dei links così come rappresentata nel file,
+poiché essendo già tutto descritto nel custom file, si tratta soltanto di ricopiare la struttura dei links così come rappresentata nel file,
 quindi in un caso peggiore in cui ci sia un numero elevato \(n\) di links la complessità sarà lineare.
 
 Successivamente alla creazione dei link, la struttura critica è la creazione dei pacchetti in quanto il loro numero può essere davvero grande.
@@ -1784,7 +1784,7 @@ Questi paramentri non sono grandi ai fini del progetto, supponendo di avere un s
 \end{equation}
 
 Ne ricaviamo un valore pari a 36000, il quale può essere considerato una costante. Il secondo ciclo che troviamo è all'interno del primo costrutto \lstinline|if|, il quale scandisce tutti i link per cambiarne le percentuali di traffico da creare; il caso peggiore qui è il caso di grafo completo avente un numero di link
-riportato nell'equazione \ref{eq:link_number}, quindi con complessita quadratica, tuttavia è bene precisare che il progetto vuole rappresentare maggiormente la rete in un data center, la quale nella realtà non è mai costruita come un grafo completo poichè i costi sarebbero proibitivi e la complessità aumenta notevolmente, piuttosto è comune avere delle 
+riportato nell'equazione \ref{eq:link_number}, quindi con complessita quadratica, tuttavia è bene precisare che il progetto vuole rappresentare maggiormente la rete in un data center, la quale nella realtà non è mai costruita come un grafo completo poiché i costi sarebbero proibitivi e la complessità aumenta notevolmente, piuttosto è comune avere delle 
 rappresentazioni come il grafo mesh o torus, per questo motivo d'ora in poi consideremo numerazioni di links e nodi legati soltanto a questi due tipi di grafi. Analizzando i grafi mesh e torus troviamo che la quantità di link che possiamo considerare è costante, infatti
 se consideriamo \(n\) il numero di switch, troviamo che il numero \(l\) di link di un grafo torus è dall'equazione:
 \begin{equation}
@@ -1793,9 +1793,9 @@ se consideriamo \(n\) il numero di switch, troviamo che il numero \(l\) di link 
 \end{equation}
 
 Poichè ogni nodo ha 4 nodi adiacenti che vengono contati due volte. Essendo il grafo torus più ricco di links rispetto al grafo mesh, definisce il caso peggiore tra i due risultando così \(O(\frac{4c}{2}) = O(c)\), essendo il numero di switch massimo pari a 1000 quindi costante.
-Una precisazione sulla funzione \lstinline|change_traffic_perc()|, la quale opera in tempo costante poichè ha solo il compito di cambiare il valore di percentuale di traffico.
-Il secondo ciclo che troviamo ha all'interno un altro ciclo, il primo itera sempre sui links, il secondo itera per il numero di pacchetti da creare, dato un certa percentuale di traffico, in una data frazione temporale.
-Troviamo quindi che la variabile PPS (che indica il numero di pacchetti al secondo massimi che un link può trasportare), può essere molto grande, è quindi il nostro \(n\).
+Una precisazione sulla funzione \lstinline|change_traffic_perc()|, la quale opera in tempo costante poiché ha solo il compito di cambiare il valore di percentuale di traffico.
+Il secondo ciclo che troviamo ha all'interno un altro ciclo; il primo itera sempre sui links, il secondo itera per il numero di pacchetti da creare, dato un certa percentuale di traffico, in una data frazione temporale.
+Poiché variabile PPS (che indica il numero di pacchetti al secondo massimi che un link può trasportare) può essere molto grande, possiamo definirla avente grandezza \(n\).
 Possiamo quindi affermare che il parametro dominante per la complessità sia:
 
 \begin{align}
@@ -1803,9 +1803,9 @@ Possiamo quindi affermare che il parametro dominante per la complessità sia:
     \label{eq:packets_per_fractional_time}
 \end{align}
 
-La funzione \lstinline|create_packet()| opera in tempo costante poichè semplicemente formatta in modo corretto il pacchetto da salvare, così come operano in tempo costante tutte le restanti operazioni.
+La funzione \lstinline|create_packet()| opera in tempo costante poiché semplicemente formatta in modo corretto il pacchetto da salvare, così come operano in tempo costante tutte le restanti operazioni.
 Facendo quindi una somma di tutte le complessità riguardanti i punti critici \ref{codice:create_packets_complexity} 
-troviamo che la complessità di questo pezzo logico di codice è \(O(n)\) \ref{eq:complexity_traffic_generator}, fatta eccezione per l'opzione di grafo completo, poichè avremmo un numero di
+troviamo che la complessità di questo pezzo logico di codice è \(O(n)\) \ref{eq:complexity_traffic_generator}, fatta eccezione per l'opzione di grafo completo, poiché avremmo un numero di
 links molto grande pari a \(n\) così come il numero di pacchetti e la parte di codice \ref{codice:create_packets_n_links} avrebbe complessità \(O(n^2)\).
 
 {\scriptsize
@@ -1836,13 +1836,13 @@ O(1)    # operazioni
 }
 
 Assumendo che i grafi completi siano estremamente rari nella realtà e che nei data center troviamo per lo più configurazioni mesh e torus, possiamo
-affermare che complessità globale per il generatore può dirsi essere lineare, come lo mostrano anche i test effettuati in figura \ref{fig:prestazioni_config_gen}.
+affermare che la complessità globale per il generatore può dirsi essere lineare, come lo mostrano anche i test effettuati in figura \ref{fig:prestazioni_config_gen}.
 I test hanno come parametri un tempo di generazione pari a due secondi, link con capacità di 1 Gbps in un grafo di tipo torus.
 Si può vedere che all'aumentare del numero di nodi (switch) il tempo necessario a generare i pacchetti cresce in modo lineare.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\textwidth]{immagini/prestazioni_config_gen.png}
+    \includegraphics[width=0.8\textwidth]{immagini/prestazioni_config_gen.png}
     \caption{Prestazioni per il generatore di traffico}
     \label{fig:prestazioni_config_gen}
 \end{figure}
@@ -1860,7 +1860,7 @@ Si può vedere che all'aumentare del numero di nodi (switch) il tempo necessario
 Il cuore dell'analizzatore è la parte logica di codice incaricata di scandire tutti i pacchetti, estrarne le somme dei valori di payload e relative vedie percentuali.
 L'analizzatore in primis carica i due files network.yaml e packets.json/yaml, in questo caso creiamo sempre una struttura ausiliaria necessaria a memorizzare man mano le somme pei payload; ciò 
 consiste semplicemente in un ciclo for che scandisce la lista di link presente nel network file e quindi abbiamo tempo costante O(c), ricordando che stiamo
-analizzando come caso peggiore un numero di link presenti un un torus graph, come mostrato precedentemente in fig. \ref{eq:torus_link_number}.
+analizzando come caso peggiore un numero di link presenti in un torus graph, come mostrato precedentemente in fig. \ref{eq:torus_link_number}.
 Analizziamo ora il codice \ref{codice:analyze_packets} in cui avviene l'analisi vera e propria.
 
 {\scriptsize
@@ -1923,7 +1923,7 @@ Il primo ciclo while scandisce semplicemente le unità frazionarie temporali sca
 Segue un ciclo for che itera sui link, anche qui abbiamo una complessità di \(O(c)\). Dopo divere operazioni con tempo O(1), la parte che merita attenzione è il ciclo while nidificato.
 Questo ciclo itera su tutti i pacchetti che hanno un timestamp che ricade nell'unità frazionaria di tempo da analizzare, sono quindi tutti i pacchetti in un dato updateDelta per un dato traffico percentuale; abbiamo già incontrato questo
 parametro e ne abbiamo calcolato il peso in termini computazionali nell' equazione \ref{eq:packets_per_fractional_time}, ottenendo \(O(n)\). Dopo diverse
-operazioni, tutte con complessità O(1), i cicli che troviamo sono tre, interessano iterazioni sui link, ciascuno con complessità \(O(c)\), e non sono annidati poichè si susseguono.
+operazioni, tutte con complessità O(1), i cicli che troviamo sono tre, interessano iterazioni sui link, ciascuno con complessità \(O(c)\), e non sono annidati poiché si susseguono.
 Possiamo quindi definire la complessità compelssiva di questa parte logica che risulta essere lineare. \ref{eq:complexity_analyzer}.
 
 
@@ -1988,7 +1988,7 @@ La complessità in questo caso possiamo ricavarla dai test, i quali mostrano che
 
 Il grafico in fig. \ref{fig:720p_rendering_performance} si basa su una simulazione di 5 secondi con tipologia grafo mesh; possiamo notare che al
 crescere del numero degli switch il tempo per il rendering del video cresce in modo lineare. Possiamo concludere che il codice in fig. \ref{codice:create_animation}, opera con 
-complessità \(O(n)\). Ipotizzando quindi un caso d'uso realistico in cui non viene previsto un grafo completo nell'impiego di una rete di data center
+complessità \(O(n)\). Ipotizzando quindi un caso d'uso realistico in cui non viene previsto un grafo mesh/torus completo nell'impiego di una rete di data center
 possiamo concludere che la complessità generale del visualizzatore sia il peso della creazione delle strutture, caricamento dal files e creazione base grafica, sommato 
 al peso dato dalla parte di animazione ottenendo complessità lineare come riportato nell'equazione \ref{eq:complexity_visualizer}.
 
@@ -2023,9 +2023,8 @@ dai formati scelti json e yaml, si è dimostrato che json è incredibilmente pi�
 
 Il test è basato sulla configurazione avente tempo di generazione 5 secondi e tipologia di grafo mesh con links aventi capacità 1 Gbps.
 In questo caso, così come anche i futuri test che verrano riportati, si considera il tempo come la variabile dipendente dal numero di switch impiegati.
-Possiamo osservare dal test che json è decisamente più veloce di yaml sia in scrittura che in lettura, tanto da avere tempi praticamente sovrapposti, mentre per yaml,
-seppur con un andamento lineare, ha un coefficiente angolare che fa pesare molto di più l'andamento della curva. Quindi possiamo concludere che json è decisamente la scelta più opportuna 
-per i fini del progetto. Risulta comunque interessante notare l'andamento di json nella lettura e scrittura per un numero di switch superiore a 7; avendo la stessa configurazione di test precedente otteniamo i grafici in fig. \ref{fig:json_wr_nature} e \ref{fig:json_writing_reading}.
+Possiamo osservare dal test che json è decisamente più veloce di yaml sia in scrittura che in lettura, tanto da avere tempi praticamente sovrapposti, mentre per yaml si ha un coefficiente angolare che fa pesare molto di più l'andamento della curva. Quindi possiamo concludere che json è decisamente la scelta più opportuna 
+per i fini del progetto. Risulta comunque interessante notare l'andamento di json nella lettura e scrittura per un numero di switch superiore a 7; avendo la stessa configurazione del test precedente otteniamo i grafici in fig. \ref{fig:json_wr_nature} e \ref{fig:json_writing_reading}.
 
 \begin{figure}[h]
     \centering
@@ -2042,8 +2041,8 @@ per i fini del progetto. Risulta comunque interessante notare l'andamento di jso
 \end{figure}
 
 Osservando i grafici notiamo come il carattere degli andamenti di scrittura e lettura di json prenda forma a partire da una configurazione con 7 switch,
-delineando un andamento lineare in entrambi i casi, con un'ottima performance per la lettura. Per quanto riguarda il peso dei files prodotti abbiamo visto yaml produce
-files decisamente più piccoli di json, possiamo farci un'idea dai dati registrati in fase di test in fig. \ref{fig:json_yaml_files_dim}.
+delineando un andamento lineare in entrambi i casi, con un'ottima performance per la lettura. Per quanto riguarda la dimensione dei files prodotti, abbiamo visto yaml produrre
+files decisamente più piccoli di json, possiamo così farci un'idea dai dati registrati in fase di test in fig. \ref{fig:json_yaml_files_dim}.
 
 \begin{figure}[h]
     \centering
@@ -2058,8 +2057,10 @@ superiore da far propendere per un compromesso in termini di dimensione dei file
 Per quanto riguarda generatore, analizzatore e visualizzatore grafico, possiamo concludere che tutti i moduli del progetto operano in tempo lineare, fatta eccezione della tipologia di grafo completo che intrinsicamente porta dietro di se una natura di complessità quadratica,
 rappresentando così un'ottimo risultato in termini prestazionali.
 Un'altra conclusione, non banale, riguarda l'essere riusciti a realizzare un prodotto di analisi di rete da una libreria che nasce come scopi relativi a video esplicativi matematici, come possono essere grafi cartesiani animati, spazi vettoriali animati e così via;
-si è riusciti quindi a sfruttare la libreria per scopi non strettamente inerenti ai suoi scopi di esistenza, questo processo di adattabilità ha portato a un percorso formativo decisamente creativo, sperimentando nuove soluzioni con in mezzi forniti.
-Questo processo fa si che ci siano ampi margini di manovra per applicazioni future, sia legati al concetto di cosa si propone di fare questo progetto sia in termini di integrazioni future di caratteristiche; il concetto che sta alla base del progetto può essere allargato al di fuori di un data center e trovare
+si è riusciti quindi a sfruttare la libreria per fini non strettamente inerenti ai suoi scopi di esistenza, questo processo di adattabilità ha portato a un percorso formativo decisamente creativo, sperimentando nuove soluzioni con in mezzi forniti.
+Questo processo fa si che ci siano ampi margini di manovra per applicazioni future, 
+sia legati al concetto di cosa si propone di fare questo progetto sia in termini di integrazioni future di caratteristiche. 
+Il concetto che sta alla base del progetto può essere allargato al di fuori di un data center e trovare
 altri terreni in cui potersi adattare, sfruttandone le caratteristiche di base si potrebbe adattare l'applicazione ad esempio per il traffico di reti stradali in cui 
 i nodi sono rappresentati da punti d'interesse, raggiungibili tramite strade (i link) e con i pacchetti che rappresentano i veicoli, analizzandone il traffico, oppure per reti di gioco multiplayer massivo (MMO), in cui la topologia mesh può essere utilizzata per gestire la comunicazione tra server distribuiti geograficamente, reti di sensori 
 in cui la topologia mesh permette ai dispositivi di comunicare anche in condizioni ambientali difficili o in scenari dove i nodi sono distribuiti in modo irregolare, gli ambiti sono potenzialmente tanti.
@@ -2078,12 +2079,12 @@ ho approfondito la mia comprensione i tutti i campi incontrati, acquisito nuove 
 Personalmente trovo di non poter concludere meglio di così il mio percorso accademico, 
 avendo avuto l'opportunità di dedicare gli sforzi, in questa prova finale, verso qualcosa su cui nutrivo forte interesse, ovvero la programmazione di elementi grafici e loro animazioni in modo programmatico.
 Ed è in termini di opportunità ricevuta che desidero esprimere la mia sincera gratitudine al mio Relatore, Daniele De Sensi, per avermi accolto,
-per essersi prodigato tento per trovare l'ambito di interesse che mi sarebbe piaciuto affrontare, per la sua guida e per il
+per essersi prodigato tanto per trovare l'ambito di interesse che mi sarebbe piaciuto affrontare, per la sua guida e per il
 supporto inestimabile e prezioso, fondamentale per il mio sviluppo professionale durante questo periodo.
 \newline
 \newline
 Desidero ringraziare la mia compagna di vita, Chiara, il mio faro nella notte, senza la quale questo traguardo probabilmente
- non sarebbe stato possibile, per il supporto costante, la pazienza e per aver creduto fortemente in me; e la mia piccola Giulia, Atena, mia figlia,
+ non sarebbe stato possibile, per il supporto costante, la pazienza e per aver creduto fortemente in me. Ringrazio la mia piccola Giulia, Atena, mia figlia,
 che ogni giorno mi insegna un pezzo di vita, mi dona gioia e speranza. 
 \newline
 \newline
@@ -2094,7 +2095,7 @@ Un doveroso ringraziamento va a Lucio Molo e Mauro Semproni, miei colleghi unive
 accademica e mi hanno aiutato a viverla nel modo più sereno e pieno possibile.
 \newline
 \newline
-Desidero infine ringraziare gli amici che mi hanno accompagnato durante il percorso, per l'immensa
+Desidero infine ringraziare gli amici più stretti, che mi hanno accompagnato durante il percorso, per l'immensa
 compagnia e per avermi fatto sentire bene anche nei momenti più duri.
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  22 APR 2024 17:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  23 APR 2024 12:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1127,13 +1127,13 @@ Capitolo 6.
 File: immagini/prestazioni_config_gen.png Graphic file (type png)
 <use immagini/prestazioni_config_gen.png>
 Package pdftex.def Info: immagini/prestazioni_config_gen.png  used on input line 1845.
-(pdftex.def)             Requested size: 396.0pt x 231.17816pt.
+(pdftex.def)             Requested size: 316.80121pt x 184.94098pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [48] [49 <./immagini/prestazioni_config_gen.png>]
-<immagini/prestazioni_analyzer.png, id=1225, 434.058pt x 253.383pt>
+<immagini/prestazioni_analyzer.png, id=1230, 434.058pt x 253.383pt>
 File: immagini/prestazioni_analyzer.png Graphic file (type png)
 <use immagini/prestazioni_analyzer.png>
 Package pdftex.def Info: immagini/prestazioni_analyzer.png  used on input line 1940.
@@ -1142,7 +1142,10 @@ Package pdftex.def Info: immagini/prestazioni_analyzer.png  used on input line 1
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[50] [51 <./immagini/prestazioni_analyzer.png>]
+
+Underfull \vbox (badness 7504) has occurred while \output is active []
+
+ [50] [51 <./immagini/prestazioni_analyzer.png>]
 <immagini/720p_rendering_performance.png, id=1284, 434.058pt x 253.383pt>
 File: immagini/720p_rendering_performance.png Graphic file (type png)
 <use immagini/720p_rendering_performance.png>
@@ -1169,12 +1172,12 @@ Package pdftex.def Info: immagini/json_yaml_wr_comparison.png  used on input lin
 <immagini/json_wr_nature.png, id=1312, 434.058pt x 253.383pt>
 File: immagini/json_wr_nature.png Graphic file (type png)
 <use immagini/json_wr_nature.png>
-Package pdftex.def Info: immagini/json_wr_nature.png  used on input line 2033.
+Package pdftex.def Info: immagini/json_wr_nature.png  used on input line 2032.
 (pdftex.def)             Requested size: 190.07831pt x 110.95917pt.
 <immagini/json_writing_reading.png, id=1313, 434.058pt x 253.383pt>
 File: immagini/json_writing_reading.png Graphic file (type png)
 <use immagini/json_writing_reading.png>
-Package pdftex.def Info: immagini/json_writing_reading.png  used on input line 2038.
+Package pdftex.def Info: immagini/json_writing_reading.png  used on input line 2037.
 (pdftex.def)             Requested size: 190.07831pt x 110.95917pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1183,27 +1186,27 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <immagini/json_yaml_files_dim.png, id=1322, 434.058pt x 253.383pt>
 File: immagini/json_yaml_files_dim.png Graphic file (type png)
 <use immagini/json_yaml_files_dim.png>
-Package pdftex.def Info: immagini/json_yaml_files_dim.png  used on input line 2050.
+Package pdftex.def Info: immagini/json_yaml_files_dim.png  used on input line 2049.
 (pdftex.def)             Requested size: 316.80121pt x 184.94098pt.
  [56 <./immagini/json_wr_nature.png> <./immagini/json_writing_reading.png> <./immagini/json_yaml_files_dim.png>] [57] [58
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 2074--2099
+Underfull \hbox (badness 10000) in paragraph at lines 2075--2100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2074--2099
+Underfull \hbox (badness 10000) in paragraph at lines 2075--2100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2074--2099
+Underfull \hbox (badness 10000) in paragraph at lines 2075--2100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2074--2099
+Underfull \hbox (badness 10000) in paragraph at lines 2075--2100
 
  []
 
@@ -1214,7 +1217,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
  [61]
-Overfull \hbox (30.28568pt too wide) in paragraph at lines 2103--2103
+Overfull \hbox (30.28568pt too wide) in paragraph at lines 2104--2104
 []\T1/lmr/m/n/10.95 (-20) UCINET. \T1/lmr/m/it/10.95 (-20) UCI-NET Soft-ware\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / sites . google . com / site / ucinetsoftware/$[]\T1/lmr/m/n/10.95 (-20) .
  []
 
@@ -1243,13 +1246,13 @@ Package logreq Info: Writing requests to 'relazione.run.xml'.
 Here is how much of TeX's memory you used:
  26797 strings out of 474423
  464850 string characters out of 5742662
- 2207496 words of memory out of 5000000
+ 2163496 words of memory out of 5000000
  47721 multiletter control sequences out of 15000+600000
  660275 words of font info for 220 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,131p,1126b,2209s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on relazione.pdf (70 pages, 2548422 bytes).
+Output written on relazione.pdf (70 pages, 2548199 bytes).
 PDF statistics:
  1668 PDF objects out of 1728 (max. 8388607)
  841 named destinations out of 1000 (max. 500000)

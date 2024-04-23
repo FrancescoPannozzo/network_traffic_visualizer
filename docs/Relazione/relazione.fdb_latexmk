@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber relazione"] 1713541518.02993 "relazione.bcf" "relazione.bbl" "relazione" 1713801325.3275 0
+["biber relazione"] 1713863239.13388 "relazione.bcf" "relazione.bbl" "relazione" 1713866663.26334 0
   "bibliografia.bib" 1713541510 7553 8f26d6e4ce37858f285c6ff13fbaa707 ""
-  "relazione.bcf" 1713801323 109905 6fa389870270a385aa30fc6172dc389b "pdflatex"
+  "relazione.bcf" 1713866662 109905 6fa389870270a385aa30fc6172dc389b "pdflatex"
   (generated)
   "relazione.bbl"
   "relazione.blg"
   (rewritten before read)
-["pdflatex"] 1713801312.26393 "c:/Users/Pan/Desktop/TESI/progetto-tirocinio/FINAL/network-traffic-visualizer/network_traffic_visualizer/docs/Relazione/relazione.tex" "relazione.pdf" "relazione" 1713801325.32961 0
+["pdflatex"] 1713866652.75012 "c:/Users/Pan/Desktop/TESI/progetto-tirocinio/FINAL/network-traffic-visualizer/network_traffic_visualizer/docs/Relazione/relazione.tex" "relazione.pdf" "relazione" 1713866663.26595 0
   "C:/Users/Pan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1713448777 163260 f7138aa97b0a1dcae55100dabb7d9e7d ""
   "C:/Users/Pan/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1711281844 24235103 7d4a79bd3c03395a573d353214d37463 ""
   "C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
@@ -190,7 +190,7 @@
   "C:/Users/Pan/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Pan/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/Pan/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "c:/Users/Pan/Desktop/TESI/progetto-tirocinio/FINAL/network-traffic-visualizer/network_traffic_visualizer/docs/Relazione/relazione.tex" 1713801300 139577 9992aa6e4f2dae0448fae8cb80bae1a9 ""
+  "c:/Users/Pan/Desktop/TESI/progetto-tirocinio/FINAL/network-traffic-visualizer/network_traffic_visualizer/docs/Relazione/relazione.tex" 1713866650 139549 4deac0fb830cd653e27e2b1ca838719c ""
   "immagini/480_720_1080_rend_perf.png" 1713688578 68719 2593fadb2ec32e0def96f6b9bbc3b727 ""
   "immagini/720p_rendering_performance.png" 1713688539 39394 04cb929a192c709e0c022f8170dd3bd4 ""
   "immagini/adaptive_dots_example.JPG" 1713535178 68987 bbb8d69c212402f58663e8093c9a2bb7 ""
@@ -222,12 +222,12 @@
   "immagini/torus_not_full_adaptive.JPG" 1713532381 81484 dd7867d309106a065fb4f2b6eaea0ea8 ""
   "immagini/yaml_block_flow_dim.png" 1713390468 20942 3f7a1970a77419e287e6a30187a906e9 ""
   "immagini/yaml_block_flow_wr.png" 1713390443 107964 4261bc47700a9c94a0a70e0f3c238371 ""
-  "relazione.aux" 1713801323 26789 ae5b01e4fb9d36793973a10ca4640ba9 "pdflatex"
-  "relazione.bbl" 1713541523 27174 cc3fbb17afbb176ced11527de9ac62f5 "biber relazione"
-  "relazione.out" 1713801323 5318 18400d2766ffab1411a21cc81e8e502e "pdflatex"
-  "relazione.run.xml" 1713801323 2342 2abbe89a06f1522e436d277605ef04b5 "pdflatex"
-  "relazione.tex" 1713801300 139577 9992aa6e4f2dae0448fae8cb80bae1a9 ""
-  "relazione.toc" 1713801323 2498 da7a6b270cec37a204978b6fa4ce78e3 "pdflatex"
+  "relazione.aux" 1713866662 26789 ae5b01e4fb9d36793973a10ca4640ba9 "pdflatex"
+  "relazione.bbl" 1713863250 27174 cc3fbb17afbb176ced11527de9ac62f5 "biber relazione"
+  "relazione.out" 1713866662 5318 18400d2766ffab1411a21cc81e8e502e "pdflatex"
+  "relazione.run.xml" 1713866662 2342 2abbe89a06f1522e436d277605ef04b5 "pdflatex"
+  "relazione.tex" 1713866650 139549 4deac0fb830cd653e27e2b1ca838719c ""
+  "relazione.toc" 1713866662 2498 da7a6b270cec37a204978b6fa4ce78e3 "pdflatex"
   (generated)
   "relazione.aux"
   "relazione.bcf"
