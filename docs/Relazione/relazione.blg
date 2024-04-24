@@ -1,15 +1,15 @@
-[0] Config.pm:307> INFO - This is Biber 2.19
-[1] Config.pm:310> INFO - Logfile is 'relazione.blg'
-[440] biber-MSWIN64:340> INFO - === 
-[609] Biber.pm:419> INFO - Reading 'relazione.bcf'
-[930] Biber.pm:979> INFO - Found 25 citekeys in bib section 0
-[973] Biber.pm:4419> INFO - Processing section 0
-[1027] Biber.pm:4610> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
-[1146] bibtex.pm:1713> INFO - LaTeX decoding ...
-[1248] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
-[1670] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1670] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1671] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'it-IT'
-[1671] Biber.pm:4245> INFO - No sort tailoring available for locale 'it-IT'
-[1822] bbl.pm:660> INFO - Writing 'relazione.bbl' with encoding 'UTF-8'
-[1867] bbl.pm:763> INFO - Output to relazione.bbl
+[1] Config.pm:307> INFO - This is Biber 2.19
+[2] Config.pm:310> INFO - Logfile is 'relazione.blg'
+[288] biber-MSWIN64:340> INFO - === 
+[408] Biber.pm:419> INFO - Reading 'relazione.bcf'
+[813] Biber.pm:979> INFO - Found 26 citekeys in bib section 0
+[855] Biber.pm:4419> INFO - Processing section 0
+[884] Biber.pm:4610> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
+[1007] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1092] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
+[1522] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1522] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1522] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'it-IT'
+[1522] Biber.pm:4245> INFO - No sort tailoring available for locale 'it-IT'
+[1604] bbl.pm:660> INFO - Writing 'relazione.bbl' with encoding 'UTF-8'
+[1627] bbl.pm:763> INFO - Output to relazione.bbl

@@ -519,6 +519,30 @@
       \field{title}{Social Network Visualizer (SocNetV)}
       \field{year}{2024}
     \endentry
+    \entry{rfc8259}{misc}{}
+      \list{organization}{1}{%
+        {IETF}%
+      }
+      \list{publisher}{1}{%
+        {RFC Editor}%
+      }
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Internet Requests for Comments}
+      \field{month}{12}
+      \field{note}{Accessed: 2024-04-22}
+      \field{number}{8259}
+      \field{title}{{The JavaScript Object Notation (JSON) Data Interchange Format}}
+      \field{type}{RFC}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://www.rfc-editor.org/rfc/rfc8259.txt
+      \endverb
+      \verb{url}
+      \verb https://www.rfc-editor.org/rfc/rfc8259.txt
+      \endverb
+    \endentry
     \entry{Manim}{misc}{}
       \name{author}{1}{}{%
         {{hash=0c6c914811edee3ebb09f940013689dd}{%

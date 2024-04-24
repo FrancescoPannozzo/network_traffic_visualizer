@@ -944,8 +944,8 @@ manually. See the documentation or just the frontispiece.}
   \providecommand{\SAP@ThesisDirectorsLabel}{Direttori}
   \newcommand{\SAP@cycleLabel}{ciclo}
   \newcommand{\SAP@AcademicYearLabel}{Anno Accademico}
-  \newcommand{\SAP@ThesisNotDefensedLabel}{Tesi non ancora discussa}
-  \newcommand{\SAP@ThesisDefensedLabelA}{Tesi discussa il}
+  \newcommand{\SAP@ThesisNotDefensedLabel}{Relazione di tirocinio non ancora discussa}
+  \newcommand{\SAP@ThesisDefensedLabelA}{Relazione di tirocinio discussa il}
   \newcommand{\SAP@ThesisDefensedLabelB}{di fronte a una commissione esaminatrice composta da}
   \newcommand{\SAP@chairman}{presidente}
   \newcommand{\SAP@sapienzaname}{Sapienza Universit\`a di Roma}
@@ -954,7 +954,7 @@ manually. See the documentation or just the frontispiece.}
   \newcommand{\SAP@AcknowledgmentsLabel}{Ringraziamenti}
   \newcommand{\SAP@AbstractLabel}{Sommario}
   \newcommand{\SAP@allRightsReservedLabel}{Tutti i diritti riservati}
-  \newcommand{\SAP@sapthesisInformationLabel}{Questa tesi \`e stata composta con \LaTeX\ e la classe Sapthesis}
+  \newcommand{\SAP@sapthesisInformationLabel}{Questa Relazione di tirocinio \`e stata composta con \LaTeX\ e la classe Sapthesis}
   \newcommand{\SAP@emailLabel}{Email dell'autore}}
 
   

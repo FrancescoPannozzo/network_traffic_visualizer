@@ -222,7 +222,7 @@ che riguardano il come è costruita la rate, parliamo quindi degli endpoint qual
 i vari endpoints, con la necessità di tenere traccia delle loro capacità trasmissive, la tipologia di rete, se ha una struttura a grafo completo, mesh, torus o disposizione libera e molte altre informazioni che discuteremo in seguito.
 
 \section{I formati Json e Yaml}
-L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; json\cite{RFC791}, yaml\cite{RFC9512} e csv\cite{RFC4180}.
+L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; json\cite{rfc8259}, yaml\cite{RFC9512} e csv\cite{RFC4180}.
 Dopo attenta anlisi si è deciso di adottare il formato json per strutturare e memorizzare i dati legati al traffico, con la possibilità di scegliere anche il formato yaml, mentre per i dati relativi alla descrizione della rete il compito è stato affidato esclusivamente a yaml, csv è stato scartato.
 Perché csv è stato scartato? Sebbene csv rappresenti una valida alternativa tenendo conto di aspetti prestazionali, essendo un formato molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse della semplice forma tabellare, tipicamente usate nei database. 
 L'idea di scartarla, sia per strutturare i dati della rete che per quelli del traffico, deriva principalmente dai seguenti motivi:
@@ -264,7 +264,7 @@ la dimesione del payload in bytes(). In csv questa struttura è rappresentabile 
 
 Tuttavia se si dovesse rendere questa struttura più complessa, avremmo problemi a realizzarla in csv, basterebbe l'aggiunta
 di un campo che a sua volta necessita di informazione strutturata, come ad esempio 
-inserire le informazione dell'header:
+inserire le informazione dell'header \cite{RFC791}:
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={pacchetto di rete maggiormente strutturato in json}]
         {
@@ -1059,7 +1059,7 @@ Ciò significa che per ogni secondo di traffico avremmo \(1.35 \text{ MB} \times
  descrizione minimale non possa essere comunque adottata in via preferenziale.
 
 
- \section{Aspetti realizzativi scartati: yaml flow e block style}
+ \section{Aspetti realizzativi scartati: yaml block e flow style}
  Un approccio inizialmente realizzato e poi scartato, è stato quello di poter dare la possibilità di scegliere la modalità di salvataggio del file packets.yaml.
 La libreria PyYAML permette di salvare un file yaml secondo due modalità; la prima è definita block style e l'altra flow style.
 Di default, PyYAML sceglie lo stile di una collection a seconda che abbia a sua volta collection nidificate. Qualora ci fossero collection nidificate
@@ -2095,7 +2095,7 @@ Un doveroso ringraziamento va a Lucio Molo e Mauro Semproni, miei colleghi unive
 accademica e mi hanno aiutato a viverla nel modo più sereno e pieno possibile.
 \newline
 \newline
-Desidero infine ringraziare gli amici più stretti, che mi hanno accompagnato durante il percorso, per l'immensa
+Desidero infine ringraziare gli amici della \textit{League of dogs}, che mi hanno accompagnato durante il percorso, per l'immensa
 compagnia e per avermi fatto sentire bene anche nei momenti più duri.
 
 
