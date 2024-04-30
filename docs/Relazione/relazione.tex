@@ -37,7 +37,7 @@
 \author{Francesco Pannozzo}
 \IDnumber{699427}
 \course{Laurea Triennale in Informatica}
-\courseorganizer{Facoltà di Ingegneria dell'Informazione, Informatica e Statistica}
+\courseorganizer{Facoltà di Ingegneria dell'informazione, informatica e statistica}
 \AcademicYear{2023/2024}
 \advisor{Prof. Daniele De Sensi}
 \authoremail{francesco.pannozzo@libero.it}
@@ -48,9 +48,9 @@
 \maketitle
 \dedication{Dedicato alla\\ mia famiglia}
 \begin{abstract}
-Questa relazione descrive il lavoro di tirocinio interno svolto presso l'università La Sapienza, 
+Questa relazione descrive il lavoro di tirocinio interno svolto presso il dipartimento di Informatica dell'Università La Sapienza di Roma, 
 concretizzato nella realizzazione 
-di un progetto volto a realizzare un software per poter visualizzare in forma grafica l'andamento 
+di un progetto riguardante un software per poter visualizzare in forma grafica l'andamento 
 del traffico di una rete.
 Il progetto ha come obiettivo di mostrare il traffico di rete al variare del tempo e ciò viene raggiunto
 tramite grafiche e animazioni generate programmaticamente. L'idea dell'ambito di tirocinio nasce 
@@ -60,11 +60,11 @@ alla base in cui è stato idealizzato l'argomento, seguito da un'analisi dello s
 e studiandone caratteristiche, i loro pregi e mancanze. A seguire ci sarà una descrizione dei contributi che vuole dare il progetto, scaturiti dall'analisi
 dello stato dell'arte e infine una breve panoramica sulla base di partenza del progetto, descrivendo da cosa si è partiti, come è nata l'argomentazione
 che ha portato alla scelta del progetto e la modalità di svolgimento. Nel capitolo 2 parleremo del contesto di sviluppo, ovvero le tecnologie impiegate.
-Seguirà quindi una descrizione approfondita della scelta di certe tecnologie ma soprattutto del perché le si è scelte. Il capitolo 3
+Seguirà quindi una descrizione approfondita della scelta di certe tecnologie ma soprattutto del perché. Il capitolo 3
 descriverà il generatore di traffico e configurazione di rete, descrivendone funzionalità, condizioni inziali di setup di questa parte di applicazione e infine
-descrivendo come il tutto viene generato, passando dalla distribuzione spaziale dei nodi e creazione dei links all'ottenimento dei files sui quali sono memorizzati i dati ottenuti.
+descrivendo come il tutto viene generato, passando dalla distribuzione spaziale dei nodi e creazione dei links all'ottenimento dei files sui quali sono memorizzati i dati.
 Il capitolo 4 tratterà l'analizzatore di traffico, nello specifico dell'implementazione della logica che risiede dietro l'analisi del file contenente il traffico.
-Il capitolo 5 sarà sul visualizzatore grafico, in cui verrà fornita una manoramica sulle logiche dietro la creazione degli elementi grafici e delle animazioni, le modalità
+Il capitolo 5 sarà sul visualizzatore grafico, in cui verrà fornita una panoramica sulle logiche dietro la creazione degli elementi grafici e delle animazioni, le modalità
 grafiche che è possibile ottenere, la descrizione delle scelte di design legate all'aspetto grafico e una sezione dedicata all'accessibilità, con cui si tratterà
 l'implementazione di soluzioni che trattano il tema del daltonismo. Il capitolo 6 darà un quadro generale sulla complessità computazionle delle sezioni di codice più sensibili, analizzando gli andamenti asintotici di tutte le principali parti.
 Infine avremo il capitolo 7, in cui tireremo le conclusioni del progetto, discutendo dei risulati finali e possibili impieghi futuri dell'applicazione.
@@ -95,16 +95,14 @@ in modo grafico, l'andamento del traffico di una rete.
 \section{Ambito del tirocinio}
 Il progetto fa parte del percorso di tirocinio interno intrapreso presso l'Università La Sapienza di Roma. L'argomento su cui verte il progetto
 è la realizzazione di un visualizzatore grafico dell'andamento del traffico di una rete di data center, basato
-su animazioni programmatiche. Il tool permette di visualizzare gli switch rappresentanti 
-i vari endpoints e i link
+su animazioni programmatiche. Il tool permette di visualizzare diversi switch/endpoints (nella pratica di fatto i nodi potrebbero rappresentare gli endpoint/server o gli switch in base a quello che vogliamo mostrare) e i link
 che li collegano i quali vengono colorati tramite animazioni nel tempo in base al traffico di 
 rete precedentemente analizzato. Nel tool è presente anche una parte generativa di traffico di rete,
 una creazione di traffico fittizia di vitale importanza ai fini di testing. Il progetto è suddiviso quindi in tre parti; una parte
 che si occupa della generazione di una configurazione network e relativo traffico di rete, 
 una parte che analizza il traffico di rete
 calcolandone le medie percentuali di intervalli di tempo e aggiornate ripetutamente e infine 
-una parte che visualizza il traffico analizzato
-dall'analizzatore producendo una rappresentazione video.
+una parte che visualizza il traffico analizzato producendo una rappresentazione video.
 \section{Motivazioni}
 L'idea di sviluppare un visualizzatore grafico di traffico di rete è nata, 
 in sede di proposta, dal Professore Daniele De Sensi, relatore del tirocinio, e dalla mia volontà di sviluppare un'applicazione avente il front-end
@@ -123,22 +121,23 @@ di software per la visualizzazione e analisi di reti\cite{JHUDatavisNetwork2024}
 
 \begin{itemize}
   \item \textbf{Gephi\cite{Gephi2024}:}
-  Gephi è il software leader di visualizzazione ed esplorazione per tutti i tipi di grafici e reti ed è open source. Le sue caratteristiche includono
-  l'analisi esplorativa dei dati mediante manipolazioni di reti in tempo reale, 
-  analisi dei collegamenti per rivelare le strutture sottostanti delle associazioni tra oggetti, 
-  analisi dei social network per la creazione di connettori di dati sociali per mappare le organizzazioni della comunità e le reti di piccoli mondi, 
-  analisi della rete biologica per rappresentazione di modelli di dati biologici ed esportazione e 
-  creazione poster per promuovere e divulgare il lavoro scientifico con mappe stampabili di alta qualità.
+  Gephi è il software leader di visualizzazione ed esplorazione per tutti i tipi di grafici e reti ed è open source. 
+  Le sue caratteristiche includono
+  l'analisi esplorativa dei dati mediante manipolazioni di reti in tempo reale e
+  analisi dei collegamenti per rivelare le strutture sottostanti delle associazioni
+  tra oggetti. Il software permette anche l'analisi dei social network per la creazione di connettori di dati
+  sociali per mappare le organizzazioni della comunità e le reti di piccoli mondi, inoltre può essere impiegato per 
+  l'analisi della rete biologica per la rappresentazione di modelli di dati biologici con possiblità di
+  creazione ed esportazione di mappe stampabili di alta qualità.
   \item \textbf{Cytoscape\cite{Cytoscape2024}:} è una piattaforma software open source per visualizzare 
   reti complesse e integrarle con qualsiasi tipo di dati. Consiste in una piattaforma per
   visualizzare reti di interazioni molecolari e percorsi biologici, potendo integrare queste reti con annotazioni,
   profili di espressione genica e altri dati. Originariamente progettato per la ricerca biologica, 
   ora è una piattaforma generale per l'analisi e la visualizzazione di reti complesse.
-  \item \textbf{GraphVis\cite{Graphviz2024}:} è un software di visualizzazione di grafici open source. Caratteristiche,
-  I programmi di layout Graphviz accettano descrizioni di grafici in un semplice linguaggio di testo e creano diagrammi in formati utili, 
-  come immagini e SVG per pagine web; PDF o Postscript per l'inclusione in altri documenti; 
+  \item \textbf{GraphVis\cite{Graphviz2024}:} è un software di visualizzazione di grafici open source. Può accettare descrizioni di grafici in un semplice linguaggio di testo e creare diagrammi in formati utili, 
+  come immagini e SVG per pagine web; PDF o Postscript per l'inclusione in altri documenti 
   o visualizzare in un browser grafico interattivo. Graphviz ha molte funzionalità utili 
-  per diagrammi concreti, come opzioni per colori, caratteri, layout di nodi tabulari, stili di linea, 
+  per diagrammi, come opzioni per colori, caratteri, layout di nodi tabulari, stili di linea, 
   collegamenti ipertestuali e forme personalizzate.
   \item \textbf{igraph\cite{igraph2024}:} è una collezione di librerie per creare, manipolare grafici e analizzare ponendo l'enfasi nell'efficienza,
   portabilità e facilità d'uso. Igraph è open source e gratuito e può essere programmato in R, Python, Mathematica e C/C++
@@ -147,7 +146,7 @@ di software per la visualizzazione e analisi di reti\cite{JHUDatavisNetwork2024}
   I metodi di analisi dei social network includono misure di centralità, identificazione di sottogruppi, analisi di ruolo, teoria dei grafi elementari e analisi statistica basata sulla permutazione. 
   Inoltre, il pacchetto dispone di potenti routine di analisi delle matrici, come l'algebra delle matrici e la statistica multivariata.
   \item \textbf{SocNetV\cite{SocNetV2024}:}è un'applicazione software gratuita multipiattaforma per l'analisi e la visualizzazione dei social network.
-  Tra le caratteristiche principali troviamo il poter disegnare i social network, caricare i campi da un file supportato
+  Tra le caratteristiche principali troviamo il poter disegnare il grafo associato al social network, caricare i campi da un file supportato
   (GraphML, GraphViz, Adjacency, EdgeList, GML, Pajek, UCINET, ecc.), personalizzare attori e collegamenti tramite sistema punta e clicca,
   analizzare le proprietà dei grafici e dei social network, produrre report HTML e incorporare layout di visualizzazione di rete
   \item \textbf{Pajek\cite{Pajek2024}:}  è un software per la visualizzazione e l'analisi delle reti. La sua forza risiede nel poter analizzare reti complesse potendo arrivare
@@ -174,8 +173,8 @@ del progetto di tirocinio, risulta particolarmente indicata nel contribuire a fo
 strumento aggiuntivo di analisi di una rete, di debugging e anche come strumento didattico. La possibilità di
 avere un riscontro visivo istantaneo di cosa avviene nel tempo in una rete, a livello di traffico, può dare immediato feedback nel
 caso ci fosse un problema di congestione in un punto nevralgico, oppure mostrare parti di rete libere dove poter studiare un
-reindirizzamento dello stesso, volto a ottimizzare le prestazioni. A livello didattico ciò si potrebbe mostrare per presentazioni così come per didattica tramite banalmente spiegazioni. 
-Insomma i benefici derivanti da una rappresentazione del generale sono evidenti e ciò
+reindirizzamento dello stesso, volto a ottimizzare le prestazioni. A livello didattico ciò si potrebbe mostrare per presentazioni così come per spiegazioni. 
+Insomma i benefici derivanti da una rappresentazione del genere sono evidenti e ciò
 può essere di grosso aiuto nell'analisi così anche solo come semplice rappresentazione del traffico di rete, nonchè uno strumento complementare a quanto già presente in circolazione.
 
 \section{Base di partenza del progetto}
@@ -190,23 +189,23 @@ Il progetto, a livello di tecnologia impiegata, pone le fondamenta su tre aspett
 elencare di seguito, descrivendo le varie motivazioni che hanno spinto a sceglierli. 
 \section{Python}
 Uno dei primi aspetti di cui si è tenuto conto è stata
-la scelta del linguaggio di programmazione che, come accennato precedentemente, è Python. Ci sono diversi validi motivi per cui 
-puntare su questa tecnologia;
-in primis è materia di insegnamento alla facoltà di Informatica de La Sapienza, ciò ha quindi una forte valenza accedemica, 
-in secondo luogo risulta essere il linguaggio più
+la scelta del linguaggio di programmazione che, come accennato precedentemente, è Python. 
+Python risulta essere il linguaggio più
 usato al mondo, ad affermarlo è l' Institute of Electrical and Electronics Engineers (IEEE)\cite{IEEEwebsite}\cite{IEEESpectrumArticle2023} 
-un'associazione internazionale di scienziati professionisti con l'obiettivo della promozione delle scienze tecnologiche. Il linguaggio ha molte caratteristiche ottime, come
-una sintassi semplice e leggibile che lo rende facile da imparare e semplice da usare per gli sviluppatori esperti accorciando di gran lunga i tempi di sviluppo,
-una grande versatilità per poter essere usato in ambiti diversi come l'intelligenza artificiale, il web development, data analysys e molto altro, un ampio
-supporto delle librerie, due delle quali usate proprio nel progetto (di cui ne parlerò a breve), una grande comunità in cui trovare facilmente risorse, tutorial e supporto,
-una interoperabilità che permette un'ottima integrazione con altre tecnologie e altri linguaggi, orientato agli oggetti volto a facilitare la gestione del codice e migliora il riuso,
+un'associazione internazionale di scienziati professionisti con l'obiettivo della promozione delle tecnologie, incluso il settore dell'information technology (IT). 
+Il linguaggio ha molte caratteristiche ottime, come
+una sintassi semplice e leggibile che lo rende facile da imparare e semplice da usare per gli sviluppatori esperti, accorciando di gran lunga i tempi di sviluppo.
+Un altro pregio è l'avere una grande versatilità per poter essere usato in ambiti diversi come l'intelligenza artificiale, il web development, data analysys e molto altro, grazie a un ampio
+supporto delle librerie, due delle quali usate proprio nel progetto (di cui parlerò a breve). 
+Python vanta di una grande comunità in cui trovare facilmente risorse, 
+tutorial e supporto, un'interoperabilità che permette un'ottima integrazione con altre tecnologie e altri linguaggi, un linguaggio orientato agli oggetti volto a facilitare la gestione del codice e migliorare il riuso,
 scalabile e di facile integrazizone. 
 
 \section{La libreria Manim}
-Il secondo aspetto risiede nella scelta della libreria Manim\cite{Manim}, che viene definita come "Animation engine for explanatory math videos". Lo scopo di Manim è quindi
-quello di animare concetti tecnici legati alla matematica e si affida alla semplicità di Python per generare animazioni in modo programmatico. Manim può produrre anche immagini e gif, ma è nella produzione di video che splende, in questo modo
-è possibile progettare animazioni e renderle visibili in movimento, coprendo figure algebriche, grafici cartesiani, grafi e molto altro\cite{Manim}. 
-La libreria offre molta liberà sui risultati che si vogliono ottenere, può renderizzare singole immagini, gif e da molte opzioni per quanto riguarda l'output video, fornendo la possibilità
+Il secondo aspetto risiede nella scelta della libreria Manim\cite{Manim}, che viene definita come \textit{Animation engine for explanatory math videos}. Lo scopo di Manim è quindi
+quello di animare concetti tecnici legati alla matematica e si affida alla semplicità di Python per generare animazioni in modo programmatico. Manim può produrre anche immagini e gif, ma è nella produzione di video che da il meglio, in questo modo
+è possibile progettare animazioni e renderle visibili in movimento, creando figure algebriche, grafici cartesiani, grafi e molto altro\cite{Manim}. 
+La libreria offre molta libertà sui risultati che si vogliono ottenere, può renderizzare singole immagini, gif e da molte opzioni per quanto riguarda l'output video, fornendo la possibilità
 di renderizzarli nei formati più comuni con la possibilità di personalizzazione del framerate:
 \begin{itemize}	
     \item 480p (SD): 854 x 480
@@ -216,14 +215,14 @@ di renderizzarli nei formati più comuni con la possibilità di personalizzazion
     \item 2160p (4K): 3840 x 2160
 \end{itemize}
 Manim viene impiegato principalmente per presentazioni che implichino aspetti matematici, la sfida del progetto è stata quella di 
-cercare di sfruttare le potenzialità della libreria e renderle al servizio di uno strumento di analisi sul traffico di reti, una sfida vinta come potremo vedere in seguito.
+cercare di sfruttare le potenzialità della libreria e renderle al servizio di uno strumento di analisi sul traffico di reti, una sfida affrontata con successo come potremo vedere in seguito.
 Il terzo aspetto tecnologico riguarda l'aspetto di gestione dei dati. Un visualizzatore grafico di traffico di reti ha bisogno principalmente di due insiemi di informazioni importanti; uno riguarda tutte le informazioni
 che riguardano il come è costruita la rate, parliamo quindi degli endpoint quali sono gli switch e conseguenti informazioni annesse, pensiamo ad esempio all'indirizzo di rete, un nome identificativo e così via, ma parliamo anche dei link che collegano
 i vari endpoints, con la necessità di tenere traccia delle loro capacità trasmissive, la tipologia di rete, se ha una struttura a grafo completo, mesh, torus o disposizione libera e molte altre informazioni che discuteremo in seguito.
 
 \section{I formati Json e Yaml}
-L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; json\cite{rfc8259}, yaml\cite{RFC9512} e csv\cite{RFC4180}.
-Dopo attenta anlisi si è deciso di adottare il formato json per strutturare e memorizzare i dati legati al traffico, con la possibilità di scegliere anche il formato yaml, mentre per i dati relativi alla descrizione della rete il compito è stato affidato esclusivamente a yaml, csv è stato scartato.
+L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; \texttt{json}\cite{rfc8259}, yaml\cite{RFC9512} e csv\cite{RFC4180}.
+Dopo attenta anlisi si è deciso di adottare il formato \texttt{json} per strutturare e memorizzare i dati legati al traffico, con la possibilità di scegliere anche il formato yaml, mentre per i dati relativi alla descrizione della rete il compito è stato affidato esclusivamente a yaml, csv è stato scartato.
 Perché csv è stato scartato? Sebbene csv rappresenti una valida alternativa tenendo conto di aspetti prestazionali, essendo un formato molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse della semplice forma tabellare, tipicamente usate nei database. 
 L'idea di scartarla, sia per strutturare i dati della rete che per quelli del traffico, deriva principalmente dai seguenti motivi:
 
@@ -239,7 +238,7 @@ Per esplicare meglio il concetto di struttura complessa non fattibile è possibi
  utilizzato nel progetto, in questo caso una lista contenente un solo elemento:
 
  {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={pacchetto di rete rappresentato in json}, label={fig:packet_example}]
+\begin{lstlisting}[caption={Pacchetto di rete rappresentato in json}, label={fig:packet_example}]
 [    
     {
         "A": 1,
@@ -252,10 +251,10 @@ Per esplicare meglio il concetto di struttura complessa non fattibile è possibi
  }
 
 Dove A e B sono gli endpoints interessati, t è il timestamp di creazione pacchetto e d 
-la dimesione del payload in bytes(). In csv questa struttura è rappresentabile come segue:
+la dimesione del payload in bytes. In csv questa struttura è rappresentabile come segue:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={pacchetti di rete rappresentati in csv}]
+\begin{lstlisting}[caption={Pacchetti di rete rappresentati in csv}]
     A,B,t,d
     2,1,2024-03-22 12:30:00,1518
     2,1,2024-03-22 12:30:00,1518
@@ -266,7 +265,7 @@ Tuttavia se si dovesse rendere questa struttura più complessa, avremmo problemi
 di un campo che a sua volta necessita di informazione strutturata, come ad esempio 
 inserire le informazione dell'header \cite{RFC791}:
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={pacchetto di rete maggiormente strutturato in json}]
+\begin{lstlisting}[caption={Pacchetto di rete maggiormente strutturato in json}]
         {
           "A": 1,
           "B": 2,
@@ -302,7 +301,7 @@ Json è un formato ampiamente supportato e la sua semplicità permette di ottene
 Sebbene l'applicazione supporti sia json che yaml per quanto riguarda il memorizzare i dati legati al traffico, la scelta preferenziale ricade su json.
 Questo perché, nonostante json produca files di dimensioni maggiori rispetto a yaml, la schiacciante velocità di elaborazione di json rende la creazione di
 un file di dimensioni maggiore ampiamente giustificabile, considerando soprattuto la natura del progetto in cui non vi è una
-criticità d'uso nella dimensione dei files. Come vedremo in seguito, i test eseguiti sui tempi di lettura e scrittura rispettivamente della stessa struttura
+criticità d'uso nella dimensione dei files. Come vedremo in Sec. \ref{sec:aspetti_realizzativi_scartati} , i test eseguiti sui tempi di lettura e scrittura rispettivamente della stessa struttura
 ricreata sia in json che in yaml, sapranno ben
 dimostrare quanto appena affermato. Per impiegare questi formati sono state usate rispettivamente la libreria json \cite{PythonJSONLibrary}, appartenente alla libreria standard di Python, e la
 libreria esterna PyYAML \cite{PyYAMLDocumentation}, un parser ed emitter di yaml per Python.
@@ -312,8 +311,10 @@ di garantire un formato che si presti a espansioni future e quindi che possano r
 in questo caso specifico, nell'alta leggiblità che yaml offre. Generalmente i dati che servono a descrivere una rete non sono mai paragonabili a quelli
 necessari per registrare tutto il traffico, si voleva dare quindi uno strumento molto chiaro da leggere per fare in modo che la configurazione di rete
 fosse sempre molto chiara, intuitiva e di facile accesso, sia in scrittura che in lettura. 
-Per dare una stima di grandezza, il file
-di configurazione network che produce il generatore di pacchetti, basato su 50 switch collegati come un grafo mesh pesa appena 9 KB.
+Per dare una stima di grandezza, per rappresentare una rete con 50 switch collegati come un grafo mesh, il file
+di configurazione network prodotto dal generatore di pacchetti pesa appena 9 KB.
+
+
 Seguirà la descrizione approfondita del progetto, principalmente suddiviso in tre parti; la prima 
 parte riguarda la generazione di traffico di rete fittizio, la seconda è l'analizzatore dei dati di configurazione di rete e relativo traffico mentre la terza
 parte riguarda il visualizzatore grafico vero e proprio.
@@ -334,15 +335,14 @@ riguarda il traffico, crea una struttura che consiste in una lista di pacchetti 
 Lo script permette di eseguire quanto descritto mettendo a
  disposizione due modalità, auto e user. Entrambe le modalità produrranno due files, 
  network.yaml conterà le caratteristiche della rete e il file packets.json (o packets.yaml
- a seconda della scelta) conterrà il traffico vero e proprio di tutti i pacchetti generati 
- dalla simulazione. La modalità auto chiede all'utente il numero di switch, la capacità dei
+ a seconda della scelta) conterrà il traffico vero e proprio di tutti i pacchetti. La modalità auto chiede all'utente il numero di switch, la capacità dei
   link e la tipologia del grafo con il quale rappresentare la rete (completo, mesh, torus) e
    imposterà in modo del tutto automatico
    la disposizione degli switch in base alla scelta del grafo effettuata. Per poter operare,
     in entrambe le modalità, lo script ha bisogno di leggere il file sim\_setup.yaml, il quale contiene le informazioni necessarie per la configurazione. 
     Il file di setup è impostato come segue:
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di setup file}, label={codice:sim_setup_example}]
+\begin{lstlisting}[caption={Esempio di setup file}, label={codice:sim_setup_example}]
     averageDelta: 1000
     updateDelta: 100
     creationDelta: 100
@@ -364,14 +364,14 @@ Andremo ora a spiegare il significato dietro ogni voce:
     \item \textbf{startSimTime:} è il datetime dell'inizio della generazione nel formato \newline
     YY:MM:DD HH:MM:SS, inoltre è possibile specificare anche un eventuale tempo avente millisecondi da specificare come ad esempio 
     12:30:00.500
-    \item \textbf{simTime:} è la durata della simulazione in secondi
-    \item \textbf{packetSize:} è la dimensione in bytes di un pacchetto, i pacchetti nella simulazione avranno questa dimensione
+    \item \textbf{simTime:} è la durata della generazione in secondi
+    \item \textbf{packetSize:} è la dimensione in bytes di un pacchetto, i pacchetti nella generazione avranno questa dimensione
     \item \textbf{colorblind:} è una stringa "yes" o "no" che abilita, se posta su "yes", una visualizazione compatibile per persone daltoniche
     di cui parleremo successivamente quando discuteremo della parte relativa al visualizzatore grafico.
     \item \textbf{trafficVariation:} è la variazione di traffico per secondo che si desidera impostare; 
     può essere il valore "random" oppure uno dei seguenti [5, 10, 20, 25, 50] e 
     di conseguenza determinerà la variazione percentuale di traffico che avviene 
-    ogni secondo di simulazione. Il valore "random" sceglie casualmente una percentuale 
+    ogni secondo di generazione. Il valore "random" sceglie casualmente una percentuale 
     ogni secondo con un valore che va da 0 a 100
     \item \textbf{packetsFile:} specifica quale tecnologia si vuole utilizzare per il file packets, 
     si può scegliere tra json e yaml
@@ -379,11 +379,11 @@ Andremo ora a spiegare il significato dietro ogni voce:
 
 La generazione di pacchetti è calcolata sulla base 
 della capacità dei link fornita e su un valore casuale di percentuale di traffico 
-che varia ogni secondo, per esempio avendo 6 links su 3 secondi di simulazione e il 
+che varia ogni secondo, per esempio avendo 6 links su 3 secondi di generazione e il 
 parametro "trafficVariation" settato a random potremmo avere delle assegnazioni di 
 percentuali di traffico come le seguenti:
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di variazione traffico casuale}]
+\begin{lstlisting}[caption={Esempio di variazione traffico casuale}]
     endpoints: [1, 2], sim second: 0, trafficPerc: 65
     endpoints: [1, 3], sim second: 0, trafficPerc: 9
     endpoints: [2, 4], sim second: 0, trafficPerc: 23
@@ -414,8 +414,7 @@ Una volta lanciato il generatore avremo le seguenti possibilità di scelte:
         \item capacità dei link
         \item tipologia della rappresentazione grafica della rete (grafo completo, mesh, torus)
     \end{itemize}
-    \item \textbf{user:} una modalità in cui l'utente può personalizzare la configurazione di 
-    rete
+    \item \textbf{user:} una modalità in cui l'utente può personalizzare la disposizione dei nodi della rete
 \end{itemize}
 La modalità user necessita di un file "custom\_graph.yaml" con i parametri 
 necessari a descrivere la rete del quale si vuole analizzare il traffico. 
@@ -424,7 +423,7 @@ Con questa modalità l'utente ha completa libertà nel personalizzare la rete ed
 struttura di un dizionario in cui a ogni chiave corrisponde un valore, mostriamo un esempio con possibili varianti che elencheremo:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di custom file per la configurazione}, label={fig:custom_graph_example}]
+\begin{lstlisting}[caption={Esempio di custom file per la configurazione}, label={fig:custom_graph_example}]
     ---
     data:
       graphType: mesh
@@ -488,16 +487,20 @@ Descriviamo i vari parametri:
         \item \textbf{torus:} esegue lo stessa procedura usate per mesh e in addizione collega tra loro i nodi che si trovano alle estremità della matrice
         \item \textbf{graph:} è la modalità più libera, collega gli switch tramite i link forniti dall'utente, indipendentemente da dove vengano collocati
     \end{itemize}
-    \item \textbf{coordinates:} rappresenta le coordinate dei vari switch, i quali vanno rappresentati con un id numerico che va da 1 a 1000. C'è una precisa motivazione di design per questa scelta ed è legata a una rappresentazione grafica ottimale del visualizzatore grafico. Gli zeri invece rappresentano uno spazio vuoto in cui non è presente uno switch.
+    \item \textbf{coordinates:} rappresenta le coordinate dei vari switch, 
+    i quali vanno rappresentati con un id numerico che va da 1 a 1000. 
+    C'è una precisa motivazione di design per questa scelta ed è legata a una rappresentazione 
+    grafica ottimale del visualizzatore grafico.
+    Gli id degli switch vanno posizionati nella matrice in base alla posizione desiderata, mentre tramite il posizionamento di uno zero si rappresenta uno spazio vuoto in cui non è presente uno switch.
     \item \textbf{links:} rappresenta i link della rete i quali possono essere specificati con i campi:
     \begin{itemize}
         \item \textbf{linkCap:} esprime la capacità del link in Mbps
         \item \textbf{endpoints:} esprime gli endpoints collegati al link
     \end{itemize}
-    \item \textbf{phases:} rappresenta le fasi temporali che accompagnano la durata dell'attività di rete, sono identificate tramite timestamp che ha come valore la descrizione della fase che parte dal timestamp stesso.
+    \item \textbf{phases:} rappresenta le fasi temporali che accompagnano la durata dell'attività di rete, sono identificate tramite timestamp che ha come valore la descrizione della fase che parte dal timestamp stesso. Le fasi verranno visualizzate nel video prodotto.
 \end{itemize}
 Il lettore avrà notato che per il campo graphType manca la possibilità di scegliere un grafo completo. In realtà la possibilità c'è e risiede semplicemente
-nell'opzione "graph", essendo la modalità libera, l'utente può tranquillamente descrivere un grafo completo in questo modo avendo chiaramente l'accortezza di posizionare i nodi in modo tale che i link si sovrappongano.
+nell'opzione "graph", essendo la modalità libera, l'utente può tranquillamente descrivere un grafo completo in questo modo avendo chiaramente l'accortezza di posizionare i nodi in modo tale che i link non si sovrappongano.
 Tuttavia ciò e solo valido per quanto riguarda il generatore, se l'utente dovesse fornire un file network.yaml, che descriva un grafo completo,
 da fornire direttamente come input per l'analizzatore di traffico, può farlo tranquillamente, in quel caso avrà ben due modi per farlo:
 scegliere il graphType come "complete" per avere una disposizione circolare dei nodi e lasciando il campo "coordinates" vuoto, oppure come "graph" ma
@@ -506,7 +509,7 @@ Come si può notare dalla figura \ref{fig:custom_graph_example}, gli switch sono
 questa è una precisa scelta di design e mira a mantenere il concetto di leggibilità sempre
 presente. In questo caso la scelta deriva dal semplificare e rendere immediatamente chiaro il campo coordinates 
 (rappresentato da una matrice quadrata), così che l'occhio possa identificare immediatamente la rappresentazione della disposizione. Questa leggibilità è ottenuta
-grazie al formato yaml, il quale minimizza i caratteri da scrivere.
+grazie al formato yaml, il quale minimizza i caratteri da scrivere e rende più chiara l'associazione dei valori ai corrispettivi campi.
 Così facendo si rende intuitivo il posizionamento degli switch nello spazio, inoltre è una caratteristica importante per quanto riguarda il
 visualizzatore grafico, poiché rappresentando i nodi con un valore numerico che va da 1 a 1000 (spiegheremo il perché di questa scelta a breve), è 
 possibile rappresentare su schermo una grande quantità di elementi per far si che possano essere visualizzati contemporaneamente e rimanere leggibili ma soprattuto,
@@ -519,7 +522,7 @@ Qualora la capacità dei link sia uguale per tutti è possibile insererire il ca
 linkCap per poter così evitare di avere lo stesso valore nei vari link rappresentati nel campo links, potendo rappresentare solo gli endpoints:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di custom file con capacità uguali a tutti i link}, label={fig:custom_graph_example}]
+\begin{lstlisting}[caption={Esempio di custom file con capacità uguali a tutti i link}, label={fig:custom_graph_example}]
 data:
   graphType: torus
   coordinates:
@@ -575,11 +578,11 @@ data:
 \end{lstlisting}
 }
 
-Un'altra possibilità è quella di lasciare che il programma ricavi in automatico i link, 
+Un'altra possibilità è quella di lasciare che il programma ricavi in automatico i link (come spiegato in Sec. \ref{sec:creazione_links_nodi}), 
 in questo caso basterà specificare solo linkCap che sarà uguale per tutti i link:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di custom graph file con link di eguale capacità}]
+\begin{lstlisting}[caption={Esempio di custom graph file con link di eguale capacità}]
 data:
   graphType: mesh
   coordinates:
@@ -623,7 +626,7 @@ data:
 
 Come si può notare, questo tipo di approccio concede una certa libertà di azione, dando la possibilità
 di prestarsi anche a soluzioni ibride di grafi canonici. Possiamo avere un esempio di quanto descritto
-nell'opzione torus. Il tipo di grafo torus generalmente è associato ad un grafo in cui ogni nodo
+nell'opzione torus. Il tipo di grafo torus rappresentato nel progetto è quello in due dimensioni; generalmente in un grafo del genere ogni nodo
 ha quattro nodi adiacenti come mostrato in figura:
 
 \begin{figure}[h]
@@ -650,7 +653,7 @@ che laddove c'è un valore numerico, esso sarà un nodo, mentre laddove ci sarà
 un grafico che non sia di tipo mesh o torus, bisogna specificare nel campo graphType il valore "graph", mostriamo un esempio:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di custom graph file, graphType posto al valore graph}]
+\begin{lstlisting}[caption={Esempio di custom graph file, graphType posto al valore graph}]
     ---
     data:
       graphType: graph
@@ -718,7 +721,7 @@ sulla descrizione su come viene generato il tutto.
 Descriveremo ora il funzionamento dell'esecuzione vera e propria dello script relativo alla generazione del traffico e dei files che produrrà.
 All'avvio l'utente sarà chiamato a scegliere tra due modalità, come accennato precedentemente, auto e user; scegliendo auto verrà chiesto all'utente
 di scegliere il numero di switch che si vuole attribuire alla rete, da un minimo di due a un massimo di mille. Questo intervallo numerico nasce per
-poter rappresentare una rete in un generico data center, il quale generalmente ospita fino a un migliaio di switch. Ciò non toglie che,
+poter rappresentare una rete in un generico data center, il quale generalmente ospita fino a un massimo di mille switch, limite che però può essere facilmente espanso. Ciò non toglie che,
 in un ottica futura di espansione del software, questo range non possa essere espanso con le dovute modifiche. Successivamente alla scelta nel numero
 di switch l'utente sarà chiamato a scegliere la tipologia di rete potendo scegliere tra i valori "c" (completo), "m" (mesh) e "t" (torus). Per 
 grafo completo
@@ -761,12 +764,13 @@ grafo completo (spiegheremo nella parte dedicata al visualizzatore il perché), 
 
 
 \section{Creazione dei links e nodi}
+\label{sec:creazione_links_nodi}
 Dopo aver effettuato le scelte via prompt e dopo che il programma ha caricato i parametri dal file sim\_setup.yaml 
 avviene la creazione dei link e dei nodi. Per i link viene creata una struttura che consiste in un dizionario in cui ogni chiave sarà associata
 ai parametri del link con un identificativo come chiave:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[language=Python, caption={esempio di rappresentazione di un link}, label={codice:links_key_value}]
+\begin{lstlisting}[language=Python, caption={Esempio di rappresentazione di un link}, label={codice:links_key_value}]
     {
         "endpoints": sorted((switch_a, switch_b)),
         "capacity": link_cap,
@@ -780,7 +784,7 @@ pochè è un dato che non servirà più, di fatti la struttura che rappresenta i
 
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di struttura finale dei links}, label={codice:links_structure}]
+\begin{lstlisting}[caption={Esempio di struttura finale dei links}, label={codice:links_structure}]
   - capacity: 10
     endpoints:
     - 1
@@ -807,7 +811,7 @@ Ci sono diverse configuazioni che lo script sarà tenuto a considerare in base a
 \begin{itemize}
     \item \textbf{Modalità auto:} ci sono 3 configurazioni possibili, complete graph, mesh e torus.
     \begin{itemize}
-        \item \textbf{Complete graph:} i links vengono in modo tale che ogni nodo sia collegato a tutti i nodi rimanenti. Non c'è un riferimento esplicito al posizionamento poiché, come vedremo successivamente, sarà compito del visualizzatore grafico disporre i nodi nello spazio.
+        \item \textbf{Complete graph:} i links vengono in modo tale che ogni nodo sia collegato a tutti i nodi rimanenti. Non c'è un riferimento esplicito al posizionamento poiché, come vedremo in Sec. \ref{sec:strutturazione_visualizzatore}, sarà compito del visualizzatore grafico disporre i nodi nello spazio.
         \item \textbf{Mesh graph: } i links vengono creati in modo tale che ogni nodo abbia 4 nodi adiacenti rispetto a una distribuzione spaziale su matrice rettangolare, a eccezione dei nodi che risiedono alle estremità.
         \item \textbf{Torus graph: } i links vengono creati in modo da replicare il più possibile la struttura di un torus graph completo, come mostrato in fig. \ref{fig:torus_graph} utilizzando lo stesso sistema di disposizione usato per il mesh graph basato su matrice rettandolare.
         Qualora il numero di nodi scelto non riesca a riempire la matrice, l'algoritmo non creerà i link di nodi che non risultino essere alle estremità.
@@ -896,7 +900,7 @@ quanto riguarda l'essere più fedeli possibili alle percentuali di traffico da g
 Una volta creati links e nodi, generato il traffico, costruito le strutture del traffico e della rete, lo script provvederà a salvare il risultato nei files descritti precedentemente.
 Un esempio di file network lo ritroviamo in figura \ref*{codice:network_file_example}.
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di network file}, label={codice:network_file_example}]
+\begin{lstlisting}[caption={Esempio di network file}, label={codice:network_file_example}]
 - - capacity: 10
     endpoints:
     - 1
@@ -963,7 +967,7 @@ Il file è una lista contenente tutti i valori relativi alla configurazione netw
     \item Una lista di liste che descrive la matrice del posizionamento degli switch.Nel caso di scelta di grafo completo questo campo è una lista vuota ([])
     \item Una lista di fasi temporali che descrivono specifici intervalli temporali nel formato "YY:MM:DD HH:MM:SS = descrizione fase"
 \end{itemize}
-Il generatore crea delle fasi descrittive ogni 10 secondi di simulazione e le memorizza come ultimo valore della lista della struttura network.
+Il generatore crea delle fasi descrittive ogni 10 secondi di generazione e le memorizza come ultimo valore della lista della struttura network.
 Per il file packets abbiamo invece due possibili risultati in base alla scelta fatta nel file di setup \ref{codice:sim_setup_example}, ovvero json e yaml.
 Il generatore crea i pacchetti secondo l'assunzione in cui essi vengano registrati in ordine di invio, avremo quindi una struttura corrispondente
 a una lista di pacchetti ordinati per timestamp di invio.
@@ -972,7 +976,7 @@ Come vedremo nel prossimo capitolo, questi due files rappresentano l'esatto form
 che voglia usare l'analizzatore e il visualizzatore grafico dovrà formattare accuratamente i suoi dati come descritto.
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di packets file in formato json}, label={codice:json_packets_file}]
+\begin{lstlisting}[caption={Esempio di packets file in formato json}, label={codice:json_packets_file}]
 [
     {
         "A": 1,
@@ -997,7 +1001,7 @@ che voglia usare l'analizzatore e il visualizzatore grafico dovrà formattare ac
 }
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={esempio di packets file in formato yaml}, label={codice:yaml_packets_file}]
+\begin{lstlisting}[caption={Esempio di packets file in formato yaml}, label={codice:yaml_packets_file}]
   - A: 1
     B: 2
     d: 4000
@@ -1025,7 +1029,7 @@ ma c'è una valida motivazione dietro. Il risparmio di caratteri, in files che s
 riguarda l'occupazione di memoria, sia per motivi di efficienza. Consideriamo una rappresentazione di un pacchetto più descrittivo come in figura \ref{codice:long_description_packet}:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={rappresentazione di un pacchetto con descrizione completa}, label={codice:long_description_packet}]
+\begin{lstlisting}[caption={Rappresentazione di un pacchetto con descrizione completa}, label={codice:long_description_packet}]
 {
     "endpointA": 1,
     "endpointB": 2,
@@ -1060,6 +1064,7 @@ Ciò significa che per ogni secondo di traffico avremmo \(1.35 \text{ MB} \times
 
 
  \section{Aspetti realizzativi scartati: yaml block e flow style}
+ \label{sec:aspetti_realizzativi_scartati}
  Un approccio inizialmente realizzato e poi scartato, è stato quello di poter dare la possibilità di scegliere la modalità di salvataggio del file packets.yaml.
 La libreria PyYAML permette di salvare un file yaml secondo due modalità; la prima è definita block style e l'altra flow style.
 Di default, PyYAML sceglie lo stile di una collection a seconda che abbia a sua volta collection nidificate. Qualora ci fossero collection nidificate
@@ -1067,7 +1072,7 @@ verrà assegnato lo stile block, il quale è il formato come lo abbiamo già vis
 lo stile flow che corrisponde al codice in figura.
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={rappresentazione di un pacchetto con descrizione completa}, label={codice:long_description_packet}, breaklines=true]
+\begin{lstlisting}[caption={Rappresentazione di un pacchetto con descrizione completa}, label={codice:long_description_packet}, breaklines=true]
 [{A: 2, B: 1, d: 4000, t: &id001 !!timestamp '2024-03-22 12:30:00'}, {A: 1, B: 2,
     d: 4000, t: *id001}, {A: 1, B: 2, d: 4000, t: *id001}, {A: 2, B: 1, d: 4000, t: *id001},
   {A: 2, B: 1, d: 4000, t: *id001}, {A: 2, B: 1, d: 3752, t: *id001}, {A: 1, B: 2,
@@ -1136,7 +1141,7 @@ Una volta finita la scansione, la struttura ausiliaria viene scandita per ricava
 creata la struttura che verrà memorizzata in analyzed\_data.yaml. La struttura memorizzata è raffigurata in figura \ref{codice:analyzed_data_structure}.
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={rappresentazione della struttura analyzed\_data}, label={codice:analyzed_data_structure}]
+\begin{lstlisting}[caption={Rappresentazione della struttura analyzed\_data}, label={codice:analyzed_data_structure}]
 {
   - averageDelta: 1000
     simStartTime: 2024-03-22 12:30:00
@@ -1185,7 +1190,7 @@ Nell esempio in figura \ref{codice:analyzed_data_structure} abbiamo che le medie
 \newline
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={timestamps e medie percentuali calcolate dall'analizzatore}, label={codice:analyzed_data_structure}]
+\begin{lstlisting}[caption={Timestamps e medie percentuali calcolate dall'analizzatore}, label={codice:analyzed_data_structure}]
 
     2024-03-22 12:30:01 - 59
     2024-03-22 12:30:01.100000 - 53,5
@@ -1244,7 +1249,7 @@ La classe Scene è la tela sul quale si disegnano i mobjects, una volta istanzia
 ciò e possibile tramite il metodo \lstinline|add()|. Prendiamo il primo esempio fornito dalla documentazione Manim:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[language=Python, caption={un primo esempio di utilizzo di Manim \cite{ManimDocs}}, label={codice:manim_example}]
+\begin{lstlisting}[language=Python, caption={Un primo esempio di utilizzo di Manim \cite{ManimDocs}}, label={codice:manim_example}]
 {
     from manim import *
 
@@ -1267,7 +1272,7 @@ Ogni proprietà di un mobject che può essere modificata, può essere animata. I
 usato come un'animazione tramite l'uso di \lstinline|animate()|.
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[language=Python, caption={un primo esempio di animazioni in Manim \cite{ManimDocs}}, label={codice:manim_animation_example}]
+\begin{lstlisting}[language=Python, caption={Un primo esempio di animazioni in Manim \cite{ManimDocs}}, label={codice:manim_animation_example}]
 {
     from manim import *
 
@@ -1298,7 +1303,7 @@ la creazione delle animazioni, il cuore risiede in questo pseudocodice:
 
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[language=Python, caption={creazione animazione traffico}, label={codice:traffic_animation_example}]
+\begin{lstlisting}[language=Python, caption={Creazione animazione traffico}, label={codice:traffic_animation_example}]
 animations.append(grafo.edges[(A, B)].animate.set_color(traffic_color))
 \end{lstlisting}
 }
@@ -1311,7 +1316,7 @@ il metodo \lstinline|play(animation*)| per animarle tutte conteporaneamente e ci
 Per quanto riguarda la seconda funzione principale, il pattern di creazione è analogo, tuttavia è interessante descrivere il posizionamento dei nodi.
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[language=Python, caption={creazione posizionamento nodi griglia}, label={codice:grid_nodes_example}]
+\begin{lstlisting}[language=Python, caption={Creazione posizionamento nodi griglia}, label={codice:grid_nodes_example}]
 for row in range(rows):
     for col in range(cols):
         opacity = 1
@@ -1345,7 +1350,7 @@ Per quanto riguarda invece la creazione dei links, la parte che rappresenta il m
 rappresentano rette che congiungono due punti, avremo così i link definiti come segue:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[language=Python, caption={creazione link}, label={codice:link_creation_example}]
+\begin{lstlisting}[language=Python, caption={Creazione link}, label={codice:link_creation_example}]
     line = Line(dot_a.get_center(), 
         dot_b.get_center(), 
         color=START_COLOR, 
@@ -1396,7 +1401,7 @@ molto disorganico e asimmetrico.
 Per questo motivo viene eseguito un controllo nel caso di analisi di un grafo torus, con l'algoritmo che scansiona la matrice e seleziona gli 
 archi che sono verticali, orizzontali
 e ne assegna le giuste coordinate.
-Infinie la parte di animazione è pressoché uguale come logica.
+Infine la parte di animazione è pressoché uguale come logica.
 Per quanto riguarda le informazioni della rete che vengono mostrate a schermo si è implementato un effetto contatore sul tempo che scorre ed è presente
 un ridimensionamento dinamico dei font che si adatta al crescere del grafico, questo per poter rendere sempre leggibile il testo.
 Per visualizzare le informazioni relative agli switch e ai link è stata realizzata una classe apposita, la quale può essere renderizzata separatamente dai grafici.
@@ -1577,7 +1582,7 @@ Per quanto riguarda la creazione automatica dei links e dei nodi
 per la tipologia di grafo completo, la funzione dedicata al compito è riportata in figura \ref{codice:create_auto_complete_links}
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={funzione per la creazione automatica di un grafo di rete completo}, label={codice:create_auto_complete_links}]
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={Funzione per la creazione automatica di un grafo di rete completo}, label={codice:create_auto_complete_links}]
     def create_auto_complete_links(link_cap, switch_number):
     """ Create links for a complete graph 
     
@@ -1635,7 +1640,7 @@ disporre i nodi su una matrice (griglia).
 Analizziamo la funzione dedicata alla creazione automatica di un grafo mesh.
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={funzione per la creazione automatica di un grafo mesh}, label={codice:create_auto_mesh_links}]
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={Funzione per la creazione automatica di un grafo mesh}, label={codice:create_auto_mesh_links}]
     def create_auto_mesh_links(link_cap, switch_number):
     """ Auto detect links """
     data_links = {}
@@ -1690,7 +1695,7 @@ Poiché ogni ciclo itera \( \sqrt{n} \) volte, il numero totale di iterazioni è
 Analizziamo la funzione dedicata alla creazione automatica di un grafo torus.
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={funzione per la creazione automatica di un grafo torus}, label={codice:create_auto_torus_links}, breaklines=true]
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={Funzione per la creazione automatica di un grafo torus}, label={codice:create_auto_torus_links}, breaklines=true]
     def create_auto_toro_links(link_cap, switch_number):
     """ Torus graph links auto generator """
     links, switches = create_auto_mesh_links(link_cap, switch_number)
@@ -1738,7 +1743,7 @@ quindi in un caso peggiore in cui ci sia un numero elevato \(n\) di links la com
 Successivamente alla creazione dei link, la struttura critica è la creazione dei pacchetti in quanto il loro numero può essere davvero grande.
 
 {\scriptsize
-\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={logica creazione pacchetti}, label={codice:create_packets}, breaklines=true]
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={Logica creazione pacchetti}, label={codice:create_packets}, breaklines=true]
 for fractional_unit in range(0, SIM_TIME * creationRate):
     # Changing trafficPercentage every second
     if fractional_unit % creationRate == 0:
@@ -1773,7 +1778,7 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
 \end{lstlisting}
 }
 
-Nel codice \ref{codice:create_packets}, il ciclo esterno che dipende da \lstinline|SIM_TIME * creationRate|, sim time è il tempo totale della simulazione di generazione pacchetti, 
+Nel codice \ref{codice:create_packets}, il ciclo esterno che dipende da \lstinline|SIM_TIME * creationRate|, sim time è il tempo totale della generazione di generazione pacchetti, 
 il quale dipende da quanto si vuol fare durare la generazione. La variabile \lstinline|creationRate| rappresenta in quante parti è suddiviso un secondo, questo è dato
 dalla scelta del parametro creationDelta del file di setup e che indica la frequenza temporale di creazione dei pacchetti, quindi il ciclo dipende dalla quantità di frazioni temporali in cui si generano i pacchetti.
 Questi paramentri non sono grandi ai fini del progetto, supponendo di avere un sim time di 3600 secondi (un'ora), creationDelta posto a 100 millisecondi e un creationRate di 10 dato da: 
@@ -1809,7 +1814,7 @@ troviamo che la complessità di questo pezzo logico di codice è \(O(n)\) \ref{e
 links molto grande pari a \(n\) così come il numero di pacchetti e la parte di codice \ref{codice:create_packets_n_links} avrebbe complessità \(O(n^2)\).
 
 {\scriptsize
-\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={complessità per numero di links di un grafo completo}, label={codice:create_packets_n_links}, breaklines=true]
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={Complessità per numero di links di un grafo completo}, label={codice:create_packets_n_links}, breaklines=true]
 O(c)        for link, content in links.items():
 O(n)            # operazioni
 O(n)            for i in range(0, int((PPS*(trafficPerc/100))/creationRate)):
@@ -1820,7 +1825,7 @@ O(1)                # operazioni
 
 
 {\scriptsize
-\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={complessità della logica di creazione pacchetti}, label={codice:create_packets_complexity}, breaklines=true]
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={Complessità della logica di creazione pacchetti}, label={codice:create_packets_complexity}, breaklines=true]
 O(c)    for fractional_unit in range(0, SIM_TIME * creationRate):
 O(1)        if fractional_unit % creationRate == 0:
 O(c)            for link, content in links.items():
@@ -1864,7 +1869,7 @@ analizzando come caso peggiore un numero di link presenti in un torus graph, com
 Analizziamo ora il codice \ref{codice:analyze_packets} in cui avviene l'analisi vera e propria.
 
 {\scriptsize
-\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={logica analisi pacchetti}, label={codice:analyze_packets}, breaklines=true]
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={Logica analisi pacchetti}, label={codice:analyze_packets}, breaklines=true]
     # Every loop is an analyzed fractional unit
     while timeWalker <= startTime + (simTime - updateDelta):
         # For each updateDelta reset values
@@ -1955,7 +1960,7 @@ Analizziamo quindi la logica che risulta maggiormente critica, la creazione dell
 per motivi di lunghezza del codice sarà descritto come pseudocodice:
 
 {\scriptsize
-\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={logica creazione animazioni}, label={codice:create_animation}, breaklines=true]
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily, caption={Logica creazione animazioni}, label={codice:create_animation}, breaklines=true]
 while time_walker <= end_time:
     animations = []
     # definig all the traffic color links at timeWalker time
@@ -1986,7 +1991,7 @@ La complessità in questo caso possiamo ricavarla dai test, i quali mostrano che
     \label{fig:720p_rendering_performance}
 \end{figure}
 
-Il grafico in fig. \ref{fig:720p_rendering_performance} si basa su una simulazione di 5 secondi con tipologia grafo mesh; possiamo notare che al
+Il grafico in fig. \ref{fig:720p_rendering_performance} si basa su una generazione di 5 secondi con tipologia grafo mesh; possiamo notare che al
 crescere del numero degli switch il tempo per il rendering del video cresce in modo lineare. Possiamo concludere che il codice in fig. \ref{codice:create_animation}, opera con 
 complessità \(O(n)\). Ipotizzando quindi un caso d'uso realistico in cui non viene previsto un grafo mesh/torus completo nell'impiego di una rete di data center
 possiamo concludere che la complessità generale del visualizzatore sia il peso della creazione delle strutture, caricamento dal files e creazione base grafica, sommato 
@@ -2008,7 +2013,7 @@ al peso dato dalla parte di animazione ottenendo complessità lineare come ripor
 
 Volendo osservare i test da un'altra prospettiva, possiamo intendere il tempo di rendering come la variabile dipendente rispetto al numero di switch; in questo
 esempio mostriamo una comparazione con le risoluzioni 480p, 720p e 1080p renderizzati a 30 fps(frames per second),
- sempre per 5 secondi di simulazione con grafo mesh, come mostrato in fig. \ref{fig:480_720_1080_rend_perf}. Possiamo osservare dal grafico che l'andamento è lineare per tutti i tipi di rendering analizzati.
+ sempre per 5 secondi di generazione con grafo mesh, come mostrato in fig. \ref{fig:480_720_1080_rend_perf}. Possiamo osservare dal grafico che l'andamento è lineare per tutti i tipi di rendering analizzati.
 
 \chapter{Conclusioni}
 Facendo un riepilogo dei punti cardine dello sviluppo del progetto, si è potuto giungere a diverse conclusioni. Dal punto di vista delle prestazioni implicate
