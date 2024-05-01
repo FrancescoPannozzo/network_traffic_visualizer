@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber relazione"] 1714564449.53429 "relazione.bcf" "relazione.bbl" "relazione" 1714568403.5945 0
-  "bibliografia.bib" 1714564391 8909 44bf9a970f88cceac5de9f7080519b7c ""
-  "relazione.bcf" 1714568402 110263 edf1dedec2f78a2edd9efd07e639ce27 "pdflatex"
+["biber relazione"] 0 "relazione.bcf" "relazione.bbl" "relazione" 1714578243.09015 -1
+  "bibliografia.bib" 1714570102 9136 966d5cd8872013f80c8d80cb7755fcb6 ""
+  "relazione.bcf" 1714578241 110343 10ec8e2275ebfe8748626b3aaa283fba "pdflatex"
   (generated)
   "relazione.bbl"
   "relazione.blg"
   (rewritten before read)
-["pdflatex"] 1714568389.36763 "c:/Users/Pan/Desktop/TESI/progetto-tirocinio/FINAL/network-traffic-visualizer/network_traffic_visualizer/docs/Relazione/relazione.tex" "relazione.pdf" "relazione" 1714568403.5974 0
+["pdflatex"] 1714578229.75393 "c:/Users/Pan/Desktop/TESI/progetto-tirocinio/FINAL/network-traffic-visualizer/network_traffic_visualizer/docs/Relazione/relazione.tex" "relazione.pdf" "relazione" 1714578243.093 0
   "C:/Users/Pan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1713448777 163260 f7138aa97b0a1dcae55100dabb7d9e7d ""
   "C:/Users/Pan/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1711281844 24235103 7d4a79bd3c03395a573d353214d37463 ""
   "C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
@@ -190,11 +190,11 @@
   "C:/Users/Pan/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Pan/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/Pan/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "c:/Users/Pan/Desktop/TESI/progetto-tirocinio/FINAL/network-traffic-visualizer/network_traffic_visualizer/docs/Relazione/relazione.tex" 1714568386 142822 5da88528fd2256208e2805228c7ca511 ""
+  "c:/Users/Pan/Desktop/TESI/progetto-tirocinio/FINAL/network-traffic-visualizer/network_traffic_visualizer/docs/Relazione/relazione.tex" 1714578227 143512 0a8d8169eb0137f1edea6ba12020f366 ""
   "immagini/480_720_1080_rend_perf.png" 1713688578 68719 2593fadb2ec32e0def96f6b9bbc3b727 ""
   "immagini/720p_rendering_performance.png" 1713688539 39394 04cb929a192c709e0c022f8170dd3bd4 ""
   "immagini/GridGraph.jpg" 1714558554 13240 b5573ba9d2bf09050c60cfc6c0dc9616 ""
-  "immagini/adaptive_dots_example.JPG" 1713535178 68987 bbb8d69c212402f58663e8093c9a2bb7 ""
+  "immagini/adaptive_dots_mesh.JPG" 1713184333 76887 234c153b0959c40658d0bfb012744782 ""
   "immagini/archi_asimmetrici_torus.png" 1713520280 37407 540edf641f8dfe897048ad02cceb1803 ""
   "immagini/auto_complete_10.JPG" 1713531819 103301 824aec6be32b13e4af00757b9d72b9ae ""
   "immagini/colorblind_palette.JPG" 1713544488 20633 91f5b2158becec6f57ed88ff180f3979 ""
@@ -202,6 +202,7 @@
   "immagini/custom_complete_autopositioning.JPG" 1713447949 51147 ac318c2460f78ce6ded5ecfa2cae73b8 ""
   "immagini/custom_complete_manual_positioning.JPG" 1713447691 60912 d2c99e9643b0b9a74c80b89994a7e14b ""
   "immagini/diagramma_selezioni_config_gen.jpg" 1712921614 28324 88e4e1ff76fc821f7e93e455b33ab980 ""
+  "immagini/fixed_dots_mesh.JPG" 1714569089 72937 80ca66e349fd2c3d4820dfd960ba285a ""
   "immagini/free_graph.JPG" 1712153344 31246 a14809cb6425c5d3213f07857b155764 ""
   "immagini/generatore_traffico_fissato.png" 1713692270 97241 45331cfdec8d5782dc0fca44cca3c491 ""
   "immagini/generatore_traffico_random.png" 1713692243 102073 604ce3a01236d416152fb563436b167f ""
@@ -211,8 +212,6 @@
   "immagini/json_yaml_files_dim.png" 1713699472 29732 8bb11a1abfbf16c2a3f2d21de518d6e8 ""
   "immagini/json_yaml_wr_comparison.png" 1713696032 66201 e6785c42bbfc8a13147f111f91b84981 ""
   "immagini/links_info.JPG" 1713536741 45539 e269de0a2b9903159d779094501718f9 ""
-  "immagini/mesh_example.jpg" 1713184333 76887 234c153b0959c40658d0bfb012744782 ""
-  "immagini/mesh_not_full.JPG" 1713252754 68605 99aba8b4819cf8095b71d3579ebeca9c ""
   "immagini/only_links.JPG" 1712151587 30117 260b9f767168da1a8788711f5fea8c4c ""
   "immagini/palette_cromatica.JPG" 1713544445 21106 140b86153963793bb467ec8f5737f1d1 ""
   "immagini/prestazioni_analyzer.png" 1713686447 93685 fb7e1dec38b370c14ddf850a8d44747d ""
@@ -223,12 +222,12 @@
   "immagini/torus_not_full_adaptive.JPG" 1713532381 81484 dd7867d309106a065fb4f2b6eaea0ea8 ""
   "immagini/yaml_block_flow_dim.png" 1713390468 20942 3f7a1970a77419e287e6a30187a906e9 ""
   "immagini/yaml_block_flow_wr.png" 1713390443 107964 4261bc47700a9c94a0a70e0f3c238371 ""
-  "relazione.aux" 1714568402 28280 fc86918215261c7c836b31ae43aa907d "pdflatex"
-  "relazione.bbl" 1714564455 31054 015c4003cc7a803ade34a12f45d54147 "biber relazione"
-  "relazione.out" 1714568402 5318 48d8281f0456e2718c2227a6297828e9 "pdflatex"
-  "relazione.run.xml" 1714568402 2342 2abbe89a06f1522e436d277605ef04b5 "pdflatex"
-  "relazione.tex" 1714568386 142822 5da88528fd2256208e2805228c7ca511 ""
-  "relazione.toc" 1714568402 2498 3736b6e38ce57b822f397de019b5e9be "pdflatex"
+  "relazione.aux" 1714578241 28452 d68ce1cf9c641eef0720448016c28715 "pdflatex"
+  "relazione.bbl" 1714570127 32195 5309718ab2cbc7ae3cca2ce6bc407d74 "biber relazione"
+  "relazione.out" 1714578241 5318 38cfc892c066d7db886300b61ea7e8cd "pdflatex"
+  "relazione.run.xml" 1714578241 2342 2abbe89a06f1522e436d277605ef04b5 "pdflatex"
+  "relazione.tex" 1714578227 143512 0a8d8169eb0137f1edea6ba12020f366 ""
+  "relazione.toc" 1714578241 2498 93b62c78cf544f8bb54082042cf28db6 "pdflatex"
   (generated)
   "relazione.aux"
   "relazione.bcf"

@@ -641,6 +641,34 @@
       \field{title}{Grid Graph}
       \field{year}{2024}
     \endentry
+    \entry{PythonWikiTimeComplexity}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=8df052f03bc7c139ab95a1de3266150a}{%
+           family={Wiki},
+           familyi={W\bibinitperiod},
+           given={Python},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{8df052f03bc7c139ab95a1de3266150a}
+      \strng{fullhash}{8df052f03bc7c139ab95a1de3266150a}
+      \strng{bibnamehash}{8df052f03bc7c139ab95a1de3266150a}
+      \strng{authorbibnamehash}{8df052f03bc7c139ab95a1de3266150a}
+      \strng{authornamehash}{8df052f03bc7c139ab95a1de3266150a}
+      \strng{authorfullhash}{8df052f03bc7c139ab95a1de3266150a}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{[Online; accessed 22-April-2024]}
+      \field{title}{Time Complexity -- Python Wiki}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://wiki.python.org/moin/TimeComplexity
+      \endverb
+      \verb{url}
+      \verb https://wiki.python.org/moin/TimeComplexity
+      \endverb
+    \endentry
     \entry{WikiGrafoCompleto}{misc}{}
       \name{author}{1}{}{%
         {{hash=9c677286866aad38f8e9b660f5411814}{%
