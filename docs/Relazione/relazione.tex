@@ -61,12 +61,18 @@ e studiandone caratteristiche, i loro pregi e mancanze. A seguire ci sarà una d
 dello stato dell'arte e infine una breve panoramica sulla base di partenza del progetto, descrivendo da cosa si è partiti, come è nata l'argomentazione
 che ha portato alla scelta del progetto e la modalità di svolgimento. Nel capitolo 2 parleremo del contesto di sviluppo, ovvero le tecnologie impiegate.
 Seguirà quindi una descrizione approfondita della scelta di certe tecnologie ma soprattutto del perché. Il capitolo 3
-descriverà il generatore di traffico e configurazione di rete, descrivendone funzionalità, condizioni inziali di setup di questa parte di applicazione e infine
-descrivendo come il tutto viene generato, passando dalla distribuzione spaziale dei nodi e creazione dei links all'ottenimento dei files sui quali sono memorizzati i dati.
-Il capitolo 4 tratterà l'analizzatore di traffico, nello specifico dell'implementazione della logica che risiede dietro l'analisi del file contenente il traffico.
-Il capitolo 5 sarà sul visualizzatore grafico, in cui verrà fornita una panoramica sulle logiche dietro la creazione degli elementi grafici e delle animazioni, le modalità
-grafiche che è possibile ottenere, la descrizione delle scelte di design legate all'aspetto grafico e una sezione dedicata all'accessibilità, con cui si tratterà
-l'implementazione di soluzioni che trattano il tema del daltonismo. Il capitolo 6 darà un quadro generale sulla complessità computazionle delle sezioni di codice più sensibili, analizzando gli andamenti asintotici di tutte le principali parti.
+descriverà il generatore di traffico e configurazione di rete, descrivendone funzionalità, condizioni inziali di setup di questa parte di applicazione e 
+infine
+descrivendo come il tutto viene generato, passando dalla distribuzione spaziale dei nodi e creazione dei links all'ottenimento dei files sui quali sono
+ memorizzati i dati.
+Il capitolo 4 tratterà l'analizzatore di traffico, nello specifico dell'implementazione della logica che risiede dietro l'analisi del file contenente il
+ traffico.
+Il capitolo 5 sarà sul visualizzatore grafico, in cui verrà fornita una panoramica sulle logiche dietro la creazione degli elementi grafici e delle 
+animazioni, le modalità
+grafiche che è possibile ottenere, la descrizione delle scelte di design legate all'aspetto grafico e una sezione dedicata all'accessibilità, con cui 
+si tratterà
+l'implementazione di soluzioni che trattano il tema del daltonismo. Il capitolo 6 darà un quadro generale sulla complessità computazionle delle sezioni 
+di codice più sensibili, analizzando gli andamenti asintotici di tutte le principali parti.
 Infine avremo il capitolo 7, in cui tireremo le conclusioni del progetto, discutendo dei risulati finali e possibili impieghi futuri dell'applicazione.
 
 \end{abstract}
@@ -221,15 +227,15 @@ che riguardano il come è costruita la rate, parliamo quindi degli endpoint qual
 i vari endpoints, con la necessità di tenere traccia delle loro capacità trasmissive, la tipologia di rete, se ha una struttura a grafo completo, mesh, torus o disposizione libera e molte altre informazioni che discuteremo in seguito.
 
 \section{I formati Json e Yaml}
-L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; \texttt{json}\cite{rfc8259}, yaml\cite{RFC9512} e csv\cite{RFC4180}.
-Dopo attenta anlisi si è deciso di adottare il formato \texttt{json} per strutturare e memorizzare i dati legati al traffico, con la possibilità di scegliere anche il formato yaml, mentre per i dati relativi alla descrizione della rete il compito è stato affidato esclusivamente a yaml, csv è stato scartato.
-Perché csv è stato scartato? Sebbene csv rappresenti una valida alternativa tenendo conto di aspetti prestazionali, essendo un formato molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse della semplice forma tabellare, tipicamente usate nei database. 
+L'altro insieme di informazioni deriva dal traffico vero e proprio, rendendo quindi necessario un sistema di mantenimento dei dati legati ai pacchetti trasmessi. L'analisi di questi due insiemi di informazioni ha portato alla valutazione di tre sistemi per la strutturazione di dati; \texttt{json} \cite{rfc8259}, \texttt{yaml} \cite{RFC9512} e \texttt{csv} \cite{RFC4180}.
+Dopo attenta anlisi si è deciso di adottare il formato \texttt{json} per strutturare e memorizzare i dati legati al traffico, con la possibilità di scegliere anche il formato \texttt{yaml}, mentre per i dati relativi alla descrizione della rete il compito è stato affidato esclusivamente a \texttt{yaml}, \texttt{csv} è stato scartato.
+Perché \texttt{csv} è stato scartato? Sebbene \texttt{csv} rappresenti una valida alternativa tenendo conto di aspetti prestazionali, essendo un formato molto veloce da analizzare, da leggere e scrivere, tuttavia lo diventa meno quando c'è bisogno di strutturare maggiormente i dati con strutture più complesse della semplice forma tabellare, tipicamente usate nei database. 
 L'idea di scartarla, sia per strutturare i dati della rete che per quelli del traffico, deriva principalmente dai seguenti motivi:
 
 \begin{itemize}
     \item \textbf{Leggibilità:} uno dei primi intenti del progetto era di rendere l'applicazione il più leggibile possibile, questo perché si è
     fortemente voluto attribuirne anche scopi di debugging e didattici, laddove avere una certa leggibilità è più che ragionevole.
-    \item \textbf{Strutture complesse:} sicuramente il motivo più importante. Con csv non è possibile rappresentare strutture complesse, parliamo ad esempio di oggetti
+    \item \textbf{Strutture complesse:} sicuramente il motivo più importante. Con \texttt{csv} non è possibile rappresentare strutture complesse, parliamo ad esempio di oggetti
     all'interno di altri oggetti. Sebbene per come sia ora strutturato il progetto una rappresentazione cvs è ancora possibile, ciò potrebbe non esserlo in futuro
     nell'ottica di espansione del progetto
 \end{itemize}
@@ -238,7 +244,7 @@ Per esplicare meglio il concetto di struttura complessa non fattibile è possibi
  utilizzato nel progetto, in questo caso una lista contenente un solo elemento:
 
  {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={Pacchetto di rete rappresentato in json}, label={fig:packet_example}]
+\begin{lstlisting}[caption={Pacchetto di rete rappresentato in \texttt{json}}, label={fig:packet_example}]
 [    
     {
         "A": 1,
@@ -251,21 +257,21 @@ Per esplicare meglio il concetto di struttura complessa non fattibile è possibi
  }
 
 Dove A e B sono gli endpoints interessati, t è il timestamp di creazione pacchetto e d 
-la dimesione del payload in bytes. In csv questa struttura è rappresentabile come segue:
+la dimesione del payload in bytes. In \texttt{csv} questa struttura è rappresentabile come segue:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={Pacchetti di rete rappresentati in csv}]
+\begin{lstlisting}[caption={Pacchetti di rete rappresentati in \texttt{csv}}]
     A,B,t,d
     2,1,2024-03-22 12:30:00,1518
     2,1,2024-03-22 12:30:00,1518
 \end{lstlisting}
 }
 
-Tuttavia se si dovesse rendere questa struttura più complessa, avremmo problemi a realizzarla in csv, basterebbe l'aggiunta
+Tuttavia se si dovesse rendere questa struttura più complessa, avremmo problemi a realizzarla in \texttt{csv}, basterebbe l'aggiunta
 di un campo che a sua volta necessita di informazione strutturata, come ad esempio 
 inserire le informazione dell'header \cite{RFC791}:
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={Pacchetto di rete maggiormente strutturato in json}]
+\begin{lstlisting}[caption={Pacchetto di rete maggiormente strutturato in \texttt{json}}]
         {
           "A": 1,
           "B": 2,
@@ -293,22 +299,22 @@ inserire le informazione dell'header \cite{RFC791}:
 \end{lstlisting}
 }
 In questa struttura abbiamo ben due oggetti nidificati, ip header e flags. 
-Questo tipo di struttura è difficilmente replicabile in csv che si presta maggiormente
-per strutture piatte mentre json e yaml permettono molta più libertà di strutturazione.
-La scelta del formato json per rappresentare i dati del traffico di rete è quindi legata alla possibilità di espandere la
+Questo tipo di struttura è difficilmente replicabile in \texttt{csv} che si presta maggiormente
+per strutture piatte mentre \texttt{json} e \texttt{yaml} permettono molta più libertà di strutturazione.
+La scelta del formato \texttt{json} per rappresentare i dati del traffico di rete è quindi legata alla possibilità di espandere la
 rappresentazione con strutture più complesse in ottica di espansioni future del progetto, ma è indubbiamente legata alle prestazioni che questo formato riesce a dare.
-Json è un formato ampiamente supportato e la sua semplicità permette di ottenere risultati ottimi per le operazioni di parsing, lettura e scrittura per strutture aventi grandi quantità di dati.
-Sebbene l'applicazione supporti sia json che yaml per quanto riguarda il memorizzare i dati legati al traffico, la scelta preferenziale ricade su json.
-Questo perché, nonostante json produca files di dimensioni maggiori rispetto a yaml, la schiacciante velocità di elaborazione di json rende la creazione di
+\texttt{json} è un formato ampiamente supportato e la sua semplicità permette di ottenere risultati ottimi per le operazioni di parsing, lettura e scrittura per strutture aventi grandi quantità di dati.
+Sebbene l'applicazione supporti sia \texttt{json} che \texttt{yaml} per quanto riguarda il memorizzare i dati legati al traffico, la scelta preferenziale ricade su \texttt{json}.
+Questo perché, nonostante \texttt{json} produca files di dimensioni maggiori rispetto a \texttt{yaml}, la schiacciante velocità di elaborazione di \texttt{json} rende la creazione di
 un file di dimensioni maggiore ampiamente giustificabile, considerando soprattuto la natura del progetto in cui non vi è una
 criticità d'uso nella dimensione dei files. Come vedremo in Sec. \ref{sec:aspetti_realizzativi_scartati} , i test eseguiti sui tempi di lettura e scrittura rispettivamente della stessa struttura
-ricreata sia in json che in yaml, sapranno ben
-dimostrare quanto appena affermato. Per impiegare questi formati sono state usate rispettivamente la libreria json \cite{PythonJSONLibrary}, appartenente alla libreria standard di Python, e la
-libreria esterna PyYAML \cite{PyYAMLDocumentation}, un parser ed emitter di yaml per Python.
-Infinie giungiamo ai motivi per cui si è scelto invece esclusivamente yaml per rappresentare i 
+ricreata sia in \texttt{json} che in \texttt{yaml}, sapranno ben
+dimostrare quanto appena affermato. Per impiegare questi formati sono state usate rispettivamente la libreria \texttt{json} \cite{PythonJSONLibrary}, appartenente alla libreria standard di Python, e la
+libreria esterna PyYAML \cite{PyYAMLDocumentation}, un parser ed emitter di \texttt{yaml} per Python.
+Infine giungiamo ai motivi per cui si è scelto invece esclusivamente \texttt{yaml} per rappresentare i 
 dati relativi alle informazioni che descrivono la rete. Le motivazioni consistono sempre nella volontà
 di garantire un formato che si presti a espansioni future e quindi che possano richiedere strutturazioni complesse, ma soprattutto,
-in questo caso specifico, nell'alta leggiblità che yaml offre. Generalmente i dati che servono a descrivere una rete non sono mai paragonabili a quelli
+in questo caso specifico, nell'alta leggiblità che \texttt{yaml} offre. Generalmente i dati che servono a descrivere una rete non sono mai paragonabili a quelli
 necessari per registrare tutto il traffico, si voleva dare quindi uno strumento molto chiaro da leggere per fare in modo che la configurazione di rete
 fosse sempre molto chiara, intuitiva e di facile accesso, sia in scrittura che in lettura. 
 Per dare una stima di grandezza, per rappresentare una rete con 50 switch collegati come un grafo mesh, il file
@@ -328,18 +334,20 @@ esemplicativi. Con esso è stato possibile testare l'analizzatore e conseguentem
 uno strumento esemplicativo di determinati funzionamenti collegati al traffico di rete.
 La configurazione di rete consiste nella produzione di una struttura dati che descriva 
 le caratteristiche della rete, la quale
-verrà memorizzata in un file dal nome "network" e avente estensione yaml, mentre per quanto
+verrà memorizzata in un file dal nome "network" e avente estensione \texttt{yaml}, mentre per quanto
 riguarda il traffico, crea una struttura che consiste in una lista di pacchetti e memorizzata in un file denominato "packets".
 
 \section{Funzionalità e setup} 
 Lo script permette di eseguire quanto descritto mettendo a
  disposizione due modalità, auto e user. Entrambe le modalità produrranno due files, 
- network.yaml conterà le caratteristiche della rete e il file packets.json (o packets.yaml
+ \texttt{network.yaml} conterà le caratteristiche della rete e il file \texttt{packets.json} (o \texttt{packets.yaml}
  a seconda della scelta) conterrà il traffico vero e proprio di tutti i pacchetti. La modalità auto chiede all'utente il numero di switch, la capacità dei
   link e la tipologia del grafo con il quale rappresentare la rete (completo, mesh, torus) e
    imposterà in modo del tutto automatico
-   la disposizione degli switch in base alla scelta del grafo effettuata. Per poter operare,
-    in entrambe le modalità, lo script ha bisogno di leggere il file sim\_setup.yaml, il quale contiene le informazioni necessarie per la configurazione. 
+   la disposizione degli switch in base alla scelta del grafo effettuata. 
+
+   Per poter operare,
+    in entrambe le modalità, lo script ha bisogno di leggere il file \texttt{sim\_setup.yaml}, il quale contiene le informazioni necessarie per la configurazione. 
     Il file di setup è impostato come segue:
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={Esempio di setup file}, label={codice:sim_setup_example}]
@@ -357,30 +365,30 @@ Lo script permette di eseguire quanto descritto mettendo a
 }
 Andremo ora a spiegare il significato dietro ogni voce:
 \begin{itemize}
-    \item \textbf{averageDelta:} rappresenta l'intervallo temporale in millisecondi 
+    \item \textbf{\texttt{averageDelta}:} rappresenta l'intervallo temporale in millisecondi 
     delle medie percentuali di traffico da calcolare nell'analizzatore di traffico.
-    \item \textbf{updateDelta:} rappresenta ogni quanti millisecondi debbano essere aggiornate le medie averageDelta nell'analizzatore
-    \item \textbf{creationDelta:} rappresenta ogni quanti millisecondi debbano essere creati i pacchetti nel generatore
-    \item \textbf{startSimTime:} è il datetime dell'inizio della generazione nel formato \newline
+    \item \textbf{\texttt{updateDelta}:} rappresenta ogni quanti millisecondi debbano essere aggiornate le medie \texttt{averageDelta} nell'analizzatore
+    \item \textbf{\texttt{creationDelta}:} rappresenta ogni quanti millisecondi debbano essere creati i pacchetti nel generatore
+    \item \textbf{\texttt{startSimTime}:} è il datetime dell'inizio della generazione nel formato \newline
     YY:MM:DD HH:MM:SS, inoltre è possibile specificare anche un eventuale tempo avente millisecondi da specificare come ad esempio 
     12:30:00.500
-    \item \textbf{simTime:} è la durata della generazione in secondi
-    \item \textbf{packetSize:} è la dimensione in bytes di un pacchetto, i pacchetti nella generazione avranno questa dimensione
-    \item \textbf{colorblind:} è una stringa "yes" o "no" che abilita, se posta su "yes", una visualizazione compatibile per persone daltoniche
+    \item \textbf{\texttt{simTime}:} è la durata della generazione in secondi
+    \item \textbf{\texttt{packetSize}:} è la dimensione in bytes di un pacchetto, i pacchetti nella generazione avranno questa dimensione
+    \item \textbf{\texttt{colorblind}:} è una stringa "yes" o "no" che abilita, se posta su "yes", una visualizazione compatibile per persone daltoniche
     di cui parleremo successivamente quando discuteremo della parte relativa al visualizzatore grafico.
-    \item \textbf{trafficVariation:} è la variazione di traffico per secondo che si desidera impostare; 
+    \item \textbf{\texttt{trafficVariation}:} è la variazione di traffico per secondo che si desidera impostare; 
     può essere il valore "random" oppure uno dei seguenti [5, 10, 20, 25, 50] e 
     di conseguenza determinerà la variazione percentuale di traffico che avviene 
     ogni secondo di generazione. Il valore "random" sceglie casualmente una percentuale 
     ogni secondo con un valore che va da 0 a 100
-    \item \textbf{packetsFile:} specifica quale tecnologia si vuole utilizzare per il file packets, 
-    si può scegliere tra json e yaml
+    \item \textbf{\texttt{packetsFile}:} specifica quale tecnologia si vuole utilizzare per il file packets, 
+    si può scegliere tra \texttt{json} e \texttt{yaml}
 \end{itemize}
 
 La generazione di pacchetti è calcolata sulla base 
 della capacità dei link fornita e su un valore casuale di percentuale di traffico 
 che varia ogni secondo, per esempio avendo 6 links su 3 secondi di generazione e il 
-parametro "trafficVariation" settato a random potremmo avere delle assegnazioni di 
+parametro \texttt{trafficVariation} settato a random potremmo avere delle assegnazioni di 
 percentuali di traffico come le seguenti:
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={Esempio di variazione traffico casuale}]
@@ -416,6 +424,34 @@ Una volta lanciato il generatore avremo le seguenti possibilità di scelte:
     \end{itemize}
     \item \textbf{user:} una modalità in cui l'utente può personalizzare la disposizione dei nodi della rete
 \end{itemize}
+I grafi automatici supportati sono:
+\begin{itemize}
+    \item \textbf{grafo completo:} ogni nodo è collegato a tutti i nodi rimanenti \cite{WikiGrafoCompleto}
+    \item \textbf{mesh:} ogni nodo ha 4 nodi adiacenti fatta eccezione dei nodi posti alle estremità (Fig. \ref{fig:grid_graph}).
+    \item \textbf{torus:} ogni nodo ha 4 nodi adiacenti.
+\end{itemize}
+
+Il tipo di grafo torus \cite{TorusWikipedia2024} rappresentato nel progetto è quello in due dimensioni come mostrato in Fig. \ref{fig:torus_graph}:
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{immagini/torus_graph.png}
+        \caption{Esempio di torus graph \cite{torusgraph}}
+        \label{fig:torus_graph}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{immagini/GridGraph.jpg}
+        \caption{Esempio di mesh grid graph \cite{MathWorldGridGraph}}
+        \label{fig:grid_graph}
+    \end{minipage}
+\end{figure}
+
+
+
+Nel progetto assumiamo che, tutti i link che collegano i nodi nei grafi, si intendono come bidirezionali. 
 La modalità user necessita di un file "custom\_graph.yaml" con i parametri 
 necessari a descrivere la rete del quale si vuole analizzare il traffico. 
 Con questa modalità l'utente ha completa libertà nel personalizzare la rete ed 
@@ -481,9 +517,10 @@ struttura di un dizionario in cui a ogni chiave corrisponde un valore, mostriamo
 
 Descriviamo i vari parametri:
 \begin{itemize}
-    \item \textbf{graphType:} identifica la tipologia del grafo da rappresentare, sono disponibili tre opzioni:
+    \item \textbf{\texttt{graphType}:} identifica la tipologia del grafo da rappresentare, sono disponibili tre opzioni:
     \begin{itemize}
-        \item \textbf{mesh:} l'algoritmo individua in modo automatico gli archi (i link) che collegano i nodi (gli switch) adiacenti tra loro presenti nella matrice coordinates
+        \item \textbf{mesh:} l'algoritmo individua in modo automatico gli archi (i link) che collegano i nodi (gli switch) adiacenti tra loro presenti 
+        nella matrice coordinates
         \item \textbf{torus:} esegue lo stessa procedura usate per mesh e in addizione collega tra loro i nodi che si trovano alle estremità della matrice
         \item \textbf{graph:} è la modalità più libera, collega gli switch tramite i link forniti dall'utente, indipendentemente da dove vengano collocati
     \end{itemize}
@@ -492,24 +529,24 @@ Descriviamo i vari parametri:
     C'è una precisa motivazione di design per questa scelta ed è legata a una rappresentazione 
     grafica ottimale del visualizzatore grafico.
     Gli id degli switch vanno posizionati nella matrice in base alla posizione desiderata, mentre tramite il posizionamento di uno zero si rappresenta uno spazio vuoto in cui non è presente uno switch.
-    \item \textbf{links:} rappresenta i link della rete i quali possono essere specificati con i campi:
+    \item \textbf{\texttt{links}:} rappresenta i link della rete i quali possono essere specificati con i campi:
     \begin{itemize}
-        \item \textbf{linkCap:} esprime la capacità del link in Mbps
-        \item \textbf{endpoints:} esprime gli endpoints collegati al link
+        \item \textbf{\texttt{linkCap}:} esprime la capacità del link in Mbps
+        \item \textbf{\texttt{endpoints}:} esprime gli endpoints collegati al link
     \end{itemize}
-    \item \textbf{phases:} rappresenta le fasi temporali che accompagnano la durata dell'attività di rete, sono identificate tramite timestamp che ha come valore la descrizione della fase che parte dal timestamp stesso. Le fasi verranno visualizzate nel video prodotto.
+    \item \textbf{\texttt{phases}:} rappresenta le fasi temporali che accompagnano la durata dell'attività di rete, sono identificate tramite timestamp che ha come valore la descrizione della fase che parte dal timestamp stesso. Le fasi verranno visualizzate nel video prodotto.
 \end{itemize}
-Il lettore avrà notato che per il campo graphType manca la possibilità di scegliere un grafo completo. In realtà la possibilità c'è e risiede semplicemente
+Il lettore avrà notato che per il campo \texttt{graphType} manca la possibilità di scegliere un grafo completo. In realtà la possibilità c'è e risiede semplicemente
 nell'opzione "graph", essendo la modalità libera, l'utente può tranquillamente descrivere un grafo completo in questo modo avendo chiaramente l'accortezza di posizionare i nodi in modo tale che i link non si sovrappongano.
-Tuttavia ciò e solo valido per quanto riguarda il generatore, se l'utente dovesse fornire un file network.yaml, che descriva un grafo completo,
+Tuttavia ciò e solo valido per quanto riguarda il generatore, se l'utente dovesse fornire un file \texttt{network.yaml}, che descriva un grafo completo,
 da fornire direttamente come input per l'analizzatore di traffico, può farlo tranquillamente, in quel caso avrà ben due modi per farlo:
-scegliere il graphType come "complete" per avere una disposizione circolare dei nodi e lasciando il campo "coordinates" vuoto, oppure come "graph" ma
+scegliere il \texttt{graphType} come \texttt{complete} per avere una disposizione circolare dei nodi e lasciando il campo \texttt{coordinates} vuoto, oppure come "graph" ma
 specificando le coordinate. Torneremo sull'argomento nel capitolo dedicato al visualizzatore grafico.
 Come si può notare dalla figura \ref{fig:custom_graph_example}, gli switch sono identificati tramite un valore numerico, 
 questa è una precisa scelta di design e mira a mantenere il concetto di leggibilità sempre
-presente. In questo caso la scelta deriva dal semplificare e rendere immediatamente chiaro il campo coordinates 
+presente. In questo caso la scelta deriva dal semplificare e rendere immediatamente chiaro il campo \texttt{coordinates} 
 (rappresentato da una matrice quadrata), così che l'occhio possa identificare immediatamente la rappresentazione della disposizione. Questa leggibilità è ottenuta
-grazie al formato yaml, il quale minimizza i caratteri da scrivere e rende più chiara l'associazione dei valori ai corrispettivi campi.
+grazie al formato \texttt{yaml}, il quale minimizza i caratteri da scrivere e rende più chiara l'associazione dei valori ai corrispettivi campi.
 Così facendo si rende intuitivo il posizionamento degli switch nello spazio, inoltre è una caratteristica importante per quanto riguarda il
 visualizzatore grafico, poiché rappresentando i nodi con un valore numerico che va da 1 a 1000 (spiegheremo il perché di questa scelta a breve), è 
 possibile rappresentare su schermo una grande quantità di elementi per far si che possano essere visualizzati contemporaneamente e rimanere leggibili ma soprattuto,
@@ -519,7 +556,7 @@ possibile rappresentare su schermo una grande quantità di elementi per far si c
  sovrapposizione degli elementi, spaziatura adeguata, scelta dei colori giusti e altri aspetti che approfondiremo nella sezione apposita riguardante la parte
  di visualizzazione grafica.
 Qualora la capacità dei link sia uguale per tutti è possibile insererire il campo 
-linkCap per poter così evitare di avere lo stesso valore nei vari link rappresentati nel campo links, potendo rappresentare solo gli endpoints:
+\texttt{linkCap} per poter così evitare di avere lo stesso valore nei vari link rappresentati nel campo links, potendo rappresentare solo gli endpoints:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
 \begin{lstlisting}[caption={Esempio di custom file con capacità uguali a tutti i link}, label={fig:custom_graph_example}]
@@ -625,16 +662,7 @@ data:
 }
 
 Come si può notare, questo tipo di approccio concede una certa libertà di azione, dando la possibilità
-di prestarsi anche a soluzioni ibride di grafi canonici. Possiamo avere un esempio di quanto descritto
-nell'opzione torus. Il tipo di grafo torus rappresentato nel progetto è quello in due dimensioni; generalmente in un grafo del genere ogni nodo
-ha quattro nodi adiacenti come mostrato in figura:
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\textwidth]{immagini/torus_graph.png}
-    \caption{esempio di torus graph \cite{torusgraph}}
-    \label{fig:torus_graph}
-\end{figure}
+di prestarsi anche a soluzioni ibride di grafi canonici.
 
 Tuttavia, le opzioni messe a disposizione dall'applicazione permettono una certa libertà di movimento,
 per esempio avendo una configurazione come quella riportata in figura \ref{fig:custom_graph_example},
@@ -644,16 +672,16 @@ collegati:
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/only_links.JPG}
-    \caption{risultato grafico del visualizzatore per un custom graph file}
+    \caption{Risultato grafico del visualizzatore per un custom graph file}
     \label{fig:hybrid_custom_torus}
 \end{figure}
 
-L'ultima possibilità di personalizzazione consiste nel poter personalizzare la matrice coordinates come si preferisce, seguendo sempre la regola
+L'ultima possibilità di personalizzazione consiste nel poter personalizzare la matrice \texttt{coordinates} come si preferisce, seguendo sempre la regola
 che laddove c'è un valore numerico, esso sarà un nodo, mentre laddove ci sarà uno zero verrà inteso come spazio vuoto. Quindi se si vuole rappresentare
-un grafico che non sia di tipo mesh o torus, bisogna specificare nel campo graphType il valore "graph", mostriamo un esempio:
+un grafico che non sia di tipo mesh o torus, bisogna specificare nel campo \texttt{graphType} il valore "graph", mostriamo un esempio:
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={Esempio di custom graph file, graphType posto al valore graph}]
+\begin{lstlisting}[caption={Esempio di custom graph file, \texttt{graphType} posto al valore graph}]
     ---
     data:
       graphType: graph
@@ -697,14 +725,14 @@ un grafico che non sia di tipo mesh o torus, bisogna specificare nel campo graph
 \end{lstlisting}
 }
 
-Come possiamo intuire osservando i valori nel campo coordinates, l'esempio ricrea la struttura di un albero, i links sono appunto specificati 
+Come possiamo intuire osservando i valori nel campo \texttt{coordinates}, l'esempio ricrea la struttura di un albero, i links sono appunto specificati 
 nel campo link e una volta generato il traffico con il generatore, analizzato e dato come input 
 al visualizzatore otteniamo un risultato come in figura \ref{fig:tree_custom}.
 \newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/free_graph.JPG}
-    \caption{risultato grafico del visualizzatore per un custom graph file in modalità "graph"}
+    \caption{Risultato grafico del visualizzatore per un custom graph file in modalità "graph"}
     \label{fig:tree_custom}
 \end{figure}
 Vien da sè che si ottiene così una certa libertà di espressione bidimensionale, con la quale l'utente può scegliere
@@ -738,14 +766,14 @@ raffigurato nell'esempio in figura creato dal visualizzatore \ref{fig:mesh_examp
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/mesh_example.jpg}
-    \caption{risultato grafico del visualizzatore per un auto mesh graph}
+    \caption{Risultato grafico del visualizzatore per un auto mesh graph}
     \label{fig:mesh_example}
 \end{figure}
 Nel caso della scelta di un grafico torus, il visualizzatore provvederà a disegnare la struttura come mostrata in figura \ref{fig:torus_graph}.
 La scelta successiva in cui l'utente sarà invitato a fornire, riguarda la capacità che si vuole associare ai link appartenenti alla rete, potendo
-scegliere tra i valori 10, 100 e 1000 e vengono intese come grandezze espresse in megabytes (MB).
+scegliere tra i valori 10, 100 e 1000 e vengono intese come grandezze espresse in megabits per secondo (Mb/s).
 Una volta inseriti questi parametri il generatore provvederà a creare la configurazione di rete e il rispettivo traffico, memorizzando i dati rispettivamente
-nei files network.yaml e packets.json/yaml.
+nei files \texttt{network.yaml} e \texttt{packets.json/yaml}.
 Scegliendo la modalità user non viene richiesto alcun dato via prompt, questo perché, come descritto in precedenza, tutti i dati di cui ha bisogno
 il generatore devono essere presenti nel file custom\_graph.yaml \ref{fig:custom_graph_example}. Un diagramma che illustra le fasi e le
  scelte cui è possibile fare
@@ -753,7 +781,7 @@ il generatore devono essere presenti nel file custom\_graph.yaml \ref{fig:custom
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.40\textwidth]{immagini/diagramma_selezioni_config_gen.jpg}
-    \caption{diagramma di flusso di esecuzione del generatore}
+    \caption{Diagramma di flusso di esecuzione del generatore}
     \label{fig:diagramma_generatore}
 \end{figure}
 
@@ -765,7 +793,7 @@ grafo completo (spiegheremo nella parte dedicata al visualizzatore il perché), 
 
 \section{Creazione dei links e nodi}
 \label{sec:creazione_links_nodi}
-Dopo aver effettuato le scelte via prompt e dopo che il programma ha caricato i parametri dal file sim\_setup.yaml 
+Dopo aver effettuato le scelte via prompt e dopo che il programma ha caricato i parametri dal file \texttt{sim\_setup.yaml} 
 avviene la creazione dei link e dei nodi. Per i link viene creata una struttura che consiste in un dizionario in cui ogni chiave sarà associata
 ai parametri del link con un identificativo come chiave:
 
@@ -778,9 +806,10 @@ ai parametri del link con un identificativo come chiave:
     }
 \end{lstlisting}
 }
-Il campo enpoints rappresenta i nodi che il link collega, capacity è la capcità del link e trafficPerc è la percentuale di traffico del link.
-Le percentuali di traffico del link sono pensate per variare ogni secondo di generazione e servono solo ai fini della creazione della quantità di traffico, questo specifico campo non sarà riportato nel network.yaml
-pochè è un dato che non servirà più, di fatti la struttura che rappresenta i link verrà memorizzata come una lista di dizionari come segue:
+Il campo \texttt{endpoints} rappresenta i nodi che il link collega, \texttt{capacity} è la capcità del link e \texttt{trafficPerc} è la percentuale di traffico del link.
+Le percentuali di traffico dei link, presenti nel campo \texttt{trafficPerc}, vengono aggiornati ogni secondo di generazione, definendo nuove percentuali di traffico da creare.
+Questo specifico campo non sarà riportato nel \texttt{network.yaml}
+poichè è un dato che non servirà più, di fatti la struttura che rappresenta i link verrà memorizzata come una lista di dizionari come segue:
 
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
@@ -804,33 +833,33 @@ pochè è un dato che non servirà più, di fatti la struttura che rappresenta i
 \end{lstlisting}
 }
 
-Il campo \(capacity\) identifica la capacità del link espressa in MB, mentre \(endpoints\) è una lista di due identificatori numerici compresi tra
+Il campo \texttt{capacity} identifica la capacità del link espressa in Mbps, mentre \texttt{endpoints} è una lista di due identificatori numerici compresi tra
 2 e 1000 che rappresentano i nodi che li collega.
 Ci sono diverse configuazioni che lo script sarà tenuto a considerare in base alle scelte dell'utente, possiamo individuarle in:
 
 \begin{itemize}
     \item \textbf{Modalità auto:} ci sono 3 configurazioni possibili, complete graph, mesh e torus.
     \begin{itemize}
-        \item \textbf{Complete graph:} i links vengono in modo tale che ogni nodo sia collegato a tutti i nodi rimanenti. Non c'è un riferimento esplicito al posizionamento poiché, come vedremo in Sec. \ref{sec:strutturazione_visualizzatore}, sarà compito del visualizzatore grafico disporre i nodi nello spazio.
+        \item \textbf{Complete graph:} i links vengono creati in modo tale che ogni nodo sia collegato a tutti i nodi rimanenti. Non c'è un riferimento esplicito al posizionamento poiché, come vedremo in Sec. \ref{sec:strutturazione_visualizzatore}, sarà compito del visualizzatore grafico disporre i nodi nello spazio.
         \item \textbf{Mesh graph: } i links vengono creati in modo tale che ogni nodo abbia 4 nodi adiacenti rispetto a una distribuzione spaziale su matrice rettangolare, a eccezione dei nodi che risiedono alle estremità.
-        \item \textbf{Torus graph: } i links vengono creati in modo da replicare il più possibile la struttura di un torus graph completo, come mostrato in fig. \ref{fig:torus_graph} utilizzando lo stesso sistema di disposizione usato per il mesh graph basato su matrice rettandolare.
+        \item \textbf{Torus graph: } i links vengono creati in modo da replicare il più possibile la struttura di un torus graph completo, come mostrato in Fig. \ref{fig:torus_graph} utilizzando lo stesso sistema di disposizione usato per il mesh graph basato su matrice rettandolare.
         Qualora il numero di nodi scelto non riesca a riempire la matrice, l'algoritmo non creerà i link di nodi che non risultino essere alle estremità.
     \end{itemize} 
     \item \textbf{Modalità user:} i links vengono semplicemente caricati dal file e copiati nella struttura. Nel caso in cui i link non siano specificati nel custom file allora vengono generati.
 \end{itemize}
-In questa fase i nodi (ovvero gli endpoints) sono definiti tramite il campo \(enpoints\) dei vari links, solo successivamente verrà aggiunto l'indirizzo di ciascun endpoint, un suo nome e l'ID.
+In questa fase i nodi (ovvero gli endpoints) sono definiti tramite il campo \texttt{endpoints} dei vari links, solo successivamente verrà aggiunto l'indirizzo di ciascun endpoint, un suo nome e l'ID.
 Nel caso di modalità auto vengono creati indirizzi automaticamente a partire da \(10.0.0.1\), l'identificativo è un valore numerico crescente a partire da 1 e il nome è semplicemente la composizione
 della parola \(switch\) seguita dall' ID, come ad esempio \(switch1\).
 Nel caso di modalità user tutte le informazioni inerenti agli switch saranno copiate nella struttura così come sono memorizzate nel file custom\_graph.yaml
 
 \section{Distribuzione dei nodi: aspect ratio}
 \label{sec:aspect_ratio}
-Come accennato precedentemente, la distribuzione dei nodi è pensata per essere disegnata in forma matriciale, questo segue una precisa scelta di design e riguarda
+La distribuzione dei nodi per i tipi di grafi mesh, torus e modalità libera è pensata per essere disegnata in forma matriciale. Questo segue una precisa scelta di design e riguarda
 l'aspect ratio adotatto per disegnare al meglio gli elementi su schermo tramite la libreria Manim, la quale produce video in 16:9, quindi è sorta l'esigenza
-di sfruttare al massimo questo formato visivo per poter inserire nel modo più coerente e ottimizzato possibile i vari elementi della rete.
+di sfruttare al massimo questo formato visivo per poter inserire nel modo più coerente e ottimizzato possibile i vari elementi della rete a schermo.
 La soluzione adottata è stata quella di pensare al numero di nodi come un'area di un quadrato (matrice quadrata) e successivamente trovare l'area equivalente 
 di un rettangolo (matrice rettangolare) considerando un
-aspetc ratio di 16:9. Consideriamo il numero di nodi \(A\) come l'area del quadrato e con \(n\) un suo lato \(n = \sqrt{A}\).
+aspect ratio di 16:9. Consideriamo il numero di nodi \(A\) come l'area del quadrato e con \(n\) un suo lato \(n = \sqrt{A}\).
 Denotiamo con $l$ la lunghezza e con $h$ l'altezza del rettangolo. La condizione di proporzione si può esprimere come
 \[
 \frac{l}{h} = \frac{16}{9}.
@@ -871,12 +900,12 @@ riuscendo a contenere l'area e rimanendo in proporzione.
 \section{Generazione del traffico}
 Successivamente alla creazione dei link e dei nodi vi è la generazione del traffico, ovvero la creazione di tutti i pacchetti che vengono
 creati. Descriveremo ora il criterio di creazione del traffico; l'idea è quella di iterare su frazioni di tempo cui l'unità temporale è definita
- dal campo creationDelta (tutti i campi che citeremo provengono dal file setup sim\_setup.yaml). L'algoritmo cicla per ogni frazione di 
+ dal campo \texttt{creationDelta} (tutti i campi che citeremo provengono dal file setup \texttt{sim\_setup.yaml}). L'algoritmo cicla per ogni frazione di 
  tempo per la durata della generazione, definita nel campo
- simTime e per ciascuna calcola un quantitativo di pacchetti, proporzionale alla 
+ \texttt{simTime} e per ciascuna calcola un quantitativo di pacchetti, proporzionale alla 
 percentuale di traffico, per ogni link presente nella rete. Ogni secondo trascorso viene cambiata la percentuale di traffico di ogni link secondo
-la scelta fatta nel campo trafficVariation. Nei grafici nelle figure \ref{fig:generatore_traffico_random}, \ref{fig:generatore_traffico_fissato} possiamo vedere due esempi di andamento di variazione di traffico percentuale.
-Il tempo, data e ora, che definisce quando è cominciata la trasmissione lo ritroviamo nel timestamp startSimTime.
+la scelta fatta nel campo \texttt{trafficVariation}. Nei grafici nelle figure \ref{fig:generatore_traffico_random}, \ref{fig:generatore_traffico_fissato} possiamo vedere due esempi di andamento di variazione di traffico percentuale.
+Il tempo, data e ora, che definisce quando è cominciata la trasmissione lo ritroviamo nel timestamp \texttt{startSimTime}.
 Poichè per ogni frazione il calcolo dei pacchetti può non essere preciso, ovvero può capitare che ci sia un numero con una parte decimale, l'algoritmo
 provvede a recupere questa rimanenza, tramutarla in pacchetto e aggiungerla. Questo fa si di avere un'elevata approssimazione, tendente al 100\% per
 quanto riguarda l'essere più fedeli possibili alle percentuali di traffico da generare.
@@ -885,12 +914,12 @@ quanto riguarda l'essere più fedeli possibili alle percentuali di traffico da g
     \centering
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/generatore_traffico_random.png}
-      \caption{esempio di variazione di traffico percentuale casuale per 10 secondi}
+      \caption{Esempio di variazione di traffico percentuale casuale per 10 secondi}
       \label{fig:generatore_traffico_random}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/generatore_traffico_fissato.png}
-      \caption{esempio di variazione di traffico percentuale fissato per 10 secondi}
+      \caption{Esempio di variazione di traffico percentuale fissato per 10 secondi}
       \label{fig:generatore_traffico_fissato}
     \end{minipage}
 \end{figure}
@@ -954,29 +983,29 @@ Il file è una lista contenente tutti i valori relativi alla configurazione netw
     \item Una lista di switch ognuno dei quali descrive l'indirizzo, il proprio identificativo e un eventuale nome associato
     \item Un oggetto rappresentante un dizionario con i parametri di rete:
     \begin{itemize}
-        \item averageDelta: l'intervallo di tempo delle medie percentuali di traffico da calcolare con l'analizzatore espressi in millisecondi
-        \item colorblind: yes/no, abilita nel caso di scelta "yes" una palette cromatica nel visualizzatore grafico adatta a persone affette da daltonismo
-        \item dotSize: fixed/adaptive, un'opzione che rende uguale la dimensione a tutti gli elementi raffiguranti gli switch nel visualizzatore grafico (fixed), oppure che adatta la dimensione alla lunghezza dell'identificativo degli switch (adaptive)
-        \item graphType: la tipologia del grafo da visualizzare (complete, mesh, torus)
-        \item linkCap: valore compreso tra [10, 100, 1000]/mixed, un valore che identifica la capacità dei links qualora fossero tutti della stessa grandezza, mixed altrimenti
-        \item packetsFile: json/yaml, la scelta del formato con il quale si vuole memorizzare il traffico di rete
-        \item simTime: la durata complessiva delle operazioni di rete
-        \item startSimTime: timestamp, data e ora nel formato YY:MM:DD HH:MM:SS dell'inizio della trasmissione del traffico
-        \item updateDelta: un intervallo temporale che identifica ogni quanto la media averageDelta debba essere aggiornata
+        \item \texttt{averageDelta}: l'intervallo di tempo delle medie percentuali di traffico da calcolare con l'analizzatore espressi in millisecondi
+        \item \texttt{colorblind}: yes/no, abilita nel caso di scelta "yes" una palette cromatica nel visualizzatore grafico adatta a persone affette da daltonismo
+        \item \texttt{dotSize}: fixed/adaptive, un'opzione che rende uguale la dimensione a tutti gli elementi raffiguranti gli switch nel visualizzatore grafico (fixed), oppure che adatta la dimensione alla lunghezza dell'identificativo degli switch (adaptive)
+        \item \texttt{graphType}: la tipologia del grafo da visualizzare (complete, mesh, torus)
+        \item \texttt{linkCap}: valore compreso tra [10, 100, 1000]/mixed, un valore che identifica la capacità dei links qualora fossero tutti della stessa grandezza, mixed altrimenti
+        \item \texttt{packetsFile}: \texttt{json}\texttt{/yaml}, la scelta del formato con il quale si vuole memorizzare il traffico di rete
+        \item \texttt{simTime}: la durata complessiva delle operazioni di rete
+        \item \texttt{startSimTime}: timestamp, data e ora nel formato YY:MM:DD HH:MM:SS dell'inizio della trasmissione del traffico
+        \item \texttt{updateDelta}: un intervallo temporale che identifica ogni quanto la media \texttt{averageDelta} debba essere aggiornata
     \end{itemize}
     \item Una lista di liste che descrive la matrice del posizionamento degli switch.Nel caso di scelta di grafo completo questo campo è una lista vuota ([])
     \item Una lista di fasi temporali che descrivono specifici intervalli temporali nel formato "YY:MM:DD HH:MM:SS = descrizione fase"
 \end{itemize}
 Il generatore crea delle fasi descrittive ogni 10 secondi di generazione e le memorizza come ultimo valore della lista della struttura network.
-Per il file packets abbiamo invece due possibili risultati in base alla scelta fatta nel file di setup \ref{codice:sim_setup_example}, ovvero json e yaml.
+Per il file packets abbiamo invece due possibili risultati in base alla scelta fatta nel file di setup \ref{codice:sim_setup_example}, ovvero \texttt{json} e \texttt{yaml}.
 Il generatore crea i pacchetti secondo l'assunzione in cui essi vengano registrati in ordine di invio, avremo quindi una struttura corrispondente
 a una lista di pacchetti ordinati per timestamp di invio.
-Le strutture si presentano come in figura \ref{codice:json_packets_file} per il formato json e in figura \ref{codice:yaml_packets_file} per il formato yaml.
+Le strutture si presentano come in figura \ref{codice:json_packets_file} per il formato \texttt{json} e in figura \ref{codice:yaml_packets_file} per il formato \texttt{yaml}.
 Come vedremo nel prossimo capitolo, questi due files rappresentano l'esatto formato che riesce a leggere l'analizzatore, quindi un utente
 che voglia usare l'analizzatore e il visualizzatore grafico dovrà formattare accuratamente i suoi dati come descritto.
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={Esempio di packets file in formato json}, label={codice:json_packets_file}]
+\begin{lstlisting}[caption={Esempio di packets file in formato \texttt{json}}, label={codice:json_packets_file}]
 [
     {
         "A": 1,
@@ -1001,7 +1030,7 @@ che voglia usare l'analizzatore e il visualizzatore grafico dovrà formattare ac
 }
 
 {\scriptsize % Cambia la dimensione del testo per il blocco lstlisting
-\begin{lstlisting}[caption={Esempio di packets file in formato yaml}, label={codice:yaml_packets_file}]
+\begin{lstlisting}[caption={Esempio di packets file in formato \texttt{yaml}}, label={codice:yaml_packets_file}]
   - A: 1
     B: 2
     d: 4000
@@ -1043,7 +1072,7 @@ Avremmo così 37 bytes necessari per i nomi dei campi contro i 4 per la rapprese
 33 bytes per pacchetto. Questa quantità, moltiplicata la grande quantità di pacchetti da rappresentare, può pesare non poco.
 Indipendentemente dal numero di bytes necessari a rappresentare un pacchetto in forma minimale, possiamo fare una stima di quanto sarebbe più grande
 un file packets avendo descrizioni di nomi più lunghi; supponiamo di avere un grafo completo costituito da 5 switch collegati tra loro con switch
-aventi capienza 1 Gbps (gigabit), il numero dei link, per l'equazione in fig. \ref{eq:link_number}, risulta essere pari a 10. Supponiamo che tutta la rete
+aventi capienza 1 Gbps (gigabit), il numero dei link, per l'equazione in Fig. \ref{eq:link_number}, risulta essere pari a 10. Supponiamo che tutta la rete
 stia trasmettendo al 50\% della sua capacità trasmissiva per tutta la durata dell'attività di rete. Considerando una dimensione \(d\) di payload pari 
 a 1518 Bytes uguale per tutti i pacchetti trasmessi,
 definiamo come \(pps\) i pacchetti al secondo, \(c\) il 50\% di capacità di un link, in un dato secondo avremo:
@@ -1066,7 +1095,7 @@ Ciò significa che per ogni secondo di traffico avremmo \(1.35 \text{ MB} \times
  \section{Aspetti realizzativi scartati: yaml block e flow style}
  \label{sec:aspetti_realizzativi_scartati}
  Un approccio inizialmente realizzato e poi scartato, è stato quello di poter dare la possibilità di scegliere la modalità di salvataggio del file packets.yaml.
-La libreria PyYAML permette di salvare un file yaml secondo due modalità; la prima è definita block style e l'altra flow style.
+La libreria PyYAML permette di salvare un file \texttt{yaml} secondo due modalità; la prima è definita block style e l'altra flow style.
 Di default, PyYAML sceglie lo stile di una collection a seconda che abbia a sua volta collection nidificate. Qualora ci fossero collection nidificate
 verrà assegnato lo stile block, il quale è il formato come lo abbiamo già visto in figura \ref{codice:yaml_packets_file}, altrimenti verrà assegnato
 lo stile flow che corrisponde al codice in figura.
@@ -1098,14 +1127,14 @@ più performante è il block style in lettura.
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{immagini/yaml_block_flow_dim.png}
-    \caption{test yaml block/flow style, dimensione files}
+    \caption{Test \texttt{yaml} block/flow style, dimensione files}
     \label{fig:yaml_block_flow_dim}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{immagini/yaml_block_flow_wr.png}
-    \caption{test yaml block/flow style, tempi di scrittura e lettura}
+    \caption{Test \texttt{yaml} block/flow style, tempi di scrittura e lettura}
     \label{fig:yaml_block_flow_wr}
 \end{figure}
 
@@ -1115,27 +1144,31 @@ più performante è il block style in lettura.
 \chapter{Analizzatore di traffico}
 L'analizzatore di traffico è la seconda anima del progetto essendo la parte che analizza il traffico calcolando le medie percentuali e che produce
 un file, analyzed\_data.yaml, che conterrà sia le informazioni di rete come links, switches e parametri di rete, sia le registrazioni del traffico percentuale
-di ogni link. Per poter operare, l'analizzatore ha bisogno dei due files, network.yaml e packets.yaml, creati dal generatore o che siano
+di ogni link. Per poter operare, l'analizzatore ha bisogno dei due files, \texttt{network.yaml} e packets.yaml, creati dal generatore o che siano
 creati e formattati dall'utente. Abbiamo descritto in dettaglio la composizione dei files nella sezione \ref{sec:files_prodotti}.
 L'esecuzione dello script parte in primo luogo caricando i files richiesti e creando le strutture necessarie al calcolo delle medie, dopodichè
 avviene il calcolo vero e proprio, viene creata la struttura che servirà come input del visualizzatore grafico e infine viene creato il file
 analyzed\_data.yaml con tale struttura.
-Poichè per motivi di efficienza si è scelto di strutturare i link come una lista nel file network.yaml e non come dizionario (in cui ogni link avrebbe avuto un identificativo come chiave), si è presentato il problema dell'identificazione dei link.
+Poichè per motivi di efficienza si è scelto di strutturare i link come una lista nel file \texttt{network.yaml} e non come dizionario (in cui ogni link avrebbe avuto un identificativo come chiave), si è presentato il problema dell'identificazione dei link.
 I link in fin dei conti possono essere identificati dai propri endpoints (il grafo viene inteso in modo tale che ci sia un unico link tra due endpoints), ovvero una coppia di nodi,
 nel nostro caso, una coppia di switch. Tuttavia la sfida che si è presentata è rappresentata dal fatto che se è vero quindi che un link è identificato
 da due endpoints, a e b, è vero anche che in questo caso l'ordinamento degli endpoints non deve essere rilevante. Abbiamo infatti pacchetti
 che vengono inviati sia da a per poi arrivare a b, sia da b verso a. Questo è un problema poiché stiamo cercando di identificare un link ma abbiamo
 due coppie, \((a, b)\) e \((b, a)\) che sì sono ugualmente valide ma rappresentano anche due coppie distinte, il che contrasta con il concetto di identificatore. 
 L'ideale sarebbe usare il tipo set, ovvero il concetto di insieme 
-come collezione non ordinata in cui due insiemi \(\{b, b\}, \{b, a\}\) sono considerati uguali in termini di contenuto. Sembrerebbe un problema risolto, ma non è così, il perché risiede
-nel fatto che i set in Python sono mutabili: il contenuto può essere modificato utilizzando metodi come add() e remove(). 
+come collezione non ordinata in cui due insiemi \(\{a, b\}, \{b, a\}\) sono considerati uguali in termini di contenuto. Sembrerebbe un problema risolto, ma non è così, il perché risiede
+nel fatto che i set in Python sono mutabili: il contenuto può essere modificato utilizzando metodi come \texttt{add()} e \texttt{remove()}. 
 Poiché set è mutabile, non ha valore hash \cite{pythonGlossaryHashable} e non può essere utilizzato come chiave del dizionario \cite{pythonStdTypesMapping}.
 Il tipo di dato che fa al caso nostro è quindi il frozenset, un set che è immutabile e hashable, quindi utilizzabile come chiave di un dizionario.
+
+Abbiamo assunto in fase di progettazione di avere link bidirezionali, il che è ragionevole nelle reti di calcolatori, tuttavia le soluzioni trovate per la creazione dei links 
+non precludono l'utilizzo del software per casi di reti con link unidirezionali; il modello infatti è facilmente generalizzabile nel caso in cui si 
+volessero modellare altri tipi di reti che non sono reti di calcolatori e per cui potrebbe aver senso avere dei link unidirezionali.
 Nell'analizzatore l'identificazione dei link è molto importante, perché nel momento in cui si va a scorrere la lista di tutti i pacchetti registrati,
 vi è il bisogno di identificare il link per potergli attribuire le varie medie da calcolare. Viene quindi creata una struttura ausiliaria in cui
-la lista di link presente nel file network.yaml viene tramutata in un dizionario avente come chiavi dei frozenset con gli endpoints e, come valori associati,
+la lista di link presente nel file \texttt{network.yaml} viene tramutata in un dizionario avente come chiavi dei frozenset con gli endpoints e, come valori associati,
 una serie di variabili atte a mantenere le somme dei pacchetti che man mano verrano scanditi.
-Segue la scansione dei pacchetti in cui, per ogni unità frazionaria di tempo dettata dal campo updateDelta presente in network.yaml, vengono sommati tutti i bytes di tutti i pacchetti
+Segue la scansione dei pacchetti in cui, per ogni unità frazionaria di tempo dettata dal campo \texttt{updateDelta} presente in \texttt{network.yaml}, vengono sommati tutti i bytes di tutti i pacchetti
 e attribuiti ai link corrispettivi.
 Una volta finita la scansione, la struttura ausiliaria viene scandita per ricavare le medie percentuali delle varie somme calcolate dal passaggio precedente e viene
 creata la struttura che verrà memorizzata in analyzed\_data.yaml. La struttura memorizzata è raffigurata in figura \ref{codice:analyzed_data_structure}.
@@ -1183,8 +1216,8 @@ creata la struttura che verrà memorizzata in analyzed\_data.yaml. La struttura 
 
 La struttura consiste in una lista di due elementi, il primo è un dizionario rappresentate 
 i parametri di rete necessari al visualizzatore grafico, il
-secondo è una lista di dizionari rappresentati i link, definiti dal campo enpoints, e le loro medie percentuali memorizzate nel campo traffic.
-L'unico campo che non abbiamo ancora incontrato finora è traffic, esso rappresenta le medie percentuali di tempo averageDelta, calcolate ogni updateDelta millisecondi.
+secondo è una lista di dizionari rappresentati i link, definiti dal campo endpoints, e le loro medie percentuali memorizzate nel campo traffic.
+L'unico campo che non abbiamo ancora incontrato finora è traffic, esso rappresenta le medie percentuali di tempo \texttt{averageDelta}, calcolate ogni \texttt{updateDelta} millisecondi.
 Nell esempio in figura \ref{codice:analyzed_data_structure} abbiamo che le medie vengono calcolate quindi in intervalli di 1000 ms (millisecondi), aggiornati ogni
 100 ms. Prendiamo ad esempio il primo link identificato dalla coppia di endpoints \((1, 2)\), i suoi valori del campo traffic sono associati ai seguenti tempi:
 \newline
@@ -1206,7 +1239,7 @@ Nell esempio in figura \ref{codice:analyzed_data_structure} abbiamo che le medie
 
 \end{lstlisting}
 }
-I timestamps sono espressi nel formato YY:MM:DD HH:MM:SS.Microseconds, questo per via dell'impiego dell'oggetto timedelta \cite{pythonDatetimeTimedelta} che converte un millisecondo in 1000 microsecondi e con cui è possibile effettuare
+I timestamps sono espressi nel formato YY:MM:DD HH:MM:SS.Microseconds, questo per via dell'impiego dell'oggetto \texttt{timeDelta} \cite{pythonDatetimeTimedelta} che converte un millisecondo in 1000 microsecondi e con cui è possibile effettuare
 operazioni aritmetiche di somma e differenza tra due oggetti datetime \cite{pythonDatetimeTimedelta}.
 Il primo valore che abbiamo, \(59\), è quindi la media percentuale dei pacchetti inviati tra il tempo 12:30:00 e 12:30:01, il secondo valore, \(53.3\) è la media
 dell'intervallo 12:30:00.100000 e 12:30:01.100000, e così via.
@@ -1230,18 +1263,18 @@ Andremo ora a descrivere come è strutturato il codice a livello logico. La prim
 
 Potrebbe sembrare un errore, o una scelta pigra per velocizzare le importazioni delle sezioni di libreria necessaria, ma in realtà questo è proprio
 l'uso raccomandato dalla documentazione ufficiale di utilizzare Manim \cite{ManimDocs}.
-Una volta avviato lo script verranno caricati i files analyzed\_data.yaml e network.yaml, successivamente verranno impostati i colori del traffico in base
-alla scelta fatta nel campo colorblind all'interno del file network, dopodichè possiamo pensare al resto dello script come un bivio in cui ci sono le due funzioni principali;
+Una volta avviato lo script verranno caricati i files analyzed\_data.yaml e \texttt{network.yaml}, successivamente verranno impostati i colori del traffico in base
+alla scelta fatta nel campo \texttt{colorblind} all'interno del file network, dopodichè possiamo pensare al resto dello script come un bivio in cui ci sono le due funzioni principali;
 la funzione che renderizzerà il grafo in caso di grafo completo e la funzione che renderizzerà un grafo pensato per essere disposto
 tramite matrice. La funzione relativa al grafo completo sfrutta la potenza di Manim per la disposizione dei nodi e degli archi (links), provvedendo
 una disposizione automatica ed organica degli elementi e rappresenta la scelta più indicata per questo tipo di rappresentazione; per
-farlo bisogna settare il campo customGraph nel file network al valore "complete" e lasciare il campo "coordinates" vuoto. Per ottenere un grafo
-completo con coordinate personalizzate bisognerà assegnare a graphType il valore "graph" e specificare le coordinate nel campo "coordinates". 
+farlo bisogna settare il campo customGraph nel file network al valore \texttt{complete} e lasciare il campo \texttt{coordinates} vuoto. Per ottenere un grafo
+completo con coordinate personalizzate bisognerà assegnare a \texttt{graphType} il valore "graph" e specificare le coordinate nel campo \texttt{coordinates}. 
 Vedremo degli esempi in figura nel paragrafo successivo. Entrambe le funzioni hanno lo stesso pattern di creazione del grafico e di creazione delle animazioni;
 prima si costruiscono le strutture da visualizzare, inclusi i parametri di rete da visualizzare, successivamente viene eseguito una iterazione sui timestamps ricavati
 dal file analyzed\_data in cui per ogni intervallo di tempo updateTime viene presa la parcentuale corrispondente di ciascun link, 
 si prendono i colori associati alle varie percentuali e si crea un'animazione di durata 1 secondo di transizione verso il colore scelto e si ripete 
-fino a quando non si arriva a fine simTime.
+fino a quando non si arriva a fine \texttt{simTime}.
 Per dare una maggiore idea sul come vengono create le forme e le animazioni in Manim, faremo una breve introduzione alla libreria.
 In Manim ogni oggetto viene definito Mobject, ovvero un "Mathematical Object", e deriva dalla classe di base Mobject, cioè un oggetto che può essere visualizzato a schermo,
 per esempio una forma rettangolo, una linea o un cerchio, vengono definiti tutti mobject.
@@ -1292,7 +1325,7 @@ usato come un'animazione tramite l'uso di \lstinline|animate()|.
 \end{lstlisting}
 }
 
-Nel codice in fig. \ref{codice:manim_animation_example}, vediamo come impostare il colore rosso e il livello di opacità al mobject \lstinline|Square()|,
+Nel codice in Fig. \ref{codice:manim_animation_example}, vediamo come impostare il colore rosso e il livello di opacità al mobject \lstinline|Square()|,
 applicando poi il metodo \lstinline|square.animate.set_fill(WHITE)| viene creata l'animazione di transizione di colore da rosso a bianco.
 L'animazione creata deve essere aggiunta alla \lstinline|Scene| per poterla visualizzare e lo si fa tramite \lstinline|play()|.
 Questa breve introduzione a Manim ci da già l'idea della potenza che offre ponendo come unico limite la creatività dello sviluppatore.
@@ -1310,7 +1343,7 @@ animations.append(grafo.edges[(A, B)].animate.set_color(traffic_color))
 In questo pseudocodice abbiamo una lista di animazioni \lstinline|animations|, in cui aggiungiamo un'animazione \lstinline|animate| che interessa l'oggetto arco 
 restituito da \lstinline|grafo.edges[(A, B)]| e individuato dalla coppia di endpoints (A, B). Dopodichè definiamo quale proprietà deve essere animata,
  in questo caso l'impostazione di un nuovo colore tramite \lstinline|set_color()| il quale è il colore corrispondente al timestamp correntemente analizzato.
-Questa operazione viene effettuata per tutti i link per l'intervallo di tempo updateDelta; quando tutte le animazioni sono settate si usa
+Questa operazione viene effettuata per tutti i link per l'intervallo di tempo \texttt{updateDelta}; quando tutte le animazioni sono settate si usa
 il metodo \lstinline|play(animation*)| per animarle tutte conteporaneamente e ciò si ripete per la durata di tempo registrato.
 
 Per quanto riguarda la seconda funzione principale, il pattern di creazione è analogo, tuttavia è interessante descrivere il posizionamento dei nodi.
@@ -1339,7 +1372,7 @@ for row in range(rows):
 
 Il codice in figura \ref{codice:grid_nodes_example} mostra come vengono creati e disposti i nodi in una griglia. 
 Vengono considerati tutti i valori rappresentanti i nodi (switch)
-presenti nel campo coordinates del file network.yaml, anche quelli aventi valori zero,
+presenti nel campo \texttt{coordinates} del file \texttt{network.yaml}, anche quelli aventi valori zero,
  i quali vengono comunque aggiunti ma settati con opacità pari a zero non venendo renderizzati nel risultato finale,
 quindi non peseranno in termini computazionali e fungono da riferimento per i valori adiacenti al pari dei valori diversi da zero.
 I nodi sono rappresentati da mobject \lstinline|LabeledDot()|, ovvero dei cerchi pieni con raffigurato al loro interno il valore dell'ID dello switch. Al momento di creazione, nel \lstinline|LabeledDot()|,
@@ -1365,7 +1398,7 @@ in questo caso l'ordinamento è molto importante per poter disegnare gli archi d
 Il lettore si starà chiedendo se non esistesse un mobject come \lstinline|Line()| per rappresentare dei link arcati, e in effetti uno c'è ed è \lstinline|ArcbetweenPoints()|, il quale funzionamento è esattamente come \lstinline|Line()|.
 Il problema che è sorto in fase di sviluppo è che, per ridimensionare i grafi quando diventano più grandi dell'area di visualizzazione, si è reso neccessario del metodo
  \lstinline|auto_zoom()| della classe \lstinline|MovingCameraScene|, ovvero la scena utilizzata nel progetto che permette cambiamenti di visuale della camera.
-Il ridimensionamento generato automaticamente dal metodo va in conflitto con \lstinline|ArcsBetweenPoints()|, creando artifici grafici non desiderati.
+Il ridimensionamento generato automaticamente dal metodo va in conflitto con \lstinline|ArcsBetweenPoints()|, creando artefatti grafici non desiderati.
 Si è quindi passati a una realizzazione manuale degli archi che segue la creazione di 3 segmenti con mobjects \lstinline|Line()| concatenati per rappresentare i link del torus dei nodi posti alle estremità.
 Perticolare attenzione va data al metodo \lstinline|get_center()| del mobject \lstinline|LabeledDot()|, poiché il metodo ritorna le coordinate del nodo, ci servirà per descrivere come vengono creati i link manuali.
 L'idea di creazione deriva dal considere il centro dei nodi delle estremità come punti di origine di piani cartesiani \(x, y\) dai quali ricavare le coordinate dei 3 segmenti, i vari sistemi di coordinate sono;
@@ -1394,7 +1427,7 @@ molto disorganico e asimmetrico.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.4\textwidth]{immagini/archi_asimmetrici_torus.png}
-    \caption{visualizzazione di archi non ordinati alle estremità di un torus graph}
+    \caption{Visualizzazione di archi non ordinati alle estremità di un torus graph}
     \label{fig:torus_archi_asimmetrici}
 \end{figure}
 
@@ -1406,41 +1439,41 @@ Per quanto riguarda le informazioni della rete che vengono mostrate a schermo si
 un ridimensionamento dinamico dei font che si adatta al crescere del grafico, questo per poter rendere sempre leggibile il testo.
 Per visualizzare le informazioni relative agli switch e ai link è stata realizzata una classe apposita, la quale può essere renderizzata separatamente dai grafici.
 Il video che produce è una presentazione animata di switch e links: gli switch, correlati con le loro info, vengono mostrati cinque alla volta con un effetto di comparsa e scomparsa, con effetto slide, mostrando poi i successivi cinque switch e relative info.
-Una volta terminati gli switch si susseguiranno i link, animati nello stesso modo e comparendo otto alla volta, mostrando gli enpoints al quale sono collegati e le capacità. Mostreremo graficamente ciò nel capitolo dedicato alle modalità grafiche.
+Una volta terminati gli switch si susseguiranno i link, animati nello stesso modo e comparendo otto alla volta, mostrando gli endpoints al quale sono collegati e le capacità. Mostreremo graficamente ciò nel capitolo dedicato alle modalità grafiche.
 \section{Modalità grafiche e design}
 In questo capitolo si vogliono mostrare tutte le configurazioni grafiche, i modi in cui l'algoritmo adatta gli elementi a schermo e le soluzioni trovate.
-Essendo un progetto che si basa fortemente su un aspetto front-end, questo capitolo sarà ficalizzato sul mostrare visivamente cosa può produrre il visualizzatore nelle varie configurazioni possibili.
+Essendo un progetto che si basa fortemente su un aspetto front-end, questo capitolo sarà focalizzato sul mostrare visivamente cosa può produrre il visualizzatore nelle varie configurazioni possibili.
 Partiamo con la scelta di design dei colori che rappresentano le intensità di traffico; la scelta è ricaduta su colori ai quali generalmente associamo significati abitudinari e comuni,
 come il verde per indicare traffico zero o basso, per poi arrivare al giallo per indicare un traffico di intensità media, fino ad arrivare al rosso
 per indicare il traffico molto intenso o massimo. Le varie gradazioni sono calcolate a partire da valori rgb e distribuiti su una scala che va da 1 (verde) a 100 (rosso), modificando opportunamente le graduazioni intermedie a cavallo tra le diverse colorazioni.
 Parlando invece del grafo completo, come descritto precedentemente, può essere disposto in modo automatico oppure impostato tramite coordinate dei nodi dall'utente. 
-Considerandone un esempio, sulla base dello stesso packets file, i due modi di visualizzare il grafo completo possono apparire come nella fig. \ref{fig:custom_complete_autopositioning} per l'auto-posizionamento e come in fig \ref{fig:custom_complete_manual_positioning} per il posizionamento manuale.
+Considerandone un esempio, sulla base dello stesso packets file, i due modi di visualizzare il grafo completo possono apparire come nella Fig. \ref{fig:custom_complete_autopositioning} per l'auto-posizionamento e come in fig \ref{fig:custom_complete_manual_positioning} per il posizionamento manuale.
 
 
 \begin{figure}[h]
     \centering
     \begin{minipage}{0.46\textwidth}
       \includegraphics[width=\linewidth]{immagini/custom_complete_autopositioning.JPG}
-      \caption{visualizzazione per opzione grafo completo con disposizione automatica}
+      \caption{Visualizzazione per opzione grafo completo con disposizione automatica}
       \label{fig:custom_complete_autopositioning}
     \end{minipage}\hfill
     \begin{minipage}{0.47\textwidth}
       \includegraphics[width=\linewidth]{immagini/custom_complete_manual_positioning.JPG}
-      \caption{visualizzazione per opzione grafo completo con coordinate personalizzate}
+      \caption{Visualizzazione per opzione grafo completo con coordinate personalizzate}
       \label{fig:custom_complete_manual_positioning}
     \end{minipage}
 \end{figure}
 
 
 La scelta di design dietro la visualizzazione del grafo completo in modo circolare è stata fatta per motivi di leggibilità; Manim propone diversi
-layout di configurazione, come possiamo vedere dall'immagine presa dalla documentazione ufficiale \cite{manimGraph} in fig. \ref{fig:graph_layouts_types}. Dagli esempi
+layout di configurazione, come possiamo vedere dall'immagine presa dalla documentazione ufficiale \cite{manimGraph} in Fig. \ref{fig:graph_layouts_types}. Dagli esempi
 si nota subito che l'opzione circolare è quella meglio distribuita, il che è ragionevolmente utile quando si tratta di disegnare molti elementi a schermo. 
 I layouts possibili come scelta sono, in ordine di apparizione; spring, circular, kamada kawai, planar, random, shell, spectral e spiral.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/graph_layouts_types.png}
-    \caption{layouts possibili per Graph()}
+    \caption{Layouts possibili per Graph()}
     \label{fig:graph_layouts_types}
 \end{figure}
 
@@ -1450,14 +1483,14 @@ Un esempio di grafo completo con modalità auto, settato con 10 switch in modali
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/auto_complete_10.JPG}
-    \caption{visualizzazione grafo completo con disposizione automatica di 10 switch}
+    \caption{Visualizzazione grafo completo con disposizione automatica di 10 switch}
     \label{fig:custom_complete_autopositioning10}
 \end{figure}
 
 Come abbiamo detto nella sezione \ref{sec:aspect_ratio}, la modalità auto del generatore, per grafi mesh, torus e personalizzati, gestisce l'aspect ratio sulla base del numero di switch scelti, vi sono quindi
 due risultati possibili di visualizzazione; il primo è che il numero di switch combacia con il calcolo dell'aspect ratio e fornisce una riempimento
-completo della matrice da visualizzare (già visto nel capitolo \ref{sec:esecuzione_del_generatore} in fig. \ref{fig:mesh_example}), 
-il secondo coincide con un riempimento parziale e in questo caso l'algoritmo lascerà semplicemente dello spazio vuoto (fig. \ref{fig:mesh_not_full}).
+completo della matrice da visualizzare (già visto nel capitolo \ref{sec:esecuzione_del_generatore} in Fig. \ref{fig:mesh_example}), 
+il secondo coincide con un riempimento parziale e in questo caso l'algoritmo lascerà semplicemente dello spazio vuoto (Fig. \ref{fig:mesh_not_full}).
 La figura \ref{fig:mesh_not_full} mostra inoltre il comportamento del grafo qualora si decidesse di settare il parametro \lstinline|fixedDots| al valore \lstinline|fixed|, 
 il quale rende la dimensione dei nodi uguale per tutti, la stessa tipologia di grafo con il parametro settato ad \lstinline|adaptive| adatterà la dimensione dei nodi
 in base all'ID con il quale vengono rappresentati, possiamo vedere un esempio in figura \ref{fig:adaptive_dots_example}
@@ -1467,18 +1500,18 @@ in base all'ID con il quale vengono rappresentati, possiamo vedere un esempio in
     \centering
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/mesh_not_full.JPG}
-      \caption{visualizzazione grafo mesh completo, opzione dotsSize posta a fixed}
+      \caption{Visualizzazione grafo mesh completo, opzione dotsSize posta a fixed}
       \label{fig:mesh_not_full}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/adaptive_dots_example.JPG}
-      \caption{visualizzazione grafo mesh con opzione dotsSize posta ad adaptive}
+      \caption{Visualizzazione grafo mesh con opzione dotsSize posta ad adaptive}
       \label{fig:adaptive_dots_example}
     \end{minipage}
 \end{figure}
 
-La logica di riempimento vale anche per il torus graph (fig.), con l'unica differenza che nel caso di mancato riempimento vengono collegati solo i nodi
-che risultano essere posti alle estremità (fig. ). Questa soluzione ibrida segue la convenzione per cui generalmente il torus graph è inteso come completo,
+La logica di riempimento vale anche per il torus graph (Fig. \ref{fig:torus_graph}), con l'unica differenza che nel caso di mancato riempimento vengono collegati solo i nodi
+che risultano essere posti alle estremità. Questa soluzione ibrida segue la convenzione per cui generalmente il torus graph è inteso come completo,
 ovvero che riempie tutte le posizioni della matrice imamginaria sul quale ci sono i nodi.
 
 
@@ -1487,12 +1520,12 @@ ovvero che riempie tutte le posizioni della matrice imamginaria sul quale ci son
     \centering
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/torus_full_24.JPG}
-      \caption{grafo torus completo}
+      \caption{Grafo torus completo}
       \label{fig:torus_full_24}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/torus_not_full_adaptive.JPG}
-      \caption{grafo torus non completo}
+      \caption{Grafo torus non completo}
       \label{fig:torus_not_full_adaptive}
     \end{minipage}
 \end{figure}
@@ -1506,7 +1539,7 @@ sono presenti in modo tale da non essere invasivi.
 Infine abbiamo la modalità "graph", la modalità in cui l'utente può scegliere dove posizionare i nodi come già visto in fig \ref{fig:tree_custom}.
 Il visualizzatore possiede anche una modalità per generare un video in cui si mostrano le informazioni degli switch 
 e nei nodi come spiegato nella sezione precedente \ref{sec:strutturazione_visualizzatore}. Per dare un'idea di come viene mostrato, riportiamo due frammenti di video in cui vengono mostrate
-le varie tipologie di dati (fig. \ref{fig:switch_info} e fig. \ref{fig:links_info}).
+le varie tipologie di dati (Fig. \ref{fig:switch_info} e Fig. \ref{fig:links_info}).
 \newline
 \newline
 
@@ -1515,12 +1548,12 @@ le varie tipologie di dati (fig. \ref{fig:switch_info} e fig. \ref{fig:links_inf
     \centering
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/switch_info.JPG}
-      \caption{switch info}
+      \caption{Switch info}
       \label{fig:switch_info}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/links_info.JPG}
-      \caption{link info}
+      \caption{Link info}
       \label{fig:links_info}
     \end{minipage}
 \end{figure}
@@ -1537,7 +1570,7 @@ Il daltonismo è una condizione in cui l'occhio umano presenta cecità ereditari
 Come detto nel capitolo precedente, utilizziamo
 i colori verde, giallo e rosso per esprimere rispettivamente basso, medio e alto traffico; andando a vedere le varie tipologie più comuni di daltonismo, 
 notiamo da subito che i colori scelti non sono adatti a tutti i tipi di daltonismo. Si è pensato quindi di introdurre l'opzione
-\lstinline|colorBlind| che se posta su "yes" cambia i colori in; verde per un basso traffico, bianco per traffico medio e fucsia per elevato traffico.
+\texttt{colorblind} che se posta su "yes" cambia i colori in; verde per un basso traffico, bianco per traffico medio e fucsia per elevato traffico.
 Il colore bianco e nero sono visti in egual modo da tutti, questo è anche il motivo per cui lo sfondo del visualizzatore è proprio nero, quindi si è
 deciso di utilizzare il bianco come uno dei colori adatti, mentre per gli altri colori si è fatto ricorso al tool "Coloring for Colorblindness" \cite{ColorBlindPalette2024} 
 del Professor Nichols, docente dell' Universita del Connecticut, il quale permette di visualizzare una palette cromatica nel modo in cui i vari tipi
@@ -1547,12 +1580,12 @@ di daltonismo si manifestano. Mostriamo le due palette cromatiche, quella di def
     \centering
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/palette_cromatica.JPG}
-      \caption{palette cromatica di default}
+      \caption{Palette cromatica di default}
       \label{fig:palette_cromatica}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/colorblind_palette.JPG}
-      \caption{palette cromatica daltonismo}
+      \caption{Palette cromatica daltonismo}
       \label{fig:colorblind_palette}
     \end{minipage}
 \end{figure}
@@ -1566,7 +1599,7 @@ del risultato finale lo possiamo vedere in figura \ref{fig:colorblind_torus}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{immagini/colorblind_torus.JPG}
-    \caption{opzione colorblind per torus graph}
+    \caption{Opzione \texttt{colorblind} per torus graph}
     \label{fig:colorblind_torus}
 \end{figure}
 
@@ -1780,8 +1813,8 @@ for fractional_unit in range(0, SIM_TIME * creationRate):
 
 Nel codice \ref{codice:create_packets}, il ciclo esterno che dipende da \lstinline|SIM_TIME * creationRate|, sim time è il tempo totale della generazione di generazione pacchetti, 
 il quale dipende da quanto si vuol fare durare la generazione. La variabile \lstinline|creationRate| rappresenta in quante parti è suddiviso un secondo, questo è dato
-dalla scelta del parametro creationDelta del file di setup e che indica la frequenza temporale di creazione dei pacchetti, quindi il ciclo dipende dalla quantità di frazioni temporali in cui si generano i pacchetti.
-Questi paramentri non sono grandi ai fini del progetto, supponendo di avere un sim time di 3600 secondi (un'ora), creationDelta posto a 100 millisecondi e un creationRate di 10 dato da: 
+dalla scelta del parametro \texttt{creationDelta} del file di setup e che indica la frequenza temporale di creazione dei pacchetti, quindi il ciclo dipende dalla quantità di frazioni temporali in cui si generano i pacchetti.
+Questi paramentri non sono grandi ai fini del progetto, supponendo di avere un sim time di 3600 secondi (un'ora), \texttt{creationDelta} posto a 100 millisecondi e un creationRate di 10 dato da: 
 
 \begin{equation}
     \text{creationRate} = \frac{1 \text{ sec}}{\text{creationDelta}} = 10 
@@ -1863,9 +1896,9 @@ Si può vedere che all'aumentare del numero di nodi (switch) il tempo necessario
 
 \section{Analizzatore di traffico}
 Il cuore dell'analizzatore è la parte logica di codice incaricata di scandire tutti i pacchetti, estrarne le somme dei valori di payload e relative vedie percentuali.
-L'analizzatore in primis carica i due files network.yaml e packets.json/yaml, in questo caso creiamo sempre una struttura ausiliaria necessaria a memorizzare man mano le somme pei payload; ciò 
+L'analizzatore in primis carica i due files \texttt{network.yaml} e \texttt{packets.json/yaml}, in questo caso creiamo sempre una struttura ausiliaria necessaria a memorizzare man mano le somme pei payload; ciò 
 consiste semplicemente in un ciclo for che scandisce la lista di link presente nel network file e quindi abbiamo tempo costante O(c), ricordando che stiamo
-analizzando come caso peggiore un numero di link presenti in un torus graph, come mostrato precedentemente in fig. \ref{eq:torus_link_number}.
+analizzando come caso peggiore un numero di link presenti in un torus graph, come mostrato precedentemente in Fig. \ref{eq:torus_link_number}.
 Analizziamo ora il codice \ref{codice:analyze_packets} in cui avviene l'analisi vera e propria.
 
 {\scriptsize
@@ -1924,9 +1957,9 @@ Analizziamo ora il codice \ref{codice:analyze_packets} in cui avviene l'analisi 
 \end{lstlisting}
 }
 
-Il primo ciclo while scandisce semplicemente le unità frazionarie temporali scandite da updateTime, come visto precedentemente con l'esempio in fig. \ref{eq:creation_rate_example}, ciò comporta un numero di iterazioni \(O(c)\).
+Il primo ciclo while scandisce semplicemente le unità frazionarie temporali scandite da updateTime, come visto precedentemente con l'esempio in Fig. \ref{eq:creation_rate_example}, ciò comporta un numero di iterazioni \(O(c)\).
 Segue un ciclo for che itera sui link, anche qui abbiamo una complessità di \(O(c)\). Dopo divere operazioni con tempo O(1), la parte che merita attenzione è il ciclo while nidificato.
-Questo ciclo itera su tutti i pacchetti che hanno un timestamp che ricade nell'unità frazionaria di tempo da analizzare, sono quindi tutti i pacchetti in un dato updateDelta per un dato traffico percentuale; abbiamo già incontrato questo
+Questo ciclo itera su tutti i pacchetti che hanno un timestamp che ricade nell'unità frazionaria di tempo da analizzare, sono quindi tutti i pacchetti in un dato \texttt{updateDelta} per un dato traffico percentuale; abbiamo già incontrato questo
 parametro e ne abbiamo calcolato il peso in termini computazionali nell' equazione \ref{eq:packets_per_fractional_time}, ottenendo \(O(n)\). Dopo diverse
 operazioni, tutte con complessità O(1), i cicli che troviamo sono tre, interessano iterazioni sui link, ciascuno con complessità \(O(c)\), e non sono annidati poiché si susseguono.
 Possiamo quindi definire la complessità compelssiva di questa parte logica che risulta essere lineare. \ref{eq:complexity_analyzer}.
@@ -1943,7 +1976,7 @@ notare che all'aumentare del numero di switch nella rete, il tempo cresce in mod
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/prestazioni_analyzer.png}
-    \caption{prestazioni dell'analizzatore}
+    \caption{Prestazioni dell'analizzatore}
     \label{fig:prestazioni_analizzatore}
 \end{figure}
 
@@ -1952,9 +1985,9 @@ notare che all'aumentare del numero di switch nella rete, il tempo cresce in mod
 \section{Visualizzatore grafico}
 Analizzando il visualizzatore troviamo che il cuore da analizzare ricade sulla parte di codice che crea le animazioni. Nel creare le strutture necessarie, caricandole dai files,
 troviamo le stesse complessità computazionali ricavate per i precedenti moduli sofware, mentre per la creazione della base di partenza grafica abbiamo
-la funzione \lstinline|Graph()| per disegnare i grafi completi mentre abbiamo il codice visto in fig. \ref{codice:grid_nodes_example} per i grafi mesh, torus e personalizzato.
+la funzione \lstinline|Graph()| per disegnare i grafi completi mentre abbiamo il codice visto in Fig. \ref{codice:grid_nodes_example} per i grafi mesh, torus e personalizzato.
 Per quanto riguarda \lstinline|Graph()| rimane valida l'analisi di complessità quadratica per via nel calcolo del numero di link in un grafo completo, mentre per la creazione delle altre tipologie di grafo
-osserviamo dalla fig. \ref{codice:grid_nodes_example} che la complessità è costante, essendo riproposti due cicli annidati che iterano sulla radice quadrata
+osserviamo dalla Fig. \ref{codice:grid_nodes_example} che la complessità è costante, essendo riproposti due cicli annidati che iterano sulla radice quadrata
 del numero di nodi. 
 Analizziamo quindi la logica che risulta maggiormente critica, la creazione delle animazioni che,
 per motivi di lunghezza del codice sarà descritto come pseudocodice:
@@ -1987,12 +2020,12 @@ La complessità in questo caso possiamo ricavarla dai test, i quali mostrano che
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/720p_rendering_performance.png}
-    \caption{prestazioni per video con risoluzione di 720p a 30 fps}
+    \caption{Prestazioni per video con risoluzione di 720p a 30 fps}
     \label{fig:720p_rendering_performance}
 \end{figure}
 
-Il grafico in fig. \ref{fig:720p_rendering_performance} si basa su una generazione di 5 secondi con tipologia grafo mesh; possiamo notare che al
-crescere del numero degli switch il tempo per il rendering del video cresce in modo lineare. Possiamo concludere che il codice in fig. \ref{codice:create_animation}, opera con 
+Il grafico in Fig. \ref{fig:720p_rendering_performance} si basa su una generazione di 5 secondi con tipologia grafo mesh; possiamo notare che al
+crescere del numero degli switch il tempo per il rendering del video cresce in modo lineare. Possiamo concludere che il codice in Fig. \ref{codice:create_animation}, opera con 
 complessità \(O(n)\). Ipotizzando quindi un caso d'uso realistico in cui non viene previsto un grafo mesh/torus completo nell'impiego di una rete di data center
 possiamo concludere che la complessità generale del visualizzatore sia il peso della creazione delle strutture, caricamento dal files e creazione base grafica, sommato 
 al peso dato dalla parte di animazione ottenendo complessità lineare come riportato nell'equazione \ref{eq:complexity_visualizer}.
@@ -2007,58 +2040,58 @@ al peso dato dalla parte di animazione ottenendo complessità lineare come ripor
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/480_720_1080_rend_perf.png}
-    \caption{comparazione prestazioni per risoluzioni di 480, 720p e 1080 a 30 fps}
+    \caption{Comparazione prestazioni per risoluzioni di 480, 720p e 1080 a 30 fps}
     \label{fig:480_720_1080_rend_perf}
 \end{figure}
 
 Volendo osservare i test da un'altra prospettiva, possiamo intendere il tempo di rendering come la variabile dipendente rispetto al numero di switch; in questo
 esempio mostriamo una comparazione con le risoluzioni 480p, 720p e 1080p renderizzati a 30 fps(frames per second),
- sempre per 5 secondi di generazione con grafo mesh, come mostrato in fig. \ref{fig:480_720_1080_rend_perf}. Possiamo osservare dal grafico che l'andamento è lineare per tutti i tipi di rendering analizzati.
+ sempre per 5 secondi di generazione con grafo mesh, come mostrato in Fig. \ref{fig:480_720_1080_rend_perf}. Possiamo osservare dal grafico che l'andamento è lineare per tutti i tipi di rendering analizzati.
 
 \chapter{Conclusioni}
 Facendo un riepilogo dei punti cardine dello sviluppo del progetto, si è potuto giungere a diverse conclusioni. Dal punto di vista delle prestazioni implicate
-dai formati scelti json e yaml, si è dimostrato che json è incredibilmente più performante rispetto a yaml per quanto riguarda files di grandi dimensioni, possiamo vederne un risultato nel test raffigurato in fig. \ref{fig:json_yaml_wr_comparison}.
+dai formati scelti \texttt{json} e \texttt{yaml}, si è dimostrato che \texttt{json} è incredibilmente più performante rispetto a \texttt{yaml} per quanto riguarda files di grandi dimensioni, possiamo vederne un risultato nel test raffigurato in Fig. \ref{fig:json_yaml_wr_comparison}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/json_yaml_wr_comparison.png}
-    \caption{comparazione prestazioni json e yaml, scrittura e lettura}
+    \caption{Comparazione prestazioni \texttt{json} e \texttt{yaml}, scrittura e lettura}
     \label{fig:json_yaml_wr_comparison}
 \end{figure}
 
 Il test è basato sulla configurazione avente tempo di generazione 5 secondi e tipologia di grafo mesh con links aventi capacità 1 Gbps.
 In questo caso, così come anche i futuri test che verrano riportati, si considera il tempo come la variabile dipendente dal numero di switch impiegati.
-Possiamo osservare dal test che json è decisamente più veloce di yaml sia in scrittura che in lettura, tanto da avere tempi praticamente sovrapposti, mentre per yaml si ha un coefficiente angolare che fa pesare molto di più l'andamento della curva. Quindi possiamo concludere che json è decisamente la scelta più opportuna 
-per i fini del progetto. Risulta comunque interessante notare l'andamento di json nella lettura e scrittura per un numero di switch superiore a 7; avendo la stessa configurazione del test precedente otteniamo i grafici in fig. \ref{fig:json_wr_nature} e \ref{fig:json_writing_reading}.
+Possiamo osservare dal test che \texttt{json} è decisamente più veloce di \texttt{yaml} sia in scrittura che in lettura, tanto da avere tempi praticamente sovrapposti, mentre per \texttt{yaml} si ha un coefficiente angolare che fa pesare molto di più l'andamento della curva. Quindi possiamo concludere che \texttt{json} è decisamente la scelta più opportuna 
+per i fini del progetto. Risulta comunque interessante notare l'andamento di \texttt{json} nella lettura e scrittura per un numero di switch superiore a 7; avendo la stessa configurazione del test precedente otteniamo i grafici in Fig. \ref{fig:json_wr_nature} e \ref{fig:json_writing_reading}.
 
 \begin{figure}[h]
     \centering
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/json_wr_nature.png}
-      \caption{json, lettura e scrittura da 2 a 10 switch}
+      \caption{Test \texttt{json}, lettura e scrittura da 2 a 10 switch}
       \label{fig:json_wr_nature}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
       \includegraphics[width=\linewidth]{immagini/json_writing_reading.png}
-      \caption{json, lettura e scrittura da 2 a 10 switch}
+      \caption{Test \texttt{json}, lettura e scrittura da 2 a 10 switch}
       \label{fig:json_writing_reading}
     \end{minipage}
 \end{figure}
 
-Osservando i grafici notiamo come il carattere degli andamenti di scrittura e lettura di json prenda forma a partire da una configurazione con 7 switch,
-delineando un andamento lineare in entrambi i casi, con un'ottima performance per la lettura. Per quanto riguarda la dimensione dei files prodotti, abbiamo visto yaml produrre
-files decisamente più piccoli di json, possiamo così farci un'idea dai dati registrati in fase di test in fig. \ref{fig:json_yaml_files_dim}.
+Osservando i grafici notiamo come il carattere degli andamenti di scrittura e lettura di \texttt{json} prenda forma a partire da una configurazione con 7 switch,
+delineando un andamento lineare in entrambi i casi, con un'ottima performance per la lettura. Per quanto riguarda la dimensione dei files prodotti, abbiamo visto \texttt{yaml} produrre
+files decisamente più piccoli di \texttt{json}, possiamo così farci un'idea dai dati registrati in fase di test in Fig. \ref{fig:json_yaml_files_dim}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{immagini/json_yaml_files_dim.png}
-    \caption{comparazione dimensioni files json e yaml}
+    \caption{Comparazione dimensioni files \texttt{json} e \texttt{yaml}}
     \label{fig:json_yaml_files_dim}
 \end{figure}
 
-Possiamo concludere che la dimensione dei file json è in media 2.7 volte maggiore rispetto ai corrispondenti file yaml, 
-indicando un rapporto di dimensione di circa 2.7 tra i due formati. Ciò è chiaramente un pro nei confronti di yaml, tuttavia la velocità che riesce a garantire json è talmente 
-superiore da far propendere per un compromesso in termini di dimensione dei files, rendendo quindi json una scelta preferenziale.
+Possiamo concludere che la dimensione dei file \texttt{json} è in media 2.7 volte maggiore rispetto ai corrispondenti file \texttt{yaml}, 
+indicando un rapporto di dimensione di circa 2.7 tra i due formati. Ciò è chiaramente un pro nei confronti di \texttt{yaml}, tuttavia la velocità che riesce a garantire \texttt{json} è talmente 
+superiore da far propendere per un compromesso in termini di dimensione dei files, rendendo quindi \texttt{json} una scelta preferenziale.
 Per quanto riguarda generatore, analizzatore e visualizzatore grafico, possiamo concludere che tutti i moduli del progetto operano in tempo lineare, fatta eccezione della tipologia di grafo completo che intrinsicamente porta dietro di se una natura di complessità quadratica,
 rappresentando così un'ottimo risultato in termini prestazionali.
 Un'altra conclusione, non banale, riguarda l'essere riusciti a realizzare un prodotto di analisi di rete da una libreria che nasce come scopi relativi a video esplicativi matematici, come possono essere grafi cartesiani animati, spazi vettoriali animati e così via;

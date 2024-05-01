@@ -2381,19 +2381,23 @@
     <bcf:citekey order="18" intorder="1">RFC791</bcf:citekey>
     <bcf:citekey order="19" intorder="1">PythonJSONLibrary</bcf:citekey>
     <bcf:citekey order="20" intorder="1">PyYAMLDocumentation</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">torusgraph</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">torusgraph</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">pythonGlossaryHashable</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">pythonStdTypesMapping</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">pythonDatetimeTimedelta</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">pythonDatetimeTimedelta</bcf:citekey>
-    <bcf:citekey order="27" intorder="1">ManimDocs</bcf:citekey>
-    <bcf:citekey order="28" intorder="1">ManimDocs</bcf:citekey>
-    <bcf:citekey order="29" intorder="1">ManimDocs</bcf:citekey>
-    <bcf:citekey order="30" intorder="1">ManimDocs</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">WikiGrafoCompleto</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">TorusWikipedia2024</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">torusgraph</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">torusgraph</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">MathWorldGridGraph</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">MathWorldGridGraph</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">pythonGlossaryHashable</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">pythonStdTypesMapping</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">pythonDatetimeTimedelta</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">pythonDatetimeTimedelta</bcf:citekey>
     <bcf:citekey order="31" intorder="1">ManimDocs</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">manimGraph</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">ColorBlindPalette2024</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">ManimDocs</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">ManimDocs</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">ManimDocs</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">ManimDocs</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">manimGraph</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">ColorBlindPalette2024</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
