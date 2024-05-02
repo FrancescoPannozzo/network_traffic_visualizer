@@ -1551,6 +1551,12 @@ le varie tipologie di dati (Fig. \ref{fig:switch_info} e Fig. \ref{fig:links_inf
     \end{minipage}
 \end{figure}
 
+Per quanto riguarda la visualizzazione dello scorrimento del tempo, l'applicazione è pensata per far sì che, ogni secondo di video, 
+l'applicazione mostra la percentuale di traffico relativa di ciascun
+intervallo di tempo \texttt{updateDelta}. Per esempio, se avessimo un valore di \texttt{updateDelta} pari a 100 ms, avremmo 10 secondi di video per mostrare
+l'andamento del traffico avvenuto in un secondo di trasmissione. Questo intervallo temporale di un secondo è un valore di default dell'applicazione, tuttavia
+può essere facilmente modificato per ottenere video più lunghi, ponendo per esempio a 2 secondi il tempo di rendering di ciascun aggiornamento delle medie percentuali.
+
 \section{Accessibilità: modalità daltonismo}
 In un'applicazione in cui i colori sono parte integrante dell'esperienza, è più che opportuno approcciarsi alla progettazione tenendo
 in considerazione delle possibili implementazioni che possano affrontare la questione del daltonismo. 
@@ -1598,9 +1604,12 @@ del risultato finale lo possiamo vedere in figura \ref{fig:colorblind_torus}.
 
 \chapter{Prestazioni e complessità computazionale}
 
+\section{Complessità computazionale}
+
 Andremo ora ad analizzare le complessità computazionali dei vari componenti del progetto, mostrando anche le prestazioni ottenute in fase di test.
 
-\section{Generatore di traffico}
+\subsection{Generatore di traffico}
+\label{sec:generatore_di_traffico}
 Analizzando il codice inerente al generatore, un approccio allo studio della complessità potrebbe essere quello di individuare quelli che si ritengono essere
 i punti computazionalmente critici, al fine di individuare l'andamento degli algoritmi nelle varie situazioni. Essendo lo script dedicato alla creazione della struttura di rete e del traffico,
 è stato ritenuto opportuno cominciare l'analisi dalla creazione della struttura inerente ai link.
@@ -1910,11 +1919,16 @@ Si può vedere che all'aumentare del numero di nodi (switch) il tempo necessario
 
 
 
-\section{Analizzatore di traffico}
-Il cuore dell'analizzatore è la parte logica di codice incaricata di scandire tutti i pacchetti, estrarne le somme dei valori di payload e relative medie percentuali.
-L'analizzatore in primis carica i due files \texttt{network.yaml} e \texttt{packets.json/yaml}, in questo caso creiamo sempre una struttura ausiliaria necessaria a memorizzare man mano le somme pei payload; ciò 
-consiste semplicemente in un ciclo for che scandisce la lista di link presente nel network file e quindi abbiamo tempo costante O(c), ricordando che stiamo
-analizzando come caso peggiore un numero di link presenti in un torus graph, come mostrato precedentemente in Fig. \ref{eq:torus_link_number}.
+\subsection{Analizzatore di traffico}
+Il cuore dell'analizzatore è la parte logica di codice incaricata di scandire tutti i pacchetti, 
+estrarne le somme dei valori di payload e relative medie percentuali.
+L'analizzatore in primis carica i due files \texttt{network.yaml} e \texttt{packets.json/yaml}, 
+in questo caso creiamo sempre una struttura ausiliaria necessaria a memorizzare man mano le somme pei payload; ciò 
+consiste semplicemente in un ciclo for che scandisce la lista di link presente nel network file, questo chiaramente dipende dal numero di link
+memorizzato quindi ne deduciamo che il caricamento abbia complessità \(O(l)\), con \(l\) rappresentante il numero di link.
+
+Per quanto riguarda invece il caricamento del file dei pacchetti, la complessità dipende dal numero di pacchetti \(p\) memorizzato, abbiamo
+quindi una complessità di \(O(p)\).
 Analizziamo ora il codice \ref{codice:analyze_packets} in cui avviene l'analisi vera e propria.
 
 {\scriptsize
@@ -1973,21 +1987,23 @@ Analizziamo ora il codice \ref{codice:analyze_packets} in cui avviene l'analisi 
 \end{lstlisting}
 }
 
-Il primo ciclo while scandisce semplicemente le unità frazionarie temporali scandite da updateTime, come visto precedentemente con l'esempio in Fig. \ref{eq:creation_rate_example}, ciò comporta un numero di iterazioni \(O(c)\).
-Segue un ciclo for che itera sui link, anche qui abbiamo una complessità di \(O(c)\). Dopo diverse operazioni con tempo O(1), la parte che merita attenzione è il ciclo while nidificato.
-Questo ciclo itera su tutti i pacchetti che hanno un timestamp che ricade nell'unità frazionaria di tempo da analizzare, sono quindi tutti i pacchetti in un dato \texttt{updateDelta} per un dato traffico percentuale; abbiamo già incontrato questo
-parametro e ne abbiamo calcolato il peso in termini computazionali nell' equazione \ref{eq:packets_per_fractional_time}, ottenendo \(O(p)\), 
-che ridefiniamo per comodità come \(O(n)\). Dopo diverse
-operazioni, tutte con complessità O(1), i cicli che troviamo sono tre, interessano iterazioni sui link, ciascuno con complessità \(O(c)\), e non sono annidati poiché si susseguono.
-Possiamo quindi definire la complessità compelssiva di questa parte logica che risulta essere lineare. \ref{eq:complexity_analyzer}.
+Il primo ciclo while scandisce semplicemente le unità frazionarie temporali \(m\) scandite ogni intervallo di tempo \texttt{updateTime},
+Segue un ciclo for che itera sui link, anche qui abbiamo una complessità di \(O(l)\). Dopo diverse operazioni con tempo O(c), la parte che merita attenzione è il ciclo while nidificato.
+Questo ciclo itera su tutti i pacchetti che hanno un timestamp che ricade nell'unità frazionaria di tempo da analizzare, sono quindi tutti i pacchetti \(p\) in un dato intervallo di tempo \texttt{updateDelta} per un dato traffico percentuale;
+la complessità dipende quindi dai pacchetti ottenendo \(O(p)\). Dopo diverse
+operazioni con complessità O(c), i cicli che troviamo sono tre iterazioni sui link, ciascuno con complessità \(O(l)\).
+Possiamo quindi definire la complessità compelssiva sommando le varie parti \ref{eq:complexity_analyzer}.
 
 
 \begin{align}
-    O(c(c+n+c+c)) = O(c^2 + cn + c^2 + c^2) = O(c + n) = O(n)
+    O(m(l+p+l+l+l)) = O(m(4l+p)) = O(m(l+p))
     \label{eq:complexity_analyzer}
 \end{align}
 
-Un'evenutale conferma arriva dai test dove possiamo vedere l'andamento lineare nel grafico \ref{fig:prestazioni_analizzatore}. Possiamo
+Anche in questo caso la complessità dipende fortemente dal numero di untià frazionarie \(m\), dal numero di links \(l\) e dalla quantità di pacchetti
+\(p\) da leggere. Considerando lo stesso caso d'uso medio presente nella sezione \ref{sec:generatore_di_traffico}, troviamo che \(m\) e \(l\) possono 
+considerarsi costanti, quindi la complessità dipende linearmente da \(p\).
+Un'evenutale conferma arriva dai test dove possiamo vedere l'andamento lineare nel grafico nel caso medio ipotizzato precedentemente \ref{fig:prestazioni_analizzatore}. Possiamo
 notare che all'aumentare del numero di switch nella rete, il tempo cresce in modo lineare.
 
 \begin{figure}[h]
@@ -1999,12 +2015,12 @@ notare che all'aumentare del numero di switch nella rete, il tempo cresce in mod
 
 
 
-\section{Visualizzatore grafico}
+\subsection{Visualizzatore grafico}
 Analizzando il visualizzatore troviamo che il cuore da analizzare ricade sulla parte di codice che crea le animazioni. Nel creare le strutture necessarie, caricandole dai files,
 troviamo le stesse complessità computazionali ricavate per i precedenti moduli sofware, mentre per la creazione della base di partenza grafica abbiamo
 la funzione \lstinline|Graph()| per disegnare i grafi completi mentre abbiamo il codice visto in Fig. \ref{codice:grid_nodes_example} per i grafi mesh, torus e personalizzato.
 Per quanto riguarda \lstinline|Graph()| rimane valida l'analisi di complessità quadratica per via nel calcolo del numero di link in un grafo completo, mentre per la creazione delle altre tipologie di grafo
-osserviamo dalla Fig. \ref{codice:grid_nodes_example} che la complessità è costante, essendo riproposti due cicli annidati che iterano sulla radice quadrata
+osserviamo dalla Fig. \ref{codice:grid_nodes_example} che la complessità è dominata dal numero \(n\) di switch, essendo riproposti due cicli annidati che iterano sulla radice quadrata
 del numero di nodi. 
 Analizziamo quindi la logica che risulta maggiormente critica, la creazione delle animazioni che,
 per motivi di lunghezza del codice sarà descritto come pseudocodice:
@@ -2028,10 +2044,10 @@ while time_walker <= end_time:
 \end{lstlisting}
 }
 
-Il primo ciclo while itera su ciscuna unità frazionaria, il quale numero sappiamo essere costante, quindi \(O(c)\), vengono scanditi i link nel for interno andando a prendere il valore del traffico percentuale per l'unità frazionaria analizzata, abbiamo quindi \(O(c)\).
-Si disegnano le animazioni e il resto sono operazioni con complessità \(O(1)\). La libreria non dichiara la complessità che può interessare il metodo \lstinline|play()|, tuttavia
+Il primo ciclo while itera su ciscuna unità frazionaria (ricordiamo definiamo con \(m\) la totalità delle unità frazionarie), vengono poi scanditi \(l\) links nel \texttt{for} interno andando a prendere il valore del traffico percentuale per l'unità frazionaria analizzata, abbiamo quindi \(O(l)\).
+Si disegnano le animazioni e il resto sono operazioni con complessità \(O(c)\). La libreria non dichiara la complessità che può interessare il metodo \lstinline|play()|, tuttavia
 i parametri di ingresso rappresentano principalmente una lista di animazioni e diversi mobject di tipo \lstinline|Text()|. 
-La complessità in questo caso possiamo ricavarla dai test, i quali mostrano che l'algoritmo opera, nella sua interezza, in tempo lineare.
+La complessità in questo caso possiamo ricavarla dai test, come mostrato in figura \ref{fig:720p_rendering_performance}.
 
 
 \begin{figure}[h]
@@ -2041,17 +2057,8 @@ La complessità in questo caso possiamo ricavarla dai test, i quali mostrano che
     \label{fig:720p_rendering_performance}
 \end{figure}
 
-Il grafico in Fig. \ref{fig:720p_rendering_performance} si basa su una generazione di 5 secondi con tipologia grafo mesh; possiamo notare che al
-crescere del numero degli switch il tempo per il rendering del video cresce in modo lineare. Possiamo concludere che il codice in Fig. \ref{codice:create_animation}, opera con 
-complessità \(O(n)\). Ipotizzando quindi un caso d'uso realistico in cui non viene previsto un grafo mesh/torus completo nell'impiego di una rete di data center
-possiamo concludere che la complessità generale del visualizzatore sia il peso della creazione delle strutture, caricamento dal files e creazione base grafica, sommato 
-al peso dato dalla parte di animazione ottenendo complessità lineare come riportato nell'equazione \ref{eq:complexity_visualizer}.
-
-\begin{align}
-    O(c + n) = O(n)
-    \label{eq:complexity_visualizer}
-\end{align}
-
+Il grafico in Fig. \ref{fig:720p_rendering_performance} si basa su una generazione di 5 secondi con tipologia di grafo mesh; possiamo notare che al
+crescere del numero degli switch il tempo per il rendering del video cresce in modo lineare.
 
 
 \begin{figure}[h]
@@ -2065,8 +2072,8 @@ Volendo osservare i test da un'altra prospettiva, possiamo intendere il tempo di
 esempio mostriamo una comparazione con le risoluzioni 480p, 720p e 1080p renderizzati a 30 fps(frames per second),
  sempre per 5 secondi di generazione con grafo mesh, come mostrato in Fig. \ref{fig:480_720_1080_rend_perf}. Possiamo osservare dal grafico che l'andamento è lineare per tutti i tipi di rendering analizzati.
 
-\chapter{Conclusioni}
-Facendo un riepilogo dei punti cardine dello sviluppo del progetto, si è potuto giungere a diverse conclusioni. Dal punto di vista delle prestazioni implicate
+\section{Prestazioni dei formati json e yaml}
+Dal punto di vista delle prestazioni implicate
 dai formati scelti \texttt{json} e \texttt{yaml}, si è dimostrato che \texttt{json} è incredibilmente più performante rispetto a \texttt{yaml} per quanto riguarda files di grandi dimensioni, possiamo vederne un risultato nel test raffigurato in Fig. \ref{fig:json_yaml_wr_comparison}.
 
 \begin{figure}[h]
@@ -2107,20 +2114,55 @@ files decisamente più piccoli di \texttt{json}, possiamo così farci un'idea da
 \end{figure}
 
 Possiamo concludere che la dimensione dei file \texttt{json} è in media 2.7 volte maggiore rispetto ai corrispondenti file \texttt{yaml}, 
-indicando un rapporto di dimensione di circa 2.7 tra i due formati. Ciò è chiaramente un pro nei confronti di \texttt{yaml}, tuttavia la velocità che riesce a garantire \texttt{json} è talmente 
+indicando un rapporto di dimensione di circa 2.7 tra i due formati. Ciò è chiaramente un vantaggio nei confronti di \texttt{yaml}, tuttavia la velocità che riesce a garantire \texttt{json} è talmente 
 superiore da far propendere per un compromesso in termini di dimensione dei files, rendendo quindi \texttt{json} una scelta preferenziale.
-Per quanto riguarda generatore, analizzatore e visualizzatore grafico, possiamo concludere che tutti i moduli del progetto operano in tempo lineare, fatta eccezione della tipologia di grafo completo che intrinsicamente porta dietro di se una natura di complessità quadratica,
+
+\chapter{Conclusioni}
+
+Lo scopo di questo progetto era di creare un'applicazione che mostrasse l'intensità di traffico di una rete in modo grafico e animato. Come si è avuto modo di vedere,
+l'intento è pienamente riuscito
+Abbiamo realizzato..
+Per quanto riguarda generatore, analizzatore e visualizzatore grafico, possiamo concludere che tutti i moduli del progetto
+ operano in tempo lineare, fatta eccezione della tipologia di grafo completo che intrinsicamente porta dietro di se una natura di complessità quadratica,
 rappresentando così un'ottimo risultato in termini prestazionali.
-Un'altra conclusione, non banale, riguarda l'essere riusciti a realizzare un prodotto di analisi di rete da una libreria che nasce come scopi relativi a video esplicativi matematici, come possono essere grafi cartesiani animati, spazi vettoriali animati e così via;
-si è riusciti quindi a sfruttare la libreria per fini non strettamente inerenti ai suoi scopi di esistenza, questo processo di adattabilità ha portato a un percorso formativo decisamente creativo, sperimentando nuove soluzioni con in mezzi forniti.
-Questo processo fa si che ci siano ampi margini di manovra per applicazioni future, 
+Un'altra conclusione, non banale, riguarda l'essere riusciti a realizzare un prodotto di analisi di rete da una libreria
+ che nasce come scopi relativi a video esplicativi matematici, come possono essere grafi cartesiani animati, spazi vettoriali animati e così via;
+si è riusciti quindi a sfruttare la libreria per fini non strettamente inerenti ai suoi scopi di esistenza, 
+questo processo di adattabilità ha portato a un percorso formativo decisamente creativo, sperimentando nuove soluzioni con in mezzi forniti.
+
+\section{Sviluppi futuri}
+La base del progetto e l'adattabilità di Manim fanno sì che ci siano ampi margini di manovra per applicazioni future, 
 sia legati al concetto di cosa si propone di fare questo progetto sia in termini di integrazioni future di caratteristiche. 
 Il concetto che sta alla base del progetto può essere allargato al di fuori di un data center e trovare
-altri terreni in cui potersi adattare, sfruttandone le caratteristiche di base si potrebbe adattare l'applicazione ad esempio per il traffico di reti stradali in cui 
-i nodi sono rappresentati da punti d'interesse, raggiungibili tramite strade (i link) e con i pacchetti che rappresentano i veicoli, analizzandone il traffico, oppure per reti di gioco multiplayer massivo (MMO), in cui la topologia mesh può essere utilizzata per gestire la comunicazione tra server distribuiti geograficamente, reti di sensori 
-in cui la topologia mesh permette ai dispositivi di comunicare anche in condizioni ambientali difficili o in scenari dove i nodi sono distribuiti in modo irregolare, gli ambiti sono potenzialmente tanti.
-Un'altra caratteristica di Manim che può essere sfruttata in futuro è la possibilità di renderizzare video in 3D, infatti la libreria supporta anche mobject e spazio vettoriale 3D e potrebbe essere interessante rappresentare ad esempio una rete satellitare che faccia uso di topologie torus e mesh, potendo 
-rappresentare la tridimensionalità di un'orbita terrestre, oppure reti di droni, in cui la topologia mesh permette ai nodi di comunicare direttamente l'uno con l'altro senza necessità di un'infrastruttura centrale e potendo sfruttare lo spazio 3D per rappresentare i droni.
+altri terreni in cui potersi adattare, sfruttandone le caratteristiche di base.
+Un'altra caratteristica di Manim che può essere sfruttata in futuro è la possibilità di renderizzare video in 3D, infatti la libreria 
+supporta anche mobject e spazio vettoriale 3D.
+
+Possiamo proporre qualche esempio di impiego che sfrutti il progetto come base:
+si potrebbe adattare l'applicazione 
+ad esempio per il traffico di reti stradali in cui 
+i nodi sono rappresentati da punti d'interesse, raggiungibili tramite strade (i link) e con i pacchetti che rappresentano i veicoli, 
+analizzandone il traffico, oppure per reti di gioco multiplayer massivo (MMO), in cui la topologia mesh può essere utilizzata per gestire 
+la comunicazione tra server distribuiti geograficamente, reti di sensori 
+in cui la topologia mesh permette ai dispositivi di comunicare anche in condizioni ambientali difficili o in scenari dove i nodi sono 
+distribuiti in modo irregolare, gli ambiti sono potenzialmente tanti.
+ e potrebbe essere interessante l'impiego per diversi temi:
+
+\begin{itemize}
+    \item \textbf{reti stradali:} un'associazione quasi istantanea che può sorgere è l'adattamento dell'applicazione per la visualizzazione
+    dell'intensità del traffico stradale. In questo caso i nodi potrebbero essere punti d'interesse come le città, raggiungibili tramite strade (i link) e con i pacchetti che rappresentano i veicoli.
+    \item \textbf{reti di gioco multiplayer massivo (MMO):} in questo caso la topologia mesh può essere utilizzata per gestire 
+    la comunicazione tra server distribuiti geograficamente, mostrando l'intensità di popolazione giocante per determinate aree di interesse.
+    \item \textbf{reti di sensori:} questo tipo di reti interessano un insieme di dispositivi elettronici, ognuno con uno o più sensori, i quali prelevano o elaborano dati in modo autonomo per poi comunicare tra loro.
+    La topologia mesh permette ai dispositivi di comunicare anche in condizioni ambientali difficili o in scenari dove i nodi sono 
+    distribuiti in modo irregolare. In questo scenario si potrebbe analizzare l'intensità di scambio di informazioni tra i vari dispositivi.
+    \item \textbf{reti satellitari:} sfruttando la capacità di rendering 3D di Manim, sarebbe interessante un impiego di rete satellitare che faccia uso di topologie torus e mesh, potendo 
+    rappresentare la tridimensionalità posizionale relativa a un'orbita terrestre. In questo caso si potrebbe rappresentare l'intensità delle comunicazioni scambiate tra i vari satelliti.
+    \item \textbf{reti di droni:} la topologia mesh è particolarmente indicata per rappresentare una rete del genere, infatti permette ai nodi (i droni) di comunicare direttamente l'uno con l'altro senza necessità di un'infrastruttura centrale e si potrebbe sfruttare lo spazio 3D renderizzato da Manim per rappresentare i droni in un ambiente tridimensionale.
+    \item \textbf{reti sociali:} parlando di social network, l'applicazione potrebbe essere adattata ed espansa per rappresentare l'intensità di comunicazione tra utenti
+    \item \textbf{applicazioni distribuite:} in questo caso si potrebbe pensare a una rete composta dalle parti più piccole che compongono l'applicazione e collegate tra loro. La rappresentazione potrebbe interessare
+    l'intensità di comunicazioni tra i vari processi che interessano le diverse parti.
+\end{itemize}
 
 
 \chapter*{Ringraziamenti}
