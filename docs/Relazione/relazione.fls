@@ -341,6 +341,7 @@ INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt8.tf
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbxi10.tfm
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtti10.tfm
+INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtk10.tfm
 INPUT .\immagini\torus_graph.png
 INPUT .\immagini\torus_graph.png
@@ -370,7 +371,6 @@ INPUT .\immagini\free_graph.JPG
 INPUT .\immagini\free_graph.JPG
 INPUT .\immagini\free_graph.JPG
 INPUT .\immagini\free_graph.JPG
-INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
 INPUT .\immagini\diagramma_selezioni_config_gen.jpg
 INPUT .\immagini\diagramma_selezioni_config_gen.jpg
 INPUT .\immagini\diagramma_selezioni_config_gen.jpg
@@ -378,11 +378,11 @@ INPUT .\immagini\diagramma_selezioni_config_gen.jpg
 INPUT .\immagini\diagramma_selezioni_config_gen.jpg
 INPUT .\immagini\diagramma_selezioni_config_gen.jpg
 INPUT .\immagini\diagramma_selezioni_config_gen.jpg
-INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
-INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
-INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
+INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\Pan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtk10.tfm
 INPUT .\immagini\generatore_traffico_random.png
 INPUT .\immagini\generatore_traffico_random.png
