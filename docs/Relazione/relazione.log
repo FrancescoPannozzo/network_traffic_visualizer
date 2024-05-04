@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  3 MAY 2024 18:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.24)  4 MAY 2024 13:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -940,291 +940,288 @@ File: immagini/GridGraph.jpg Graphic file (type jpg)
 <use immagini/GridGraph.jpg>
 Package pdftex.def Info: immagini/GridGraph.jpg  used on input line 452.
 (pdftex.def)             Requested size: 152.06322pt x 83.04367pt.
- [11 <./immagini/torus_graph.png> <./immagini/GridGraph.jpg>] [12] [13] [14]
-<immagini/only_links.JPG, id=515, 636.87938pt x 357.58594pt>
+ [11 <./immagini/torus_graph.png> <./immagini/GridGraph.jpg>] [12] [13] [14] [15]
+<immagini/only_links.JPG, id=569, 945.5325pt x 522.45187pt>
 File: immagini/only_links.JPG Graphic file (type jpg)
 <use immagini/only_links.JPG>
-Package pdftex.def Info: immagini/only_links.JPG  used on input line 678.
-(pdftex.def)             Requested size: 316.80121pt x 177.8704pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[15]
-<immagini/free_graph.JPG, id=569, 639.13782pt x 356.83313pt>
+Package pdftex.def Info: immagini/only_links.JPG  used on input line 735.
+(pdftex.def)             Requested size: 152.06322pt x 84.01651pt.
+<immagini/free_graph.JPG, id=570, 639.13782pt x 356.83313pt>
 File: immagini/free_graph.JPG Graphic file (type jpg)
 <use immagini/free_graph.JPG>
-Package pdftex.def Info: immagini/free_graph.JPG  used on input line 738.
-(pdftex.def)             Requested size: 316.80121pt x 176.86978pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[16 <./immagini/only_links.JPG>]
+Package pdftex.def Info: immagini/free_graph.JPG  used on input line 741.
+(pdftex.def)             Requested size: 152.06322pt x 84.89575pt.
+ [16 <./immagini/only_links.JPG> <./immagini/free_graph.JPG>]
 <immagini/diagramma_selezioni_config_gen.jpg, id=609, 503.8825pt x 584.1825pt>
 File: immagini/diagramma_selezioni_config_gen.jpg Graphic file (type jpg)
 <use immagini/diagramma_selezioni_config_gen.jpg>
-Package pdftex.def Info: immagini/diagramma_selezioni_config_gen.jpg  used on input line 781.
-(pdftex.def)             Requested size: 158.39758pt x 183.63516pt.
- [17{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./immagini/free_graph.JPG>] (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2024/03/11 1.10a listings language file
-)
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <8> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 801.
- [18 <./immagini/diagramma_selezioni_config_gen.jpg>] [19] [20]
-<immagini/generatore_traffico_random.png, id=660, 434.058pt x 253.383pt>
-File: immagini/generatore_traffico_random.png Graphic file (type png)
-<use immagini/generatore_traffico_random.png>
-Package pdftex.def Info: immagini/generatore_traffico_random.png  used on input line 914.
-(pdftex.def)             Requested size: 190.07831pt x 110.95917pt.
-<immagini/generatore_traffico_fissato.png, id=662, 434.058pt x 253.383pt>
-File: immagini/generatore_traffico_fissato.png Graphic file (type png)
-<use immagini/generatore_traffico_fissato.png>
-Package pdftex.def Info: immagini/generatore_traffico_fissato.png  used on input line 919.
-(pdftex.def)             Requested size: 190.07831pt x 110.95917pt.
- [21 <./immagini/generatore_traffico_random.png> <./immagini/generatore_traffico_fissato.png>] [22]
-Overfull \hbox (4.24353pt too wide) in paragraph at lines 991--992
-[]\T1/lmtt/m/n/10.95 startSimTime\T1/lmr/m/n/10.95 (-20) : ti-me-stamp, da-ta e ora nel for-ma-to YY:MM:DD HH:MM:SS
- []
-
-[23] [24] [25]
-<immagini/yaml_block_flow_dim.png, id=790, 434.058pt x 253.383pt>
-File: immagini/yaml_block_flow_dim.png Graphic file (type png)
-<use immagini/yaml_block_flow_dim.png>
-Package pdftex.def Info: immagini/yaml_block_flow_dim.png  used on input line 1127.
-(pdftex.def)             Requested size: 396.0pt x 231.17816pt.
-<immagini/yaml_block_flow_wr.png, id=791, 434.277pt x 253.602pt>
-File: immagini/yaml_block_flow_wr.png Graphic file (type png)
-<use immagini/yaml_block_flow_wr.png>
-Package pdftex.def Info: immagini/yaml_block_flow_wr.png  used on input line 1134.
-(pdftex.def)             Requested size: 396.0pt x 231.26189pt.
+Package pdftex.def Info: immagini/diagramma_selezioni_config_gen.jpg  used on input line 791.
+(pdftex.def)             Requested size: 190.07831pt x 220.36932pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[26 <./immagini/yaml_block_flow_dim.png>] [27 <./immagini/yaml_block_flow_wr.png>] [28
+[17{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] (C:\Users\Pan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2024/03/11 1.10a listings language file
+)
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <8> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 811.
+ [18 <./immagini/diagramma_selezioni_config_gen.jpg>] [19] [20]
+<immagini/generatore_traffico_random.png, id=661, 434.058pt x 253.383pt>
+File: immagini/generatore_traffico_random.png Graphic file (type png)
+<use immagini/generatore_traffico_random.png>
+Package pdftex.def Info: immagini/generatore_traffico_random.png  used on input line 924.
+(pdftex.def)             Requested size: 190.07831pt x 110.95917pt.
+<immagini/generatore_traffico_fissato.png, id=663, 434.058pt x 253.383pt>
+File: immagini/generatore_traffico_fissato.png Graphic file (type png)
+<use immagini/generatore_traffico_fissato.png>
+Package pdftex.def Info: immagini/generatore_traffico_fissato.png  used on input line 929.
+(pdftex.def)             Requested size: 190.07831pt x 110.95917pt.
+ [21 <./immagini/generatore_traffico_random.png> <./immagini/generatore_traffico_fissato.png>]
+Overfull \hbox (4.24353pt too wide) in paragraph at lines 1001--1002
+[]\T1/lmtt/m/n/10.95 startSimTime\T1/lmr/m/n/10.95 (-20) : ti-me-stamp, da-ta e ora nel for-ma-to YY:MM:DD HH:MM:SS
+ []
 
-]
+[22] [23] [24]
+<immagini/yaml_block_flow_dim.png, id=778, 434.058pt x 253.383pt>
+File: immagini/yaml_block_flow_dim.png Graphic file (type png)
+<use immagini/yaml_block_flow_dim.png>
+Package pdftex.def Info: immagini/yaml_block_flow_dim.png  used on input line 1137.
+(pdftex.def)             Requested size: 396.0pt x 231.17816pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<immagini/yaml_block_flow_wr.png, id=779, 434.277pt x 253.602pt>
+File: immagini/yaml_block_flow_wr.png Graphic file (type png)
+<use immagini/yaml_block_flow_wr.png>
+Package pdftex.def Info: immagini/yaml_block_flow_wr.png  used on input line 1144.
+(pdftex.def)             Requested size: 396.0pt x 231.26189pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[25] [26 <./immagini/yaml_block_flow_dim.png> <./immagini/yaml_block_flow_wr.png>]
 Capitolo 4.
 
 Underfull \vbox (badness 2564) has occurred while \output is active []
 
- [29]
-Underfull \hbox (badness 10000) in paragraph at lines 1215--1222
+ [27
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1225--1232
 
  []
 
-[30] [31] [32
+[28] [29] [30
 
 ]
 Capitolo 5.
-[33] [34] [35] [36]
-<immagini/archi_asimmetrici_torus.png, id=968, 463.7325pt x 443.6575pt>
+[31] [32] [33] [34]
+<immagini/archi_asimmetrici_torus.png, id=959, 463.7325pt x 443.6575pt>
 File: immagini/archi_asimmetrici_torus.png Graphic file (type png)
 <use immagini/archi_asimmetrici_torus.png>
-Package pdftex.def Info: immagini/archi_asimmetrici_torus.png  used on input line 1426.
+Package pdftex.def Info: immagini/archi_asimmetrici_torus.png  used on input line 1436.
 (pdftex.def)             Requested size: 158.39758pt x 151.53882pt.
- [37 <./immagini/archi_asimmetrici_torus.png>]
-<immagini/custom_complete_autopositioning.JPG, id=977, 946.28531pt x 529.98pt>
+ [35 <./immagini/archi_asimmetrici_torus.png>]
+<immagini/custom_complete_autopositioning.JPG, id=969, 946.28531pt x 529.98pt>
 File: immagini/custom_complete_autopositioning.JPG Graphic file (type jpg)
 <use immagini/custom_complete_autopositioning.JPG>
-Package pdftex.def Info: immagini/custom_complete_autopositioning.JPG  used on input line 1455.
+Package pdftex.def Info: immagini/custom_complete_autopositioning.JPG  used on input line 1465.
 (pdftex.def)             Requested size: 182.16266pt x 102.0154pt.
-<immagini/custom_complete_manual_positioning.JPG, id=978, 946.28531pt x 530.73282pt>
+<immagini/custom_complete_manual_positioning.JPG, id=970, 946.28531pt x 530.73282pt>
 File: immagini/custom_complete_manual_positioning.JPG Graphic file (type jpg)
 <use immagini/custom_complete_manual_positioning.JPG>
-Package pdftex.def Info: immagini/custom_complete_manual_positioning.JPG  used on input line 1460.
+Package pdftex.def Info: immagini/custom_complete_manual_positioning.JPG  used on input line 1470.
 (pdftex.def)             Requested size: 186.12048pt x 104.38734pt.
-<immagini/graph_layouts_types.png, id=981, 857.2025pt x 481.8pt>
+<immagini/graph_layouts_types.png, id=973, 857.2025pt x 481.8pt>
 File: immagini/graph_layouts_types.png Graphic file (type png)
 <use immagini/graph_layouts_types.png>
-Package pdftex.def Info: immagini/graph_layouts_types.png  used on input line 1474.
+Package pdftex.def Info: immagini/graph_layouts_types.png  used on input line 1484.
 (pdftex.def)             Requested size: 316.80121pt x 178.05736pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<immagini/auto_complete_10.JPG, id=983, 944.7797pt x 530.73282pt>
+<immagini/auto_complete_10.JPG, id=975, 944.7797pt x 530.73282pt>
 File: immagini/auto_complete_10.JPG Graphic file (type jpg)
 <use immagini/auto_complete_10.JPG>
-Package pdftex.def Info: immagini/auto_complete_10.JPG  used on input line 1484.
+Package pdftex.def Info: immagini/auto_complete_10.JPG  used on input line 1494.
 (pdftex.def)             Requested size: 316.80121pt x 177.96867pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[38 <./immagini/custom_complete_autopositioning.JPG> <./immagini/custom_complete_manual_positioning.JPG>]
-<immagini/fixed_dots_mesh.JPG, id=999, 945.5325pt x 521.69907pt>
+[36 <./immagini/custom_complete_autopositioning.JPG> <./immagini/custom_complete_manual_positioning.JPG>]
+<immagini/fixed_dots_mesh.JPG, id=991, 947.03813pt x 525.46312pt>
 File: immagini/fixed_dots_mesh.JPG Graphic file (type jpg)
 <use immagini/fixed_dots_mesh.JPG>
-Package pdftex.def Info: immagini/fixed_dots_mesh.JPG  used on input line 1501.
-(pdftex.def)             Requested size: 190.07831pt x 104.8713pt.
-<immagini/adaptive_dots_mesh.JPG, id=1000, 953.81343pt x 532.99126pt>
+Package pdftex.def Info: immagini/fixed_dots_mesh.JPG  used on input line 1511.
+(pdftex.def)             Requested size: 190.07831pt x 105.45958pt.
+<immagini/adaptive_dots_mesh.JPG, id=992, 953.81343pt x 532.99126pt>
 File: immagini/adaptive_dots_mesh.JPG Graphic file (type jpg)
 <use immagini/adaptive_dots_mesh.JPG>
-Package pdftex.def Info: immagini/adaptive_dots_mesh.JPG  used on input line 1506.
+Package pdftex.def Info: immagini/adaptive_dots_mesh.JPG  used on input line 1516.
 (pdftex.def)             Requested size: 190.07831pt x 106.21411pt.
-
-Underfull \hbox (badness 1248) in paragraph at lines 1507--1507
-\T1/lmr/m/it/10 (+20) com-ple-to, op-zio-ne do-ts-Si-ze po-sta ad
- []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<immagini/torus_full_24.JPG, id=1002, 947.03813pt x 527.72156pt>
+<immagini/torus_full_24.JPG, id=994, 947.03813pt x 527.72156pt>
 File: immagini/torus_full_24.JPG Graphic file (type jpg)
 <use immagini/torus_full_24.JPG>
-Package pdftex.def Info: immagini/torus_full_24.JPG  used on input line 1521.
+Package pdftex.def Info: immagini/torus_full_24.JPG  used on input line 1531.
 (pdftex.def)             Requested size: 190.07831pt x 105.91284pt.
-<immagini/torus_not_full_adaptive.JPG, id=1003, 946.28531pt x 529.98pt>
+<immagini/torus_not_full_adaptive.JPG, id=995, 946.28531pt x 529.98pt>
 File: immagini/torus_not_full_adaptive.JPG Graphic file (type jpg)
 <use immagini/torus_not_full_adaptive.JPG>
-Package pdftex.def Info: immagini/torus_not_full_adaptive.JPG  used on input line 1526.
+Package pdftex.def Info: immagini/torus_not_full_adaptive.JPG  used on input line 1536.
 (pdftex.def)             Requested size: 190.07831pt x 106.45506pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1532--1544
+Underfull \hbox (badness 10000) in paragraph at lines 1542--1554
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1532--1544
+Underfull \hbox (badness 10000) in paragraph at lines 1542--1554
 
  []
 
-[39 <./immagini/graph_layouts_types.png> <./immagini/auto_complete_10.JPG>]
-<immagini/switch_info.JPG, id=1013, 938.00438pt x 527.72156pt>
+[37 <./immagini/graph_layouts_types.png> <./immagini/auto_complete_10.JPG>]
+<immagini/switch_info.JPG, id=1005, 938.00438pt x 527.72156pt>
 File: immagini/switch_info.JPG Graphic file (type jpg)
 <use immagini/switch_info.JPG>
-Package pdftex.def Info: immagini/switch_info.JPG  used on input line 1549.
+Package pdftex.def Info: immagini/switch_info.JPG  used on input line 1559.
 (pdftex.def)             Requested size: 190.07831pt x 106.9355pt.
-<immagini/links_info.JPG, id=1014, 946.28531pt x 531.48563pt>
+<immagini/links_info.JPG, id=1006, 946.28531pt x 531.48563pt>
 File: immagini/links_info.JPG Graphic file (type jpg)
 <use immagini/links_info.JPG>
-Package pdftex.def Info: immagini/links_info.JPG  used on input line 1554.
+Package pdftex.def Info: immagini/links_info.JPG  used on input line 1564.
 (pdftex.def)             Requested size: 190.07831pt x 106.75749pt.
- [40 <./immagini/fixed_dots_mesh.JPG> <./immagini/adaptive_dots_mesh.JPG> <./immagini/torus_full_24.JPG> <./immagini/torus_not_full_adaptive.JPG> <./immagini/switch_info.JPG> <./immagini/links_info.JPG>]
-<immagini/palette_cromatica.JPG, id=1023, 419.31656pt x 324.46219pt>
+
+Underfull \vbox (badness 4156) has occurred while \output is active []
+
+ [38 <./immagini/fixed_dots_mesh.JPG> <./immagini/adaptive_dots_mesh.JPG> <./immagini/torus_full_24.JPG> <./immagini/torus_not_full_adaptive.JPG> <./immagini/switch_info.JPG> <./immagini/links_info.JPG>]
+<immagini/palette_cromatica.JPG, id=1015, 419.31656pt x 324.46219pt>
 File: immagini/palette_cromatica.JPG Graphic file (type jpg)
 <use immagini/palette_cromatica.JPG>
-Package pdftex.def Info: immagini/palette_cromatica.JPG  used on input line 1588.
+Package pdftex.def Info: immagini/palette_cromatica.JPG  used on input line 1598.
 (pdftex.def)             Requested size: 190.07831pt x 147.08096pt.
-<immagini/colorblind_palette.JPG, id=1024, 417.81094pt x 325.215pt>
+<immagini/colorblind_palette.JPG, id=1016, 417.81094pt x 325.215pt>
 File: immagini/colorblind_palette.JPG Graphic file (type jpg)
 <use immagini/colorblind_palette.JPG>
-Package pdftex.def Info: immagini/colorblind_palette.JPG  used on input line 1593.
+Package pdftex.def Info: immagini/colorblind_palette.JPG  used on input line 1603.
 (pdftex.def)             Requested size: 190.07831pt x 147.9532pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<immagini/colorblind_torus.JPG, id=1026, 944.7797pt x 523.20468pt>
+<immagini/colorblind_torus.JPG, id=1018, 944.7797pt x 523.20468pt>
 File: immagini/colorblind_torus.JPG Graphic file (type jpg)
 <use immagini/colorblind_torus.JPG>
-Package pdftex.def Info: immagini/colorblind_torus.JPG  used on input line 1607.
+Package pdftex.def Info: immagini/colorblind_torus.JPG  used on input line 1617.
 (pdftex.def)             Requested size: 396.0pt x 219.2974pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[41] [42 <./immagini/palette_cromatica.JPG> <./immagini/colorblind_palette.JPG> <./immagini/colorblind_torus.JPG>]
+[39] [40 <./immagini/palette_cromatica.JPG> <./immagini/colorblind_palette.JPG> <./immagini/colorblind_torus.JPG>]
 Capitolo 6.
-[43
+[41
 
-{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [44] [45] [46] [47]
+{C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [42] [43] [44] [45]
 
-LaTeX Warning: Reference `eq:complexity_traffic_generator' on page 48 undefined on input line 1864.
+LaTeX Warning: Reference `eq:complexity_traffic_generator' on page 46 undefined on input line 1874.
 
-<immagini/prestazioni_config_gen.png, id=1197, 434.058pt x 253.383pt>
+<immagini/prestazioni_config_gen.png, id=1188, 434.058pt x 253.383pt>
 File: immagini/prestazioni_config_gen.png Graphic file (type png)
 <use immagini/prestazioni_config_gen.png>
-Package pdftex.def Info: immagini/prestazioni_config_gen.png  used on input line 1900.
+Package pdftex.def Info: immagini/prestazioni_config_gen.png  used on input line 1910.
 (pdftex.def)             Requested size: 316.80121pt x 184.94098pt.
-[48] [49 <./immagini/prestazioni_config_gen.png>] [50]
-<immagini/prestazioni_analyzer.png, id=1289, 434.058pt x 253.383pt>
+[46] [47 <./immagini/prestazioni_config_gen.png>] [48]
+<immagini/prestazioni_analyzer.png, id=1281, 434.058pt x 253.383pt>
 File: immagini/prestazioni_analyzer.png Graphic file (type png)
 <use immagini/prestazioni_analyzer.png>
-Package pdftex.def Info: immagini/prestazioni_analyzer.png  used on input line 1995.
+Package pdftex.def Info: immagini/prestazioni_analyzer.png  used on input line 2008.
 (pdftex.def)             Requested size: 316.80121pt x 184.94098pt.
- [51 <./immagini/prestazioni_analyzer.png>]
-<immagini/720p_rendering_performance.png, id=1314, 434.058pt x 253.383pt>
+ [49 <./immagini/prestazioni_analyzer.png>]
+<immagini/720p_rendering_performance.png, id=1306, 434.058pt x 253.383pt>
 File: immagini/720p_rendering_performance.png Graphic file (type png)
 <use immagini/720p_rendering_performance.png>
-Package pdftex.def Info: immagini/720p_rendering_performance.png  used on input line 2039.
+Package pdftex.def Info: immagini/720p_rendering_performance.png  used on input line 2052.
 (pdftex.def)             Requested size: 316.80121pt x 184.94098pt.
-<immagini/480_720_1080_rend_perf.png, id=1316, 434.058pt x 253.383pt>
+<immagini/480_720_1080_rend_perf.png, id=1308, 434.058pt x 253.383pt>
 File: immagini/480_720_1080_rend_perf.png Graphic file (type png)
 <use immagini/480_720_1080_rend_perf.png>
-Package pdftex.def Info: immagini/480_720_1080_rend_perf.png  used on input line 2050.
+Package pdftex.def Info: immagini/480_720_1080_rend_perf.png  used on input line 2063.
 (pdftex.def)             Requested size: 316.80121pt x 184.94098pt.
- [52 <./immagini/720p_rendering_performance.png> <./immagini/480_720_1080_rend_perf.png>]
-<immagini/json_yaml_wr_comparison.png, id=1327, 434.058pt x 253.383pt>
+ [50 <./immagini/720p_rendering_performance.png> <./immagini/480_720_1080_rend_perf.png>]
+<immagini/json_yaml_wr_comparison.png, id=1319, 434.058pt x 253.383pt>
 File: immagini/json_yaml_wr_comparison.png Graphic file (type png)
 <use immagini/json_yaml_wr_comparison.png>
-Package pdftex.def Info: immagini/json_yaml_wr_comparison.png  used on input line 2065.
+Package pdftex.def Info: immagini/json_yaml_wr_comparison.png  used on input line 2078.
 (pdftex.def)             Requested size: 316.80121pt x 184.94098pt.
-<immagini/json_wr_nature.png, id=1330, 434.058pt x 253.383pt>
+<immagini/json_wr_nature.png, id=1322, 434.058pt x 253.383pt>
 File: immagini/json_wr_nature.png Graphic file (type png)
 <use immagini/json_wr_nature.png>
-Package pdftex.def Info: immagini/json_wr_nature.png  used on input line 2078.
+Package pdftex.def Info: immagini/json_wr_nature.png  used on input line 2091.
 (pdftex.def)             Requested size: 190.07831pt x 110.95917pt.
-<immagini/json_writing_reading.png, id=1331, 434.058pt x 253.383pt>
+<immagini/json_writing_reading.png, id=1323, 434.058pt x 253.383pt>
 File: immagini/json_writing_reading.png Graphic file (type png)
 <use immagini/json_writing_reading.png>
-Package pdftex.def Info: immagini/json_writing_reading.png  used on input line 2083.
+Package pdftex.def Info: immagini/json_writing_reading.png  used on input line 2096.
 (pdftex.def)             Requested size: 190.07831pt x 110.95917pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<immagini/json_yaml_files_dim.png, id=1333, 434.058pt x 253.383pt>
+<immagini/json_yaml_files_dim.png, id=1325, 434.058pt x 253.383pt>
 File: immagini/json_yaml_files_dim.png Graphic file (type png)
 <use immagini/json_yaml_files_dim.png>
-Package pdftex.def Info: immagini/json_yaml_files_dim.png  used on input line 2095.
+Package pdftex.def Info: immagini/json_yaml_files_dim.png  used on input line 2108.
 (pdftex.def)             Requested size: 316.80121pt x 184.94098pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[53 <./immagini/json_yaml_wr_comparison.png>] [54 <./immagini/json_wr_nature.png> <./immagini/json_writing_reading.png> <./immagini/json_yaml_files_dim.png>]
+[51 <./immagini/json_yaml_wr_comparison.png>] [52 <./immagini/json_wr_nature.png> <./immagini/json_writing_reading.png> <./immagini/json_yaml_files_dim.png>]
 Capitolo 7.
+[53
+
+] [54]
+Underfull \hbox (badness 10000) in paragraph at lines 2171--2196
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2171--2196
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2171--2196
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2171--2196
+
+ []
+
 [55
 
-] [56]
-Underfull \hbox (badness 10000) in paragraph at lines 2156--2181
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2156--2181
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2156--2181
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2156--2181
-
- []
-
-[57
-
-] [58
+] [56
 
 ]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
- [59]
-Overfull \hbox (30.28568pt too wide) in paragraph at lines 2185--2185
+ [57]
+Overfull \hbox (30.28568pt too wide) in paragraph at lines 2200--2200
 []\T1/lmr/m/n/10.95 (-20) UCINET. \T1/lmr/m/it/10.95 (-20) UCI-NET Soft-ware\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / sites . google . com / site / ucinetsoftware/$[]\T1/lmr/m/n/10.95 (-20) .
  []
 
 
-Overfull \hbox (4.22507pt too wide) in paragraph at lines 2185--2185
+Overfull \hbox (4.22507pt too wide) in paragraph at lines 2200--2200
 []\T1/lmr/m/n/10.95 (-20) Eric W. Weis-stein. \T1/lmr/m/it/10.95 (-20) Grid Gra-ph\T1/lmr/m/n/10.95 (-20) . []$\T1/lmtt/m/n/10.95 https : / / mathworld . wolfram . com / GridGraph .
  []
 
@@ -1235,7 +1232,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[60] (relazione.aux)
+[58] (relazione.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -1248,23 +1245,23 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 0098F1EF874073556A7B073A154977E8;5908.
+(rerunfilecheck)             Checksum: 76C68827D6B7A4FBF1043FD5A5DEB665;5908.
 Package logreq Info: Writing requests to 'relazione.run.xml'.
 \openout1 = `relazione.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26847 strings out of 474423
- 466241 string characters out of 5742662
+ 26845 strings out of 474423
+ 466240 string characters out of 5742662
  2240496 words of memory out of 5000000
- 47756 multiletter control sequences out of 15000+600000
- 667914 words of font info for 232 fonts, out of 8000000 for 9000
+ 47757 multiletter control sequences out of 15000+600000
+ 668023 words of font info for 232 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,131p,1126b,2209s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Pan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on relazione.pdf (68 pages, 2511732 bytes).
+Output written on relazione.pdf (66 pages, 2534661 bytes).
 PDF statistics:
- 1693 PDF objects out of 1728 (max. 8388607)
- 840 named destinations out of 1000 (max. 500000)
+ 1684 PDF objects out of 1728 (max. 8388607)
+ 837 named destinations out of 1000 (max. 500000)
  66977 words of extra memory for PDF output out of 74296 (max. 10000000)
 
