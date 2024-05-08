@@ -31,4 +31,3 @@
 \contentsline {section}{\numberline {6.2}Prestazioni dei formati json e yaml}{51}{section.6.2}%
 \contentsline {chapter}{\numberline {7}Conclusioni}{53}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Sviluppi futuri}{53}{section.7.1}%
-\contentsline {chapter}{Ringraziamenti}{55}{chapter*.24}%

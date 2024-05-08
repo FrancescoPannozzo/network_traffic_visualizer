@@ -154,11 +154,11 @@ di software per la visualizzazione e analisi di reti\cite{JHUDatavisNetwork2024}
   Può leggere e scrivere una moltitudine di file di testo diversamente formattati, nonché file Excel. 
   I metodi di analisi dei social network includono misure di centralità, identificazione di sottogruppi, analisi di ruolo, teoria dei grafi elementari e analisi statistica basata sulla permutazione. 
   Inoltre, il pacchetto dispone di potenti routine di analisi delle matrici, come l'algebra delle matrici e la statistica multivariata.
-  \item \textbf{SocNetV\cite{SocNetV2024}:}è un'applicazione software gratuita multipiattaforma per l'analisi e la visualizzazione dei social network.
+  \item \textbf{SocNetV\cite{SocNetV2024}:} è un'applicazione software gratuita multipiattaforma per l'analisi e la visualizzazione dei social network.
   Tra le caratteristiche principali troviamo il poter disegnare il grafo associato al social network, caricare i campi da un file supportato
   (GraphML, GraphViz, Adjacency, EdgeList, GML, Pajek, UCINET, ecc.), personalizzare attori e collegamenti tramite sistema punta e clicca,
   analizzare le proprietà dei grafici e dei social network, produrre report HTML e incorporare layout di visualizzazione di rete
-  \item \textbf{Pajek\cite{Pajek2024}:}  è un software per la visualizzazione e l'analisi delle reti. La sua forza risiede nel poter analizzare reti complesse potendo arrivare
+  \item \textbf{Pajek\cite{Pajek2024}:} è un software per la visualizzazione e l'analisi delle reti. La sua forza risiede nel poter analizzare reti complesse potendo arrivare
   fino a un miliardo di vertici. L'analisi e la visualizzazione vengono eseguite utilizzando sei tipi di dati: 
   rete (grafico), partizione, vettore, cluster (sottoinsieme di vertici), permutazione (riordinamento dei vertici, proprietà ordinali); e gerarchia (struttura generale ad albero sui vertici).
 \end{itemize}
@@ -443,13 +443,13 @@ Il tipo di grafo torus \cite{TorusWikipedia2024} rappresentato nel progetto è q
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=0.6\textwidth]{immagini/torus_graph.png}
+        \includegraphics[width=0.6\textwidth,height=3.6cm,keepaspectratio]{immagini/torus_graph.png}
         \caption{Esempio di torus graph \cite{torusgraph}}
         \label{fig:torus_graph}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=0.8\textwidth]{immagini/GridGraph.jpg}
+        \includegraphics[width=0.7\textwidth,height=4cm,keepaspectratio]{immagini/GridGraph.jpg}
         \caption{Esempio di mesh grid graph \cite{MathWorldGridGraph}}
         \label{fig:grid_graph}
     \end{minipage}
@@ -1871,7 +1871,7 @@ Riprendendo la definizione \(p\) come il numero di pacchetti da generare, possia
 
 La funzione \lstinline|create_packet()| opera in tempo costante poiché semplicemente formatta in modo corretto il pacchetto da salvare, così come operano in tempo costante tutte le restanti operazioni.
 Facendo quindi una somma di tutte le complessità riguardanti i punti critici \ref{codice:create_packets_complexity} 
-troviamo che la complessità di questo pezzo logico di codice è \(O(p)\) \ref{eq:complexity_traffic_generator}, fatta eccezione per l'opzione di grafo completo, poiché avremmo un numero di
+troviamo che la complessità di questo pezzo logico di codice è \(O(p)\), fatta eccezione per l'opzione di grafo completo, poiché avremmo un numero di
 links molto grande pari a \(l\) così come il numero di pacchetti e la parte di codice \ref{codice:create_packets_n_links} avrebbe complessità \(O(lp)\).
 
 {\scriptsize
@@ -2163,11 +2163,12 @@ Possiamo proporre di seguito qualche esempio di dominio applicativo che possa es
     l'intensità di comunicazioni tra i vari processi che interessano le diverse parti.
 \end{itemize}
 
+\printbibliography
 
 \chapter*{Ringraziamenti}
-\addcontentsline{toc}{chapter}{Ringraziamenti}
-\chaptermark{Ringraziamenti}
-\rhead{}
+%\addcontentsline{toc}{chapter}{Ringraziamenti}
+%\chaptermark{Ringraziamenti}
+%\rhead{}
 Questo percorso è stato per il sottoscritto una grande opportunità sotto diversi punti di vista; ha rappresentato grande fonte di arricchimento 
 professionale e personale, mi ha fornito competenze complementari
 agli insegnamenti ricevuti durante il mio percorso di studi soprattutto in ambito front-end, 
@@ -2196,7 +2197,6 @@ compagnia e per avermi fatto sentire bene anche nei momenti più duri.
 
 
 
-\printbibliography
 
 \backmatter
 \cleardoublepage
