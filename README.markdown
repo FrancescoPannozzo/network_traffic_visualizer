@@ -1,6 +1,6 @@
-# Network traffic visualizer and simulator
+# Generazione e visualizzazione grafica di traffico di reti
 
-## Progetto di tesi per il corso di Laurea triennale in Informatica, Università La Sapienza, anno accademico 2023/2024
+## Progetto per relazione di tirocinio, Università degli Studi di Roma La Sapienza, corso di Laurea triennale in Informatica, anno accademico 2023/2024
 
 Il progetto è un visualizzatore grafico e simulatore di traffico di rete.
 Tramite due file di input, uno con dettagli sulla configurazione di rete
@@ -17,7 +17,7 @@ I componenti principali del progetto sono gli scripts:
 
 ## Simulazione: config_gen.py
 
-Lo script permette di creare simulazioni di traffico di rete automatiche mettendo a disposizione due modalità **auto** e **user**.
+Lo script permette di creare generazioni di traffico di rete automatiche mettendo a disposizione due modalità **auto** e **user**.
 Entrambe le modalità produrranno due files, **network.yaml** conterà le caratteristiche della rete e il file**packets.json** o **packets.yaml** (a seconda della scelta) conterrà il traffico vero e proprio
 di tutti i pacchetti generati dalla simulazione.
 La modalità _auto_ chiede all'utente il numero di switch, la capacità dei link e la tipologia del grafo (completo, mesh, torus) e imposterà in modo del tutto automatico la disposizione degli switch
