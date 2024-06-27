@@ -1,6 +1,6 @@
 """ The class module for the project """
 
-# Link class for manim use, actually only concept
+# actually only concept classes
 class Link:
     """ Link represents the link object between switch-endpoints """
     linkIDcounter = 0

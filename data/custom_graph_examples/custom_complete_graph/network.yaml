@@ -1,0 +1,56 @@
+- - capacity: 10
+    endpoints:
+    - 1
+    - 2
+  - capacity: 10
+    endpoints:
+    - 1
+    - 3
+  - capacity: 10
+    endpoints:
+    - 1
+    - 4
+  - capacity: 10
+    endpoints:
+    - 2
+    - 3
+  - capacity: 10
+    endpoints:
+    - 2
+    - 4
+  - capacity: 10
+    endpoints:
+    - 3
+    - 4
+- - address: 123.123.123.0
+    switchID: 1
+    switchName: Anthem
+  - address: 123.123.123.1
+    switchID: 2
+    switchName: Beta
+  - address: 123.123.123.2
+    switchID: 3
+    switchName: Cyber
+  - address: 123.123.123.3
+    switchID: 4
+    switchName: Delta
+- averageDelta: 1000
+  colorblind: 'no'
+  dotsSize: adaptive
+  graphType: graph
+  linkCap: 10
+  packetsFile: yaml
+  simTime: 2
+  startSimTime: 2024-03-22 12:30:00
+  updateDelta: 100
+- coordinates:
+  - - 1
+    - 0
+    - 0
+    - 2
+  - - 3
+    - 0
+    - 0
+    - 4
+- 2024-01-01 12:30:01: phase1
+  2024-01-01 12:30:02: phase2

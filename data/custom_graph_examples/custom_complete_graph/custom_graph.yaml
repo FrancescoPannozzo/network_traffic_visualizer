@@ -1,0 +1,31 @@
+---
+# only links
+data:
+  graphType: graph
+  coordinates:
+    - [1, 0, 0, 2]
+    - [3, 0, 0, 4]
+  linkCap: 10
+  switches:
+    1:
+      ip: "123.123.123.0"
+      switchName: Anthem
+    2:
+      ip: "123.123.123.1"
+      switchName: Beta
+    3:
+      ip: "123.123.123.2"
+      switchName: Cyber
+    4:
+      ip: "123.123.123.3"
+      switchName: Delta
+  links:
+    - [1, 2]
+    - [1, 3]
+    - [1, 4]
+    - [2, 3]
+    - [2, 4]
+    - [3, 4]
+  phases:
+    2024-01-01 12:30:01: "phase1"
+    2024-01-01 12:30:02: "phase2"

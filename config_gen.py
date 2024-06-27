@@ -310,7 +310,7 @@ try:
     else:
         with open('./data/packets.yaml', 'w', encoding="utf-8") as file:
             yaml.dump(packets, file)
-    
+            #yaml.dump(packets, file, default_flow_style=False)
     logging.info("..packets file creation done!")
     
     logging.debug("NETWORK and PACKETS structure writing time:%s", utils.get_test_duration(start_test_time))

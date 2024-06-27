@@ -1,0 +1,30 @@
+---
+# only links
+data:
+  graphType: torus
+  coordinates:
+    - [1, 2, 3]
+    - [4, 5, 6]
+  linkCap: 10
+  switches:
+    1:
+      ip: "123.123.123.0"
+      switchName: Anthem
+    2:
+      ip: "123.123.123.1"
+      switchName: Beta
+    3:
+      ip: "123.123.123.2"
+      switchName: Cyber
+    4:
+      ip: "123.123.123.3"
+      switchName: Dafne
+    5:
+      ip: "123.123.123.4"
+      switchName: Eclipse
+    6:
+      ip: "123.123.123.5"
+      switchName: Fox
+  phases:
+    2024-01-01 12:30:01: "phase1"
+    2024-01-01 12:30:02: "phase2"

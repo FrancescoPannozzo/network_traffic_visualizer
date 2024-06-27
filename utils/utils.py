@@ -129,6 +129,8 @@ def check_sim_setup(setup):
             raise exceptions.CustomFileError("WARNING, \"dotSize\" mus be \"adaptive\" or \"fixed\"")
         if setup["trafficVariation"] not in [5, 10, 20, 25, 50, "random"]:
             raise exceptions.CustomFileError("WARNING \"trafficVariation\" must be one of [5, 10, 20 ,25, 50] values")
+        if setup["creationDelta"] not in [50, 100, 200, 250, 500]:
+            raise exceptions.CustomFileError("WARNING, \"creationDelta\" must be one of [50, 100, 200, 250, 500] values")
     except ValueError as ve:
         logger.error("%s: value not properly written, pleas check the README", ve)
         sys.exit()
@@ -151,9 +153,9 @@ def check_network_sim_setup(setup):
         if setup["colorblind"] not in ["yes", "no"]:
             raise exceptions.CustomFileError("WARNING, \"colorBlind\" key mus be \"yes\" or \"no\"")
         if setup["dotsSize"] not in ["adaptive", "fixed"]:
-            raise exceptions.CustomFileError("WARNING, \"dotSize\" mus be \"adaptive\" or \"fixed\"")
-        if setup["linkCap"] not in [10, 100, 1000, 10000, 100000]:
-            raise exceptions.CustomFileError("WARNING, \"linkCap\" mus be one of [10, 100, 1000, 10000, 100000]")
+            raise exceptions.CustomFileError("WARNING, \"dotSize\" must be \"adaptive\" or \"fixed\"")
+        if setup["linkCap"] != "mixed" and setup["linkCap"] not in [10, 100, 1000, 10000, 100000]:
+            raise exceptions.CustomFileError("WARNING, \"linkCap\" must be one of [10, 100, 1000, 10000, 100000] values")
     
     except exceptions.CustomFileError as ce:
         logger.error(ce)

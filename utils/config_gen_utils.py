@@ -34,7 +34,7 @@ def change_traffic_perc(traffic_perc, traffic_variation):
     else:
         new_traffic_perc = random.randint(0, 100)
         # fixed perc, testing
-        # new_traffic_perc = 50
+        #new_traffic_perc = 50
     return new_traffic_perc
 
 def ip_to_string(ip):
@@ -231,7 +231,7 @@ def create_user_toro_links(user_data):
     return links
 
 def create_user_graph_links(user_data):
-    """ A links generator from the freehand graph opzion (graph) """
+    """ A links generator from the freehand graph option (graph) """
     links = {}
     link_id = 1
 

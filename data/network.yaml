@@ -8,36 +8,64 @@
     - 3
   - capacity: 10
     endpoints:
-    - 1
+    - 3
     - 4
   - capacity: 10
     endpoints:
-    - 4
+    - 1
     - 5
+  - capacity: 10
+    endpoints:
+    - 5
+    - 6
   - capacity: 10
     endpoints:
     - 2
-    - 5
+    - 6
   - capacity: 10
     endpoints:
-    - 5
     - 6
+    - 7
   - capacity: 10
     endpoints:
     - 3
-    - 6
+    - 7
+  - capacity: 10
+    endpoints:
+    - 7
+    - 8
   - capacity: 10
     endpoints:
     - 4
-    - 7
-  - capacity: 10
-    endpoints:
-    - 7
     - 8
   - capacity: 10
     endpoints:
     - 5
+    - 9
+  - capacity: 10
+    endpoints:
+    - 9
+    - 10
+  - capacity: 10
+    endpoints:
+    - 6
+    - 10
+  - capacity: 10
+    endpoints:
+    - 10
+    - 11
+  - capacity: 10
+    endpoints:
+    - 7
+    - 11
+  - capacity: 10
+    endpoints:
+    - 11
+    - 12
+  - capacity: 10
+    endpoints:
     - 8
+    - 12
 - - address: 10.0.0.1
     switchID: 1
     switchName: switch1
@@ -62,23 +90,38 @@
   - address: 10.0.0.8
     switchID: 8
     switchName: switch8
+  - address: 10.0.0.9
+    switchID: 9
+    switchName: switch9
+  - address: 10.0.0.10
+    switchID: 10
+    switchName: switch10
+  - address: 10.0.0.11
+    switchID: 11
+    switchName: switch11
+  - address: 10.0.0.12
+    switchID: 12
+    switchName: switch12
 - averageDelta: 1000
   colorblind: 'no'
-  dotsSize: fixed
+  dotsSize: adaptive
   graphType: mesh
   linkCap: 10
   packetsFile: json
-  simTime: 5
+  simTime: 10
   startSimTime: 2024-03-22 12:30:00
-  updateDelta: 100
+  updateDelta: 200
 - coordinates:
   - - 1
     - 2
     - 3
-  - - 4
-    - 5
+    - 4
+  - - 5
     - 6
-  - - 7
+    - 7
     - 8
-    - 0
+  - - 9
+    - 10
+    - 11
+    - 12
 - 2024-03-22 12:30:01: phase1

@@ -25,6 +25,16 @@ print(round(i))
 i = 2.9
 print(round(i))
 
+d = {}
+d[1] = {"nome": "Francesco", "cognome":"pan"}
+d["pan"] = {"nome": "Francescooooo", "cognome":"paaan"}
+d[("A", "B")] = {"nome": "Fra", "cognome":"Pa"}
+d[("A", "B")] = {"nome": "F", "cognome":"P"}
+d[("B", "A")] = {"nome": "FFF", "cognome":"PPP"}
+d[{"C", "D"}] = {"nome": "ccc", "cognome":"ddd"}
+
+print(d)
+
 """ 
 {'hexValue': '#fafffa'}
 {'hexValue': '#f5fff5'}

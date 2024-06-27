@@ -201,8 +201,8 @@ for link, content in links.items():
         average = utils.get_average(c['traffic'], averageFractions, utils.max_traffic_per_unit(content['capacity'], updateDelta))
         traffic.append(round(average, 2))
         ## DEBUG
-        #numero = str(round(average, 2)).replace('.', ',')
-        #print(numero)
+        numero = str(round(average, 2)).replace('.', ',')
+        print(f"{c['updateTime']} - {numero}")
     analyzed_data.append({
         "endpoints": sorted(endpoints),
         "traffic": traffic
