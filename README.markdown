@@ -2,7 +2,7 @@
 
 ## Progetto per relazione di tirocinio, Università degli Studi di Roma "La Sapienza", corso di Laurea triennale in Informatica, anno accademico 2023/2024
 
-Il progetto è un visualizzatore grafico e simulatore di traffico di rete.
+Il progetto è un visualizzatore grafico e generatore di traffico di rete.
 Tramite due file di input, uno con dettagli sulla configurazione di rete
 e un altro con dettagli sui pacchetti trasmessi, si vuole mostrare
 il traffico nel tempo. La visualizzazione grafica è rappresentata da un grafo
